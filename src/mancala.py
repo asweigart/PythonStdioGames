@@ -27,10 +27,10 @@ def getNewBoard():
     for i in 'ABCDEFGHIJKL':
         board[i] = 4
     return board
+    #return {'1': 0, '2': 0, 'A': 4, 'B': 4, 'C': 4, 'D': 4, 'E': 4, 'F': 4, 'G': 4, 'H': 4, 'I': 4, 'J': 4, 'K': 4, 'L': 4}
 
 
-def getPlayerMove(board, turn):
-    drawBoard(board)
+def getPlayerMove(turn, board):
     move = None
     while True:
         if turn == '1':
@@ -75,7 +75,7 @@ def makeMove(board, turn, move):
     return 'done'
 
 
-def checkForWinner(board):
+def isWinner(board):
     b = board # Just to get a shorter variable name.
 
     if b['1'] > 24:
@@ -98,12 +98,13 @@ def checkForWinner(board):
     return 'no winner'
 
 
-def runGame():
+def main():
     gameBoard = getNewBoard()
     playerTurn = '1'
 
     while True:
-        playerMove = getPlayerMove(gameBoard, playerTurn)
+        drawBoard(gameBoard)
+        playerMove = getPlayerMove(playerTurn, gameBoard)
 
         nextAction = makeMove(gameBoard, playerTurn, playerMove)
         if nextAction != 'one more turn':
@@ -112,7 +113,7 @@ def runGame():
             elif playerTurn == '2':
                 playerTurn = '1'
 
-        winner = checkForWinner(gameBoard)
+        winner = isWinner(gameBoard)
         if winner in '12':
             print('Player %s has won!' % (winner))
             break
@@ -120,5 +121,6 @@ def runGame():
             print('There is a tie!')
             break
 
+
 if __name__ == '__main__':
-    runGame()
+    main()
