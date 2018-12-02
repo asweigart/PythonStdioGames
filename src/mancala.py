@@ -1,5 +1,13 @@
 # Mancala, by Al Sweigart
 
+def getNewBoard():
+    board = {'1': 0, '2': 0}
+    for i in 'ABCDEFGHIJKL':
+        board[i] = 4
+    return board
+    #return {'1': 0, '2': 0, 'A': 4, 'B': 4, 'C': 4, 'D': 4, 'E': 4, 'F': 4, 'G': 4, 'H': 4, 'I': 4, 'J': 4, 'K': 4, 'L': 4}
+
+
 def drawBoard(board):
     b = board # Using a shorter variable name.
     print("""
@@ -20,14 +28,6 @@ def drawBoard(board):
 def sp(number):
     # Adds a space if needed to make the number take up two chracters.
     return str(number).rjust(2)
-
-
-def getNewBoard():
-    board = {'1': 0, '2': 0}
-    for i in 'ABCDEFGHIJKL':
-        board[i] = 4
-    return board
-    #return {'1': 0, '2': 0, 'A': 4, 'B': 4, 'C': 4, 'D': 4, 'E': 4, 'F': 4, 'G': 4, 'H': 4, 'I': 4, 'J': 4, 'K': 4, 'L': 4}
 
 
 def getPlayerMove(turn, board):

@@ -2,6 +2,17 @@ EMPTY_SPACE = '.'
 X_PLAYER = 'X'
 O_PLAYER = 'O'
 
+def getNewBoard():
+    # Note: The board is 7x6, represented by a dictionary with keys
+    # of (x, y) tuples from (0, 0) to (6, 5), and values of '.' (empty),
+    # 'X' (X player), or 'O' (O player)
+    board = {}
+    for y in range(6):
+        for x in range(7):
+            board[(x, y)] = EMPTY_SPACE
+    return board
+
+
 def drawBoard(board):
     tileChars = []
     for y in range(6):
@@ -18,17 +29,6 @@ def drawBoard(board):
 |{}{}{}{}{}{}{}|
 +-------+
  0123456""".format(*tileChars))
-
-
-def getNewBoard():
-    # Note: The board is 7x6, represented by a dictionary with keys
-    # of (x, y) tuples from (0, 0) to (6, 5), and values of '.' (empty),
-    # 'X' (X player), or 'O' (O player)
-    board = {}
-    for y in range(6):
-        for x in range(7):
-            board[(x, y)] = EMPTY_SPACE
-    return board
 
 
 def getPlayerMove(playerTile, board):
