@@ -86,7 +86,15 @@ def makeRandomMove(board):
     makeMove(board, random.choice(validMoves))
 
 
-def main():
+def getNewPuzzle(moves=200):
+    board = getNewBoard()
+
+    for i in range(moves):
+        makeRandomMove(board)
+    return board
+
+
+def runGame():
     print('Sliding Puzzle')
     print('Use the WASD keys to move the tiles')
     print('back into their original order:')
@@ -96,10 +104,7 @@ def main():
     print('      13 14 15   ')
     print()
 
-    gameBoard = getNewBoard()
-    for i in range(200):
-        makeRandomMove(gameBoard)
-
+    gameBoard = getNewPuzzle()
 
     while True:
         drawBoard(gameBoard)
@@ -111,4 +116,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    runGame()

@@ -3,32 +3,21 @@
 import random
 
 """
-Variables:
-Z - year, starts at 1
-D1 - total died
-P1 - percent starved per year on average
-P - current population
-S - bushels in store left
-H - amount of bushels
-E - amount of bushels rats ate
-Y - land price in bushels per acre
-A - H/Y acres owned
-I - infants born new to city
-D - people starved in last year
-L - L=A/P, acres owned / population
+Game mechanics:
+- The game is played over 10 years, and starts with 100 people, 1000 acres, and 3000 bushels of grain.
+- Each year has three phases: buy/sell land, feed the population, and plant grain for next year.
+- Land trades between 17 and 26 bushels per acre, the price changing each year.
+- 20 bushels feeds 1 person.
+- 2 bushels are used to plant 1 acre, 1 person can plant 10 acres.
+- Next years' harvest is (acres plantd x random number 1 to 5)
+- Each year has a 15% chance of plague that kills half the population.
+- If more 45% of the people starve in a single year, you instantly lose.
 
 
-
-1 person can plant 10 acres
-20 bushels feeds 1
-2 bushels to plant one acre
-1 acre produces 1 to 5 bushels
-
-land price between 17 and 26.
-15% chance of plague each turn
-
-
-NOTE: Does it not matter ho
+Best ending:     <3% of the population died and >10 acres per person.
+Mediocre ending: >3% to 10% of the population died or >9 to 10 acres per person.
+Bad ending:      >10% to 33% of the population died or >7 to 9 acres per person.
+Worst ending:    >33% of the population died or <7 acres per person.
 """
 
 
@@ -201,8 +190,8 @@ def runGame():
         print('would dearly like to see you assassinated but we all have our')
         print('trivial problems.')
     else:
-        print('A fantastic performance!!! Charlemange, Disraeli, and')
-        print('Mandela combined could not have done better!')
+        print('A fantastic performance!!! Mandela, Elizabeth II, and')
+        print('Annan combined could not have done better!')
 
     print()
     print('So long for now.')

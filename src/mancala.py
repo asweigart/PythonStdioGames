@@ -9,25 +9,23 @@ def getNewBoard():
 
 
 def drawBoard(board):
-    b = board # Using a shorter variable name.
+    labels = []
+    for space in 'GHIJKL21ABCDEF':
+        labels.append(str(board[space]).rjust(2))
+
     print("""
                 <-<-<-<-<
 +----+----+----+----+----+----+----+----+
 |2   |G   |H   |I   |J   |K   |L   |1   |
-|    | %s | %s | %s | %s | %s | %s |    |
+|    | {} | {} | {} | {} | {} | {} |    |
 |    |    |    |    |    |    |    |    |
-| %s +----+----+----+----+----+----+ %s |
+| {} +----+----+----+----+----+----+ {} |
 |    |A   |B   |C   |D   |E   |F   |    |
-|    | %s | %s | %s | %s | %s | %s |    |
+|    | {} | {} | {} | {} | {} | {} |    |
 |    |    |    |    |    |    |    |    |
 +----+----+----+----+----+----+----+----+
                 >->->->->
-""" % (sp(b['G']), sp(b['H']), sp(b['I']), sp(b['J']), sp(b['K']), sp(b['L']), sp(b['2']), sp(b['1']), sp(b['A']), sp(b['B']), sp(b['C']), sp(b['D']), sp(b['E']), sp(b['F'])))
-
-
-def sp(number):
-    # Adds a space if needed to make the number take up two chracters.
-    return str(number).rjust(2)
+""".format(*labels))
 
 
 def getPlayerMove(turn, board):
