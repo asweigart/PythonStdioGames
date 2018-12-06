@@ -59,6 +59,8 @@ def getPlayerMove():
 def changeTile(move, board, x, y, charToChange=None):
     if x == 0 and y == 0:
         charToChange = board[x][y]
+        if move == charToChange:
+            return # Already is the same color.
 
     board[x][y] = move
 

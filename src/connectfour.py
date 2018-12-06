@@ -19,7 +19,8 @@ def drawBoard(board):
         for x in range(7):
             tileChars.append(board[(x, y)])
 
-    print("""
+    print(""" 1234567
+ v v v v
 +-------+
 |{}{}{}{}{}{}{}|
 |{}{}{}{}{}{}{}|
@@ -27,18 +28,20 @@ def drawBoard(board):
 |{}{}{}{}{}{}{}|
 |{}{}{}{}{}{}{}|
 |{}{}{}{}{}{}{}|
-+-------+
- 0123456""".format(*tileChars))
++-------+""".format(*tileChars))
 
 
 def getPlayerMove(playerTile, board):
     while True:
-        print('Enter your move (0-6):')
+        print('Player %s, enter your move (1-7):' % playerTile)
         move = input()
-        if move not in '0123456':
+        if move not in '1234567':
             continue # Ask again for their move.
 
-        move = int(move)
+        try:
+            move = int(move) - 1 # - 1 adjust for 0-based index.
+        except:
+            continue
 
         for i in range(5, -1, -1):
             if board[(move, i)] == EMPTY_SPACE:
@@ -56,17 +59,21 @@ def isFull(board):
 def isWinner(playerTile, board):
     b = board # Using a shorter name instead of `board`.
 
-    # Go through the entire board, checking for four-in-a-row.
-    for y in range(2):
-        for x in range(3):
+    # Go through the entire board, checking for four-in-a-row:
+    for y in range(6):
+        for x in range(4):
             # Check for four-in-a-row going across:
             if b[(x, y)] == b[(x + 1, y)] == b[(x + 2, y)] == b[(x + 3, y)] == playerTile:
                 return True
 
+    for y in range(3):
+        for x in range(7):
             # Check for four-in-a-row going down:
             if b[(x, y)] == b[(x, y + 1)] == b[(x, y + 2)] == b[(x, y + 3)] == playerTile:
                 return True
 
+    for y in range(3):
+        for x in range(4):
             # Check for four-in-a-row going right-down diagonal:
             if b[(x, y)] == b[(x + 1, y + 1)] == b[(x + 2, y + 2)] == b[(x + 3, y + 3)] == playerTile:
                 return True
@@ -78,22 +85,28 @@ def isWinner(playerTile, board):
 
 
 def main():
+    # Set up a new game:
     gameBoard = getNewBoard()
     playerTurn = X_PLAYER
 
     while True:
+        # Draw board and get player's move:
         drawBoard(gameBoard)
 
         playerMove = getPlayerMove(playerTurn, gameBoard)
         gameBoard[playerMove] = playerTurn
 
+        # Check for a win or tie:
         if isWinner(playerTurn, gameBoard):
+            drawBoard(gameBoard)
             print('Player %s has won!' % (playerTurn))
             break
         elif isFull(gameBoard):
+            drawBoard(gameBoard)
             print('There is a tie!')
             break
 
+        # Switch turn to other player:
         if playerTurn == X_PLAYER:
             playerTurn = O_PLAYER
         elif playerTurn == O_PLAYER:
