@@ -3,6 +3,7 @@ A compilation of text-based games written in Python that only use "standard i/o"
 
 
 TODO NOTES:
+
 Games should:
 
 * Be under 256 lines long.
