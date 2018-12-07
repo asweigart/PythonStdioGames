@@ -17,6 +17,7 @@ Games should:
 * Functions should only call functions that have already been defined (to aide a top-to-bottom reading of the code)
 * Get rid of any functions that modify things in-place. Use tuples.
 * Maybe include a barebones version of games, with stub functions that specify what their input/output, and hint at what other functions in the program they'll call? And the data structures used?
+* I should focus on games that don't require data structures (this removes most board games).
 
 
 
