@@ -2,6 +2,15 @@ import random
 from colorama import init, Fore
 init() # colorama.init() needs to be called first for colors to work.
 
+BLOCK = chr(9608)     # Character 9608 is █
+LEFTRIGHT = chr(9472) # Character 9472 is ─
+UPDOWN = chr(9474)    # Character 9474 is │
+DOWNRIGHT = chr(9484) # Character 9484 is ┌
+DOWNLEFT = chr(9488)  # Character 9488 is ┐
+UPRIGHT = chr(9492)   # Character 9492 is └
+UPLEFT = chr(9496)    # Character 9496 is ┘
+
+
 # This constant maps letters to colors.
 CMAP = {'R': Fore.RED, 'G': Fore.GREEN, 'B': Fore.BLUE,
         'Y': Fore.YELLOW, 'C': Fore.CYAN, 'P': Fore.MAGENTA}
@@ -30,22 +39,22 @@ def getNewBoard(width=16, height=16):
 def drawBoard(board):
     width = len(board)
     height = len(board[0])
-    print(Fore.WHITE + '+' + ('-' * width) + '+')
+    print(Fore.WHITE + DOWNRIGHT + (LEFTRIGHT * width) + DOWNLEFT)
 
     # Print first row with '>'.
     print(Fore.WHITE + '>', end='')
     for x in range(width):
-        print(CMAP[board[x][0]] + chr(9608), end='')
-    print(Fore.WHITE + '|')
+        print(CMAP[board[x][0]] + BLOCK, end='')
+    print(Fore.WHITE + UPDOWN)
 
     # Print each row after the first.
     for y in range(1, height):
-        print(Fore.WHITE + '|', end='')
+        print(Fore.WHITE + UPDOWN, end='')
         for x in range(width):
-            print(CMAP[board[x][y]] + chr(9608), end='')
-        print(Fore.WHITE + '|')
+            print(CMAP[board[x][y]] + BLOCK, end='')
+        print(Fore.WHITE + UPDOWN)
 
-    print(Fore.WHITE + '+' + ('-' * width) + '+')
+    print(Fore.WHITE + UPRIGHT + (LEFTRIGHT * width) + UPLEFT)
 
 
 def getPlayerMove():

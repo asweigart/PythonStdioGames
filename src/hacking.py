@@ -1,8 +1,8 @@
 import random
 
-GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\'
+GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\' # The "filler" characters for the board.
 
-# Load the words.
+# Load the WORDS list from a text file that has a 7-letter word on each line.
 with open('sevenletterwords.txt') as dictionaryFile:
     WORDS = dictionaryFile.readlines()
 for i in range(len(WORDS)):
@@ -37,7 +37,7 @@ def getBoard(words):
 
         memoryAddress += 16
 
-    return '\n'.join(board)
+    return '\n'.join(board) # Each string in `board` is joined into one large string to return.
 
 
 def getPlayerMove(words, tries):
@@ -56,8 +56,54 @@ def getNumberOfMatchingLetters(word1, word2):
     return matches
 
 
+def getOneWordExcept(blocklist=None):
+    if blocklist is None:
+        blocklist = []
+
+    while True:
+        randomWord = random.choice(WORDS)
+        if randomWord not in blocklist:
+            return randomWord
+
+
+def getWords():
+    # To make the game fair, we want to only have at most 2 words that have 0 letters in common with the secret password.
+    secretPassword = random.choice(WORDS)
+    words = [secretPassword]
+
+    # Find two words that have zero matching letters.
+    while len(words) < 3: # 3 because the secret password is already in `words`.
+        randomWord = getOneWordExcept(words)
+        if getNumberOfMatchingLetters(secretPassword, randomWord) == 0:
+            words.append(randomWord)
+
+    # Find two words that have 3 matching letters (but give up at 500 tries if not enough can be found).
+    for i in range(500):
+        if len(words) == 5:
+            break
+
+        randomWord = getOneWordExcept(words)
+        if getNumberOfMatchingLetters(secretPassword, randomWord) == 3:
+            words.append(randomWord)
+
+    # Find seven words that have at least one matching letter (but give up at 500 tries if not enough can be found).
+    for i in range(500):
+        if len(words) == 12:
+            break
+
+        randomWord = getOneWordExcept(words)
+        if getNumberOfMatchingLetters(secretPassword, randomWord) != 0:
+            words.append(randomWord)
+
+    # Add any random words needed to get 12 words total.
+    words.extend(random.sample(WORDS, 12 - len(words)))
+
+    assert len(words) == 12
+    return words
+
+
 def runGame():
-    gameWords = random.sample(WORDS, 12)
+    gameWords = getWords()
     gameBoard = getBoard(gameWords)
     secretPassword = random.choice(gameWords)
 
