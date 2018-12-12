@@ -1,3 +1,6 @@
+# Hacking, by Al Sweigart al@inventwithpython.com
+# This game is a clone of the Fallout hacking mini-game.
+
 import random
 
 GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\' # The "filler" characters for the board.

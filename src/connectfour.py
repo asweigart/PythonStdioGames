@@ -1,3 +1,5 @@
+# Connect Four, by Al Sweigart al@inventwithpython.com
+
 EMPTY_SPACE = '.'
 X_PLAYER = 'X'
 O_PLAYER = 'O'

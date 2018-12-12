@@ -1,4 +1,5 @@
-# This is a simulator for a Japanese abacus, or Soroban.
+# Soroban, by Al Sweigart al@inventwithpython.com
+# This is a simulator for a Japanese abacus, or soroban.
 
 def drawAbacus(number):
     numberList = list(str(number).zfill(10))

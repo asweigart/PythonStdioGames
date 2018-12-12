@@ -1,3 +1,5 @@
+# Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
+
 import random
 import time
 

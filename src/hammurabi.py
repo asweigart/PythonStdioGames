@@ -1,4 +1,5 @@
-# A Python 3 port of the classic BASIC game Hammurabi.bas by Doug Dyment, popularized by David Ahl.
+# Hammurabi, by Al Sweigart al@inventwithpython.com
+# A Python 3 port of the classic BASIC game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
 
 import random
 

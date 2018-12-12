@@ -1,3 +1,5 @@
+# Sliding Puzzle, by Al Sweigart al@inventwithpython.com
+
 import random
 
 BLANK = '  '

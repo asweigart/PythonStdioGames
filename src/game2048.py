@@ -1,3 +1,5 @@
+# 2048, by Al Sweigart al@inventwithpython.com
+
 import random
 
 

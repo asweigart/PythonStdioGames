@@ -1,3 +1,5 @@
+# Monty Hall Problem, by Al Sweigart al@inventwithpython.com
+
 import random
 import sys
 
