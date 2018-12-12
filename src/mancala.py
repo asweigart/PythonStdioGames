@@ -1,4 +1,4 @@
-# Mancala, by Al Sweigart
+# Mancala, by Al Sweigart al@inventwithpython.com
 
 def getNewBoard():
     board = {'1': 0, '2': 0}
@@ -30,6 +30,11 @@ def drawBoard(board):
 
 def getPlayerMove(turn, board):
     move = None
+    b = board # Just a shorter name to use for the `board` variable.
+    if (turn == '1' and b['A'] + b['B'] + b['C'] + b['D'] + b['E'] + b['F'] == 0) or
+       (turn == '2' and b['G'] + b['H'] + b['I'] + b['J'] + b['K'] + b['L'] == 0):
+       return None # Indicate that this player can't make a move.
+
     while True:
         if turn == '1':
             print('Player 1, choose move: A-F')
@@ -81,15 +86,14 @@ def isWinner(board):
     if b['2'] > 24:
         return '2'
 
-    if (b['A'] == 0 and b['B'] == 0 and b['C'] == 0 and b['D'] == 0 and b['E'] == 0 and b['F'] == 0) or \
-       (b['G'] == 0 and b['H'] == 0 and b['I'] == 0 and b['J'] == 0 and b['K'] == 0 and b['L'] == 0):
+    # Check if all pockets are empty.
+    if b['A'] + b['B'] + b['C'] + b['D'] + b['E'] + b['F'] +
+       b['G'] + b['H'] + b['I'] + b['J'] + b['K'] + b['L'] == 0:
         # Game is over, find player with largest score.
-        player1Score = b['A'] + b['B'] + b['C'] + b['D'] + b['E'] + b['F']
-        player2Score = b['G'] + b['H'] + b['I'] + b['J'] + b['K'] + b['L']
 
-        if player1Score > player2Score:
+        if b['1'] > b['2']:
             return '1'
-        elif player2Score > player1Score:
+        elif b['2'] > b['1']:
             return '2'
         else:
             return 'tie'
@@ -104,7 +108,11 @@ def main():
         drawBoard(gameBoard)
         playerMove = getPlayerMove(playerTurn, gameBoard)
 
-        nextAction = makeMove(gameBoard, playerTurn, playerMove)
+        if playerMove is not None:
+            nextAction = makeMove(gameBoard, playerTurn, playerMove)
+        else:
+            nextAction = 'done' # Player couldn't make a move, so go to next player.
+
         if nextAction != 'one more turn':
             if playerTurn == '1':
                 playerTurn = '2'
