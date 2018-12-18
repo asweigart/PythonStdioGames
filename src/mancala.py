@@ -3,7 +3,8 @@
 POCKETS = 'ABCDEF1LKJIHG2' # Constant for every pocket label, in order.
 
 def getNewBoard():
-    """Return a new board with 4 seeds in each starting pocket."""
+    """Return a dictionary representing a Mancala board in the starting
+    state: 4 seeds in each pocket."""
     board = {'1': 0, '2': 0}
     for i in 'ABCDEFGHIJKL':
         board[i] = 4
@@ -11,7 +12,7 @@ def getNewBoard():
 
 
 def drawBoard(board):
-    """Draw the game board."""
+    """Draws the game board as ASCII-art based on the `board` dictionary."""
     seedAmounts = []
     for space in 'GHIJKL21ABCDEF':
         seedAmounts.append(str(board[space]).rjust(2))
@@ -32,8 +33,11 @@ def drawBoard(board):
 
 
 def getPlayerMove(turn, board):
-    """Let a player enter their move."""
-    while True:
+    """Asks the player which pocket on their side of the board they select
+    to sow seeds from. Returns the uppercase letter label of the pocket
+    as a string."""
+    assert turn == '1' or turn == '2'
+    while True: # Keep asking the player until they enter a valid move.
         # Ask player to select a pocket on their side.
         if turn == '1':
             print('Player 1, choose move: A-F')
@@ -81,14 +85,8 @@ def makeMove(board, turn, move):
 def isWinner(board):
     b = board # Make a shorter variable name to use in this function.
 
-    # Any player with 24 or more seeds wins.
-    if b['1'] >= 24 and b['2'] < 24:
-        return '1'
-    if b['2'] >= 24 and b['1'] < 24:
-        return '2'
-
-    # If both players have >= 24 or one player has no seeds, the game ends.
-    if (b['1'] >= 24 and b['2'] >= 24) or \
+    # If either players has >= 24 or no seeds, the game ends.
+    if (b['1'] >= 24) or (b['2'] >= 24) or \
        (b['A'] + b['B'] + b['C'] + b['D'] + b['E'] + b['F'] == 0) or \
        (b['G'] + b['H'] + b['I'] + b['J'] + b['K'] + b['L'] == 0):
 
@@ -104,7 +102,7 @@ def isWinner(board):
 
 def main():
     gameBoard = getNewBoard()
-    playerTurn = '1'
+    playerTurn = '1' # Player 1 starts.
 
     while True: # Main game loop.
         # Display board and get player's move.
@@ -113,13 +111,8 @@ def main():
 
         # Carry out the player's move.
         nextAction = makeMove(gameBoard, playerTurn, playerMove)
-        if nextAction != 'one more turn':
-            if playerTurn == '1':
-                playerTurn = '2'
-            elif playerTurn == '2':
-                playerTurn = '1'
 
-        # See if a player has won.
+        # Check if the game ended and a player has won.
         winner = isWinner(gameBoard)
         if winner == '1' or winner == '2':
             drawBoard(gameBoard)
@@ -129,6 +122,13 @@ def main():
             drawBoard(gameBoard)
             print('There is a tie!')
             break
+
+        # Switch turns to the other player.
+        if nextAction != 'one more turn':
+            if playerTurn == '1':
+                playerTurn = '2'
+            elif playerTurn == '2':
+                playerTurn = '1'
 
 
 if __name__ == '__main__':
