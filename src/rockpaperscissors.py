@@ -4,18 +4,20 @@ import random
 import time
 
 def runGame():
+    # These variables keep track of the number of wins, losses, and ties.
     wins = 0
     losses = 0
     ties = 0
 
-    while True:
-        while True:
+    while True: # The main game loop.
+        while True: # Keep asking until player enters R/P/S.
             print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
             print('Enter your move: (R)ock (P)aper (S)cissors')
             playerMove = input().upper()
             if playerMove == 'R' or playerMove == 'P' or playerMove == 'S':
                 break
 
+        # Display what the player chose:
         if playerMove == 'R':
             print('ROCK versus...')
             playerMove = 'ROCK'
@@ -26,6 +28,7 @@ def runGame():
             print('SCISSORS versus...')
             playerMove = 'SCISSORS'
 
+        # Count to three with dramatic pauses:
         time.sleep(0.5)
         print('1...')
         time.sleep(0.25)
@@ -34,6 +37,7 @@ def runGame():
         print('3...')
         time.sleep(0.25)
 
+        # Display what the computer chose:
         randomNumber = random.randint(1, 3)
         if randomNumber == 1:
             computerMove = 'ROCK'
@@ -44,6 +48,7 @@ def runGame():
         print(computerMove)
         time.sleep(0.5)
 
+        # Display and record the win/loss/tie:
         if playerMove == computerMove:
             print('It\'s a tie!')
             ties = ties + 1
@@ -66,12 +71,12 @@ def runGame():
             print('You lose!')
             losses = losses + 1
 
+        # Let the player quit or play again.
         print('Press Enter to play again, or enter "quit" to stop.')
         response = input()
         if response == 'quit':
             return
 
+# If the player runs this program (instead of importing it), run the game:
 if __name__ == '__main__':
     runGame()
-
-
