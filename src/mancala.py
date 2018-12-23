@@ -1,5 +1,6 @@
 # Mancala, by Al Sweigart
 # Rules at http://www.mancalarules.com/
+import sys
 
 POCKETS = 'ABCDEF1LKJIHG2' # Constant for every pocket label, in order.
 
@@ -48,10 +49,13 @@ def getPlayerMove(turn, board):
     while True: # Keep asking the player until they enter a valid move.
         # Ask player to select a pocket on their side:
         if turn == '1':
-            print('Player 1, choose move: A-F')
+            print('Player 1, choose move: A-F (or "quit")')
         elif turn == '2':
-            print('Player 2, choose move: G-L')
+            print('Player 2, choose move: G-L (or "quit")')
         pocket = input().upper()
+
+        if pocket == 'QUIT':
+            sys.exit()
 
         # Make sure it is a valid pocket to select:
         # EXPERIMENT! Delete this if-block to let the player select any pocket.
