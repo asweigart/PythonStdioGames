@@ -1,6 +1,15 @@
+# Tsuro Map Maker, by Al Sweigart al@inventwithpython.com
+
 import pytextcanvas as pytc
 import random
 import sys
+
+try:
+    import colorama
+    COLORAMA_ENABLED = True
+except:
+    COLORAMA_ENABLED = False
+
 
 if len(sys.argv) == 3:
     WIDTH = int(sys.argv[1])
@@ -32,12 +41,13 @@ ROTATE_MAP = {
 }
 
 # The last digit is a checksum so that the sum of numbers mod 10 is 0.
+# More details at https://github.com/asweigart/PythonStdioGames/blob/master/src/tsuromapmakerreference.txt
 TILES = ['02360452115121411245036209', '05420145210202012451025408',
          '02020423115111411625020204', '02020454512054060051031406',
          '02020451212002060051031409', '02360122110220016231036204',
          '05160143110220012631020207', '36360636033603660363036360',
          '05420402232326262205025407', '02020420512200062031020204',
-         '05420432633221662111025405', '05160400032000260005031408',
+         '05420432633211662203515464', '05160400032000260005031408',
          '36020140512200062031020208', '05364112433112660251036366',
          '05160111110000011143031261', '02020160510000014031020200',
          '05454402052020011111545404', '32160620310202012111020202',
