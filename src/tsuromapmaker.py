@@ -57,6 +57,7 @@ for i, tile in enumerate(TILES):
     assert (sum([int(x) for x in tile]) % 10) == 0, 'Tile %s is wrong.' % (i)
     TILES[i] = TILES[i][:25] # Cut off the checksum digit.
 
+
 def drawTile(tile, x, y, board):
     for ix in range(x, x + 5):
         for iy in range(y, y + 5):
@@ -64,9 +65,11 @@ def drawTile(tile, x, y, board):
 
 
 def rotateTile(tile, rotations): # rotations are clockwise at 90 degree increments
-    rotations = rotations % 4 # handle excess or negative rotations
+    assert len(tile) == 25 # Tiles should be 5x5 areas of 25 '0' through '7' characters.
+    assert tile.isdigit() and '8' not in tile and '9' not in tile
 
-    t = tile # syntactic sugar to make a shorter name
+    rotations = rotations % 4 # Handle excess or negative rotations.
+    t = tile # Syntactic sugar to use a shorter name.
 
     for ir in range(rotations):
         # Indexes of each position in the tile:
@@ -89,7 +92,7 @@ def rotateTile(tile, rotations): # rotations are clockwise at 90 degree incremen
 
         rt[12] = t[12] # Center position doesn't rotate positions.
 
-        # Rotate the individual block characters.
+        # Rotate the individual block characters:
         for i in range(25):
             rt[i] = ROTATE_MAP[rt[i]]
 
@@ -99,16 +102,18 @@ def rotateTile(tile, rotations): # rotations are clockwise at 90 degree incremen
     return t
 
 
+# Create a canvas to draw the tiles on:
 canvas = pytc.Canvas(WIDTH, HEIGHT)
 for x in range(0, WIDTH, 5):
     for y in range(0, HEIGHT, 5):
+        # Choose a random tile, rotate it a random number of times:
         tile = rotateTile(random.choice(TILES), random.randint(0, 3))
         drawTile(tile, x, y, canvas)
 
 canvas.print()
 
+# Copy the canvas to the clipboard if pyperclip is installed:
 try:
-    # Copy the canvas to the clipboard if pyperclip is installed.
     import pyperclip
     pyperclip.copy(str(canvas))
 except:
