@@ -10,12 +10,17 @@ def runGame():
     ties = 0
 
     while True: # The main game loop.
-        while True: # Keep asking until player enters R/P/S.
+        while True: # Keep asking until player enters R/P/S/Q.
             print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
-            print('Enter your move: (R)ock (P)aper (S)cissors')
+            print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
             playerMove = input().upper()
+            if playerMove == 'Q':
+                return # Leave the runGame() function.
+
             if playerMove == 'R' or playerMove == 'P' or playerMove == 'S':
                 break
+            else:
+                print('Type one of R, P, S, or Q.')
 
         # Display what the player chose:
         if playerMove == 'R':
@@ -71,11 +76,6 @@ def runGame():
             print('You lose!')
             losses = losses + 1
 
-        # Let the player quit or play again.
-        print('Press Enter to play again, or enter "quit" to stop.')
-        response = input()
-        if response == 'quit':
-            return
 
 # If the player runs this program (instead of importing it), run the game:
 if __name__ == '__main__':
