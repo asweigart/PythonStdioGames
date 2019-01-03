@@ -1,4 +1,4 @@
-# DNA Anmation Demo by Al Sweigart
+# DNA Animation Demo by Al Sweigart
 # Thanks to matoken for inspiration: https://asciinema.org/a/155441
 
 import random
