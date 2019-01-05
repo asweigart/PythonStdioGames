@@ -6,69 +6,26 @@ import time
 FILLED = chr(9608)
 EMPTY = ' '
 PAUSE = 0.25 # How long to pause between each screen.
+WIDTH = 70
+HEIGHT = 20
 
-# Load the width and height from the command line arguments:
-if len(sys.argv) == 3:
-    WIDTH = sys.argv[1]
-    HEIGHT = sys.argv[2]
-else:
-    WIDTH = 70
-    HEIGHT = 20
-
-
-def clear():
-    # A cross-platform terminal window clearing function.
-    if sys.platform == 'win32':
-        os.system('cls') # Clears Windows terminal.
-    else:
-        os.system('clear') # Clears macOS and Linux terminal.
-
-
-def getStateNumbers(width, height, screen):
-    # Calculate the state numbers:
-    state = ''
-    for x in range(width):
-        for y in range(height):
-            if screen[x, y] == FILLED:
-                state += '1'
-            else:
-                state += '0'
-    return '%s %s %s' % (width, height, int(state, 2))
-
-
-def getRandomScreen(width, height):
-    # Create a random screen:
-    randomScreen = {}
-    for x in range(width):
-        for y in range(height):
-            if random.randint(0, 1) == 0:
-                randomScreen[x, y] = EMPTY
-            else:
-                randomScreen[x, y] = FILLED
-    return randomScreen
-
-
-# Load the initial state from the command line arguments:
+# Create a random screen:
 nextScreen = {}
-if len(sys.argv) == 4:
-    # Load the state from the
-    initialState = bin(int(sys.argv, 2)) # Convert decimal to binary number.
-    initialState = initialState[2:] # Chop off the leading '0b'.
-    i = 0
-    for x in range(WIDTH):
-        for y in range(HEIGHT):
-            if initialState[i] == '0':
-                nextScreen[x, y] = EMPTY
-            else:
-                nextScreen[x, y] = FILLED
-else:
-    nextScreen = getRandomScreen(WIDTH, HEIGHT)
-initialStateNumbers = getStateNumbers(WIDTH, HEIGHT, nextScreen)
+for x in range(WIDTH):
+    for y in range(HEIGHT):
+        if random.randint(0, 1) == 0:
+            nextScreen[x, y] = EMPTY
+        else:
+            nextScreen[x, y] = FILLED
 
 step = 0
 try:
     while True: # Main program loop.
-        clear()
+        if sys.platform == 'win32':
+            os.system('cls') # Clears Windows terminal.
+        else:
+            os.system('clear') # Clears macOS and Linux terminal.
+
         currentScreen = nextScreen
         nextScreen = {}
 
@@ -125,24 +82,7 @@ try:
                     else:
                         nextScreen[x, y] = EMPTY
 
-        # If nextScreen and currentScreen are the same, quit.
-        if nextScreen == currentScreen:
-            print('Static state reached.')
-            raise Exception()
-
         time.sleep(PAUSE) # Add a slight pause to reduce flickering.
 
 except KeyboardInterrupt:
-    # Display the state numbers:
-    print('Initial State Numbers:')
-    print(initialStateNumbers)
-    print('Last State Numbers:')
-    lastStateNumbers = getStateNumbers(WIDTH, HEIGHT, currentScreen)
-    print(lastStateNumbers)
-
-    # Attempt to copy state to clipboard with pyperclip, if available.
-    try:
-        import pyperclip
-        pyperclip.copy(lastStateNumbers)
-    except:
-        pass
+    pass # Just quit.
