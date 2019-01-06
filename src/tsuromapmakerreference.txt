@@ -1,9 +1,37 @@
-KEY:
+KEY: (for the first number)
 . ─ │ ┌ ┐ └ ┘ █
 0 1 2 3 4 5 6 7
 
+CONNECTING PORT: (for the second number)
+The digit at index i indicates which exit that exit i is connected to.
+██0█1██
+█     █
+7     2
+█     █
+6     3
+█     █
+██5█4██
 
-Tile 0 - 0236045211512141124503620
+
+WIRE PATH: (for the third string)
+A set of 25 letters (a-d, and _ for empty spaces) for the path of the internal wires. Useful for coloring, for example.
+ 0  1  2  3  4
+ 5  6  7  8  9
+10 11 12 13 14
+15 16 17 18 19
+20 21 22 23 24
+
+Example: _abb_cabaaccbccddbdc_bbd_
+From:
+_abb_
+cabaa
+ccbcc
+ddbdc
+_bbd_
+
+
+
+Tile 0 - 0236045211512141124503620,25076143,_abb_cabaaccbccddbdc_bbd_
 ██│█│██
 █ │┌┘ █
 ─┐└│───
