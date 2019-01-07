@@ -28,6 +28,7 @@ step = 0
 currentScreen = {}
 try:
     while True: # Main program loop.
+        # Clear the previously drawn text.
         if sys.platform == 'win32':
             os.system('cls') # Clears Windows terminal.
         else:
@@ -37,7 +38,7 @@ try:
         nextScreen = {}
 
         # Print the screen:
-        for y in range(0, HEIGHT, 2):
+        for y in range(0, HEIGHT, 2): # Skip every other row.
             for x in range(WIDTH):
                 top = currentScreen[x, y]
                 bottom = y != HEIGHT - 1 and currentScreen[x, y + 1]
@@ -50,7 +51,7 @@ try:
                     print(BOTTOM, end='', flush=False)
                 elif not top and not bottom:
                     print(EMPTY, end='', flush=False)
-            print('', flush=False)
+            print('', flush=False) # Print a newline at the end of the row.
         print('Step:', step)
         step += 1
         print('Press Ctrl-C or Ctrl-D to quit.')
