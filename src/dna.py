@@ -40,18 +40,17 @@ while True: # Main animation loop.
         print(rows[rowIndex])
         continue
 
-    # Draw rows with nucleotides:
-    if random.randint(0, 1) == 0:
-        # Half of the time, let's use A and T nucleotides:
-        if random.randint(0, 1) == 0:
-            print(rows[rowIndex].format('A', 'T'))
-        else:
-            print(rows[rowIndex].format('T', 'A'))
-    else:
-        # The other half of the time, let's use C and G nucleotides:
-        if random.randint(0, 1) == 0:
-            print(rows[rowIndex].format('C', 'G'))
-        else:
-            print(rows[rowIndex].format('G', 'C'))
+    # Select random nucleotide pairs:
+    randomSelection = random.randint(1, 4)
+    if randomSelection == 1:
+        leftNucleotide, rightNucleotide = 'A', 'T'
+    elif randomSelection == 2:
+        leftNucleotide, rightNucleotide = 'T', 'A'
+    elif randomSelection == 3:
+        leftNucleotide, rightNucleotide = 'C', 'G'
+    elif randomSelection == 4:
+        leftNucleotide, rightNucleotide = 'G', 'C'
 
+    # Print the row.
+    print(rows[rowIndex].format(leftNucleotide, rightNucleotide))
     time.sleep(0.15) # Add a slight pause.

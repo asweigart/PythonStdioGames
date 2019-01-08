@@ -1,4 +1,4 @@
-# Mancala, by Al Sweigart
+# Mancala, by Al Sweigart al@inventwithpython.com
 # Rules at http://www.mancalarules.com/
 import sys
 
