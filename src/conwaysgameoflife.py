@@ -1,5 +1,6 @@
 import os
 import random
+import shutil
 import sys
 import time
 
@@ -11,11 +12,11 @@ BOTTOM = chr(9604)
 EMPTY = ' '
 PAUSE = 0.25 # How long to pause between each screen.
 
-WIDTH = 70
-HEIGHT = 40
-
+WIDTH, HEIGHT = shutil.get_terminal_size()
+HEIGHT = (HEIGHT - 2) * 2
 
 # Create a random screen:
+currentScreen = {}
 nextScreen = {}
 for x in range(WIDTH):
     for y in range(HEIGHT):
@@ -25,19 +26,16 @@ for x in range(WIDTH):
             nextScreen[x, y] = True
 
 step = 0
-currentScreen = {}
 try:
     while True: # Main program loop.
-        # Clear the previously drawn text.
+        # Clear the previously drawn text:
         if sys.platform == 'win32':
             os.system('cls') # Clears Windows terminal.
         else:
-            os.system('clear') # Clears macOS and Linux terminal.
-
-        currentScreen = nextScreen
-        nextScreen = {}
+            os.system('clear') # Clears macOS/Linux terminal.
 
         # Print the screen:
+        currentScreen = nextScreen
         for y in range(0, HEIGHT, 2): # Skip every other row.
             for x in range(WIDTH):
                 top = currentScreen[x, y]
@@ -52,14 +50,15 @@ try:
                 elif not top and not bottom:
                     print(EMPTY, end='', flush=False)
             print('', flush=False) # Print a newline at the end of the row.
-        print('Step:', step)
+        print('Step:', step, flush=False)
         step += 1
-        print('Press Ctrl-C or Ctrl-D to quit.')
+        print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
 
         # Calculate next screen based on current screen:
+        nextScreen = {}
         for x in range(WIDTH):
             for y in range(HEIGHT):
-
+                # Get neighboring coordinates:
                 if x == 0:
                     leftCoord = WIDTH - 1 # wraparound
                 else:
@@ -78,18 +77,19 @@ try:
                 else:
                     bottomCoord = y + 1
 
-                # Determine neighbors:
-                topleft     = currentScreen[leftCoord, topCoord]
-                top         = currentScreen[x, topCoord]
-                topright    = currentScreen[rightCoord, topCoord]
-                left        = currentScreen[leftCoord, y]
-                right       = currentScreen[rightCoord, y]
-                bottomleft  = currentScreen[leftCoord, bottomCoord]
-                bottom      = currentScreen[x, bottomCoord]
-                bottomright = currentScreen[rightCoord, bottomCoord]
+                # Get neighbors:
+                topleft     = currentScreen.get((leftCoord, topCoord), False)
+                top         = currentScreen.get((x, topCoord), False)
+                topright    = currentScreen.get((rightCoord, topCoord), False)
+                left        = currentScreen.get((leftCoord, y), False)
+                right       = currentScreen.get((rightCoord, y), False)
+                bottomleft  = currentScreen.get((leftCoord, bottomCoord), False)
+                bottom      = currentScreen.get((x, bottomCoord), False)
+                bottomright = currentScreen.get((rightCoord, bottomCoord), False)
                 numNeighbors = topleft + top + topright + left + right + bottomleft + bottom + bottomright
 
-                if currentScreen[x, y]:
+                # Set cell based on Conway's Game of Life rules:
+                if currentScreen.get((x, y), False):
                     if numNeighbors in (2, 3):
                         nextScreen[x, y] = True
                     else:

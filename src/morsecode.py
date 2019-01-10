@@ -33,7 +33,7 @@ def morseToEnglish(message):
     for code in message:
         if code in MORSE_TO_ENGLISH:
             english.append(MORSE_TO_ENGLISH[code])
-    return ' '.join(english)
+    return ''.join(english)
 
 def main():
     while True:
@@ -61,7 +61,7 @@ def main():
         print(english)
 
         try:
-            pyperclip.copy(morse)
+            pyperclip.copy(english)
             print('(English text copied to clipboard.)')
         except:
             pass
