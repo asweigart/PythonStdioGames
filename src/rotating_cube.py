@@ -110,8 +110,6 @@ def transformPoint(point1, point2, scalex=None, scaley=None, translatex=None, tr
             int(point2[1] * scaley + translatey))
 
 
-width, height = bext.size()
-
 bext.fg('random')
 
 # Set up the points of the cube:
@@ -147,9 +145,9 @@ try:
         step += 1
 
         # Rotate cube:
-        rx += 0.05 + random.randint(1, 30) / 100
-        ry += 0.1  + random.randint(1, 30) / 100
-        rz += 0.15 + random.randint(1, 30) / 100
+        rx += 0.03 + random.randint(1, 20) / 100
+        ry += 0.08  + random.randint(1, 20) / 100
+        rz += 0.13 + random.randint(1, 20) / 100
         for i in range(len(points)):
             rotatedPoints[i] = rotateXYZ(*points[i], rx, ry, rz)
 
@@ -178,7 +176,7 @@ try:
             bext.goto(x, y)
             print(BLOCK, end='')
 
-        time.sleep(0.1) # Pause for a bit.
+        time.sleep(0.2) # Pause for a bit.
 
         # Erase cube:
         for x, y in screenPoints:

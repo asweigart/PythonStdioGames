@@ -1,4 +1,4 @@
-import random
+import random, sys
 from colorama import init, Fore
 init() # colorama.init() needs to be called first for colors to work.
 
@@ -61,6 +61,8 @@ def getPlayerMove():
     while True:
         print(Fore.WHITE + 'Choose one of ' + Fore.RED + 'R ' + Fore.GREEN + 'G ' + Fore.BLUE + 'B ' + Fore.YELLOW + 'Y ' + Fore.CYAN + 'C ' + Fore.MAGENTA + 'P' + Fore.WHITE + ' or quit:')
         move = input().upper()
+        if move == 'QUIT':
+            sys.exit()
         if move in COLORS:
             return move
 
