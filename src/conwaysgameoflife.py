@@ -21,9 +21,9 @@ nextScreen = {}
 for x in range(WIDTH):
     for y in range(HEIGHT):
         if random.randint(0, 1) == 0:
-            nextScreen[x, y] = False
+            nextScreen[(x, y)] = False
         else:
-            nextScreen[x, y] = True
+            nextScreen[(x, y)] = True
 
 step = 0
 try:
@@ -38,8 +38,8 @@ try:
         currentScreen = nextScreen
         for y in range(0, HEIGHT, 2): # Skip every other row.
             for x in range(WIDTH):
-                top = currentScreen[x, y]
-                bottom = y != HEIGHT - 1 and currentScreen[x, y + 1]
+                top = currentScreen[(x, y)]
+                bottom = y != HEIGHT - 1 and currentScreen[(x, y + 1)]
 
                 if top and bottom:
                     print(BOTH, end='', flush=False)
@@ -91,14 +91,14 @@ try:
                 # Set cell based on Conway's Game of Life rules:
                 if currentScreen.get((x, y), False):
                     if numNeighbors in (2, 3):
-                        nextScreen[x, y] = True
+                        nextScreen[(x, y)] = True
                     else:
-                        nextScreen[x, y] = False
+                        nextScreen[(x, y)] = False
                 else:
                     if numNeighbors == 3:
-                        nextScreen[x, y] = True
+                        nextScreen[(x, y)] = True
                     else:
-                        nextScreen[x, y] = False
+                        nextScreen[(x, y)] = False
 
         # If nextScreen and currentScreen are the same, quit.
         if nextScreen == currentScreen:
