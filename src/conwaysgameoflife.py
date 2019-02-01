@@ -1,111 +1,81 @@
-import os
-import random
-import shutil
-import sys
-import time
-
-# Because the terminal characters are twice as tall as they are wide,
-# we'll split each character into a possible "top" and "bottom" halves.
-BOTH = chr(9608)
-TOP = chr(9600)
-BOTTOM = chr(9604)
-EMPTY = ' '
-PAUSE = 0.25 # How long to pause between each screen.
+import os, random, shutil, sys, time
 
 WIDTH, HEIGHT = shutil.get_terminal_size()
-HEIGHT = (HEIGHT - 2) * 2
+HEIGHT = (HEIGHT - 1) * 2 # Leave a row free for "Press Ctrl-C..." message.
 
-# Create a random screen:
-currentScreen = {}
-nextScreen = {}
+# Create random cells:
+currentCells = {}
+nextCells = {}
 for x in range(WIDTH):
     for y in range(HEIGHT):
         if random.randint(0, 1) == 0:
-            nextScreen[(x, y)] = False
-        else:
-            nextScreen[(x, y)] = True
+            nextCells[x, y] = True
 
-step = 0
-try:
-    while True: # Main program loop.
-        # Clear the previously drawn text:
-        if sys.platform == 'win32':
-            os.system('cls') # Clears Windows terminal.
-        else:
-            os.system('clear') # Clears macOS/Linux terminal.
+while True: # Main program loop.
+    # Clear the previously drawn text:
+    if sys.platform == 'win32':
+        os.system('cls') # Clears Windows terminal.
+    else:
+        os.system('clear') # Clears macOS/Linux terminal.
 
-        # Print the screen:
-        currentScreen = nextScreen
-        for y in range(0, HEIGHT, 2): # Skip every other row.
-            for x in range(WIDTH):
-                top = currentScreen[(x, y)]
-                bottom = y != HEIGHT - 1 and currentScreen[(x, y + 1)]
-
-                if top and bottom:
-                    print(BOTH, end='', flush=False)
-                elif top and not bottom:
-                    print(TOP, end='', flush=False)
-                elif not top and bottom:
-                    print(BOTTOM, end='', flush=False)
-                elif not top and not bottom:
-                    print(EMPTY, end='', flush=False)
-            print('', flush=False) # Print a newline at the end of the row.
-        print('Step:', step, flush=False)
-        step += 1
-        print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
-
-        # Calculate next screen based on current screen:
-        nextScreen = {}
+    # Print the cells:
+    currentCells = nextCells
+    for y in range(0, HEIGHT, 2): # Skip every other row.
         for x in range(WIDTH):
-            for y in range(HEIGHT):
-                # Get neighboring coordinates:
-                if x == 0:
-                    leftCoord = WIDTH - 1 # wraparound
-                else:
-                    leftCoord = x - 1
-                if x == WIDTH - 1:
-                    rightCoord = 0 # wraparound
-                else:
-                    rightCoord = x + 1
+            top = (x, y) in currentCells
+            bottom = (x, y + 1) in currentCells
 
-                if y == 0:
-                    topCoord = HEIGHT - 1 # wraparound
-                else:
-                    topCoord = y - 1
-                if y == HEIGHT - 1:
-                    bottomCoord = 0 # wraparound
-                else:
-                    bottomCoord = y + 1
+            if top and bottom:
+                print(chr(9608), end='', flush=False) # Both halves.
+            elif top and not bottom:
+                print(chr(9600), end='', flush=False) # Just top half.
+            elif not top and bottom:
+                print(chr(9604), end='', flush=False) # Just bottom half.
+            elif not top and not bottom:
+                print(' ', end='', flush=False) # Empty cell.
 
-                # Get neighbors:
-                topleft     = currentScreen.get((leftCoord, topCoord), False)
-                top         = currentScreen.get((x, topCoord), False)
-                topright    = currentScreen.get((rightCoord, topCoord), False)
-                left        = currentScreen.get((leftCoord, y), False)
-                right       = currentScreen.get((rightCoord, y), False)
-                bottomleft  = currentScreen.get((leftCoord, bottomCoord), False)
-                bottom      = currentScreen.get((x, bottomCoord), False)
-                bottomright = currentScreen.get((rightCoord, bottomCoord), False)
-                numNeighbors = topleft + top + topright + left + right + bottomleft + bottom + bottomright
+        print('', flush=False) # Print a newline at the end of the row.
+    print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
 
-                # Set cell based on Conway's Game of Life rules:
-                if currentScreen.get((x, y), False):
-                    if numNeighbors in (2, 3):
-                        nextScreen[(x, y)] = True
-                    else:
-                        nextScreen[(x, y)] = False
-                else:
-                    if numNeighbors == 3:
-                        nextScreen[(x, y)] = True
-                    else:
-                        nextScreen[(x, y)] = False
+    # Calculate next cells based on current cells:
+    nextCells = {}
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            # Get neighboring coordinates:
+            if x == 0:
+                leftCoord = WIDTH - 1 # wraparound
+            else:
+                leftCoord = x - 1
+            if x == WIDTH - 1:
+                rightCoord = 0 # wraparound
+            else:
+                rightCoord = x + 1
+            if y == 0:
+                topCoord = HEIGHT - 1 # wraparound
+            else:
+                topCoord = y - 1
+            if y == HEIGHT - 1:
+                bottomCoord = 0 # wraparound
+            else:
+                bottomCoord = y + 1
 
-        # If nextScreen and currentScreen are the same, quit.
-        if nextScreen == currentScreen:
-            print('Static state reached.')
-            raise KeyboardInterrupt()
+            # Get neighbors:
+            topleft     = (leftCoord, topCoord) in currentCells
+            top         = (x, topCoord) in currentCells
+            topright    = (rightCoord, topCoord) in currentCells
+            left        = (leftCoord, y) in currentCells
+            right       = (rightCoord, y) in currentCells
+            bottomleft  = (leftCoord, bottomCoord) in currentCells
+            bottom      = (x, bottomCoord) in currentCells
+            bottomright = (rightCoord, bottomCoord) in currentCells
+            numNeighbors = topleft + top + topright + left + right + bottomleft + bottom + bottomright
 
-        time.sleep(PAUSE) # Add a slight pause to reduce flickering.
+            # Set cell based on Conway's Game of Life rules:
+            if currentCells.get((x, y), False):
+                if numNeighbors in (2, 3):
+                    nextCells[x, y] = True
+            else:
+                if numNeighbors == 3:
+                    nextCells[x, y] = True
 
-except KeyboardInterrupt:
-    pass
+    time.sleep(0.25) # Add a slight pause to reduce flickering.
