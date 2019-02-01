@@ -1,6 +1,6 @@
 # Sliding Puzzle, by Al Sweigart al@inventwithpython.com
 
-import random
+import random, sys
 
 BLANK = '  '
 
@@ -51,10 +51,12 @@ def getPlayerMove(board):
     d = 'D' if blankx != 0 else ' '
 
     while True:
-        print('                   %s' % w)
-        print('Enter your move: %s %s %s' % (a, s, d))
+        print('                               %s' % w)
+        print('Enter your move (or "quit"): %s %s %s' % (a, s, d))
 
         move = input().upper()
+        if move == 'QUIT':
+            sys.exit()
         if move in (w + a + s + d).replace(' ', ''):
             return move
 
