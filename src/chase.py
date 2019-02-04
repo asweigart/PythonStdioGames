@@ -5,7 +5,7 @@ import logging
 LOG_FILE = 'chase_log.txt' # Set to None to display logs on the screen instead.
 logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
-logging.disable(logging.CRITICAL) # Comment this line out to enable logs.
+#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
 logging.debug('Start of program.')
 
 import random, sys, os
@@ -148,7 +148,7 @@ def moveRobots(board, robotPositions, playerPosition):
         if (newRobotx, newRoboty) in nextRobotPositions:
             logging.debug('Robot at %s crashed into another robot at %s.' % ((robotx, roboty), (newRobotx, newRoboty)))
             board[(newRobotx, newRoboty)] = 'x'
-            nextRobotPositions.remove((newRobotx, newRobotx))
+            nextRobotPositions.remove((newRobotx, newRoboty))
         else:
             logging.debug('Robot at %s moving to %s.' % ((robotx, roboty), (newRobotx, newRoboty)))
             nextRobotPositions.append((newRobotx, newRoboty))
