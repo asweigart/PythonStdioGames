@@ -1,4 +1,4 @@
-# Dice Stats, by Al Sweigart al@inventwithpython.com
+# Million Dice Roll Stats, by Al Sweigart al@inventwithpython.com
 
 import random
 
@@ -15,6 +15,9 @@ for i in range(numberOfDice, (numberOfDice * 6) + 1):
 # Simulate dice rolls.
 print('Simulating 1,000,000 dice rolls...')
 for i in range(1000000):
+    if i % 10000 == 0 and i != 0:
+        print('{}% done...'.format(i / 10000))
+
     total = 0
     for j in range(numberOfDice):
         total = total + random.randint(1, 6)
