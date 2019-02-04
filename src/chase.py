@@ -65,6 +65,8 @@ def getNewBoardAndRobots(width, height, numRobots):
                 robots.append((x, y))
                 break
 
+    logging.debug('New board: %s' % (board))
+    logging.debug('New robots: %s' % (robots))
     return board, robots
 
 
@@ -138,17 +140,17 @@ def moveRobots(board, robotPositions, playerPosition):
 
         if board[(robotx, roboty) ] == 'x' or board[(newRobotx, newRoboty)] == 'x':
             # Robot is at a crash site, remove it.
-            logging.debug('Robot walked into crash site at %s' % ((x, y),))
+            logging.debug('Robot walked into crash site at %s.' % ((x, y),))
             del robotPositions[0]
             continue
 
         # Check if it moves into a robot, then destroy both robots:
-        if (newRobotx, newRoboty) in nextRobotPositions:# and (x + movex, y + movey) != (x, y):
-            logging.debug('Robot crash: Deleting %s and %s' % ((robotx, roboty), (newRobotx, newRoboty)))
+        if (newRobotx, newRoboty) in nextRobotPositions:
+            logging.debug('Robot at %s crashed into another robot at %s.' % ((robotx, roboty), (newRobotx, newRoboty)))
             board[(newRobotx, newRoboty)] = 'x'
             nextRobotPositions.remove((newRobotx, newRobotx))
         else:
-            logging.debug('Robot moving: %s to %s' % ((robotx, roboty), (newRobotx, newRoboty)))
+            logging.debug('Robot at %s moving to %s.' % ((robotx, roboty), (newRobotx, newRoboty)))
             nextRobotPositions.append((newRobotx, newRoboty))
 
         del robotPositions[0] # Remove robots from robotPositions as they move.
@@ -188,59 +190,53 @@ def getPlayerMove(board, robots, playerPosition):
         print('Enter your move (or "quit"): (%s) (%s) (%s)' % (z, _x, c))
 
         move = input().upper()
+        logging.debug('Player entered move of %s.' % (move))
         if move == 'QUIT':
             sys.exit()
         elif move == 'T' and board['teleports'] > 0:
-            # Handle teleport:
+            # Teleport the player to a random space:
             while True: # Keep looping until we find an empty space.
                 x = random.randint(1, board['width'] - 2)
                 y = random.randint(1, board['height'] - 2)
                 if board[(x, y)] == ' ' and (x, y) not in robots:
                     board['teleports'] -= 1
                     return (x, y)
-        elif move in (q + w + e + d + 'S' + c + _x + z + a).replace(' ', ''):
-            if move == 'Q':
-                return (x - 1, y - 1)
-            elif move == 'W':
-                return (x + 0, y - 1)
-            elif move == 'E':
-                return (x + 1, y - 1)
-            elif move == 'D':
-                return (x + 1, y + 0)
-            elif move == 'C':
-                return (x + 1, y + 1)
-            elif move == 'X':
-                return (x + 0, y + 1)
-            elif move == 'Z':
-                return (x - 1, y + 1)
-            elif move == 'A':
-                return (x - 1, y + 0)
-            elif move == 'S':
-                return (x, y)
+        elif move in (q + w + e + d + c + _x + a + z + 'S').replace(' ', ''):
+            # Return the new player position:
+            return {'Q': (x - 1, y - 1),
+                    'W': (x + 0, y - 1),
+                    'E': (x + 1, y - 1),
+                    'D': (x + 1, y + 0),
+                    'C': (x + 1, y + 1),
+                    'X': (x + 0, y + 1),
+                    'Z': (x - 1, y + 1),
+                    'A': (x - 1, y + 0),
+                    'S': (x, y)         }[move]
 
 
-
+# Set up a new game:
 theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
 playerPosition = getStartingPlayerPosition(theBoard, theRobots)
 logging.debug('playerPosition is %s' % ((playerPosition,)))
-while True:
+while True: # Main game loop.
     drawBoard(theBoard, theRobots, playerPosition)
 
-    logging.debug('Robots left: %s' % (len(theRobots)))
-    if len(theRobots) == 0:
+    if len(theRobots) == 0: # Check if the player has won.
         fg('yellow')
         print('You win!')
+        logging.debug('Player won.')
         sys.exit()
 
     playerPosition = getPlayerMove(theBoard, theRobots, playerPosition)
 
-    logging.debug(theRobots)
+    logging.debug('Robots before moving at %s.' % (theRobots))
     theRobots = moveRobots(theBoard, theRobots, playerPosition)
-    logging.debug(theRobots)
+    logging.debug('Robots after moving at %s.' % (theRobots))
 
-    for x, y in theRobots:
+    for x, y in theRobots: # Check if the player has lost.
         if (x, y) == playerPosition:
             drawBoard(theBoard, theRobots, playerPosition)
             fg('red')
             print('You got caught by a robot!')
+            logging.debug('Player got caught at %s.' % (playerPosition,))
             sys.exit()

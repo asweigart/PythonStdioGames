@@ -1,17 +1,16 @@
 import random, sys
 try:
-    import bext
+    import bext # Attempt to import the bext module.
 except:
     sys.exit('Bext is required to run this. Run `pip install bext` from the shell to install it.')
 
-BLOCK = chr(9608)     # Character 9608 is █
-LEFTRIGHT = chr(9472) # Character 9472 is ─
-UPDOWN = chr(9474)    # Character 9474 is │
-DOWNRIGHT = chr(9484) # Character 9484 is ┌
-DOWNLEFT = chr(9488)  # Character 9488 is ┐
-UPRIGHT = chr(9492)   # Character 9492 is └
-UPLEFT = chr(9496)    # Character 9496 is ┘
-
+BLOCK     = chr(9608) # Character 9608 is '█'
+LEFTRIGHT = chr(9472) # Character 9472 is '─'
+UPDOWN    = chr(9474) # Character 9474 is '│'
+DOWNRIGHT = chr(9484) # Character 9484 is '┌'
+DOWNLEFT  = chr(9488) # Character 9488 is '┐'
+UPRIGHT   = chr(9492) # Character 9492 is '└'
+UPLEFT    = chr(9496) # Character 9496 is '┘'
 
 # This constant maps letters to colors.
 CMAP = {'R': 'red', 'G': 'green', 'B': 'blue',
