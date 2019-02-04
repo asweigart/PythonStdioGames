@@ -1,6 +1,8 @@
 import random, sys
-from colorama import init, Fore
-init() # colorama.init() needs to be called first for colors to work.
+try:
+    import bext
+except:
+    sys.exit('Bext is required to run this. Run `pip install bext` from the shell to install it.')
 
 BLOCK = chr(9608)     # Character 9608 is █
 LEFTRIGHT = chr(9472) # Character 9472 is ─
@@ -12,8 +14,8 @@ UPLEFT = chr(9496)    # Character 9496 is ┘
 
 
 # This constant maps letters to colors.
-CMAP = {'R': Fore.RED, 'G': Fore.GREEN, 'B': Fore.BLUE,
-        'Y': Fore.YELLOW, 'C': Fore.CYAN, 'P': Fore.MAGENTA}
+CMAP = {'R': 'red', 'G': 'green', 'B': 'blue',
+        'Y': 'yellow', 'C': 'cyan', 'P': 'purple'}
 COLORS = list(CMAP.keys())
 
 
@@ -39,27 +41,49 @@ def getNewBoard(width=16, height=16):
 def drawBoard(board):
     width = len(board)
     height = len(board[0])
-    print(Fore.WHITE + DOWNRIGHT + (LEFTRIGHT * width) + DOWNLEFT)
+    bext.fg('white')
+    print(DOWNRIGHT + (LEFTRIGHT * width) + DOWNLEFT)
 
     # Print first row with '>'.
-    print(Fore.WHITE + '>', end='')
+    bext.fg('white')
+    print('>', end='')
     for x in range(width):
-        print(CMAP[board[x][0]] + BLOCK, end='')
-    print(Fore.WHITE + UPDOWN)
+        bext.fg(CMAP[board[x][0]])
+        print(BLOCK, end='')
+    bext.fg('white')
+    print(UPDOWN)
 
     # Print each row after the first.
     for y in range(1, height):
-        print(Fore.WHITE + UPDOWN, end='')
+        bext.fg('white')
+        print(UPDOWN, end='')
         for x in range(width):
-            print(CMAP[board[x][y]] + BLOCK, end='')
-        print(Fore.WHITE + UPDOWN)
-
-    print(Fore.WHITE + UPRIGHT + (LEFTRIGHT * width) + UPLEFT)
+            bext.fg(CMAP[board[x][y]])
+            print(BLOCK, end='')
+        bext.fg('white')
+        print(UPDOWN)
+    bext.fg('white')
+    print(UPRIGHT + (LEFTRIGHT * width) + UPLEFT)
 
 
 def getPlayerMove():
     while True:
-        print(Fore.WHITE + 'Choose one of ' + Fore.RED + 'R ' + Fore.GREEN + 'G ' + Fore.BLUE + 'B ' + Fore.YELLOW + 'Y ' + Fore.CYAN + 'C ' + Fore.MAGENTA + 'P' + Fore.WHITE + ' or quit:')
+        bext.fg('white')
+        print('Choose one of ', end='')
+        bext.fg('red')
+        print('R ', end='')
+        bext.fg('green')
+        print('G ', end='')
+        bext.fg('blue')
+        print('B ', end='')
+        bext.fg('yellow')
+        print('Y ', end='')
+        bext.fg('cyan')
+        print('C ', end='')
+        bext.fg('purple')
+        print('P ', end='')
+        bext.fg('white')
+        print(' or quit:')
         move = input().upper()
         if move == 'QUIT':
             sys.exit()
@@ -101,7 +125,8 @@ def hasWon(board):
 
 
 def main():
-    print(Fore.WHITE + ' FLOOD IT! '.center(40, '*'))
+    bext.fg('white')
+    print(' FLOOD IT! '.center(40, '*'))
     gameBoard = getNewBoard()
     movesLeft = 20
 

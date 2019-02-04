@@ -1,5 +1,10 @@
-import bext
-import random, time
+# Random Walk, by Al Sweigart al@inventwithpython.com
+
+import random, time, sys
+try:
+    import bext
+except:
+    sys.exit('Bext is required to run this. Run `pip install bext` from the shell to install it.')
 
 BLOCK = chr(9608)
 

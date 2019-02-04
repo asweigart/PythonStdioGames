@@ -1,4 +1,5 @@
 # A guess-the-number game, by Al Sweigart al@inventwithpython.com
+
 import random
 
 secretNumber = random.randint(1, 100) # Select a random number.

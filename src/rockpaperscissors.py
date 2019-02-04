@@ -1,7 +1,6 @@
 # Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
 
-import random
-import time
+import random, time
 
 def runGame():
     # These variables keep track of the number of wins, losses, and ties.

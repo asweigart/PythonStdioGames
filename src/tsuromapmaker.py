@@ -1,15 +1,10 @@
 # Tsuro Map Maker, by Al Sweigart al@inventwithpython.com
 
-import pytextcanvas as pytc
-import random
-import sys
-
+import random, sys
 try:
-    import colorama
-    COLORAMA_ENABLED = True
+    import pytextcanvas as pytc
 except:
-    COLORAMA_ENABLED = False
-
+    sys.exit('PyTextCanvas is required to run this. Run `pip install pytextcanvas` from the shell to install it.')
 
 if len(sys.argv) == 3:
     WIDTH = int(sys.argv[1])

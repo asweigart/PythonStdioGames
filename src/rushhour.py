@@ -3,9 +3,7 @@
 # Michael Fogleman has an interesting article at https://www.michaelfogleman.com/rush/
 # rushhour_puzzle.txt generated from puzzles by Michael Fogleman, and require 10 to 18 steps to solve.
 
-import math
-import random
-import sys
+import math, random, sys
 
 EMPTY_SPACE = '.'
 WALL = chr(9608)

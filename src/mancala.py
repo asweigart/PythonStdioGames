@@ -1,5 +1,6 @@
 # Mancala, by Al Sweigart al@inventwithpython.com
 # Rules at http://www.mancalarules.com/
+
 import sys
 
 POCKETS = 'ABCDEF1LKJIHG2' # Constant for every pocket label, in order.

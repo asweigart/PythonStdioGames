@@ -1,7 +1,10 @@
+# Morse Code, by Al Sweigart al@inventwithpython.com
+# A program that translates between English and Morse Code.
+
 try:
     import pyperclip
 except:
-    pass
+    pass # If pyperclip cannot be found, do nothing. It's not a big deal.
 
 ENGLISH_TO_MORSE = {'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',
                     'E': '.',     'F': '..-.',  'G': '--.',   'H': '....',
