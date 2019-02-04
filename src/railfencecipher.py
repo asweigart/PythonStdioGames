@@ -1,6 +1,13 @@
 # Rail Fence Cipher, by Al Sweigart al@inventwithpython.com
 # Implements a simple encryption system. https://en.wikipedia.org/wiki/Rail_fence_cipher
 
+import logging
+LOG_FILE = 'chase_log.txt' # Set to None to display logs on the screen instead.
+logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
+logging.debug('Start of program.')
+
 try:
     import pyperclip # Try to import pyperclip to copy the text to the clipboard.
 except:

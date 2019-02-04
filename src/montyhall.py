@@ -1,6 +1,13 @@
 # Monty Hall Problem, by Al Sweigart al@inventwithpython.com
 # A simulation of the Monty Hall Problem. https://en.wikipedia.org/wiki/Monty_Hall_problem
 
+import logging
+LOG_FILE = 'chase_log.txt' # Set to None to display logs on the screen instead.
+logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
+logging.debug('Start of program.')
+
 import random
 import sys
 

@@ -3,6 +3,13 @@
 # Michael Fogleman has an interesting article at https://www.michaelfogleman.com/rush/
 # rushhour_puzzle.txt generated from puzzles by Michael Fogleman, and require 10 to 18 steps to solve.
 
+import logging
+LOG_FILE = 'rushhour_log.txt' # Set to None to display logs on the screen instead.
+logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
+logging.debug('Start of program.')
+
 import math, random, sys
 
 EMPTY_SPACE = '.'

@@ -1,5 +1,12 @@
 # Sliding Puzzle, by Al Sweigart al@inventwithpython.com
 
+import logging
+LOG_FILE = 'slidingpuzzle_log.txt' # Set to None to display logs on the screen instead.
+logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
+logging.debug('Start of program.')
+
 import random, sys
 
 BLANK = '  '
@@ -14,7 +21,7 @@ def drawBoard(board):
               board[0][1], board[1][1], board[2][1], board[3][1],
               board[0][2], board[1][2], board[2][2], board[3][2],
               board[0][3], board[1][3], board[2][3], board[3][3]]
-    print("""
+    boardToDraw = """
 +----+----+----+----+
 |    |    |    |    |
 | {} | {} | {} | {} |
@@ -32,7 +39,9 @@ def drawBoard(board):
 | {} | {} | {} | {} |
 |    |    |    |    |
 +----+----+----+----+
-""".format(*labels))
+""".format(*labels)
+    logging.debug('Drawing board:\n' + boardToDraw)
+    print(boardToDraw)
 
 
 def findBlankSpace(board):

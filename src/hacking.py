@@ -1,6 +1,13 @@
 # Hacking, by Al Sweigart al@inventwithpython.com
 # This game is a clone of the Fallout hacking mini-game.
 
+import logging
+LOG_FILE = 'hacking_log.txt' # Set to None to display logs on the screen instead.
+logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
+logging.debug('Start of program.')
+
 import random
 
 GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\' # The "filler" characters for the board.

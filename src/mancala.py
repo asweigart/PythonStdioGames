@@ -1,6 +1,13 @@
 # Mancala, by Al Sweigart al@inventwithpython.com
 # Rules at http://www.mancalarules.com/
 
+import logging
+LOG_FILE = 'mancala_log.txt' # Set to None to display logs on the screen instead.
+logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
+logging.debug('Start of program.')
+
 import sys
 
 POCKETS = 'ABCDEF1LKJIHG2' # Constant for every pocket label, in order.
@@ -27,7 +34,7 @@ def drawBoard(board):
         seedAmounts.append(str(board[space]).rjust(2))
 
     # EXPERIMENT! Change the look of this board.
-    print("""
+    boardToDraw = """
                 <-<-<-<-<
 +------+----+---Player 2---+----+----+------+
 |M  2  |G   |H   |I   |J   |K   |L   |  1  M|
@@ -39,7 +46,9 @@ def drawBoard(board):
 |A     |    |    |    |    |    |    |     A|
 +------+----+---Player 1---+----+----+------+
                 >->->->->
-""".format(*seedAmounts))
+""".format(*seedAmounts)
+    logging.debug('Drawing board:\n' + boardToDraw)
+    print(boardToDraw)
 
 
 def getPlayerMove(turn, board):
