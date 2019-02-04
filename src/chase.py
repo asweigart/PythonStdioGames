@@ -78,20 +78,17 @@ def drawBoard(board, robots, playerPosition):
 
 def moveRobots(board, robotPositions, playerPosition):
     playerx, playery = playerPosition
-    copyOfRobotPositions = []
-    for x, y in robotPositions:
-        copyOfRobotPositions.append((x, y))
     nextRobotPositions = []
 
-    for x, y in copyOfRobotPositions:
+    #for x, y in copyOfRobotPositions:
+    while len(robotPositions) > 0:
+        x, y = robotPositions[0]
+
         if board[(x, y) ] == 'x':
             # Robot is at a crash site, remove it.
             logging.debug('Robot walked into crash site at %s' % ((x, y),))
-            robotPositions.remove((x, y))
+            del robotPositions[0]
             continue
-
-        #if (x, y) not in robotPositions:
-        #    continue # This robot was previously crashed into.
 
         # Determine the direction the robot moves.
         if x < playerx:
@@ -119,16 +116,18 @@ def moveRobots(board, robotPositions, playerPosition):
                 movey = 0
 
         # Check if it moves into a robot, then destroy both robots:
-        if (x + movex, y + movey) in nextRobotPositions and (x + movex, y + movey) != (x, y):
+        if (x + movex, y + movey) in nextRobotPositions:# and (x + movex, y + movey) != (x, y):
             logging.debug('Robot crash: Deleting %s and %s' % ((x, y), (x + movex, y + movey)))
             board[(x + movex, y + movey)] = 'x'
-            robotPositions.remove((x, y))
-            if (x + movex, y + movey) in nextRobotPositions:
-                nextRobotPositions.remove((x + movex, y + movey))
+            nextRobotPositions.remove((x + movex, y + movey))
         else:
             logging.debug('Robot moving: %s to %s' % ((x, y), (x + movex, y + movey)))
             nextRobotPositions.append((x + movex, y + movey))
 
+        #robotPositions.remove((x, y))
+        del robotPositions[0]
+
+    logging.debug('moveRobots() is returning %s' % (nextRobotPositions))
     return nextRobotPositions
 
 
@@ -141,13 +140,13 @@ theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
 playerPosition = getStartingPlayerPosition(theBoard, theRobots)
 
 while True:
-    clearScreen()
+    #clearScreen()
     drawBoard(theBoard, theRobots, playerPosition)
     logging.debug(theRobots)
     theRobots = moveRobots(theBoard, theRobots, playerPosition)
     logging.debug(theRobots)
 
-    playerPosition = getPlayerMove(theBoard, theRobots, playerPosition)
+    #playerPosition = getPlayerMove(theBoard, theRobots, playerPosition)
 
     input()
 
