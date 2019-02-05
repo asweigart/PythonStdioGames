@@ -1,13 +1,6 @@
 # Hammurabi, by Al Sweigart al@inventwithpython.com
 # A Python 3 port of the classic BASIC game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
 
-import logging
-LOG_FILE = 'hammurabi_log.txt' # Set to None to display logs on the screen instead.
-logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
-logging.debug('Start of program.')
-
 import random
 
 """

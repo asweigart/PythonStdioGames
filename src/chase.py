@@ -1,13 +1,6 @@
 # Daleks clone game, by Al Sweigart al@inventwithpython.com
 # Move around the board, running away from robots. Try to get the robots to crash into each other.
 
-import logging
-LOG_FILE = 'chase_log.txt' # Set to None to display logs on the screen instead.
-logging.basicConfig(filename=LOG_FILE, level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-#logging.disable(logging.CRITICAL) # Uncomment this line out to disable logs.
-logging.debug('Start of program.')
-
 import random, sys, os
 try:
     import bext #  # Attempt to import the bext module for colorful text.
@@ -65,8 +58,6 @@ def getNewBoardAndRobots(width, height, numRobots):
                 robots.append((x, y))
                 break
 
-    logging.debug('New board: %s' % (board))
-    logging.debug('New robots: %s' % (robots))
     return board, robots
 
 
@@ -140,22 +131,18 @@ def moveRobots(board, robotPositions, playerPosition):
 
         if board[(robotx, roboty) ] == 'x' or board[(newRobotx, newRoboty)] == 'x':
             # Robot is at a crash site, remove it.
-            logging.debug('Robot walked into crash site at %s.' % ((x, y),))
             del robotPositions[0]
             continue
 
         # Check if it moves into a robot, then destroy both robots:
         if (newRobotx, newRoboty) in nextRobotPositions:
-            logging.debug('Robot at %s crashed into another robot at %s.' % ((robotx, roboty), (newRobotx, newRoboty)))
             board[(newRobotx, newRoboty)] = 'x'
             nextRobotPositions.remove((newRobotx, newRoboty))
         else:
-            logging.debug('Robot at %s moving to %s.' % ((robotx, roboty), (newRobotx, newRoboty)))
             nextRobotPositions.append((newRobotx, newRoboty))
 
         del robotPositions[0] # Remove robots from robotPositions as they move.
 
-    logging.debug('moveRobots() is returning %s' % (nextRobotPositions))
     return nextRobotPositions
 
 
@@ -190,7 +177,6 @@ def getPlayerMove(board, robots, playerPosition):
         print('Enter your move (or "quit"): (%s) (%s) (%s)' % (z, _x, c))
 
         move = input().upper()
-        logging.debug('Player entered move of %s.' % (move))
         if move == 'QUIT':
             sys.exit()
         elif move == 'T' and board['teleports'] > 0:
@@ -217,26 +203,20 @@ def getPlayerMove(board, robots, playerPosition):
 # Set up a new game:
 theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
 playerPosition = getStartingPlayerPosition(theBoard, theRobots)
-logging.debug('playerPosition is %s' % ((playerPosition,)))
 while True: # Main game loop.
     drawBoard(theBoard, theRobots, playerPosition)
 
     if len(theRobots) == 0: # Check if the player has won.
         fg('yellow')
         print('You win!')
-        logging.debug('Player won.')
         sys.exit()
 
     playerPosition = getPlayerMove(theBoard, theRobots, playerPosition)
-
-    logging.debug('Robots before moving at %s.' % (theRobots))
     theRobots = moveRobots(theBoard, theRobots, playerPosition)
-    logging.debug('Robots after moving at %s.' % (theRobots))
 
     for x, y in theRobots: # Check if the player has lost.
         if (x, y) == playerPosition:
             drawBoard(theBoard, theRobots, playerPosition)
             fg('red')
             print('You got caught by a robot!')
-            logging.debug('Player got caught at %s.' % (playerPosition,))
             sys.exit()
