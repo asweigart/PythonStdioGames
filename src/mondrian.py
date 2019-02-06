@@ -4,7 +4,6 @@
 import bext
 import random
 
-BLOCK = chr(9608) # Character 9608 is '█'
 MIN_X_INCREASE = 6
 MAX_X_INCREASE = 16
 MIN_Y_INCREASE = 3
@@ -19,7 +18,6 @@ BLUE = 'blue'
 width, height = bext.size()
 width -= 1 # TODO Windows bug
 height -= 2
-bext.bg = 'black'
 
 # Pre-populate the board with blank spaces:
 board = {}
@@ -150,10 +148,8 @@ for i in range(numberOfRectanglesToPaint):
 # Draw the board data structure:
 for y in range(height):
     for x in range(width):
-        if board[(x, y)] == 'black':
-            print(' ', end='')
-        else:
-            bext.fg(board[(x, y)])
-            print(BLOCK, end='')
+        bext.bg(board[(x, y)])
+        print(' ', end='')
+
     print()
 
