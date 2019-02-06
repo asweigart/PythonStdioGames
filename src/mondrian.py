@@ -19,6 +19,7 @@ BLUE = 'blue'
 width, height = bext.size()
 width -= 1 # TODO Windows bug
 height -= 2
+bext.bg = 'black'
 
 # Pre-populate the board with blank spaces:
 board = {}
@@ -132,7 +133,7 @@ for i in range(numberOfRectanglesToPaint):
             break
 
     # Flood fill algorithm:
-    colorToPaint = random.choice([RED, YELLOW, BLUE])
+    colorToPaint = random.choice([RED, YELLOW, BLUE, BLACK])
     pointsToPaint = set([(startx, starty)])
     while len(pointsToPaint) > 0:
         x, y = pointsToPaint.pop()
@@ -149,7 +150,10 @@ for i in range(numberOfRectanglesToPaint):
 # Draw the board data structure:
 for y in range(height):
     for x in range(width):
-        bext.fg(board[(x, y)])
-        print(BLOCK, end='')
+        if board[(x, y)] == 'black':
+            print(' ', end='')
+        else:
+            bext.fg(board[(x, y)])
+            print(BLOCK, end='')
     print()
 
