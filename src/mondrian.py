@@ -1,143 +1,155 @@
 # Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
 # Randomly generates Mondrian-style art to display on the terminal.
 
-import logging
-logging.basicConfig(filename='mondrian_log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s')
-logging.debug('Start of program.')
-
 import bext
 import random
 
 BLOCK = chr(9608) # Character 9608 is '█'
+MIN_X_INCREASE = 6
+MAX_X_INCREASE = 16
+MIN_Y_INCREASE = 3
+MAX_Y_INCREASE = 6
+WHITE = 'white'
+BLACK = 'black'
+RED = 'red'
+YELLOW = 'yellow'
+BLUE = 'blue'
 
-bext.clear()
+# Setup the screen:
 width, height = bext.size()
 width -= 1 # TODO Windows bug
-
-# Generate horizontal and vertical lines.
-col = 0
-columns = [0]
-while col < width - 5:
-    col += random.randint(5, 10)
-    columns.append(col)
-columns.append(width - 1)
-
-row = 0
-rows = [0]
-while row < height - 5:
-    row += random.randint(3, 8)
-    rows.append(row)
-rows.append(height - 1)
-
-# Create the line segments:
-horizontalSegments = []
-for y in rows:
-    for i, x in enumerate(columns):
-        if i == len(columns) - 1:
-            continue
-        horizontalSegments.append((x, y, columns[i + 1], y))
-
-verticalSegments = []
-for x in columns:
-    for i, y in enumerate(rows):
-        if i == len(rows) - 1:
-            continue
-        verticalSegments.append((x, y, x, rows[i + 1]))
-
-
-# Delete segments randomly from the lines:
-safeHorizontalSegments = set()
-safeVerticalSegments = set()
-
-logging.debug(len(horizontalSegments))
-logging.debug(len(verticalSegments))
-for j in range(int(width / 3)):
-    while True:
-        i = random.randint(0, len(horizontalSegments) - 1)
-        segmentToDelete = horizontalSegments[i] # (x, y, x, y)
-        #if segmentToDelete in safeVerticalSegments:
-        #    continue
-        x1, y, x2, _ = segmentToDelete
-        aboveY = rows.index(y) - 1
-        if aboveY != -1:
-            safeVerticalSegments.add((x1, aboveY, x1, y))
-            safeVerticalSegments.add((x2, aboveY, x2, y))
-        belowY = rows.index(y) + 1
-        if belowY != height:
-            safeVerticalSegments.add((x1, y, x1, belowY))
-            safeVerticalSegments.add((x2, y, x2, belowY))
-
-        break
-    del horizontalSegments[i]
-
-    while False:
-        i = random.randint(0, len(verticalSegments) - 1)
-        segmentToDelete = verticalSegments[i] # (x, y, x, y)
-        if segmentToDelete in safeVerticalSegments:
-            continue
-        x, y1, _, y2 = segmentToDelete
-        leftX = rows.index(y) - 1
-        #if leftX != -1:
-        #    safeHorizontalSegments.add((x1, leftX, x1, y))
-        #    safeHorizontalSegments.add((x2, leftX, x2, y))
-        #rightX = rows.index(y) + 1
-        #if rightX != height:
-        #    safeHorizontalSegments.add((x1, y, x1, rightX))
-        #    safeHorizontalSegments.add((x2, y, x2, rightX))
-        break
-    #del verticalSegments[i]
+height -= 2
 
 # Pre-populate the board with blank spaces:
 board = {}
 for x in range(width):
     for y in range(height):
-        board[(x, y)] = 'w'
+        board[(x, y)] = WHITE
 
+# Generate vertical lines:
+numberOfSegmentsToDelete = 0
+x = random.randint(MIN_X_INCREASE, MAX_X_INCREASE)
+while x < width - MIN_X_INCREASE:
+    numberOfSegmentsToDelete += 1
+    for y in range(height):
+        board[(x, y)] = BLACK
+    x += random.randint(MIN_X_INCREASE, MAX_X_INCREASE)
 
-# Fill in the black lines:
-for hSegment in horizontalSegments:
-    y = hSegment[1]
-    for x in range(hSegment[0], hSegment[2] + 1):
-        board[(x, y)] = 'k'
-        #logging.debug('h seg: ' + str((x,y)))
+# Generate horizontal lines:
+y = random.randint(MIN_Y_INCREASE, MAX_Y_INCREASE)
+while y < height - MIN_Y_INCREASE:
+    numberOfSegmentsToDelete += 1
+    for x in range(width):
+        board[(x, y)] = BLACK
+    y += random.randint(MIN_Y_INCREASE, MAX_Y_INCREASE)
 
-for vSegment in verticalSegments:
-    x = vSegment[0]
-    for y in range(vSegment[1], vSegment[3] + 1):
-        board[(x, y)] = 'k'
-        #logging.debug('v seg: ' + str((x,y)))
+numberOfRectanglesToPaint = numberOfSegmentsToDelete - 3
+numberOfSegmentsToDelete = int(numberOfSegmentsToDelete * 1.5)
 
+# Randomly select points and try to remove them.
+for i in range(numberOfSegmentsToDelete):
+    while True:
+        # Get a random start point on an existing segment:
+        startx = random.randint(1, width - 2)
+        starty = random.randint(1, height - 2)
+        if board[(startx, starty)] == WHITE:
+            continue
 
-# Fill in random rectangles with red/yellow/blue colors:
+        # Find out if we're on a vertical or horizontal segment:
+        if board[(startx - 1, starty)] == board[(startx + 1, starty)] == WHITE:
+            orientation = 'vertical'
+        elif board[(startx, starty - 1)] == board[(startx, starty + 1)] == WHITE:
+            orientation = 'horizontal'
+        else:
+            # The start point is on an intersection, so get a new random start point:
+            continue
 
-for segment in safeVerticalSegments:
-    x = segment[0]
-    for y in range(segment[1], segment[3]):
-        board[(x, y)] = 'g'
+        pointsToDelete = [(startx, starty)]
 
+        canDeleteSegment = True
+        if orientation == 'vertical':
+            # Go up one path from the start point, and see if we can remove this segment:
+            for changey in (-1, 1):
+                y = starty
+                while 0 < y < height - 1:
+                    y += changey
+                    if board[(startx - 1, y)] == board[(startx + 1, y)] == BLACK:
+                        # We've found a four-way intersection.
+                        break
+                    elif ((board[(startx - 1, y)] == WHITE and
+                           board[(startx + 1, y)] == BLACK) or
+                          (board[(startx - 1, y)] == BLACK and
+                           board[(startx + 1, y)] == WHITE)):
+                        # We've found a T-intersection; we can't delete this segment:
+                        canDeleteSegment = False
+                        break
+                    else:
+                        pointsToDelete.append((startx, y))
+
+        elif orientation == 'horizontal':
+            # Go up one path from the start point, and see if we can remove this segment:
+            for changex in (-1, 1):
+                x = startx
+                while 0 < x < width - 1:
+                    x += changex
+                    if board[(x, starty - 1)] == board[(x, starty + 1)] == BLACK:
+                        # We've found a four-way intersection.
+                        break
+                    elif ((board[(x, starty - 1)] == WHITE and
+                           board[(x, starty + 1)] == BLACK) or
+                          (board[(x, starty - 1)] == BLACK and
+                           board[(x, starty + 1)] == WHITE)):
+                        # We've found a T-intersection; we can't delete this segment:
+                        canDeleteSegment = False
+                        break
+                    else:
+                        pointsToDelete.append((x, starty))
+        if not canDeleteSegment:
+            continue # Get a new random start point.
+        break # Move on to delete the segment.
+
+    # If we can delete this segment, set all the points to white:
+    for x, y in pointsToDelete:
+        board[(x, y)] = WHITE
 
 # Add the border lines:
 for x in range(width):
-    board[(x, 0)] = 'k'
-    board[(x, width - 1)] = 'k'
+    board[(x, 0)] = BLACK # Top border.
+    board[(x, height - 1)] = BLACK # Bottom border.
 for y in range(height):
-    board[(0, y)] = 'k'
-    board[(height - 1, y)] = 'k'
+    board[(0, y)] = BLACK # Left border.
+    board[(width - 1, y)] = BLACK # Right border.
 
+# Paint the rectangles:
+for i in range(numberOfRectanglesToPaint):
+    while True:
+        startx = random.randint(1, width - 2)
+        starty = random.randint(1, height - 2)
 
+        if board[(startx, starty)] != WHITE:
+            continue # Get a new random start point.
+        else:
+            break
 
-
+    # Flood fill algorithm:
+    colorToPaint = random.choice([RED, YELLOW, BLUE])
+    pointsToPaint = set([(startx, starty)])
+    while len(pointsToPaint) > 0:
+        x, y = pointsToPaint.pop()
+        board[(x, y)] = colorToPaint
+        if board[(x - 1, y)] == WHITE:
+            pointsToPaint.add((x - 1, y))
+        if board[(x + 1, y)] == WHITE:
+            pointsToPaint.add((x + 1, y))
+        if board[(x, y - 1)] == WHITE:
+            pointsToPaint.add((x, y - 1))
+        if board[(x, y + 1)] == WHITE:
+            pointsToPaint.add((x, y + 1))
 
 # Draw the board data structure:
 for y in range(height):
     for x in range(width):
-        if board[(x, y)] == 'w':
-            bext.fg('white')
-        elif board[(x, y)] == 'k':
-            bext.fg('purple')
-        elif board[(x, y)] == 'g':
-            bext.fg('green')
-
+        bext.fg(board[(x, y)])
         print(BLOCK, end='')
     print()
 
