@@ -8,7 +8,7 @@ WIDTH -= 1 # TODO Weird Windows bug.
 NUMBER_OF_BALLS = 35
 COLORS = ('red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white')
 DIRECTIONS = ('upright', 'upleft', 'downright', 'downleft')
-FACE = chr(9786) # '☺'
+BALL_CHAR = 'O'
 
 # Generate some balls.
 balls = []
@@ -25,7 +25,7 @@ while True: # Main game loop.
         # Draw our balls:
         bext.goto(ball['x'], ball['y'])
         bext.fg(ball['color'])
-        print(FACE, end='')
+        print(BALL_CHAR, end='')
 
         oldBallPositions.append((ball['x'], ball['y']))
     time.sleep(0.1)
