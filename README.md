@@ -22,7 +22,7 @@ Games should:
 * Maybe include a barebones version of games, with stub functions that specify what their input/output, and hint at what other functions in the program they'll call? And the data structures used?
 * I should focus on games that don't require data structures (this removes most board games).
 * Games can use anything from CP437 encoding (Windows is the limiting feature here, otherwise we could use utf-8), but the source code must be typeable, i.e. use chr(9608) instead of █.
-
+* Games should have logging messages that can be enabled.
 
 TODO types:
 * No data structure games (i.e. guess the number)
@@ -43,6 +43,9 @@ TODO polishing process
 * Description should have a link to pythontutor.com.
 * Describe data structures used, including examples.
 
+
+Game IDeas:
+- Nonograms https://en.wikipedia.org/wiki/Nonogram
 
 
 TODO entry outline (what a single program looks like on its page or book)
