@@ -1,5 +1,7 @@
 # Connect Four, by Al Sweigart al@inventwithpython.com
 
+import sys
+
 EMPTY_SPACE = '.'
 X_PLAYER = 'X'
 O_PLAYER = 'O'
@@ -36,8 +38,10 @@ def drawBoard(board):
 
 def getPlayerMove(playerTile, board):
     while True:
-        print('Player %s, enter your move (1-7):' % playerTile)
+        print('Player %s, enter your move (1-7) or "quit":' % playerTile)
         move = input()
+        if move == 'quit':
+            sys.exit()
         if move not in '1234567':
             continue # Ask again for their move.
 
