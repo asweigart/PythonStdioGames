@@ -31,7 +31,6 @@ def drawBoard(board):
 |{}{}{}{}{}{}{}|
 |{}{}{}{}{}{}{}|
 +-------+""".format(*tileChars)
-    logging.debug('Drawing board:\n' + boardToDraw)
     print(boardToDraw)
 
 
