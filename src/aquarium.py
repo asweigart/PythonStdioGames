@@ -2,34 +2,36 @@
 
 import bext, random, time, sys
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1 # Adjustment for the Windows newline bug.
+WIDTH -= 1 # Adjustment for a Windows newline bug that happens when you print on the right edge.
 
+# Setup the screen.
 bext.bg('black')
 bext.clear()
 
+# Constants
 NUM_KELP = 2
 NUM_FISH = 10
 NUM_BUBBLERS = 2
 PAUSE = 0.25
 
-FISH_TYPES = (
-  {'right': ('><>',),         'left': ('<><',)},
-  {'right': ('>||>',),        'left': ('<||<',)},
-  {'right': ('>))>',),        'left': ('<((<',)},
-  {'right': ('>))o', '>))-'), 'left': ('o((<', '-((<')},
-  {'right': ('>))o', '>)).'), 'left': ('o((<', '.((<')},
-  {'right': ('>-==>',),       'left': ('<==-<',)},
-  {'right': (r'>\\>',),       'left': (r'<//<',)},
-  {'right': ('><)))*>',), 'left': ('<*(((><',)},
-  {'right': ('}-(((*>',),     'left': ('<*)))-{',)},
-  {'right': (']-<)))b>',),    'left': ('<d(((>-[',)},
-  {'right': ('><XXX*>',), 'left': ('<*XXX><',)},
-  {'right': ('_.-._.-^=>', '.-._.-.^=>',
-             '-._.-._^=>', '._.-._.^=>'),
-   'left':  ('<=^-._.-._', '<=^.-._.-.',
-             '<=^_.-._.-', '<=^._.-._.')},
-  )
-LONGEST_FISH_LENGTH = 10
+FISH_TYPES = [
+  {'right': ['><>'],         'left': ['<><']},
+  {'right': ['>||>'],        'left': ['<||<']},
+  {'right': ['>))>'],        'left': ['<[[<']},
+  {'right': ['>))o', '>))-'], 'left': ['o[[<', '-[[<']},
+  {'right': ['>))o', '>)).'], 'left': ['o[[<', '.[[<']},
+  {'right': ['>-==>'],       'left': ['<==-<']},
+  {'right': [r'>\\>'],       'left': [r'<//<']},
+  {'right': ['><)))*>'],     'left': ['<*[[[><']},
+  {'right': ['}-[[[*>'],     'left': ['<*)))-{']},
+  {'right': [']-<)))b>'],    'left': ['<d[[[>-[']},
+  {'right': ['><XXX*>'],     'left': ['<*XXX><']},
+  {'right': ['_.-._.-^=>', '.-._.-.^=>',
+             '-._.-._^=>', '._.-._.^=>'],
+   'left':  ['<=^-._.-._', '<=^.-._.-.',
+             '<=^_.-._.-', '<=^._.-._.']},
+  ]
+LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
 
 def getRandomColor():
     return random.choice(('black', 'red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white'))
@@ -37,23 +39,23 @@ def getRandomColor():
 def generateFish():
     fishType = random.choice(FISH_TYPES)
 
-    colorType = random.choice(('random', 'head-tail', 'same'))
+    colorPattern = random.choice(('random', 'head-tail', 'single'))
     fishLength = len(fishType['right'][0])
-    if colorType == 'random': # All parts are randomly colored.
+    if colorPattern == 'random': # All parts are randomly colored.
         colors = []
         for i in range(fishLength):
             colors.append(getRandomColor())
-    if colorType == 'same' or colorType == 'head-tail':
-        colors = [getRandomColor()] * fishLength # All parts have same color.
-    if colorType == 'head-tail': # Head/tail & body have different colors.
+    if colorPattern == 'single' or colorPattern == 'head-tail':
+        colors = [getRandomColor()] * fishLength # All the same color.
+    if colorPattern == 'head-tail': # Head/tail color different from body.
         headTailColor = getRandomColor()
         colors[0] = headTailColor  # set head color
         colors[-1] = headTailColor # set tail color
 
+    # Set up rest of fish data structure.
     fish = {'right':      fishType['right'],
             'left':       fishType['left'],
-            'frame':      random.randint(0, len(fishType['right']) - 1),
-            'colors':     colors, # Color order when facing right.
+            'colors':     colors,
             'hspeed':     random.randint(1, 6),
             'vspeed':     random.randint(5, 15),
             'hchange':    random.randint(10, 60),
@@ -72,18 +74,19 @@ FISHES = []
 for i in range(NUM_FISH):
     FISHES.append(generateFish())
 
-BUBBLERS = []
-for i in range(NUM_BUBBLERS): # Have between 1 and 3 bubblers.
-    BUBBLERS.append(random.randint(0, WIDTH - 1)) # Each bubbler starts at a random position.
+BUBBLERS = [] # NOTE: Bubbles are drawn, but not the bubblers themselves.
+for i in range(NUM_BUBBLERS):
+    # Each bubbler starts at a random position.
+    BUBBLERS.append(random.randint(0, WIDTH - 1))
 BUBBLES = []
 
-# Generate the kelp.
 KELPS = []
 for i in range(NUM_KELP):
     kelp = {'x': random.randint(0, WIDTH - 2), 'segments': []}
+    # Generate each segment of the kelp.
     for i in range(random.randint(6, HEIGHT - 1)):
         kelp['segments'].append({'char': random.choice(('(', ')')),
-                                 'left-right': random.randint(0, 1)})
+                                 'waving': random.randint(0, 1)})
     KELPS.append(kelp)
 
 
@@ -92,10 +95,6 @@ def drawAquarium(step):
 
     # Simulate the fish for one step:
     for fish in FISHES:
-        fish['frame'] += 1
-        if fish['frame'] >= len(fish['right']):
-            fish['frame'] = 0
-
         # Move the fish horizontally:
         if step % fish['hspeed'] == 0:
             if fish['goingRight']:
@@ -151,46 +150,49 @@ def drawAquarium(step):
 
         bubble['y'] -= 1 # The bubble always goes up.
 
-    for i in range(len(BUBBLES) - 1, -1, -1): # Iterate over BUBBLES in reverse because I'm modifying BUBBLES while iterating over it.
+    # Iterate over BUBBLES in reverse because I'm modifying BUBBLES while iterating over it.
+    for i in range(len(BUBBLES) - 1, -1, -1):
         if BUBBLES[i]['y'] == 0: # Delete bubbles that reach the top.
             del BUBBLES[i]
 
     # Simulate the kelp waving for one step:
     for kelp in KELPS:
         for kelpSegment in kelp['segments']:
-            if random.randint(1, 20) == 1:
-                if kelpSegment['left-right'] == 0:
-                    kelpSegment['left-right'] = 1
-                elif kelpSegment['left-right'] == 1:
-                    kelpSegment['left-right'] = 0
+            if random.randint(1, 20) == 1: # 1 in 20 chance to change waving.
+                if kelpSegment['waving'] == 0:
+                    kelpSegment['waving'] = 1
+                elif kelpSegment['waving'] == 1:
+                    kelpSegment['waving'] = 0
 
-    # Draw bubbles in the correct positions:
+    # Draw the bubbles:
     bext.fg('white')
     for bubble in BUBBLES:
         bext.goto(bubble['x'], bubble['y'])
         print(random.choice(('o', 'O', chr(176))), end='') # '°'
 
-    # Draw the fish in the correct positions:
+    # Draw the fish:
     for fish in FISHES:
         bext.goto(fish['location']['x'], fish['location']['y'])
 
-        #bext.fg(fish['colors'][0])
+        # Get the correct right- or left-facing fish text.
         if fish['goingRight']:
-            for i, fishPart in enumerate(fish['right'][fish['frame']]):
-                bext.fg(fish['colors'][i])
-                print(fishPart, end='')
+            fishText = fish['right'][step % len(fish['right'])]
         elif not fish['goingRight']:
-            for i, fishPart in enumerate(fish['left'][fish['frame']]):
-                bext.fg(fish['colors'][i])
-                print(fishPart, end='')
+            fishText = fish['left'][step % len(fish['left'])]
 
-    # Draw the kelp in the correct positions:
+        # Draw each character of the fish text in the right color.
+        for i, fishPart in enumerate(fishText):
+            bext.fg(fish['colors'][i])
+            print(fishPart, end='')
+
+    # Draw the kelp:
     bext.fg('green')
     for kelp in KELPS:
         for i, kelpSegment in enumerate(kelp['segments']):
             if i == 0:
-                kelpSegment['left-right'] = 0
-            bext.goto(kelp['x'] + kelpSegment['left-right'], HEIGHT - 2 - i)
+                # Bottom segment's waving is always 0.
+                kelpSegment['waving'] = 0
+            bext.goto(kelp['x'] + kelpSegment['waving'], HEIGHT - 2 - i)
             print(kelpSegment['char'], end='')
 
     # Draw quit message.
@@ -201,7 +203,7 @@ def drawAquarium(step):
     # Draw the sand on the bottom:
     bext.fg('yellow')
     bext.goto(0, HEIGHT - 1)
-    print(chr(9608) * (WIDTH - 1) , end='') # '█'
+    print(chr(9608) * (WIDTH - 1) , end='') # Draws '█' characters.
 
 
 def main():
