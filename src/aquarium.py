@@ -1,4 +1,4 @@
-# ASCII Aquarium, by Al Sweigart al@inventwithpython.com 2019/2/11
+# ASCII Aquarium, by Al Sweigart al@inventwithpython.com 2019/2/12
 
 import bext, random, time, sys
 WIDTH, HEIGHT = bext.size()
@@ -15,17 +15,17 @@ NUM_BUBBLERS = 2
 PAUSE = 0.25
 
 FISH_TYPES = [
-  {'right': ['><>'],         'left': ['<><']},
-  {'right': ['>||>'],        'left': ['<||<']},
-  {'right': ['>))>'],        'left': ['<[[<']},
-  {'right': ['>))o', '>))-'], 'left': ['o[[<', '-[[<']},
+  {'right': ['><>'],          'left': ['<><']},
+  {'right': ['>||>'],         'left': ['<||<']},
+  {'right': ['>))>'],         'left': ['<[[<']},
+  {'right': ['>||o', '>||.'], 'left': ['o||<', '.||<']},
   {'right': ['>))o', '>)).'], 'left': ['o[[<', '.[[<']},
-  {'right': ['>-==>'],       'left': ['<==-<']},
-  {'right': [r'>\\>'],       'left': [r'<//<']},
-  {'right': ['><)))*>'],     'left': ['<*[[[><']},
-  {'right': ['}-[[[*>'],     'left': ['<*)))-{']},
-  {'right': [']-<)))b>'],    'left': ['<d[[[>-[']},
-  {'right': ['><XXX*>'],     'left': ['<*XXX><']},
+  {'right': ['>-==>'],        'left': ['<==-<']},
+  {'right': [r'>\\>'],        'left': ['<//<']},
+  {'right': ['><)))*>'],      'left': ['<*[[[><']},
+  {'right': ['}-[[[*>'],      'left': ['<*)))-{']},
+  {'right': [']-<)))b>'],     'left': ['<d[[[>-[']},
+  {'right': ['><XXX*>'],      'left': ['<*XXX><']},
   {'right': ['_.-._.-^=>', '.-._.-.^=>',
              '-._.-._^=>', '._.-._.^=>'],
    'left':  ['<=^-._.-._', '<=^.-._.-.',
@@ -33,12 +33,15 @@ FISH_TYPES = [
   ]
 LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
 
+
 def getRandomColor():
     return random.choice(('black', 'red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white'))
+
 
 def generateFish():
     fishType = random.choice(FISH_TYPES)
 
+    # Set up colors for each character in the fish text:
     colorPattern = random.choice(('random', 'head-tail', 'single'))
     fishLength = len(fishType['right'][0])
     if colorPattern == 'random': # All parts are randomly colored.
@@ -52,7 +55,7 @@ def generateFish():
         colors[0] = headTailColor  # set head color
         colors[-1] = headTailColor # set tail color
 
-    # Set up rest of fish data structure.
+    # Set up the rest of fish data structure:
     fish = {'right':      fishType['right'],
             'left':       fishType['left'],
             'colors':     colors,
@@ -67,27 +70,6 @@ def generateFish():
     fish['location'] = {'x': random.randint(4, WIDTH - LONGEST_FISH_LENGTH),
                         'y': random.randint(0, HEIGHT - 2)}
     return fish
-
-
-# Generate the global variables.
-FISHES = []
-for i in range(NUM_FISH):
-    FISHES.append(generateFish())
-
-BUBBLERS = [] # NOTE: Bubbles are drawn, but not the bubblers themselves.
-for i in range(NUM_BUBBLERS):
-    # Each bubbler starts at a random position.
-    BUBBLERS.append(random.randint(0, WIDTH - 1))
-BUBBLES = []
-
-KELPS = []
-for i in range(NUM_KELP):
-    kelp = {'x': random.randint(0, WIDTH - 2), 'segments': []}
-    # Generate each segment of the kelp.
-    for i in range(random.randint(6, HEIGHT - 1)):
-        kelp['segments'].append({'char': random.choice(('(', ')')),
-                                 'waving': random.randint(0, 1)})
-    KELPS.append(kelp)
 
 
 def drawAquarium(step):
@@ -207,6 +189,29 @@ def drawAquarium(step):
 
 
 def main():
+    global FISHES, BUBBLERS, BUBBLES, KELPS
+
+    # Generate the global variables:
+    FISHES = []
+    for i in range(NUM_FISH):
+        FISHES.append(generateFish())
+
+    BUBBLERS = [] # NOTE: Bubbles are drawn, but not the bubblers themselves.
+    for i in range(NUM_BUBBLERS):
+        # Each bubbler starts at a random position.
+        BUBBLERS.append(random.randint(0, WIDTH - 1))
+    BUBBLES = []
+
+    KELPS = []
+    for i in range(NUM_KELP):
+        kelp = {'x': random.randint(0, WIDTH - 2), 'segments': []}
+        # Generate each segment of the kelp.
+        for i in range(random.randint(6, HEIGHT - 1)):
+            kelp['segments'].append({'char': random.choice(('(', ')')),
+                                     'waving': random.randint(0, 1)})
+        KELPS.append(kelp)
+
+    # Run the simulation:
     step = 1
     while True:
         try:
