@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 # ASCII Aquarium, by Al Sweigart al@inventwithpython.com 2019/2/12
+from __future__ import print_function
 
 import bext, random, time, sys
 WIDTH, HEIGHT = bext.size()
@@ -32,6 +34,40 @@ FISH_TYPES = [
              '<=^_.-._.-', '<=^._.-._.']},
   ]
 LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
+
+
+def main():
+    global FISHES, BUBBLERS, BUBBLES, KELPS
+
+    # Generate the global variables:
+    FISHES = []
+    for i in range(NUM_FISH):
+        FISHES.append(generateFish())
+
+    BUBBLERS = [] # NOTE: Bubbles are drawn, but not the bubblers themselves.
+    for i in range(NUM_BUBBLERS):
+        # Each bubbler starts at a random position.
+        BUBBLERS.append(random.randint(0, WIDTH - 1))
+    BUBBLES = []
+
+    KELPS = []
+    for i in range(NUM_KELP):
+        kelp = {'x': random.randint(0, WIDTH - 2), 'segments': []}
+        # Generate each segment of the kelp.
+        for i in range(random.randint(6, HEIGHT - 1)):
+            kelp['segments'].append(random.choice(['(', ')']))
+        KELPS.append(kelp)
+
+    # Run the simulation:
+    step = 1
+    while True:
+        try:
+            drawAquarium(step)
+            time.sleep(PAUSE)
+            bext.clear()
+            step += 1
+        except KeyboardInterrupt:
+            sys.exit()
 
 
 def getRandomColor():
@@ -139,18 +175,18 @@ def drawAquarium(step):
 
     # Simulate the kelp waving for one step:
     for kelp in KELPS:
-        for kelpSegment in kelp['segments']:
+        for i, kelpSegment in enumerate(kelp['segments']):
             if random.randint(1, 20) == 1: # 1 in 20 chance to change waving.
-                if kelpSegment['waving'] == 0:
-                    kelpSegment['waving'] = 1
-                elif kelpSegment['waving'] == 1:
-                    kelpSegment['waving'] = 0
+                if kelpSegment == '(':
+                    kelp['segments'][i] = ')'
+                elif kelpSegment == ')':
+                    kelp['segments'][i] = '('
 
     # Draw the bubbles:
     bext.fg('white')
     for bubble in BUBBLES:
         bext.goto(bubble['x'], bubble['y'])
-        print(random.choice(('o', 'O', chr(176))), end='') # '°'
+        print(random.choice(('o', 'O', chr(176))), end='') # chr(176) is '°'
 
     # Draw the fish:
     for fish in FISHES:
@@ -172,10 +208,13 @@ def drawAquarium(step):
     for kelp in KELPS:
         for i, kelpSegment in enumerate(kelp['segments']):
             if i == 0:
-                # Bottom segment's waving is always 0.
-                kelpSegment['waving'] = 0
-            bext.goto(kelp['x'] + kelpSegment['waving'], HEIGHT - 2 - i)
-            print(kelpSegment['char'], end='')
+                # Bottom segment is always (.
+                kelp['segments'][i] = '('
+            if kelpSegment == '(':
+                bext.goto(kelp['x'], HEIGHT - 2 - i)
+            elif kelpSegment == ')':
+                bext.goto(kelp['x'] + 1, HEIGHT - 2 - i)
+            print(kelpSegment, end='')
 
     # Draw quit message.
     bext.fg('white')
@@ -187,40 +226,6 @@ def drawAquarium(step):
     bext.goto(0, HEIGHT - 1)
     print(chr(9608) * (WIDTH - 1) , end='') # Draws '█' characters.
 
-
-def main():
-    global FISHES, BUBBLERS, BUBBLES, KELPS
-
-    # Generate the global variables:
-    FISHES = []
-    for i in range(NUM_FISH):
-        FISHES.append(generateFish())
-
-    BUBBLERS = [] # NOTE: Bubbles are drawn, but not the bubblers themselves.
-    for i in range(NUM_BUBBLERS):
-        # Each bubbler starts at a random position.
-        BUBBLERS.append(random.randint(0, WIDTH - 1))
-    BUBBLES = []
-
-    KELPS = []
-    for i in range(NUM_KELP):
-        kelp = {'x': random.randint(0, WIDTH - 2), 'segments': []}
-        # Generate each segment of the kelp.
-        for i in range(random.randint(6, HEIGHT - 1)):
-            kelp['segments'].append({'char': random.choice(('(', ')')),
-                                     'waving': random.randint(0, 1)})
-        KELPS.append(kelp)
-
-    # Run the simulation:
-    step = 1
-    while True:
-        try:
-            drawAquarium(step)
-            time.sleep(PAUSE)
-            bext.clear()
-            step += 1
-        except KeyboardInterrupt:
-            sys.exit()
 
 if __name__ == '__main__':
     main()
