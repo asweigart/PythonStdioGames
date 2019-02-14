@@ -1,10 +1,6 @@
 # Tsuro Map Maker, by Al Sweigart al@inventwithpython.com
 
 import random, sys
-try:
-    import pytextcanvas as pytc
-except:
-    sys.exit('PyTextCanvas is required to run this. Run `pip install pytextcanvas` from the shell to install it.')
 
 if len(sys.argv) == 3:
     WIDTH = int(sys.argv[1])
@@ -15,24 +11,24 @@ else:
 
 TILE_MAP = {
     '0': ' ',
-    '1': chr(9472),  # ─
-    '2': chr(9474),  # │
-    '3': chr(9484),  # ┌
-    '4': chr(9488),  # ┐
-    '5': chr(9492),  # └
-    '6': chr(9496),  # ┘
-    '7': chr(9608),  # █
+    '1': chr(9472),  # '─'
+    '2': chr(9474),  # '│'
+    '3': chr(9484),  # '┌'
+    '4': chr(9488),  # '┐'
+    '5': chr(9492),  # '└'
+    '6': chr(9496),  # '┘'
+    '7': chr(9608),  # '█'
 }
 
 ROTATE_MAP = {
     '0': '0', # ' ' becomes ' '
-    '1': '2', # ─ becomes │
-    '2': '1', # │ becomes ─
-    '3': '4', # ┌ becomes ┐
-    '4': '6', # ┐ becomes ┘
-    '5': '3', # └ becomes ┌
-    '6': '5', # ┘ becomes └
-    '7': '7', # █ becomes █
+    '1': '2', # '─' becomes '│'
+    '2': '1', # '│' becomes '─'
+    '3': '4', # '┌' becomes '┐'
+    '4': '6', # '┐' becomes '┘'
+    '5': '3', # '└' becomes '┌'
+    '6': '5', # '┘' becomes '└'
+    '7': '7', # '█' becomes '█'
 }
 
 # The last digit is a checksum so that the sum of numbers mod 10 is 0.
@@ -63,10 +59,10 @@ for i, tile in enumerate(TILES):
     TILES[i] = TILES[i][:25] # Cut off the checksum digit.
 
 
-def drawTile(tile, x, y, board):
+def drawTile(tile, x, y, canvas):
     for ix in range(x, x + 5):
         for iy in range(y, y + 5):
-            board[ix, iy] = TILE_MAP[tile[ix-x + (5 * (iy-y))]]
+            canvas[ix, iy] = TILE_MAP[tile[ix-x + (5 * (iy-y))]]
 
 
 def rotateTile(tile, rotations): # rotations are clockwise at 90 degree increments
@@ -108,18 +104,31 @@ def rotateTile(tile, rotations): # rotations are clockwise at 90 degree incremen
 
 
 # Create a canvas to draw the tiles on:
-canvas = pytc.Canvas(WIDTH, HEIGHT)
+canvas = {}
+for x in range(WIDTH):
+    for y in range(HEIGHT):
+        canvas[(x, y)] = ' '
+
 for x in range(0, WIDTH, 5):
     for y in range(0, HEIGHT, 5):
         # Choose a random tile, rotate it a random number of times:
         tile = rotateTile(random.choice(TILES), random.randint(0, 3))
         drawTile(tile, x, y, canvas)
 
-canvas.print()
+# Create a string from the canvas dictionary:
+allRows = []
+for y in range(HEIGHT):
+    row = []
+    for x in range(WIDTH):
+        row.append(canvas[(x, y)])
+    allRows.append(''.join(row))
+canvasStr = '\n'.join(allRows)
+
+print(canvasStr)
 
 # Copy the canvas to the clipboard if pyperclip is installed:
 try:
     import pyperclip
-    pyperclip.copy(str(canvas))
+    pyperclip.copy(canvasStr)
 except:
     pass # Do nothing if pyperclip is not installed.
