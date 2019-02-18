@@ -1,16 +1,29 @@
-# 2048, by Al Sweigart al@inventwithpython.com
+# 2048 Game, by Al Sweigart al@inventwithpython.com
 
 import random
 
-
+# Constants:
 BLANK = ''
 
 def getNewBoard():
+    # A board data structure is a dictionary with keys of (x, y) tuples
+    # and values of the power-of-two number. The coordinates are laid out as:
+    #   X0 1 2 3
+    #  Y+-+-+-+-+
+    #  0| | | | |
+    #   +-+-+-+-+
+    #  1| | | | |
+    #   +-+-+-+-+
+    #  2| | | | |
+    #   +-+-+-+-+
+    #  3| | | | |
+    #   +-+-+-+-+
     board = {}
     for x in range(4):
         for y in range(4):
             board[(x, y)] = BLANK
 
+    # Pick two random spaces for the two starting 2's:
     startingNumbers = set()
     while len(startingNumbers) < 2:
         startingNumbers.add((random.randint(0, 3), random.randint(0, 3)))
@@ -18,7 +31,6 @@ def getNewBoard():
         board[position] = 2
 
     return board
-
 
 
 def drawBoard(board):
