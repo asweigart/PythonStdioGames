@@ -122,6 +122,12 @@ for interviewee in random.sample(SUSPECTS, random.randint(3, 4)):
                 if zophieClues[interviewee] != ITEMS[SUSPECTS.index(culprit)]:
                      break # Break out of the loop if wrong info was selected.
 
+# EXPERIMENT: Uncomment this code to view the clue data structures:
+#import pprint
+#pprint.pprint(clues)
+#pprint.pprint(zophieClues)
+#print('culprit=%s' % (culprit))
+
 # START OF THE GAME
 print("J'ACCUSE! (a mystery game)")
 print()
@@ -130,8 +136,7 @@ print('ZOPHIE THE CAT has gone missing, and you must sift through the clues.')
 print('Suspects either always tell lies, or always tell the truth. Will you')
 print('find ZOPHIE THE CAT in time and accuse the guilty party?')
 print()
-print('Press Enter to begin...')
-input()
+input('Press Enter to begin...')
 
 startTime = time.time()
 endTime = startTime + TIME_TO_SOLVE
@@ -188,8 +193,7 @@ while True: # Main game loop.
         print('and will not help with your investigation.')
         print('You go back to your TAXI.')
         print()
-        print('Press Enter to continue...')
-        input()
+        input('Press Enter to continue...')
         currentLocation = 'TAXI'
         continue # Go back to the start of the main game loop.
 
@@ -247,5 +251,4 @@ while True: # Main game loop.
             if clues[thePersonHere][thingBeingAskedAbout] not in knownSuspectsAndItems and clues[thePersonHere][thingBeingAskedAbout] not in PLACES:
                 knownSuspectsAndItems.append(clues[thePersonHere][thingBeingAskedAbout])
 
-    print('Press Enter to continue...')
-    input()
+    input('Press Enter to continue...')

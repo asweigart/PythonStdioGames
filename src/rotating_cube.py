@@ -169,8 +169,8 @@ try:
                     print(chr(9604), end='', flush=False) # Draw bottom half of block.
                 else:
                     print(' ', end='', flush=False) # Draw empty space.
-            print()
-        print('', end='', flush=True)
+            print(flush=False)
+        print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
 
         time.sleep(0.1) # Pause for a bit.
 
