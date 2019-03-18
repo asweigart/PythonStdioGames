@@ -127,14 +127,14 @@ points = [[-1, -1, -1],
           [ 1,  1, -1],
           [-1,  1,  1],
           [ 1,  1,  1]]
-rotatedPoints = [None] * 10
+rotatedPoints = [None] * len(points)
 rx = ry = rz = 0 # Rotation amounts for each axis.
 
 try:
     while True:
         # Rotate the cube:
         rx += 0.03 + random.randint(1, 20) / 100
-        ry += 0.08  + random.randint(1, 20) / 100
+        ry += 0.08 + random.randint(1, 20) / 100
         rz += 0.13 + random.randint(1, 20) / 100
         for i in range(len(points)):
             rotatedPoints[i] = rotateXYZ(*points[i], rx, ry, rz)
