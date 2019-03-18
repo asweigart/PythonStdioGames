@@ -1,6 +1,7 @@
 # 2048 Game, by Al Sweigart al@inventwithpython.com
 
-import random
+import random, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 # Constants:
 BLANK = ''

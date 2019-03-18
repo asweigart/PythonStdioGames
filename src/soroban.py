@@ -1,6 +1,9 @@
 # Soroban, by Al Sweigart al@inventwithpython.com
 # This is a simulator for a Japanese abacus, or soroban.
 
+import sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 def drawAbacus(number):
     numberList = list(str(number).zfill(10))
 

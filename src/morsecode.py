@@ -1,6 +1,9 @@
 # Morse Code, by Al Sweigart al@inventwithpython.com
 # A program that translates between English and Morse Code.
 
+import sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 try:
     import pyperclip
 except:
@@ -17,13 +20,14 @@ ENGLISH_TO_MORSE = {'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',
                     '7': '--...', '8': '---..', '9': '----.', '0': '-----',
                     ' ': '/'}
 
+# Instead of typing it out, use code to generate MORSE_TO_ENGLISH.
 MORSE_TO_ENGLISH = {}
 for key, value in ENGLISH_TO_MORSE.items():
     MORSE_TO_ENGLISH[value] = key
 
 
 def englishToMorse(message):
-    morse = []
+    morse = [] # Make a list of each letter's morse code.
     for character in message:
         if character in ENGLISH_TO_MORSE:
             morse.append(ENGLISH_TO_MORSE[character])
@@ -32,7 +36,7 @@ def englishToMorse(message):
 
 def morseToEnglish(message):
     message = message.split(' ')
-    english = []
+    english = [] # Make a list of English letters from the morse code.
     for code in message:
         if code in MORSE_TO_ENGLISH:
             english.append(MORSE_TO_ENGLISH[code])
@@ -42,7 +46,8 @@ def main():
     while True:
         print('Are you going to enter (E)nglish or (M)orse code?')
         response = input().upper()
-        if response == 'E' or response == 'M': # common bug made here: response == 'E' or 'M'
+        # Note that you DON'T want `response == 'E' or 'M'` here:
+        if response == 'E' or response == 'M':
             break
 
     if response == 'E':
@@ -67,7 +72,7 @@ def main():
             pyperclip.copy(english)
             print('(English text copied to clipboard.)')
         except:
-            pass
+            pass # If pyperclip cannot be found, it's not a big deal.
 
 if __name__ == '__main__':
     main()

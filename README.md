@@ -3,6 +3,7 @@
 A compilation of text-based games written in Python 3.
 
 
+TODO - switch all the %s to f-strings
 
 TODO NOTES:
 

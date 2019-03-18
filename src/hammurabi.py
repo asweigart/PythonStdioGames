@@ -1,7 +1,9 @@
 # Hammurabi, by Al Sweigart al@inventwithpython.com
 # A Python 3 port of the classic BASIC game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
 
-import random
+import random, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 
 """
 Game mechanics:

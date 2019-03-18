@@ -3,6 +3,8 @@
 from __future__ import print_function
 
 import bext, random, time, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1 # Adjustment for a Windows newline bug that happens when you print on the right edge.
 

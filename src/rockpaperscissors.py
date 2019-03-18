@@ -1,6 +1,7 @@
 # Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
 
-import random, time
+import random, time, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 def runGame():
     # These variables keep track of the number of wins, losses, and ties.

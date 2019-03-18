@@ -1,4 +1,6 @@
 import random, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 try:
     import bext # Attempt to import the bext module.
 except:

@@ -1,6 +1,8 @@
 # Rock, Paper, Scissors (except you always win), by Al Sweigart al@inventwithpython.com
 
-import time
+import time, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 
 def runGame():
     wins = 0 # This variable keeps track of how many wins the player has.

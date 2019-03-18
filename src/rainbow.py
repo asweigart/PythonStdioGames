@@ -2,6 +2,8 @@
 # Shows a simple rainbow animation.
 
 import time, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 try:
     import bext
 except:

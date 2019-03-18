@@ -1,8 +1,9 @@
 # Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
 # Randomly generates Mondrian-style art to display on the terminal.
 
-import bext
-import random
+import bext, random, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 
 MIN_X_INCREASE = 6
 MAX_X_INCREASE = 16

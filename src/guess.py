@@ -1,6 +1,7 @@
 # A guess-the-number game, by Al Sweigart al@inventwithpython.com
 
-import random
+import random, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 secretNumber = random.randint(1, 100) # Select a random number.
 print('I am thinking of a number between 1 and 100.')
@@ -24,4 +25,4 @@ if guess == secretNumber:
     print('Yay! You guessed my number!')
 if guess != secretNumber:
     secretNumber = str(secretNumber) # Convert the number to a string.
-    print('Nope. The number I was thinking of was ' + secretNumber)
+    print('Game over. The number I was thinking of was ' + secretNumber)

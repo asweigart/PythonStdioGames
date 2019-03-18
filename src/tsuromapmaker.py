@@ -1,6 +1,7 @@
 # Tsuro Map Maker, by Al Sweigart al@inventwithpython.com
 
 import random, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 if len(sys.argv) == 3:
     WIDTH = int(sys.argv[1])

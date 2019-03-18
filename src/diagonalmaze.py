@@ -3,8 +3,8 @@
 
 import random
 
-FORWARD = chr(int('2571', 16)) # The ╱ character.
-BACK    = chr(int('2572', 16)) # The ╲ character.
+FORWARD = chr(9585) # The ╱ character.
+BACK    = chr(9586) # The ╲ character.
 
 for x in range(2000): # Loop for each slash in the current line.
     # Randomly add a forward or back slash to the line.

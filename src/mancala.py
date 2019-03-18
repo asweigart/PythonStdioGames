@@ -2,6 +2,7 @@
 # Rules at http://www.mancalarules.com/
 
 import sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 POCKETS = 'ABCDEF1LKJIHG2' # Constant for every pocket label, in order.
 

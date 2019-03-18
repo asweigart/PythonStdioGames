@@ -1,6 +1,7 @@
 # A bouncing ball animation, by Al Sweigart al@inventwithpython.com
 
-import bext, random, time
+import bext, random, time, sys
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 bext.clear()
 WIDTH, HEIGHT = bext.size()

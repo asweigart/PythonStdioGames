@@ -2,6 +2,8 @@
 # Move around the board, running away from robots. Try to get the robots to crash into each other.
 
 import random, sys, os
+assert sys.version_info.major == 3, 'Run this program on Python 3.'
+
 try:
     import bext #  # Attempt to import the bext module for colorful text.
 except:
