@@ -2,7 +2,7 @@
 
 import time, random, sys
 
-SUSPECTS = ['DUKE HAUTDOG', 'MAXIMUM POWERS', 'BILL MONOPOLIS', 'SENATOR SCHMEAR', 'MRS. FEATHERTOSS', 'DR. JEAN SPLICER', 'RAFFLES THE CLOWN', 'MEREDITH J. COFFERS', 'CECIL EDGAR VANDERTON']
+SUSPECTS = ['DUKE HAUTDOG', 'MAXIMUM POWERS', 'BILL MONOPOLIS', 'SENATOR SCHMEAR', 'MRS. FEATHERTOSS', 'DR. JEAN SPLICER', 'RAFFLES THE CLOWN', 'ESPRESSA TOFFEEPOT', 'CECIL EDGAR VANDERTON']
 ITEMS = ['FLASHLIGHT', 'CANDLESTICK', 'RAINBOW FLAG', 'HAMSTER WHEEL', 'ANIME VHS TAPE', 'JAR OF PICKLES', 'ONE COWBOY BOOT', 'CLEAN UNDERPANTS', '5 DOLLAR GIFT CARD']
 PLACES = ['ZOO', 'OLD BARN', 'DUCK POND', 'CITY HALL', 'HIPSTER CAFE', 'BOWLING ALLEY', 'VIDEO GAME MUSEUM', 'UNIVERSITY LIBRARY', 'ALBINO ALLIGATOR PIT']
 TIME_TO_SOLVE = 300 # 300 seconds (5 minutes) to solve the game.
@@ -126,8 +126,8 @@ for interviewee in random.sample(SUSPECTS, random.randint(3, 4)):
 print("J'ACCUSE! (a mystery game)")
 print()
 print('You are the world-famous detective, Mathilde Camus.')
-print('ZOPHIE THE CAT has gone missing, and you must sift through the clues')
-print('and figure out who\'s lying and who\'s telling the truth. Will you')
+print('ZOPHIE THE CAT has gone missing, and you must sift through the clues.')
+print('Suspects either always tell lies, or always tell the truth. Will you')
 print('find ZOPHIE THE CAT in time and accuse the guilty party?')
 print()
 print('Press Enter to begin...')
