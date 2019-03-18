@@ -3,38 +3,45 @@
 import time, random, sys
 
 SUSPECTS = ['DUKE HAUTDOG', 'MAXIMUM POWERS', 'BILL MONOPOLIS', 'SENATOR SCHMEAR', 'MRS. FEATHERTOSS', 'DR. JEAN SPLICER', 'RAFFLES THE CLOWN', 'MEREDITH J. COFFERS', 'CECIL EDGAR VANDERTON']
-ITEMS = ['FLASHLIGHT', 'ANIME TAPE', 'CANDLESTICK', 'RAINBOW FLAG', 'HAMSTER WHEEL', 'JAR OF PICKLES', 'ONE COWBOY BOOT', 'CLEAN UNDERPANTS', '5 DOLLAR GIFT CARD']
-PLACES = ['OLD BARN', 'DUCK POND', 'CITY HALL', 'COAT CHECK', 'HIPSTER CAFE', 'BOWLING ALLEY', 'VIDEO GAME MUSEUM', 'UNIVERSITY LIBRARY', 'ALBINO ALLIGATOR PIT']
+ITEMS = ['FLASHLIGHT', 'CANDLESTICK', 'RAINBOW FLAG', 'HAMSTER WHEEL', 'ANIME VHS TAPE', 'JAR OF PICKLES', 'ONE COWBOY BOOT', 'CLEAN UNDERPANTS', '5 DOLLAR GIFT CARD']
+PLACES = ['ZOO', 'OLD BARN', 'DUCK POND', 'CITY HALL', 'HIPSTER CAFE', 'BOWLING ALLEY', 'VIDEO GAME MUSEUM', 'UNIVERSITY LIBRARY', 'ALBINO ALLIGATOR PIT']
 TIME_TO_SOLVE = 300 # 300 seconds (5 minutes) to solve the game.
+
+PLACE_FIRST_LETTERS = {} # TODO
+LONGEST_PLACE_NAME_LENGTH = 0
+for place in PLACES:
+    PLACE_FIRST_LETTERS[place[0]] = place
+    if len(place) > LONGEST_PLACE_NAME_LENGTH:
+        LONGEST_PLACE_NAME_LENGTH = len(place)
 
 assert len(SUSPECTS) == 9
 assert len(ITEMS) == 9
 assert len(PLACES) == 9
+assert len(set(PLACE_FIRST_LETTERS.keys())) == 9 # First letters must be unique.
 assert len(SUSPECTS) == len(ITEMS) == len(PLACES)
 
-knownSuspects = []
-knownItems = []
-position = 'TAXI' # Start at the taxi.
+knownSuspectsAndItems = []
+visitedPlaces = {} # Keys are places, values are strings of the suspect & item there.
+currentLocation = 'TAXI' # Start at the taxi.
 accusedSuspects = []
 
 liars = random.sample(SUSPECTS, random.randint(3, 4))
-knowsWhereZophieIs = random.sample(SUSPECTS, random.randint(3, 4))
 accusationsLeft = 3
 culprit = random.choice(SUSPECTS)
 
+# The suspects, items, and places that are associated with each other share the same index. TODO
 random.shuffle(SUSPECTS)
 random.shuffle(ITEMS)
 random.shuffle(PLACES)
 
+# Create data structures for clues the truth-tellers give about each item and suspect:
 clues = {} # Keys are the suspects being asked for a clue, value is a "clue dictionary".
-
-# Figure out what clues the truth-tellers give about each item and suspect:
 for i, interviewee in enumerate(SUSPECTS):
     if interviewee in liars:
         continue # We'll handle the liars' clues later.
 
     clues[interviewee] = {} # This "clue dictionary" has keys of items & suspects, value is the clue given.
-    clues[interviewee]['liar'] = False
+    clues[interviewee]['debug_liar'] = False # TODO
     for item in ITEMS: # Figure out what clue this person gives about each item.
         if random.randint(0, 1) == 0:
             clues[interviewee][item] = PLACES[ITEMS.index(item)] # Tells where the item is.
@@ -46,13 +53,13 @@ for i, interviewee in enumerate(SUSPECTS):
         else:
             clues[interviewee][suspect] = ITEMS[SUSPECTS.index(suspect)] # Tells what item the suspect has.
 
-# Figure out what clues the liars give about each item and suspect:
+# Create data structures for clues the liars give about each item and suspect:
 for i, interviewee in enumerate(SUSPECTS):
     if interviewee not in liars:
         continue # We've already handles the clues for truth-tellers.
 
     clues[interviewee] = {} # This "clue dictionary" has keys of items & suspects, value is the clue given.
-    clues[interviewee]['liar'] = True
+    clues[interviewee]['debug_liar'] = True # TODO
     for item in ITEMS: # Figure out what clue this person gives about each item.
         if random.randint(0, 1) == 0:
             while True:
@@ -81,19 +88,55 @@ for i, interviewee in enumerate(SUSPECTS):
                 if clues[interviewee][suspect] != ITEMS[SUSPECTS.index(suspect)]:
                      break # Break out of the loop if wrong info was selected.
 
+# Create the data structures for clues about where Zophie is.
+zophieClues = {}
+for interviewee in random.sample(SUSPECTS, random.randint(3, 4)):
+    kindOfClue = random.randint(1, 3)
+    if kindOfClue == 1:
+        if interviewee not in liars:
+            # They tell you who has Zophie.
+            zophieClues[interviewee] = culprit
+        elif interviewee in liars:
+            while True:
+                # Keep randomly selecting a suspect until a wrong suspect is selected.
+                zophieClues[interviewee] = random.choice(SUSPECTS)
+                if zophieClues[interviewee] != culprit:
+                     break # Break out of the loop if wrong info was selected.
+
+    elif kindOfClue == 2:
+        if interviewee not in liars:
+            # They tell you where Zophie is.
+            zophieClues[interviewee] = PLACES[SUSPECTS.index(culprit)]
+        elif interviewee in liars:
+            while True:
+                # Keep randomly selecting a place until a wrong place is selected.
+                zophieClues[interviewee] = random.choice(PLACES)
+                if zophieClues[interviewee] != PLACES[SUSPECTS.index(culprit)]:
+                     break # Break out of the loop if wrong info was selected.
+    elif kindOfClue == 3:
+        if interviewee not in liars:
+            # They tell you what item Zophie is near.
+            zophieClues[interviewee] = ITEMS[SUSPECTS.index(culprit)]
+        elif interviewee in liars:
+            while True:
+                # Keep randomly selecting a place until a wrong place is selected.
+                zophieClues[interviewee] = random.choice(ITEMS)
+                if zophieClues[interviewee] != ITEMS[SUSPECTS.index(culprit)]:
+                     break # Break out of the loop if wrong info was selected.
+
 
 print("J'ACCUSE! (a mystery game)")
 print()
 print('You are world famous detective, Mathilde Camus.')
-print('ZOPHIE THE CAT has gone missing, and you must sift')
-print('through the clues and liars to find her.')
-print('Will you find ZOPHIE THE CAT in time, and accuse')
-print('the guilty party?')
+print('ZOPHIE THE CAT has gone missing, and you must sift through the clues')
+print('and figure out who\'s lying and who\'s telling the truth. Will you')
+print('find ZOPHIE THE CAT in time and accuse the guilty party?')
 print()
 print('Press Enter to begin...')
 input()
 
-endTime = time.time() + TIME_TO_SOLVE
+startTime = time.time()
+endTime = startTime + TIME_TO_SOLVE
 
 while True: # Main game loop.
     if time.time() > endTime or accusationsLeft == 0:
@@ -103,66 +146,102 @@ while True: # Main game loop.
         elif accusationsLeft == 0:
             print('You have accused too many innocent people!')
         culpritIndex = SUSPECTS.index(culprit)
-        print('%s at %s with the %s had her!' % (culprit, PLACES[culpritIndex], ITEMS[culpritIndex]))
+        print('It was %s at the %s with the %s who catnapped her!' % (culprit, PLACES[culpritIndex], ITEMS[culpritIndex]))
         print('Better luck next time, Detective.')
         sys.exit()
 
-    print('You have %s seconds left to find ZOPHIE THE CAT.' % (int(endTime - time.time())))
+    print()
+    minutesLeft = int(endTime - time.time()) // 60
+    secondsLeft = int(endTime - time.time()) % 60
+    print('Time left: %s min, %s sec' % (minutesLeft, secondsLeft))
 
-    if position == 'TAXI':
-        print('You are in your TAXI. Where do you want to go?')
-        for i, place in enumerate(PLACES):
-            print('%s. %s' % (i + 1, place))
+    if currentLocation == 'TAXI':
+        print('  You are in your TAXI. Where do you want to go?')
+        for place in sorted(PLACES):
+            placeInfo = ''
+            if place in visitedPlaces:
+                placeInfo = visitedPlaces[place]
+            print('(%s)%s %s%s' % (place[0], place[1:], ' ' * (LONGEST_PLACE_NAME_LENGTH - len(place)), placeInfo))
         while True: # Keep asking until a valid response is given.
-            response = input()
-            if response.isdigit() and 0 < int(response) <= len(PLACES):
+            response = input('> ').upper()
+            if response in PLACE_FIRST_LETTERS.keys():
                 break
-        position = PLACES[int(response) - 1]
+        currentLocation = PLACE_FIRST_LETTERS[response]
         continue # Go back to the start of the main game loop.
 
     # At a place; player can ask for clues.
-    print('You are at the %s.' % position)
-    positionIndex = PLACES.index(position)
-    print('%s with the %s is here.' % (SUSPECTS[positionIndex], ITEMS[positionIndex]))
+    print('  You are at the %s.' % currentLocation)
+    currentLocationIndex = PLACES.index(currentLocation)
+    thePersonHere = SUSPECTS[currentLocationIndex]
+    theItemHere = ITEMS[currentLocationIndex]
+    print('  %s with the %s is here.' % (thePersonHere, ITEMS[currentLocationIndex]))
 
     # Add the suspect and item at this place to our list of known suspects and items.
-    if SUSPECTS[positionIndex] not in knownSuspects:
-        knownSuspects.append(SUSPECTS[positionIndex])
-    if ITEMS[positionIndex] not in knownItems:
-        knownItems.append(ITEMS[positionIndex])
+    if thePersonHere not in knownSuspectsAndItems:
+        knownSuspectsAndItems.append(thePersonHere)
+    if ITEMS[currentLocationIndex] not in knownSuspectsAndItems:
+        knownSuspectsAndItems.append(ITEMS[currentLocationIndex])
+    if currentLocation not in visitedPlaces.keys():
+        visitedPlaces[currentLocation] = '(%s, %s)' % (thePersonHere.lower(), theItemHere.lower())
+
+    # If the player has accused this person wrongly before, they won't give clues.
+    if thePersonHere in accusedSuspects:
+        print('They are offended that you accused them,')
+        print('and will not help with your investigation.')
+        print('You go back to your TAXI.')
+        print()
+        print('Press Enter to continue...')
+        input()
+        currentLocation = 'TAXI'
+        continue # Go back to the start of the main game loop.
 
     # Display menu of known suspects & items to ask about:
-    print('J. "J\'ACCUSE!" (%s accusations left)' % (accusationsLeft))
-    print('Z. Ask if they know where ZOPHIE THE CAT is.')
-    print('T. Go back to the TAXI.')
-    for i, knownSuspect in enumerate(knownSuspects):
-        print('%s. Ask about %s' % (i + 1, knownSuspect))
-    for i, knownItem in enumerate(knownItems):
-        print('%s. Ask about the %s' % (i + 1 + len(knownSuspects), knownItem))
+    print()
+    print('(J) "J\'ACCUSE!" (%s accusations left)' % (accusationsLeft))
+    print('(Z) Ask if they know where ZOPHIE THE CAT is.')
+    print('(T) Go back to the TAXI.')
+    for i, suspectOrItem in enumerate(knownSuspectsAndItems):
+        print('(%s) Ask about %s' % (i + 1, suspectOrItem))
 
     while True: # Keep asking until a valid response is given.
-        response = input()
-        if response in 'JZT' or (response.isdigit() and 0 <= int(response) <= len(knownSuspects) + len(knownItems)):
+        response = input('> ').upper()
+        if response in 'JZT' or (response.isdigit() and 0 < int(response) <= len(knownSuspectsAndItems)):
             break
 
-    if response == 'J':
+    if response == 'J': # Player has accused this suspect.
         accusationsLeft -= 1
-        if SUSPECTS[positionIndex] == culprit:
+        if thePersonHere == culprit:
             # You've accused the correct suspect.
             print('You\'ve cracked the case, Detective!')
             print('It was %s who had catnapped ZOPHIE THE CAT.' % (culprit))
-            print('Good job!')
+            minutesTaken = int(time.time() - startTime) // 60
+            secondsTaken = int(time.time() - startTime) % 60
+            print('Good job! You solved it in %s min, %s sec.' % (minutesTaken, secondsTaken))
             sys.exit()
         else:
             # You've accused the wrong suspect.
-            pass # TODO
+            accusedSuspects.append(thePersonHere)
+            print('You have accused the wrong person, Detective!')
+            print('They will not help you with anymore clues.')
+            print('You go back to your TAXI.')
+            currentLocation = 'TAXI'
 
-    elif response == 'Z':
-        pass # TODO
-    elif response == 'T':
-        position = 'TAXI'
+    elif response == 'Z': # Player asks about Zophie.
+        if thePersonHere not in zophieClues:
+            print('"I don\'t know anything about ZOPHIE THE CAT."')
+        elif thePersonHere in zophieClues:
+            print('  They give you this clue: "%s"' % zophieClues[thePersonHere])
+
+    elif response == 'T': # Player goes back to the taxi.
+        currentLocation = 'TAXI'
         continue # Go back to the start of the main game loop.
 
+    else: # Player asks about a suspect or item.
+        thingBeingAskedAbout = knownSuspectsAndItems[int(response) - 1]
+        if thingBeingAskedAbout in (thePersonHere, theItemHere):
+            print('  They give you this clue: "No comment."')
+        else:
+            print('  They give you this clue: "%s"' % clues[thePersonHere][thingBeingAskedAbout])
 
-
-
+    print('Press Enter to continue...')
+    input()
