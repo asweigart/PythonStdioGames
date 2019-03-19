@@ -177,7 +177,7 @@ while True: # Main game loop.
     currentLocationIndex = PLACES.index(currentLocation)
     thePersonHere = SUSPECTS[currentLocationIndex]
     theItemHere = ITEMS[currentLocationIndex]
-    print('  %s with the %s is here.' % (thePersonHere, ITEMS[currentLocationIndex]))
+    print('  %s with the %s is here.' % (thePersonHere, theItemHere))
 
     # Add the suspect and item at this place to our list of known suspects and items.
     if thePersonHere not in knownSuspectsAndItems:

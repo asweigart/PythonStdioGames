@@ -1,5 +1,9 @@
 # Fireflies, by Al Sweigart al@inventwithpython.com
 
+"""This program draws points that rotate on a sphere. The sphere is invisible
+and projected onto the user's 2D screen, so it kind of looks like fireflies
+swirling around in a circle."""
+
 import math, time, sys, os, random
 
 PAUSE_AMOUNT = 0.05
@@ -88,7 +92,11 @@ try:
             rotationAmounts[i][2] += rotationVelocity[i][2]
 
             # To avoid rounding errors from accumulating, we recalculate
-            # the rotation amounts based on the original position.
+            # the rotation amounts based on the original position each time.
+            # So when a coordinate rotates, say, 5 degrees and 6 more degrees,
+            # we actually calculate "5 degrees from the original coordinate"
+            # and then "11 degrees from the original coordinate", we don't
+            # rotate the rotated-by-5-degrees coordinate another 6 degrees.
             screenPoints.append(transformPoint(rotatePoint(originalPosition[i][0], originalPosition[i][1], originalPosition[i][2], rotationAmounts[i][0], rotationAmounts[i][1], rotationAmounts[i][2])))
 
         # Draw the fireflies:
