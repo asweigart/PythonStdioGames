@@ -2,36 +2,39 @@
 
 import math, time, sys, os, random
 
-NUMBER_OF_POINTS = 16
-
-if len(sys.argv) == 3:
-    # Set size based on command line arguments:
-    WIDTH = int(sys.argv[1])
-    HEIGHT = int(sys.argv[2])
-else:
-    WIDTH, HEIGHT = 80, 50
-DEFAULT_SCALEX = (WIDTH - 4) // 4
-DEFAULT_SCALEY = (HEIGHT - 4) // 2 # Text cells are twice as tall as they are wide, so set scaley accordingly.
-DEFAULT_TRANSLATEX = (WIDTH - 4) // 2
-DEFAULT_TRANSLATEY = (HEIGHT - 4) // 2
+PAUSE_AMOUNT = 0.05
+NUMBER_OF_FIREFLIES = 16
+WIDTH, HEIGHT = 80, 50
+SCALEX = (WIDTH - 4) // 4
+SCALEY = (HEIGHT - 4) // 2 # Text cells are twice as tall as they are wide, so set scaley accordingly.
+TRANSLATEX = (WIDTH - 4) // 2
+TRANSLATEY = (HEIGHT - 4) // 2
 
 
-def rotateXYZ(x, y, z, ax, ay, az):
-    # NOTE: Rotates around the origin (0, 0, 0)
+def rotatePoint(x, y, z, ax, ay, az):
+    """Returns an (x, y, z) point of the x, y, z point arguments rotated
+    around the 0, 0, 0 origin by angles ax, ay, az (in radians).
+        Directions of each axis:
+         -y
+          |
+          +-- +x
+         /
+        +z
+    """
 
-    # Rotate along x axis:
+    # Rotate around x axis:
     rotatedX = x
     rotatedY = (y * math.cos(ax)) - (z * math.sin(ax))
     rotatedZ = (y * math.sin(ax)) + (z * math.cos(ax))
     x, y, z = rotatedX, rotatedY, rotatedZ
 
-    # Rotate along y axis:
+    # Rotate around y axis:
     rotatedX = (z * math.sin(ay)) + (x * math.cos(ay))
     rotatedY = y
     rotatedZ = (z * math.cos(ay)) - (x * math.sin(ay))
     x, y, z = rotatedX, rotatedY, rotatedZ
 
-    # Rotate along z axis:
+    # Rotate around z axis:
     rotatedX = (x * math.cos(az)) - (y * math.sin(az))
     rotatedY = (x * math.sin(az)) + (y * math.cos(az))
     rotatedZ = z
@@ -39,81 +42,70 @@ def rotateXYZ(x, y, z, ax, ay, az):
     return (rotatedX, rotatedY, rotatedZ)
 
 
-def transformPoint(point, scalex=None, scaley=None, translatex=None, translatey=None):
-    if scalex is None:
-        scalex = DEFAULT_SCALEX
-    if scaley is None:
-        scaley = DEFAULT_SCALEY
-    if translatex is None:
-        translatex = DEFAULT_TRANSLATEX
-    if translatey is None:
-        translatey = DEFAULT_TRANSLATEY
-
-    return (int(point[0] * scalex + translatex),
-            int(point[1] * scaley + translatey))
+def transformPoint(point):
+    """Converts the 3D xyz point to a 2D xy point. Resizes this 2D point by a
+    scale of scalex and scaley, then moves the point by translatex and
+    translatey."""
+    return (int(point[0] * SCALEX + TRANSLATEX),
+            int(point[1] * SCALEY + TRANSLATEY))
 
 
+# Create the original XYZ positions of the fireflies. (Really, they're
+# just random points on a sphere that rotate around.)
+originalPosition = []
+for i in range(NUMBER_OF_FIREFLIES):
+    # Create points on a sphere based on random latitude and longitude:
+    latitude = math.acos(2 * random.random() - 1) - (math.pi / 2)
+    longitude = 2 * math.pi * random.random()
 
-# Set up the points of the cube:
-'''
- -y
-  |
-  +-- +x
- /
-+z
-'''
+    # Convert the latitude and longitude to an xyz point:
+    x = math.cos(latitude) * math.cos(longitude)
+    y = math.cos(latitude) * math.sin(longitude)
+    z = math.sin(latitude)
 
-points = []
-for i in range(NUMBER_OF_POINTS):
-    lat = math.acos(2 * random.random() - 1) - (math.pi / 2)
-    lon = 2 * math.pi * random.random()
+    originalPosition.append((x, y, z))
 
-    x = math.cos(lat) * math.cos(lon)
-    y = math.cos(lat) * math.sin(lon)
-    z = math.sin(lat)
-    points.append((x, y, z))
-
-rotatedPoints = [None] * len(points)
+# Holds how much the firefly has rotated around each axis:
 rotationAmounts = []
-for i in range(len(points)):
-    rotationAmounts.append([0, 0, 0])
+# Holds the rate that the firefly rotates around each axis:
 rotationVelocity = []
-for i in range(len(points)):
+for i in range(NUMBER_OF_FIREFLIES):
+    # Firefly positions start with no rotation from their original position:
+    rotationAmounts.append([0, 0, 0])
+    # Randomly decide how fast they rotate on each axis:
     rotationVelocity.append([random.randint(-100, 100) / 1000.0,
                              random.randint(-100, 100) / 1000.0,
                              random.randint(-100, 100) / 1000.0])
 
 try:
     while True:
-        # Rotate the points:
-        for i in range(len(points)):
+        # Rotate the fireflies:
+        screenPoints = []
+        for i in range(NUMBER_OF_FIREFLIES):
+            # Change the rotation amount by
             rotationAmounts[i][0] += rotationVelocity[i][0]
             rotationAmounts[i][1] += rotationVelocity[i][1]
             rotationAmounts[i][2] += rotationVelocity[i][2]
 
-            rotatedPoints[i] = rotateXYZ(*points[i], rotationAmounts[i][0], rotationAmounts[i][1], rotationAmounts[i][2])
+            # To avoid rounding errors from accumulating, we recalculate
+            # the rotation amounts based on the original position.
+            screenPoints.append(transformPoint(rotatePoint(originalPosition[i][0], originalPosition[i][1], originalPosition[i][2], rotationAmounts[i][0], rotationAmounts[i][1], rotationAmounts[i][2])))
 
-        # Get the points of the cube lines:
-        spherePoints = []
-        for point in rotatedPoints:
-            spherePoints.append(transformPoint(point))
-        spherePoints = tuple(frozenset(spherePoints)) # Get rid of duplicate points.
-
-        # Draw the cube:
+        # Draw the fireflies:
         for y in range(0, HEIGHT, 2):
             for x in range(WIDTH):
-                if (x, y) in spherePoints and (x, y + 1) in spherePoints:
-                    print(chr(9608), end='', flush=False) # Draw full block.
-                elif (x, y) in spherePoints and (x, y + 1) not in spherePoints:
-                    print(chr(9600), end='', flush=False) # Draw top half of block.
-                elif not (x, y) in spherePoints and (x, y + 1) in spherePoints:
-                    print(chr(9604), end='', flush=False) # Draw bottom half of block.
+                if (x, y) in screenPoints and (x, y + 1) in screenPoints:
+                    print(chr(9608), end='') # Draw a full block.
+                elif (x, y) in screenPoints and (x, y + 1) not in screenPoints:
+                    print(chr(9600), end='') # Draw a top half of block.
+                elif not (x, y) in screenPoints and (x, y + 1) in screenPoints:
+                    print(chr(9604), end='') # Draw a bottom half of block.
                 else:
-                    print(' ', end='', flush=False) # Draw empty space.
-            print(flush=False)
+                    print(' ', end='') # Draw an empty space.
+            print()
         print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
 
-        time.sleep(0.1) # Pause for a bit.
+        time.sleep(PAUSE_AMOUNT) # Pause for a bit before erasing the screen.
 
         # Erase the screen:
         if sys.platform == 'win32':
@@ -122,4 +114,4 @@ try:
             os.system('clear')
 
 except KeyboardInterrupt:
-    pass # When Ctrl-C is pressed, stop looping.
+    pass # When Ctrl-C/Ctrl-D is pressed, stop looping.
