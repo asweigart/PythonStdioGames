@@ -1,5 +1,8 @@
 # Fireflies, by Al Sweigart al@inventwithpython.com
 
+# NOTE: This program must be run in a terminal window to display properly.
+# Running this in a text editor or IDE like PyCharm or IDLE won't work.
+
 """This program draws points that rotate on a sphere. The sphere is invisible
 and projected onto the user's 2D screen, so it kind of looks like fireflies
 swirling around in a circle."""
@@ -8,12 +11,18 @@ import math, time, sys, os, random
 
 PAUSE_AMOUNT = 0.05
 NUMBER_OF_FIREFLIES = 16
-WIDTH, HEIGHT = 80, 50
+WIDTH, HEIGHT = 80, 24 # Width & height of the swarm, in text cells.
 SCALEX = (WIDTH - 4) // 4
 SCALEY = (HEIGHT - 4) // 2 # Text cells are twice as tall as they are wide, so set scaley accordingly.
-TRANSLATEX = (WIDTH - 4) // 2
+TRANSLATEX = (WIDTH - 4) // 2 # Move the center of the swarm to the middle of the screen.
 TRANSLATEY = (HEIGHT - 4) // 2
+FIREFLY_DARK_CHAR = '.' # Draw a period for the firefly when it is normal.
+FIREFLY_LIGHT_CHAR = chr(9604) # Draw a "bottom half block" for the firefly lit up.
 
+# Several of the data structures are lists/tuples with x, y, z at indexes 0, 1, and 2 respectively:
+X = 0
+Y = 1
+Z = 2
 
 def rotatePoint(x, y, z, ax, ay, az):
     """Returns an (x, y, z) point of the x, y, z point arguments rotated
@@ -53,11 +62,15 @@ def transformPoint(point):
     return (int(point[0] * SCALEX + TRANSLATEX),
             int(point[1] * SCALEY + TRANSLATEY))
 
-
-# Create the original XYZ positions of the fireflies. (Really, they're
-# just random points on a sphere that rotate around.)
-originalPosition = []
+# Each firefly is represented by dictionary with keys 'originalPosition',
+# 'rotationAmount', 'rotationVelocity', 'timeToChange', 'isLit'.
+fireflies = []
 for i in range(NUMBER_OF_FIREFLIES):
+    firefly = {}
+
+    # Create the original XYZ positions of the firefly. (Really, they're
+    # just random points on a sphere that rotate around.)
+
     # Create points on a sphere based on random latitude and longitude:
     latitude = math.acos(2 * random.random() - 1) - (math.pi / 2)
     longitude = 2 * math.pi * random.random()
@@ -67,29 +80,38 @@ for i in range(NUMBER_OF_FIREFLIES):
     y = math.cos(latitude) * math.sin(longitude)
     z = math.sin(latitude)
 
-    originalPosition.append((x, y, z))
+    firefly['originalPosition'] = (x, y, z)
 
-# Holds how much the firefly has rotated around each axis:
-rotationAmounts = []
-# Holds the rate that the firefly rotates around each axis:
-rotationVelocity = []
-for i in range(NUMBER_OF_FIREFLIES):
     # Firefly positions start with no rotation from their original position:
-    rotationAmounts.append([0, 0, 0])
-    # Randomly decide how fast they rotate on each axis:
-    rotationVelocity.append([random.randint(-100, 100) / 1000.0,
-                             random.randint(-100, 100) / 1000.0,
-                             random.randint(-100, 100) / 1000.0])
+    firefly['rotationAmounts'] = [0, 0, 0]
 
+    # Randomly decide how fast they rotate on each axis:
+    firefly['rotationVelocity'] = [random.randint(-100, 100) / 1000.0,
+                                   random.randint(-100, 100) / 1000.0,
+                                   random.randint(-100, 100) / 1000.0]
+
+    # Holds time until the firefly changes between light/dark:
+    firefly['timeToChange'] = random.randint(10, 40) / 10.0
+
+    # Fireflies start off dark:
+    firefly['isLit'] = False
+
+    fireflies.append(firefly)
+
+
+lastTimeCheck = time.time()
 try:
     while True:
-        # Rotate the fireflies:
         screenPoints = []
-        for i in range(NUMBER_OF_FIREFLIES):
-            # Change the rotation amount by
-            rotationAmounts[i][0] += rotationVelocity[i][0]
-            rotationAmounts[i][1] += rotationVelocity[i][1]
-            rotationAmounts[i][2] += rotationVelocity[i][2]
+        screenChars = {}
+        timeSinceLastCheck = time.time() - lastTimeCheck
+
+        # Update the fireflies:
+        for firefly in fireflies:
+            # Change the rotation amount by the rotation velocity:
+            firefly['rotationAmounts'][X] += firefly['rotationVelocity'][X]
+            firefly['rotationAmounts'][Y] += firefly['rotationVelocity'][Y]
+            firefly['rotationAmounts'][Z] += firefly['rotationVelocity'][Z]
 
             # To avoid rounding errors from accumulating, we recalculate
             # the rotation amounts based on the original position each time.
@@ -97,21 +119,44 @@ try:
             # we actually calculate "5 degrees from the original coordinate"
             # and then "11 degrees from the original coordinate", we don't
             # rotate the rotated-by-5-degrees coordinate another 6 degrees.
-            screenPoints.append(transformPoint(rotatePoint(originalPosition[i][0], originalPosition[i][1], originalPosition[i][2], rotationAmounts[i][0], rotationAmounts[i][1], rotationAmounts[i][2])))
+            rotatedPoint = rotatePoint(firefly['originalPosition'][X],
+                                       firefly['originalPosition'][Y],
+                                       firefly['originalPosition'][Z],
+                                       firefly['rotationAmounts'][X],
+                                       firefly['rotationAmounts'][Y],
+                                       firefly['rotationAmounts'][Z])
+            rotatedAndTransformedPoint = transformPoint(rotatedPoint)
+            screenPoints.append(rotatedAndTransformedPoint)
+
+            # Determine if the firelies are light or dark:
+            firefly['timeToChange'] -= timeSinceLastCheck
+            if firefly['timeToChange'] < 0:
+                if firefly['isLit']:
+                    # Change firefly to dark for a random period:
+                    firefly['timeToChange'] = random.randint(10, 40) / 10.0
+                else:
+                    # Change firefly to light for 1 second:
+                    firefly['timeToChange'] = 1.0
+                # Make isLit the opposite:
+                firefly['isLit'] = not firefly['isLit']
+
+            # Determine which character to draw on the screen:
+            if firefly['isLit']:
+                screenChars[rotatedAndTransformedPoint] = FIREFLY_LIGHT_CHAR
+            else:
+                screenChars[rotatedAndTransformedPoint] = FIREFLY_DARK_CHAR
+
+        lastTimeCheck = time.time()
 
         # Draw the fireflies:
-        for y in range(0, HEIGHT, 2):
+        for y in range(HEIGHT):
             for x in range(WIDTH):
-                if (x, y) in screenPoints and (x, y + 1) in screenPoints:
-                    print(chr(9608), end='') # Draw a full block.
-                elif (x, y) in screenPoints and (x, y + 1) not in screenPoints:
-                    print(chr(9600), end='') # Draw a top half of block.
-                elif not (x, y) in screenPoints and (x, y + 1) in screenPoints:
-                    print(chr(9604), end='') # Draw a bottom half of block.
+                if (x, y) in screenPoints:
+                    print(screenChars[(x, y)], end='')
                 else:
                     print(' ', end='') # Draw an empty space.
             print()
-        print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
+        print('Press Ctrl-C to quit.', end='', flush=True)
 
         time.sleep(PAUSE_AMOUNT) # Pause for a bit before erasing the screen.
 
