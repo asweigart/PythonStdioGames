@@ -2,22 +2,23 @@
 
 import math, time, random, sys, os
 
-if len(sys.argv) == 3:
-    # Set size based on command line arguments:
-    WIDTH = int(sys.argv[1])
-    HEIGHT = int(sys.argv[2])
-else:
-    WIDTH, HEIGHT = 80, 50
-DEFAULT_SCALEX = (WIDTH - 4) // 8
-DEFAULT_SCALEY = (HEIGHT - 4) // 4 # Text cells are twice as tall as they are wide, so set scaley accordingly.
-DEFAULT_TRANSLATEX = (WIDTH - 4) // 2
-DEFAULT_TRANSLATEY = (HEIGHT - 4) // 2
+PAUSE_AMOUNT = 0.05
+WIDTH, HEIGHT = 80, 25
+SCALEX = (WIDTH - 4) // 8
+SCALEY = (HEIGHT - 4) // 4 # Text cells are twice as tall as they are wide, so set scaley accordingly.
+TRANSLATEX = (WIDTH - 4) // 2
+TRANSLATEY = (HEIGHT - 4) // 2
+
+# Several of the data structures are lists/tuples with x, y, z at indexes 0, 1, and 2 respectively:
+X = 0
+Y = 1
+Z = 2
 
 
 def line(x1, y1, x2, y2):
-    """Returns a generator that produces all of the points in a line
+    """Returns a list of  all of the points in a line
     between `x1`, `y1` and `x2`, `y2`. Uses the Bresenham line algorithm."""
-
+    points = []
     isSteep = abs(y2-y1) > abs(x2-x1)
     if isSteep:
         x1, y1 = y1, x1
@@ -39,9 +40,9 @@ def line(x1, y1, x2, y2):
             ystep = -1
         for x in range(x2, x1 - 1, -1):
             if isSteep:
-                yield (y, x)
+                points.append((y, x))
             else:
-                yield (x, y)
+                points.append((x, y))
             error -= deltay
             if error <= 0:
                 y -= ystep
@@ -58,31 +59,40 @@ def line(x1, y1, x2, y2):
             ystep = -1
         for x in range(x1, x2 + 1):
             if isSteep:
-                yield (y, x)
+                points.append((y, x))
             else:
-                yield (x, y)
+                points.append((x, y))
             error -= deltay
             if error < 0:
                 y += ystep
                 error += deltax
+    return points
 
 
-def rotateXYZ(x, y, z, ax, ay, az):
-    # NOTE: Rotates around the origin (0, 0, 0)
+def rotatePoint(x, y, z, ax, ay, az):
+    """Returns an (x, y, z) point of the x, y, z point arguments rotated
+    around the 0, 0, 0 origin by angles ax, ay, az (in radians).
+        Directions of each axis:
+         -y
+          |
+          +-- +x
+         /
+        +z
+    """
 
-    # Rotate along x axis:
+    # Rotate around x axis:
     rotatedX = x
     rotatedY = (y * math.cos(ax)) - (z * math.sin(ax))
     rotatedZ = (y * math.sin(ax)) + (z * math.cos(ax))
     x, y, z = rotatedX, rotatedY, rotatedZ
 
-    # Rotate along y axis:
+    # Rotate around y axis:
     rotatedX = (z * math.sin(ay)) + (x * math.cos(ay))
     rotatedY = y
     rotatedZ = (z * math.cos(ay)) - (x * math.sin(ay))
     x, y, z = rotatedX, rotatedY, rotatedZ
 
-    # Rotate along z axis:
+    # Rotate around z axis:
     rotatedX = (x * math.cos(az)) - (y * math.sin(az))
     rotatedY = (x * math.sin(az)) + (y * math.cos(az))
     rotatedZ = z
@@ -90,89 +100,53 @@ def rotateXYZ(x, y, z, ax, ay, az):
     return (rotatedX, rotatedY, rotatedZ)
 
 
-def transformPoint(point1, point2, scalex=None, scaley=None, translatex=None, translatey=None):
-    if scalex is None:
-        scalex = DEFAULT_SCALEX
-    if scaley is None:
-        scaley = DEFAULT_SCALEY
-    if translatex is None:
-        translatex = DEFAULT_TRANSLATEX
-    if translatey is None:
-        translatey = DEFAULT_TRANSLATEY
-
-    return (int(point1[0] * scalex + translatex),
-            int(point1[1] * scaley + translatey),
-            int(point2[0] * scalex + translatex),
-            int(point2[1] * scaley + translatey))
+def transformPoint(point):
+    """Converts the 3D xyz point to a 2D xy point. Resizes this 2D point by a
+    scale of scalex and scaley, then moves the point by translatex and
+    translatey."""
+    return (int(point[X] * SCALEX + TRANSLATEX),
+            int(point[Y] * SCALEY + TRANSLATEY))
 
 
-
-# Set up the points of the cube:
-'''
-Cube points:
-   0+-----+1
-   /     /|
-  /     / |  -y
-2+-----+3 |   |
- | 4+  |  +5  +-- +x
- |     | /   /
- |     |/   +z
-6+-----+7
-'''
-points = [[-1, -1, -1],
-          [ 1, -1, -1],
-          [-1, -1,  1],
-          [ 1, -1,  1],
-          [-1,  1, -1],
-          [ 1,  1, -1],
-          [-1,  1,  1],
-          [ 1,  1,  1]]
-rotatedPoints = [None] * len(points)
+originalPoints = [[-1, -1, -1],
+                  [ 1, -1, -1],
+                  [-1, -1,  1],
+                  [ 1, -1,  1],
+                  [-1,  1, -1],
+                  [ 1,  1, -1],
+                  [-1,  1,  1],
+                  [ 1,  1,  1]]
+rotatedPoints = [None] * len(originalPoints)
 rx = ry = rz = 0 # Rotation amounts for each axis.
 
 try:
     while True:
         # Rotate the cube:
-        rx += 0.03 + random.randint(1, 20) / 100
-        ry += 0.08 + random.randint(1, 20) / 100
-        rz += 0.13 + random.randint(1, 20) / 100
-        for i in range(len(points)):
-            rotatedPoints[i] = rotateXYZ(*points[i], rx, ry, rz)
+        rx += 0.03
+        ry += 0.08
+        rz += 0.13
+        for i in range(len(originalPoints)):
+            rotatedPoints[i] = rotatePoint(*originalPoints[i], rx, ry, rz)
 
         # Get the points of the cube lines:
         cubePoints = []
-        cubePoints.extend(line(*transformPoint(rotatedPoints[0], rotatedPoints[1])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[1], rotatedPoints[3])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[3], rotatedPoints[2])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[2], rotatedPoints[0])))
-
-        cubePoints.extend(line(*transformPoint(rotatedPoints[0], rotatedPoints[4])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[1], rotatedPoints[5])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[2], rotatedPoints[6])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[3], rotatedPoints[7])))
-
-        cubePoints.extend(line(*transformPoint(rotatedPoints[4], rotatedPoints[5])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[5], rotatedPoints[7])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[7], rotatedPoints[6])))
-        cubePoints.extend(line(*transformPoint(rotatedPoints[6], rotatedPoints[4])))
-
+        for start, end in ((0, 1), (1, 3), (3, 2), (2, 0), (0, 4), (1, 5), (2, 6), (3, 7), (4, 5), (5, 7), (7, 6), (6, 4)):
+            transformedPoint1 = transformPoint(rotatedPoints[start])
+            transformedPoint2 = transformPoint(rotatedPoints[end])
+            cubePoints.extend(line(transformedPoint1[X], transformedPoint1[Y], transformedPoint2[X], transformedPoint2[Y]))
         cubePoints = tuple(frozenset(cubePoints)) # Get rid of duplicate points.
 
         # Draw the cube:
-        for y in range(0, HEIGHT, 2):
+        for y in range(HEIGHT):
             for x in range(WIDTH):
-                if (x, y) in cubePoints and (x, y + 1) in cubePoints:
+                if (x, y) in cubePoints:
                     print(chr(9608), end='', flush=False) # Draw full block.
-                elif (x, y) in cubePoints and (x, y + 1) not in cubePoints:
-                    print(chr(9600), end='', flush=False) # Draw top half of block.
-                elif not (x, y) in cubePoints and (x, y + 1) in cubePoints:
-                    print(chr(9604), end='', flush=False) # Draw bottom half of block.
                 else:
                     print(' ', end='', flush=False) # Draw empty space.
             print(flush=False)
         print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
 
-        time.sleep(0.1) # Pause for a bit.
+        time.sleep(PAUSE_AMOUNT) # Pause for a bit.
 
         # Erase the screen:
         if sys.platform == 'win32':
