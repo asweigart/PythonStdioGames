@@ -59,8 +59,8 @@ def transformPoint(point):
     """Converts the 3D xyz point to a 2D xy point. Resizes this 2D point by a
     scale of scalex and scaley, then moves the point by translatex and
     translatey."""
-    return (int(point[0] * SCALEX + TRANSLATEX),
-            int(point[1] * SCALEY + TRANSLATEY))
+    return (int(point[X] * SCALEX + TRANSLATEX),
+            int(point[Y] * SCALEY + TRANSLATEY))
 
 # Each firefly is represented by dictionary with keys 'originalPosition',
 # 'rotationAmount', 'rotationVelocity', 'timeToChange', 'isLit'.
