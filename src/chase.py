@@ -4,21 +4,7 @@
 import random, sys, os
 assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
-try:
-    import bext #  # Attempt to import the bext module for colorful text.
-except:
-    bext = None # It's no big deal if bext isn't installed.
-
-if bext is not None:
-    bext.bg('black') # Set the background color to black.
-
 WALL = chr(9608) # Character 9608 is '█'
-
-
-def fg(color):
-    if bext is not None:
-        bext.fg(color) # Set the foreground color, if bext is installed.
-
 
 def clearScreen():
     # Clear the previously drawn text:
@@ -81,16 +67,12 @@ def drawBoard(board, robots, playerPosition):
         for x in range(board['width']):
             # Draw the appropriate character:
             if board[(x, y)] == WALL:
-                fg('white')
                 print(WALL, end='')
             elif board[(x, y)] == 'x':
-                fg('yellow')
                 print('x', end='')
             elif (x, y) in robots:
-                fg('red')
                 print('r', end='')
             elif (x, y) == playerPosition:
-                fg('green')
                 print('P', end='')
             else:
                 print(' ', end='')
@@ -172,7 +154,6 @@ def getPlayerMove(board, robots, playerPosition):
 
     while True:
         # Get player's move:
-        fg('white')
         print('(T)eleports remaining: %s' % (board['teleports']))
         print('                             (%s) (%s) (%s)' % (q, w, e))
         print('                             (%s) (S) (%s)' % (a, d))
@@ -209,7 +190,6 @@ while True: # Main game loop.
     drawBoard(theBoard, theRobots, playerPosition)
 
     if len(theRobots) == 0: # Check if the player has won.
-        fg('yellow')
         print('You win!')
         sys.exit()
 
@@ -219,6 +199,5 @@ while True: # Main game loop.
     for x, y in theRobots: # Check if the player has lost.
         if (x, y) == playerPosition:
             drawBoard(theBoard, theRobots, playerPosition)
-            fg('red')
             print('You got caught by a robot!')
             sys.exit()
