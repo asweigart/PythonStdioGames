@@ -27,15 +27,15 @@ while True: # Main program loop.
             bottom = (x, y + 1) in currentCells
 
             if top and bottom:
-                print(chr(9608), end='', flush=False) # Both halves.
+                print(chr(9608), end='') # Fill in both halves.
             elif top and not bottom:
-                print(chr(9600), end='', flush=False) # Just top half.
+                print(chr(9600), end='') # Fill in top half.
             elif not top and bottom:
-                print(chr(9604), end='', flush=False) # Just bottom half.
+                print(chr(9604), end='') # Fill in bottom half.
             elif not top and not bottom:
-                print(' ', end='', flush=False) # Empty cell.
+                print(' ', end='') # Fill in nothing.
 
-        print('', flush=False) # Print a newline at the end of the row.
+        print('') # Print a newline at the end of the row.
     print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
 
     # Calculate next cells based on current cells:
