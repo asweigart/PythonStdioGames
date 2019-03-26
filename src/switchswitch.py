@@ -1,4 +1,4 @@
-# Switch Switch by Al Sweigart, al@inventwithpython.com
+# Switchboard by Al Sweigart, al@inventwithpython.com
 import random, sys
 
 NUMBER_OF_SWITCHES = 6

@@ -18,7 +18,7 @@ PAUSE = 0.25
 FISH_TYPES = [
   {'right': ['><>'],          'left': ['<><']},
   {'right': ['>||>'],         'left': ['<||<']},
-  {'right': ['>))>'],         'left': ['<[[<']},
+  {'right': ['>))>'],         'left': ['<((<']},
   {'right': ['>||o', '>||.'], 'left': ['o||<', '.||<']},
   {'right': ['>))o', '>)).'], 'left': ['o[[<', '.[[<']},
   {'right': ['>-==>'],        'left': ['<==-<']},
@@ -53,7 +53,7 @@ def main():
     for i in range(NUM_KELP):
         kelp = {'x': random.randint(0, WIDTH - 2), 'segments': []}
         # Generate each segment of the kelp.
-        for i in range(random.randint(6, HEIGHT - 1)):
+        for i in range(random.randint(6, HEIGHT - 2)):
             kelp['segments'].append(random.choice(['(', ')']))
         KELPS.append(kelp)
 
@@ -108,23 +108,21 @@ def generateFish():
 
 
 def drawAquarium(step):
-    global FISHES, BUBBLERS, BUBBLES, KELP
-
     # Simulate the fish for one step:
     for fish in FISHES:
         # Move the fish horizontally:
         if step % fish['hspeed'] == 0:
             if fish['goingRight']:
                 if fish['location']['x'] != WIDTH - 1 - LONGEST_FISH_LENGTH:
-                    fish['location']['x'] += 1 # Move the fish left.
+                    fish['location']['x'] += 1 # Move the fish right.
                 else:
-                    fish['goingRight'] = not fish['goingRight'] # Turn the fish around.
+                    fish['goingRight'] = False # Turn the fish around.
                     fish['colors'].reverse() # Turn the colors around too.
             elif not fish['goingRight']:
                 if fish['location']['x'] != 0:
-                    fish['location']['x'] -= 1 # Move the fish right.
+                    fish['location']['x'] -= 1 # Move the fish left.
                 else:
-                    fish['goingRight'] = not fish['goingRight'] # Turn the fish around.
+                    fish['goingRight'] = True # Turn the fish around.
                     fish['colors'].reverse() # Turn the colors around too.
 
         # Fish can randomly change their horizontal direction:
@@ -139,12 +137,12 @@ def drawAquarium(step):
                 if fish['location']['y'] != HEIGHT - 2:
                     fish['location']['y'] += 1 # Move the fish down.
                 else:
-                    fish['goingDown'] = not fish['goingDown'] # Turn the fish around.
+                    fish['goingDown'] = False # Turn the fish around.
             elif not fish['goingDown']:
                 if fish['location']['y'] != 0:
                     fish['location']['y'] -= 1 # Move the fish up.
                 else:
-                    fish['goingDown'] = not fish['goingDown'] # Turn the fish around.
+                    fish['goingDown'] = True # Turn the fish around.
 
         # Fish can randomly change their vertical direction:
         fish['vchange'] -= 1
