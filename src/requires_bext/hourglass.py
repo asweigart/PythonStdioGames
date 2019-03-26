@@ -39,7 +39,8 @@ try:
             print('Ctrl-C to quit.', end='')
 
             # Simulate all sand in the sandspace:
-            allSand.sort(key=lambda v: v[Y], reverse=True) # Sort from bottom sand up.
+            #allSand.sort(key=lambda v: v[Y], reverse=True) # Sort from bottom sand up.
+            random.shuffle(allSand) # Random order of grain simulation.
 
             sandMoved = False
             for i, sand in enumerate(allSand):
