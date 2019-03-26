@@ -32,6 +32,7 @@ Additional guidelines include:
 * Include a link to a run-through of the program on https://pythontutor.com so that the student can see how the program runs.
 * Longer, more descriptive variable names are better than shorter ones. Avoid using single-letter variable names except for `i` and `j`, or `x` and `y`.
 * Have comments marked as `# EXPERIMENT!` that describe minor changes that they can make (increasing health, changing difficulty, etc.)
+* Use jsdifflib to create online diffs. *This is an easy way for students to find their own typos when copying the code. An example is here: https://inventwithpython.com/invent4thed/diff/*
 * Use `assert` statements to catch common typos the student makes when typing in the code, especially for constants that they may modify.
 * Use Python 3. *The only time Python 2 is appropriate to use is when there's a large existing codebase. But this is for new programmers working on greenfield projects.*
 * Stick to characters in CP437 "extended ASCII" encoding. *Windows' command line is the limiting factor here; it can't display all UTF-8 characters.*
@@ -52,6 +53,18 @@ After making several of these programs, I've notice various "categories" of prog
 * STDIO-only. *You can't undo things that have been previously printed (aside from "printing" backspace characters to erase characters on the current line). The output is like an append-only log file.*
 * Curses-like. *Requires the `bext` module, but can clear/refresh the screen, draw at arbitrary places on the screen in color, etc.*
 * Modify source code to run. *Instead of getting input from `input()`, the user edits variables at the top of the file to change the settings in the program.*
+
+
+Additional modules I recommend using:
+
+* `bext` for colorful text and controlling the positioning of the text cursor.
+* `pyperclip` for copying/psating text with the clipboard.
+* `playsound` for playing sound files.
+* `pyttsx3` for text to speech.
+* `pytextcavas` for 2D strings you can draw on
+* `pyrect` for rectangle data structure
+* `pybresenham` for various line-drawing functions
+
 
 
 TODO NOTES
