@@ -3,14 +3,7 @@
 
 # nounlist.txt can be downloaded from http://www.desiquintans.com/downloads/nounlist/nounlist.txt
 
-import random
-
-fo = open('nounlist.txt')
-nouns = fo.readlines()
-fo.close()
-
-for i, noun in enumerate(nouns):
-    nouns[i] = noun.strip() # Remove the trailing \n.
+import random, os, sys
 
 def pluralize(word):
     if word.endswith('o'):
@@ -21,6 +14,18 @@ def pluralize(word):
         return word + 'es'
     else:
         return word + 's'
+
+
+# Loading nouns from nounlist.txt
+if not os.path.exists('nounlist.txt'):
+    sys.exit('nounlist.txt not found. Download it from http://www.desiquintans.com/downloads/nounlist/nounlist.txt')
+
+fo = open('nounlist.txt')
+nouns = fo.readlines()
+fo.close()
+
+for i, noun in enumerate(nouns):
+    nouns[i] = noun.strip() # Remove the trailing \n from each string.
 
 print('Generating silly pluralizations...')
 
@@ -38,4 +43,4 @@ try:
         print('The plural of %s is %s.' % (originalWord, sillyWord))
         response = input()
 except KeyboardInterrupt:
-    pass
+    sys.exit()
