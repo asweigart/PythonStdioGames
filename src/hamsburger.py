@@ -27,20 +27,35 @@ fo.close()
 for i, noun in enumerate(nouns):
     nouns[i] = noun.strip() # Remove the trailing \n from each string.
 
-print('Generating silly pluralizations...')
+if not os.path.exists('hamsburger.txt'):
+    print('Generating silly pluralizations for hamsburger.txt...')
 
-sillyPluralizations = []
-for stem in nouns:
-    for fullWord in nouns:
-        if fullWord.startswith(stem) and fullWord != stem:
-            sillyPluralizations.append((fullWord, pluralize(stem) + fullWord[len(stem):]))
+    sillyPluralizations = []
+    for stem in nouns:
+        for fullWord in nouns:
+            if fullWord.startswith(stem) and fullWord != stem:
+                sillyPluralizations.append('The plural of %s is %s.' % (fullWord, pluralize(stem) + fullWord[len(stem):]))
 
-print(len(sillyPluralizations), 'silly pluralizations generated.')
+    # Write the silly pluralizations out to hamsburger.txt.
+    fo = open('hamsburger.txt', 'w')
+    fo.write('\n'.join(sillyPluralizations))
+    fo.close()
+
+    print(len(sillyPluralizations), 'silly pluralizations generated.')
+else:
+    # Reading in hamsburger.txt:
+    fo = open('hamsburger.txt')
+    sillyPluralizations = fo.readlines()
+    fo.close()
+
+    for i, line in enumerate(sillyPluralizations):
+        sillyPluralizations[i] = line.strip() # Remove the \n.
+
+
 print('Press Ctrl-C to quit, or press Enter for more words.')
 try:
     while True:
-        originalWord, sillyWord = random.choice(sillyPluralizations)
-        print('The plural of %s is %s.' % (originalWord, sillyWord))
+        print(random.choice(sillyPluralizations))
         response = input()
 except KeyboardInterrupt:
     sys.exit()
