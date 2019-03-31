@@ -72,6 +72,8 @@ TODO NOTES
 
 (The rest of these are placeholder ideas and not officially a part of this README)
 
+TODO - explain why I don't use cls/clear if it isn't necessary (it's to make programs compatible with non terminal environemnts, like idle or vscode or pycharm)
+
 Games should:
 
 * Have unit tests, which show how you can call the individual functions and see what they do with their input.
