@@ -1,9 +1,6 @@
 # Rail Fence Cipher, by Al Sweigart al@inventwithpython.com
 # Implements a simple encryption system. https://en.wikipedia.org/wiki/Rail_fence_cipher
 
-import sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
-
 try:
     import pyperclip # Try to import pyperclip to copy the text to the clipboard.
 except:

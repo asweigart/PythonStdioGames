@@ -1,5 +1,4 @@
 import os, random, shutil, sys, time
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 WIDTH, HEIGHT = shutil.get_terminal_size()
 HEIGHT = (HEIGHT - 1) * 2 # Leave a row free for "Press Ctrl-C..." message.

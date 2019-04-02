@@ -2,7 +2,6 @@
 # Move around the board, running away from robots. Try to get the robots to crash into each other.
 
 import random, sys, os
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 WALL = chr(9608) # Character 9608 is '█'
 

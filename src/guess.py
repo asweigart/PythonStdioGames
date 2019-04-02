@@ -1,7 +1,6 @@
 # A guess-the-number game, by Al Sweigart al@inventwithpython.com
 
-import random, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
+import random
 
 secretNumber = random.randint(1, 100) # Select a random number.
 print('I am thinking of a number between 1 and 100.')

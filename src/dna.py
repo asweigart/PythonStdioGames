@@ -1,9 +1,7 @@
 # DNA Animation Demo by Al Sweigart
 # Thanks to matoken for inspiration: https://asciinema.org/a/155441
 
-import random, time, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
-
+import random, time
 
 # These are the individual rows of the DNA animation:
 rows = [

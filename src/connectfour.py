@@ -1,7 +1,6 @@
 # Connect Four, by Al Sweigart al@inventwithpython.com
 
 import sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 EMPTY_SPACE = '.'
 X_PLAYER = 'X'

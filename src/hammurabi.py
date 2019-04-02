@@ -1,34 +1,27 @@
 # Hammurabi, by Al Sweigart al@inventwithpython.com
-# A Python 3 port of the classic BASIC game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
+# The classic BASIC game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
 
-import random, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
-
-
-"""
-Game mechanics:
-- The game is played over 10 years, and starts with 100 people, 1000 acres, and 3000 bushels of grain.
-- Each year has three phases: buy/sell land, feed the population, and plant grain for next year.
-- Land trades between 17 and 26 bushels per acre, the price changing each year.
-- 20 bushels feeds 1 person.
-- 2 bushels are used to plant 1 acre, 1 person can plant 10 acres.
-- Next years' harvest is (acres plantd x random number 1 to 5)
-- Each year has a 15% chance of plague that kills half the population.
-- If more 45% of the people starve in a single year, you instantly lose.
-
-
-Best ending:     <3% of the population died and >10 acres per person.
-Mediocre ending: >3% to 10% of the population died or >9 to 10 acres per person.
-Bad ending:      >10% to 33% of the population died or >7 to 9 acres per person.
-Worst ending:    >33% of the population died or <7 acres per person.
-"""
-
+import random
 
 def runGame():
-    print('Hammurabi by Doug Dyment and Others')
+    print('HAMMURABI by Doug Dyment and others')
     print('Try your hand at governing ancient Sumeria for a ten-year term of office.')
     print()
-    print()
+    print("""Game mechanics:
+- The game is played over 10 years, each turn is one year.
+- You start with 100 people, 1000 acres, and 3000 bushels of grain.
+- Each year has 3 phases: buy/sell land, feed population, and plant grain.
+- Land trades between 17 and 26 bushels per acre. The price changes each year.
+- 20 bushels feeds 1 person.
+- 2 bushels are used to plant 1 acre, 1 person can plant 10 acres.
+- Next years' harvest is (acres plantd * random number 1 to 5)
+- Each year has a 15%% chance of plague that kills half the population.
+- If more 45%% of the people starve in a single year, you instantly lose.
+
+Best ending:     <=3%% population died and >10 acres per person.
+Mediocre ending: >3% to 10%% population died or >9 to 10 acres per person.
+Bad ending:      >10% to 33%% population died or >7 to 9 acres per person.
+Worst ending:    >33%% population died or <7 acres per person.""")
     print()
 
     year = 1
@@ -46,8 +39,7 @@ def runGame():
 
     while True:
         print()
-        print('Hammurabi, I beg to report to you,')
-        print('in the year %s:' % (year))
+        print('Hammurabi, I beg to report to you, in the year %s:' % (year))
         print('- %s people starved' % (deaths))
         print('- %s came to the city' % (births))
         print()
@@ -55,9 +47,9 @@ def runGame():
         totalPopulation += births
 
         if random.randint(0, 99) <= 15:
-            print('* * * A HORRIBLE PLAGUE STRUCK! HALF THE PEOPLE DIED. * * *')
+            print('*** A HORRIBLE PLAGUE STRUCK! HALF THE PEOPLE DIED. ***')
             print()
-            population //= 2
+            population //= 2 # Halve the population.
 
         print('  Population: %s people' % (population))
         print('        Land: %s acres (%s per person)' % (acresOwned, acresOwned // population))
@@ -69,7 +61,7 @@ def runGame():
         if year > 10: # End game after year 10.
              break
 
-        print('Phases: BUY/SELL LAND > FEED POPULATION > PLANT CROPS')
+        print('Phases: BUY/SELL LAND => FEED POPULATION => PLANT CROPS')
         print()
 
         # Buying and selling land:

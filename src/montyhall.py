@@ -2,8 +2,6 @@
 # A simulation of the Monty Hall Problem. https://en.wikipedia.org/wiki/Monty_Hall_problem
 
 import random, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
-
 
 ALL_CLOSED = """
 +------+  +------+  +------+

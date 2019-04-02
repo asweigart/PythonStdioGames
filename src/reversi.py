@@ -3,7 +3,6 @@
 # https://en.wikipedia.org/wiki/Reversi
 
 import random, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 def getScoreOfBoard(board):
     # Determine the score by counting the tiles. Returns a dictionary with keys 'X' and 'O'.

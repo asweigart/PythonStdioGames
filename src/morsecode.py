@@ -1,9 +1,6 @@
 # Morse Code, by Al Sweigart al@inventwithpython.com
 # A program that translates between English and Morse Code.
 
-import sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
-
 try:
     import pyperclip
 except:

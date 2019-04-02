@@ -1,8 +1,7 @@
 # Hacking, by Al Sweigart al@inventwithpython.com
 # This game is a clone of the Fallout hacking mini-game.
 
-import random, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
+import random
 
 GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\' # The "filler" characters for the board.
 
