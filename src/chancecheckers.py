@@ -2,7 +2,7 @@
 
 # In this game of checkers, players can move 3 checkers at a time. These
 # checkers are randomly decided, and can be the player's own checkers or their
-# opponents', but you can't move your opponents' kinged checkers.
+# opponents', but you can't move your opponents' promoted checkers.
 
 import random, copy, sys
 
@@ -87,15 +87,15 @@ def otherCheckers(checker):
 
 
 def getPossibleDstMoves(board, srcSpace):
-    # Return a list of moves that the checker at `srcSpace` can move to.
-    if board.get(srcSpace, '.') not in 'xoXO':
-        return []
+    # Return a list of possible destination moves from `srcSpace`.
+    if board.get(srcSpace) not in ('x', 'o', 'X', 'O'):
+        return [] # There are no checkers at `srcSpace`.
 
-    checker = board[srcSpace] # The checker at srcSpace.
+    checker = board[srcSpace] # The checker at `srcSpace`
     possibleDstMoves = []     # Possible places the checker can move to.
     possibleDstCaptures = []  # Possible places to move to after capturing.
 
-    # Various spaces adjacent/near srcSpace.
+    # Setup varaibles for various spaces adjacent/near `srcSpace`.
     column = srcSpace[0]
     row = int(srcSpace[1])
     downLeftSpace    = prevCol(column) + str(row + 1)
@@ -148,8 +148,8 @@ def getMove(board, turn, availableMoves):
         for column in ALL_COLUMNS:
             thisSpace = column + str(row)
             isNotAnAvailableMove = board.get(thisSpace, '').lower() not in availableMoves
-            isAKingChecker = board.get(thisSpace, '') == otherCheckers(turn)[1]
-            if isNotAnAvailableMove or isAKingChecker:
+            isAPromotedChecker = board.get(thisSpace, '') == otherCheckers(turn)[1]
+            if isNotAnAvailableMove or isAPromotedChecker:
                 continue # This is not a checker the player can move.
 
             # See where the checker at this space can move:
@@ -203,9 +203,10 @@ def makeMove(board, srcMove, dstMove):
         elif dstColumn > srcColumn and dstRow > srcRow:
             board[nextCol(srcColumn) + str(srcRow + 1)] = EMPTY
 
-    # See if we need to king this checker:
+    # See if we need to promote this checker:
     if dstRow == 1 or dstRow == 8:
-        board[dstMove] = board[dstMove].upper() # King this checker.
+        print(board[dstMove].upper(), 'has been promoted!')
+        board[dstMove] = board[dstMove].upper() # Promote this checker.
 
     # See if this checker can do another jump after jumping:
     dstMoves, dstCaptures = getPossibleDstMoves(board, dstMove)
