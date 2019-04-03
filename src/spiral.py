@@ -1,9 +1,10 @@
 # Spiral, by Al Sweigart al@inventwithpython.com
 
-MARK = 'O'
-assert len(MARK) == 1
+size = 23  # Change the size to any positive integer you want.
+MARK = 'O' # Change the mark character to any character you want.
 
-size = 23
+
+assert len(MARK) == 1
 canvas = {'width': size, 'height': size}
 x = 0
 y = 0
