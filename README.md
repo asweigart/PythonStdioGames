@@ -97,6 +97,13 @@ TODO polishing process
 Game Ideas:
 - Nonograms https://en.wikipedia.org/wiki/Nonogram
 
+Class protocol:
+* Copy the source code by typing it.
+* Run the program and test it.
+* Run it under a debugger, answer questions about variable values.
+* Make the changes suggested for this project.
+* Try to remake the game without looking at the source, read the list of objectives.
+
 
 TODO entry outline (what a single program looks like on its page or book)
 - Name
@@ -112,6 +119,7 @@ TODO entry outline (what a single program looks like on its page or book)
 - List of questions that probe if the reader knows how the code works.
 - List of experiments to try out.
 
+Note: Remind readers that they can hit Ctrl-C to quit a program. Also remind them to run the programs under a debugger.
 
 Note: I think we should avoid the "stub/skeleton" code format. The reader is put into a position of trying to read the original programmer's mind, instead of just creating a game they want to play. So this means we don't need extensive docstrings, unit tests, or assertions at the top of each function.
 

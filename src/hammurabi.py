@@ -193,24 +193,3 @@ Worst ending:    >33%% population died or <7 acres per person.""")
 
 if __name__ == '__main__':
     runGame()
-
-
-"""
-Something weird in these numbers:
-
-in the year 11:
-- 0 people starved
-- 7 came to the city
-
-  Population: 39 people
-        Land: 400 acres
-     Harvest: 1 bushels per acres, 320 total
-    Rats ate: 0 bushels
-Grain stored: 1740 bushels in store.
-
-In your 10-year term of office, 9 percent of the
-population starved per year on the average, i.e. a total of
-50 people died!!
-You started with 10 acres per person and ended with
-10 acres per person.
-"""
