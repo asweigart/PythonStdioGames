@@ -24,7 +24,6 @@ def drawBoard(board):
             tileChars.append(board[(x, y)])
 
     boardToDraw = """     1234567
-     v v v v
     +-------+
     |{}{}{}{}{}{}{}|
     |{}{}{}{}{}{}{}|
@@ -37,6 +36,7 @@ def drawBoard(board):
 
 
 def getPlayerMove(playerTile, board):
+    # Let the player select a column to drop a tile into.
     while True:
         print('Player %s, enter your move (1-7) or "quit":' % playerTile)
         move = input()
@@ -48,8 +48,9 @@ def getPlayerMove(playerTile, board):
         try:
             move = int(move) - 1 # - 1 adjust for 0-based index.
         except:
-            continue
+            continue # They didn't enter a number, ask again for their move.
 
+        # Starting from the bottom, find the first not-occupied space.
         for i in range(5, -1, -1):
             if board[(move, i)] == EMPTY_SPACE:
                 return (move, i)
@@ -59,8 +60,8 @@ def isFull(board):
     for y in range(6):
         for x in range(7):
             if board[(x, y)] != EMPTY_SPACE:
-                return False
-    return True
+                return False # Found an empty space, so return False.
+    return True # All spaces are full.
 
 
 def isWinner(playerTile, board):
