@@ -71,13 +71,13 @@ def drawBoard(board):
 def prevCol(column):
     # Return the column letter that comes before `column`, or '' if it's 'A'.
     return {'': '', 'A': '', 'B': 'A', 'C': 'B', 'D': 'C',
-            'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G'}[column]
+            'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G', '': ''}[column]
 
 
 def nextCol(column):
     # Return the column letter that comes after `column`, or '' if it's 'H'.
     return {'': '', 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E',
-            'E': 'F', 'F': 'G', 'G': 'H', 'H': ''}[column]
+            'E': 'F', 'F': 'G', 'G': 'H', 'H': '', '': ''}[column]
 
 
 def otherCheckers(checker):
