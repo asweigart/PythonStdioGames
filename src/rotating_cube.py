@@ -1,6 +1,6 @@
 # Rotating Cube, by Al Sweigart al@inventwithpython.com
 
-import math, time, random, sys, os
+import math, time, sys, os
 
 PAUSE_AMOUNT = 0.05
 WIDTH, HEIGHT = 80, 25
@@ -17,7 +17,8 @@ Z = 2
 
 def line(x1, y1, x2, y2):
     """Returns a list of  all of the points in a line
-    between `x1`, `y1` and `x2`, `y2`. Uses the Bresenham line algorithm."""
+    between `x1`, `y1` and `x2`, `y2`. Uses the Bresenham line algorithm.
+    More info at https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
     points = []
     isSteep = abs(y2-y1) > abs(x2-x1)
     if isSteep:

@@ -1,6 +1,6 @@
 # Rotating Cube (Bext Version), by Al Sweigart al@inventwithpython.com
 
-import math, time, random, sys
+import math, time, sys
 try:
     import bext
 except:
@@ -21,14 +21,9 @@ DEFAULT_TRANSLATEY = (HEIGHT - 4) // 2
 
 
 def line(x1, y1, x2, y2):
-    """
-    Returns a generator that produces all of the points in a line between `x1`, `y1` and `x2`, `y2`.
-
-    (Uses the Bresenham line algorithm.)
-
-    >>> list(line(0, 0, 10, 3))
-    [(0, 0), (1, 0), (2, 1), (3, 1), (4, 1), (5, 1), (6, 2), (7, 2), (8, 2), (9, 3), (10, 3)]
-    """
+    """Returns a list of  all of the points in a line
+    between `x1`, `y1` and `x2`, `y2`. Uses the Bresenham line algorithm.
+    More info at https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
     x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2) # TODO - Do we want this line?
 
     isSteep = abs(y2-y1) > abs(x2-x1)
@@ -155,9 +150,9 @@ try:
         step += 1
 
         # Rotate cube:
-        rx += 0.03 + random.randint(1, 20) / 100
-        ry += 0.08  + random.randint(1, 20) / 100
-        rz += 0.13 + random.randint(1, 20) / 100
+        rx += 0.03
+        ry += 0.08
+        rz += 0.13
         for i in range(len(points)):
             rotatedPoints[i] = rotateXYZ(*points[i], rx, ry, rz)
 
