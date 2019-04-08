@@ -60,7 +60,7 @@ def getNumberOfMatchingLetters(word1, word2):
 
 
 def getOneWordExcept(blocklist=None):
-    if blocklist is None:
+    if blocklist == None:
         blocklist = []
 
     while True:

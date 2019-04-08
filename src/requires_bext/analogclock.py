@@ -122,7 +122,7 @@ try:
             bext.goto(x, y)
             print('@', end='')
 
-        time.sleep(1) # Insert a one-second pause.
+        time.sleep(0.5) # Insert a half-second pause.
 except KeyboardInterrupt:
     pass
 

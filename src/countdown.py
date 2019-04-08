@@ -1,7 +1,9 @@
 # Countdown, by Al Sweigart al@inventwithpython.com
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
+# Requires our sevseg.py program.
 
 import time, os, sys
+import sevseg # Imports our sevseg.py program.
 
 if len(sys.argv) > 1:
     secondsLeft = int(sys.argv[1])
@@ -12,39 +14,6 @@ if secondsLeft > 359999:
     # secondsLeft can't be 100 hours or more:
     secondsLeft = 359999
 
-"""
-A labeled seven-segment display:
- __A__
-|     |
-F     B
-|__G__|
-|     |
-E     C
-|__D__|
-
-Each digit in a seven-segment display:
- __       __   __        __   __  __   __   __
-|  |   |  __|  __| |__| |__  |__    | |__| |__|
-|__|   | |__   __|    |  __| |__|   | |__|  __|
-
-Our clock will look like this:
- __   __     __   __     __   __
-|__| |__| * |__| |__| * |__| |__|
-|__| |__| * |__| |__| * |__| |__|
-h[0] h[1]   m[0] m[1]   s[0] s[1]
-"""
-
-# We store which segments each digit lights up:
-SEGMENTS = {'0': 'ABCDEF',  '1': 'BC',    '2': 'ABDEG',  '3': 'ABCDG',
-            '4': 'BCFG',    '5': 'ACDFG', '6': 'ACDEFG', '7': 'ABC',
-            '8': 'ABCDEFG', '9': 'ABCDFG'}
-
-# Setup some segment constants:
-H_FILLED = '__'
-H_EMPTY  = '  '
-V_FILLED = '|'
-V_EMPTY  = ' '
-
 try:
     while True:
         # Clear the screen:
@@ -53,81 +22,34 @@ try:
         else:
             os.system('clear') # Clears macOS/Linux terminal.
 
-        # Get the current time from the computer's clock:
+        # Get the hours/minutes/seconds from secondsLeft:
+        # For example: 7265 is 2 hours, 1 minute, 5 seconds.
+        # So 7265 // 3600 is 2 hours:
         h = str(secondsLeft // 3600)
+        # And 7265 % 3600 is 65, and 65 // 60 is 1 minute:
         m = str((secondsLeft % 3600) // 60)
+        # And 7265 % 60 is 5 seconds:
         s = str(secondsLeft % 60)
 
-        # Pad these strings with zeros, if needed:
-        h = h.zfill(2)
-        m = m.zfill(2)
-        s = s.zfill(2)
+        # Pad these strings to two digits with zeros, if needed:
+        h = h.zfill(2) # h[0] is the first digit, h[1] is the second digit
+        m = m.zfill(2) # m[0] is the first digit, m[1] is the second digit
+        s = s.zfill(2) # s[0] is the first digit, s[1] is the second digit
 
-        # Figure out the A segment display:
-        print(' ', end='')
-        print(H_FILLED if 'A' in SEGMENTS[h[0]] else H_EMPTY, end='')
-        print('   ', end='')
-        print(H_FILLED if 'A' in SEGMENTS[h[1]] else H_EMPTY, end='')
-        print('     ', end='')
-        print(H_FILLED if 'A' in SEGMENTS[m[0]] else H_EMPTY, end='')
-        print('   ', end='')
-        print(H_FILLED if 'A' in SEGMENTS[m[1]] else H_EMPTY, end='')
-        print('     ', end='')
-        print(H_FILLED if 'A' in SEGMENTS[s[0]] else H_EMPTY, end='')
-        print('   ', end='')
-        print(H_FILLED if 'A' in SEGMENTS[s[1]] else H_EMPTY, end='')
-        print() # Print a newline.
+        # Get the digit strings from the sevseg module:
+        hDigits = sevseg.getSevSegStr(h)
+        hTopRow, hMiddleRow, hBottomRow = hDigits.splitlines()
 
-        # Figure out the FGB segment displays:
-        print(V_FILLED if 'F' in SEGMENTS[h[0]] else V_EMPTY, end='')
-        print(H_FILLED if 'G' in SEGMENTS[h[0]] else H_EMPTY, end='')
-        print(V_FILLED if 'B' in SEGMENTS[h[0]] else V_EMPTY, end='')
-        print(' ', end='')
-        print(V_FILLED if 'F' in SEGMENTS[h[1]] else V_EMPTY, end='')
-        print(H_FILLED if 'G' in SEGMENTS[h[1]] else H_EMPTY, end='')
-        print(V_FILLED if 'B' in SEGMENTS[h[1]] else V_EMPTY, end='')
-        print(' * ', end='')
-        print(V_FILLED if 'F' in SEGMENTS[m[0]] else V_EMPTY, end='')
-        print(H_FILLED if 'G' in SEGMENTS[m[0]] else H_EMPTY, end='')
-        print(V_FILLED if 'B' in SEGMENTS[m[0]] else V_EMPTY, end='')
-        print(' ', end='')
-        print(V_FILLED if 'F' in SEGMENTS[m[1]] else V_EMPTY, end='')
-        print(H_FILLED if 'G' in SEGMENTS[m[1]] else H_EMPTY, end='')
-        print(V_FILLED if 'B' in SEGMENTS[m[1]] else V_EMPTY, end='')
-        print(' * ', end='')
-        print(V_FILLED if 'F' in SEGMENTS[s[0]] else V_EMPTY, end='')
-        print(H_FILLED if 'G' in SEGMENTS[s[0]] else H_EMPTY, end='')
-        print(V_FILLED if 'B' in SEGMENTS[s[0]] else V_EMPTY, end='')
-        print(' ', end='')
-        print(V_FILLED if 'F' in SEGMENTS[s[1]] else V_EMPTY, end='')
-        print(H_FILLED if 'G' in SEGMENTS[s[1]] else H_EMPTY, end='')
-        print(V_FILLED if 'B' in SEGMENTS[s[1]] else V_EMPTY, end='')
-        print() # Print a newline.
+        mDigits = sevseg.getSevSegStr(m)
+        mTopRow, mMiddleRow, mBottomRow = mDigits.splitlines()
 
-        # Figure out the EDC segment displays:
-        print(V_FILLED if 'E' in SEGMENTS[h[0]] else V_EMPTY, end='')
-        print(H_FILLED if 'D' in SEGMENTS[h[0]] else H_EMPTY, end='')
-        print(V_FILLED if 'C' in SEGMENTS[h[0]] else V_EMPTY, end='')
-        print(' ', end='')
-        print(V_FILLED if 'E' in SEGMENTS[h[1]] else V_EMPTY, end='')
-        print(H_FILLED if 'D' in SEGMENTS[h[1]] else H_EMPTY, end='')
-        print(V_FILLED if 'C' in SEGMENTS[h[1]] else V_EMPTY, end='')
-        print(' * ', end='')
-        print(V_FILLED if 'E' in SEGMENTS[m[0]] else V_EMPTY, end='')
-        print(H_FILLED if 'D' in SEGMENTS[m[0]] else H_EMPTY, end='')
-        print(V_FILLED if 'C' in SEGMENTS[m[0]] else V_EMPTY, end='')
-        print(' ', end='')
-        print(V_FILLED if 'E' in SEGMENTS[m[1]] else V_EMPTY, end='')
-        print(H_FILLED if 'D' in SEGMENTS[m[1]] else H_EMPTY, end='')
-        print(V_FILLED if 'C' in SEGMENTS[m[1]] else V_EMPTY, end='')
-        print(' * ', end='')
-        print(V_FILLED if 'E' in SEGMENTS[s[0]] else V_EMPTY, end='')
-        print(H_FILLED if 'D' in SEGMENTS[s[0]] else H_EMPTY, end='')
-        print(V_FILLED if 'C' in SEGMENTS[s[0]] else V_EMPTY, end='')
-        print(' ', end='')
-        print(V_FILLED if 'E' in SEGMENTS[s[1]] else V_EMPTY, end='')
-        print(H_FILLED if 'D' in SEGMENTS[s[1]] else H_EMPTY, end='')
-        print(V_FILLED if 'C' in SEGMENTS[s[1]] else V_EMPTY, end='')
+        sDigits = sevseg.getSevSegStr(s)
+        sTopRow, sMiddleRow, sBottomRow = sDigits.splitlines()
+
+        # Display the digits:
+        print(hTopRow    + '     ' + mTopRow    + '     ' + sTopRow)
+        print(hMiddleRow + '  *  ' + mMiddleRow + '  *  ' + sMiddleRow)
+        print(hBottomRow + '  *  ' + mBottomRow + '  *  ' + sBottomRow)
         print() # Print a newline.
 
         if secondsLeft == 0:
