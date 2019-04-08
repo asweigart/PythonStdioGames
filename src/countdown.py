@@ -1,7 +1,16 @@
-# Digital Clock, by Al Sweigart al@inventwithpython.com
+# Countdown, by Al Sweigart al@inventwithpython.com
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
 
 import time, os, sys
+
+if len(sys.argv) > 1:
+    secondsLeft = int(sys.argv[1])
+else:
+    secondsLeft = 300 # Change this to whatever value you like.
+
+if secondsLeft > 359999:
+    # secondsLeft can't be 100 hours or more:
+    secondsLeft = 359999
 
 """
 A labeled seven-segment display:
@@ -45,10 +54,9 @@ try:
             os.system('clear') # Clears macOS/Linux terminal.
 
         # Get the current time from the computer's clock:
-        currentTime = time.localtime()
-        h = str(currentTime.tm_hour % 12) # Use 12-hour clock, not 24.
-        m = str(currentTime.tm_min)
-        s = str(currentTime.tm_sec)
+        h = str(secondsLeft // 3600)
+        m = str((secondsLeft % 3600) // 60)
+        s = str(secondsLeft % 60)
 
         # Pad these strings with zeros, if needed:
         h = h.zfill(2)
@@ -122,10 +130,17 @@ try:
         print(V_FILLED if 'C' in SEGMENTS[s[1]] else V_EMPTY, end='')
         print() # Print a newline.
 
+        if secondsLeft == 0:
+            print()
+            print('    * * * * BOOM * * * *')
+            break
+
         print()
         print('Press Ctrl-C to quit.')
 
         time.sleep(1) # Insert a one-second pause.
+
+        secondsLeft -= 1
 
 except KeyboardInterrupt:
     pass
