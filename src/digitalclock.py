@@ -43,7 +43,11 @@ try:
         print()
         print('Press Ctrl-C to quit.')
 
-        time.sleep(1) # Insert a one-second pause.
+        # Keep looping until the second changes:
+        while True:
+            time.sleep(0.01)
+            if time.localtime().tm_sec != currentTime.tm_sec:
+                break
 
 except KeyboardInterrupt:
     pass
