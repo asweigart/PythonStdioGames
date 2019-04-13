@@ -24,7 +24,7 @@ def printCards(cards):
     rows = ['', '', '', '', '']
 
     for i, card in enumerate(cards):
-        rows[0] += '----- '
+        rows[0] += '----- ' # Print the top line of the card.
         if card == BACKSIDE:
             # Print a card's back
             for i in range(1, 4):
@@ -35,7 +35,7 @@ def printCards(cards):
             rows[1] += '|%s | ' % (rank.ljust(2))
             rows[2] += '| %s | ' % (suit)
             rows[3] += '| %s| ' % (rank.rjust(2))
-        rows[4] += '----- '
+        rows[4] += '----- ' # Print the bottom line of the card.
 
     for i in range(5):
         print(rows[i])
@@ -47,20 +47,20 @@ def getCardValue(cards):
 
     # Add the value for the non-ace cards:
     for card in cards:
-        rank = card[0]
+        rank = card[0] # `card` is a tuple like (rank, suit)
         if rank == 'A':
             numberOfAces += 1
-        elif rank in ('K', 'Q', 'J'):
+        elif rank in ('K', 'Q', 'J'): # Face cards are worth 10 points.
             value += 10
         else:
-            value += int(rank)
+            value += int(rank) # Numbered cards are worth their number.
 
     # Add the value for the aces:
     for i in range(numberOfAces):
-        if 21 - value <= 11:
-            value += 11
+        if value + 11 <= 21:
+            value += 11 # Add 11 if it doesn't push the total over 21...
         else:
-            value += 1
+            value += 1 # ...otherwise, just add 1.
 
     return value
 
@@ -151,6 +151,7 @@ while True: # Main game loop.
         # Check if the player has bust:
         if getCardValue(playerHand) > 21:
             print('Bust!')
+            pause()
             results = 'lost'
             break
 
