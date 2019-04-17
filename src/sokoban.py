@@ -17,7 +17,7 @@ print('SOKOBAN: The classic crate-pushing game.')
 print()
 print('Push the solid crates onto the squares. You can only push, you')
 print('can\'t pull them. Enter WASD letters to move, numbers to switch')
-print('levels, or "quit" to quit the game.')
+print('levels, U to undo a move, or "quit" to quit the game.')
 print('You can enter multiple WASD or U letters to make several moves at')
 print('once.')
 print()
@@ -64,6 +64,8 @@ def drawLevel(levelNum, levelData):
 
 currentLevelNumber = 0
 currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
+undoStack = [copy.copy(currentLevel)]
+lastMove = ''
 while True: # Main game loop.
     drawLevel(currentLevelNumber, currentLevel)
 
@@ -80,6 +82,8 @@ while True: # Main game loop.
         # Change the current level:
         currentLevelNumber = int(moves)
         currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
+        undoStack = [copy.copy(currentLevel)]
+        lastMove = ''
         continue
 
     # Validate the input; make sure it only has W, A, S, D, or U:
@@ -94,11 +98,17 @@ while True: # Main game loop.
 
     # Carry out the moves:
     for move in moves:
-        #breakpoint()
         # Find the player position:
         for position, character in currentLevel.items():
             if character in ('@', '+'):
                 playerx, playery = position
+
+        if move == 'U':
+            if len(undoStack) == 1:
+                continue # Can't undo past the first move.
+            undoStack.pop()
+            currentLevel = copy.copy(undoStack[-1])
+            continue
 
         if move == 'W':
             movex, movey = 0, -1
@@ -153,6 +163,10 @@ while True: # Main game loop.
                 elif spaceAfterMoveToSpace == '.':
                     currentLevel[(playerx + (movex * 2), playery + (movey * 2))] = '*'
 
+        # Save the state of the level for the undo feature:
+        undoStack.append(copy.copy(currentLevel))
+        lastMove = move
+
         # Check if the player has finished the level:
         levelIsSolved = True
         for position, character in currentLevel.items():
@@ -165,3 +179,6 @@ while True: # Main game loop.
             input('Press Enter to continue...')
             currentLevelNumber = (currentLevelNumber + 1) % len(ALL_LEVELS)
             currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
+            undoStack = [copy.copy(currentLevel)]
+            lastMove = ''
+
