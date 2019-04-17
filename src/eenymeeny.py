@@ -6,7 +6,7 @@ import random, time, sys
 
 SCREEN_WIDTH = 60
 RHYME = ['EENY', 'MEENY', 'MINY', 'MOE', 'CATCH A', 'TIGER', 'BY THE', 'TOE', 'IF IT', 'HOLLERS', 'LET IT', 'GO', 'EENY', 'MEENY', 'MINY', 'MOE']
-NAMES = ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Charles', 'Joseph', 'Thomas', 'Christopher', 'Daniel', 'Paul', 'Mark', 'Donald', 'George', 'Kenneth', 'Steven', 'Edward', 'Brian', 'Ronald', 'Anthony', 'Kevin', 'Jason', 'Matthew', 'Gary', 'Timothy', 'Jose', 'Larry', 'Jeffrey', 'Frank', 'Scott', 'Eric', 'Stephen', 'Andrew', 'Raymond', 'Gregory', 'Joshua', 'Jerry', 'Dennis', 'Walter', 'Patrick', 'Peter', 'Harold', 'Douglas', 'Henry', 'Carl', 'Arthur', 'Ryan', 'Roger', 'Mary', 'Patricia', 'Linda', 'Barbara', 'Elizabeth', 'Jennifer', 'Maria', 'Susan', 'Margaret', 'Dorothy', 'Lisa', 'Nancy', 'Karen', 'Betty', 'Helen', 'Sandra', 'Donna', 'Carol', 'Ruth', 'Sharon', 'Michelle', 'Laura', 'Sarah', 'Kimberly', 'Deborah', 'Jessica', 'Shirley', 'Cynthia', 'Angela', 'Melissa', 'Brenda', 'Amy', 'Anna', 'Rebecca', 'Virginia', 'Kathleen', 'Pamela', 'Martha', 'Debra', 'Amanda', 'Stephanie', 'Carolyn', 'Christine', 'Marie', 'Janet', 'Catherine', 'Frances', 'Ann', 'Joyce', 'Diane']
+NAMES = ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Charles', 'Mary', 'Patricia', 'Linda', 'Barbara', 'Elizabeth', 'Jennifer', 'Maria', 'Susan']
 random.shuffle(NAMES)
 
 print('Eeny, Meeny, Miny, Moe')
@@ -15,7 +15,7 @@ print()
 # Get the players' names:
 playerNames = []
 while True:
-    print('Enter a player\'s name, or nothing when done:')
+    print('Enter a player\'s name, or enter nothing when finished:')
     playerName = input().upper()
     if playerName != '': # Player can enter anything except a blank name.
         playerNames.append(playerName)
@@ -29,7 +29,7 @@ while True:
         numParticipants = int(input())
     except ValueError:
         continue # Player entered non-integer; ask again.
-    if 2 <= numParticipants < len(NAMES) + len(playerNames):
+    if 2 <= numParticipants <= len(NAMES) + len(playerNames):
         break
 
 # Get the position of the player:
@@ -56,7 +56,7 @@ while len(participants) > 1:
 
         rows[-1] += name + ' '
 
-    # Begin one round of elimination:
+    # Run through one round of elimination:
     for rhymeWordIndex, rhymeWord in enumerate(RHYME):
         currentPerson = participants[rhymeWordIndex % len(participants)]
         for row in rows:
@@ -84,6 +84,7 @@ while len(participants) > 1:
         print('Thanks for playing!')
         sys.exit()
 
+    # Pause before starting the next elimination round.
     try:
         input('Press Enter to continue, or Ctrl-C to quit.')
     except KeyboardInterrupt:
