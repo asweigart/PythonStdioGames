@@ -9,15 +9,18 @@ Be able to type 1d6+1 and have it respond.
 12 (1, 2, 3, 3, +3)
 """
 
-import random
+import random, sys
 
 print('DICE ROLLER')
 print('(Enter text like `3d6` to roll three 6-sided dice, or 1d10+2 to')
-print('roll one 10-sided dice and add 2. Enter `quit` to quit.)')
+print('roll one 10-sided dice and add 2. Press Ctrl-C to quit.)')
 print()
 
 while True: # Main program loop:
-    diceStr = input('> ') # The prompt to enter the dice string.
+    try:
+        diceStr = input('> ') # The prompt to enter the dice string.
+    except KeyboardInterrupt:
+        sys.exit()
     diceStr = diceStr.lower().replace(' ', '') # Clean up the dice string.
 
     try:

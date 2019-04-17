@@ -46,6 +46,7 @@ for playerName in playerNames:
             break
 
 # Start the elimination process:
+startingPosition = 0
 while len(participants) > 1:
     # Figure out how many names to put on each row:
     rows = ['']
@@ -58,7 +59,7 @@ while len(participants) > 1:
 
     # Run through one round of elimination:
     for rhymeWordIndex, rhymeWord in enumerate(RHYME):
-        currentPerson = participants[rhymeWordIndex % len(participants)]
+        currentPerson = participants[(rhymeWordIndex + startingPosition) % len(participants)]
         for row in rows:
             # Include a space at the end, so we don't match names with the
             # same prefix, i.e. 'Doug' and 'Douglas':
@@ -69,6 +70,7 @@ while len(participants) > 1:
             print(row)
         print('\n')
         time.sleep(0.5)
+    startingPosition = (rhymeWordIndex + startingPosition) % len(participants)
 
     # Remove the eliminated person from the participants list:
     print(currentPerson.upper() + ' HAS BEEN ELIMINATED.')
