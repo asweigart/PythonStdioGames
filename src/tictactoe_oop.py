@@ -43,18 +43,18 @@ class TicTacToeBoard:
           -+-+-
           {self.spaces['1']}|{self.spaces['2']}|{self.spaces['3']}  1 2 3''')
 
-    def isWinner(self, mark):
-        """Return True if mark is a winner on this TicTacToeBoard."""
-        bo, m = self.spaces, mark # Shorter names for "syntactic sugar".
+    def isWinner(self, player):
+        """Return True if player is a winner on this TicTacToeBoard."""
+        bo, p = self.spaces, player # Shorter names for "syntactic sugar".
         # Check for 3 marks across the 3 rows, 3 columns, and 2 diagonals.
-        return ((bo['7'] == m and bo['8'] == m and bo['9'] == m) or
-                (bo['4'] == m and bo['5'] == m and bo['6'] == m) or
-                (bo['1'] == m and bo['2'] == m and bo['3'] == m) or
-                (bo['7'] == m and bo['4'] == m and bo['1'] == m) or
-                (bo['8'] == m and bo['5'] == m and bo['2'] == m) or
-                (bo['9'] == m and bo['6'] == m and bo['3'] == m) or
-                (bo['7'] == m and bo['5'] == m and bo['3'] == m) or
-                (bo['9'] == m and bo['5'] == m and bo['1'] == m))
+        return ((bo['7'] == p and bo['8'] == p and bo['9'] == p) or
+                (bo['4'] == p and bo['5'] == p and bo['6'] == p) or
+                (bo['1'] == p and bo['2'] == p and bo['3'] == p) or
+                (bo['7'] == p and bo['4'] == p and bo['1'] == p) or
+                (bo['8'] == p and bo['5'] == p and bo['2'] == p) or
+                (bo['9'] == p and bo['6'] == p and bo['3'] == p) or
+                (bo['7'] == p and bo['5'] == p and bo['3'] == p) or
+                (bo['9'] == p and bo['5'] == p and bo['1'] == p))
 
     def getPlayerMove(self, player):
         """Let the player type in their move."""
@@ -71,9 +71,9 @@ class TicTacToeBoard:
                 return False
         return True
 
-    def setSpace(self, space, mark):
-        """Sets the space on the board to mark."""
-        self.spaces[space] = mark
+    def setSpace(self, space, player):
+        """Sets the space on the board to player."""
+        self.spaces[space] = player
 
 if __name__ == '__main__':
     main() # Call main() if this module is run, but not when imported.

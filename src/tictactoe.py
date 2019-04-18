@@ -43,18 +43,18 @@ def drawBoard(board):
         -+-+-
         {board['1']}|{board['2']}|{board['3']}  1 2 3''')
 
-def isWinner(board, mark):
-    """Return True if mark is a winner on board."""
-    bo, m = board, mark # Shorter names for "syntactic sugar".
+def isWinner(board, player):
+    """Return True if player is a winner on board."""
+    bo, p = board, player # Shorter names for "syntactic sugar".
     # Check for 3 marks across the 3 rows, 3 columns, and 2 diagonals.
-    return ((bo['7'] == m and bo['8'] == m and bo['9'] == m) or
-            (bo['4'] == m and bo['5'] == m and bo['6'] == m) or
-            (bo['1'] == m and bo['2'] == m and bo['3'] == m) or
-            (bo['7'] == m and bo['4'] == m and bo['1'] == m) or
-            (bo['8'] == m and bo['5'] == m and bo['2'] == m) or
-            (bo['9'] == m and bo['6'] == m and bo['3'] == m) or
-            (bo['7'] == m and bo['5'] == m and bo['3'] == m) or
-            (bo['9'] == m and bo['5'] == m and bo['1'] == m))
+    return ((bo['7'] == p and bo['8'] == p and bo['9'] == p) or
+            (bo['4'] == p and bo['5'] == p and bo['6'] == p) or
+            (bo['1'] == p and bo['2'] == p and bo['3'] == p) or
+            (bo['7'] == p and bo['4'] == p and bo['1'] == p) or
+            (bo['8'] == p and bo['5'] == p and bo['2'] == p) or
+            (bo['9'] == p and bo['6'] == p and bo['3'] == p) or
+            (bo['7'] == p and bo['5'] == p and bo['3'] == p) or
+            (bo['9'] == p and bo['5'] == p and bo['1'] == p))
 
 def getPlayerMove(board, player):
     """Let the player type in their move."""
@@ -71,9 +71,9 @@ def isBoardFull(board):
             return False
     return True
 
-def setSpace(board, space, mark):
-    """Sets the space on the board to mark."""
-    board[space] = mark
+def setSpace(board, space, player):
+    """Sets the space on the board to player."""
+    board[space] = player
 
 if __name__ == '__main__':
     main() # Call main() if this module is run, but not when imported.
