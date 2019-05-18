@@ -7,7 +7,7 @@ NOTE: Currently I'm not accepting pull requests at this time, but feel free to l
 About this Collection
 =====================
 
-After beginners learn the syntax of Python and basic programming concpets (loops, branching, functions, etc.) they often hit a dead-end: "How do I become better at programming?" At this point, people will tell them to work on their own practice projects (but this leaves them without guidance on what to make and how to make it) or to contribute to open source projects (but its difficult to find one, understand its code base, and get guidance on how to contribute).
+After beginners learn the syntax of Python and basic programming concepts (loops, branching, functions, etc.) they often hit a dead-end: "How do I become better at programming?" At this point, people will tell them to work on their own practice projects (but this leaves them without guidance on what to make and how to make it) or to contribute to open source projects (but its difficult to find one, understand its code base, and get guidance on how to contribute).
 
 What helped me learn to code was finding small projects whose source code I copied and then made small adjustments to. This gave me insight on how loops, branching, and functions combined together into actual programs.
 
