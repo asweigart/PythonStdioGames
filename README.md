@@ -2,6 +2,8 @@
 
 A compilation of text-based games written in Python 3.
 
+NOTE: Currently I'm not accepting pull requests at this time, but feel free to leave comments or send suggestions to al@inventwithpython.com
+
 About this Collection
 =====================
 
