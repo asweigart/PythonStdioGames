@@ -1,6 +1,13 @@
 # PythonStdioGames
 
-A compilation of text-based games written in Python 3.
+A compilation of text-based games written in Python 3. Click on the src folder to view all of the programs.
+
+Some of them may require additional modules to run. You can use pip3 to install them:
+
+* pip3 install bext
+* pip3 install pyperclip
+* pip3 install pyrect
+* pip3 install pybresenham
 
 NOTE: Currently I'm not accepting pull requests at this time, but feel free to leave comments or send suggestions to al@inventwithpython.com
 
