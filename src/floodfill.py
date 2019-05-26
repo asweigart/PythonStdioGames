@@ -2,6 +2,8 @@ import sys, random
 
 random.seed(42)
 
+# TODO - switch to dictionary for the main data structure
+
 # Create the image (make sure it's rectangular!)
 #im = [list('..................................................'),
 #      list('....######################........................'),
@@ -119,6 +121,7 @@ def printImage(image):
 
 while True:
     printImage(im)
+    # TODO - fix wording here and also add input validation
     print('Enter x coordinate, y coordinate, and new character separated by spaces (or Ctrl-C to quit):')
     try:
         x, y, newChar = input().split()
