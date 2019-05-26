@@ -138,6 +138,8 @@ print('find ZOPHIE THE CAT in time and accuse the guilty party?')
 print()
 input('Press Enter to begin...')
 
+
+
 startTime = time.time()
 endTime = startTime + TIME_TO_SOLVE
 

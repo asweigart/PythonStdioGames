@@ -7,8 +7,7 @@ fire spreads to neighbor if its a tree.
 
 
 """
-import random, time
-import bext
+import random, time, bext
 
 WIDTH = 79
 HEIGHT = 22

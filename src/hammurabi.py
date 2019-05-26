@@ -24,6 +24,8 @@ Bad ending:      >10% to 33%% population died or >7 to 9 acres per person.
 Worst ending:    >33%% population died or <7 acres per person.""")
     print()
 
+
+
     year = 1
     deaths = 0
     births = 5
@@ -155,6 +157,7 @@ Worst ending:    >33%% population died or <7 acres per person.""")
             print('also been declared a national fink!!!!')
             return # Game over.
 
+
         population -= deaths # Update population.
         year += 1
 
@@ -169,24 +172,29 @@ Worst ending:    >33%% population died or <7 acres per person.""")
     print()
 
 
+
     if percentageDiedPerYear > 33 or acresPerPerson < 7:
         print('Due to this extreme mismanagement you have not only')
         print('been impeached and thrown out of office but you have')
         print('also been declared a national fink!!!!')
         return
+
     elif percentageDiedPerYear > 10 or acresPerPerson < 9:
         print('Your heavy-handed performance smacks of Nero and Ivan IV.')
         print('The people (remaining) find you an unpleasant ruler, and,')
         print('frankly, hate your guts!!')
         return
+
     elif percentageDiedPerYear > 3 or acresPerPerson < 10:
         print('Your performance could have been somewhat better, but')
         print('really wasn\'t too bad at all. %s people' % (random.randint(0, int(population * 0.8))))
         print('would dearly like to see you assassinated but we all have our')
         print('trivial problems.')
+
     else:
         print('A fantastic performance!!! Mandela, Elizabeth II, and')
         print('Annan combined could not have done better!')
+
 
     print()
     print('So long for now.')

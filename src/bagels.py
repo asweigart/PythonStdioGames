@@ -1,5 +1,5 @@
 # Bagels, a game similar to Mastermind, by Al Sweigart al@inventwithpython.com
-
+# This game is featured in Invent Your Own Computer Games with Python from No Starch Press. https://nostarch.com/inventwithpython
 import random
 
 NUM_DIGITS = 3

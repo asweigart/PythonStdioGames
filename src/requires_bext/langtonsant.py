@@ -4,7 +4,7 @@
 import random, copy, bext
 
 WIDTH = 79
-HEIGHT = 24
+HEIGHT = 23
 NUMBER_OF_ANTS = 10
 
 # Setup the screen:

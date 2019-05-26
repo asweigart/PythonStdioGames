@@ -22,9 +22,12 @@ print('You can enter multiple WASD or U letters to make several moves at')
 print('once.')
 print()
 
+
+
 # Load each level from sokobanLevels.txt
 if not os.path.exists('sokobanLevels.txt'):
-    sys.exit('Download the level file from https://github.com/asweigart/PythonStdioGames/blob/master/src/sokobanLevels.txt')
+    print('Download the level file from https://github.com/asweigart/PythonStdioGames/blob/master/src/sokobanLevels.txt')
+    sys.exit()
 ALL_LEVELS = []
 with open('sokobanLevels.txt') as levelFile:
     currentLevelFromFile = {'width': 0, 'height': 0} # Each level is represented by a dictionary.
@@ -73,7 +76,8 @@ while True: # Main game loop.
     moves = input('Enter moves> ').upper()
 
     if moves == 'QUIT':
-        sys.exit('Thanks for playing!')
+        print('Thanks for playing!')
+        sys.exit()
 
     if moves.isdigit():
         if not (0 <= int(moves) < len(ALL_LEVELS)):

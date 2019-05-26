@@ -1,5 +1,7 @@
 # Shell Game, by Al Sweigart al@inventwithpython.com
 
+# TODO - update this with output of the swaps
+
 import random, time, sys
 
 print('SHELL GAME')

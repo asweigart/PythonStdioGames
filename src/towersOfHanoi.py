@@ -43,6 +43,10 @@ def printTowers():
     print('%s A%s%s B%s%s C\n' % (emptySpace, emptySpace, emptySpace, emptySpace, emptySpace))
 
 
+print('The Towers of Hanoi')
+print('Move the tower, one disk at a time, to another pole.')
+print('Larger disks cannot rest on top of a smaller disk.')
+
 while True: # Main program loop.
     # Display the towers and ask the user for a move:
     printTowers()

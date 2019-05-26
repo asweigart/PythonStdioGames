@@ -19,7 +19,8 @@ def pluralize(word):
 
 # Loading nouns from nounlist.txt
 if not os.path.exists('nounlist.txt'):
-    sys.exit('nounlist.txt not found. Download it from http://www.desiquintans.com/downloads/nounlist/nounlist.txt')
+    print('nounlist.txt not found. Download it from http://www.desiquintans.com/downloads/nounlist/nounlist.txt')
+    sys.exit()
 
 fo = open('nounlist.txt')
 nouns = fo.readlines()
