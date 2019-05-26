@@ -15,12 +15,12 @@ def printDisk(diskNum):
     emptySpace = ' ' * (TOTAL_DISKS - diskNum)
     if diskNum == 0:
         # Just draw the pole.
-        sys.stdout.write(emptySpace + '||' + emptySpace)
+        print(emptySpace + '||' + emptySpace, end='')
     else:
         # Draw the disk.
         diskSpace = '@' * diskNum
         diskNumLabel = str(diskNum).rjust(2, '_')
-        sys.stdout.write(emptySpace + diskSpace + diskNumLabel + diskSpace + emptySpace)
+        print(emptySpace + diskSpace + diskNumLabel + diskSpace + emptySpace, end='')
 
 def printTowers():
     # Print all three towers.
@@ -30,7 +30,7 @@ def printTowers():
                 printDisk(0)
             else:
                 printDisk(tower[level])
-        sys.stdout.write('\n')
+        print()
     # Print the tower labels A, B, and C.
     emptySpace = ' ' * (TOTAL_DISKS)
     print('%s A%s%s B%s%s C\n' % (emptySpace, emptySpace, emptySpace, emptySpace, emptySpace))
