@@ -1,112 +1,94 @@
+# Floodfill, by Al Sweigart al@inventwithpython.com
+
+# This is a basic demo of both the recursive and iterative floodfill
+# algorithms. This algorithm is commonly used in "fill tools" in
+# graphics programs like MS Paint or Photoshop. This algorithm is
+# also used in the floodit.py game.
+
 import sys, random
 
+# To reproduce the same random rectangles, use the same seed:
 random.seed(42)
 
-# TODO - switch to dictionary for the main data structure
-
-# Create the image (make sure it's rectangular!)
-#im = [list('..................................................'),
-#      list('....######################........................'),
-#      list('....#....................#........................'),
-#      list('....#....................#........................'),
-#      list('....#....................#.......**************...'),
-#      list('....#....................#.......*............*...'),
-#      list('....#....................#.......*............*...'),
-#      list('....#.......@@@@@@@@@@@@@@@@.....*............*...'),
-#      list('....#.......@............#.@.....**************...'),
-#      list('....########@#############.@......................'),
-#      list('............@..............@.........++...........'),
-#      list('............@..............@.........+.+..........'),
-#      list('............@..............@.........+..+.........'),
-#      list('............@..............@.........+...+........'),
-#      list('............@@@@@@@@@@@@@@@@.........+....+.......'),
-#      list('......................................+....+......'),
-#      list('.......................................+...+......'),
-#      list('........................................+..+......'),
-#      list('.........................................+.+......'),
-#      list('..........................................++......')]
-
-#HEIGHT = len(im)
-#WIDTH = len(im[0])
-
-HEIGHT = 20
+# Constants for the size of the field:
+HEIGHT = 18
 WIDTH = 50
-im = []
-for i in range(HEIGHT):
-    im.append(list('.' * WIDTH))
 
-# Create random rectangles:
-for i in range(5):
-    rectLeft = random.randint(0, WIDTH - 3)
-    rectTop = random.randint(0, HEIGHT - 3)
-    rectWidth = random.randint(3, WIDTH - rectLeft)
-    rectHeight = random.randint(3, HEIGHT - rectTop)
+NUM_RECTANGLES = 5 # How many random rectangles are drawn.
+MIN_RECT_SIZE = 3 # Smallest size of the random rectangles.
+NINE_SPACES = ' ' * 9 # Used when displaying x coordinates.
 
+# Create a blank field:
+field = {}
+for x in range(WIDTH):
+    for y in range(HEIGHT):
+        field[(x, y)] = '.'
+
+# Create random rectangles in the field:
+for i in range(NUM_RECTANGLES):
+    # Create a random rectangle's topleft corner and size:
+    rectLeft = random.randint(0, WIDTH - MIN_RECT_SIZE)
+    rectTop = random.randint(0, HEIGHT - MIN_RECT_SIZE)
+    rectWidth = random.randint(MIN_RECT_SIZE, WIDTH - rectLeft)
+    rectHeight = random.randint(MIN_RECT_SIZE, HEIGHT - rectTop)
+
+    # Select a random character for this
     rectChar = random.choice('!@#*OX')
+
     for x in range(rectLeft, rectLeft + rectWidth):
-        # Draw top line:
-        im[rectTop][x] = rectChar
-        # Draw bottom line:
-        im[rectTop + rectHeight - 1][x] = rectChar
+        field[(x, rectTop)] = rectChar # Setup the top line.
+        field[(x, rectTop + rectHeight - 1)] = rectChar # Setup bottom line.
 
     for y in range(rectTop, rectTop + rectHeight):
-        # Draw left line:
-        im[y][rectLeft] = rectChar
+        field[(rectLeft, y)] = rectChar
         # Draw right line:
-        im[y][rectLeft + rectWidth - 1] = rectChar
+        field[(rectLeft + rectWidth - 1, y)] = rectChar
 
 
-for row in im:
-    assert len(row) == len(im[0]), 'Image is not rectangular!'
+def recursiveFloodFill(field, x, y, newChar, curChar=None):
+    if curChar == None:
+        curChar = field[(x, y)]
 
-def recursiveFloodFill(image, x, y, newChar, oldChar=None):
-    if oldChar == None:
-        # If oldChar isn't passed, assume it's the character at x, y.
-        oldChar = image[y][x]
-    if oldChar == newChar or image[y][x] != oldChar:
-        # BASE CASE
+    # Base case; just return:
+    if curChar == newChar or field[(x, y)] != curChar:
         return
 
-    image[y][x] = newChar # Change the character.
+    field[(x, y)] = newChar # Change the character.
 
-    # Change the neighboring characters.
-    if y + 1 < HEIGHT and image[y + 1][x] == oldChar:
-        # RECURSIVE CASE
-        recursiveFloodFill(image, x, y + 1, newChar, oldChar)
-    if y - 1 >= 0 and image[y - 1][x] == oldChar:
-        # RECURSIVE CASE
-        recursiveFloodFill(image, x, y - 1, newChar, oldChar)
-    if x + 1 < WIDTH and image[y][x + 1] == oldChar:
-        # RECURSIVE CASE
-        recursiveFloodFill(image, x + 1, y, newChar, oldChar)
-    if x - 1 >= 0 and image[y][x - 1] == oldChar:
-        # RECURSIVE CASE
-        recursiveFloodFill(image, x - 1, y, newChar, oldChar)
+    # Recursive case; change the neighboring characters:
+    if y + 1 < HEIGHT and field[(x, y + 1)] == curChar:
+        recursiveFloodFill(field, x, y + 1, newChar, curChar)
+    if y - 1 >= 0 and field[(x, y - 1)] == curChar:
+        recursiveFloodFill(field, x, y - 1, newChar, curChar)
+    if x + 1 < WIDTH and field[(x + 1, y)] == curChar:
+        recursiveFloodFill(field, x + 1, y, newChar, curChar)
+    if x - 1 >= 0 and field[(x - 1, y)] == curChar:
+        recursiveFloodFill(field, x - 1, y, newChar, curChar)
 
-def iterativeFloodFill(image, startx, starty, newChar):
-    oldChar = image[starty][startx]
+def iterativeFloodFill(field, startx, starty, newChar):
+    curChar = field[(startx, starty)]
 
     coordinatesToChange = [(startx, starty)]
 
     while len(coordinatesToChange) > 0:
         x, y = coordinatesToChange.pop()
 
-        image[y][x] = newChar # Change the character.
+        field[(x, y)] = newChar # Change the character.
 
-        # Change the neighboring characters.
-        if y + 1 < HEIGHT and image[y + 1][x] == oldChar:
+        # Change the neighboring characters:
+        if y + 1 < HEIGHT and field[(x, y + 1)] == curChar:
             coordinatesToChange.append((x, y + 1))
-        if y - 1 >= 0 and image[y - 1][x] == oldChar:
+        if y - 1 >= 0 and field[(x, y - 1)] == curChar:
             coordinatesToChange.append((x, y - 1))
-        if x + 1 < WIDTH and image[y][x + 1] == oldChar:
+        if x + 1 < WIDTH and field[(x + 1, y)] == curChar:
             coordinatesToChange.append((x + 1, y))
-        if x - 1 >= 0 and image[y][x - 1] == oldChar:
+        if x - 1 >= 0 and field[(x - 1, y)] == curChar:
             coordinatesToChange.append((x - 1, y))
 
-def printImage(image):
+def printField(field):
     print('   ', end='')
     for i in range(WIDTH // 10):
-        print(str(i) + '         ', end='')
+        print(str(i) + NINE_SPACES, end='')
     print()
     print('   ' + ('0123456789' * 10)[:WIDTH])
 
@@ -115,18 +97,26 @@ def printImage(image):
         print(str(y).rjust(2) + ' ', end='')
         for x in range(WIDTH):
             # Print each column.
-            print(image[y][x], end='')
+            print(field[(x, y)], end='')
         print()
     print()
 
 while True:
-    printImage(im)
-    # TODO - fix wording here and also add input validation
-    print('Enter x coordinate, y coordinate, and new character separated by spaces (or Ctrl-C to quit):')
-    try:
-        x, y, newChar = input().split()
-    except KeyboardInterrupt:
+    printField(field)
+    print('Enter "[x] [y] [char]" (e.g. "3 3 #", no quotes) or QUIT to quit:')
+
+    response = input()
+
+    if response.upper() == 'QUIT':
         sys.exit()
 
-    recursiveFloodFill(im, int(x), int(y), newChar)
-    #iterativeFloodFill(im, int(x), int(y), newChar)
+    response = response.split()
+    if len(response) != 3:
+        print('Invalid input. Enter something like "3 3 #" (without quotes).')
+
+    x, y, newChar = response
+
+    # Call either the recursive or iterative flood fill algorithms:
+    # (They both do the same thing.)
+    recursiveFloodFill(field, int(x), int(y), newChar)
+    #iterativeFloodFill(field, int(x), int(y), newChar)
