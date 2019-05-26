@@ -1,10 +1,7 @@
-# Chance Checkers, by Al Sweigart al@inventwithpython.com
-# In this game of checkers, players can move 3 checkers at a time. These
-# checkers are randomly decided, and can be the player's own checkers or their
-# opponents', but you can't move your opponents' promoted checkers.
+# Checkers, by Al Sweigart al@inventwithpython.com
 # In this version, capturing is not mandatory.
 
-import random, copy, sys
+import copy, sys
 
 ALL_COLUMNS = 'ABCDEFGH'
 # The columns where odd/even rows can have checkers on them.
@@ -131,19 +128,17 @@ def getPossibleDstMoves(board, srcSpace):
 
     return (possibleDstMoves, possibleDstCaptures)
 
-def getMove(board, turn, availableMoves):
+def getMove(board, turn):
     # Present the player with valid moves and ask them to choose one:
     assert turn in ('X', 'O')
-    print('Available moves for', turn, 'player:', ' '.join(availableMoves))
 
     # Get possible "source" spaces to select:
     checkersThatCanMove = []
     for row in range(1, 9): # Loop over all the spaces on the board.
         for column in ALL_COLUMNS:
             thisSpace = column + str(row)
-            isNotAnAvailableMove = board.get(thisSpace, '').lower() not in availableMoves
-            isAPromotedChecker = board.get(thisSpace, '') == otherCheckers(turn)[1]
-            if isNotAnAvailableMove or isAPromotedChecker:
+            isNotAnAvailableMove = board.get(thisSpace, '').upper() != turn
+            if isNotAnAvailableMove:
                 continue # This is not a checker the player can move.
 
             # See where the checker at this space can move:
@@ -228,22 +223,19 @@ theBoard = getNewBoard()
 turn = 'X' # X goes first.
 while True: # Main game loop.
     drawBoard(theBoard)
-    moves = random.sample('xxxooo', 3) # Randomly pick 3 'x' and 'o'.
-    while moves != []:
-        # Get the player's move and carry it out:
-        srcMove, dstMove = getMove(theBoard, turn, moves)
-        if (srcMove, dstMove) != (None, None):
-            moves.remove(theBoard[srcMove].lower())
-            theBoard = makeMove(theBoard, srcMove, dstMove)
 
-        if hasLost(theBoard, otherCheckers(turn)[1]):
-            drawBoard(theBoard)
-            print(turn + ' is the winner!')
-            sys.exit()
-        if (srcMove, dstMove) == (None, None):
-            drawBoard(theBoard)
-            print(otherCheckers(turn)[1] + ' is the winner!')
-            sys.exit()
-        if moves != []:
-            drawBoard(theBoard)
+    # Get the player's move and carry it out:
+    srcMove, dstMove = getMove(theBoard, turn)
+    if (srcMove, dstMove) == (None, None): # TODO - remove this?
+        break # If no moves can be made, end this player's turn.
+    theBoard = makeMove(theBoard, srcMove, dstMove)
+
+    if hasLost(theBoard, otherCheckers(turn)[1]):
+        drawBoard(theBoard)
+        print(turn + ' is the winner!')
+        sys.exit()
+    if (srcMove, dstMove) == (None, None):
+        drawBoard(theBoard)
+        print(otherCheckers(turn)[1] + ' is the winner!')
+        sys.exit()
     turn = otherCheckers(turn)[1] # Switch turns to the other player.
