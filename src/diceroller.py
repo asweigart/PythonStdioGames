@@ -1,37 +1,35 @@
 # Dice Roller, by Al Sweigart al@inventwithpython.com
-
-"""
-Be able to type 1d6+1 and have it respond.
-
-> 3d6
-7 (2, 2, 3)
-> 4d10+3
-12 (1, 2, 3, 3, +3)
-"""
+# Simulates dice rolls using the Dungeons & Dragons notation.
 
 import random, sys
 
 print('DICE ROLLER')
-print('(Enter text like `3d6` to roll three 6-sided dice, or 1d10+2 to')
-print('roll one 10-sided dice and add 2. Press Ctrl-C to quit.)')
+print('Example input:')
+print('  3d6 rolls three 6-sided dice')
+print('  1d10+2 rolls one 10-sided dice, and adds 2')
+print('  2d17-1 rolls two 17-sided dice, and subtracts 1')
+print('  QUIT quits the program')
 print()
 
 while True: # Main program loop:
     try:
         diceStr = input('> ') # The prompt to enter the dice string.
-    except KeyboardInterrupt:
-        sys.exit()
-    diceStr = diceStr.lower().replace(' ', '') # Clean up the dice string.
+        if diceStr.upper() == 'QUIT':
+            sys.exit()
 
-    try:
+        # Clean up the dice string by removing spaces, converting to lowercase:
+        diceStr = diceStr.lower().replace(' ', '')
+
         # Find the number of dice to roll:
         dIndex = diceStr.find('d')
         if dIndex == -1:
-            # There is no 'd' in the dice string:
-            print('Invalid input. Enter something like `3d6` or `1d10+1`')
-            continue # Go back to the dice string prompt.
+            raise Exception('Missing the "d" character.')
 
-        numberOfDice = int(diceStr[:dIndex]) # The `3` in `3d6+1`.
+        # Get the number of dice:
+        numberOfDice = diceStr[:dIndex] # The `3` in `3d6+1`.
+        if not numberOfDice.isdecimal():
+            raise Exception('Missing the number of dice.')
+        numberOfDice = int(numberOfDice)
 
         # Find if there is a plus or minus sign:
         modIndex = diceStr.find('+')
@@ -40,19 +38,27 @@ while True: # Main program loop:
 
         # Find the number of sides:
         if modIndex == -1:
-            numberOfSides = int(diceStr[dIndex + 1:]) # The `6` in `3d6+1`.
+            numberOfSides = diceStr[dIndex + 1:] # The `6` in `3d6+1`.
+            if not numberOfSides.isdecimal():
+                raise Exception('Missing the number of sides.')
+            numberOfSides = int(numberOfSides)
+
             modAmount = 0
         else:
-            numberOfSides = int(diceStr[dIndex + 1:modIndex])
+            numberOfSides = diceStr[dIndex + 1:modIndex]
+            if not numberOfSides.isdecimal():
+                raise Exception('Missing the number of sides.')
+            numberOfSides = int(numberOfSides)
 
             # Find the modifier amount:
             modAmount = int(diceStr[modIndex + 1:]) # The `1` in `3d6+1`.
             if diceStr[modIndex] == '+':
                 pass # Do nothing if it's +.
             elif diceStr[modIndex] == '-':
-                modAmount = -modAmount # Change the modifier to negative.
+                # Change the modification amount to negative:
+                modAmount = -modAmount
 
-        # Calculate the total of the dice rolls:
+        # Simulate the dice rolls:
         rolls = []
         for i in range(numberOfDice):
             rolls.append(random.randint(1, numberOfSides))
@@ -70,6 +76,8 @@ while True: # Main program loop:
             print(', %s%s' % (diceStr[modIndex], abs(modAmount)), end='')
         print(')')
 
-    except:
+    except Exception as exc:
+        # Catch any raised exceptions and display the message to the user:
         print('Invalid input. Enter something like `3d6` or `1d10+1`')
+        print('Input was invalid because: ' + str(exc))
         continue # Go back to the dice string prompt.
