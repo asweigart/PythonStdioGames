@@ -145,7 +145,7 @@ try:
                 else:
                     print(' ', end='', flush=False) # Draw empty space.
             print(flush=False)
-        print('Press Ctrl-C or Ctrl-D to quit.', end='', flush=True)
+        print('Press Ctrl-C to quit.', end='', flush=True)
 
         time.sleep(PAUSE_AMOUNT) # Pause for a bit.
 

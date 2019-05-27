@@ -167,4 +167,4 @@ try:
             os.system('clear')
 
 except KeyboardInterrupt:
-    pass # When Ctrl-C/Ctrl-D is pressed, stop looping.
+    pass # When Ctrl-C is pressed, stop looping.
