@@ -3,7 +3,7 @@
 import math, time, sys, os
 
 PAUSE_AMOUNT = 0.05
-WIDTH, HEIGHT = 80, 25
+WIDTH, HEIGHT = 80, 24
 SCALEX = (WIDTH - 4) // 8
 SCALEY = (HEIGHT - 4) // 4 # Text cells are twice as tall as they are wide, so set scaley accordingly.
 TRANSLATEX = (WIDTH - 4) // 2
