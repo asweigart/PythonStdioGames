@@ -95,4 +95,4 @@ def getSevSegStr(number):
 
 # Uncomment these lines to see a demo:
 #for i in range(100):
-#    print(getDigits(i, 2))
+#    print(getSevSegStr(i))
