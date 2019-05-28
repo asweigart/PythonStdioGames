@@ -41,10 +41,6 @@ for x in range(WIDTH):
     for y in range(HEIGHT):
         maze[(x, y)] = WALL
 
-# Add the start and end positions:
-maze[(1, 0)] = START
-maze[(WIDTH - 2, HEIGHT - 1)] = EXIT
-
 # Create the maze:
 print('Generating maze...')
 pathFromStart = [(1, 1)]
@@ -88,6 +84,10 @@ while len(pathFromStart) > 0:
             maze[(x + 1, y)] = EMPTY
     else:
         pathFromStart.pop()
+
+# Add the start and end positions:
+maze[(1, 1)] = START
+maze[(WIDTH - 2, HEIGHT - 2)] = EXIT
 
 # Display the maze and save it to a text file.
 filename = 'maze%sx%ss%s.txt' % (WIDTH, HEIGHT, SEED)
