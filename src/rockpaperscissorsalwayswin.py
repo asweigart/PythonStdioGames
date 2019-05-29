@@ -2,6 +2,13 @@
 
 import time, sys
 
+print('ROCK, PAPER, SCISSORS')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+print('- Rock beats scissors.')
+print('- Paper beats rocks.')
+print('- Scissors beats paper.')
+
 wins = 0 # This variable keeps track of how many wins the player has.
 
 while True: # The main game loop.

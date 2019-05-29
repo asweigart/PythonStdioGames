@@ -4,6 +4,8 @@
 import random, sys
 
 print('DICE ROLLER')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 print('Example input:')
 print('  3d6 rolls three 6-sided dice')
 print('  1d10+2 rolls one 10-sided dice, and adds 2')

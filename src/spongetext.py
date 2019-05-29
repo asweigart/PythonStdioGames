@@ -7,6 +7,9 @@ try:
 except ImportError:
     pass # It's not a big deal if pyperclip is not installed.
 
+print('sPoNgEtExT')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 print('Enter your message:')
 message = input()
 print()

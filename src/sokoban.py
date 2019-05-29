@@ -14,6 +14,7 @@ CHAR_MAP = {'#': WALL, '@': FACE, '$': CRATE, '+': PLAYER_ON_GOAL,
 
 # Display the title banner and instructions:
 print('SOKOBAN: The classic crate-pushing game.')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('Push the solid crates onto the squares. You can only push, you')
 print('can\'t pull them. Enter WASD letters to move, numbers to switch')

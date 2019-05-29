@@ -39,37 +39,38 @@ def morseToEnglish(message):
             english.append(MORSE_TO_ENGLISH[code])
     return ''.join(english)
 
-def main():
-    while True:
-        print('Are you going to enter (E)nglish or (M)orse code?')
-        response = input().upper()
-        # Note that you DON'T want `response == 'E' or 'M'` here:
-        if response == 'E' or response == 'M':
-            break
 
-    if response == 'E':
-        print('Enter English text:')
-        english = input().upper()
-        print('Morse code:')
-        morse = englishToMorse(english)
-        print(morse)
-        try:
-            pyperclip.copy(morse)
-            print('(Morse copied to clipboard.)')
-        except:
-            pass
-    elif response == 'M':
-        print('Enter Morse code (with spaces in between each letter\'s code):')
-        morse = input()
-        print('English:')
-        english = morseToEnglish(morse)
-        print(english)
+print('MORSE CODE')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 
-        try:
-            pyperclip.copy(english)
-            print('(English text copied to clipboard.)')
-        except:
-            pass # If pyperclip cannot be found, it's not a big deal.
+while True:
+    print('Are you going to enter (E)nglish or (M)orse code?')
+    response = input().upper()
+    # Note that you DON'T want `response == 'E' or 'M'` here:
+    if response == 'E' or response == 'M':
+        break
 
-if __name__ == '__main__':
-    main()
+if response == 'E':
+    print('Enter English text:')
+    english = input().upper()
+    print('Morse code:')
+    morse = englishToMorse(english)
+    print(morse)
+    try:
+        pyperclip.copy(morse)
+        print('(Morse copied to clipboard.)')
+    except:
+        pass
+elif response == 'M':
+    print('Enter Morse code (with spaces in between each letter\'s code):')
+    morse = input()
+    print('English:')
+    english = morseToEnglish(morse)
+    print(english)
+
+    try:
+        pyperclip.copy(english)
+        print('(English text copied to clipboard.)')
+    except:
+        pass # If pyperclip cannot be found, it's not a big deal.

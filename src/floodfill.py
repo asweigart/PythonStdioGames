@@ -116,6 +116,12 @@ def printField(field):
         print() # Print a newline at the end of the row.
 
 
+print('FLOODFILL')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+print('This demo shows the floodfill algorithm. Pick a point and a new')
+print('new character to change TODO') # TODO use inkspill's algorithm to make blotches
+
 while True:
     printField(field)
     print('Enter "[x] [y] [char]" (e.g. "3 3 #", no quotes) or QUIT to quit:')

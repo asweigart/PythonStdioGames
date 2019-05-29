@@ -1,4 +1,9 @@
 # J'ACCUSE!, by Al Sweigart al@inventwithpython.com
+# Inspired by Homestar Runner's "Where's an Egg?" game.
+# Play the original Flash game at:
+# https://homestarrunner.com/videlectrix/wheresanegg.html
+# More info at: http://www.hrwiki.org/wiki/Where's_an_Egg%3F
+
 
 import time, random, sys
 
@@ -130,6 +135,7 @@ for interviewee in random.sample(SUSPECTS, random.randint(3, 4)):
 
 # START OF THE GAME
 print("J'ACCUSE! (a mystery game)")
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('You are the world-famous detective, Mathilde Camus.')
 print('ZOPHIE THE CAT has gone missing, and you must sift through the clues.')

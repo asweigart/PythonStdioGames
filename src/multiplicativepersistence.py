@@ -3,6 +3,10 @@
 
 import time, sys
 
+print('MULTIPLICATIVE PERSISTENCE')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+
 while True:
     print('Try to get the longest multiplicative persistence chain possible!')
     print('(Try 277777788888899, which has the longest known chain length.')

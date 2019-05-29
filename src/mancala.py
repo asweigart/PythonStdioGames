@@ -1,5 +1,6 @@
 # Mancala, by Al Sweigart al@inventwithpython.com
 # Rules at http://www.mancalarules.com/
+# More info at https://en.wikipedia.org/wiki/Mancala
 
 import sys
 
@@ -130,6 +131,9 @@ def isWinner(board):
 
 def runGame():
     """Runs a single game of Mancala."""
+    print('MANCALA - The seed sowing game.')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
 
     gameBoard = getNewBoard()
     playerTurn = '1' # Player 1 starts.

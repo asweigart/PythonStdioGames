@@ -10,6 +10,7 @@ NAMES = ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'C
 random.shuffle(NAMES)
 
 print('Eeny, Meeny, Miny, Moe')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 
 # Get the players' names:

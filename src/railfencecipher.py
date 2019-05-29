@@ -98,6 +98,10 @@ def decryptMessage(message, key):
 
 
 def main():
+    print('RAIL FENCE CIPHER')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
+
     while True:
         print('Do you want to (E)ncrypt or (D)ecrypt?')
         mode = input().upper()

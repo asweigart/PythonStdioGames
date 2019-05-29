@@ -160,21 +160,20 @@ def getPlayerMove(board):
             return move
 
 
-def runGame():
-    print('R U S H   H O U R')
-    print('Get the "a" car to the right edge of the board.')
-    print('Enter moves as <car><space><direction><space><distance>.')
-    print()
+print('RUSH HOUR')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+print('Get the "a" car to the right edge of the board.')
+print('Enter moves as <car><space><direction><space><distance>.')
+print()
 
-    gameBoard = readPuzzle(getRandomPuzzle())
-    while True:
+gameBoard = readPuzzle(getRandomPuzzle())
+while True:
+    drawBoard(gameBoard)
+    playerMove = getPlayerMove(gameBoard)
+    makeMove(gameBoard, playerMove)
+    if hasWon(gameBoard):
         drawBoard(gameBoard)
-        playerMove = getPlayerMove(gameBoard)
-        makeMove(gameBoard, playerMove)
-        if hasWon(gameBoard):
-            drawBoard(gameBoard)
-            print('PUZZLE COMPLETE!')
-            return
+        print('PUZZLE COMPLETE!')
+        sys.exit()
 
-if __name__ == '__main__':
-    runGame()

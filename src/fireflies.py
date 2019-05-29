@@ -1,11 +1,12 @@
 # Fireflies, by Al Sweigart al@inventwithpython.com
 
-# NOTE: This program must be run in a terminal window to display properly.
-# Running this in a text editor or IDE like PyCharm or IDLE won't work.
+"""NOTE: This program must be run in a terminal window to display properly.
+Running this in a text editor or IDE like PyCharm or IDLE won't work.
 
-"""This program draws points that rotate on a sphere. The sphere is invisible
-and projected onto the user's 2D screen, so it kind of looks like fireflies
-swirling around in a circle."""
+This program draws points that rotate on the surface of a sphere. The sphere
+is invisible and projected onto the user's 2D screen, so the points kind of
+look like fireflies swirling around in a circle."""
+
 
 import math, time, sys, os, random
 
@@ -19,7 +20,8 @@ TRANSLATEY = (HEIGHT - 4) // 2
 FIREFLY_DARK_CHAR = '.' # Draw a period for the firefly when it is normal.
 FIREFLY_LIGHT_CHAR = chr(9604) # Draw a "bottom half block" for the firefly lit up.
 
-# Several of the data structures are lists/tuples with x, y, z at indexes 0, 1, and 2 respectively:
+# Several of the data structures are lists/tuples with x, y, z at
+# indexes 0, 1, and 2 respectively. We'll use constants instead of integers.
 X = 0
 Y = 1
 Z = 2

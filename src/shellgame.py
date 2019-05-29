@@ -3,6 +3,7 @@
 import random, time, sys
 
 print('SHELL GAME')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('Try to find the diamond!')
 print('Press Enter to continue...')

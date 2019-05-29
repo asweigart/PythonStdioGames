@@ -1,6 +1,9 @@
 # 2048 Game, by Al Sweigart al@inventwithpython.com
+# Inspired by Gabriele Cirulli's 2048, which is a clone of Veewo Studios'
+# 1024, which in turn is a clone of the Threes! game.
+# More info at https://en.wikipedia.org/wiki/2048_(video_game)
 
-import random
+import random, sys
 
 # Constants:
 BLANK = ''
@@ -139,24 +142,20 @@ def isFull(board):
     return True
 
 
-def runGame():
-    gameBoard = getNewBoard()
+print('The 2048 Game')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 
-    while True:
+gameBoard = getNewBoard()
+
+while True:
+    drawBoard(gameBoard)
+    playerMove = getPlayerMove()
+    makeMove(gameBoard, playerMove)
+    addTwoToBoard(gameBoard)
+
+    if isFull(gameBoard):
         drawBoard(gameBoard)
-        playerMove = getPlayerMove()
-        makeMove(gameBoard, playerMove)
-        addTwoToBoard(gameBoard)
-
-        if isFull(gameBoard):
-            drawBoard(gameBoard)
-            print('Game Over')
-            return
-
-
-
-
-if __name__ == '__main__':
-    runGame()
-    pass
+        print('Game Over - Thanks for playing!')
+        sys.exit()
 

@@ -223,8 +223,11 @@ def hasLost(board, player):
                 return False
     return True
 
+
 # Main game code:
-theBoard = getNewBoard()
+print('CHANCE CHECKERS')
+print('By Al Sweigart al@inventwithpython.com')
+theBoard = getNewBoard() # Create a new checker board data structure.
 turn = 'X' # X goes first.
 while True: # Main game loop.
     drawBoard(theBoard)

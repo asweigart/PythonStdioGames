@@ -69,6 +69,10 @@ def drawControls():
 
 
 def main():
+    print('SOROBAN - The Japanese Abacus')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
+
     abacusNumber = 0 # This is the number represented on the abacus.
 
     while True:

@@ -2,6 +2,13 @@
 
 import random, time, sys
 
+print('ROCK, PAPER, SCISSORS')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+print('- Rock beats scissors.')
+print('- Paper beats rocks.')
+print('- Scissors beats paper.')
+
 # These variables keep track of the number of wins, losses, and ties.
 wins = 0
 losses = 0

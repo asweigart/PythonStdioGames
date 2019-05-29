@@ -45,7 +45,8 @@ def getRandomCard():
             # Return the card as long as it's not the Queen of Hearts:
             return (rank, suit)
 
-print('Three-Card Monte')
+print('THREE-CARD MONTE')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('Find the red lady! Keep an eye on how the cards move.')
 print()
@@ -105,8 +106,9 @@ while True:
 #if cards[guessIndex] == ('Q', HEARTS):
 #    # Player has won, so let's move the queen.
 #    possibleNewIndexes = [0, 1, 2]
-#    possibleNewIndexes.remove(guessIndex)
-#    newIndex = random.choice(possibleNewIndexes)
+#    possibleNewIndexes.remove(guessIndex) # Remove the queen's index.
+#    newIndex = random.choice(possibleNewIndexes) # Choose a new index.
+#    # Place the queen at the new index:
 #    cards[guessIndex], cards[newIndex] = cards[newIndex], cards[guessIndex]
 
 printCards(cards) # Show all the cards.

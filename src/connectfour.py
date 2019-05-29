@@ -93,6 +93,10 @@ def isWinner(playerTile, board):
 
 
 def main():
+    print('CONNECT FOUR')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
+
     # Set up a new game:
     gameBoard = getNewBoard()
     playerTurn = X_PLAYER

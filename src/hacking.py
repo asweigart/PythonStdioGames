@@ -44,11 +44,12 @@ def getBoard(words):
 
 
 def getPlayerMove(words, tries):
-    print('Enter password: (%s tries remaining)' % (tries))
     while True:
+        print('Enter password: (%s tries remaining)' % (tries))
         move = input().upper()
         if move in words:
             return move
+        print('That is not one of the possible passwords listed above.')
 
 
 def getNumberOfMatchingLetters(word1, word2):
@@ -106,6 +107,10 @@ def getWords():
 
 
 def runGame():
+    print('HACKING MINIGAME')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
+
     gameWords = getWords()
     gameBoard = getBoard(gameWords)
     secretPassword = random.choice(gameWords)

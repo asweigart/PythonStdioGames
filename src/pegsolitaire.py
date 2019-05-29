@@ -150,7 +150,8 @@ def checkIfPlayerHasWon(board):
     return pegCount == 1
 
 
-print('Peg Solitaire')
+print('PEG SOLITAIRE')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 
 theBoard = getNewBoard()

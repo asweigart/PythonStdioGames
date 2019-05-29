@@ -1,4 +1,6 @@
 # Blackjack, by Al Sweigart al@inventwithpython.com
+# A card game also known as 21.
+# More info at: https://en.wikipedia.org/wiki/Blackjack
 
 import random, sys
 
@@ -127,6 +129,7 @@ def getMove(playerHand, money):
 
 # Main game:
 print('BLACKJACK')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('Rules:')
 print('Try to get as close to 21 without going over.')

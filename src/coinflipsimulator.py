@@ -2,8 +2,8 @@
 
 import random
 
-print('Coin Flip Simulator')
-print('Simulates coin flips and records the length of streaks.')
+print('COIN FLIP SIMULATOR')
+print('By Al Sweigart al@inventwithpython.com')
 
 # Ask the user how many flips to make:
 print('How many coin flips to make?')
@@ -51,7 +51,7 @@ print('Simulation finished.')
 streakLengths = list(streakStats.keys())
 streakLengths.sort()
 
-# Display results:
+# Display the results:
 for streakLength in streakLengths:
     label = str(streakLength[0]) + ' ' + streakLength[1] + ' in a row'
     print(label.rjust(21) + ' - ' + str(streakStats[streakLength]))

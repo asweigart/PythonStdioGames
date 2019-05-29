@@ -17,6 +17,10 @@ def pluralize(word):
         return word + 's'
 
 
+print('HAMSBURGER')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+
 # Loading nouns from nounlist.txt
 if not os.path.exists('nounlist.txt'):
     print('nounlist.txt not found. Download it from http://www.desiquintans.com/downloads/nounlist/nounlist.txt')

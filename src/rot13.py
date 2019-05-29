@@ -9,6 +9,10 @@ except ImportError:
 upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 lowerLetters = 'abcdefghijklmnopqrstuvwxyz'
 
+print('ROT 13 CIPHER')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+
 while True: # Main program loop.
     print('Enter a message to encrypt or decrypt (or `quit` to quit):')
     message = input('> ')

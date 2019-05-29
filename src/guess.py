@@ -2,6 +2,10 @@
 
 import random
 
+print('GUESS THE NUMBER')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+
 secretNumber = random.randint(1, 100) # Select a random number.
 print('I am thinking of a number between 1 and 100.')
 

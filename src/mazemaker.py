@@ -2,8 +2,12 @@
 
 import random
 
-print('Maze Maker')
+print('MAZE MAKER')
+print('By Al Sweigart al@inventwithpython.com')
 print()
+print('This program creates maze files. You can play these mazes with')
+print('mazerunner.py or maze3d.py')
+
 while True:
     WIDTH = input('Enter width (must be odd and greater than 2): ')
     if WIDTH.isdecimal():

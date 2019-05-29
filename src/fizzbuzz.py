@@ -2,7 +2,8 @@
 
 import time, sys
 
-print('Fizz Buzz!')
+print('FIZZ BUZZ')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('Starting with 1, enter increasing numbers.')
 print('However, if the number is a multiple of 3, type "fizz" instead of')

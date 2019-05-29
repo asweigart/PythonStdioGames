@@ -1,5 +1,6 @@
 # Monty Hall Problem, by Al Sweigart al@inventwithpython.com
-# A simulation of the Monty Hall Problem. https://en.wikipedia.org/wiki/Monty_Hall_problem
+# A simulation of the Monty Hall Problem.
+# More info at https://en.wikipedia.org/wiki/Monty_Hall_problem
 
 import random, sys
 
@@ -66,7 +67,8 @@ THIRD_CAR_OTHERS_GOAT = """
 |GOAT|||  |GOAT|||  |   O  |
 +------+  +------+  +------+"""
 
-print('The Monty Hall Problem')
+print('THE MONTY HALL PROBLEM')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('In the Monty Hall game show, you can pick one of three doors. One door')
 print('has a brand new car for a prize. The other two doors have worthless goats:')

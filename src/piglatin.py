@@ -1,5 +1,9 @@
 # Pig Latin by Al Sweigart, al@inventwithpython.com
 
+print('IGPAY ATINLAY (pig latin)')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+
 message = input('Enter your message> ')
 
 VOWELS = ('a', 'e', 'i', 'o', 'u', 'y')

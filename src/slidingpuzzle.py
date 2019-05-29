@@ -99,8 +99,10 @@ def getNewPuzzle(moves=200):
     return board
 
 
-def runGame():
-    print('Sliding Puzzle')
+def main():
+    print('SLIDING PUZZLE')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
     print('Use the WASD keys to move the tiles')
     print('back into their original order:')
     print('       1  2  3  4')

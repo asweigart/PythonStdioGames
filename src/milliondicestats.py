@@ -2,7 +2,8 @@
 
 import random
 
-print('Million Dice Roll Statistics Simulator')
+print('MILLION DICE ROLL STATISTICS SIMULATOR')
+print('By Al Sweigart al@inventwithpython.com')
 print()
 print('Enter how many six-sided dice you want to roll:')
 numberOfDice = int(input())

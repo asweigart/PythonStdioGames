@@ -181,6 +181,9 @@ def getPlayerMove(board, robots, playerPosition):
                     'A': (x - 1, y + 0),
                     'S': (x, y)         }[move]
 
+print('CHASE')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 
 # Set up a new game:
 theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
