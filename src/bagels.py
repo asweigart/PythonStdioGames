@@ -55,9 +55,9 @@ while True:  # Main game loop.
             print('Guess #%s: ' % (numGuesses))
             guess = input()
 
-        clue = getClues(guess, secretNum)
-        print(clue)
-        numGuesses += 1
+            clue = getClues(guess, secretNum)
+            print(clue)
+            numGuesses += 1
 
         if guess == secretNum:
             break
