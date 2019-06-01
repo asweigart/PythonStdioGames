@@ -43,33 +43,29 @@ try:
         for x in range(WIDTH):
             for y in range(HEIGHT):
                 # Get neighboring coordinates:
-                if x == 0:
-                    leftCoord = WIDTH - 1 # wraparound
-                else:
-                    leftCoord = x - 1
-                if x == WIDTH - 1:
-                    rightCoord = 0 # wraparound
-                else:
-                    rightCoord = x + 1
-                if y == 0:
-                    topCoord = HEIGHT - 1 # wraparound
-                else:
-                    topCoord = y - 1
-                if y == HEIGHT - 1:
-                    bottomCoord = 0 # wraparound
-                else:
-                    bottomCoord = y + 1
+                leftCoord   = (x - 1) % WIDTH
+                rightCoord  = (x + 1) % WIDTH
+                topCoord    = (y - 1) % HEIGHT
+                bottomCoord = (y + 1) % HEIGHT
 
-                # Get neighbors:
-                topleft     = (leftCoord, topCoord) in currentCells
-                top         = (x, topCoord) in currentCells
-                topright    = (rightCoord, topCoord) in currentCells
-                left        = (leftCoord, y) in currentCells
-                right       = (rightCoord, y) in currentCells
-                bottomleft  = (leftCoord, bottomCoord) in currentCells
-                bottom      = (x, bottomCoord) in currentCells
-                bottomright = (rightCoord, bottomCoord) in currentCells
-                numNeighbors = topleft + top + topright + left + right + bottomleft + bottom + bottomright
+                # Count number of living neighbors:
+                numNeighbors = 0
+                if (leftCoord, topCoord) in currentCells:
+                    numNeighbors += 1
+                if (x, topCoord) in currentCells:
+                    numNeighbors += 1
+                if (rightCoord, topCoord) in currentCells:
+                    numNeighbors += 1
+                if (leftCoord, y) in currentCells:
+                    numNeighbors += 1
+                if (rightCoord, y) in currentCells:
+                    numNeighbors += 1
+                if (leftCoord, bottomCoord) in currentCells:
+                    numNeighbors += 1
+                if (x, bottomCoord) in currentCells:
+                    numNeighbors += 1
+                if (rightCoord, bottomCoord) in currentCells:
+                    numNeighbors += 1
 
                 # Set cell based on Conway's Game of Life rules:
                 if currentCells.get((x, y), False):
