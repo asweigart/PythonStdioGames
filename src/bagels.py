@@ -5,6 +5,7 @@ import random
 NUM_DIGITS = 3
 MAX_GUESSES = 10
 
+
 def getSecretNum(NUM_DIGITS):
     # Returns a string that is NUM_DIGITS long, made up of unique random digits.
     numbers = list(range(10))
@@ -42,14 +43,15 @@ print('  Pico         One digit is correct but in the wrong position.')
 print('  Fermi        One digit is correct and in the right position.')
 print('  Bagels       No digit is correct.')
 
-while True: # Main game loop.
+while True:  # Main game loop.
     secretNum = getSecretNum(NUM_DIGITS)
-    print('I have thought up a number. You have %s guesses to get it.' % (MAX_GUESSES))
+    print('I have thought up a number. You have %s guesses to get it.' %
+          (MAX_GUESSES))
 
     numGuesses = 1
     while numGuesses <= MAX_GUESSES:
         guess = ''
-        while len(guess) != NUM_DIGITS or not guess.isdigits():
+        while len(guess) != NUM_DIGITS or not guess.isdigit():
             print('Guess #%s: ' % (numGuesses))
             guess = input()
 
