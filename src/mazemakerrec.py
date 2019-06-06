@@ -1,8 +1,11 @@
 # Maze Maker by Al Sweigart al@inventwithpython.com
+# Implements the recursive backtracker algorithm for making mazes.
+# More info at: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker
+# An animated demo of this algorithm: https://scratch.mit.edu/projects/17358777/
 
 import random
 
-print('MAZE MAKER')
+print('MAZE MAKER (Recursive Backtracker algorithm)')
 print('By Al Sweigart al@inventwithpython.com')
 print()
 print('This program creates maze files. You can play these mazes with')
