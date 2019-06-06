@@ -158,6 +158,8 @@ def makeWallDict(maze, playerx, playery, playerDirection, exitx, exity):
 
     for sec, xOffset, yOffset in offsets:
         section[sec] = maze.get((playerx + xOffset, playery + yOffset), WALL)
+        if (playerx + xOffset, playery + yOffset) == (exitx, exity):
+            section[sec] = EXIT
 
     wallDict = copy.copy(ALL_OPEN)
     PASTE_CLOSED_TO = {'A': (6, 4), 'B': (4, 3), 'C': (3, 1), 'D': (10, 3), 'E': (0, 0), 'F': (12, 0)}
@@ -227,20 +229,20 @@ while True: # Main program loop.
 
     while True: # Get user move.
         print(f'Location ({playerx}, {playery})  Compass: {playerDirection}')
-        print('                           W')
-        print('Enter direction, or QUIT: A D')
+        print('                            (F)ORWARD           (W)')
+        print('Enter direction, or QUIT: (L)EFT (R)IGHT -or- (A) (D)')
         move = input().upper()
 
         if move == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
 
-        if move not in ['W', 'A', 'D']:
-            print('Invalid direction. Enter one of W, A, or D.')
+        if move not in ['F', 'L', 'R', 'W', 'A', 'D'] and not move.startswith('T'):
+            print('Invalid direction. Enter one of F, L, or R (or W, A, D).')
             continue
 
         # Move the player according to their intended move:
-        if move == 'W':
+        if move == 'F' or move == 'W':
             if playerDirection == NORTH and maze[(playerx, playery - 1)] == EMPTY:
                 playery -= 1
                 break
@@ -253,13 +255,19 @@ while True: # Main program loop.
             if playerDirection == WEST and maze[(playerx - 1, playery)] == EMPTY:
                 playerx -= 1
                 break
-        elif move == 'A':
+        elif move == 'L' or move == 'A':
             playerDirection = {NORTH: WEST, WEST: SOUTH, SOUTH: EAST, EAST: NORTH}[playerDirection]
             break
-        elif move == 'D':
+        elif move == 'R' or move == 'D':
             playerDirection = {NORTH: EAST, EAST: SOUTH, SOUTH: WEST, WEST: NORTH}[playerDirection]
             break
-        print('You cannot move in that direction.')
+        elif move.startswith('T'): # Cheat code: 'T x,y'
+            playerx, playery = move.split()[1].split(',')
+            playerx = int(playerx)
+            playery = int(playery)
+            break
+        else:
+            print('You cannot move in that direction.')
 
     if (playerx, playery) == (exitx, exity):
         # TODO - display the maze one last time.
