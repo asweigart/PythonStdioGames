@@ -1,31 +1,31 @@
 # PythonStdioGames
 
-A compilation of text-based games written in Python 3. Click on the src folder to view all of the programs.
+A compilation of text-based games written in Python 3. Click on the **src** folder to view all of the programs.
 
-Some of them may require additional modules to run. You can use pip3 to install them:
+Some of them may require additional modules to run. You can use pip on Windows or pip3 on macOS/Linux to install them:
 
-* pip3 install bext
-* pip3 install pyperclip
-* pip3 install pyrect
-* pip3 install pybresenham
+* pip install bext
+* pip install pyperclip
+* pip install pyrect
+* pip install pybresenham
 
 NOTE: Currently I'm not accepting pull requests at this time, but feel free to leave comments or send suggestions to al@inventwithpython.com
 
 About this Collection
 =====================
 
-After beginners learn the syntax of Python and basic programming concepts (loops, branching, functions, etc.) they often hit a dead-end: "How do I become better at programming?" At this point, people will tell them to work on their own practice projects (but this leaves them without guidance on what to make and how to make it) or to contribute to open source projects (but its difficult to find one, understand its code base, and get guidance on how to contribute).
+After beginners learn the syntax of Python and basic programming concepts (loops, branching, functions, etc.) they often hit a dead-end: "How do I become better at programming?" At this point, people will tell them to work on their own practice projects (which leaves them without guidance on what to make and how to make it) or to contribute to open source projects (which can be difficult to find, understand its code base, and get guidance on how to contribute).
 
 What helped me learn to code was finding small projects whose source code I copied and then made small adjustments to. This gave me insight on how loops, branching, and functions combined together into actual programs.
 
 To help others down the same path, I'm creating a collection of example programs aimed at being easy to copy and understand by beginners. These programs (mostly games) have the following constraints:
 
-* They're short, with a limit of 256 lines of code. *This makes them easy to read and understand in one sitting. The shorter the better; plenty of fun programs can fit under 64 lines of code. The "power of 2" numbers for the limits are just for fun.*
-* They fit into a single source code file and have no installer. *This makes these games trivial to share by copy/pasting code to a pastebin site. Though perhaps a data/image/save files can be included.*
-* They only use the Python standard library. *Fewer things to install means less chance of failing during environment setup and wider compatibility.*
+* They're short, with a limit of 256 lines of code. *This makes them easy to read and understand in one sitting. The shorter the better. The "256" number was arbitrarily selected, but this also means programs will fit on 4 or 5 printed pages.*
+* They fit into a single source code file and have no installer. *This makes these games trivial to share by copy/pasting code to a pastebin site. Data/image/save files can be used, but the source should link to some examples in their comments.*
+* They only use the Python standard library. *Fewer things to install means wider compatibility and less chance of failing during environment setup.*
 * They only use stdio text; `print()` and `input()` in Python. *The output being in the same text medium as the text source code makes it less abstract, and easier to see the cause-effect relationship between code and output. This means there's no graphics or mouse input, but makes it simple to port these programs to other languages since they all support stdio text.*
 * They're necessarily turn-based. *Relying on `input()` means the program must wait for the user to enter text, but this means we can't have real-time programs that respond to single key-presses.*
-* They're well commented. *Comments should be aimed at beginners; they don't explain programming concepts, but rather how they're being used in the program. The 256-line limit includes comments and whitespace. If the program is too long to include abundant comments and sensible whitespace, it should be simplified.*
+* They're well commented. *Comments should be aimed at beginners and will be more verbose. The 256-line limit includes comments and whitespace. If the program is too long to include abundant comments and sensible whitespace, the program should be simplified, not the comments.*
 * They use as few programming concepts as possible. *If classes, list comprehensions, recursion, aren't necessary for the program, then they are't used.*
 * **Elegant** and **efficient** code is worthless next to code that is **easy to understand** and **readable**. *These programs are for education, not production. Standard best practices, like not using global variables, can be ignored to make it easier to understand.*
 * They do input validation and are bug free. *It should be impossible to crash a program with bad input or an edge case.*
@@ -74,6 +74,78 @@ Additional modules I recommend using:
 * `pyrect` for rectangle data structure
 * `pybresenham` for various line-drawing functions
 
+
+Completed Programs in This Collection
+=====================================
+
+*Bagels* - A mastermind-like deduction game.
+*Blackjack* - The card game of 21.
+*Chance Checkers* - Checkers, with a random luck element.
+*Chase* - A daeleks clone where you make robots crash into each other.
+*Checkers* - The classic board game.
+*Coin Flip Simulator* - Simulate coin flips and get statistics on streaks.
+*Connect Four* - The classic board game.
+*Conways Game of Life* - A cellular automata demo.
+*Countdown* - A digital seven-segment display egg timer.
+*Diagonal Maze* - A classic BASIC program that creates an interesting pattern.
+*Dice Roller* - A program for rolling dice according to Dungeons and Dragons syntax.
+*Digital Clock* - A digital seven-segment display clock.
+*DNA* - A double-helix animation.
+*Eeny Meeny* - A game based on the Josephus Problem.
+*Fireflies* - An animation showing swirling fireflies.
+*Fizz Buzz* - A time-based number game.
+*Floodfill* - A demonstration of the floodfill algorithm.
+*Game 2048* - The classic game 2048.
+*Guess* - A guess-the-number game.
+*Hacking* - A clone of the hacking minigame from Fallout.
+*Hammurabi* - A clone of the old-school city management game originally programmed in BASIC.
+*Hamsburger* - A silly word program.
+*Hangman* - The classic pencil-and-paper game.
+*Idiot* - A silly and simple program.
+*J'accuse* - A logical deduction game based on the Homestar Runner game, "Where's an Egg?"
+*Leetspeak* - An English-to-Leetspeak program.
+*Mancala* - The classic seed-sowing game.
+*Maze Maker* - A program that generates mazes using the recursive backtracking algorithm.
+*Maze Runner* - A maze game that uses the mazes from Maze Maker.
+*Million Dice Stats* - A program that shows the statistics from rolling one million six-sided dice.
+*Monty Hall* - An interactive demo of the Monty Hall problem.
+*Morse Code* - An English/Morse Code translator.
+*Multiplicative Persistence* - A math riddle.
+*Peg Solitaire* - The classic board game.
+*Periodic Table* - A periodic table of elements.
+*Pig Latin* - An English-to-Pig Latin translator.
+*Rail Fence Cipher* - A simple cryptography program.
+*Reversi*
+*Rock Paper Scissors*
+*Rock Paper Scissors (Always Win)*
+*Rot 13*
+*Rotating Cube*
+*Rush Hour*
+*Shell Game*
+*Sliding Puzzle*
+*Sokoban*
+*Sonar*
+*Soroban*
+*Spiral*
+*Spongetext*
+*Three Card Monte*
+*Tic Tac Toe*
+*Tic Tac Toe (Object-Oriented Version)*
+*Towers of Hanoi*
+*Analog Clock*
+*Bouncing Dots*
+*Bouncing Lines*
+*Fish Tank*
+*Floodit*
+*Forest Fire Simulation*
+*Hour Glass*
+*Langton's Ant*
+*Lawn Mower*
+*Mondrian*
+*Rainbow*
+*Rainbow 2*
+*Random Walk*
+*Sandfall*
 
 
 TODO NOTES

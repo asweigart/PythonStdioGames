@@ -7,7 +7,7 @@
 import random, time
 
 # Setup constants:
-NUM_SWAPS = 1
+NUM_SWAPS = 16
 DELAY     = 0.8
 
 HEARTS   = chr(9829)

@@ -4,6 +4,7 @@
 
 import sys, os
 
+# Maze file constants:
 WALL = '#'
 EMPTY = ' '
 START = 'S'
@@ -84,17 +85,13 @@ while True: # Main program loop.
             continue
 
         # Check if the player can move in that direction:
-        if move == 'W':
-            if maze[(playerx, playery - 1)] == EMPTY:
+        if move == 'W' and maze[(playerx, playery - 1)] == EMPTY:
                 break
-        elif move == 'S':
-            if maze[(playerx, playery + 1)] == EMPTY:
+        elif move == 'S' and maze[(playerx, playery + 1)] == EMPTY:
                 break
-        elif move == 'A':
-            if maze[(playerx - 1, playery)] == EMPTY:
+        elif move == 'A' and maze[(playerx - 1, playery)] == EMPTY:
                 break
-        elif move == 'D':
-            if maze[(playerx + 1, playery)] == EMPTY:
+        elif move == 'D' and maze[(playerx + 1, playery)] == EMPTY:
                 break
 
         print('You cannot move in that direction.')
