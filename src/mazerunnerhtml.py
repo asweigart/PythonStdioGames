@@ -29,6 +29,22 @@ while True:
         break
     print('There is no file named', filename)
 
+# Get the folder name to save the files to:
+while True:
+    print('Enter the folder to save the maze files to:')
+    outputFolderName = input()
+
+    if os.path.exists(outputFolderName):
+        if os.path.isfile(outputFolderName):
+            print(f'A file named {outputFolderName} already exists.')
+            continue
+        else:
+            print(f'A folder named {outputFolderName} already exists. Use this name anyway? Y/N')
+            useAnyway = input().upper()
+            if not useAnyway.startswith('Y'):
+                continue
+    break
+
 # Load the maze from a file:
 mazeFile = open(filename)
 maze = {}
@@ -61,11 +77,15 @@ assert exitx != None and exity != None, 'Missing exit point in maze file.'
 
 # TODO, file format is: "3_12_NORTH.html"
 numFilesWritten = 0
-os.makedirs('maze_' + filename, exist_ok=True)
+os.makedirs(outputFolderName, exist_ok=True)
 for x in range(WIDTH):
     for y in range(HEIGHT):
+        # If this space is a wall, then the player can't be here, so skip this file.
+        if maze[(x, y)] == WALL:
+            continue
+
         for direction in (NORTH, EAST, SOUTH, WEST):
-            htmlFilename = f'maze_{filename}/{x}_{y}_{direction}.html'
+            htmlFilename = f'{outputFolderName}/{x}_{y}_{direction}.html'
             print(f'Writing {htmlFilename}...')
             numFilesWritten += 1
 
@@ -111,7 +131,7 @@ for x in range(WIDTH):
                 if section['F'] == EXIT:
                     wallImageFilename += '_exitright'
 
-                wallImageFilename += '.png'
+                wallImageFilename += '.jpg'
 
                 # Calculate turn URLs:
                 leftDirection = {NORTH: WEST, WEST: SOUTH, SOUTH: EAST, EAST: NORTH}[direction]
@@ -133,7 +153,7 @@ for x in range(WIDTH):
 </head>
 <body>
     <center>
-    <img src="../maze_html_images/{wallImageFilename}" width="600" /><br />
+    <img src="../maze_html_images/{wallImageFilename}" /><br />
 
     Facing: {direction}<br />
 
@@ -146,7 +166,7 @@ for x in range(WIDTH):
 ''')
             # After writing the html file, see if this is the starting position:
             if (startx, starty, direction) == (x, y, NORTH):
-                shutil.copy(htmlFilename, f'maze_{filename}/index.html')
+                shutil.copy(htmlFilename, f'{outputFolderName}/index.html')
                 numFilesWritten += 1
 
 
