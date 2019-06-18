@@ -3,7 +3,7 @@
 
 import random
 
-def runGame():
+def main():
     print('HAMMURABI by Doug Dyment and others')
     print('Try your hand at governing ancient Sumeria for a ten-year term of office.')
     print()
@@ -200,4 +200,4 @@ Worst ending:    >33%% population died or <7 acres per person.""")
     print('So long for now.')
 
 if __name__ == '__main__':
-    runGame()
+    main()

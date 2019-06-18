@@ -129,7 +129,7 @@ def isWinner(board):
     return 'no winner' # No one has won yet.
 
 
-def runGame():
+def main():
     """Runs a single game of Mancala."""
     print('MANCALA - The seed sowing game.')
     print('By Al Sweigart al@inventwithpython.com')
@@ -160,4 +160,4 @@ def runGame():
 
 # If the player runs this program (instead of importing it), run the game:
 if __name__ == '__main__':
-    runGame()
+    main()

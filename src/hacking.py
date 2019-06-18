@@ -3,7 +3,8 @@
 
 import random
 
-GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\' # The "filler" characters for the board.
+# The "filler" characters for the board.
+GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\'
 
 # Load the WORDS list from a text file that has a 7-letter word on each line.
 with open('sevenletterwords.txt') as dictionaryFile:
@@ -106,7 +107,7 @@ def getWords():
     return words
 
 
-def runGame():
+def main():
     print('HACKING MINIGAME')
     print('By Al Sweigart al@inventwithpython.com')
     print()
@@ -128,4 +129,4 @@ def runGame():
 
 
 if __name__ == '__main__':
-    runGame()
+    main()
