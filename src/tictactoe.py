@@ -2,19 +2,19 @@
 # By Al Sweigart al@inventwithpython.com
 
 # Setting up constants:
-ALL_SPACES = ('1', '2', '3', '4', '5', '6', '7', '8', '9')
+ALL_SPACES = list('123456789') # The keys for a TTT board dictionary.
 X, O, BLANK = 'X', 'O', ' '
 
 def main():
     """Runs a game of Tic Tac Toe."""
     print('Welcome to Tic Tac Toe!')
-    gameBoard = getNewBoard()
-    turn, nextTurn = X, O
+    gameBoard = getNewBoard() # Create a TTT board dictionary.
+    turn, nextTurn = X, O # X goes first, O goes next.
 
     while True:
-        drawBoard(gameBoard)
-        move = getPlayerMove(gameBoard, turn)
-        setSpace(gameBoard, move, turn)
+        drawBoard(gameBoard) # Display the board on the screen.
+        move = getPlayerMove(gameBoard, turn) # Get the player's move.
+        updateBoard(gameBoard, move, turn) # Update the board with the move.
 
         if isWinner(gameBoard, turn):
             drawBoard(gameBoard)
@@ -29,9 +29,9 @@ def main():
 
 def getNewBoard():
     """Create a new, blank tic tac toe board."""
-    board = {}
+    board = {} # The board is represented as a Python dictionary.
     for space in ALL_SPACES:
-        board[space] = BLANK
+        board[space] = BLANK # All spaces start as blank.
     return board
 
 def drawBoard(board):
@@ -45,21 +45,22 @@ def drawBoard(board):
 
 def isWinner(board, player):
     """Return True if player is a winner on board."""
-    bo, p = board, player # Shorter names for "syntactic sugar".
+    b, p = board, player # Shorter names as "syntactic sugar".
     # Check for 3 marks across the 3 rows, 3 columns, and 2 diagonals.
-    return ((bo['7'] == p and bo['8'] == p and bo['9'] == p) or
-            (bo['4'] == p and bo['5'] == p and bo['6'] == p) or
-            (bo['1'] == p and bo['2'] == p and bo['3'] == p) or
-            (bo['7'] == p and bo['4'] == p and bo['1'] == p) or
-            (bo['8'] == p and bo['5'] == p and bo['2'] == p) or
-            (bo['9'] == p and bo['6'] == p and bo['3'] == p) or
-            (bo['7'] == p and bo['5'] == p and bo['3'] == p) or
-            (bo['9'] == p and bo['5'] == p and bo['1'] == p))
+    return ((b['7'] == b['8'] == b['9'] == p) or # Across the top
+            (b['4'] == b['5'] == b['6'] == p) or # Across the middle
+            (b['1'] == b['2'] == b['3'] == p) or # Across the bottom
+            (b['7'] == b['4'] == b['1'] == p) or # Down the left
+            (b['8'] == b['5'] == b['2'] == p) or # Down the middle
+            (b['9'] == b['6'] == b['3'] == p) or # Down the right
+            (b['7'] == b['5'] == b['3'] == p) or # Diagonal
+            (b['9'] == b['5'] == b['1'] == p))   # Diagonal
 
 def getPlayerMove(board, player):
     """Let the player type in their move."""
     space = None
-    while space not in ALL_SPACES or not board[space] == BLANK:
+    # Keep asking the player until they enter a number 1-9:
+    while space not in ALL_SPACES or board[space] != BLANK:
         print(f'What is {player}\'s move? (1-9)')
         space = input().upper()
     return space
@@ -68,10 +69,10 @@ def isBoardFull(board):
     """Return True if every space on the board has been taken."""
     for space in ALL_SPACES:
         if board[space] == BLANK:
-            return False
-    return True
+            return False # If a single space is blank, return False.
+    return True # No spaces are blank, so return True.
 
-def setSpace(board, space, player):
+def updateBoard(board, space, player):
     """Sets the space on the board to player."""
     board[space] = player
 
