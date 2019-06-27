@@ -1,4 +1,4 @@
-# A non-OOP Tic Tac Toe game.
+# tictactoe.py, A non-OOP Tic Tac Toe game.
 # By Al Sweigart al@inventwithpython.com
 
 # Setting up constants:

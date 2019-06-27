@@ -1,6 +1,17 @@
 # Rainbow, by Al Sweigart al@inventwithpython.com
 # Shows a simple rainbow animation.
 
+"""
+This program requires the bext module, which you can install by opening
+a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python3 -m pip install --user bext
+"""
+
 import time, sys
 assert sys.version_info.major == 3, 'Run this program on Python 3.'
 

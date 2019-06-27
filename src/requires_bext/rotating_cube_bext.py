@@ -1,5 +1,16 @@
 # Rotating Cube (Bext Version), by Al Sweigart al@inventwithpython.com
 
+"""
+This program requires the bext module, which you can install by opening
+a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python3 -m pip install --user bext
+"""
+
 import math, time, sys
 try:
     import bext

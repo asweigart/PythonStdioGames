@@ -1,4 +1,4 @@
-# Spongetext, by Al Sweigart al@inventwithpython.com
+# sPoNgEtExT, bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
 
 import random
 
@@ -8,9 +8,9 @@ except ImportError:
     pass # It's not a big deal if pyperclip is not installed.
 
 print('sPoNgEtExT')
-print('By Al Sweigart al@inventwithpython.com')
+print('bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm')
 print()
-print('Enter your message:')
+print('eNtEr YoUr MeSsAgE:')
 message = input()
 print()
 
@@ -36,6 +36,6 @@ spongetext = ''.join(spongetext)
 print(spongetext)
 try:
     pyperclip.copy(spongetext)
-    print('(Copied spongetext to clipboard.)')
+    print('(cOpIed SpOnGeTexT to ClIpbOaRd.)')
 except:
     pass # Do nothing if pyperclip wasn't installed.

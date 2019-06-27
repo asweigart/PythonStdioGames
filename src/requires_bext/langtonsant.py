@@ -1,6 +1,17 @@
 # Langton's Ant, by Al Sweigart al@inventwithpython.com
 # More info: https://en.wikipedia.org/wiki/Langton%27s_ant
 
+"""
+This program requires the bext module, which you can install by opening
+a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python3 -m pip install --user bext
+"""
+
 import random, copy, bext
 
 WIDTH = 79

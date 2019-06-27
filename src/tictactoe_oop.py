@@ -1,4 +1,4 @@
-# An object-oriented Tic Tac Toe game.
+# tictactoe_oop.py, An object-oriented Tic Tac Toe game.
 # By Al Sweigart al@inventwithpython.com
 
 # Setting up constants:

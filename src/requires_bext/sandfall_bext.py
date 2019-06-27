@@ -1,6 +1,17 @@
 # Hour Glass Animation, by Al Sweigart al@inventwithpython.com
 # https://asciinema.org/a/6515
 
+"""
+This program requires the bext module, which you can install by opening
+a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python3 -m pip install --user bext
+"""
+
 import random, time, bext
 
 WIDTH = 80
