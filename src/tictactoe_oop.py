@@ -1,4 +1,4 @@
-# tictactoe_oop.py, An object-oriented Tic Tac Toe game.
+# tictactoe_oop2.py, An object-oriented Tic Tac Toe game.
 # By Al Sweigart al@inventwithpython.com
 
 # Setting up constants:
@@ -40,7 +40,7 @@ class TTTBoard:
             self.spaces[space] = BLANK # All spaces start as blank.
 
     def getBoardStr(self):
-        """Return a text-representation of the board."""
+        """Return  a text-representation of the board."""
         return f'''
       {self.spaces['1']}|{self.spaces['2']}|{self.spaces['3']}  1 2 3
       -+-+-
@@ -71,6 +71,101 @@ class TTTBoard:
     def updateBoard(self, space, player):
         """Sets the space on the board to player."""
         self.spaces[space] = player
+
+
+class PrettyTTTBoard(TTTBoard):
+    def __init__(self, crossChar='#'):
+        super().__init__()
+        self.crossChar = crossChar
+
+    def getBoardStr(self):
+        canvas = {}
+        # Draw the board lines:
+        for i in range(17):
+            canvas[(5, i)] = self.crossChar
+            canvas[(11, i)] = self.crossChar
+            canvas[(i, 5)] = self.crossChar
+            canvas[(i, 11)] = self.crossChar
+
+        # Draw the Xs and Os or space numbers:
+        i = 0
+        for y in (0, 6, 12):
+            for x in (0, 6, 12):
+                i += 1
+                if self.spaces[str(i)] == X:
+                    # Draw an X:
+                    canvas[(1 + x, 1 + y)] = X
+                    canvas[(3 + x, 1 + y)] = X
+                    canvas[(2 + x, 2 + y)] = X
+                    canvas[(1 + x, 3 + y)] = X
+                    canvas[(3 + x, 3 + y)] = X
+                elif self.spaces[str(i)] == O:
+                    # Draw an O:
+                    canvas[(1 + x, 1 + y)] = O
+                    canvas[(2 + x, 1 + y)] = O
+                    canvas[(3 + x, 1 + y)] = O
+                    canvas[(1 + x, 2 + y)] = O
+                    canvas[(3 + x, 2 + y)] = O
+                    canvas[(1 + x, 3 + y)] = O
+                    canvas[(2 + x, 3 + y)] = O
+                    canvas[(3 + x, 3 + y)] = O
+                else:
+                    # Draw the space number label:
+                    canvas[(2 + x, 2 + y)] = str(i)
+
+        # Print the canvas on the screen:
+        boardStrAsList = [] # Print a blank line as a spacer.
+        for y in range(17):
+            for x in range(17):
+                if (x, y) in canvas:
+                    boardStrAsList.append(canvas[(x, y)])
+                else:
+                    boardStrAsList.append(' ')
+            boardStrAsList.append('\n')
+        return ''.join(boardStrAsList)
+
+
+class LoggingTTTBoard(TTTBoard):
+    def __init__(self, logFilename):
+        """Create a new, blank tic tac toe board."""
+        super().__init__()
+        self.logFilename = logFilename
+
+    def updateBoard(self, space, player):
+        """Sets the space on the board to player, but also records each move
+        to the log file."""
+        super().updateBoard(space, player)
+        with open(self.logFilename, 'a') as logFile:
+            logFile.write(f'{player} moved on space {space}:\n')
+            logFile.write(self.getBoardStr() + '\n')
+
+
+class LoggingPrettyTTTBoard(LoggingTTTBoard, PrettyTTTBoard):
+    def __init__(self, crossChar, logFilename):
+        # Both LoggingTTTBoard and PrettyTTTBoard implement __init__()
+        # differently, so we need to reimplement the code.
+
+        # Reimplemnet the LoggingTTTBoard code:
+        self.logFilename = logFilename
+
+        # Reimplement the PrettyTTTBoard code:
+        # This also calls super()__init__().
+        PrettyTTTBoard.__init__(self, crossChar)
+
+
+class PrettyLoggingTTTBoard(PrettyTTTBoard, LoggingTTTBoard):
+    def __init__(self, crossChar, logFilename):
+        # Both LoggingTTTBoard and PrettyTTTBoard implement __init__()
+        # differently, so we need to reimplement the code.
+
+        # Reimplemnet the PrettyTTTBoard code:
+        self.crossChar = crossChar
+
+        # Reimplement the LoggingTTTBoard code:
+        # This also calls super()__init__().
+        LoggingTTTBoard.__init__(self, logFilename)
+
+
 
 if __name__ == '__main__':
     main() # Call main() if this module is run, but not when imported.
