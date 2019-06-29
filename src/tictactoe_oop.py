@@ -8,62 +8,58 @@ X, O, BLANK = 'X', 'O', ' '
 def main():
     """Runs a game of Tic Tac Toe."""
     print('Welcome to Tic Tac Toe!')
-    gameBoard = TicTacToeBoard() # Create a TTT board object.
-    turn, nextTurn = X, O # X goes first, O goes next.
+    gameBoard = TTTBoard() # Create a TTT board object.
+    currentPlayer, nextPlayer = X, O # X goes first, O goes next.
 
     while True:
-        gameBoard.drawBoard() # Display the board on the screen.
-        move = gameBoard.getPlayerMove(turn) # Get the player's move.
-        gameBoard.updateBoard(move, turn) # Update the board with the move.
+        print(gameBoard.getBoardStr()) # Display the board on the screen.
 
-        if gameBoard.isWinner(turn):
-            gameBoard.drawBoard()
-            print(turn + ' has won the game!')
+        # Keep asking the player until they enter a number 1-9:
+        move = None
+        while move not in ALL_SPACES or gameBoard.spaces[move] != BLANK:
+            print(f'What is {currentPlayer}\'s move? (1-9)')
+            move = input()
+        gameBoard.updateBoard(move, currentPlayer) # Make the move.
+
+        # Check if the game is over:
+        if gameBoard.isWinner(currentPlayer):
+            print(gameBoard.getBoardStr())
+            print(currentPlayer + ' has won the game!')
             break
         elif gameBoard.isBoardFull():
-            gameBoard.drawBoard()
+            print(gameBoard.getBoardStr())
             print('The game is a tie!')
             break
+        currentPlayer, nextPlayer = nextPlayer, currentPlayer # Swap turns.
 
-        turn, nextTurn = nextTurn, turn
-
-class TicTacToeBoard:
+class TTTBoard:
     def __init__(self):
         """Create a new, blank tic tac toe board."""
         self.spaces = {} # The board is represented as a Python dictionary.
         for space in ALL_SPACES:
             self.spaces[space] = BLANK # All spaces start as blank.
 
-    def drawBoard(self):
-        """Display a text-representation of the board."""
-        print(f'''
-          {self.spaces['7']}|{self.spaces['8']}|{self.spaces['9']}  7 8 9
-          -+-+-
-          {self.spaces['4']}|{self.spaces['5']}|{self.spaces['6']}  4 5 6
-          -+-+-
-          {self.spaces['1']}|{self.spaces['2']}|{self.spaces['3']}  1 2 3''')
+    def getBoardStr(self):
+        """Return a text-representation of the board."""
+        return f'''
+      {self.spaces['1']}|{self.spaces['2']}|{self.spaces['3']}  1 2 3
+      -+-+-
+      {self.spaces['4']}|{self.spaces['5']}|{self.spaces['6']}  4 5 6
+      -+-+-
+      {self.spaces['7']}|{self.spaces['8']}|{self.spaces['9']}  7 8 9'''
 
     def isWinner(self, player):
-        """Return True if player is a winner on this TicTacToeBoard."""
+        """Return True if player is a winner on this TTTBoard."""
         b, p = self.spaces, player # Shorter names as "syntactic sugar".
         # Check for 3 marks across the 3 rows, 3 columns, and 2 diagonals.
-        return ((b['7'] == b['8'] == b['9'] == p) or # Across the top
+        return ((b['1'] == b['2'] == b['3'] == p) or # Across the top
                 (b['4'] == b['5'] == b['6'] == p) or # Across the middle
-                (b['1'] == b['2'] == b['3'] == p) or # Across the bottom
-                (b['7'] == b['4'] == b['1'] == p) or # Down the left
-                (b['8'] == b['5'] == b['2'] == p) or # Down the middle
-                (b['9'] == b['6'] == b['3'] == p) or # Down the right
-                (b['7'] == b['5'] == b['3'] == p) or # Diagonal
-                (b['9'] == b['5'] == b['1'] == p))   # Diagonal
-
-    def getPlayerMove(self, player):
-        """Let the player type in their move."""
-        space = None
-        # Keep asking the player until they enter a number 1-9:
-        while space not in ALL_SPACES or self.spaces[space] != BLANK:
-            print(f'What is {player}\'s move? (1-9)')
-            space = input().upper()
-        return space
+                (b['7'] == b['8'] == b['9'] == p) or # Across the bottom
+                (b['1'] == b['4'] == b['7'] == p) or # Down the left
+                (b['2'] == b['5'] == b['8'] == p) or # Down the middle
+                (b['3'] == b['6'] == b['9'] == p) or # Down the right
+                (b['3'] == b['5'] == b['7'] == p) or # Diagonal
+                (b['1'] == b['5'] == b['9'] == p))   # Diagonal
 
     def isBoardFull(self):
         """Return True if every space on the board has been taken."""
