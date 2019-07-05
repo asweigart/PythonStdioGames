@@ -1,14 +1,13 @@
-# tictactoe.py, A non-OOP Tic Tac Toe game.
+# tictactoe.py, a non-OOP Tic Tac Toe game.
 # By Al Sweigart al@inventwithpython.com
 
-# Setting up constants:
 ALL_SPACES = list('123456789') # The keys for a TTT board dictionary.
-X, O, BLANK = 'X', 'O', ' '
+X, O, BLANK = 'X', 'O', ' ' # Constants for string values.
 
 def main():
     """Runs a game of Tic Tac Toe."""
     print('Welcome to Tic Tac Toe!')
-    gameBoard = getNewBoard() # Create a TTT board dictionary.
+    gameBoard = getBlankBoard() # Create a TTT board dictionary.
     currentPlayer, nextPlayer = X, O # X goes first, O goes next.
 
     while True:
@@ -16,23 +15,24 @@ def main():
 
         # Keep asking the player until they enter a number 1-9:
         move = None
-        while move not in ALL_SPACES or gameBoard.spaces[move] != BLANK:
+        while not isValidSpace(gameBoard, move):
             print(f'What is {currentPlayer}\'s move? (1-9)')
             move = input()
         updateBoard(gameBoard, move, currentPlayer) # Make the move.
 
         # Check if the game is over:
-        if isWinner(gameBoard, currentPlayer):
+        if isWinner(gameBoard, currentPlayer): # First check for victory.
             print(getBoardStr(gameBoard))
             print(currentPlayer + ' has won the game!')
             break
-        elif isBoardFull(gameBoard):
+        elif isBoardFull(gameBoard): # Next check for a tie.
             print(getBoardStr(gameBoard))
             print('The game is a tie!')
             break
         currentPlayer, nextPlayer = nextPlayer, currentPlayer # Swap turns.
+    print('Thanks for playing!')
 
-def getNewBoard():
+def getBlankBoard():
     """Create a new, blank tic tac toe board."""
     board = {} # The board is represented as a Python dictionary.
     for space in ALL_SPACES:
@@ -47,6 +47,11 @@ def getBoardStr(board):
       {board['4']}|{board['5']}|{board['6']}  4 5 6
       -+-+-
       {board['7']}|{board['8']}|{board['9']}  7 8 9'''
+
+def isValidSpace(board, space):
+    """Returns True if the space on the board is a valid space number
+    and the space is blank."""
+    return space in ALL_SPACES or board[space] == BLANK
 
 def isWinner(board, player):
     """Return True if player is a winner on this TTTBoard."""
