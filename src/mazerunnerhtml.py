@@ -147,16 +147,26 @@ for x in range(WIDTH):
 
                 # Create the .html file:
                 htmlFile.write(f'''
+<!-- This line is an HTML comment, which is ignored by the browser. -->
+<!-- HTML tags are between angle brackets < and >. The <html>, <head>,
+     <title>, and <body> tags are used in all web pages. They are paired
+     with closing tags like </html>. -->
 <html>
 <head>
     <title>{filename}</title>
 </head>
 <body>
+    <!-- <center> puts things in the center of the page. -->
     <center>
+    <!-- <img> displays an image, while <br /> adds a break return.
+         The <br> tag has no paired closing tag, which is why it's
+         written as <br /> -->
     <img src="../maze_html_images/{wallImageFilename}" /><br />
 
     Facing: {direction}<br />
 
+    <!-- Everything between <a> and </a> is a clickable link. We make the
+         arrow images clickable links. -->
     <a href="{turnLeftURL}"><img src="../maze_html_images/turn_left.png" /></a>
     <a href="{forwardURL}"><img src="../maze_html_images/forward.png" /></a>
     <a href="{turnRightURL}"><img src="../maze_html_images/turn_right.png" /></a>

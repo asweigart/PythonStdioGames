@@ -34,11 +34,16 @@ while True: # Main game loop.
             if x == 1 and y == 1:
                 print('P ', end='')
                 continue
+
+            if x == width - widthChomped and y == height - heightChomped:
+                print('X', end='')
+                continue
+
             # Print a cookie piece if it exists:
             if ((x > width - widthChomped) and (y > height - heightChomped)):
                 print('. ', end='')
             else:
-                print('O ', end='')
+                print('* ', end='')
         print() # Print a newline.
 
     # Get the player's move:

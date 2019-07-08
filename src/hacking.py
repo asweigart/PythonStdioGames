@@ -10,14 +10,20 @@ GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\'
 with open('sevenletterwords.txt') as dictionaryFile:
     WORDS = dictionaryFile.readlines()
 for i in range(len(WORDS)):
+    # Change the words in the WORDS list to uppercase and strip whitespace.
     WORDS[i] = WORDS[i].strip().upper()
 
 
 def getBoard(words):
-    assert len(words) == 12
-    linesWithWords = random.sample(range(16 * 2), 12)
+    """Generate the string of the "computer memory" and return it as a
+    string. The memory is just cosmetic. It has two columns of 16 lines."""
+
+    # Pick which lines contain words:
+    linesWithWords = random.sample(range(16 * 2), len(words))
+    # The starting memory address to show on the side (this is also cosmetic).
     memoryAddress = 16 * random.randint(0, 4000)
 
+    #
     board = []
     nextWord = 0
     for i in range(16):
@@ -36,8 +42,10 @@ def getBoard(words):
             rightLine = rightLine[:insertionIndex] + words[nextWord] + rightLine[insertionIndex + 7:]
             nextWord += 1
 
-        board.append('0x' + hex(memoryAddress)[2:].zfill(4)           + '  ' + leftLine + '    ' +
-                     '0x' + hex(memoryAddress + (16*16))[2:].zfill(4) + '  ' + rightLine)
+        board.append('0x' + hex(memoryAddress)[2:].zfill(4)           +
+                     '  ' + leftLine + '    ' +
+                     '0x' + hex(memoryAddress + (16*16))[2:].zfill(4) +
+                     '  ' + rightLine)
 
         memoryAddress += 16
 
