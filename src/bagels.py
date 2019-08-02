@@ -49,13 +49,13 @@ while True: # Main game loop.
     numGuesses = 1
     while numGuesses <= MAX_GUESSES:
         guess = ''
-        while len(guess) != NUM_DIGITS or not guess.isdigits():
+        while len(guess) != NUM_DIGITS or not guess.isdigit():
             print('Guess #%s: ' % (numGuesses))
             guess = input()
 
-        clue = getClues(guess, secretNum)
-        print(clue)
-        numGuesses += 1
+            clue = getClues(guess, secretNum)
+            print(clue)
+            numGuesses += 1
 
         if guess == secretNum:
             break
