@@ -18,8 +18,8 @@ Each digit in a seven-segment display:
 
 """
 
-def getSevSegStr(number):
-    number = str(number) # Convert to string in case it's an int or float.
+def getSevSegStr(number, zeros=0):
+    number = str(number).zfill(zeros) # Convert to string in case it's an int or float.
 
     rows = ['', '', '']
     for i, numeral in enumerate(number):
