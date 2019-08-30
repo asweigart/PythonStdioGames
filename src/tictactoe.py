@@ -40,7 +40,7 @@ def getBlankBoard():
     return board
 
 def getBoardStr(board):
-    """Display a text-representation of the board."""
+    """Return a text-representation of the board."""
     return f'''
       {board['1']}|{board['2']}|{board['3']}  1 2 3
       -+-+-
@@ -51,7 +51,7 @@ def getBoardStr(board):
 def isValidSpace(board, space):
     """Returns True if the space on the board is a valid space number
     and the space is blank."""
-    return space in ALL_SPACES or board[space] == BLANK
+    return space in ALL_SPACES and board[space] == BLANK
 
 def isWinner(board, player):
     """Return True if player is a winner on this TTTBoard."""

@@ -4,7 +4,7 @@
 
 import sys
 
-POCKETS = 'ABCDEF1LKJIHG2' # Constant for every pocket label, in order.
+POCKETS = 'ABCDEF1LKJIHG2' # Every pocket label, in counterclockwise order.
 
 def getNewBoard():
     """Return a dictionary representing a Mancala board in the starting
@@ -22,7 +22,6 @@ def getNewBoard():
 def drawBoard(board):
     """Draws the game board as ASCII-art based on the `board` dictionary."""
 
-    # Insert the seed amounts into a template board multiline string to print.
     seedAmounts = []
     for space in 'GHIJKL21ABCDEF': # This string is the order of the pockets.
         seedAmounts.append(str(board[space]).rjust(2))
