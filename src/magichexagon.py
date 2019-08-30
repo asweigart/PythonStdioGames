@@ -1,31 +1,13 @@
 # TODO - add a way to quit
 # TODO - Add instructions & title
+# TODO - add comments and better docs
+# More info at https://en.wikipedia.org/wiki/Magic_hexagon
 # More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0
 # Solution video is here: https://www.youtube.com/watch?v=qjgTcWJ6lZY
 
-
 import random
 
-# https://pastebin.com/raw/h9ufKzSz
-boardTemplate = r"""         _     _     _
-        / \   / \   / \
-       / {19} \ / {20} \ / {21} \
-      | {0}  | {1}  | {2}  |
-     / \   / \   / \   / \
-    / {22} \ / {23} \ / {24} \ / {25} \
-   | {3}  | {4}  | {5}  | {6}  |
-  / \   / \   / \   / \   / \
- / {26} \ / {27} \ / {28} \ / {29} \ / {30} \
-| {7}  | {8}  | {9}  | {10}  | {11}  |
- \   / \   / \   / \   / \   /
-  \ / {31} \ / {32} \ / {33} \ / {34} \ /
-   | {12}  | {13}  | {14}  | {15}  |
-    \   / \   / \   / \   /
-     \ / {35} \ / {36} \ / {37} \ /
-      | {16}  | {17}  | {18}  |
-       \   / \   / \   /
-        \_/   \_/   \_/"""
-
+# You can copy/paste this variable from https://pastebin.com/raw/h9ufKzSz
 boardTemplate = r"""            {48}    {49}    {50}
          _  /  _  /  _  /
         / \/  / \/  / \/    {51}
@@ -47,27 +29,12 @@ boardTemplate = r"""            {48}    {49}    {50}
         \_/\  \_/\  \_/\    {44}
             \     \     \
             {47}    {46}    {45}"""
-#print(boardTemplate.format(*[str(i).rjust(2) for i in range(1, 20)] + ['_'] * 19))
 
+startingNumbers = list(range(1, 20))
 nums = {}
 for key in range(1, 20):
-    nums[key] = key
-
-r"""
-ROW NUMBERING:
-          12  14
-       11 / 13/15
-       / / / / /
-      * * *-/-/--1
-     * * * *-/---2
-    * * * * *----3
-     * * * *-\---4
-      * * *-\-6--5
-       \ \ \ 7
-       10 9 8
-
-"""
-
+    nums[key] = random.choice(startingNumbers)
+    startingNumbers.remove(nums[key])
 
 while True:
     # Determine which spaces are part of rows that don't add up to 38:
@@ -76,6 +43,18 @@ while True:
         marks[key] = ' '
 
     rowSums = {}
+
+    # ROW NUMBERING:
+    #       12  14
+    #    11 / 13/15
+    #    / / / / /
+    #   * * *-/-/--1
+    #  * * * *-/---2
+    # * * * * *----3
+    #  * * * *-\---4
+    #   * * *-\-6--5
+    #    \ \ \ 7
+    #    10 9 8
 
     rowSums[1] = nums[1] + nums[2] + nums[3] # Row 1
     if rowSums[1] != 38:
@@ -163,10 +142,11 @@ while True:
         if number.isdecimal() and (1 <= int(number) <= 19):
             break
 
-    numberAtSpace = nums[int(space)]
+    # Swap the numbers:
+    numberAtOriginalSpace = nums[int(space)]
     for key in range(1, 20):
         if nums[key] == int(number):
-            otherSpace = key
+            spaceOfOriginalNumber = key
 
     nums[int(space)] = int(number)
-    nums[otherSpace] = numberAtSpace
+    nums[spaceOfOriginalNumber] = numberAtOriginalSpace
