@@ -118,7 +118,7 @@ originalPoints = [[-1, -1, -1],
                   [-1,  1,  1],
                   [ 1,  1,  1]]
 rotatedPoints = [None] * len(originalPoints)
-rx = ry = rz = 0 # Rotation amounts for each axis.
+rx = ry = rz = 0.0 # Rotation amounts for each axis.
 
 try:
     while True:
