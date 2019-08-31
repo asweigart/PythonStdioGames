@@ -116,7 +116,7 @@ while True: # Main game loop.
         if space == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
-        if space in 'ABCDEFGHIJKLMNOPQRS' or space in 'Z':
+        if (space in 'ABCDEFGHIJKLMNOPQRS' + 'Z') and (space != ''):
             break
 
     # Get the number to place on the space from the user:
@@ -138,17 +138,21 @@ while True: # Main game loop.
 
     elif int(number) in unusedNums:
         # Move the number from the unused numbers box to the board:
-        board[space] = int(number)
-        unusedNums.remove(int(number))
-
-    else:
-        # The number is already on the board, so do a swap to move it to
-        # the correct space:
         numberAtOriginalSpace = board[space]
+        board[space] = int(number) # Put the number on the board.
+        unusedNums.remove(int(number))
+        if numberAtOriginalSpace != 0:
+            unusedNums.add(numberAtOriginalSpace)
+    else:
+        # If the number is already on the board, so do a swap to move it to
+        # the correct space:
+        spaceOfOriginalNumber = None
         for key in 'ABCDEFGHIJKLMNOPQRS':
             if board[key] == int(number):
                 spaceOfOriginalNumber = key
 
-        # Swap the numbers:
+        numberAtOriginalSpace = board[space]
+
+        # Swap the two numbers on the board:
         board[space] = int(number)
         board[spaceOfOriginalNumber] = numberAtOriginalSpace
