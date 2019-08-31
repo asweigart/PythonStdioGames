@@ -1,48 +1,53 @@
-# TODO - add a way to quit
-# TODO - Add instructions & title
-# TODO - add comments and better docs
+# Magic Hexagon, by Al Sweigart al@inventwithpython.com
 # More info at https://en.wikipedia.org/wiki/Magic_hexagon
 # More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0
-# Solution video is here: https://www.youtube.com/watch?v=qjgTcWJ6lZY
 
-import random
+import sys
 
-# You can copy/paste this variable from https://pastebin.com/raw/h9ufKzSz
-boardTemplate = r"""            {48}    {49}    {50}
+# Print the title and instructions:
+print('Welcome to Magic Hexagon!')
+print('-------------------------')
+print('Place the numbers 1 to 19 on spaces A through S such that all 15')
+print('rows across and along both diagonals add up to 38.')
+print()
+input('Press enter to begin...')
+
+# A large, multi-line string that acts as a template for the game board:
+# You can copy/paste this from https://pastebin.com/raw/h9ufKzSz
+boardTemplate = r"""            {29}    {30}    {31}
          _  /  _  /  _  /
-        / \/  / \/  / \/    {51}
-       / {19} \ / {20} \ / {21} \    /
-      | {0}  | {1}  | {2}  |--/-----{38}
-     / \   / \   / \   / \/    {52}
-    / {22} \ / {23} \ / {24} \ / {25} \    /     +--------------+
-   | {3}  | {4}  | {5}  | {6}  |--/--{39}  |  Space Map:  |
-  / \   / \   / \   / \   / \/       |   01 02 03   |
- / {26} \ / {27} \ / {28} \ / {29} \ / {30} \       |  04 05 06 07 |
-| {7}  | {8}  | {9}  | {10}  | {11}  |--{40}  |08 09 10 11 12|
- \   / \   / \   / \   / \   /       |  13 14 15 16 |
-  \ / {31} \ / {32} \ / {33} \ / {34} \ /\       |   17 18 19   |
-   | {12}  | {13}  | {14}  | {15}  |--\--{41}  +--------------+
-    \   / \   / \   / \   /    \
-     \ / {35} \ / {36} \ / {37} \ /\    {43}
-      | {16}  | {17}  | {18}  |--\-----{42}
-       \   / \   / \   /    \
-        \_/\  \_/\  \_/\    {44}
+        / \/  / \/  / \/    {32}
+       /   \ /   \ /   \    /        +-Space Map-+
+      | {0}  | {1}  | {2}  |--/-----{19}  |   A B C   |
+     / \   / \   / \   / \/    {33}    |  D E F G  |
+    /   \ /   \ /   \ /   \    /     | H I J K L |
+   | {3}  | {4}  | {5}  | {6}  |--/--{20}  |  M N O P  |
+  / \   / \   / \   / \   / \/       |   Q R S   |
+ /   \ /   \ /   \ /   \ /   \       +-----------+
+| {7}  | {8}  | {9}  | {10}  | {11}  |--{21}
+ \   / \   / \   / \   / \   /       +-----Z-----+
+  \ /   \ /   \ /   \ /   \ /\       |{34} {35} {36} {37}|
+   | {12}  | {13}  | {14}  | {15}  |--\--{22}  |{38} {39} {40} {41}|
+    \   / \   / \   / \   /    \     |{42} {43} {44} {45}|
+     \ /   \ /   \ /   \ /\    {24}    |{46} {47} {48} {49}|
+      | {16}  | {17}  | {18}  |--\-----{23}  |{50} {51} {52}   |
+       \   / \   / \   /    \        +-----------+
+        \_/\  \_/\  \_/\    {25}
             \     \     \
-            {47}    {46}    {45}"""
+            {28}    {27}    {26}"""
 
-startingNumbers = list(range(1, 20))
-nums = {}
-for key in range(1, 20):
-    nums[key] = random.choice(startingNumbers)
-    startingNumbers.remove(nums[key])
+# The unused numbers box starts off with all integers 1 to 19:
+unusedNums = set()
+for i in range(1, 20):
+    unusedNums.add(i)
 
-while True:
-    # Determine which spaces are part of rows that don't add up to 38:
-    marks = {}
-    for key in range(1, 20):
-        marks[key] = ' '
+# The hex board starts off with just blanks (that is, 0s)
+board = {}
+for key in 'ABCDEFGHIJKLMNOPQRS':
+    board[key] = 0
 
-    rowSums = {}
+while True: # Main game loop.
+    rowSums = {} # Keys are row numbers, values are sums for that row.
 
     # ROW NUMBERING:
     #       12  14
@@ -56,97 +61,94 @@ while True:
     #    \ \ \ 7
     #    10 9 8
 
-    rowSums[1] = nums[1] + nums[2] + nums[3] # Row 1
-    if rowSums[1] != 38:
-        marks[1] = marks[2] = marks[3] = '_'
+    # Calculate the sum for each of the 15 rows:
+    b = board # Syntactic sugar to have a shorter variable name.
+    rowSums[1] = b['A'] + b['B'] + b['C']
+    rowSums[2] = b['D'] + b['E'] + b['F'] + b['G']
+    rowSums[3] = b['H'] + b['I'] + b['J'] + b['K'] + b['L']
+    rowSums[4] = b['M'] + b['N'] + b['O'] + b['P']
+    rowSums[5] = b['Q'] + b['R'] + b['S']
+    rowSums[6] = b['C'] + b['G'] + b['L']
+    rowSums[7] = b['B'] + b['F'] + b['K'] + b['P']
+    rowSums[8] = b['A'] + b['E'] + b['J'] + b['O'] + b['S']
+    rowSums[9] = b['D'] + b['I'] + b['N'] + b['R']
+    rowSums[10] = b['H'] + b['M'] + b['Q']
+    rowSums[11] = b['A'] + b['D'] + b['H']
+    rowSums[12] = b['B'] + b['E'] + b['I'] + b['M']
+    rowSums[13] = b['C'] + b['F'] + b['J'] + b['N'] + b['Q']
+    rowSums[14] = b['G'] + b['K'] + b['O'] + b['R']
+    rowSums[15] = b['L'] + b['P'] + b['S']
 
-    rowSums[2] = nums[4] + nums[5] + nums[6] + nums[7] # Row 2
-    if rowSums[2] != 38:
-        marks[4] = marks[5] = marks[6] = marks[7] = '_'
+    # If all rows add up to 38, the puzzle is solved:
+    isSolved = True
+    for i in range(1, 16):
+        if rowSums[i] != 38:
+            isSolved = False
 
-    rowSums[3] = nums[8] + nums[9] + nums[10] + nums[11] + nums[12] # Row 3
-    if rowSums[3] != 38:
-        marks[8] = marks[9] = marks[10] = marks[11] = marks[12] = '_'
-
-    rowSums[4] = nums[13] + nums[14] + nums[15] + nums[16] # Row 4
-    if rowSums[4] != 38:
-        marks[13] = marks[14] = marks[15] = marks[16] = '_'
-
-    rowSums[5] = nums[17] + nums[18] + nums[19] # Row 5
-    if rowSums[5] != 38:
-        marks[17] = marks[18] = marks[19] = '_'
-
-    rowSums[6] = nums[3] + nums[7] + nums[12] # Row 6
-    if rowSums[6] != 38:
-        marks[3] = marks[7] = marks[12] = '_'
-
-    rowSums[7] = nums[2] + nums[6] + nums[11] + nums[16] # Row 7
-    if rowSums[7] != 38:
-        marks[2] = marks[6] = marks[11] = marks[16] = '_'
-
-    rowSums[8] = nums[1] + nums[5] + nums[10] + nums[15] + nums[19] # Row 8
-    if rowSums[8] != 38:
-        marks[1] = marks[5] = marks[10] = marks[15] = marks[19] = '_'
-
-    rowSums[9] = nums[4] + nums[9] + nums[14] + nums[18] # Row 9
-    if rowSums[9] != 38:
-        marks[4] = marks[9] = marks[14] = marks[18] = '_'
-
-    rowSums[10] = nums[8] + nums[13] + nums[17] # Row 10
-    if rowSums[10] != 38:
-        marks[8] = marks[13] = marks[17] = '_'
-
-    rowSums[11] = nums[1] + nums[4] + nums[8] # Row 11
-    if rowSums[11] != 38:
-        marks[1] = marks[4] = marks[8] = '_'
-
-    rowSums[12] = nums[2] + nums[5] + nums[9] + nums[13] # Row 12
-    if rowSums[12] != 38:
-        marks[2] = marks[5] = marks[9] = marks[13] = '_'
-
-    rowSums[13] = nums[3] + nums[6] + nums[10] + nums[14] + nums[17] # Row 13
-    if rowSums[13] != 38:
-        marks[3] = marks[6] = marks[10] = marks[14] = marks[17] = '_'
-
-    rowSums[14] = nums[7] + nums[11] + nums[15] + nums[18] # Row 14
-    if rowSums[14] != 38:
-        marks[7] = marks[11] = marks[15] = marks[18] = '_'
-
-    rowSums[15] = nums[12] + nums[16] + nums[19] # Row 15
-    if rowSums[15] != 38:
-        marks[12] = marks[16] = marks[19] = '_'
-
-
+    # Prepare the arguments to use for the boardTemplate string:
     templateArgs = []
-    for key in range(1, 20):
-        templateArgs.append(str(nums[key]).rjust(2))
-    for key in range(1, 20):
-        templateArgs.append(marks[key])
+    # Indexes 0 to 18 are for the numbers 1 to 19:
+    for key in 'ABCDEFGHIJKLMNOPQRS':
+        if board[key] == 0:
+            templateArgs.append('  ')
+        else:
+            templateArgs.append(str(board[key]).rjust(2))
+    # Indexes 19 to 33 are for the row sums:
     for key in range(1, 16):
         templateArgs.append(str(rowSums[key]).rjust(2))
+    # Indexes 34 to 52 are for the unused numbers box:
+    for i in range(1, 20):
+        if i in unusedNums:
+            templateArgs.append(str(i).rjust(2))
+        else:
+            templateArgs.append('  ')
+
+    # Display the hex board:
     print(boardTemplate.format(*templateArgs))
 
-
-    if '_' not in marks.values():
+    if isSolved: # Quit the program if all rows add up to 38.
         print('You\'ve solved the puzzle! Hurray!')
         break
 
+    # Get the space move from the user:
     while True:
-        space = input('Select a space from 01 to 19: ')
-        if space.isdecimal() and (1 <= int(space) <= 19):
+        space = input('Select a space A to S (or "Z" or "quit"): ').upper()
+        if space == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
+        if space in 'ABCDEFGHIJKLMNOPQRS' or space in 'Z':
             break
 
+    # Get the number to place on the space from the user:
     while True:
-        print('Enter a number to place in space #' + space + ':')
+        print('Enter a number 1 to 19 to place in', space, '(or "quit"):')
         number = input()
+        if number.lower().startswith('q'):
+            print('Thanks for playing!')
+            sys.exit()
         if number.isdecimal() and (1 <= int(number) <= 19):
             break
 
-    # Swap the numbers:
-    numberAtOriginalSpace = nums[int(space)]
-    for key in range(1, 20):
-        if nums[key] == int(number):
-            spaceOfOriginalNumber = key
+    if space == 'Z':
+        # Move the number to the unused numbers box:
+        unusedNums.add(int(number))
+        for key in 'ABCDEFGHIJKLMNOPQRS':
+            if board[key] == int(number):
+                board[key] = 0 # Set this space to blank.
 
-    nums[int(space)] = int(number)
-    nums[spaceOfOriginalNumber] = numberAtOriginalSpace
+    elif int(number) in unusedNums:
+        # Move the number from the unused numbers box to the board:
+        board[space] = int(number)
+        unusedNums.remove(int(number))
+
+    else:
+        # The number is already on the board, so do a swap to move it to
+        # the correct space:
+        numberAtOriginalSpace = board[space]
+        for key in 'ABCDEFGHIJKLMNOPQRS':
+            if board[key] == int(number):
+                spaceOfOriginalNumber = key
+
+        # Swap the numbers:
+        board[space] = int(number)
+        board[spaceOfOriginalNumber] = numberAtOriginalSpace
