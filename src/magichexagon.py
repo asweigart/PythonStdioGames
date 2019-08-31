@@ -8,13 +8,13 @@ import sys
 print('Welcome to Magic Hexagon!')
 print('-------------------------')
 print('Place the numbers 1 to 19 on spaces A through S such that all 15')
-print('rows across and along both diagonals add up to 38.')
+print('horizontal and diagonal rows add up to 38.')
 print()
 input('Press enter to begin...')
 
 # A large, multi-line string that acts as a template for the game board:
 # You can copy/paste this from https://pastebin.com/raw/h9ufKzSz
-boardTemplate = r"""            {29}    {30}    {31}
+boardTemplate = r"""Sum to 38:  {29}    {30}    {31}
          _  /  _  /  _  /
         / \/  / \/  / \/    {32}
        /   \ /   \ /   \    /        +-Space Map-+
@@ -53,11 +53,11 @@ while True: # Main game loop.
     #       12  14
     #    11 / 13/15
     #    / / / / /
-    #   * * *-/-/--1
-    #  * * * *-/---2
-    # * * * * *----3
-    #  * * * *-\---4
-    #   * * *-\-6--5
+    #   A B C-/-/--1
+    #  D E F G-/---2
+    # H I J K L----3
+    #  M N O P-\---4
+    #   Q R S-\-6--5
     #    \ \ \ 7
     #    10 9 8
 
@@ -79,24 +79,21 @@ while True: # Main game loop.
     rowSums[14] = b['G'] + b['K'] + b['O'] + b['R']
     rowSums[15] = b['L'] + b['P'] + b['S']
 
-    # If all rows add up to 38, the puzzle is solved:
-    isSolved = True
-    for i in range(1, 16):
-        if rowSums[i] != 38:
-            isSolved = False
-
     # Prepare the arguments to use for the boardTemplate string:
     templateArgs = []
-    # Indexes 0 to 18 are for the numbers 1 to 19:
+
+    # Indexes 0 to 18 of templateArgs are for the numbers 1 to 19:
     for key in 'ABCDEFGHIJKLMNOPQRS':
         if board[key] == 0:
             templateArgs.append('  ')
         else:
             templateArgs.append(str(board[key]).rjust(2))
-    # Indexes 19 to 33 are for the row sums:
+
+    # Indexes 19 to 33 of templateArgs are for the row sums:
     for key in range(1, 16):
         templateArgs.append(str(rowSums[key]).rjust(2))
-    # Indexes 34 to 52 are for the unused numbers box:
+
+    # Indexes 34 to 52 of templateArgs are for the unused numbers box:
     for i in range(1, 20):
         if i in unusedNums:
             templateArgs.append(str(i).rjust(2))
@@ -106,7 +103,12 @@ while True: # Main game loop.
     # Display the hex board:
     print(boardTemplate.format(*templateArgs))
 
-    if isSolved: # Quit the program if all rows add up to 38.
+    # Quit the program if all rows add up to 38:
+    isSolved = True
+    for i in range(1, 16): # Loop over all 15 rows.
+        if rowSums[i] != 38:
+            isSolved = False # Unsolved if at least one row isn't 38.
+    if isSolved:
         print('You\'ve solved the puzzle! Hurray!')
         break
 
@@ -144,7 +146,7 @@ while True: # Main game loop.
         if numberAtOriginalSpace != 0:
             unusedNums.add(numberAtOriginalSpace)
     else:
-        # If the number is already on the board, so do a swap to move it to
+        # If the number is already on the board, do a swap to move it to
         # the correct space:
         spaceOfOriginalNumber = None
         for key in 'ABCDEFGHIJKLMNOPQRS':
