@@ -28,7 +28,7 @@ while True:
     while True:
         print('Okay! Pick a cup 1-%s' % len(CUPS))
         pickedCup = input()
-        if pickedCup.isdigit() and 1 <= int(pickedCup) <= len(CUPS):
+        if pickedCup.isdecimal() and 1 <= int(pickedCup) <= len(CUPS):
             break
         print('Type a number between 1 and %s.' % len(CUPS))
         print()

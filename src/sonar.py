@@ -97,7 +97,7 @@ def enterPlayerMove(previousMoves):
             sys.exit()
 
         move = move.split()
-        if len(move) == 2 and move[0].isdigit() and move[1].isdigit() and isOnBoard(int(move[0]), int(move[1])):
+        if len(move) == 2 and move[0].isdecimal() and move[1].isdecimal() and isOnBoard(int(move[0]), int(move[1])):
             if [int(move[0]), int(move[1])] in previousMoves:
                 print('You already moved there.')
                 continue

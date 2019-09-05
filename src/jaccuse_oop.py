@@ -1,11 +1,19 @@
-# J'ACCUSE!, by Al Sweigart al@inventwithpython.com
-# Inspired by Homestar Runner's "Where's an Egg?" game.
-# Play the original Flash game at:
-# https://homestarrunner.com/videlectrix/wheresanegg.html
-# More info at: http://www.hrwiki.org/wiki/Where's_an_Egg%3F
-
+# J'ACCUSE! (Object-Oriented Version), by Al Sweigart al@inventwithpython.com
 
 import time, random, sys
+
+"""
+A place, suspect, and item are tightly linked to each other and never exist on
+their own in this game. If we created separate classes for places, suspects,
+and items, we'd just have to add attributes that tightly link them anyway.
+
+"""
+
+class Place:
+    def __init__(self, placeName, suspectName, itemName):
+        self.placeName = placeName
+        self.suspectName = suspectName
+        self.itemName = itemName
 
 SUSPECTS = ['DUKE HAUTDOG', 'MAXIMUM POWERS', 'BILL MONOPOLIS', 'SENATOR SCHMEAR', 'MRS. FEATHERTOSS', 'DR. JEAN SPLICER', 'RAFFLES THE CLOWN', 'ESPRESSA TOFFEEPOT', 'CECIL EDGAR VANDERTON']
 ITEMS = ['FLASHLIGHT', 'CANDLESTICK', 'RAINBOW FLAG', 'HAMSTER WHEEL', 'ANIME VHS TAPE', 'JAR OF PICKLES', 'ONE COWBOY BOOT', 'CLEAN UNDERPANTS', '5 DOLLAR GIFT CARD']
@@ -135,7 +143,6 @@ for interviewee in random.sample(SUSPECTS, random.randint(3, 4)):
 
 # START OF THE GAME
 print("J'ACCUSE! (a mystery game)")
-print('By Al Sweigart al@inventwithpython.com')
 print()
 print('You are the world-famous detective, Mathilde Camus.')
 print('ZOPHIE THE CAT has gone missing, and you must sift through the clues.')

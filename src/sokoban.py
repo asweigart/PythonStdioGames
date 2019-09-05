@@ -80,7 +80,7 @@ while True: # Main game loop.
         print('Thanks for playing!')
         sys.exit()
 
-    if moves.isdigit():
+    if moves.isdecimal():
         if not (0 <= int(moves) < len(ALL_LEVELS)):
             print('Enter a level number between 0 and', len(ALL_LEVELS) - 1)
             continue

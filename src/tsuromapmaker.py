@@ -82,7 +82,7 @@ def drawTile(tile, x, y, canvas):
 
 def rotateTileClockwise(tile, rotations): # rotations are clockwise at 90 degree increments
     assert len(tile) == 25 # Tiles should be 5x5 areas of 25 '0' through '7' characters.
-    assert tile.isdigit() and '8' not in tile and '9' not in tile
+    assert tile.isdecimal() and '8' not in tile and '9' not in tile
 
     rotations = rotations % 4 # Handle excess or negative rotations.
     t = tile # Syntactic sugar to use a shorter name.

@@ -55,7 +55,7 @@ while True: # Main game loop.
     while True: # Get the number of columns to eat:
         print(f'How many columns to eat? ({columnEatMinimum}-{width - widthChomped})')
         columnsToEat = input()
-        if columnsToEat.isdigit() and columnEatMinimum <= int(columnsToEat) <= (width - widthChomped):
+        if columnsToEat.isdecimal() and columnEatMinimum <= int(columnsToEat) <= (width - widthChomped):
             break
         print(f'Enter a number between {columnEatMinimum} and {width - widthChomped}.')
     columnsToEat = int(columnsToEat)
@@ -67,7 +67,7 @@ while True: # Main game loop.
     while True: # Get the number of rows to eat:
         print(f'How many rows to eat? ({rowEatMinimum}-{height - heightChomped})')
         rowsToEat = input()
-        if rowsToEat.isdigit() and rowEatMinimum <= int(rowsToEat) <= (height - heightChomped):
+        if rowsToEat.isdecimal() and rowEatMinimum <= int(rowsToEat) <= (height - heightChomped):
             break
         print(f'Enter a number between {rowEatMinimum} and {height - heightChomped}.')
     rowsToEat = int(rowsToEat)

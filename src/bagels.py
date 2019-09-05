@@ -49,7 +49,7 @@ while True: # Main game loop.
     numGuesses = 1
     while numGuesses <= MAX_GUESSES:
         guess = ''
-        while len(guess) != NUM_DIGITS or not guess.isdigit():
+        while len(guess) != NUM_DIGITS or not guess.isdecimal():
             print('Guess #%s: ' % (numGuesses))
             guess = input()
 

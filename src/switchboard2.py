@@ -171,7 +171,7 @@ while True: # Main game loop.
     if move.lower() == 'quit':
         sys.exit()
 
-    if not move.isdigit() or not (0 <= int(move) < NUMBER_OF_SWITCHES):
+    if not move.isdecimal() or not (0 <= int(move) < NUMBER_OF_SWITCHES):
         continue
     move = int(move)
 
