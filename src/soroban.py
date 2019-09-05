@@ -83,7 +83,7 @@ def main():
         if commands == 'quit':
             # Quit the program:
             break
-        elif commands.isdigit():
+        elif commands.isdecimal():
             # Set the abacus number:
             abacusNumber = int(commands)
         else:
