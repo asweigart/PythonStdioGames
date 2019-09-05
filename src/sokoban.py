@@ -10,7 +10,7 @@ GOAL = chr(9675)
 CRATE_ON_GOAL = '*'
 PLAYER_ON_GOAL = FACE
 CHAR_MAP = {'#': WALL, '@': FACE, '$': CRATE, '+': PLAYER_ON_GOAL,
-            '.': GOAL, '*': CRATE_ON_GOAL, ' ': ' '}
+            '.': GOAL, '*': CRATE_ON_GOAL, ' ': ' '} # TODO add comment
 
 # Display the title banner and instructions:
 print('SOKOBAN: The classic crate-pushing game.')
@@ -24,13 +24,12 @@ print('once.')
 print()
 
 
-
-# Load each level from sokobanLevels.txt
-if not os.path.exists('sokobanLevels.txt'):
-    print('Download the level file from https://github.com/asweigart/PythonStdioGames/blob/master/src/sokobanLevels.txt')
+# Load each level from sokobanlevels.txt
+if not os.path.exists('sokobanlevels.txt'):
+    print('Download the level file from https://github.com/asweigart/PythonStdioGames/blob/master/src/sokobanlevels.txt')
     sys.exit()
 ALL_LEVELS = []
-with open('sokobanLevels.txt') as levelFile:
+with open('sokobanlevels.txt') as levelFile:
     currentLevelFromFile = {'width': 0, 'height': 0} # Each level is represented by a dictionary.
     y = 0
     for line in levelFile.readlines():
@@ -43,10 +42,11 @@ with open('sokobanLevels.txt') as levelFile:
             # Finished with the current level:
             ALL_LEVELS.append(currentLevelFromFile)
             currentLevelFromFile = {'width': 0, 'height': 0}
-            y = 0
+            y = 0 # Reset y back to 0.
             continue
 
         # Add the line to the current level.
+        # We use line[:-1] so we don't include the newline:
         for x, levelChar in enumerate(line[:-1]):
             currentLevelFromFile[(x, y)] = levelChar
         y += 1
@@ -69,7 +69,7 @@ def drawLevel(levelNum, levelData):
 currentLevelNumber = 0
 currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
 undoStack = [copy.copy(currentLevel)]
-lastMove = ''
+
 while True: # Main game loop.
     drawLevel(currentLevelNumber, currentLevel)
 
@@ -88,7 +88,6 @@ while True: # Main game loop.
         currentLevelNumber = int(moves)
         currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
         undoStack = [copy.copy(currentLevel)]
-        lastMove = ''
         continue
 
     # Validate the input; make sure it only has W, A, S, D, or U:
@@ -111,7 +110,7 @@ while True: # Main game loop.
         if move == 'U':
             if len(undoStack) == 1:
                 continue # Can't undo past the first move.
-            undoStack.pop()
+            undoStack.pop() # Remove the last item from the undoStack list.
             currentLevel = copy.copy(undoStack[-1])
             continue
 
@@ -170,7 +169,6 @@ while True: # Main game loop.
 
         # Save the state of the level for the undo feature:
         undoStack.append(copy.copy(currentLevel))
-        lastMove = move
 
         # Check if the player has finished the level:
         levelIsSolved = True
@@ -185,5 +183,4 @@ while True: # Main game loop.
             currentLevelNumber = (currentLevelNumber + 1) % len(ALL_LEVELS)
             currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
             undoStack = [copy.copy(currentLevel)]
-            lastMove = ''
-
+            break # Don't carry out any remaining moves.

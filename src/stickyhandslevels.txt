@@ -1,0 +1,43 @@
+; Sticky Hands
+; Everything after the ; is a comment and will be ignored by the game that
+; reads in this file.
+;
+; The format is described at:
+; http://sokobano.de/wiki/index.php?title=Level_format
+;   @ - The starting position of the player.
+;   $ - The starting position for a pushable star.
+;  (space) - an empty open space.
+;   # - A wall.
+;
+; Level maps are separated by a blank line (I like to use a ; at the start
+; of the line since it is more visible.)
+;
+
+; Level 0
+###########
+#         #
+#         #
+# @     $ #
+#         #
+#         #
+###########
+
+; Level 1
+###########
+#       $ #
+#         #
+# @     $ #
+#         #
+#       $ #
+###########
+
+; Level 2
+###########
+#         #
+#         #
+# @     $ #
+##### #####
+#         #
+#       $ #
+###########
+

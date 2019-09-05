@@ -1,5 +1,4 @@
-# Water Bucket Puzzle
-# By Al Sweigart al@inventwithpython.com
+# Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com
 
 import sys
 

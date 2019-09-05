@@ -1,6 +1,4 @@
-# Birthday Paradox Simulation
-# By Al Sweigart al@inventwithpython.com
-
+# Birthday Paradox Simulation, by Al Sweigart al@inventwithpython.com
 # More info at https://en.wikipedia.org/wiki/Birthday_problem
 
 import datetime, random
@@ -24,14 +22,14 @@ def getMatch(birthdays):
                 return birthdayA # Return the matching birthday.
 
 # Display the intro:
-print('Birthday Paradox')
-print('----------------')
-print('The birthday paradox shows us that in a group of N people, the odds')
-print('that two of them have matching birthdays is surprisingly small.')
-print('This program does a monte carlo simulation to explore this concept.')
-print()
-print('(It\'s not actually a paradox, it\'s just a surprising result.)')
-print()
+print('''Birthday Paradox
+
+The birthday paradox shows us that in a group of N people, the odds
+that two of them have matching birthdays is surprisingly small.
+This program does a monte carlo simulation to explore this concept.
+
+(It's not actually a paradox, it's just a surprising result.)
+''')
 
 MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
 
