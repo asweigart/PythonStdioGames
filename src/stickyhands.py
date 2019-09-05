@@ -60,7 +60,7 @@ with open('stickyhandslevels.txt') as levelFile:
 
 def drawLevel(levelNum, levelData):
     # Draw the current level.
-    print('Level #' + str(levelNum), 'of', len(ALL_LEVELS) - 1)
+    print('Level #' + str(levelNum + 1), 'of', len(ALL_LEVELS))
     for y in range(levelData['height']):
         for x in range(levelData['width']):
             prettyChar = CHAR_MAP[levelData.get((x, y), ' ')]
@@ -110,11 +110,11 @@ while True: # Main game loop.
         sys.exit()
 
     if moves.isdecimal():
-        if not (0 <= int(moves) < len(ALL_LEVELS)):
-            print('Enter a level number between 0 and', len(ALL_LEVELS) - 1)
+        if not (1 <= int(moves) < len(ALL_LEVELS)):
+            print('Enter a level number between 1 and', len(ALL_LEVELS))
             continue
         # Change the current level:
-        currentLevelNumber = int(moves)
+        currentLevelNumber = int(moves) - 1
         currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
         undoStack = [copy.copy(currentLevel)]
         continue
