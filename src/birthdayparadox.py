@@ -1,16 +1,14 @@
-# Birthday Paradox
+# Birthday Paradox Simulation
 # By Al Sweigart al@inventwithpython.com
 
 # More info at https://en.wikipedia.org/wiki/Birthday_problem
 
 import datetime, random
 
-STANDARD_YEAR = 2001 # Pick a non-leap year to use for the standard year.
-
 def getBirthdays(number):
     birthdays = []
     for i in range(number):
-        birthday = datetime.date(STANDARD_YEAR, 1, 1) + datetime.timedelta(random.randint(0, 364))
+        birthday = datetime.date(2001, 1, 1) + datetime.timedelta(random.randint(0, 364))
         birthdays.append(birthday)
     return birthdays
 
