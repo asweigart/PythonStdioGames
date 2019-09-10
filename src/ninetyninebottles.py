@@ -2,6 +2,14 @@
 
 import time
 
+print('NINETY NINE BOTTLES OF BEER')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+print('(Press Ctrl-C to quit.)')
+print()
+
+time.sleep(2)
+
 bottles = 99 # This is the starting number of bottles.
 PAUSE = 1 # A constant that sets how many seconds each pause is.
 

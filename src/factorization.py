@@ -11,13 +11,13 @@ print()
 while True:
     print()
     print('Enter a number larger than zero to factor (or "quit" to quit):')
-    number = input()
-    if number.lower() == 'quit':
+    response = input()
+    if response.lower() == 'quit':
         sys.exit()
 
-    if not (number.isdecimal() and int(number) > 0):
+    if not (response.isdecimal() and int(response) > 0):
         continue
-    number = int(number)
+    number = int(response)
 
     factors = []
 

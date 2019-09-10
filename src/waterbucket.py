@@ -24,6 +24,9 @@ class Bucket:
         # Put the poured out water into the other bucket:
         intoBucket.water = intoBucket.water + amountToPour
 
+print('WATER BUCKET PUZZLE')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 
 # The bucket and goal settings for this game:
 BUCKETS = [{'size': 8, 'water': 0}, {'size': 5, 'water': 0}, {'size': 3, 'water': 0}] # The bucket sizes available.

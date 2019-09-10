@@ -1,15 +1,18 @@
-# Chomp by Al Sweigart al@inventwithpython.com
-# Based on a Martin Gardner puzzle from Scientific American.
-
+# Chomp, by Al Sweigart al@inventwithpython.com
+# Inspired by a Martin Gardner puzzle from Scientific American
 # https://www.atariarchives.org/basicgames/showpage.php?page=44
+
+# TODO - fix the UI for this game.
+
 import random, sys
 
 print('CHOMP')
 print('By Al Sweigart al@inventwithpython.com')
+print('Inspired by a Martin Gardner puzzle from Scientific American')
 print()
 print('In this two player game, players take turns eating a piece out of a')
-print('cookie. You must always eat something on your turn. The goal is to')
-print('not eat the poisonous corner in the upper left.')
+print('rectangular cookie. You must always eat something on your turn. The')
+print('goal is to not eat the poisonous corner in the upper left.')
 print()
 
 width = random.randint(1, 9)
@@ -54,11 +57,11 @@ while True: # Main game loop.
         columnEatMinimum = 0
     while True: # Get the number of columns to eat:
         print(f'How many columns to eat? ({columnEatMinimum}-{width - widthChomped})')
-        columnsToEat = input()
-        if columnsToEat.isdecimal() and columnEatMinimum <= int(columnsToEat) <= (width - widthChomped):
+        response = input()
+        if response.isdecimal() and columnEatMinimum <= int(response) <= (width - widthChomped):
             break
         print(f'Enter a number between {columnEatMinimum} and {width - widthChomped}.')
-    columnsToEat = int(columnsToEat)
+    columnsToEat = int(response)
 
     if heightChomped == 0 or columnsToEat == 0:
         rowEatMinimum = 1
@@ -66,11 +69,11 @@ while True: # Main game loop.
         rowEatMinimum = 0
     while True: # Get the number of rows to eat:
         print(f'How many rows to eat? ({rowEatMinimum}-{height - heightChomped})')
-        rowsToEat = input()
-        if rowsToEat.isdecimal() and rowEatMinimum <= int(rowsToEat) <= (height - heightChomped):
+        response = input()
+        if response.isdecimal() and rowEatMinimum <= int(response) <= (height - heightChomped):
             break
         print(f'Enter a number between {rowEatMinimum} and {height - heightChomped}.')
-    rowsToEat = int(rowsToEat)
+    rowsToEat = int(response)
 
     # Process the player's move:
     widthChomped += columnsToEat

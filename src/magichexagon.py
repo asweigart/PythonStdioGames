@@ -43,11 +43,11 @@ for i in range(1, 20):
 
 # The hex board starts off with just blanks (that is, 0s)
 board = {}
-for key in 'ABCDEFGHIJKLMNOPQRS':
-    board[key] = 0
+for space in 'ABCDEFGHIJKLMNOPQRS':
+    board[space] = 0
 
 while True: # Main game loop.
-    rowSums = {} # Keys are row numbers, values are sums for that row.
+    rowSums = {} # The keys are row numbers, values are sums for that row.
 
     # ROW NUMBERING:
     #       12  14
@@ -83,15 +83,15 @@ while True: # Main game loop.
     templateArgs = []
 
     # Indexes 0 to 18 of templateArgs are for the numbers 1 to 19:
-    for key in 'ABCDEFGHIJKLMNOPQRS':
-        if board[key] == 0:
+    for space in 'ABCDEFGHIJKLMNOPQRS':
+        if board[space] == 0:
             templateArgs.append('  ')
         else:
-            templateArgs.append(str(board[key]).rjust(2))
+            templateArgs.append(str(board[space]).rjust(2))
 
     # Indexes 19 to 33 of templateArgs are for the row sums:
-    for key in range(1, 16):
-        templateArgs.append(str(rowSums[key]).rjust(2))
+    for rowNumber in range(1, 16):
+        templateArgs.append(str(rowSums[rowNumber]).rjust(2))
 
     # Indexes 34 to 52 of templateArgs are for the unused numbers box:
     for i in range(1, 20):
@@ -112,49 +112,50 @@ while True: # Main game loop.
         print('You\'ve solved the puzzle! Hurray!')
         break
 
-    # Get the space move from the user:
+    # Get the selected space from the user:
     while True:
-        space = input('Select a space A to S (or "Z" or "quit"): ').upper()
-        if space == 'QUIT':
+        response = input('Select a space A to S (or Z or QUIT): ').upper()
+        if response == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
-        if (space in 'ABCDEFGHIJKLMNOPQRS' + 'Z') and (space != ''):
+        if (response in 'ABCDEFGHIJKLMNOPQRS' + 'Z') and (response != ''):
+            selectedSpace = response
             break
 
-    # Get the number to place on the space from the user:
+    # Get the selected number from the user to place on the selected space:
     while True:
-        print('Enter a number 1 to 19 to place in', space, '(or "quit"):')
-        number = input()
-        if number.lower().startswith('q'):
+        print('Enter a number 1 to 19 for', selectedSpace, '(or "quit"):')
+        response = input()
+        if response.lower().startswith('q'):
             print('Thanks for playing!')
             sys.exit()
-        if number.isdecimal() and (1 <= int(number) <= 19):
+        if response.isdecimal() and (1 <= int(response) <= 19):
+            selectedNumber = int(response)
             break
 
-    if space == 'Z':
+    if selectedSpace == 'Z':
         # Move the number to the unused numbers box:
-        unusedNums.add(int(number))
-        for key in 'ABCDEFGHIJKLMNOPQRS':
-            if board[key] == int(number):
-                board[key] = 0 # Set this space to blank.
+        unusedNums.add(selectedNumber)
+        for space in 'ABCDEFGHIJKLMNOPQRS':
+            if board[space] == selectedNumber:
+                board[space] = 0 # Set this space to blank.
 
-    elif int(number) in unusedNums:
+    elif selectedNumber in unusedNums:
         # Move the number from the unused numbers box to the board:
-        numberAtOriginalSpace = board[space]
-        board[space] = int(number) # Put the number on the board.
-        unusedNums.remove(int(number))
+        numberAtOriginalSpace = board[selectedSpace]
+        board[selectedSpace] = selectedNumber # Put the number on the board.
+        unusedNums.remove(selectedNumber)
         if numberAtOriginalSpace != 0:
             unusedNums.add(numberAtOriginalSpace)
     else:
-        # If the number is already on the board, do a swap to move it to
-        # the correct space:
-        spaceOfOriginalNumber = None
-        for key in 'ABCDEFGHIJKLMNOPQRS':
-            if board[key] == int(number):
-                spaceOfOriginalNumber = key
+        # Since the number must already be on the board, do a swap to move
+        # it to the selected space:
+        for space in 'ABCDEFGHIJKLMNOPQRS':
+            if board[space] == selectedNumber:
+                spaceOfOriginalNumber = space
 
-        numberAtOriginalSpace = board[space]
+        numberAtOriginalSpace = board[selectedSpace]
 
         # Swap the two numbers on the board:
-        board[space] = int(number)
+        board[selectedSpace] = selectedNumber
         board[spaceOfOriginalNumber] = numberAtOriginalSpace

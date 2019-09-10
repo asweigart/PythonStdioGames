@@ -14,25 +14,25 @@ print('eNtEr YoUr MeSsAgE:')
 message = input()
 print()
 
-spongetext = []
+spongetext = ''
 useUpper = False
 
-for char in message:
-    if not char.isalpha():
-        spongetext.append(char)
+for character in message:
+    if not character.isalpha():
+        spongetext += character
         continue
 
     if useUpper:
-        spongetext.append(char.upper())
+        spongetext += character.upper()
     else:
-        spongetext.append(char.lower())
+        spongetext += character.lower()
 
-    useUpper = not useUpper
+    useUpper = not useUpper # Flip the case.
 
-    if random.randint(1, 100) <= 10:
+    # Randomly flip the case again in 1 in 10 characters.
+    if random.randint(1, 10) == 1:
         useUpper = not useUpper
 
-spongetext = ''.join(spongetext)
 print(spongetext)
 try:
     pyperclip.copy(spongetext)

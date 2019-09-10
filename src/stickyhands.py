@@ -1,6 +1,8 @@
 # Sticky Hands, by Al Sweigart al@inventwithpython.com
 # Inspired by Herding Cats https://w.itch.io/herding-cats
 
+# TODO - Enter R to reset the entire level.
+
 import copy, os, sys
 
 # Setup the constants:
@@ -151,6 +153,7 @@ while True: # Main game loop.
             movex, movey = 0, 1
         elif move == 'D':
             movex, movey = 1, 0
+
 
 
         playerBlob = getPlayerBlobPoints(currentLevel, playerx, playery)

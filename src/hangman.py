@@ -1,47 +1,53 @@
+# Hangman, by Al Sweigart al@inventwithpython.com
+# A version of this game is featured in the book, "Invent Your Own Computer
+# Games with Python. https://nostarch.com/inventwithpython
+
+
+
 import random
-HANGMAN_PICS = ['''
+HANGMAN_PICS = [r'''
  +--+
  |  |
     |
     |
     |
     |
-=====''', '''
- +--+
- |  |
- O  |
-    |
-    |
-    |
-=====''', '''
+=====''', r'''
  +--+
  |  |
  O  |
+    |
+    |
+    |
+=====''', r'''
+ +--+
+ |  |
+ O  |
  |  |
     |
     |
-=====''', '''
+=====''', r'''
  +--+
  |  |
  O  |
 /|  |
     |
     |
-=====''', '''
+=====''', r'''
  +--+
  |  |
  O  |
 /|\ |
     |
     |
-=====''', '''
+=====''', r'''
  +--+
  |  |
  O  |
 /|\ |
 /   |
     |
-=====''', '''
+=====''', r'''
  +--+
  |  |
  O  |
@@ -88,7 +94,8 @@ def getGuess(alreadyGuessed):
             return guess
 
 
-print('H A N G M A N')
+print('HANGMAN')
+print('By Al Sweigart al@inventwithpython.com')
 
 while True:
     # Setup variables for a new game:

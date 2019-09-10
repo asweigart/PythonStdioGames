@@ -12,21 +12,21 @@ print('This program creates maze files. You can play these mazes with')
 print('mazerunner.py or maze3d.py')
 
 while True:
-    WIDTH = input('Enter width (must be odd and greater than 2): ')
-    if WIDTH.isdecimal():
-        WIDTH = int(WIDTH)
+    response = input('Enter width (must be odd and greater than 2): ')
+    if response.isdecimal():
+        WIDTH = int(response)
         if WIDTH % 2 == 1 and WIDTH > 2:
             break
 while True:
-    HEIGHT = input('Enter height (must be odd and greater than 2): ')
-    if HEIGHT.isdecimal():
-        HEIGHT = int(HEIGHT)
+    response = input('Enter height (must be odd and greater than 2): ')
+    if response.isdecimal():
+        HEIGHT = int(response)
         if HEIGHT % 2 == 1 and HEIGHT > 2:
             break
 while True:
-    SEED = input('Enter seed (must be a positive integer): ')
-    if SEED.isdecimal():
-        SEED = int(SEED)
+    response = input('Enter seed (must be a positive integer): ')
+    if response.isdecimal():
+        SEED = int(response)
         if SEED >= 0:
             break
 

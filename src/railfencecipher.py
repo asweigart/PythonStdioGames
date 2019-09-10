@@ -127,14 +127,10 @@ def main():
         if 2 <= key <= 12:
             break
 
-
     if mode == 'E':
         encryptMessage(message, key)
     elif mode == 'D':
         decryptMessage(message, key)
-
-
-
 
 if __name__ == '__main__':
     main()

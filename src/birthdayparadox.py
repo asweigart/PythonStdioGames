@@ -35,9 +35,9 @@ MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 
 
 while True: # Keep asking until the user enters a valid amount.
     print('How many birthdays shall I generate? (Max 100)')
-    number = input()
-    if number.isdecimal() and (0 < int(number) <= 100):
-        number = int(number)
+    response = input()
+    if response.isdecimal() and (0 < int(response) <= 100):
+        number = int(response)
         break # User has entered a valid amount.
 print()
 

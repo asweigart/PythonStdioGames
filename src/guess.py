@@ -1,4 +1,6 @@
-# A guess-the-number game, by Al Sweigart al@inventwithpython.com
+# A Guess-the-Number game, by Al Sweigart al@inventwithpython.com
+# A version of this game is featured in the book, "Invent Your Own Computer
+# Games with Python. https://nostarch.com/inventwithpython
 
 import random
 
@@ -9,13 +11,17 @@ print()
 secretNumber = random.randint(1, 100) # Select a random number.
 print('I am thinking of a number between 1 and 100.')
 
-for i in range(10):
+for i in range(10): # Give the player 10 guesses.
     print('You have ' + str(10 - i) + ' guesses left. Take a guess.')
-    guess = input() # Enter the guess.
-    guess = int(guess) # Convert the guess to an integer.
+    while True:
+        try:
+            guess = int(input()) # Enter the guess.
+            break # Break out of the while loop.
+        except:
+            print('Please enter a number.')
 
     if guess == secretNumber:
-        break # Exit the loop if the guess is correct.
+        break # Break out of the for loop if the guess is correct.
 
     # Offer a hint:
     if guess < secretNumber:
@@ -27,5 +33,4 @@ for i in range(10):
 if guess == secretNumber:
     print('Yay! You guessed my number!')
 if guess != secretNumber:
-    secretNumber = str(secretNumber) # Convert the number to a string.
-    print('Game over. The number I was thinking of was ' + secretNumber)
+    print('Game over. The number I was thinking of was', secretNumber)

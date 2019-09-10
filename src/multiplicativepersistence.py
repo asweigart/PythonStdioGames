@@ -13,16 +13,16 @@ while True:
     print('Enter a number (or "quit" to quit):')
     while True:
         try:
-            number = input()
-            if number.lower().startswith('q'):
+            response = input()
+            if response.lower().startswith('q'):
                 sys.exit()
         except ValueError:
             continue # If the user entered a non-integer, ask again.
         break
 
-    originalNumber = number
+    number = int(response)
     chainLength = 0
-    while len(str(number)) > 1:
+    while number > 9: # Keep looping as long as number is 2 or more digits.
         chainLength += 1
         print(number, end='', flush=True)
         time.sleep(0.2)
@@ -30,8 +30,8 @@ while True:
         time.sleep(0.2)
         print('*'.join(list(str(number))), end='', flush=True)
         time.sleep(0.2)
-        print(' =')
-        time.sleep(0.6)
+        print(' = ', end='', flush=True)
+        time.sleep(0.2)
 
         # Calculate the next number in the multiplicative persistence chain by
         # multiplying all of the digits in the number.
@@ -40,8 +40,11 @@ while True:
             product *= int(digit)
         number = product
 
+        print(number, flush=True)
+        time.sleep(0.6)
+
     print(number)
-    print('Length of', originalNumber, 'chain:', chainLength)
+    print('Length of', response, 'chain:', chainLength)
     print()
 
 

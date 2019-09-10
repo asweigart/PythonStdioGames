@@ -101,15 +101,15 @@ while True:
     print(ALL_CLOSED)
     while True: # Keep asking the player until they enter a valid door.
         print('Pick a door 1, 2, or 3 (or "quit" to stop):')
-        doorPick = input().upper()
-        if doorPick == 'QUIT':
+        response = input().upper()
+        if response == 'QUIT':
             # End the game.
             print('Thanks for playing!')
             sys.exit()
 
-        if doorPick == '1' or doorPick == '2' or doorPick == '3':
+        if response == '1' or response == '2' or response == '3':
             break
-    doorPick = int(doorPick)
+    doorPick = int(response)
 
     # Figure out which goat door to show the player.
     while True: # Select a door that is a goat and not picked by the player.

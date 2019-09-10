@@ -1,5 +1,7 @@
 # Sonar Treasure Hunt, by Al Sweigart al@inventwithpython.com
-# This game is featured in Invent Your Own Computer Games with Python from No Starch Press. https://nostarch.com/inventwithpython
+# A version of this game is featured in the book, "Invent Your Own Computer
+# Games with Python. https://nostarch.com/inventwithpython
+
 import random
 import sys
 import math

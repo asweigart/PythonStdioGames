@@ -131,12 +131,11 @@ while True:
     if response.upper() == 'QUIT':
         sys.exit()
 
-    response = response.split()
-    if len(response) != 3:
+    try:
+        x, y, newChar = response.split()
+    except:
         print('Invalid input. Enter something like "3 3 #" (without quotes).')
         continue
-
-    x, y, newChar = response
 
     # Call either the recursive or iterative flood fill algorithms:
     # (They both do the same thing.)

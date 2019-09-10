@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ASCII Aquarium, by Al Sweigart al@inventwithpython.com 2019/2/12
 from __future__ import print_function
 

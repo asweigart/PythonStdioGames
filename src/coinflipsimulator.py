@@ -8,9 +8,9 @@ print('By Al Sweigart al@inventwithpython.com')
 # Ask the user how many flips to make:
 print('How many coin flips to make?')
 while True:
-    numberOfFlips = input()
-    if numberOfFlips.isdecimal():
-        numberOfFlips = int(numberOfFlips)
+    response = input()
+    if response.isdecimal():
+        numberOfFlips = int(response)
         break
 
 streakStats = {} # Keys are streak lengths, values are frequency.

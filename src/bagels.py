@@ -1,5 +1,7 @@
-# Bagels, a game similar to Mastermind, by Al Sweigart al@inventwithpython.com
-# This game is featured in Invent Your Own Computer Games with Python from No Starch Press. https://nostarch.com/inventwithpython
+# Bagels, by Al Sweigart al@inventwithpython.com
+# A version of this game is featured in the book, "Invent Your Own Computer
+# Games with Python. https://nostarch.com/inventwithpython
+
 import random
 
 NUM_DIGITS = 3
@@ -35,6 +37,8 @@ def getClues(guess, secretNum):
 
 
 print('BAGELS')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
 print('Here are some clues:')
 print('When I say:    That means:')
