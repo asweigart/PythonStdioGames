@@ -1,93 +1,88 @@
 # Chomp, by Al Sweigart al@inventwithpython.com
-# Inspired by a Martin Gardner puzzle from Scientific American
-# https://www.atariarchives.org/basicgames/showpage.php?page=44
+# Inspired by a Frederik Schuh and David Gale puzzle, published by
+# Martin Gardner in Scientific American (January 1973)
+# More info at: https://en.wikipedia.org/wiki/Chomp
 
-# TODO - fix the UI for this game.
+# TODO - This game still has bugs.
 
 import random, sys
 
 print('CHOMP')
 print('By Al Sweigart al@inventwithpython.com')
-print('Inspired by a Martin Gardner puzzle from Scientific American')
-print()
-print('In this two player game, players take turns eating a piece out of a')
-print('rectangular cookie. You must always eat something on your turn. The')
-print('goal is to not eat the poisonous corner in the upper left.')
-print()
+print('Inspired by a Frederik Schuh and David Gale puzzle.')
+print('''
+In this two player game, players take turns picking a piece from a chocolate
+bar and eating that piece and all pieces below and to the right of it. The
+upper left piece is poisonous, and the player to eat that piece loses.
+''')
 
-width = random.randint(1, 9)
-height = random.randint(1, 9)
-widthChomped = 0
-heightChomped = 0
+width = random.randint(2, 9)
+height = random.randint(2, 9)
+
+# Create a dictionary to represent the uneaten parts of the chocolate bar:
+uneatenBar = {}
+for x in 'ABCDEFGHI':
+    for y in '123456789':
+        uneatenBar[(x, y)] = True
 
 turn = 'X'
-
 while True: # Main game loop.
-    # Display the board:
-    print('  1 2 3 4 5 6 7 8 9') # Print the horizontal labels.
-    print()
-    for y in range(1, 10):
-        print(f'{y} ', end='') # Print the vertical labels.
-        if y > height:
-            print() # Print a newline.
-            continue
 
-        # Print a row of cookie pieces:
-        for x in range(1, width + 1):
-            if x == 1 and y == 1:
-                print('P ', end='')
-                continue
-
-            if x == width - widthChomped and y == height - heightChomped:
-                print('X', end='')
-                continue
-
-            # Print a cookie piece if it exists:
-            if ((x > width - widthChomped) and (y > height - heightChomped)):
-                print('. ', end='')
+    # Display the chocolate bar:
+    print(' ABCDEFGHI'[:width + 1]) # Print the horizontal labels.
+    for iy in range(height):
+        print(iy + 1, end='') # + 1 because the labels should start at 1, not 0.
+        for ix in range(width):
+            x = 'ABCDEFGHI'[ix]
+            y = '123456789'[iy]
+            if uneatenBar[(x, y)] == True:
+                print('#', end='')
             else:
-                print('* ', end='')
+                print('.', end='')
         print() # Print a newline.
 
     # Get the player's move:
     print(f'It is {turn}\'s turn.')
-    if widthChomped == 0:
-        columnEatMinimum = 1
-    else:
-        columnEatMinimum = 0
-    while True: # Get the number of columns to eat:
-        print(f'How many columns to eat? ({columnEatMinimum}-{width - widthChomped})')
-        response = input()
-        if response.isdecimal() and columnEatMinimum <= int(response) <= (width - widthChomped):
+    while True:
+        print()
+        print('Select the piece to eat (or QUIT):')
+        response = input().upper()
+
+        # Check if the player wants to stop playing:
+        if response == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
+
+        if len(response) != 2 :
+            print('Enter a coordinate like "B3" or "D5".')
+            continue
+
+        piecex = response[0]
+        piecey = response[1]
+
+        if (piecex, piecey) not in uneatenBar.keys():
+            print('That coordinate doesn\'t exist on this chocolate bar.')
+
+        if uneatenBar.get((piecex, piecey), False) == True:
             break
-        print(f'Enter a number between {columnEatMinimum} and {width - widthChomped}.')
-    columnsToEat = int(response)
 
-    if heightChomped == 0 or columnsToEat == 0:
-        rowEatMinimum = 1
-    else:
-        rowEatMinimum = 0
-    while True: # Get the number of rows to eat:
-        print(f'How many rows to eat? ({rowEatMinimum}-{height - heightChomped})')
-        response = input()
-        if response.isdecimal() and rowEatMinimum <= int(response) <= (height - heightChomped):
-            break
-        print(f'Enter a number between {rowEatMinimum} and {height - heightChomped}.')
-    rowsToEat = int(response)
+        print('Select a piece that hasn\'t already been eaten.')
 
-    # Process the player's move:
-    widthChomped += columnsToEat
-    heightChomped += rowsToEat
-
-    # Check to see if someone won:
+    # Determine the other player's mark.
     if turn == 'X':
         otherPlayer = 'O'
     elif turn == 'O':
         otherPlayer = 'X'
-    if widthChomped == width and heightChomped == height:
-        # Player has eaten the poison:
-        print(f'{turn} has eaten the poison! {otherPlayer} wins!')
-        sys.exit()
-    else:
-        # Continue the game with the other player:
-        turn = otherPlayer
+
+    # Check if the player ate the poison piece:
+    if piecex == 'A' and piecey == '1':
+        print(f'{turn} has eaten the poison piece! {otherPlayer} wins!')
+        break # Break out of the main game loop.
+
+    # Mark the selected piece and all pieces below and to the right as eaten:
+    for x in 'ABCDEFGHI'['ABCDEFGHI'.index(piecex):]:
+        for y in '123456789'[int(y) - 1:]:
+            uneatenBar[(x, y)] = False
+
+    # Switch turns:
+    turn = otherPlayer
