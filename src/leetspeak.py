@@ -24,10 +24,10 @@ def englishToLeetspeak(message):
     return ''.join(leet)
 
 def main():
-    print('L3375P34]< (leetspeek)')
-    print('By Al Sweigart al@inventwithpython.com')
-    print()
-    print('Enter your leet message:')
+    print('''L3375P34]< (leetspeek)
+By Al Sweigart al@inventwithpython.com
+
+Enter your leet message:''')
     english = input()
     print()
     leetspeak = englishToLeetspeak(english)
