@@ -54,7 +54,7 @@ def getBoard(words):
 
 def getPlayerMove(words, tries):
     while True:
-        print('Enter password: (%s tries remaining)' % (tries))
+        print(f'Enter password: ({tries} tries remaining)')
         move = input().upper()
         if move in words:
             return move
@@ -132,8 +132,8 @@ def main():
             print('A C C E S S   G R A N T E D')
             return
         else:
-            print('Access Denied (%s/7 correct)' % getNumberOfMatchingLetters(secretPassword, playerMove))
-    print('Out of tries. Secret password was %s.' % (secretPassword))
+            print(f'Access Denied ({getNumberOfMatchingLetters(secretPassword, playerMove)}/7 correct)')
+    print(f'Out of tries. Secret password was {secretPassword}.')
 
 
 if __name__ == '__main__':

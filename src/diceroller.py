@@ -75,7 +75,7 @@ while True: # Main program loop:
 
         # Display the modifier amount:
         if modAmount != 0:
-            print(', %s%s' % (diceStr[modIndex], abs(modAmount)), end='')
+            print(f', {diceStr[modIndex]}{abs(modAmount)}', end='')
         print(')')
 
     except Exception as exc:

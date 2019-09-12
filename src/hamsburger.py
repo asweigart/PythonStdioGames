@@ -40,7 +40,7 @@ if not os.path.exists('hamsburger.txt'):
     for stem in nouns:
         for fullWord in nouns:
             if fullWord.startswith(stem) and fullWord != stem:
-                sillyPluralizations.append('The plural of %s is %s.' % (fullWord, pluralize(stem) + fullWord[len(stem):]))
+                sillyPluralizations.append(f'The plural of {fullWord} is {pluralize(stem) + fullWord[len(stem):]}.')
 
     # Write the silly pluralizations out to hamsburger.txt.
     fo = open('hamsburger.txt', 'w')

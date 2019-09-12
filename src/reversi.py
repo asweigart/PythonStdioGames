@@ -8,10 +8,11 @@ import random, sys
 
 def getScoreOfBoard(board):
     # Determine the score by counting the tiles. Returns a dictionary with keys 'X' and 'O'.
-    scores = {'X': 0, 'O': 0, ' ': 0}
+    scores = {'X': 0, 'O': 0}
     for x in range(8):
         for y in range(8):
-            scores[board[(x, y)]] += 1
+            if board[(x, y)] in ('X', 'O'):
+                scores[board[(x, y)]] += 1
     return scores
 
 
@@ -20,14 +21,14 @@ def drawBoard(board):
     print('  12345678')
     print(' +--------+')
     for y in range(8):
-        print('%s|' % (y+1), end='')
+        print(f'{(y+1)}|', end='')
         for x in range(8):
             print(board[(x, y)], end='')
         print('|')
     print(' +--------+')
     # Prints out the current score.
     scores = getScoreOfBoard(board)
-    print('X has %s points. O has %s points.' % (scores['X'], scores['O']))
+    print(f'X has {scores["X"]} points. O has {scores["O"]} points.')
 
 
 def getNewBoard():

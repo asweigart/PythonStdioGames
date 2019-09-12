@@ -24,9 +24,9 @@ def printCards(cards):
         else:
             # Print the card's front:
             rank, suit = card # The card is a tuple data structure.
-            rows[1] += '|%s | ' % (rank.ljust(2))
-            rows[2] += '| %s | ' % (suit)
-            rows[3] += '| %s| ' % (rank.rjust(2))
+            rows[1] += f'|{rank.ljust(2)} | '
+            rows[2] += f'| {suit} | '
+            rows[3] += f'| {rank.rjust(2)}| '
         rows[4] += '----- ' # Print the bottom line of the card.
 
     # Print each row on the screen:
@@ -75,7 +75,7 @@ def getDeck():
 def getBet(maxBet):
     # Ask the user how much they want to bet for this round:
     while True:
-        print('How much do you bet? (1-%s, or "quit")' % (maxBet))
+        print(f'How much do you bet? (1-{maxBet}, or "quit")')
         bet = input().upper()
         if bet == 'QUIT':
             print('Thanks for playing!')
@@ -185,14 +185,14 @@ while True: # Main game loop.
             money -= additionalBet
             pot += additionalBet * 2 # Dealer matches the increased bet.
             bet += additionalBet
-            print('Bet increased by %s to %s.' % (additionalBet, bet))
+            print(f'Bet increased by {additionalBet} to {bet}.')
             print('Pot:', pot)
 
         if move in ('H', 'D'):
             # Hit: take another card. (Doubling down also takes a card.)
             newCard = deck.pop()
             rank, suit = newCard
-            print('You drew a %s of %s.' % (rank, suit))
+            print(f'You drew a {rank} of {suit}.')
             playerHand.append(newCard)
 
             if getCardValue(playerHand) > 21:
@@ -220,14 +220,14 @@ while True: # Main game loop.
 
     # Handle whether the player won, lost, or tied.
     if getCardValue(dealerHand) > 21:
-        print('Dealer busts! You win $%s!' % (pot))
+        print(f'Dealer busts! You win ${pot}!')
         money += pot
         pot = 0 # Reset the pot.
     elif (getCardValue(playerHand) > 21) or (getCardValue(playerHand) < getCardValue(dealerHand)):
         print('You lost!')
         pot = 0 # Reset the pot.
     elif getCardValue(playerHand) > getCardValue(dealerHand):
-        print('You won $%s!' % (pot))
+        print(f'You won ${pot}!')
         money += pot
         pot = 0 # Reset the pot.
     elif getCardValue(playerHand) == getCardValue(dealerHand):

@@ -16,7 +16,7 @@ ties = 0
 
 while True: # The main game loop.
     while True: # Keep asking until player enters R/P/S/Q.
-        print('%s Wins, %s Losses, %s Ties' % (wins, losses, ties))
+        print(f'{wins} Wins, {losses} Losses, {ties} Ties')
         print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
         playerMove = input().upper()
         if playerMove == 'Q':

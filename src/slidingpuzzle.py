@@ -52,14 +52,14 @@ def getPlayerMove(board):
     d = 'D' if blankx != 0 else ' '
 
     while True:
-        print('                                 (%s)' % w)
-        print('Enter your move (or "quit"): (%s) (%s) (%s)' % (a, s, d))
+        print(f'                               ({w})')
+        print(f'Enter your move (or QUIT): ({a}) ({s}) ({d})')
 
-        move = input().upper()
-        if move == 'QUIT':
+        response = input().upper()
+        if response == 'QUIT':
             sys.exit()
-        if move in (w + a + s + d).replace(' ', ''):
-            return move
+        if response in (w + a + s + d).replace(' ', ''):
+            return response
 
 
 def makeMove(board, move):
@@ -100,16 +100,15 @@ def getNewPuzzle(moves=200):
 
 
 def main():
-    print('SLIDING PUZZLE')
-    print('By Al Sweigart al@inventwithpython.com')
-    print()
-    print('Use the WASD keys to move the tiles')
-    print('back into their original order:')
-    print('       1  2  3  4')
-    print('       5  6  7  8')
-    print('       9 10 11 12')
-    print('      13 14 15   ')
-    print()
+    print('''SLIDING PUZZLE
+By Al Sweigart al@inventwithpython.com
+
+Use the WASD keys to move the tiles
+back into their original order:
+       1  2  3  4
+       5  6  7  8
+       9 10 11 12
+      13 14 15   ''')
 
     gameBoard = getNewPuzzle()
 

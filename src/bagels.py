@@ -39,7 +39,7 @@ def getClues(guess, secretNum):
 print('BAGELS')
 print('By Al Sweigart al@inventwithpython.com')
 print()
-print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
+print(f'I am thinking of a {NUM_DIGITS}-digit number. Try to guess what it is.')
 print('Here are some clues:')
 print('When I say:    That means:')
 print('  Pico         One digit is correct but in the wrong position.')
@@ -48,13 +48,13 @@ print('  Bagels       No digit is correct.')
 
 while True: # Main game loop.
     secretNum = getSecretNum(NUM_DIGITS)
-    print('I have thought up a number. You have %s guesses to get it.' % (MAX_GUESSES))
+    print(f'I have thought up a number. You have {MAX_GUESSES} guesses to get it.')
 
     numGuesses = 1
     while numGuesses <= MAX_GUESSES:
         guess = ''
         while len(guess) != NUM_DIGITS or not guess.isdecimal():
-            print('Guess #%s: ' % (numGuesses))
+            print(f'Guess #{numGuesses}: ')
             guess = input()
 
             clue = getClues(guess, secretNum)
@@ -64,7 +64,7 @@ while True: # Main game loop.
         if guess == secretNum:
             break
         if numGuesses > MAX_GUESSES:
-            print('You ran out of guesses. The answer was %s.' % (secretNum))
+            print(f'You ran out of guesses. The answer was {secretNum}.')
 
     # Ask player if thye want to play again.
     print('Do you want to play again? (yes or no)')

@@ -34,16 +34,16 @@ while True:
 
     # For the first 16 responses, give them the answer:
     if number <= 16:
-        hint = '(Enter %s) ' % (correctResponse)
+        hint = f'(Enter {correctResponse}) '
     else:
         hint = ''
 
     # Get the player's response:
-    response = input('Next response: %s' % (hint)).lower().replace(' ', '')
+    response = input(f'Next response: {hint}').lower().replace(' ', '')
 
     # See if the player was correct:
     if response != correctResponse:
-        print('NOOOOO! The correct response is %s!' % correctResponse)
+        print(f'NOOOOO! The correct response is {correctResponse}!')
         sys.exit()
     elif time.time() > doomClock:
         print('NOOOOO! You have run out of time!')
@@ -51,7 +51,7 @@ while True:
 
     # If the player was right, add 2 seconds to the doom clock.
     doomClock += 2
-    print('DOOM CLOCK: %s seconds remaining' % (round(doomClock - time.time(), 1)))
+    print(f'DOOM CLOCK: {round(doomClock - time.time(), 1)} seconds remaining')
     print()
 
     number += 1 # Increment the number.

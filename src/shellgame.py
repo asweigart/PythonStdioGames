@@ -26,17 +26,17 @@ while True:
     time.sleep(0.3)
     print()
     while True:
-        print('Okay! Pick a cup 1-%s' % len(CUPS))
+        print(f'Okay! Pick a cup 1-{len(CUPS)}')
         pickedCup = input()
         if pickedCup.isdecimal() and 1 <= int(pickedCup) <= len(CUPS):
             break
-        print('Type a number between 1 and %s.' % len(CUPS))
+        print(f'Type a number between 1 and {len(CUPS)}.')
         print()
 
     if CUPS[int(pickedCup) - 1] == 'diamond':
         print('You found the cup with the diamond!')
     else:
-        print('Nope! You picked the cup that had %s in it.' % (CUPS[int(pickedCup) - 1]))
+        print(f'Nope! You picked the cup that had {CUPS[int(pickedCup) - 1]} in it.')
 
 
     print('Would you like to play again? Y/N')

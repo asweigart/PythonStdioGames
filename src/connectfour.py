@@ -38,9 +38,10 @@ def drawBoard(board):
 def getPlayerMove(playerTile, board):
     # Let the player select a column to drop a tile into.
     while True:
-        print('Player %s, enter your move (1-7) or "quit":' % playerTile)
+        print(f'Player {playerTile}, enter your move (1-7) or QUIT:')
         move = input()
         if move == 'quit':
+            print('Thanks for playing!')
             sys.exit()
         if move not in '1234567':
             continue # Ask again for their move.
@@ -111,7 +112,7 @@ def main():
         # Check for a win or tie:
         if isWinner(playerTurn, gameBoard):
             drawBoard(gameBoard)
-            print('Player %s has won!' % (playerTurn))
+            print(f'Player {playerTurn} has won!')
             break
         elif isFull(gameBoard):
             drawBoard(gameBoard)

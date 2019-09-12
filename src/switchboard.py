@@ -43,11 +43,11 @@ while True:
 while True: # Main game loop.
     print(' '.join(switches)) # Print the switch XO states.
     for i in range(NUMBER_OF_SWITCHES):
-        print('%s ' % (i), end='')
+        print(f'{i} ', end='')
     print()
 
-    response = input('Switch to toggle (0-%s): ' % (NUMBER_OF_SWITCHES - 1))
-    if response.lower() == 'quit':
+    response = input(f'Switch to toggle (0-{NUMBER_OF_SWITCHES - 1} or QUIT): ')
+    if response.upper() == 'QUIT':
         sys.exit()
 
     if not response.isdecimal() or not (0 <= int(response) < NUMBER_OF_SWITCHES):
@@ -55,7 +55,7 @@ while True: # Main game loop.
 
     switchToToggle = int(response)
     print()
-    print('Toggling switch #%s also toggled switch #%s.' % (switchToToggle, connections[switchToToggle]))
+    print(f'Toggling switch #{switchToToggle} also toggled switch #{connections[switchToToggle]}.')
 
     #switchToToggle = random.randint(0, NUMBER_OF_SWITCHES - 1)
 

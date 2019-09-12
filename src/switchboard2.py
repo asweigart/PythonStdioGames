@@ -167,8 +167,8 @@ while True: # Main game loop.
     #sys.exit()
 
     # Get the player's move:
-    move = input('Switch to toggle (0─%s): ' % (NUMBER_OF_SWITCHES - 1))
-    if move.lower() == 'quit':
+    move = input(f'Switch to toggle (0─{NUMBER_OF_SWITCHES - 1}, or QUIT): ')
+    if move.upper() == 'QUIT':
         sys.exit()
 
     if not move.isdecimal() or not (0 <= int(move) < NUMBER_OF_SWITCHES):

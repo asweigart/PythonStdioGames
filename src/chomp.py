@@ -3,14 +3,12 @@
 # Martin Gardner in Scientific American (January 1973)
 # More info at: https://en.wikipedia.org/wiki/Chomp
 
-# TODO - This game still has bugs.
-
 import random, sys
 
-print('CHOMP')
-print('By Al Sweigart al@inventwithpython.com')
-print('Inspired by a Frederik Schuh and David Gale puzzle.')
-print('''
+print('''CHOMP
+By Al Sweigart al@inventwithpython.com
+Inspired by a Frederik Schuh and David Gale puzzle.
+
 In this two player game, players take turns picking a piece from a chocolate
 bar and eating that piece and all pieces below and to the right of it. The
 upper left piece is poisonous, and the player to eat that piece loses.
@@ -21,8 +19,8 @@ height = random.randint(2, 9)
 
 # Create a dictionary to represent the uneaten parts of the chocolate bar:
 uneatenBar = {}
-for x in 'ABCDEFGHI':
-    for y in '123456789':
+for x in 'ABCDEFGHI'[:width]:
+    for y in '123456789'[:height]:
         uneatenBar[(x, y)] = True
 
 turn = 'X'
@@ -35,10 +33,12 @@ while True: # Main game loop.
         for ix in range(width):
             x = 'ABCDEFGHI'[ix]
             y = '123456789'[iy]
-            if uneatenBar[(x, y)] == True:
-                print('#', end='')
+            if x == 'A' and y == '1':
+                print('P', end='') # Display P for poison piece.
+            elif uneatenBar[(x, y)] == True:
+                print('#', end='') # Display # for a chocolate bar piece.
             else:
-                print('.', end='')
+                print('.', end='') # Display . for an eaten piece.
         print() # Print a newline.
 
     # Get the player's move:
@@ -53,7 +53,7 @@ while True: # Main game loop.
             print('Thanks for playing!')
             sys.exit()
 
-        if len(response) != 2 :
+        if len(response) != 2:
             print('Enter a coordinate like "B3" or "D5".')
             continue
 
@@ -81,7 +81,7 @@ while True: # Main game loop.
 
     # Mark the selected piece and all pieces below and to the right as eaten:
     for x in 'ABCDEFGHI'['ABCDEFGHI'.index(piecex):]:
-        for y in '123456789'[int(y) - 1:]:
+        for y in '123456789'[int(piecey) - 1:]:
             uneatenBar[(x, y)] = False
 
     # Switch turns:

@@ -40,7 +40,7 @@ def printTowers():
         print()
     # Print the tower labels A, B, and C.
     emptySpace = ' ' * (TOTAL_DISCS)
-    print('%s A%s%s B%s%s C\n' % (emptySpace, emptySpace, emptySpace, emptySpace, emptySpace))
+    print(f'{emptySpace} A{emptySpace}{emptySpace} B{emptySpace}{emptySpace} C\n')
 
 
 print('THE TOWERS OF HANOI')

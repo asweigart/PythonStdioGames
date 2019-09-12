@@ -26,9 +26,9 @@ def printCards(cards):
     for i, card in enumerate(cards):
         rank, suit = card # The card is a tuple data structure.
         rows[0] += '----- ' # Print the top line of the card.
-        rows[1] += '|%s | ' % (rank.ljust(2))
-        rows[2] += '| %s | ' % (suit)
-        rows[3] += '| %s| ' % (rank.rjust(2))
+        rows[1] += f'|{rank.ljust(2)} | '
+        rows[2] += f'| {suit} | '
+        rows[3] += f'| {rank.rjust(2)}| '
         rows[4] += '----- ' # Print the bottom line of the card.
 
     # Print each row on the screen:

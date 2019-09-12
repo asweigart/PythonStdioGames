@@ -51,9 +51,9 @@ def getPlayerMove(turn, board):
     while True: # Keep asking the player until they enter a valid move.
         # Ask player to select a pocket on their side:
         if turn == '1':
-            print('Player 1, choose move: A-F (or "quit")')
+            print('Player 1, choose move: A-F (or QUIT)')
         elif turn == '2':
-            print('Player 2, choose move: G-L (or "quit")')
+            print('Player 2, choose move: G-L (or QUIT)')
         pocket = input().upper()
 
         if pocket == 'QUIT':
@@ -149,7 +149,7 @@ def main():
         winner = isWinner(gameBoard)
         if winner == '1' or winner == '2':
             drawBoard(gameBoard)
-            print('Player %s has won!' % (winner))
+            print(f'Player {winner} has won!')
             break
         elif winner == 'tie':
             drawBoard(gameBoard)

@@ -7,6 +7,6 @@ while True: # Main program loop.
         break # If "no", break out of this loop.
     if response.lower() == 'yes' or response.lower() == 'y':
         continue # If "yes", continue to the start of this loop.
-    print('"%s" is not a valid yes/no response.' % (response))
+    print(f'"{response}" is not a valid yes/no response.')
 
 print('Thank you. Have a nice day!')
