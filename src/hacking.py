@@ -116,9 +116,9 @@ def getWords():
 
 
 def main():
-    print('HACKING MINIGAME')
-    print('By Al Sweigart al@inventwithpython.com')
-    print()
+    print('''HACKING MINIGAME
+By Al Sweigart al@inventwithpython.com
+''')
 
     gameWords = getWords()
     gameBoard = getBoard(gameWords)

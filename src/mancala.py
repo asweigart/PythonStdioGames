@@ -130,9 +130,9 @@ def isWinner(board):
 
 def main():
     """Runs a single game of Mancala."""
-    print('MANCALA - The seed sowing game.')
-    print('By Al Sweigart al@inventwithpython.com')
-    print()
+    print('''MANCALA - The seed sowing game.
+By Al Sweigart al@inventwithpython.com
+''')
 
     gameBoard = getNewBoard()
     playerTurn = '1' # Player 1 starts.
