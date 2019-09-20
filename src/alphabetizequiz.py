@@ -21,7 +21,7 @@ def slowPrint(text, pauseAmount):
 
 # Fancy animation for the title:
 slowPrint(ALPHABET, 0.05)
-slowPrint('Alphabetize Quiz', 0.05)
+slowPrint('    ALPHABETIZE QUIZ', 0.05)
 slowPrint(REVERSE_ALPHABET, 0.05)
 
 print('''
@@ -38,7 +38,6 @@ Example:
 Press enter to start!
 ''')
 input() # Let the player press Enter to start the game.
-
 
 startTime = time.time() # Get the current time for the start time.
 numCorrect = 0 # Number of questions answered correctly.
@@ -57,7 +56,7 @@ while True: # Main game loop.
     # Check if the response is correct:
     if sorted(response) == sorted(questionLetters):
         print('    Correct!\n')
-        numCorrect += 1
+        numCorrect += 1 # Increase the score by 1.
     else:
         print('    Ack. :(\n')
 

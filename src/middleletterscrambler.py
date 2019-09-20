@@ -24,6 +24,7 @@ def englishToMiddleLetterScramble(message):
         middleLetters = list(word[1:-1]) # Convert the middle letters to a list.
         random.shuffle(middleLetters) # Shuffle the middle letters.
         middleLetters = ''.join(middleLetters) # Convert the list back into a string.
+
         scrambled += word[0] + middleLetters + word[-1] + ' '
 
     return scrambled[:-1] # [:-1] to cut off the final added ' ' space.
