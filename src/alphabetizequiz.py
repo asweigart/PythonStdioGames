@@ -27,6 +27,7 @@ def slowPrint(text, pauseAmount):
 slowPrint(ALPHABET, 0.05)
 slowPrint('    ALPHABETIZE QUIZ', 0.05)
 slowPrint(REVERSE_ALPHABET, 0.05)
+time.sleep(0.75)
 
 print(f'''
 By Al Sweigart al@inventwithpython.com
@@ -64,6 +65,6 @@ while True: # Main game loop.
         print('    Ack. :(\n')
 
 # After the loop exits, the quiz is over. Show the final score:
-print(f'In {QUIZ_DURATION} you got {numCorrect} correct!')
+print(f'In {QUIZ_DURATION} seconds you got {numCorrect} correct!')
 print('Thanks for playing!')
 
