@@ -1,5 +1,6 @@
 # Rail Fence Cipher, by Al Sweigart al@inventwithpython.com
-# Implements a simple encryption system. https://en.wikipedia.org/wiki/Rail_fence_cipher
+# The "rail fence" cipher for encrypting text.
+# More info at: https://en.wikipedia.org/wiki/Rail_fence_cipher
 
 try:
     import pyperclip # Try to import pyperclip to copy the text to the clipboard.
@@ -98,9 +99,9 @@ def decryptMessage(message, key):
 
 
 def main():
-    print('RAIL FENCE CIPHER')
-    print('By Al Sweigart al@inventwithpython.com')
-    print()
+    print('''RAIL FENCE CIPHER
+By Al Sweigart al@inventwithpython.com
+''') # The newlines in this string don't affect code block indentation.
 
     while True:
         print('Do you want to (E)ncrypt or (D)ecrypt?')

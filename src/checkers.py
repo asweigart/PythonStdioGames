@@ -1,4 +1,6 @@
 # Checkers, by Al Sweigart al@inventwithpython.com
+# The classic checkers board game.
+
 # In this version, capturing is not mandatory.
 
 import copy, sys

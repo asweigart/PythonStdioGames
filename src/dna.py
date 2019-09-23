@@ -1,4 +1,6 @@
 # DNA Animation Demo by Al Sweigart
+# A simple animation of a DNA double-helix.
+
 # Thanks to matoken for inspiration: https://asciinema.org/a/155441
 
 import random, time

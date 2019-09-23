@@ -1,7 +1,8 @@
 # Chance Checkers, by Al Sweigart al@inventwithpython.com
-# In this game of checkers, players can move 3 checkers at a time. These
-# checkers are randomly decided, and can be the player's own checkers or their
-# opponents', but you can't move your opponents' promoted checkers.
+# Checkers where you can move 3 random checkers per turn.
+
+# These checkers are randomly decided, and can be the player's own checkers
+# or their opponents', but you can't move your opponents' promoted checkers.
 # In this version, capturing is not mandatory.
 
 import random, copy, sys

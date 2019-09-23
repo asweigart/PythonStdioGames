@@ -1,4 +1,6 @@
 # 2048 Game, by Al Sweigart al@inventwithpython.com
+# A sliding tile game to combine exponentially-increasing numbers.
+
 # Inspired by Gabriele Cirulli's 2048, which is a clone of Veewo Studios'
 # 1024, which in turn is a clone of the Threes! game.
 # More info at https://en.wikipedia.org/wiki/2048_(video_game)

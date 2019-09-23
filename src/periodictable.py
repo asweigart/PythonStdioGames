@@ -1,4 +1,5 @@
 # Periodic Table of Elements, by Al Sweigart al@inventwithpython.com
+# Displays atomic information for all the elements.
 
 # The data comes from https://en.wikipedia.org/wiki/List_of_chemical_elements
 # Highlight the table, copy it, then paste it into a spreadsheet program

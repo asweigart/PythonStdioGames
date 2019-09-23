@@ -1,4 +1,6 @@
-# Prints out a random, diagonal maze. By Al Sweigart al@inventwithpython.com
+# Diagonal Maze, by Al Sweigart al@inventwithpython.com
+# Prints out a random, diagonal maze.
+
 # Inspired by the 10 PRINT CHR$(205.5+RND(1)); : GOTO 10 program.
 
 import random

@@ -1,5 +1,5 @@
 # Spiral, by Al Sweigart al@inventwithpython.com
-# A simple program that draws a square spiral.
+# Draws a simple square spiral.
 
 size = 22  # Change the size to any positive integer you want.
 MARK = 'O' # Change the mark character to any character you want.

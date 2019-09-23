@@ -1,4 +1,6 @@
 # Rush Hour, by Al Sweigart
+# A sliding tile puzzle game to move cars out of the way.
+
 # Original game by Nob Yoshihagara
 # Michael Fogleman has an interesting article at https://www.michaelfogleman.com/rush/
 # rushhour_puzzle.txt generated from puzzles by Michael Fogleman, and require 10 to 18 steps to solve.

@@ -1,5 +1,7 @@
 # Morse Code, by Al Sweigart al@inventwithpython.com
-# A program that translates between English and Morse Code.
+# Translates between English and Morse Code.
+
+# More info at: https://en.wikipedia.org/wiki/Morse_code
 
 try:
     import pyperclip
