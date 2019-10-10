@@ -2,21 +2,19 @@
 
 import time, sys
 
-print('FIZZ BUZZ')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('Starting with 1, enter increasing numbers.')
-print('However, if the number is a multiple of 3, type "fizz" instead of')
-print('the number. If the number is a multiple of 5, type "buzz". If the')
-print('the number of is a multiple of 3 and 5, type "fizz buzz".')
-print()
-print('A doom clock is counting down. Entering correct responses gives you')
-print('more time. How long can you go?')
-print()
-print('Press Enter to start...')
+print("""FIZZ BUZZ
+By Al Sweigart al@inventwithpython.com
+
+Starting with 1, enter increasing numbers.
+However, if the number is a multiple of 3, type "fizz" instead of
+the number. If the number is a multiple of 5, type "buzz". If the
+the number of is a multiple of 3 and 5, type "fizz buzz".
+
+A doom clock is counting down. Entering correct responses gives you
+more time. How long can you go?
+
+Press Enter to start...""")
 input()
-
-
 
 number = 1
 doomClock = time.time() + 10 # Player starts with 10 seconds.
