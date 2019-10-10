@@ -1,5 +1,6 @@
 # FizzBuzz Calculation, by Al Sweigart al@inventwithpython.com
-# Calculates and prints the answers for a fizz buzz game.
+# Calculates and prints the answers for a fizz buzz game. This is a common
+# programming problem.
 
 number = 1
 while number < 100000:
