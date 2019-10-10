@@ -1,8 +1,8 @@
-# Fizz Buzz, by Al Sweigart al@inventwithpython.com
+# FizzBuzz Game, by Al Sweigart al@inventwithpython.com
 
 import time, sys
 
-print("""FIZZ BUZZ
+print("""FIZZBUZZ GAME
 By Al Sweigart al@inventwithpython.com
 
 Starting with 1, enter increasing numbers.
