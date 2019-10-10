@@ -11,7 +11,7 @@ def getNewBoard():
     state: 4 seeds in each pocket and 0 in the mancalas."""
 
     # Create the data structure for the board, with 4 seeds in each pocket.
-    board = {'1': 0, '2': 0}
+    board = {'1': 0, '2': 0} # The mancalas start with 0 seeds.
     for pocket in 'ABCDEFGHIJKL':
         board[pocket] = 4 # EXPERIMENT! Change the starting number of seeds.
 
@@ -135,7 +135,7 @@ By Al Sweigart al@inventwithpython.com
 ''')
 
     gameBoard = getNewBoard()
-    playerTurn = '1' # Player 1 starts.
+    playerTurn = '1' # Player 1 goes first.
 
     while True: # Main game loop.
         # Display board and get player's move.
