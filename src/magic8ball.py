@@ -7,18 +7,18 @@ def slowSpacePrint(text, interval):
     for character in text:
         if character == 'I':
             # I's are displayed in lowercase for style:
-            print('i ', end='')
+            print('i ', end='', flush=True)
         else:
             # All other characters are displayed normally:
-            print(character + ' ', end='')
+            print(character + ' ', end='', flush=True)
         time.sleep(interval)
     print() # Print two newlines at the end.
     print()
 
 # Prompt for a question:
-print('M A G i C   E i G H T   B A L L ,   B Y   A L   S W E i G A R T')
-time.sleep(1.5)
-slowSpacePrint('ASK ME YOUR YES/NO QUESTION.', 0.2)
+slowSpacePrint('MAGIC EIGHT BALL, BY AL SWEiGART', 0.1)
+time.sleep(0.5)
+slowSpacePrint('ASK ME YOUR YES/NO QUESTION.', 0.1)
 input()
 
 # Display a brief reply:
@@ -38,6 +38,7 @@ slowSpacePrint('.' * random.randint(4, 12), 0.7)
 
 # Give the answer:
 slowSpacePrint('I HAVE AN ANSWER...', 0.2)
+time.sleep(1)
 answers = ['YES, FOR SURE',
            'MY ANSWER IS NO',
            'ASK ME LATER',
@@ -46,5 +47,5 @@ answers = ['YES, FOR SURE',
            'AFFIRMATIVE',
            'YES, THOUGH YOU MAY NOT LIKE IT',
            'NO, BUT YOU MAY WISH IT WAS SO']
-slowSpacePrint(random.choice(answers), 0.1)
+slowSpacePrint(random.choice(answers), 0.05)
 
