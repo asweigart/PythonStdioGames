@@ -216,7 +216,7 @@ By Al Sweigart al@inventwithpython.com
 
 gameBoard = getNewBoard()
 
-while True:
+while True: # Main game loop.
     drawBoard(gameBoard)
     print('Score:', getScore(gameBoard))
     playerMove = getPlayerMove()
