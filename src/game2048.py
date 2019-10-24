@@ -7,43 +7,57 @@
 
 import random, sys
 
-# Constants:
-BLANK = ''
+# Set up the constants:
+BLANK = '' # A value that represents a blank space on the board.
 
 def getNewBoard():
-    # A board data structure is a dictionary with keys of (x, y) tuples
-    # and values of the power-of-two number. The coordinates are laid out as:
-    #   X0 1 2 3
-    #  Y+-+-+-+-+
-    #  0| | | | |
-    #   +-+-+-+-+
-    #  1| | | | |
-    #   +-+-+-+-+
-    #  2| | | | |
-    #   +-+-+-+-+
-    #  3| | | | |
-    #   +-+-+-+-+
-    board = {}
+    """Returns a new data structure that represents a board; it's a
+    dictionary with keys of (x, y) tuples and values of the tile at that
+    space. The tile is either a power-of-two integer or `BLANK`.
+    The coordinates are laid out as:
+       X0 1 2 3
+      Y+-+-+-+-+
+      0| | | | |
+       +-+-+-+-+
+      1| | | | |
+       +-+-+-+-+
+      2| | | | |
+       +-+-+-+-+
+      3| | | | |
+       +-+-+-+-+"""
+
+    newBoard = {} # Contains the board data structure to be returned.
+    # Loop over every possible space and set all the tiles to blank:
     for x in range(4):
         for y in range(4):
-            board[(x, y)] = BLANK
+            newBoard[(x, y)] = BLANK
 
     # Pick two random spaces for the two starting 2's:
-    startingNumbers = set()
-    while len(startingNumbers) < 2:
-        startingNumbers.add((random.randint(0, 3), random.randint(0, 3)))
-    for position in startingNumbers:
-        board[position] = 2
+    startingTwosPlaced = 0 # The number of starting spaces picked.
+    while startingTwosPlaced < 2: # Repeat, in case of duplicate spaces.
+        randomSpace = (random.randint(0, 3), random.randint(0, 3))
+        # Make sure the randomly selected space isn't already taken:
+        if newBoard[randomSpace] == BLANK:
+            newBoard[randomSpace] = 2
+            startingTwosPlaced = startingTwosPlaced + 1
 
-    return board
+    return newBoard
 
 
 def drawBoard(board):
-    labels = []
+    """Draws the `board` data structure on the screen."""
+
+    # Go through each possible space left-to-right, top-to-bottom, and
+    # create a list of what each space's label should be.
+    labels = [] # A list of strings for the number (or blank) for that tile.
     for y in range(4):
         for x in range(4):
-            labels.append(str(board[(x, y)]).center(5))
+            tile = board[(x, y)] # Get the tile at this space.
+            # Make sure the label is 5 spaces long:
+            labelForThisTile = str(tile).center(5)
+            labels.append(labelForThisTile)
 
+    # The {} are replaced with the label for that tile:
     print("""
 +-----+-----+-----+-----+
 |     |     |     |     |
@@ -65,99 +79,151 @@ def drawBoard(board):
 """.format(*labels))
 
 
-def squishColumn(column):
-    # Note: Index 0 is the bottom of the column.
+def getScore(board):
+    """Returns the sum of all the tiles on the `board` data structure."""
+    score = 0
+    # Loop over every space and add the tile to the score:
+    for x in range(4):
+        for y in range(4):
+            # Only add non-blank tiles to the score:
+            if board[(x, y)] != BLANK:
+                score = score + board[(x, y)]
+    return score
 
-    # Drop all the numbers down into any blank spaces.
-    columnNumbers = []
+
+def combineTilesInColumn(column):
+    """The `column` is a list of four tile. Index 0 is the "bottom" of the
+    column, and tiles are pulled "down" and combine if they are the same.
+    For example, combineTilesInColumn([2, BLANK, 2, BLANK]) returns
+    [4, BLANK, BLANK, BLANK]."""
+
+    # Copy only the numbers (not blanks) from `column` to `combinedTiles`
+    combinedTiles = [] # A list of the non-blank tiles in `column`.
     for i in range(4):
         if column[i] != BLANK:
-            columnNumbers.append(column[i])
-            column[i] = BLANK
-    for i, number in enumerate(columnNumbers):
-        column[i] = number
+            combinedTiles.append(column[i])
 
-    for startingIndex in range(3): # Skip index 3, since nothing can be on top of it.
-        if column[startingIndex] == column[startingIndex + 1]:
-            column[startingIndex] *= 2
-            for aboveIndex in range(startingIndex + 1, 3):
-                column[aboveIndex] = column[aboveIndex + 1]
-            column[3] = BLANK
-    # Note: Because the `column` list is modified in-place, this function doesn't need to return anything.
+    # Keep adding blanks until there are 4 tiles:
+    while len(combinedTiles) < 4:
+        combinedTiles.append(BLANK)
+
+    # Combine tiles if the one "above" it is the same number, and double it.
+    for i in range(3): # Skip index 3: it's the topmost space.
+        if combinedTiles[i] == combinedTiles[i + 1]:
+            combinedTiles[i] *= 2 # Double the number in the tile.
+            # Move the tiles above it down one space:
+            for aboveIndex in range(i + 1, 3):
+                combinedTiles[aboveIndex] = combinedTiles[aboveIndex + 1]
+            combinedTiles[3] = BLANK # The topmost space is always set to `BLANK`.
+    return combinedTiles
 
 
 def makeMove(board, move):
-    if move == 'W':
-        allIndexes = (((0, 0), (0, 1), (0, 2), (0, 3)),
-                      ((1, 0), (1, 1), (1, 2), (1, 3)),
-                      ((2, 0), (2, 1), (2, 2), (2, 3)),
-                      ((3, 0), (3, 1), (3, 2), (3, 3)))
-    elif move == 'S':
-        allIndexes = (((0, 3), (0, 2), (0, 1), (0, 0)),
-                      ((1, 3), (1, 2), (1, 1), (1, 0)),
-                      ((2, 3), (2, 2), (2, 1), (2, 0)),
-                      ((3, 3), (3, 2), (3, 1), (3, 0)))
-    elif move == 'A':
-        allIndexes = (((0, 0), (1, 0), (2, 0), (3, 0)),
-                      ((0, 1), (1, 1), (2, 1), (3, 1)),
-                      ((0, 2), (1, 2), (2, 2), (3, 2)),
-                      ((0, 3), (1, 3), (2, 3), (3, 3)))
-    elif move == 'D':
-        allIndexes = (((3, 0), (2, 0), (1, 0), (0, 0)),
-                      ((3, 1), (2, 1), (1, 1), (0, 1)),
-                      ((3, 2), (2, 2), (1, 2), (0, 2)),
-                      ((3, 3), (2, 3), (1, 3), (0, 3)))
+    """Carries out the move in `move`, which is either 'W', 'A', 'S', or 'D'
+    and returns the resulting board data structure."""
 
-    for columnIndexes in allIndexes:
-        column = [board[columnIndexes[0]], board[columnIndexes[1]], board[columnIndexes[2]], board[columnIndexes[3]]]
-        squishColumn(column)
-        board[columnIndexes[0]] = column[0]
-        board[columnIndexes[1]] = column[1]
-        board[columnIndexes[2]] = column[2]
-        board[columnIndexes[3]] = column[3]
-    # Note: Because the `board` dictionary is modified in-place, this function doesn't need to return anything.
+    # The board is split up into four columns, which are different depending
+    # on the direction of the move:
+    if move == 'W':
+        allColumnsSpaces = [[(0, 0), (0, 1), (0, 2), (0, 3)],
+                            [(1, 0), (1, 1), (1, 2), (1, 3)],
+                            [(2, 0), (2, 1), (2, 2), (2, 3)],
+                            [(3, 0), (3, 1), (3, 2), (3, 3)]]
+    elif move == 'A':
+        allColumnsSpaces = [[(0, 0), (1, 0), (2, 0), (3, 0)],
+                            [(0, 1), (1, 1), (2, 1), (3, 1)],
+                            [(0, 2), (1, 2), (2, 2), (3, 2)],
+                            [(0, 3), (1, 3), (2, 3), (3, 3)]]
+    elif move == 'S':
+        allColumnsSpaces = [[(0, 3), (0, 2), (0, 1), (0, 0)],
+                            [(1, 3), (1, 2), (1, 1), (1, 0)],
+                            [(2, 3), (2, 2), (2, 1), (2, 0)],
+                            [(3, 3), (3, 2), (3, 1), (3, 0)]]
+    elif move == 'D':
+        allColumnsSpaces = [[(3, 0), (2, 0), (1, 0), (0, 0)],
+                            [(3, 1), (2, 1), (1, 1), (0, 1)],
+                            [(3, 2), (2, 2), (1, 2), (0, 2)],
+                            [(3, 3), (2, 3), (1, 3), (0, 3)]]
+
+    boardAfterMove = {} # The board data structure after making the move.
+    for columnSpaces in allColumnsSpaces: # Loop over all 4 columns.
+        # Get the tiles of this column (The first tile is the "bottom" of
+        # the column):
+        firstTileSpace = columnSpaces[0]
+        secondTileSpace = columnSpaces[1]
+        thirdTileSpace = columnSpaces[2]
+        fourthTileSpace = columnSpaces[3]
+
+        firstTile = board[firstTileSpace]
+        secondTile = board[secondTileSpace]
+        thirdTile = board[thirdTileSpace]
+        fourthTile = board[fourthTileSpace]
+
+        # Form the column and combine the tiles in it:
+        column = [firstTile, secondTile, thirdTile, fourthTile]
+        combinedTilesColumn = combineTilesInColumn(column)
+
+        # Set up the new board data structure with the combined tiles:
+        boardAfterMove[firstTileSpace] = combinedTilesColumn[0]
+        boardAfterMove[secondTileSpace] = combinedTilesColumn[1]
+        boardAfterMove[thirdTileSpace] = combinedTilesColumn[2]
+        boardAfterMove[fourthTileSpace] = combinedTilesColumn[3]
+
+    return boardAfterMove
 
 
 def getPlayerMove():
-    print('Enter move: (WASD)')
-    while True:
+    """Asks the player for the direction of their next move (or Q to quit).
+    Ensures they enter a valid move: either 'W', 'A', 'S' or 'D'."""
+    print('Enter move: (WASD or Q to quit)')
+    while True: # Keep looping until they enter a valid move.
         move = input().upper()
-        if move in 'WASD' and move != '':
+        if move == 'Q':
+            # End the program:
+            print('Thanks for playing!')
+            sys.exit()
+
+        # Either return the valid move, or loop back and ask again:
+        if move in ('W', 'A', 'S', 'D'):
             return move
+        else:
+            print('Enter one of "W", "A", "S", "D", or "Q".')
 
 
 def addTwoToBoard(board):
-    # TODO: If that side is grounded already, don't let the player move in that direction.
+    """Adds a new 2 tile randomly to the board."""
     while True:
-        x = random.randint(0, 3)
-        y = random.randint(0, 3)
-        if board[(x, y)] == BLANK:
-            board[(x, y)] = 2
-            return
+        randomSpace = (random.randint(0, 3), random.randint(0, 3))
+        if board[randomSpace] == BLANK:
+            board[randomSpace] = 2
+            return # Return after finding one non-blank tile.
 
 
 def isFull(board):
+    """Returns `True` if the `board` data structure has no blank tiles."""
+    # Loop over every space on the board:
     for x in range(4):
         for y in range(4):
+            # If a space is blank, return False:
             if board[(x, y)] == BLANK:
                 return False
-    return True
+    return True # No space is blank, so return True.
 
 
-print('The 2048 Game')
-print('By Al Sweigart al@inventwithpython.com')
-print()
+print("""The 2048 Game
+By Al Sweigart al@inventwithpython.com
+""")
 
 gameBoard = getNewBoard()
 
 while True:
     drawBoard(gameBoard)
+    print('Score:', getScore(gameBoard))
     playerMove = getPlayerMove()
-    makeMove(gameBoard, playerMove)
+    gameBoard = makeMove(gameBoard, playerMove)
     addTwoToBoard(gameBoard)
 
     if isFull(gameBoard):
         drawBoard(gameBoard)
         print('Game Over - Thanks for playing!')
         sys.exit()
-
