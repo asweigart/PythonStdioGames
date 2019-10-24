@@ -210,7 +210,7 @@ def isFull(board):
     return True # No space is blank, so return True.
 
 
-print("""The 2048 Game
+print("""2048
 By Al Sweigart al@inventwithpython.com
 """)
 

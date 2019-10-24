@@ -114,8 +114,9 @@ def getPlayerGuess(alreadyGuessed):
             return guess
 
 
-print('GULLIOTINE')
-print('By Al Sweigart al@inventwithpython.com')
+print('''GUILLOTINE
+By Al Sweigart al@inventwithpython.com
+''')
 
 # Setup variables for a new game:
 missedLetters = []

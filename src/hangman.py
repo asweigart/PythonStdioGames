@@ -64,7 +64,7 @@ CATEGORY = 'Animals'
 WORDS = 'ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt otter owl panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep skunk sloth snake spider stork swan tiger toad trout turkey turtle weasel whale wolf wombat zebra'.split()
 
 def drawHangman(missedLetters, correctLetters, secretWord):
-    """Draw the current state of the guillotine, along with the missed and
+    """Draw the current state of the hangman, along with the missed and
     correctly-guessed letters of the secret word."""
     print(HANGMAN_PICS[len(missedLetters)])
     print('The category is:', CATEGORY)
@@ -107,8 +107,9 @@ def getPlayerGuess(alreadyGuessed):
             return guess
 
 
-print('GULLIOTINE')
-print('By Al Sweigart al@inventwithpython.com')
+print('''HANGMAN
+By Al Sweigart al@inventwithpython.com
+''')
 
 # Setup variables for a new game:
 missedLetters = []
