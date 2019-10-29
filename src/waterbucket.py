@@ -1,4 +1,6 @@
-# Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com
+# Water Bucket Puzzle
+# By Al Sweigart al@inventwithpython.com
+# More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 
 import sys
 
@@ -28,8 +30,11 @@ print('WATER BUCKET PUZZLE')
 print('By Al Sweigart al@inventwithpython.com')
 print()
 
-# The bucket and goal settings for this game:
-BUCKETS = [{'size': 8, 'water': 0}, {'size': 5, 'water': 0}, {'size': 3, 'water': 0}] # The bucket sizes available.
+# Set up the constants used in this program:
+# The bucket sizes available:
+BUCKETS = [{'size': 8, 'water': 0},
+           {'size': 5, 'water': 0},
+           {'size': 3, 'water': 0}]
 LABELS = 'ABC' # Have as many letters as you have buckets.
 GOAL = 4 # The goal amount of water to have.
 
@@ -64,9 +69,9 @@ while True: # Main game loop.
 
     # Let the player select an action to do with that bucket:
     print('You can:')
-    print('  (F)ill a bucket')
-    print('  (D)rain a bucket')
-    print('  (P)our one bucket into another')
+    print('  (F)ill the bucket')
+    print('  (D)rain the bucket')
+    print('  (P)our the bucket into another')
     print('  (C)ancel and select another bucket')
 
     while True: # Keep asking until the player enters a valid action.
@@ -77,7 +82,8 @@ while True: # Main game loop.
 
     # Carry out the selected action:
     if move == 'F':
-        selectedBucket['water'] = selectedBucket['size'] # Set the amount of water to the max size.
+        # Set the amount of water to the max size.
+        selectedBucket['water'] = selectedBucket['size']
 
     elif move == 'D':
         selectedBucket['water'] = 0 # Set the amount of water to nothing.

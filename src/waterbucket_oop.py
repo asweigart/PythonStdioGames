@@ -1,5 +1,6 @@
-# Water Bucket Puzzle
+# Water Bucket Puzzle (Object-Oriented Programming version)
 # By Al Sweigart al@inventwithpython.com
+# More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 
 import sys
 
@@ -9,7 +10,8 @@ class Bucket:
         self.water = 0 # Buckets start off with 0 liters of water.
 
     def fill(self):
-        self.water = self.size # Set the amount of water to the max size.
+        # Set the amount of water to the max size.
+        self.water = self.size
 
     def drain(self):
         self.water = 0 # Set the amount of water to nothing.
@@ -28,7 +30,7 @@ class Bucket:
     def description(self):
         return str(self.size) + 'L bucket with ' + str(self.water) + 'L of water'
 
-# The bucket and goal settings for this game:
+# Set up the constants used in this program:
 BUCKETS = [Bucket(8), Bucket(5), Bucket(3)] # The bucket sizes available.
 LABELS = 'ABC' # Have as many letters as you have buckets.
 GOAL = 4 # The goal amount of water to have.
@@ -64,9 +66,9 @@ while True: # Main game loop.
 
     # Let the player select an action to do with that bucket:
     print('You can:')
-    print('  (F)ill a bucket')
-    print('  (D)rain a bucket')
-    print('  (P)our one bucket into another')
+    print('  (F)ill the bucket')
+    print('  (D)rain the bucket')
+    print('  (P)our the bucket into another')
     print('  (C)ancel and select another bucket')
 
     while True: # Keep asking until the player enters a valid action.

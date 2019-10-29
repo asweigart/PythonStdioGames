@@ -1,8 +1,9 @@
-# Sevseg, a seven-segment display, by Al Sweigart al@inventwithpython.com
+# Sevseg, a seven-segment display module
+# By Al Sweigart al@inventwithpython.com
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
 
 """
-A labeled seven-segment display:
+A labeled seven-segment display, with each segment labeled A to G:
  __A__
 |     |
 F     B
@@ -18,8 +19,11 @@ Each digit in a seven-segment display:
 
 """
 
-def getSevSegStr(number, zeros=0):
-    number = str(number).zfill(zeros) # Convert to string in case it's an int or float.
+def getSevSegStr(number, digits=0):
+    """Return a seven-segment display string of `number`. The `digits`
+    argument is the minimum number of digits in the returned string, padded
+    with zeros if needed."""
+    number = str(number).zfill(digits) # Convert to string in case it's an int or float.
 
     rows = ['', '', '']
     for i, numeral in enumerate(number):
@@ -85,7 +89,8 @@ def getSevSegStr(number, zeros=0):
             rows[1] += '|__|'
             rows[2] += ' __|'
 
-        # Add a space if this isn't the last numeral:
+        # Add a space (for the space in between numerals) if this isn't the
+        # last numeral:
         if i != len(number) - 1:
             rows[0] += ' '
             rows[1] += ' '
@@ -93,6 +98,8 @@ def getSevSegStr(number, zeros=0):
 
     return '\n'.join(rows)
 
-# Uncomment these lines to see a demo:
-#for i in range(100):
-#    print(getSevSegStr(i, 2))
+
+# If this program isn't being imported, display the numbers 00 to 99.
+if __name__ == '__main__':
+    for i in range(100):
+        print(getSevSegStr(i, 2))

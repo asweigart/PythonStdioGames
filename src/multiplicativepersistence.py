@@ -3,24 +3,24 @@
 
 import time, sys
 
-print('MULTIPLICATIVE PERSISTENCE')
-print('By Al Sweigart al@inventwithpython.com')
-print()
+print('''MULTIPLICATIVE PERSISTENCE
+By Al Sweigart al@inventwithpython.com
+''')
 
 while True:
     print('Try to get the longest multiplicative persistence chain possible!')
     print('(Try 277777788888899, which has the longest known chain length.')
-    print('Enter a number (or "quit" to quit):')
     while True:
+        print('Enter a number (or "quit" to quit):')
         try:
             response = input()
             if response.lower().startswith('q'):
                 sys.exit()
+            number = int(response)
         except ValueError:
             continue # If the user entered a non-integer, ask again.
         break
 
-    number = int(response)
     chainLength = 0
     while number > 9: # Keep looping as long as number is 2 or more digits.
         chainLength += 1

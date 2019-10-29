@@ -1,10 +1,8 @@
 # Factorization, by Al Sweigart al@inventwithpython.com
 
-# TODO - polish this source code
-
 import math, sys
 
-print('Factorization')
+print('FACTORIZATION')
 print('by Al Sweigart al@inventwithpython.com')
 print()
 

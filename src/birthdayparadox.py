@@ -55,19 +55,22 @@ print()
 matchingBirthday = getMatch(birthdays)
 
 # Display the results:
+print('In this simulation, ', end='')
 if matchingBirthday != None:
-    print('Multiple people have a birthday on ' + MONTHS[matchingBirthday.month - 1] + ' ' + str(matchingBirthday.day))
+    print('multiple people have a birthday on ' + MONTHS[matchingBirthday.month - 1] + ' ' + str(matchingBirthday.day))
 else:
-    print('There are no matching birthdays.')
+    print('there are no matching birthdays.')
 print()
 
 # Run through 1000 simulations and get the matching birthday probability.
-print('Press Enter to run 100,000 monte carlo simulations.')
+print('Press Enter to run 100,000 more monte carlo simulations.')
 input()
 
 print('Running simulations of', number, 'people...')
 simMatch = 0
-for i in range(100000):
+for i in range(1, 100001):
+    if i % 10000 == 0:
+        print(str(i // 1000) + '% done...')
     birthdays = getBirthdays(number)
     if getMatch(birthdays) != None:
         simMatch = simMatch + 1

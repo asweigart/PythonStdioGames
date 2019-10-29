@@ -1,5 +1,6 @@
-# Soroban, by Al Sweigart al@inventwithpython.com
-# This is a simulator for a Japanese abacus, or soroban.
+# Soroban - The Japanese Abacus
+# By Al Sweigart al@inventwithpython.com
+# More info at: https://en.wikipedia.org/wiki/Soroban
 
 def drawAbacus(number):
     numberList = list(str(number).zfill(10))
@@ -38,7 +39,7 @@ def drawAbacus(number):
     for i in range(10):
         hasBead.append(numberList[i] in '01235678')
 
-    # Convert these True/False values into O/| characters.
+    # Convert these True or False values into O or | characters.
     abacusChar = []
     for i, beadPresent in enumerate(hasBead):
         if beadPresent:
@@ -132,7 +133,7 @@ def main():
 
         # The abacus can't show negative numbers:
         if abacusNumber < 0:
-            abacusNumber = 0
+            abacusNumber = 0 # Change any negative numbers to 0.
 
 if __name__ == '__main__':
     main()
