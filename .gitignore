@@ -1,3 +1,5 @@
+_*.txt
+
 *_log.txt
 
 venv/

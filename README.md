@@ -11,6 +11,8 @@ Some of them may require additional modules to run. You can use pip on Windows o
 
 NOTE: Currently I'm not accepting pull requests at this time, but feel free to leave comments or send suggestions to al@inventwithpython.com
 
+(Other nifty modules are pyttsx3 (for text-to-speech) and playsound (for playing wav and mp3 files).)
+
 About this Collection
 =====================
 
