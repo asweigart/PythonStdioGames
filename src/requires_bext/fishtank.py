@@ -1,8 +1,19 @@
 # ASCII Aquarium, by Al Sweigart al@inventwithpython.com 2019/2/12
-from __future__ import print_function
 
-import bext, random, time, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
+import random, time, sys
+
+try:
+    import bext
+except ImportError:
+    print("""This program requires the bext module, which you can install by
+opening a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python -m pip install --user bext""")
+    sys.exit()
 
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1 # Adjustment for a Windows newline bug that happens when you print on the right edge.

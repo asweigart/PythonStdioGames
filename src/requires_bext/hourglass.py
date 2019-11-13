@@ -1,6 +1,19 @@
 # Hour Glass Animation, by Al Sweigart al@inventwithpython.com
 
-import random, time, bext
+import random, time, sys
+
+try:
+    import bext
+except ImportError:
+    print("""This program requires the bext module, which you can install by
+opening a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python -m pip install --user bext""")
+    sys.exit()
 
 # Setup the constants:
 WIDTH = 80

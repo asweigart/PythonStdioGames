@@ -3,18 +3,21 @@
 # Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 # https://bitbucket.org/jvillard/tondeuse/src/default/
 
-"""
-This program requires the bext module, which you can install by opening
-a Terminal window (on macOS & Linux) and running:
+import time, random, sys
+
+try:
+    import bext
+except ImportError:
+    print("""This program requires the bext module, which you can install by
+opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python3 -m pip install --user bext
-"""
+    python -m pip install --user bext""")
+    sys.exit()
 
-import time, random, bext
 
 # Constants for the size of the grass field:
 WIDTH = 79

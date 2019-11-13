@@ -1,23 +1,19 @@
 # Random Walk, by Al Sweigart al@inventwithpython.com
 
-"""
-This program requires the bext module, which you can install by opening
-a Terminal window (on macOS & Linux) and running:
+import random, time, sys
+
+try:
+    import bext
+except ImportError:
+    print("""This program requires the bext module, which you can install by
+opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python3 -m pip install --user bext
-"""
-
-import random, time, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
-
-try:
-    import bext
-except:
-    sys.exit('Bext is required to run this. Run `pip install bext` from the shell to install it.')
+    python -m pip install --user bext""")
+    sys.exit()
 
 BLOCK = chr(9608)
 

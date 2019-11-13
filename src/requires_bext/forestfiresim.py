@@ -1,20 +1,27 @@
-"""
-Like Nicky Case's Emoji Sim http://ncase.me/simulating/model/
+# Forest Fire Sim, by Al Sweigart al@inventwithpython.com
+# Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
 
-space to tree 0.3%
-tree to fire 0.1%
-fire spreads to neighbor if its a tree.
+import random, time, sys
 
+try:
+    import bext
+except ImportError:
+    print("""This program requires the bext module, which you can install by
+opening a Terminal window (on macOS & Linux) and running:
 
-"""
-import random, time, bext
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python -m pip install --user bext""")
+    sys.exit()
 
 WIDTH = 79
 HEIGHT = 22
 
 INITIAL_TREE_DENSITY = 20 # Percentage of board that starts with trees.
-GROW_CHANCE = 1.0         # Percent chance a blank spot turns into a tree.
-LIGHTNING_CHANCE = 0.1    # Percent chance a tree is hit by lightning and burns.
+GROW_CHANCE = 1.0         # % chance a blank spot turns into a tree.
+LIGHTNING_CHANCE = 0.1    # % chance a tree is hit by lightning & burns.
 
 NUMBER_OF_FIREWALLS = 4
 FIREWALL_LENGTH = 20

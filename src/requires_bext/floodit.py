@@ -1,10 +1,19 @@
+# Flood It!, by Al Sweigart al@inventwithpython.com
+
 import random, sys
-assert sys.version_info.major == 3, 'Run this program on Python 3.'
 
 try:
-    import bext # Attempt to import the bext module.
-except:
-    sys.exit('Bext is required to run this. Run `pip install bext` from the shell to install it.')
+    import bext
+except ImportError:
+    print("""This program requires the bext module, which you can install by
+opening a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python -m pip install --user bext""")
+    sys.exit()
 
 BLOCK     = chr(9608) # Character 9608 is '█'
 LEFTRIGHT = chr(9472) # Character 9472 is '─'
