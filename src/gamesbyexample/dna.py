@@ -1,4 +1,4 @@
-# DNA Animation Demo by Al Sweigart
+# DNA, by Al Sweigart al@inventwithpython.com
 # A simple animation of a DNA double-helix.
 
 # Thanks to matoken for inspiration: https://asciinema.org/a/155441

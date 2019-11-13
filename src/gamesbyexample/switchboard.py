@@ -1,4 +1,4 @@
-# Switchboard, by Al Sweigart, al@inventwithpython.com
+# Switchboard, by Al Sweigart al@inventwithpython.com
 
 # TODO - needs more comments
 

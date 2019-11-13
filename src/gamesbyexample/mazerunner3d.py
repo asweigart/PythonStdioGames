@@ -1,4 +1,4 @@
-# Maze 3D by Al Sweigart al@inventwithpython.com
+# Maze 3D, by Al Sweigart al@inventwithpython.com
 # Move around a maze and try to escape... in 3D!
 import copy, sys, os
 

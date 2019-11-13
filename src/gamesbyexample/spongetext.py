@@ -1,4 +1,4 @@
-# sPoNgEtExT, bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
+# sPoNgEtExT, by Al Sweigart al@inventwithpython.com
 # Translates English messages into sPOnGEtExT.
 
 import random

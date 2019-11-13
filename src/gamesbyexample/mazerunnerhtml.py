@@ -1,4 +1,4 @@
-# Maze Runner HTML
+# Maze Runner HTML, by Al Sweigart al@inventwithpython.com
 # Move around a maze and try to escape... in 3D and IN YOUR WEB BROWSER!
 import sys, os, shutil
 

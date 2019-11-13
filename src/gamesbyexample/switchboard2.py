@@ -1,4 +1,4 @@
-# Switchboard 2 by Al Sweigart, al@inventwithpython.com
+# Switchboard 2, by Al Sweigart al@inventwithpython.com
 import random, sys
 
 # TODO - make it so that the circuits reveal themselves as you enter the buttons.
