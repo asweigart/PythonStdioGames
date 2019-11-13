@@ -1,4 +1,5 @@
 # Countdown, by Al Sweigart al@inventwithpython.com
+# Show a countdown timer animation using a seven-segment display.
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
 # Requires our sevseg.py program.
 # This program MUST be run in a Terminal/Command Prompt window.

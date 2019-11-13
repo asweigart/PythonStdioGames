@@ -1,4 +1,5 @@
-# A bouncing ball animation, by Al Sweigart al@inventwithpython.com
+# Bouncing Ball, by Al Sweigart al@inventwithpython.com
+# A bouncing ball animation.
 
 import sys, random, time
 

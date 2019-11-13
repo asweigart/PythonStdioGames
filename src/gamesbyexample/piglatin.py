@@ -1,4 +1,4 @@
-# Pig Latin by Al Sweigart, al@inventwithpython.com
+# Pig Latin, by Al Sweigart al@inventwithpython.com
 # Translates English messages into Igpay Atinlay.
 
 try:

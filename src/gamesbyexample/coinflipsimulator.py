@@ -1,4 +1,5 @@
 # Coin Flip Simulator by Al Sweigart, al@inventwithpython.com
+# Simulate a large number of coin flips.
 
 import random
 

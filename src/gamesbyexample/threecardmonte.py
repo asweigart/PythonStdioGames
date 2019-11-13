@@ -1,7 +1,7 @@
 # Three-Card Monte, by Al Sweigart al@inventwithpython.com
-# Find the Queen of Hearts after the three cards have been
-# quickly swapped around. (In the real-life version, the
-# scammer palms the Queen of Hearts so you always lose.)
+# Find the Queen of Hearts after cards have been swapped around.
+# (In the real-life version, the scammer palms the Queen of Hearts so you
+# always lose.)
 # More info at https://en.wikipedia.org/wiki/Three-card_Monte
 
 import random, time

@@ -1,4 +1,5 @@
 # Langton's Ant, by Al Sweigart al@inventwithpython.com
+# A cellular automata animation.
 # More info: https://en.wikipedia.org/wiki/Langton%27s_ant
 
 import random, copy, sys

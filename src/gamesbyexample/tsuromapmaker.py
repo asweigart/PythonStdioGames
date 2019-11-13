@@ -1,4 +1,5 @@
 # Tsuro Map Maker, by Al Sweigart al@inventwithpython.com
+# Draws pretty routes.
 
 import random, sys
 
@@ -65,11 +66,11 @@ TILES = ['02360452115121411245036209', '05420145210202012451025408',
 
 # This code uses checksums to make sure the above TILES were typed correctly.
 for tile in enumerate(TILES):
-    assert len(tile) == 26, 'Tile %r has an incorrect length.' % (tile)
+    assert len(tile) == 26, 'Tile %r has an incorrect length.' % (tile,)
     total = 0
     for i in range(25):
         total += int(tile[i])
-    assert total % 10 == 0, 'Tile %r is wrong.' % (tile)
+    assert total % 10 == 0, 'Tile %r is wrong.' % (tile,)
     TILES[i] = TILES[i][:25] # Cut off the checksum digit.
 
 

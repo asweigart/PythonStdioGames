@@ -1,5 +1,5 @@
-# tictactoe_oop.py, An object-oriented Tic Tac Toe game.
-# By Al Sweigart al@inventwithpython.com
+# Tic Tac Toe (OOP), by Al Sweigart al@inventwithpython.com
+# The classic board game. (Object-oriented programming version.)
 
 import copy
 

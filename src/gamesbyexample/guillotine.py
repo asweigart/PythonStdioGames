@@ -1,5 +1,5 @@
 # Guillotine, by Al Sweigart al@inventwithpython.com
-# A clone of Hangman.
+# A variant of Hangman.
 
 import random
 

@@ -1,4 +1,4 @@
-# ROT13 Cipher by Al Sweigart, al@inventwithpython.com
+# ROT13 Cipher, by Al Sweigart al@inventwithpython.com
 # The simplest cipher for encrypting and decrypting text.
 
 # More info at https://en.wikipedia.org/wiki/ROT13

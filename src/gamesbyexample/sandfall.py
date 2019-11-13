@@ -1,4 +1,5 @@
-# Sand Fall Animation, by Al Sweigart al@inventwithpython.com
+# Sand Fall, by Al Sweigart al@inventwithpython.com
+# A falling sand animation.
 # Inspired by https://asciinema.org/a/6515
 # This program MUST be run in a Terminal/Command Prompt window.
 

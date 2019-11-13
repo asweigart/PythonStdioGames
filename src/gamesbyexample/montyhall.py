@@ -1,5 +1,5 @@
 # Monty Hall Problem, by Al Sweigart al@inventwithpython.com
-# A simulation of the Monty Hall Problem.
+# A simulation of the Monty Hall game show problem.
 # More info at https://en.wikipedia.org/wiki/Monty_Hall_problem
 
 import random, sys

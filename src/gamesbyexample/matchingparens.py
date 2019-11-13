@@ -1,6 +1,5 @@
 # Matching Parentheses, by Al Sweigart al@inventwithpython.com
-# An algorithm to check for properly matching parentheses, brackets, and
-# braces. This is a common computer science algorithm.
+# A parentheses/bracket/braces matching algorithm.
 
 def isMatchingParens(strToCheck):
     # A Python list is a stack data structure if we only push values on it

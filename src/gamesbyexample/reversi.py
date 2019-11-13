@@ -1,6 +1,6 @@
 # Reversi, by Al Sweigart al@inventwithpython.com
-# Also called Othello, this is a tile flipping game.
-# https://en.wikipedia.org/wiki/Reversi
+# A tile flipping game, also called reversi.
+# More info https://en.wikipedia.org/wiki/Reversi
 # A version of this game is featured in the book, "Invent Your Own Computer
 # Games with Python. https://nostarch.com/inventwithpython
 

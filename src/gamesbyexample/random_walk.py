@@ -1,4 +1,5 @@
 # Random Walk, by Al Sweigart al@inventwithpython.com
+# Generate splatter-art with the "random walk" algorithm.
 
 import random, time, sys
 

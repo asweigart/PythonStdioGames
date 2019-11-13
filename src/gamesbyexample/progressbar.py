@@ -1,5 +1,5 @@
 # Progress Bar, by Al Sweigart al@inventwithpython.com
-# A progress bar animation that can be used in other programs.
+# A sample progress bar animation that can be used in other programs.
 
 import random, time
 

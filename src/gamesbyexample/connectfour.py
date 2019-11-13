@@ -1,4 +1,5 @@
 # Connect Four, by Al Sweigart al@inventwithpython.com
+# A board game to get four tiles in a row.
 
 import sys
 

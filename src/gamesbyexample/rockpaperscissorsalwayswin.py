@@ -1,4 +1,5 @@
-# Rock, Paper, Scissors (except you always win), by Al Sweigart al@inventwithpython.com
+# Rock-Paper-Scissors (Always Win), by Al Sweigart al@inventwithpython.com
+# A hand game of luck, except you cannot lose.
 
 import time, sys
 

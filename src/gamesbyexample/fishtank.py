@@ -1,4 +1,5 @@
-# ASCII Aquarium, by Al Sweigart al@inventwithpython.com 2019/2/12
+# Fish Tank, by Al Sweigart al@inventwithpython.com
+# A peaceful animation of a fish tank.
 
 import random, time, sys
 

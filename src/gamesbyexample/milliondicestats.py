@@ -1,4 +1,5 @@
 # Million Dice Roll Stats, by Al Sweigart al@inventwithpython.com
+# A simulation of one million dice rolls.
 
 import random, time
 

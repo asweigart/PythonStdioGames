@@ -1,4 +1,5 @@
 # Conway's Game of Life, by Al Sweigart al@inventwithpython.com
+# The classic cellular automata simulation.
 # More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 import random, time, copy

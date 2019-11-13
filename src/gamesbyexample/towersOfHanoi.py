@@ -1,5 +1,4 @@
 # Towers of Hanoi puzzle, by Al Sweigart al@inventwithpython.com
-
 # A puzzle where you must move the discs of one tower to another tower.
 # More info at https://en.wikipedia.org/wiki/Tower_of_Hanoi
 

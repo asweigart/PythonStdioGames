@@ -1,4 +1,5 @@
 # FizzBuzz Game, by Al Sweigart al@inventwithpython.com
+# A number game where you also race against the clock.
 
 import time, sys
 

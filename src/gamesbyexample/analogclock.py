@@ -1,4 +1,5 @@
 # Analog Clock, by Al Sweigart al@inventwithpython.com
+# An analog clock animation.
 
 import time, math, sys
 

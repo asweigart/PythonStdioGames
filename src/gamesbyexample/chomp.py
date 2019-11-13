@@ -1,4 +1,5 @@
 # Chomp, by Al Sweigart al@inventwithpython.com
+# A dangerously delicious logic game.
 # Inspired by a Frederik Schuh and David Gale puzzle, published by
 # Martin Gardner in Scientific American (January 1973)
 # More info at: https://en.wikipedia.org/wiki/Chomp

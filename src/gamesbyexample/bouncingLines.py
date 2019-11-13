@@ -1,4 +1,5 @@
-# A bouncing lines animation, by Al Sweigart al@inventwithpython.com
+# Bouncing Lines, by Al Sweigart al@inventwithpython.com
+# A bouncing line animation.
 
 import sys, random, time
 

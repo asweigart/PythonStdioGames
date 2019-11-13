@@ -1,4 +1,5 @@
 # Mancala, by Al Sweigart al@inventwithpython.com
+# The ancient seed-sowing board game.
 # Rules at http://www.mancalarules.com/
 # More info at https://en.wikipedia.org/wiki/Mancala
 

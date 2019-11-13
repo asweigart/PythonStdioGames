@@ -1,12 +1,13 @@
 # Shell Game, by Al Sweigart al@inventwithpython.com
+# A random gambling game.
 
 import random, time, sys
 
-print('SHELL GAME')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('Try to find the diamond!')
-print('Press Enter to continue...')
+print('''SHELL GAME
+By Al Sweigart al@inventwithpython.com
+
+Try to find the diamond!
+Press Enter to continue...''')
 input()
 
 CUPS = ['diamond', 'pocket lint', 'nothing']

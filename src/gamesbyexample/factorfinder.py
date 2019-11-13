@@ -1,4 +1,5 @@
 # Factorization, by Al Sweigart al@inventwithpython.com
+# Find all the factors of a number.
 
 import math, sys
 

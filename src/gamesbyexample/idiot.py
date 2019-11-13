@@ -1,4 +1,5 @@
-# How to Keep an Idiot Busy for Hours, by Al Sweigart al@inventwithpython.com
+# Idiot, by Al Sweigart al@inventwithpython.com
+# How to keep an idiot busy for hours.
 
 while True: # Main program loop.
     print('Would you like to know how to keep an idiot busy for hours?')

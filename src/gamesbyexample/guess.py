@@ -1,4 +1,5 @@
-# A Guess-the-Number game, by Al Sweigart al@inventwithpython.com
+# Guess the Number, by Al Sweigart al@inventwithpython.com
+# While given hints, try to guess the secret number.
 # A version of this game is featured in the book, "Invent Your Own Computer
 # Games with Python. https://nostarch.com/inventwithpython
 

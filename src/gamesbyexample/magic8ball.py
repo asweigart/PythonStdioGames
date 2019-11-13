@@ -1,4 +1,5 @@
 # Magic Eight Ball, by Al Sweigart al@inventwithpython.com
+# Ask a question about your future.
 
 import random, time
 

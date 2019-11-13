@@ -1,4 +1,5 @@
 # Luhn Checksum Algorithm, by Al Sweigart al@inventwithpython.com
+# The mathematics behind credit card numbers.
 # More info at: https://en.wikipedia.org/wiki/Luhn_algorithm
 # More info at: https://youtu.be/Erp8IAUouus
 

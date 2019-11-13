@@ -1,4 +1,5 @@
-# Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
+# Rock-Paper-Scissors, by Al Sweigart al@inventwithpython.com
+# A hand game of luck.
 
 import random, time, sys
 

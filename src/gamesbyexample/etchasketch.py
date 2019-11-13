@@ -1,4 +1,5 @@
 # Etch a Sketch, by Al Sweigart al@inventwithpython.com
+# Draw a trailing line on the screen.
 
 import sys
 

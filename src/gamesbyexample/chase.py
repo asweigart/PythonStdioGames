@@ -1,5 +1,5 @@
-# Daleks clone game, by Al Sweigart al@inventwithpython.com
-# Move around the board, running away from robots. Try to get the robots to crash into each other.
+# Daleks, by Al Sweigart al@inventwithpython.com
+# Try to get the robots to crash into each other.
 
 import random, sys, os
 

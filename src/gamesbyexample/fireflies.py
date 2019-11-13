@@ -1,4 +1,5 @@
 # Fireflies, by Al Sweigart al@inventwithpython.com
+# A beautiful animation of fireflies.
 # This program MUST be run in a Terminal/Command Prompt window.
 
 # This program draws points that rotate on the surface of a sphere. The

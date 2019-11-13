@@ -1,4 +1,11 @@
 # J'ACCUSE! (Object-Oriented Version), by Al Sweigart al@inventwithpython.com
+# A mystery game of intrigue and a missing cat.
+# Inspired by Homestar Runner's "Where's an Egg?" game
+# Play the original Flash game at:
+# https://homestarrunner.com/videlectrix/wheresanegg.html
+# More info at: http://www.hrwiki.org/wiki/Where's_an_Egg%3F
+
+# TODO - INCOMPLETE
 
 import time, random, sys
 
@@ -6,7 +13,6 @@ import time, random, sys
 A place, suspect, and item are tightly linked to each other and never exist on
 their own in this game. If we created separate classes for places, suspects,
 and items, we'd just have to add attributes that tightly link them anyway.
-
 """
 
 class Place:

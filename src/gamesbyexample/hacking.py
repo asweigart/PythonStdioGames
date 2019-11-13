@@ -1,5 +1,5 @@
 # Hacking, by Al Sweigart al@inventwithpython.com
-# This game is a clone of the Fallout hacking mini-game.
+# The hacking mini-game from "Fallout 3".
 
 import random
 

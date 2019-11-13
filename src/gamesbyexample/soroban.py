@@ -1,5 +1,5 @@
-# Soroban - The Japanese Abacus
-# By Al Sweigart al@inventwithpython.com
+# Soroban, by Al Sweigart al@inventwithpython.com
+# A simulation of a Japanese abacus calculator tool.
 # More info at: https://en.wikipedia.org/wiki/Soroban
 
 def drawAbacus(number):

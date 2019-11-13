@@ -1,5 +1,5 @@
 # Zigzag, by Al Sweigart al@inventwithpython.com
-# Shows a simple zig zag animation.
+# A simple zig zag animation.
 
 # Press Ctrl-C to stop the program.
 

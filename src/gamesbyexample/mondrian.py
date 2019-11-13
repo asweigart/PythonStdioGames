@@ -1,5 +1,5 @@
 # Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
-# Randomly generates Mondrian-style art to display on the terminal.
+# Randomly generates Mondrian-style art.
 
 import sys, random
 

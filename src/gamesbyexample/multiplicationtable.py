@@ -1,5 +1,5 @@
-# The Multiplication Table
-# By Al Sweigart al@inventwithpython.com
+# Multiplication Table, by Al Sweigart al@inventwithpython.com
+# Print a multiplication table.
 
 print('''MULTIPLICATION TABLE
 By Al Sweigart al@inventwithpython.com

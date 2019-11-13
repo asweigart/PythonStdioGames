@@ -1,4 +1,5 @@
-# Rotating Random Sphere, by Al Sweigart al@inventwithpython.com
+# Rotating Sphere, by Al Sweigart al@inventwithpython.com
+# A rotating sphere animation.
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import math, time, sys, os

@@ -1,5 +1,5 @@
-# Sevseg, a seven-segment display module
-# By Al Sweigart al@inventwithpython.com
+# Sevseg, by Al Sweigart al@inventwithpython.com
+# A seven-segment display module.
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
 
 """

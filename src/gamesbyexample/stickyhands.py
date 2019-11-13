@@ -1,4 +1,5 @@
 # Sticky Hands, by Al Sweigart al@inventwithpython.com
+# A jewel-stealing, movement puzzle game.
 # Inspired by Herding Cats https://w.itch.io/herding-cats
 
 # TODO - Enter R to reset the entire level.
