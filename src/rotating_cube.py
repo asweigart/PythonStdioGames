@@ -1,4 +1,5 @@
 # Rotating Cube, by Al Sweigart al@inventwithpython.com
+# This program MUST be run in a Terminal/Command Prompt window.
 
 import math, time, sys, os
 

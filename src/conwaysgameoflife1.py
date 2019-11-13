@@ -1,5 +1,4 @@
-# Conway's Game of Life
-# By Al Sweigart al@inventwithpython.com
+# Conway's Game of Life, by Al Sweigart al@inventwithpython.com
 # More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 import random, time, copy
@@ -21,7 +20,7 @@ for x in range(WIDTH): # Loop over every possible column.
 while True: # Main program loop.
     # Each iteration of this loop is a step of the simulation.
 
-    print('\n\n\n\n\n') # Separate each step with newlines.
+    print('\n' * 50) # Separate each step with newlines.
     currentCells = copy.deepcopy(nextCells)
 
     # Print currentCells on the screen:

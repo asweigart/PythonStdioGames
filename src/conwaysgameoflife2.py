@@ -1,3 +1,7 @@
+# Conway's Game of Life, by Al Sweigart al@inventwithpython.com
+# More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+# This program MUST be run in a Terminal/Command Prompt window.
+
 import os, random, shutil, sys, time
 
 WIDTH, HEIGHT = shutil.get_terminal_size()

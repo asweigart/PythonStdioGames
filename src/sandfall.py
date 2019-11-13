@@ -1,5 +1,6 @@
-# Hour Glass Animation, by Al Sweigart al@inventwithpython.com
-# https://asciinema.org/a/6515
+# Sand Fall Animation, by Al Sweigart al@inventwithpython.com
+# Inspired by https://asciinema.org/a/6515
+# This program MUST be run in a Terminal/Command Prompt window.
 
 import random, time, os, sys
 
