@@ -1,6 +1,6 @@
 # PythonStdioGames
 
-A compilation of text-based games written in Python 3. Click on the **src** folder to view all of the programs.
+A collection of games (with source code) to use for example programming lessons. Written in Python 3. Click on the **src** folder to view all of the programs.
 
 Some of them may require additional modules to run. You can use pip on Windows or pip3 on macOS/Linux to install them:
 
