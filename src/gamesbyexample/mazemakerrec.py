@@ -108,4 +108,4 @@ for y in range(HEIGHT):
     mazeFile.write('\n')
 mazeFile.close()
 
-print('Saved to %s.' % (filename))
+print(f'Saved to {filename}.')

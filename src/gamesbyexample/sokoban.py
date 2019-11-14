@@ -14,16 +14,15 @@ CHAR_MAP = {'#': WALL, '@': FACE, '$': CRATE, '+': PLAYER_ON_GOAL,
             '.': GOAL, '*': CRATE_ON_GOAL, ' ': ' '} # TODO add comment
 
 # Display the title banner and instructions:
-print('SOKOBAN: The classic crate-pushing game.')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('Push the solid crates onto the squares. You can only push, you')
-print('can\'t pull them. Enter WASD letters to move, numbers to switch')
-print('levels, U to undo a move, or "quit" to quit the game.')
-print('You can enter multiple WASD or U letters to make several moves at')
-print('once.')
-print()
+print('''SOKOBAN: The classic crate-pushing game.
+By Al Sweigart al@inventwithpython.com
 
+Push the solid crates onto the squares. You can only push, you
+can\'t pull them. Enter WASD letters to move, numbers to switch
+levels, U to undo a move, or "quit" to quit the game.
+You can enter multiple WASD or U letters to make several moves at
+once.
+''')
 
 # Load each level from sokobanlevels.txt
 if not os.path.exists('sokobanlevels.txt'):

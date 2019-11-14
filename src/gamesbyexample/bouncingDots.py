@@ -20,7 +20,7 @@ bext.clear()
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1 # TODO Weird Windows bug.
 NUMBER_OF_BALLS = 35
-COLORS = ('red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white')
+COLORS = ('red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white')
 DIRECTIONS = ('upright', 'upleft', 'downright', 'downleft')
 BALL_CHAR = 'O'
 

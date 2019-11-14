@@ -5,6 +5,26 @@ import random, sys
 
 BLANK = '  '
 
+def main():
+    print('''SLIDING PUZZLE
+By Al Sweigart al@inventwithpython.com
+
+Use the WASD keys to move the tiles
+back into their original order:
+       1  2  3  4
+       5  6  7  8
+       9 10 11 12
+      13 14 15   ''')
+
+    gameBoard = getNewPuzzle()
+
+    while True:
+        drawBoard(gameBoard)
+        playerMove = getPlayerMove(gameBoard)
+        makeMove(gameBoard, playerMove)
+
+        if gameBoard == getNewBoard():
+            print('You won!')
 
 def getNewBoard():
     return [['1 ', '5 ', '9 ', '13'], ['2 ', '6 ', '10', '14'], ['3 ', '7 ', '11', '15'], ['4 ', '8 ', '12', BLANK]]
@@ -100,27 +120,4 @@ def getNewPuzzle(moves=200):
     return board
 
 
-def main():
-    print('''SLIDING PUZZLE
-By Al Sweigart al@inventwithpython.com
-
-Use the WASD keys to move the tiles
-back into their original order:
-       1  2  3  4
-       5  6  7  8
-       9 10 11 12
-      13 14 15   ''')
-
-    gameBoard = getNewPuzzle()
-
-    while True:
-        drawBoard(gameBoard)
-        playerMove = getPlayerMove(gameBoard)
-        makeMove(gameBoard, playerMove)
-
-        if gameBoard == getNewBoard():
-            print('You won!')
-
-
-if __name__ == '__main__':
-    main()
+main() # After defining all the functions, call main() to start the game.

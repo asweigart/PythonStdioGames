@@ -118,33 +118,35 @@ def rotateTileClockwise(tile, rotations): # rotations are clockwise at 90 degree
     assert len(t) == 25
     return t
 
-
-# Create a "canvas" to draw the tiles on:
-canvas = {}
-for x in range(WIDTH):
-    for y in range(HEIGHT):
-        canvas[(x, y)] = ' '
-
-for x in range(0, WIDTH, 5):
-    for y in range(0, HEIGHT, 5):
-        # Choose a random tile, rotate it a random number of times:
-        tile = rotateTileClockwise(random.choice(TILES), random.randint(0, 3))
-        drawTile(tile, x, y, canvas)
-
-# Create a string from the canvas dictionary:
-allRows = []
-for y in range(HEIGHT):
-    row = []
+def main():
+    # Create a "canvas" to draw the tiles on:
+    canvas = {}
     for x in range(WIDTH):
-        row.append(canvas[(x, y)])
-    allRows.append(''.join(row))
-canvasStr = '\n'.join(allRows)
+        for y in range(HEIGHT):
+            canvas[(x, y)] = ' '
 
-print(canvasStr)
+    for x in range(0, WIDTH, 5):
+        for y in range(0, HEIGHT, 5):
+            # Choose a random tile, rotate it a random number of times:
+            tile = rotateTileClockwise(random.choice(TILES), random.randint(0, 3))
+            drawTile(tile, x, y, canvas)
 
-# Copy the canvas to the clipboard if pyperclip is installed:
-try:
-    import pyperclip
-    pyperclip.copy(canvasStr)
-except:
-    pass # Do nothing if pyperclip is not installed.
+    # Create a string from the canvas dictionary:
+    allRows = []
+    for y in range(HEIGHT):
+        row = []
+        for x in range(WIDTH):
+            row.append(canvas[(x, y)])
+        allRows.append(''.join(row))
+    canvasStr = '\n'.join(allRows)
+
+    print(canvasStr)
+
+    # Copy the canvas to the clipboard if pyperclip is installed:
+    try:
+        import pyperclip
+        pyperclip.copy(canvasStr)
+    except:
+        pass # Do nothing if pyperclip is not installed.
+
+main() # After defining all the functions, call main() to start the game.
