@@ -6,7 +6,7 @@ programToLaunch = sys.argv[2]
 exitCode = os.system(sys.executable + ' ' + programToLaunch)
 
 if exitCode != 0:
-    print('''
+    sys.stderr.write('''
 
 * * * * * CRASH DETECTED! * * * * *
 
@@ -23,4 +23,5 @@ In your issue report, copy/paste the above "Traceback" along with this text:
     Python Version: {}
         Executable: {}
          Timestamp: {}
+
 '''.format(programToLaunch, launcherVersion, sys.platform, sys.version, sys.executable, datetime.datetime.now()))
