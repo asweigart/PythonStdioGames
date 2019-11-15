@@ -388,7 +388,7 @@ def programSelect(*args):
     descTextarea.configure(state='disabled')
 
     # Get the adler32 hash of the .py file:
-    fileObj = open(filename)
+    fileObj = open(filename, encoding='utf-8')
     fileHash = zlib.adler32(fileObj.read().encode('utf-8'))
     fileObj.close()
 
@@ -483,12 +483,13 @@ def main():
     mainframe.columnconfigure(0, weight=1)
     mainframe.rowconfigure(0, weight=1)
 
+    scrollbar = Scrollbar(mainframe, orient="vertical")
+
     filenameSV = StringVar(value=[d['filename'] for d in PROGRAMS])
-    programListbox = Listbox(mainframe, listvariable=filenameSV)
+    programListbox = Listbox(mainframe, listvariable=filenameSV, yscrollcommand=scrollbar.set)
     programListbox.grid(column=0, row=0, sticky=(N, S, E, W))
     programListbox.bind('<<ListboxSelect>>', programSelect)
 
-    scrollbar = Scrollbar(mainframe, orient="vertical")
     scrollbar.config(command=programListbox.yview)
     scrollbar.grid(column=1, row=0, sticky=(N, S, E, W))
 
