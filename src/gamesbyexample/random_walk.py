@@ -40,7 +40,7 @@ try:
         while (0 <= x < width) and (0 <= y < height):
             # Print the block at it's current location:
             bext.goto(x, y)
-            print(BLOCK, end='')
+            print(BLOCK, end='', flush=True)
 
             # Move the block:
             direction = random.randint(0, 3)
@@ -56,5 +56,6 @@ try:
 
             if speed == 'S':
                 time.sleep(0.1)
+        time.sleep(1) # Pause after reaching the edge.
 except KeyboardInterrupt:
     pass

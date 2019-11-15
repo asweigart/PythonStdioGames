@@ -361,8 +361,6 @@ FOLDER_OF_THIS_FILE = os.path.dirname(os.path.abspath(__file__))
 for program in PROGRAMS:
     if not os.path.exists(os.path.join(FOLDER_OF_THIS_FILE, program['filename'])):
         # Restore the file from the original one in the originalFiles.zip backup.
-        print('restored ' + program['filename'])
-        input()
         originalFilesZipFile = zipfile.ZipFile(os.path.join(FOLDER_OF_THIS_FILE, 'originalFiles.zip'), 'r')
         originalFilesZipFile.extract(program['filename'], FOLDER_OF_THIS_FILE)
 
@@ -373,13 +371,21 @@ def _executable_exists(name):
 
 
 def programSelect(*args):
+    global CURRENT_SELECTED_INDEX
+    # If, for some reason, nothing is currently selected in the listbox of programs, do nothing:
+    if len(programListbox.curselection()) == 0:
+        return
+
+    i = CURRENT_SELECTED_INDEX = programListbox.curselection()[0]
+
+    descTextarea.configure(state='normal')
     descTextarea.delete('1.0', END)
-    i = programListbox.curselection()[0]
     filename = os.path.join(FOLDER_OF_THIS_FILE, PROGRAMS[i]['filename'])
 
     # Set the text in the text box to the program name and description:
     text = PROGRAMS[i]['name'] + '\n\n' + PROGRAMS[i]['desc'] + '\n'
     descTextarea.insert(INSERT, text)
+    descTextarea.configure(state='disabled')
 
     # Get the adler32 hash of the .py file:
     fileObj = open(filename)
@@ -397,21 +403,25 @@ def programSelect(*args):
 
 
 def runClick(*args):
-    i = programListbox.curselection()[0]
+    i = CURRENT_SELECTED_INDEX
     filename = os.path.join(FOLDER_OF_THIS_FILE, PROGRAMS[i]['filename'])
+    TERMINAL_OPENER = os.path.join(FOLDER_OF_THIS_FILE, '__terminalopener__.py')
 
     # Figure out which program to run to open a new terminal window and then run the .py file:
     if sys.platform == 'win32':
         os.system('start cmd /K ' + sys.executable + ' ' + filename)
     elif sys.platform == 'darwin':
         os.system('''osascript -e 'tell application "Terminal" to do script "''' + sys.executable + ' ' + filename + '"' + "'")
+    elif _executable_exists('gnome-terminal'):
+        # gnome-terminal is used on Ubuntu Linux:
+        subprocess.call(['gnome-terminal', '--', sys.executable, TERMINAL_OPENER, filename])
     elif _executable_exists('lxterminal'):
-        # LXTerminal is used on Raspberry Pis, though this closes the window as soon as the Python program quits:
-        os.system('lxterminal -e ' + sys.executable + ' ' + filename)
+        # LXTerminal is used on Raspberry Pis:
+        subprocess.call(['lxterminal', '-e', sys.executable, TERMINAL_OPENER, filename])
 
 
 def viewSourceClick(*args):
-    i = programListbox.curselection()[0]
+    i = CURRENT_SELECTED_INDEX
     filename = os.path.join(FOLDER_OF_THIS_FILE, PROGRAMS[i]['filename'])
 
     # Figure out which program to run to open the .py file:
@@ -419,15 +429,15 @@ def viewSourceClick(*args):
         os.system('start ' + filename)
     elif sys.platform == 'darwin':
         os.system('open ' + filename)
-    elif _executable_exists('see'):
-        os.system('see ' + filename)
     elif _executable_exists('xdg-open'):
         # LXTerminal is used on Raspberry Pis, though this closes the window as soon as the Python program quits:
         os.system('xdg-open ' + filename)
+    elif _executable_exists('see'):
+        os.system('see ' + filename)
 
 
 def undoChangesClick(*args):
-    i = programListbox.curselection()[0]
+    i = CURRENT_SELECTED_INDEX
 
     # Restore the file from the original one in the originalFiles.zip backup.
     originalFilesZipFile = zipfile.ZipFile(os.path.join(FOLDER_OF_THIS_FILE, 'originalFiles.zip'), 'r')
@@ -443,15 +453,28 @@ def openInventWithPythonWebpage(*args):
 
 
 def openFolderClick(*args):
+    i = CURRENT_SELECTED_INDEX
+    fullFilePath = os.path.join(FOLDER_OF_THIS_FILE, PROGRAMS[i]['filename'])
+
     if sys.platform == 'win32':
-        os.system('explorer "' + FOLDER_OF_THIS_FILE + '"') # TODO - this doesn't open the right folder
+        os.system('explorer /select,"' + fullFilePath + '"') # TODO - this doesn't open the right folder
     elif sys.platform == 'darwin':
-        pass # TODO macos
+        subprocess.Popen(["open", "-R", fullFilePath])
+    elif _executable_exists('nautilus'):
+        subprocess.Popen(['nautilus', '-s', fullFilePath])
+    elif _executable_exists('pcmanfm'):
+        subprocess.Popen(['pcmanfm', FOLDER_OF_THIS_FILE])
     else:
-        pass # TODO linux
+        pass # TODO - Figure out support for other file managers (dolphin, konqueror, etc.)
+
+
+def quitLauncher(*args):
+    root.destroy()
+    sys.exit()
+
 
 def main():
-    global descTextarea, programListbox, undoChangesBtnSV, undoChangesButton
+    global root, descTextarea, programListbox, undoChangesBtnSV, undoChangesButton
     root = Tk()
     root.title('Python Games by Example')
 
@@ -475,6 +498,7 @@ def main():
     descTextarea = Text(mainframe, width=50, height=6)
     descTextarea.grid(column=2, row=0, columnspan=3, sticky=(N, S, E, W))
     descTextarea.configure(font=('Arial', 12))
+    descTextarea.configure(state='disabled')
 
     runButton = ttk.Button(mainframe, text='Run', command=runClick)
     runButton.grid(column=2, row=1, sticky=(E, W))
@@ -505,6 +529,8 @@ def main():
     programListbox.focus()
     programListbox.select_set(0)
     programListbox.event_generate("<<ListboxSelect>>")
+
+    root.bind('<Escape>', quitLauncher) # Bind Esc key to quit the program.
     root.mainloop()
 
 
