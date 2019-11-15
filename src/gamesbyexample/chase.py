@@ -153,10 +153,10 @@ def getPlayerMove(board, robots, playerPosition):
 
     while True:
         # Get player's move:
-        print(f'(T)eleports remaining: {board["teleports"]}')
-        print(f'                             ({q}) ({w}) ({e})')
-        print(f'                             ({a}) (S) ({d})')
-        print(f'Enter your move (or "quit"): ({z}) ({_x}) ({c})')
+        print('(T)eleports remaining: {}'.format(board["teleports"]))
+        print('                             ({}) ({}) ({})'.format(q, w, e))
+        print('                             ({}) (S) ({})'.format(a, d))
+        print('Enter your move (or "quit"): ({}) ({}) ({})'.format(z, _x, c))
 
         move = input().upper()
         if move == 'QUIT':

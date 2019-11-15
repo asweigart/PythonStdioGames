@@ -42,7 +42,7 @@ def getCalendarFor(year, month):
     # Add the month and year label to the calendar:
     calText = '' # calText will contain the string of our calendar page.
     fullCalendarWidth = 8 + (DAY_BOX_SIZE * 7) # There are 8 vertical lines.
-    calText += f'{MONTHS[month - 1]} {year}'.center(fullCalendarWidth) + '\n'
+    calText += '{} {}'.format(MONTHS[month - 1], year).center(fullCalendarWidth) + '\n'
 
     # Add the days of the week labels to the calendar:
     calText += ' '
@@ -101,7 +101,7 @@ calText = getCalendarFor(year, month)
 print(calText)
 
 # Save the calendar to a text file:
-calendarFilename = f'calendar_{year}_{month}.txt'
+calendarFilename = 'calendar_{}_{}.txt'.format(year, month)
 with open(calendarFilename, 'w') as fileObj:
     fileObj.write(calText)
 

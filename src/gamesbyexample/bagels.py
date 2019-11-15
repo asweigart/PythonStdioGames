@@ -37,35 +37,37 @@ def getClues(guess, secretNum):
     return ' '.join(clue)
 
 
-print('BAGELS')
-print('By Al Sweigart al@inventwithpython.com')
+print('''BAGELS
+By Al Sweigart al@inventwithpython.com
 print()
-print(f'I am thinking of a {NUM_DIGITS}-digit number. Try to guess what it is.')
-print('Here are some clues:')
-print('When I say:    That means:')
-print('  Pico         One digit is correct but in the wrong position.')
-print('  Fermi        One digit is correct and in the right position.')
-print('  Bagels       No digit is correct.')
+I am thinking of a {}-digit number. Try to guess what it is.
+Here are some clues:
+When I say:    That means:
+  Pico         One digit is correct but in the wrong position.
+  Fermi        One digit is correct and in the right position.
+  Bagels       No digit is correct.'''.format(NUM_DIGITS))
 
 while True: # Main game loop.
     secretNum = getSecretNum(NUM_DIGITS)
-    print(f'I have thought up a number. You have {MAX_GUESSES} guesses to get it.')
+    print('I have thought up a number.')
+    print(' You have {} guesses to get it.'.format(MAX_GUESSES))
 
     numGuesses = 1
     while numGuesses <= MAX_GUESSES:
         guess = ''
         while len(guess) != NUM_DIGITS or not guess.isdecimal():
-            print(f'Guess #{numGuesses}: ')
+            print('Guess #{}: '.format(numGuesses))
             guess = input()
 
-            clue = getClues(guess, secretNum)
-            print(clue)
-            numGuesses += 1
+        clue = getClues(guess, secretNum)
+        print(clue)
+        numGuesses += 1
 
         if guess == secretNum:
             break
         if numGuesses > MAX_GUESSES:
-            print(f'You ran out of guesses. The answer was {secretNum}.')
+            print('You ran out of guesses.')
+            print('The answer was {}.'.format(secretNum))
 
     # Ask player if thye want to play again.
     print('Do you want to play again? (yes or no)')

@@ -16,7 +16,7 @@ def main():
         # Keep asking the player until they enter a number 1-9:
         move = None
         while not isValidSpace(gameBoard, move):
-            print(f'What is {currentPlayer}\'s move? (1-9)')
+            print('What is {}\'s move? (1-9)'.format(currentPlayer))
             move = input()
         updateBoard(gameBoard, move, currentPlayer) # Make the move.
 
@@ -41,12 +41,12 @@ def getBlankBoard():
 
 def getBoardStr(board):
     """Return a text-representation of the board."""
-    return f'''
-      {board['1']}|{board['2']}|{board['3']}  1 2 3
+    return '''
+      {}|{}|{}  1 2 3
       -+-+-
-      {board['4']}|{board['5']}|{board['6']}  4 5 6
+      {}|{}|{}  4 5 6
       -+-+-
-      {board['7']}|{board['8']}|{board['9']}  7 8 9'''
+      {}|{}|{}  7 8 9'''.format(board['1'], board['2'], board['3'], board['4'], board['5'], board['6'], board['7'], board['8'], board['9'])
 
 def isValidSpace(board, space):
     """Returns True if the space on the board is a valid space number

@@ -67,14 +67,14 @@ def main():
                 money -= additionalBet
                 pot += additionalBet * 2 # Dealer matches the increased bet.
                 bet += additionalBet
-                print(f'Bet increased by {additionalBet} to {bet}.')
+                print('Bet increased to {}.'.format(bet))
                 print('Pot:', pot)
 
             if move in ('H', 'D'):
                 # Hit: take another card. (Doubling down also takes a card.)
                 newCard = deck.pop()
                 rank, suit = newCard
-                print(f'You drew a {rank} of {suit}.')
+                print('You drew a {} of {}.'.format(rank, suit))
                 playerHand.append(newCard)
 
                 if getCardValue(playerHand) > 21:
@@ -102,14 +102,14 @@ def main():
 
         # Handle whether the player won, lost, or tied.
         if getCardValue(dealerHand) > 21:
-            print(f'Dealer busts! You win ${pot}!')
+            print('Dealer busts! You win ${}!'.format(pot))
             money += pot
             pot = 0 # Reset the pot.
         elif (getCardValue(playerHand) > 21) or (getCardValue(playerHand) < getCardValue(dealerHand)):
             print('You lost!')
             pot = 0 # Reset the pot.
         elif getCardValue(playerHand) > getCardValue(dealerHand):
-            print(f'You won ${pot}!')
+            print('You won ${}!'.format(pot))
             money += pot
             pot = 0 # Reset the pot.
         elif getCardValue(playerHand) == getCardValue(dealerHand):
@@ -132,9 +132,9 @@ def printCards(cards):
         else:
             # Print the card's front:
             rank, suit = card # The card is a tuple data structure.
-            rows[1] += f'|{rank.ljust(2)} | '
-            rows[2] += f'| {suit} | '
-            rows[3] += f'| {rank.rjust(2)}| '
+            rows[1] += '|{} | '.format(rank.ljust(2))
+            rows[2] += '| {} | '.format(suit)
+            rows[3] += '| {}| '.format(rank.rjust(2))
         rows[4] += '----- ' # Print the bottom line of the card.
 
     # Print each row on the screen:
@@ -183,7 +183,7 @@ def getDeck():
 def getBet(maxBet):
     # Ask the user how much they want to bet for this round:
     while True:
-        print(f'How much do you bet? (1-{maxBet}, or "quit")')
+        print('How much do you bet? (1-{}, or "quit")'.format(maxBet))
         bet = input().upper()
         if bet == 'QUIT':
             print('Thanks for playing!')

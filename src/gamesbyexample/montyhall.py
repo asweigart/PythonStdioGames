@@ -67,15 +67,15 @@ THIRD_CAR_OTHERS_GOAT = """
 |GOAT|||  |GOAT|||  |   O  |
 +------+  +------+  +------+"""
 
-print(f'''THE MONTY HALL PROBLEM
+print('''THE MONTY HALL PROBLEM
 By Al Sweigart al@inventwithpython.com
 
 In the Monty Hall game show, you can pick one of three doors. One door
 has a brand new car for a prize. The other two doors have worthless goats:
-{ALL_CLOSED}
+{}
 Say you pick Door #1.
 Before the door you choose is opened, another door with a goat is opened:
-{THIRD_GOAT}
+{}
 You can choose to either open the door you originally picked, or switch
 to the other unopened door.
 
@@ -85,7 +85,7 @@ problem by letting you do repeated experiments.
 
 You can read an explanation of why switching is better at
 https://en.wikipedia.org/wiki/Monty_Hall_problem
-''')
+'''.format(ALL_CLOSED, THIRD_GOAT))
 
 input('Press Enter to start...')
 
@@ -126,7 +126,7 @@ while True:
     elif goatDoorOpened == 3:
         print(THIRD_GOAT)
 
-    print(f'Door {goatDoorOpened} contains a goat!')
+    print('Door {} contains a goat!'.format(goatDoorOpened))
 
     # Ask the player if they want to switch:
     while True: # Keep asking until the player enters Y or N.
@@ -158,7 +158,7 @@ while True:
     elif doorThatHasCar == 3:
         print(THIRD_CAR_OTHERS_GOAT)
 
-    print(f'Door {doorThatHasCar} has the car!')
+    print('Door {} has the car!'.format(doorThatHasCar))
 
     # Record wins and losses for switching and not switching:
     if doorPick == doorThatHasCar:
@@ -183,10 +183,10 @@ while True:
         notSwitchSuccess = round(notSwitchWins / (notSwitchWins + notSwitchLosses) * 100, 1)
     else:
         notSwitchSuccess = 0.0
-    print(f'''
-Switching:     {switchWins} wins, {switchLosses} losses, success rate {switchSuccess}%
-Not switching: {notSwitchWins} wins, {notSwitchLosses} losses, success rate {notSwitchSuccess}%
+    print('''
+Switching:     {} wins, {} losses, success rate {}%
+Not switching: {} wins, {} losses, success rate {}%
 
-Press Enter repeat the experiment again!''')
+Press Enter repeat the experiment again!'''.format(switchWins, switchLosses, switchSuccess, notSwitchWins, notSwitchLosses, notSwitchSuccess))
     input()
 

@@ -44,7 +44,7 @@ def drawBoard(board):
         for column in range(60):
             boardRow += board[column][row]
 
-        print(f'{extraSpace}{row} {boardRow} {row}')
+        print('{}{} {} {}'.format(extraSpace, row, boardRow, row))
 
     # Print the numbers across the bottom of the board.
     print()
@@ -85,7 +85,7 @@ def makeMove(board, chests, x, y):
     else:
         if smallestDistance < 10:
             board[x][y] = str(smallestDistance)
-            return f'Treasure detected at a distance of {smallestDistance} from the sonar device.'
+            return 'Treasure detected at a distance of {} from the sonar device.'.format(smallestDistance)
         else:
             board[x][y] = 'X'
             return 'Sonar did not detect anything. All treasure chests out of range.'
@@ -177,7 +177,7 @@ while True:
 
     while sonarDevices > 0:
         # Show sonar device and chest statuses.
-        print(f'You have {sonarDevices} sonar device(s) left. {len(theChests)} treasure chest(s) remaining.')
+        print('You have {} sonar device(s) left. {} treasure chest(s) remaining.'.format(sonarDevices, len(theChests)))
 
         x, y = enterPlayerMove(previousMoves)
         previousMoves.append([x, y]) # We must track all moves so that sonar devices can be updated.
@@ -204,7 +204,7 @@ while True:
         print('for home with treasure chests still out there! Game over.')
         print('    The remaining chests were here:')
         for x, y in theChests:
-            print(f'    {x}, {y}')
+            print('    {}, {}'.format(x, y))
 
     print('Do you want to play again? (yes or no)')
     if not input().lower().startswith('y'):

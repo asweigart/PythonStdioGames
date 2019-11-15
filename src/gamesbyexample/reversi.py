@@ -4,6 +4,8 @@
 # A version of this game is featured in the book, "Invent Your Own Computer
 # Games with Python. https://nostarch.com/inventwithpython
 
+# TODO - add better help and a title
+
 import random, sys
 
 def getScoreOfBoard(board):
@@ -21,14 +23,14 @@ def drawBoard(board):
     print('  12345678')
     print(' +--------+')
     for y in range(8):
-        print(f'{(y+1)}|', end='')
+        print('{}|'.format((y+1)), end='')
         for x in range(8):
             print(board[(x, y)], end='')
         print('|')
     print(' +--------+')
     # Prints out the current score.
     scores = getScoreOfBoard(board)
-    print(f'X has {scores["X"]} points. O has {scores["O"]} points.')
+    print('X has {} points. O has {} points.'.format(scores["X"], scores["O"]))
 
 
 def getNewBoard():

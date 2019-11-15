@@ -29,18 +29,18 @@ slowPrint('    ALPHABETIZE QUIZ', 0.05)
 slowPrint(REVERSE_ALPHABET, 0.05)
 time.sleep(0.75)
 
-print(f'''
+print('''
 By Al Sweigart al@inventwithpython.com
 
 To play, enter the alphabetical order of the letters shown as fast as
-possible. Try to get as many as possible in {QUIZ_DURATION} seconds!
+possible. Try to get as many as possible in {} seconds!
 
 Example:
     P M O T Q
     > mopqt
 
 Press enter to start!
-''')
+'''.format(QUIZ_DURATION))
 input() # Let the player press Enter to start the game.
 
 startTime = time.time() # Get the current time for the start time.
@@ -65,6 +65,6 @@ while True: # Main game loop.
         print('    Ack. :(\n')
 
 # After the loop exits, the quiz is over. Show the final score:
-print(f'In {QUIZ_DURATION} seconds you got {numCorrect} correct!')
+print('In {} seconds you got {} correct!'.format(QUIZ_DURATION, numCorrect))
 print('Thanks for playing!')
 

@@ -150,7 +150,7 @@ By Al Sweigart al@inventwithpython.com
         winner = isWinner(gameBoard)
         if winner == '1' or winner == '2':
             drawBoard(gameBoard)
-            print(f'Player {winner} has won!')
+            print('Player {} has won!'.format(winner))
             break
         elif winner == 'tie':
             drawBoard(gameBoard)

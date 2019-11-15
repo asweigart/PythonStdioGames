@@ -84,17 +84,17 @@ while True: # Main application loop.
 
     print('5) Multiply by 9:')
     digitSumTimesNine = digitSum * 9
-    print(f'    {digitSum} * 9 = {digitSumTimesNine}')
+    print('    {} * 9 = {}'.format(digitSum, digitSumTimesNine))
     time.sleep(PAUSE_AMOUNT)
 
     print('6) The checksum digit is the last digit:')
     checksumDigit = str(digitSumTimesNine)[-1]
-    print(f'    {str(digitSumTimesNine)[:-1]}[{checksumDigit}]')
+    print('    {}[{}]'.format(str(digitSumTimesNine)[:-1], checksumDigit))
     time.sleep(PAUSE_AMOUNT)
 
     print('7) Append the checksum digit for the complete, valid number:')
     numberWithValidChecksum = originalNumber[:-1] + str(checksumDigit)
-    print(f'    {numberWithValidChecksum}')
+    print('    ' + numberWithValidChecksum)
     print() # Print a newline.
     time.sleep(PAUSE_AMOUNT)
 
@@ -103,7 +103,7 @@ while True: # Main application loop.
         print('You entered a VALID NUMBER.')
     else:
         print('You entered a number with an INVALID CHECKSUM.')
-        print(f'The checksum should be {checksumDigit} not {originalNumber[-1]}')
+        print('The checksum should be {} not {}'.format(checksumDigit, originalNumber[-1]))
 
     input('Press Enter to continue...')
     print() # Print some newlines for space.

@@ -19,7 +19,7 @@ print('Simulating 1,000,000 dice rolls...')
 lastPrintTime = time.time()
 for i in range(1000000):
     if time.time() > lastPrintTime + 1:
-        print(f'{round(i / 10000, 1)}% done...')
+        print('{}% done...'.format(round(i / 10000, 1)))
         lastPrintTime = time.time()
 
     total = 0
@@ -30,4 +30,6 @@ for i in range(1000000):
 # Display results:
 print('TOTAL - ROLLS - PERCENTAGE')
 for i in range(numberOfDice, (numberOfDice * 6) + 1):
-    print(f'  {i} - {results[i]} rolls - {round(results[i] / 10000, 1)}%')
+    roll = results[i]
+    percentage = round(results[i] / 10000, 1)
+    print('  {} - {} rolls - {}%'.format(i, roll, percentage))

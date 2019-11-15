@@ -63,7 +63,7 @@ r"""
     |
 ====="""]
 CATEGORY = 'Animals'
-WORDS = 'ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt otter owl panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep skunk sloth snake spider stork swan tiger toad trout turkey turtle weasel whale wolf wombat zebra'.split()
+WORDS = 'ANT BABOON BADGER BAT BEAR BEAVER CAMEL CAT CLAM COBRA COUGAR COYOTE CROW DEER DOG DONKEY DUCK EAGLE FERRET FOX FROG GOAT GOOSE HAWK LION LIZARD LLAMA MOLE MONKEY MOOSE MOUSE MULE NEWT OTTER OWL PANDA PARROT PIGEON PYTHON RABBIT RAM RAT RAVEN RHINO SALMON SEAL SHARK SHEEP SKUNK SLOTH SNAKE SPIDER STORK SWAN TIGER TOAD TROUT TURKEY TURTLE WEASEL WHALE WOLF WOMBAT ZEBRA'.split()
 
 def drawHangman(missedLetters, correctLetters, secretWord):
     """Draw the current state of the hangman, along with the missed and
@@ -145,5 +145,5 @@ while True: # Main game loop.
         if len(missedLetters) == len(HANGMAN_PICS) - 1:
             drawHangman(missedLetters, correctLetters, secretWord)
             print('You have run out of guesses!')
-            print(f'The word was "{secretWord}"')
+            print('The word was "{}"'.format(secretWord))
             break

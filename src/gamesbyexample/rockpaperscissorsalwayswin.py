@@ -14,7 +14,7 @@ wins = 0 # This variable keeps track of how many wins the player has.
 
 while True: # The main game loop.
     while True: # Keep asking until player enters R/P/S/Q.
-        print(f'{wins} Wins, 0 Losses, 0 Ties')
+        print('{} Wins, 0 Losses, 0 Ties'.format(wins))
         print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
         playerMove = input().upper()
         if playerMove == 'Q':

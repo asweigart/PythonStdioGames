@@ -37,10 +37,10 @@ while True:
 
     if os.path.exists(outputFolderName):
         if os.path.isfile(outputFolderName):
-            print(f'A file named {outputFolderName} already exists.')
+            print('A file named {} already exists.'.format(outputFolderName))
             continue
         else:
-            print(f'A folder named {outputFolderName} already exists. Use this name anyway? Y/N')
+            print('A folder named {} already exists. Use this name anyway? Y/N'.format(outputFolderName))
             useAnyway = input().upper()
             if not useAnyway.startswith('Y'):
                 continue
@@ -58,7 +58,7 @@ y = 0
 for line in lines:
     WIDTH = len(line.rstrip())
     for x, character in enumerate(line.rstrip()):
-        assert character in (WALL, EMPTY, START, EXIT), f'Invalid character at column {x + 1}, line {y + 1}'
+        assert character in (WALL, EMPTY, START, EXIT), 'Invalid character at column {}, line {}'.format(x + 1, y + 1)
         if character in (WALL, EMPTY):
             maze[(x, y)] = character
         elif character == START:
@@ -86,8 +86,8 @@ for x in range(WIDTH):
             continue
 
         for direction in (NORTH, EAST, SOUTH, WEST):
-            htmlFilename = f'{outputFolderName}/{x}_{y}_{direction}.html'
-            print(f'Writing {htmlFilename}...')
+            htmlFilename = '{}/{}_{}_{}.html'.format(outputFolderName, x, y, direction)
+            print('Writing {}...'.format(htmlFilename))
             numFilesWritten += 1
 
             with open(htmlFilename, 'w') as htmlFile:
@@ -136,25 +136,25 @@ for x in range(WIDTH):
 
                 # Calculate turn URLs:
                 leftDirection = {NORTH: WEST, WEST: SOUTH, SOUTH: EAST, EAST: NORTH}[direction]
-                turnLeftURL = f'{x}_{y}_{leftDirection}.html'
+                turnLeftURL = '{}_{}_{}.html'.format(x, y, leftDirection)
 
                 rightDirection = {NORTH: EAST, EAST: SOUTH, SOUTH: WEST, WEST: NORTH}[direction]
-                turnRightURL = f'{x}_{y}_{rightDirection}.html'
+                turnRightURL = '{}_{}_{}.html'.format(x, y, rightDirection)
 
                 if section['C'] != WALL:
-                    forwardURL = f'{x + offsets[2][1]}_{y + offsets[2][2]}_{direction}.html'
+                    forwardURL = '{}_{}_{}.html'.format(x + offsets[2][1], y + offsets[2][2], direction)
                 else:
                     forwardURL = '#'
 
                 # Create the .html file:
-                htmlFile.write(f'''
+                htmlFile.write('''
 <!-- This line is an HTML comment, which is ignored by the browser. -->
 <!-- HTML tags are between angle brackets < and >. The <html>, <head>,
      <title>, and <body> tags are used in all web pages. They are paired
      with closing tags like </html>. -->
 <html>
 <head>
-    <title>{filename}</title>
+    <title>{}</title>
 </head>
 <body>
     <!-- <center> puts things in the center of the page. -->
@@ -162,27 +162,27 @@ for x in range(WIDTH):
     <!-- <img> displays an image, while <br /> adds a break return.
          The <br> tag has no paired closing tag, which is why it's
          written as <br /> -->
-    <img src="../maze_html_images/{wallImageFilename}" /><br />
+    <img src="../maze_html_images/{}" /><br />
 
-    Facing: {direction}<br />
+    Facing: {}<br />
 
     <!-- Everything between <a> and </a> is a clickable link. We make the
          arrow images clickable links. -->
-    <a href="{turnLeftURL}"><img src="../maze_html_images/turn_left.png" /></a>
-    <a href="{forwardURL}"><img src="../maze_html_images/forward.png" /></a>
-    <a href="{turnRightURL}"><img src="../maze_html_images/turn_right.png" /></a>
+    <a href="{}"><img src="../maze_html_images/turn_left.png" /></a>
+    <a href="{}"><img src="../maze_html_images/forward.png" /></a>
+    <a href="{}"><img src="../maze_html_images/turn_right.png" /></a>
     </center>
 </body>
 </html>
-''')
+'''.format(filename, wallImageFilename, direction, turnLeftURL, forwardURL, turnRightURL))
             # After writing the html file, see if this is the starting position:
             if (startx, starty, direction) == (x, y, NORTH):
-                shutil.copy(htmlFilename, f'{outputFolderName}/index.html')
+                shutil.copy(htmlFilename, outputFolderName + '/index.html')
                 numFilesWritten += 1
 
 
 
-print(f'Done. {numFilesWritten} files written.')
+print('Done. {} files written.'.format(numFilesWritten))
 
 
 # TODO - add exit logic, obfuscate the URLs

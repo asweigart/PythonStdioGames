@@ -41,9 +41,9 @@ Worst ending:    >33%% population died or <7 acres per person.""")
 
     while True:
         print()
-        print(f'Hammurabi, I beg to report to you, in the year {year}:')
-        print(f'- {deaths} people starved')
-        print(f'- {births} came to the city')
+        print('Hammurabi, I beg to report to you, in the year {}:'.format(year))
+        print('- {} people starved'.format(deaths))
+        print('- {} came to the city'.format(births))
         print()
         population += births
         totalPopulation += births
@@ -53,11 +53,11 @@ Worst ending:    >33%% population died or <7 acres per person.""")
             print()
             population //= 2 # Halve the population.
 
-        print(f'  Population: {population} people')
-        print(f'        Land: {acresOwned} acres ({acresOwned // population} per person)')
-        print(f'     Harvest: {bushelsHarvestedPerAcre} bushels per acres, {bushelsHarvestedPerAcre * acresToPlant} total')
-        print(f'    Rats ate: {ratsAte} bushels')
-        print(f'Grain stored: {bushelsStored} bushels in store.')
+        print('  Population: {} people'.format(population))
+        print('        Land: {} acres ({} per person)'.format(acresOwned, acresOwned // population))
+        print('     Harvest: {} bushels per acres, {} total'.format(bushelsHarvestedPerAcre, bushelsHarvestedPerAcre * acresToPlant))
+        print('    Rats ate: {} bushels'.format(ratsAte))
+        print('Grain stored: {} bushels in store.'.format(bushelsStored))
         print()
 
         if year > 10: # End game after year 10.
@@ -68,10 +68,10 @@ Worst ending:    >33%% population died or <7 acres per person.""")
 
         # Buying and selling land:
         landPricePerAcre = random.randint(17, 26)
-        print(f'Land trades between 17 & 26 bushels per acre. Current price: {landPricePerAcre}')
+        print('Land trades between 17 & 26 bushels per acre. Current price: {}'.format(landPricePerAcre))
 
         while True:
-            print(f'How many acres do you wish to buy? (0-{bushelsStored // landPricePerAcre})')
+            print('How many acres do you wish to buy? (0-{})'.format(bushelsStored // landPricePerAcre))
             try:
                 acresToBuy = int(input())
             except:
@@ -81,12 +81,12 @@ Worst ending:    >33%% population died or <7 acres per person.""")
 
             bushelsStored -= acresToBuy * landPricePerAcre
             acresOwned += acresToBuy
-            print(f'Spent {acresToBuy * landPricePerAcre} bushels to buy {acresToBuy} acres. Current bushels: {bushelsStored} Current land: {acresOwned}')
+            print('Spent {} bushels to buy {} acres. Current bushels: {} Current land: {}'.format(acresToBuy * landPricePerAcre, acresToBuy, bushelsStored, acresOwned))
             break
 
         if acresToBuy == 0: # Only ask to sell land if they didn't buy land.
             while True:
-                print(f'How many acres do you wish to sell? (0-{acresOwned})')
+                print('How many acres do you wish to sell? (0-{})'.format(acresOwned))
                 try:
                     acresToSell = int(input())
                 except:
@@ -96,13 +96,13 @@ Worst ending:    >33%% population died or <7 acres per person.""")
 
                 bushelsStored += acresToSell * landPricePerAcre
                 acresOwned -= acresToSell
-                print(f'Sold {acresToSell} acres for {acresToSell * landPricePerAcre} bushels. Current bushels: {bushelsStored} Current land: {acresOwned}')
+                print('Sold {} acres for {} bushels. Current bushels: {} Current land: {}'.format(acresToSell, acresToSell * landPricePerAcre, bushelsStored, acresOwned))
                 break
 
         # Feed population.
         while True:
             maxToFeed = min(bushelsStored, population * 20)
-            print(f'20 bushels feeds 1 person: How many bushels do you wish to feed your people? (0-{maxToFeed})')
+            print('20 bushels feeds 1 person: How many bushels do you wish to feed your people? (0-{})'.format(maxToFeed))
             try:
                 bushelsToFeed = int(input())
             except:
@@ -111,13 +111,13 @@ Worst ending:    >33%% population died or <7 acres per person.""")
                 continue # Ask again.
 
             bushelsStored -= bushelsToFeed
-            print(f'Fed {bushelsToFeed // 20} people with {bushelsToFeed} bushels. Current bushels: {bushelsStored}')
+            print('Fed {} people with {} bushels. Current bushels: {}'.format(bushelsToFeed // 20, bushelsToFeed, bushelsStored))
             break
 
         # Plant seeds.
         while True:
             maxCanPlant = min(acresOwned, bushelsStored // 2, population * 10)
-            print(f'2 bushels to plant 1 acre, 1 person can plant 10 acres: How many acres do you wish to plant with seed? (0-{maxCanPlant})')
+            print('2 bushels to plant 1 acre, 1 person can plant 10 acres: How many acres do you wish to plant with seed? (0-{})'.format(maxCanPlant))
             try:
                 acresToPlant = int(input())
             except:
@@ -126,7 +126,7 @@ Worst ending:    >33%% population died or <7 acres per person.""")
                 continue # Ask again.
 
             bushelsStored -= acresToPlant * 2
-            print(f'Planted {acresToPlant} acres using {acresToPlant * 2} bushels. Current bushels: {bushelsStored}')
+            print('Planted {} acres using {} bushels. Current bushels: {}'.format(acresToPlant, acresToPlant * 2, bushelsStored))
             break
 
         # Calculate harvest:
@@ -151,7 +151,7 @@ Worst ending:    >33%% population died or <7 acres per person.""")
         totalDeaths += deaths
 
         if deaths > (0.45 * population):
-            print(f'You starved {deaths} people in one year!!!')
+            print('You starved {} people in one year!!!'.format(deaths))
             print('Due to this extreme mismanagement you have not only')
             print('been impeached and thrown out of office but you have')
             print('also been declared a national fink!!!!')
@@ -164,11 +164,11 @@ Worst ending:    >33%% population died or <7 acres per person.""")
     # Tell the player how they did:
     percentageDiedPerYear = sum(percentageDiedEachYear) // 10 # TODO This is wrong and needs to be corrected. Get the percentage deaths each year, and find the average of that. See original source.
     acresPerPerson = acresOwned // population
-    print(f'In your 10-year term of office, {percentageDiedPerYear} percent of the')
+    print('In your 10-year term of office, {} percent of the'.format(percentageDiedPerYear))
     print('population starved per year on the average, i.e. a total of')
-    print(f'{totalDeaths} out of {totalPopulation} people died!!')
+    print('{} out of {} people died!!'.format(totalDeaths, totalPopulation))
     print('You started with 10 acres per person and ended with')
-    print(f'{acresPerPerson} acres per person.')
+    print('{} acres per person.'.format(acresPerPerson))
     print()
 
 
@@ -187,7 +187,7 @@ Worst ending:    >33%% population died or <7 acres per person.""")
 
     elif percentageDiedPerYear > 3 or acresPerPerson < 10:
         print('Your performance could have been somewhat better, but')
-        print(f'really wasn\'t too bad at all. {random.randint(0, int(population * 0.8))} people')
+        print('really wasn\'t too bad at all. {} people'.format(random.randint(0, int(population * 0.8))))
         print('would dearly like to see you assassinated but we all have our')
         print('trivial problems.')
 

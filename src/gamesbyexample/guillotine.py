@@ -150,5 +150,5 @@ while True: # Main game loop.
         if len(missedLetters) == len(GUILLOTINE_PICS) - 1:
             drawGuillotine(missedLetters, correctLetters, secretWord)
             print('You have run out of guesses!')
-            print(f'The word was "{secretWord}"')
+            print('The word was "{}"'.format(secretWord))
             break

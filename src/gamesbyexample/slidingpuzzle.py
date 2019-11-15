@@ -73,8 +73,8 @@ def getPlayerMove(board):
     d = 'D' if blankx != 0 else ' '
 
     while True:
-        print(f'                               ({w})')
-        print(f'Enter your move (or QUIT): ({a}) ({s}) ({d})')
+        print('                               ({})'.format(w))
+        print('Enter your move (or QUIT): ({}) ({}) ({})'.format(a, s, d))
 
         response = input().upper()
         if response == 'QUIT':

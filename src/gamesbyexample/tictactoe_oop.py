@@ -18,7 +18,7 @@ def main():
         # Keep asking the player until they enter a number 1-9:
         move = None
         while not gameBoard.isValidSpace(move):
-            print(f'What is {currentPlayer}\'s move? (1-9)')
+            print('What is {}\'s move? (1-9)'.format(currentPlayer))
             move = input()
         gameBoard.updateBoard(move, currentPlayer) # Make the move.
 
@@ -43,12 +43,12 @@ class TTTBoard:
 
     def getBoardStr(self):
         """Return a text-representation of the board."""
-        return f'''
-      {self._spaces['1']}|{self._spaces['2']}|{self._spaces['3']}  1 2 3
+        return '''
+      {}|{}|{}  1 2 3
       -+-+-
-      {self._spaces['4']}|{self._spaces['5']}|{self._spaces['6']}  4 5 6
+      {}|{}|{}  4 5 6
       -+-+-
-      {self._spaces['7']}|{self._spaces['8']}|{self._spaces['9']}  7 8 9'''
+      {}|{}|{}  7 8 9'''.format(self._spaces['1'], self._spaces['2'], self._spaces['3'], self._spaces['4'], self._spaces['5'], self._spaces['6'], self._spaces['7'], self._spaces['8'], self._spaces['9'])
 
     def isValidSpace(self, space):
         """Returns True if the space on the board is a valid space number
@@ -88,10 +88,10 @@ class MiniTTTBoard(TTTBoard):
             if self._spaces[space] == BLANK:
                 self._spaces[space] = '.'
 
-        boardStr = f'''
-          {self._spaces['1']}{self._spaces['2']}{self._spaces['3']} 123
-          {self._spaces['4']}{self._spaces['5']}{self._spaces['6']} 456
-          {self._spaces['7']}{self._spaces['8']}{self._spaces['9']} 789'''
+        boardStr = '''
+          {}{}{} 123
+          {}{}{} 456
+          {}{}{} 789'''.format(self._spaces['1'], self._spaces['2'], self._spaces['3'], self._spaces['4'], self._spaces['5'], self._spaces['6'], self._spaces['7'], self._spaces['8'], self._spaces['9'])
 
         # Change '.' back to blank spaces.
         for space in ALL_SPACES:
@@ -190,7 +190,7 @@ class LoggingTTTBoard(TTTBoard):
         to the log file."""
         super().updateBoard(space, player)
         with open(self.logFilename, 'a') as logFile:
-            logFile.write(f'{player} moved on space {space}:\n')
+            logFile.write('{} moved on space {}:\n'.format(player, space))
             logFile.write(super().getBoardStr() + '\n')
 
 

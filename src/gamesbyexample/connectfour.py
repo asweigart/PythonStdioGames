@@ -39,7 +39,7 @@ def drawBoard(board):
 def getPlayerMove(playerTile, board):
     # Let the player select a column to drop a tile into.
     while True:
-        print(f'Player {playerTile}, enter your move (1-7) or QUIT:')
+        print('Player {}, enter your move (1-7) or QUIT:'.format(playerTile))
         move = input()
         if move == 'quit':
             print('Thanks for playing!')
@@ -113,7 +113,7 @@ By Al Sweigart al@inventwithpython.com
         # Check for a win or tie:
         if isWinner(playerTurn, gameBoard):
             drawBoard(gameBoard)
-            print(f'Player {playerTurn} has won!')
+            print('Player {} has won!'.format(playerTurn))
             break
         elif isFull(gameBoard):
             drawBoard(gameBoard)

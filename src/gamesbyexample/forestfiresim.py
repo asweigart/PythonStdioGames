@@ -73,7 +73,7 @@ try:
                     print(board[(x, y)], end='')
             print()
         bext.fg('reset') # Use the default font color.
-        print(f'Grow chance: {GROW_CHANCE}%  Lightning chance: {LIGHTNING_CHANCE}%')
+        print('Grow chance: {}%  Lightning chance: {}%'.format(GROW_CHANCE, LIGHTNING_CHANCE))
         print('Press Ctrl-C to quit.')
 
 

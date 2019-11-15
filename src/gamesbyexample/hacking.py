@@ -54,14 +54,14 @@ def getBoard(words):
 
 def getPlayerMove(words, tries):
     while True:
-        print(f'Enter password: ({tries} tries remaining)')
+        print('Enter password: ({} tries remaining)'.format(tries))
         move = input().upper()
         if move in words:
             return move
         print('That is not one of the possible passwords listed above.')
 
 
-def getNumberOfMatchingLetters(word1, word2):
+def numberOfMatchingLetters(word1, word2):
     matches = 0
     for i in range(len(word1)):
         if word1[i] == word2[i]:
@@ -87,7 +87,7 @@ def getWords():
     # Find two words that have zero matching letters.
     while len(words) < 3: # 3 because the secret password is already in `words`.
         randomWord = getOneWordExcept(words)
-        if getNumberOfMatchingLetters(secretPassword, randomWord) == 0:
+        if numberOfMatchingLetters(secretPassword, randomWord) == 0:
             words.append(randomWord)
 
     # Find two words that have 3 matching letters (but give up at 500 tries if not enough can be found).
@@ -96,7 +96,7 @@ def getWords():
             break
 
         randomWord = getOneWordExcept(words)
-        if getNumberOfMatchingLetters(secretPassword, randomWord) == 3:
+        if numberOfMatchingLetters(secretPassword, randomWord) == 3:
             words.append(randomWord)
 
     # Find seven words that have at least one matching letter (but give up at 500 tries if not enough can be found).
@@ -105,7 +105,7 @@ def getWords():
             break
 
         randomWord = getOneWordExcept(words)
-        if getNumberOfMatchingLetters(secretPassword, randomWord) != 0:
+        if numberOfMatchingLetters(secretPassword, randomWord) != 0:
             words.append(randomWord)
 
     # Add any random words needed to get 12 words total.
@@ -132,8 +132,9 @@ By Al Sweigart al@inventwithpython.com
             print('A C C E S S   G R A N T E D')
             return
         else:
-            print(f'Access Denied ({getNumberOfMatchingLetters(secretPassword, playerMove)}/7 correct)')
-    print(f'Out of tries. Secret password was {secretPassword}.')
+            numMatches = numberOfMatchingLetters(secretPassword, playerMove)
+            print('Access Denied ({}/7 correct)'.format(numMatches))
+    print('Out of tries. Secret password was {}.'.format(secretPassword))
 
 
 if __name__ == '__main__':

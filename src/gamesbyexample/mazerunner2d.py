@@ -43,7 +43,7 @@ y = 0
 for line in lines:
     WIDTH = len(line.rstrip())
     for x, character in enumerate(line.rstrip()):
-        assert character in (WALL, EMPTY, START, EXIT), f'Invalid character at column {x + 1}, line {y + 1}'
+        assert character in (WALL, EMPTY, START, EXIT), 'Invalid character at column {}, line {}'.format(x + 1, y + 1)
         if character in (WALL, EMPTY):
             maze[(x, y)] = character
         elif character == START:

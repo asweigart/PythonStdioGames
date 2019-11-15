@@ -97,7 +97,7 @@ maze[(1, 1)] = START
 maze[(WIDTH - 2, HEIGHT - 2)] = EXIT
 
 # Display the maze and save it to a text file.
-filename = f'maze{WIDTH}x{HEIGHT}s{SEED}.txt'
+filename = 'maze{}x{}s{}.txt'.format(WIDTH, HEIGHT, SEED)
 mazeFile = open(filename, 'w')
 
 for y in range(HEIGHT):
@@ -108,4 +108,4 @@ for y in range(HEIGHT):
     mazeFile.write('\n')
 mazeFile.close()
 
-print(f'Saved to {filename}.')
+print('Saved to {}.'.format(filename))

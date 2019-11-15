@@ -208,7 +208,7 @@ y = 0
 for line in lines:
     WIDTH = len(line.rstrip())
     for x, character in enumerate(line.rstrip()):
-        assert character in (WALL, EMPTY, START, EXIT), f'Invalid character at column {x + 1}, line {y + 1}'
+        assert character in (WALL, EMPTY, START, EXIT), 'Invalid character at column {}, line {}'.format(x + 1, y + 1)
         if character in (WALL, EMPTY):
             maze[(x, y)] = character
         elif character == START:
@@ -229,7 +229,7 @@ while True: # Main program loop.
     displayWallDict(makeWallDict(maze, playerx, playery, playerDirection, exitx, exity))
 
     while True: # Get user move.
-        print(f'Location ({playerx}, {playery})  Compass: {playerDirection}')
+        print('Location ({}, {})  Compass: {}'.format(playerx, playery, playerDirection))
         print('                            (F)ORWARD           (W)')
         print('Enter direction, or QUIT: (L)EFT (R)IGHT -or- (A) (D)')
         move = input().upper()

@@ -43,7 +43,7 @@ while True: # Main game loop.
         print() # Print a newline.
 
     # Get the player's move:
-    print(f'It is {turn}\'s turn.')
+    print('It is {}\'s turn.'.format(turn))
     while True:
         print()
         print('Select the piece to eat (or QUIT):')
@@ -77,7 +77,8 @@ while True: # Main game loop.
 
     # Check if the player ate the poison piece:
     if piecex == 'A' and piecey == '1':
-        print(f'{turn} has eaten the poison piece! {otherPlayer} wins!')
+        print('{} has eaten the poison piece!'.format(turn))
+        print('{} wins!'.format(otherPlayer))
         break # Break out of the main game loop.
 
     # Mark the selected piece and all pieces below and to the right as eaten:
