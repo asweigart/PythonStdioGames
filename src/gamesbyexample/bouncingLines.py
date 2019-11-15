@@ -107,6 +107,7 @@ while True: # Main game loop.
             print(LINE_CHAR, end='')
 
             oldpointPositions.append((x, y))
+    sys.stdout.flush() # (Required for bext-using programs.)
     time.sleep(0.1)
 
     for point in points:
