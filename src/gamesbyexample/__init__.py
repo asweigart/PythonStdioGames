@@ -406,18 +406,19 @@ def runClick(*args):
     i = CURRENT_SELECTED_INDEX
     filename = os.path.join(FOLDER_OF_THIS_FILE, PROGRAMS[i]['filename'])
     TERMINAL_OPENER = os.path.join(FOLDER_OF_THIS_FILE, '__terminalopener__.py')
+    CRASH_DETECTOR = os.path.join(FOLDER_OF_THIS_FILE, '__crashdetector__.py')
 
     # Figure out which program to run to open a new terminal window and then run the .py file:
     if sys.platform == 'win32':
-        os.system('start cmd /K ' + sys.executable + ' ' + filename)
+        os.system('start cmd /K ' + sys.executable + ' ' + CRASH_DETECTOR + ' ' + __version__ + ' ' + filename)
     elif sys.platform == 'darwin':
-        os.system('''osascript -e 'tell application "Terminal" to do script "''' + sys.executable + ' ' + filename + '"' + "'")
+        os.system('''osascript -e 'tell application "Terminal" to do script "''' + sys.executable + ' ' + CRASH_DETECTOR + ' ' + __version__ + ' ' + filename + '"' + "'")
     elif _executable_exists('gnome-terminal'):
         # gnome-terminal is used on Ubuntu Linux:
-        subprocess.call(['gnome-terminal', '--', sys.executable, TERMINAL_OPENER, filename])
+        subprocess.call(['gnome-terminal', '--', sys.executable, TERMINAL_OPENER, __version__, filename])
     elif _executable_exists('lxterminal'):
         # LXTerminal is used on Raspberry Pis:
-        subprocess.call(['lxterminal', '-e', sys.executable, TERMINAL_OPENER, filename])
+        subprocess.call(['lxterminal', '-e', sys.executable, TERMINAL_OPENER, __version__, filename])
 
 
 def viewSourceClick(*args):
