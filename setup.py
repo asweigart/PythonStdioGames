@@ -15,8 +15,10 @@ with open('src/gamesbyexample/__init__.py', 'r') as fo:
 with io.open('README.md', encoding='utf-8') as fo:
     long_description = fo.read()
 
+# TODO - include originalFiles.zip and all the support files in src/gamesbyexample
+
 setup(
-    name='Games By Example',
+    name='gamesbyexample',
     version=version,
     url='https://github.com/asweigart/pythonstdiogames',
     author='Al Sweigart',
@@ -28,7 +30,7 @@ setup(
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     test_suite='tests',
-    install_requires=[],
+    install_requires=['bext', 'pyperclip', 'windows-curses;platform_system=="Windows"'],
     keywords='',
     classifiers=[
         'License :: OSI Approved :: MIT License',

@@ -39,6 +39,7 @@ Additional Guidelines
 
 Additional guidelines include:
 
+* Don't use f-strings. Raspberry Pis as of 2019 have Python 3.5 installed, and f-strings only came about in 3.6. One guideline for these programs is to be as widely compatible as possible.
 * Some of these programs use the `bext` module, which adds curses-like features like color, clearing the screen, and moving the cursor
 * Include a link to a run-through of the program on https://pythontutor.com so that the student can see how the program runs.
 * Longer, more descriptive variable names are better than shorter ones. Avoid using single-letter variable names except for `i` and `j`, or `x` and `y`.
@@ -80,74 +81,199 @@ Additional modules I recommend using:
 Completed Programs in This Collection
 =====================================
 
-*Bagels* - A mastermind-like deduction game.
-*Blackjack* - The card game of 21.
-*Chance Checkers* - Checkers, with a random luck element.
-*Chase* - A daeleks clone where you make robots crash into each other.
-*Checkers* - The classic board game.
-*Coin Flip Simulator* - Simulate coin flips and get statistics on streaks.
-*Connect Four* - The classic board game.
-*Conways Game of Life* - A cellular automata demo.
-*Countdown* - A digital seven-segment display egg timer.
-*Diagonal Maze* - A classic BASIC program that creates an interesting pattern.
-*Dice Roller* - A program for rolling dice according to Dungeons and Dragons syntax.
-*Digital Clock* - A digital seven-segment display clock.
-*DNA* - A double-helix animation.
-*Eeny Meeny* - A game based on the Josephus Problem.
-*Fireflies* - An animation showing swirling fireflies.
-*Fizz Buzz* - A time-based number game.
-*Floodfill* - A demonstration of the floodfill algorithm.
-*Game 2048* - The classic game 2048.
-*Guess* - A guess-the-number game.
-*Hacking* - A clone of the hacking minigame from Fallout.
-*Hammurabi* - A clone of the old-school city management game originally programmed in BASIC.
-*Hamsburger* - A silly word program.
-*Hangman* - The classic pencil-and-paper game.
-*Idiot* - A silly and simple program.
-*J'accuse* - A logical deduction game based on the Homestar Runner game, "Where's an Egg?"
-*Leetspeak* - An English-to-Leetspeak program.
-*Mancala* - The classic seed-sowing game.
-*Maze Maker* - A program that generates mazes using the recursive backtracking algorithm.
-*Maze Runner* - A maze game that uses the mazes from Maze Maker.
-*Million Dice Stats* - A program that shows the statistics from rolling one million six-sided dice.
-*Monty Hall* - An interactive demo of the Monty Hall problem.
-*Morse Code* - An English/Morse Code translator.
-*Multiplicative Persistence* - A math riddle.
-*Peg Solitaire* - The classic board game.
-*Periodic Table* - A periodic table of elements.
-*Pig Latin* - An English-to-Pig Latin translator.
-*Rail Fence Cipher* - A simple cryptography program.
-*Reversi*
-*Rock Paper Scissors*
-*Rock Paper Scissors (Always Win)*
-*Rot 13*
-*Rotating Cube*
-*Rush Hour*
-*Shell Game*
-*Sliding Puzzle*
-*Sokoban*
-*Sonar*
-*Soroban*
-*Spiral*
-*Spongetext*
-*Three Card Monte*
-*Tic Tac Toe*
-*Tic Tac Toe (Object-Oriented Version)*
-*Towers of Hanoi*
-*Analog Clock*
-*Bouncing Dots*
-*Bouncing Lines*
-*Fish Tank*
-*Floodit*
-*Forest Fire Simulation*
-*Hour Glass*
-*Langton's Ant*
-*Lawn Mower*
-*Mondrian*
-*Rainbow*
-*Rainbow 2*
-*Random Walk*
-*Sandfall*
+*Alphabetize Quiz* - A time-based quiz game to see how fast you can alphabetize letters.
+
+*Alphabetize Word Quiz* - A time-based quiz game to see how fast you can alphabetize words.
+
+*Analog Clock* - An analog clock animation.
+
+*Bagels* - A deductive logic game.
+
+*Birthday Paradox Simulation* - Explore the mathematics of the "Birthday Paradox".
+
+*Blackjack* - A card game also known as 21.
+
+*Bouncing Ball* - A bouncing ball animation.
+
+*Bouncing Lines* - A bouncing line animation.
+
+*Calendar Maker* - Create monthly calendars, saved to a text file and fit for printing.
+
+*Chance Checkers* - Checkers, but you can move 3 random checkers per turn.
+
+*Daleks* - Try to get the robots to crash into each other.
+
+*Checkers* - The classic checkers board game.
+
+*Chomp* - A dangerously delicious logic game.
+
+*Coin Flip Simulator* - Simulate a large number of coin flips.
+
+*Connect Four* - A board game to get four tiles in a row.
+
+*Conway's Game of Life* - The classic cellular automata simulation.
+
+*Conway's Game of Life (Terminal)* - The classic cellular automata simulation.
+
+*Countdown* - Show a countdown timer animation using a seven-segment display.
+
+*Diagonal Maze* - Prints out a random, diagonal maze.
+
+*Dice Roller* - Simulates dice rolls using the Dungeons & Dragons notation.
+
+*Digital Clock* - Display a digital clock of the current time with a seven-segment display.
+
+*DNA* - A simple animation of a DNA double-helix.
+
+*Eeny-Meeny-Miny-Moe* - An elimination game for multiple players.
+
+*Etch a Sketch* - Draw a trailing line on the screen.
+
+*Factorization* - Find all the factors of a number.
+
+*Fireflies* - A beautiful animation of fireflies.
+
+*Fish Tank* - A peaceful animation of a fish tank.
+
+*FizzBuzz Calculation* - Calculates and prints the answers for the fizz buzz programming problem.
+
+*FizzBuzz Game* - A number game where you also race against the clock.
+
+*Flood Fill* - An example of a "flood fill" algorithm.
+
+*Flood It!* - A colorful game where you try to fill the board with a single color.
+
+*Forest Fire Sim* - A simulation of fires spreading in a growing forest.
+
+*2048 Game* - A sliding tile game to combine exponentially-increasing numbers.
+
+*Guess the Number* - While given hints, try to guess the secret number.
+
+*Guillotine* - A variant of Hangman.
+
+*Hacking* - The hacking mini-game from "Fallout 3".
+
+*Hammurabi* - The classic game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
+
+*Hamsburger* - A program for making silly pluralizations.
+
+*Hangman* - A word-guessing game.
+
+*Hour Glass Animation* - An animation of an hour glass filled with falling sand.
+
+*Idiot* - How to keep an idiot busy for hours.
+
+*J'ACCUSE!* - A mystery game of intrigue and a missing cat.
+
+*Langton's Ant* - A cellular automata animation.
+
+*Lawnmower* - Watch grass get cut and grow again.
+
+*Leetspeak* - Translates English messages into l33t5p34]<.
+
+*Luhn Checksum Algorithm* - The mathematics behind credit card numbers.
+
+*Magic Eight Ball* - Ask a question about your future.
+
+*Magic Hexagon* - Place numbers in a hexagon so each row adds up to 38.
+
+*Mancala* - The ancient seed-sowing board game.
+
+*Matching Parentheses* - A parentheses/bracket/braces matching algorithm.
+
+*Maze Maker* - Make mazes with the recursive backtracker algorithm.
+
+*Maze Runner* - Move around a maze and try to escape.
+
+*Maze 3D* - Move around a maze and try to escape... in 3D!
+
+*Maze Runner HTML* - Move around a maze and try to escape... in 3D and IN YOUR WEB BROWSER!
+
+*Middle Letter Scrambler* - Scrambles the middle letters of words, but not the first and last letters.
+
+*Million Dice Roll Stats* - A simulation of one million dice rolls.
+
+*Mondrian Art Generator* - Randomly generates Mondrian-style art.
+
+*Monty Hall Problem* - A simulation of the Monty Hall game show problem.
+
+*Morse Code* - Translates between English and Morse Code.
+
+*Multiplication Table* - Print a multiplication table.
+
+*Multiplicative Persistence* - A fun math challenge.
+
+*99 Bottles of Beer on the Wall* - Print the full lyrics to one of the most longest songs ever!
+
+*Peg Solitaire* - A single-player, peg-jumping game to eliminate all the pegs.
+
+*Periodic Table of Elements* - Displays atomic information for all the elements.
+
+*Pig Latin* - Translates English messages into Igpay Atinlay.
+
+*Progress Bar* - A sample progress bar animation that can be used in other programs.
+
+*Rail Fence Cipher* - The "rail fence" cipher for encrypting text.
+
+*Rainbow* - Shows a simple rainbow animation.
+
+*Rainbow 2* - Shows a simple squiggle rainbow animation.
+
+*Random Walk* - Generate splatter-art with the "random walk" algorithm.
+
+*Reversi* - A tile flipping game, also called reversi.
+
+*Rock-Paper-Scissors* - A hand game of luck.
+
+*Rock-Paper-Scissors (Always Win)* - A hand game of luck, except you cannot lose.
+
+*ROT13 Cipher* - The simplest cipher for encrypting and decrypting text.
+
+*Rotating Cube* - A rotating cube animation.
+
+*Rotating Cube (Bext Version)* - A rotating cube animation.
+
+*Rotating Sphere* - A rotating sphere animation.
+
+*Rush Hour* - A sliding tile puzzle game to move cars out of the way.
+
+*Sand Fall* - A falling sand animation.
+
+*Sand Fall (Bext Version)* - A falling sand animation.
+
+*Sevseg* - A seven-segment display module.
+
+*Shell Game* - A random gambling game.
+
+*15-Sliding Puzzle* - Slide the numbered tiles into the correct order.
+
+*Sokoban clone* - The classic crate-pushing game.
+
+*Sonar Treasure Hunt* - Try to locate treasure chests hidden under the waves.
+
+*Soroban* - A simulation of a Japanese abacus calculator tool.
+
+*Spiral* - Draws a simple square spiral.
+
+*sPoNgEtExT* - Translates English messages into sPOnGEtExT.
+
+*Sticky Hands* - A jewel-stealing, movement puzzle game.
+
+*Three-Card Monte* - Find the Queen of Hearts after cards have been swapped around.
+
+*Tic Tac Toe* - The classic board game.
+
+*Tic Tac Toe (OOP)* - The classic board game. (Object-oriented programming version.)
+
+*Towers of Hanoi puzzle* - A puzzle where you must move the discs of one tower to another tower.
+
+*Tsuro Map Maker* - Draws pretty routes.
+
+*Water Bucket Puzzle* - A water pouring puzzle.
+
+*Water Bucket Puzzle (OOP)* - A water pouring puzzle.
+
+*Zigzag* - A simple zig zag animation.
 
 
 TODO NOTES
