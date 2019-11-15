@@ -94,3 +94,4 @@ while True: # Main game loop.
         # Erase all of the balls.
         bext.goto(pos[0], pos[1])
         print(' ', end='')
+    sys.stdout.flush() # (Required for bext-using programs.)

@@ -45,9 +45,7 @@ while True:
             source['next'] = source['frequency']
         source['next'] -= 1
 
-    # Simulate all sand in the sandspace.
-    allSand.sort(key=lambda v: v[Y], reverse=True)
-
+    # Simulate all sand in the sandspace:
     for i, sand in enumerate(allSand):
         if sand[Y] == HEIGHT - 1:
             continue # Sand is on the very bottom, so it won't move at all.
@@ -78,6 +76,7 @@ while True:
             bext.goto(sand[X] + fallingDirection, sand[Y] + 1)
             print(SAND, end='')
 
+    sys.stdout.flush() # (Required for bext-using programs.)
     # Draw the sand space on the screen:
     time.sleep(PAUSE_LENGTH)
 

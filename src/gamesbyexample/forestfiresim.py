@@ -18,7 +18,7 @@ or a Command Prompt window (on Windows) and running:
     sys.exit()
 
 WIDTH = 79
-HEIGHT = 22
+HEIGHT = 21
 
 INITIAL_TREE_DENSITY = 20 # Percentage of board that starts with trees.
 GROW_CHANCE = 1.0         # % chance a blank spot turns into a tree.

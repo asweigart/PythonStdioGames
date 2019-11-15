@@ -21,7 +21,7 @@ or a Command Prompt window (on Windows) and running:
 
 # Constants for the size of the grass field:
 WIDTH = 79
-HEIGHT = 24
+HEIGHT = 22
 
 # Constants for the mower text:
 FACE = chr(9786)
@@ -91,6 +91,7 @@ while True:
             mowery += 1
             if mowery == HEIGHT:
                 growMode = True # Done mowing, let the grass grow back.
+    sys.stdout.flush() # (Required for bext-using programs.)
     time.sleep(0.4) # Pause after mowing.
 
     if growMode:

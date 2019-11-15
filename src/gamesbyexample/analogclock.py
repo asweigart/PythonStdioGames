@@ -142,6 +142,8 @@ try:
             bext.goto(x, y)
             print('@', end='')
 
+        sys.stdout.flush() # (Required for bext-using programs.)
+
         # Keep looping until the second changes:
         while True:
             time.sleep(0.01)

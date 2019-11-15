@@ -476,7 +476,7 @@ def quitLauncher(*args):
 def main():
     global root, descTextarea, programListbox, undoChangesBtnSV, undoChangesButton
     root = Tk()
-    root.title('Python Games by Example')
+    root.title('Python Games by Example ' + __version__)
 
     mainframe = ttk.Frame(root, padding='5 5 12 12')
     mainframe.grid(column=0, row=0, sticky=(N, W, E, S))

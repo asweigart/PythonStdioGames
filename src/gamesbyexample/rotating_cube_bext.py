@@ -192,6 +192,7 @@ try:
             bext.goto(x, y)
             print(BLOCK, end='')
 
+        sys.stdout.flush() # (Required for bext-using programs.)
         time.sleep(0.2) # Pause for a bit.
 
         # Erase cube:

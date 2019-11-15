@@ -239,6 +239,7 @@ def drawAquarium(step):
     bext.goto(0, HEIGHT - 1)
     print(chr(9608) * (WIDTH - 1) , end='') # Draws '█' characters.
 
+    sys.stdout.flush() # (Required for bext-using programs.)
 
 if __name__ == '__main__':
     main()

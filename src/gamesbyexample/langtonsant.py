@@ -19,7 +19,7 @@ or a Command Prompt window (on Windows) and running:
 
 
 WIDTH = 79
-HEIGHT = 23
+HEIGHT = 22
 NUMBER_OF_ANTS = 10
 
 # Setup the screen:
