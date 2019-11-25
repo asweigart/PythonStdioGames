@@ -1,6 +1,7 @@
 # Sand Fall (Bext Version), by Al Sweigart al@inventwithpython.com
 # A falling sand animation.
 # Inspired by https://asciinema.org/a/6515
+
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import random, time, sys

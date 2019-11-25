@@ -1,8 +1,8 @@
 # Hangman, by Al Sweigart al@inventwithpython.com
 # A word-guessing game.
 
-# A version of this game is featured in the book, "Invent Your Own Computer
-# Games with Python. https://nostarch.com/inventwithpython
+# A version of this game is featured in the book, "Invent Your Own
+# Computer Games with Python. https://nostarch.com/inventwithpython
 
 import random
 

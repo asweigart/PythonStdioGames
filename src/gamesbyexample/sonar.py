@@ -1,7 +1,8 @@
 # Sonar Treasure Hunt, by Al Sweigart al@inventwithpython.com
 # Try to locate treasure chests hidden under the waves.
-# A version of this game is featured in the book, "Invent Your Own Computer
-# Games with Python. https://nostarch.com/inventwithpython
+
+# A version of this game is featured in the book, "Invent Your Own
+# Computer Games with Python. https://nostarch.com/inventwithpython
 
 import random
 import sys

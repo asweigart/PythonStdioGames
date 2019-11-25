@@ -3,7 +3,7 @@
 # More info at: https://en.wikipedia.org/wiki/Rail_fence_cipher
 
 try:
-    import pyperclip # Try to import pyperclip to copy text to the clipboard.
+    import pyperclip # pyperclip copies text to the clipboard.
 except:
     pass # If pyperclip cannot be found, do nothing. It's not a big deal.
 

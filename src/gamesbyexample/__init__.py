@@ -6,9 +6,10 @@
 
 __version__ = '0.1.1'
 
-"""
+
 # This code reads in all the .py files to create the PROGRAMS list.
-import os, pprint, zlib
+# It copies the PROGRAMS dictionary to the clipboard to paste into this file.
+import os, pprint, zlib, sys, pyperclip
 PROGRAMS = []
 for filename in os.listdir('.'):
     if not filename.endswith('.py') or filename.startswith('_'):
@@ -26,7 +27,9 @@ for filename in os.listdir('.'):
         PROGRAMS.append(entry)
 
 pprint.pprint(PROGRAMS, indent=4, width=120)
-"""
+pyperclip.copy(pprint.pformat(PROGRAMS, indent=4, width=120))
+sys.exit()
+#"""
 
 PROGRAMS = [   {   'desc': 'A time-based quiz game to see how fast you can alphabetize letters.',
         'filename': 'alphabetizequiz.py',

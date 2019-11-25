@@ -1,7 +1,7 @@
-# This file lets the gamesbyexample launcher run the Python game script in a
-# new terminal window, which will remain open after the Python script
-# terminates. Though first, it runs __crashdetector__.py which runs the
-# game, and can detect if the game crashes.
+# This file lets the gamesbyexample launcher run the Python game script
+# in a new terminal window, which will remain open after the Python
+# script terminates. Though first, it runs __crashdetector__.py which
+# runs the game, and can detect if the game crashes.
 
 import subprocess, sys, os
 

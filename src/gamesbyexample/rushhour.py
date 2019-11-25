@@ -1,9 +1,9 @@
 # Rush Hour, by Al Sweigart al@inventwithpython.com
 # A sliding tile puzzle game to move cars out of the way.
-
 # Original game by Nob Yoshihagara
-# Michael Fogleman has an interesting article at https://www.michaelfogleman.com/rush/
-# rushhour_puzzle.txt generated from puzzles by Michael Fogleman, and require 10 to 18 steps to solve.
+# More info at https://www.michaelfogleman.com/rush/
+
+# rushhour_puzzle.txt generated from puzzles by Michael Fogleman
 
 import math, random, sys
 
@@ -80,8 +80,13 @@ def getValidMoves(board):
             if board[(x, y)] in (EMPTY_SPACE, WALL):
                 continue # Skip this empty or wall space.
 
+            xNotOnLeftEdge = x != 0
+            xNotOnRightEdge = x != board['width'] - 1
+            yNotOnTopEdge = y != 0
+            yNotOnBottomEdge = y != board['height'] - 1
+
             # Check if the car at x, y can move down.
-            if y != 0 and board[(x, y)] == board[(x, y - 1)]:
+            if yNotOnTopEdge and board[(x, y)] == board[(x, y - 1)]:
                 for i in range(1, board['height']):
                     if y + i < board['height'] and board[(x, y + i)] == EMPTY_SPACE:
                         validMoves.append(board[(x, y)] + ' d ' + str(i))
@@ -89,7 +94,7 @@ def getValidMoves(board):
                         break
 
             # Check if the car at x, y can move up.
-            if y != board['height'] - 1 and board[(x, y)] == board[(x, y + 1)]:
+            if yNotOnBottomEdge and board[(x, y)] == board[(x, y + 1)]:
                 for i in range(1, board['height']):
                     if y - i >= 0 and board[(x, y - i)] == EMPTY_SPACE:
                         validMoves.append(board[(x, y)] + ' u ' + str(i))
@@ -97,7 +102,7 @@ def getValidMoves(board):
                         break
 
             # Check if the car at x, y can move right.
-            if x != 0 and board[(x, y)] == board[(x - 1, y)]:
+            if xNotOnLeftEdge and board[(x, y)] == board[(x - 1, y)]:
                 for i in range(1, board['width']):
                     if x + i < board['width'] and board[(x + i, y)] == EMPTY_SPACE:
                         validMoves.append(board[(x, y)] + ' r ' + str(i))
@@ -105,7 +110,7 @@ def getValidMoves(board):
                         break
 
             # Check if the car at x, y can move left.
-            if x != board['width'] - 1 and board[(x, y)] == board[(x + 1, y)]:
+            if xNotOnRightEdge and board[(x, y)] == board[(x + 1, y)]:
                 for i in range(1, board['width']):
                     if x - i >= 0 and board[(x - i, y)] == EMPTY_SPACE:
                         validMoves.append(board[(x, y)] + ' l ' + str(i))
@@ -154,7 +159,8 @@ def hasWon(board):
 def getPlayerMove(board):
     validMoves = getValidMoves(board)
     while True:
-        print('Enter a move: "' + '", "'.join(validMoves) + '" or "quit".')
+        allValidMoves = '", "'.join(validMoves)
+        print('Enter a move: "{}" or "quit".'.format(allValidMoves))
         move = input().lower()
         if move == 'quit':
             sys.exit()
@@ -162,12 +168,13 @@ def getPlayerMove(board):
             return move
 
 
-print('RUSH HOUR')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('Get the "a" car to the right edge of the board.')
-print('Enter moves as <car><space><direction><space><distance>.')
-print()
+print("""RUSH HOUR
+By Al Sweigart al@inventwithpython.com
+
+Get the "a" car to the right edge of the board.
+Enter moves as <car> <direction> <distance>.
+Directions are (l)eft, (r)ight, (u)p, and (d)own.
+""")
 
 gameBoard = readPuzzle(getRandomPuzzle())
 while True:

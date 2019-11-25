@@ -1,10 +1,9 @@
 # Morse Code, by Al Sweigart al@inventwithpython.com
 # Translates between English and Morse Code.
-
 # More info at: https://en.wikipedia.org/wiki/Morse_code
 
 try:
-    import pyperclip
+    import pyperclip # pyperclip copies text to the clipboard.
 except:
     pass # If pyperclip cannot be found, do nothing. It's not a big deal.
 

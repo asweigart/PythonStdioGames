@@ -2,9 +2,9 @@
 # A parentheses/bracket/braces matching algorithm.
 
 def isMatchingParens(strToCheck):
-    # A Python list is a stack data structure if we only push values on it
-    # with the append() method and pop values off it with the pop() method.
-    # The "top" of a Python list is the end of list.
+    # A Python list is a stack data structure if we only push values on
+    # it with the append() method and pop values off it with the pop()
+    # method. The "top" of a Python list is the end of list.
     stack = []
 
     # Loop over every character in strToCheck.

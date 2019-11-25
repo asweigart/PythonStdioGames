@@ -1,5 +1,5 @@
 # Clickbait Headline Generator, by Al Sweigart al@inventwithpython.com
-# A clickbait headline generator for your soul-crushing algorithmic website.
+# A clickbait headline generator for your soulless content farm.
 
 import random
 

@@ -1,5 +1,5 @@
 # Guillotine, by Al Sweigart al@inventwithpython.com
-# A variant of Hangman.
+# A French variant of Hangman with different graphics. Ooh la la!
 
 import random
 

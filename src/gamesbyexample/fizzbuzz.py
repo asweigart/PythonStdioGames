@@ -1,5 +1,5 @@
 # FizzBuzz Calculation, by Al Sweigart al@inventwithpython.com
-# Calculates and prints the answers for the fizz buzz programming problem.
+# Calculates the answers for the fizz buzz programming problem.
 
 number = 1
 while number < 100000:

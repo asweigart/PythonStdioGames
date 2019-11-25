@@ -1,6 +1,5 @@
 # Flood Fill, by Al Sweigart al@inventwithpython.com
 # An example of a "flood fill" algorithm.
-
 # This is a basic demo of both the recursive and iterative floodfill
 # algorithms. This algorithm is commonly used in "fill tools" in
 # graphics programs like MS Paint or Photoshop. This algorithm is

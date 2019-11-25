@@ -1,6 +1,7 @@
 # Conway's Game of Life (Terminal), by Al Sweigart al@inventwithpython.com
 # The classic cellular automata simulation.
 # More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import os, random, shutil, sys, time

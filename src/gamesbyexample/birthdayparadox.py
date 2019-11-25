@@ -7,7 +7,9 @@ import datetime, random
 def getBirthdays(number):
     birthdays = []
     for i in range(number):
-        birthday = datetime.date(2001, 1, 1) + datetime.timedelta(random.randint(0, 364))
+        startOfYear = datetime.date(2001, 1, 1)
+        randomNumberOfDays = datetime.timedelta(random.randint(0, 364))
+        birthday = startOfYear + randomNumberOfDays
         birthdays.append(birthday)
     return birthdays
 
@@ -32,7 +34,8 @@ This program does a monte carlo simulation to explore this concept.
 (It's not actually a paradox, it's just a surprising result.)
 ''')
 
-MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
 
 while True: # Keep asking until the user enters a valid amount.
     print('How many birthdays shall I generate? (Max 100)')
@@ -48,17 +51,19 @@ birthdays = getBirthdays(number)
 for i, birthday in enumerate(birthdays):
     if i != 0:
         print(', ', end='')
-    print(MONTHS[birthday.month - 1] + ' ' + str(birthday.day), end='')
+    dateText = '{} {}'.format(MONTHS[birthday.month - 1], birthday.day)
+    print(dateText, end='')
 print()
 print()
 
 # Determine if there are two birthdays that match.
-matchingBirthday = getMatch(birthdays)
+match = getMatch(birthdays)
 
 # Display the results:
 print('In this simulation, ', end='')
-if matchingBirthday != None:
-    print('multiple people have a birthday on ' + MONTHS[matchingBirthday.month - 1] + ' ' + str(matchingBirthday.day))
+if match != None:
+    dateText = '{} {}'.format(MONTHS[match.month - 1], match.day)
+    print('multiple people have a birthday on ' + dateText)
 else:
     print('there are no matching birthdays.')
 print()
@@ -79,5 +84,6 @@ for i in range(1, 100001):
 # Display simulation results:
 print('Out of 100,000 simulations of', number, 'people, there was a')
 print('matching birthday', simMatch, 'times.')
-print('The probability is therefore', round(simMatch / 100000 * 100, 2), '%')
+probability = round(simMatch / 100000 * 100, 2)
+print('The probability is therefore', probability, '%')
 

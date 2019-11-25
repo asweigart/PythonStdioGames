@@ -4,7 +4,7 @@
 import random
 
 try:
-    import pyperclip
+    import pyperclip # pyperclip copies text to the clipboard.
 except ImportError:
     pass # If pyperclip cannot be found, do nothing. It's not a big deal.
 
