@@ -9,7 +9,7 @@ PERSONAL_PRONOUNS = ['She', 'He', 'They']
 STATES = ['California', 'Texas', 'Florida', 'New York', 'Pennsylvania',
           'Illinois', 'Ohio', 'Georgia', 'North Carolina', 'Michigan']
 NOUNS = ['Cat', 'Dog', 'Athlete', 'Clown', 'Shovel', 'Paleo Diet', 'Chicken',
-         'Mom', 'Dad', 'Doctor', 'Video Game', 'Chopstick', 'Plastic Straw',
+         'Mom', 'Dad', 'Doctor', 'Video Game', 'Robot', 'Plastic Straw',
          'Serial Killer', 'Telephone Psychic']
 DISEASES = ['The Flu', 'Autism', 'Cancer', 'Heart Disease', 'Alcoholism',
             'Lyme Disease', 'Cryptocurrency', 'Everything']
@@ -99,6 +99,7 @@ def generateGiftIdeaHeadline():
 
 def generateReasonsWhyHeadline():
     number1 = random.randint(3, 19)
+    # number2 should be no larger than number1:
     number2 = random.randint(1, number1)
     pluralNoun = random.choice(NOUNS) + 's'
     return '{} Reasons Why {} Are More Interesting Than You Think (Number {} Will Surprise You!)'.format(number1, pluralNoun, number2)

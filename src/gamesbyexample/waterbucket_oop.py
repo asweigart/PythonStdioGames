@@ -1,5 +1,5 @@
 # Water Bucket Puzzle (OOP), by Al Sweigart al@inventwithpython.com
-# A water pouring puzzle.
+# A water pouring puzzle. (Object-oriented programming style.)
 # More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 # This is the Object-Oriented Programming version.
 
@@ -29,7 +29,7 @@ class Bucket:
         intoBucket.water = intoBucket.water + amountToPour
 
     def description(self):
-        return str(self.size) + 'L bucket with ' + str(self.water) + 'L of water'
+        return '{}L bucket filled with {}L'.format(self.size, self.water)
 
 # Set up the constants used in this program:
 BUCKETS = [Bucket(8), Bucket(5), Bucket(3)] # The bucket sizes available.
@@ -43,7 +43,7 @@ while True: # Main game loop.
     # Display the current state of the buckets:
     print('Try to get ' + str(GOAL) + 'L of water with these', len(BUCKETS), 'buckets:')
     for i, bucket in enumerate(BUCKETS):
-        print('  ' + str(LABELS[i]) + '. ' + bucket.description())
+        print('  {}. {}'.format(LABELS[i], bucket.description()))
     print()
 
     # Check if any of the buckets has the goal amount of water:
@@ -92,10 +92,10 @@ while True: # Main game loop.
             selectedLabel = input().upper()
             if selectedLabel in tuple(LABELS):
                 break # Player has selected a valid bucket.
-        selectedPourIntoBucket = BUCKETS[LABELS.index(selectedLabel)]
+        selectedTarget = BUCKETS[LABELS.index(selectedLabel)]
 
         # Pour water into the bucket:
-        selectedBucket.pour(selectedPourIntoBucket)
+        selectedBucket.pour(selectedTarget)
 
     elif move == 'C':
         pass # If the player selected Cancel, do nothing.

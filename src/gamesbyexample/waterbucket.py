@@ -45,7 +45,7 @@ while True: # Main game loop.
     # Display the current state of the buckets:
     print('Try to get ' + str(GOAL) + 'L of water with these', len(BUCKETS), 'buckets:')
     for i, bucket in enumerate(BUCKETS):
-        print('  ' + str(LABELS[i]) + '. ' + str(bucket['size']) + 'L bucket with ' + str(bucket['water']) + 'L of water')
+        print('  {}. {}L bucket with {}L of water'.format(LABELS[i], bucket['size'], bucket['water']))
     print()
 
     # Check if any of the buckets has the goal amount of water:
@@ -95,17 +95,17 @@ while True: # Main game loop.
             selectedLabel = input().upper()
             if selectedLabel in tuple(LABELS):
                 break # Player has selected a valid bucket.
-        selectedPourIntoBucket = BUCKETS[LABELS.index(selectedLabel)]
+        selectedTarget = BUCKETS[LABELS.index(selectedLabel)]
 
         # Figure out the amount to pour:
-        remainingSpace = selectedPourIntoBucket['size'] - selectedPourIntoBucket['water']
+        remainingSpace = selectedTarget['size'] - selectedTarget['water']
         amountToPour = min(remainingSpace, selectedBucket['water'])
 
         # Pour out water from this bucket:
         selectedBucket['water'] = selectedBucket['water'] - amountToPour
 
         # Put the poured out water into the other bucket:
-        selectedPourIntoBucket['water'] = selectedPourIntoBucket['water'] + amountToPour
+        selectedTarget['water'] = selectedTarget['water'] + amountToPour
 
     elif move == 'C':
         pass # If the player selected Cancel, do nothing.

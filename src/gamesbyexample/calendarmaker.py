@@ -105,4 +105,4 @@ calendarFilename = 'calendar_{}_{}.txt'.format(year, month)
 with open(calendarFilename, 'w') as fileObj:
     fileObj.write(calText)
 
-print(f'Saved to {calendarFilename}.')
+print('Saved to ' + calendarFilename)

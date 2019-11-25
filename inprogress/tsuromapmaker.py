@@ -1,5 +1,5 @@
 # Tsuro Map Maker, by Al Sweigart al@inventwithpython.com
-# Draws pretty routes.
+# Draws convoluted and twisting routes.
 
 import random, sys
 

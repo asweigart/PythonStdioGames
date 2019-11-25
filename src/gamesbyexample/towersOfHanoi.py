@@ -87,7 +87,7 @@ def printTowers():
         print()
     # Print the tower labels A, B, and C.
     emptySpace = ' ' * (TOTAL_DISCS)
-    print(f'{emptySpace} A{emptySpace}{emptySpace} B{emptySpace}{emptySpace} C\n')
+    print('{0} A{0}{0} B{0}{0} C\n'.format(emptySpace))
 
 
 main() # After defining all the functions, call main() to start the game.
