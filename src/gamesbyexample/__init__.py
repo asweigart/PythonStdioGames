@@ -7,6 +7,17 @@
 __version__ = '0.1.1'
 
 
+# TODO - create a list of support files that should be included in the zip file.
+SUPPORT_FILES = {'mazerunner2d.py': ['maze11x11s1.txt', 'maze51x17s42.txt'],
+                 'alphabetizewordquiz.py': ['commonenglishwords.txt'],
+                 'hamsburger.py': ['nounlist.txt'],
+                 'rushhour.py': ['rushhourpuzzles.txt'],
+                 'sokoban.py': ['sokobanlevels.txt'],
+                 'stickyhands.py': ['stickyhandslevels.txt'],
+                 'periodictable.py': ['elements.csv'],
+                 'mazerunnerhtml.py': ['maze11x11s1', 'maze_html_images'],
+                 ''}
+"""
 # This code reads in all the .py files to create the PROGRAMS list.
 # It copies the PROGRAMS dictionary to the clipboard to paste into this file.
 import os, pprint, zlib, sys, pyperclip
@@ -27,7 +38,7 @@ for filename in os.listdir('.'):
         PROGRAMS.append(entry)
 
 pprint.pprint(PROGRAMS, indent=4, width=120)
-pyperclip.copy(pprint.pformat(PROGRAMS, indent=4, width=120))
+pyperclip.copy('PROGRAMS = ' + pprint.pformat(PROGRAMS, indent=4, width=120))
 sys.exit()
 #"""
 
@@ -266,7 +277,7 @@ PROGRAMS = [   {   'desc': 'A time-based quiz game to see how fast you can alpha
         'hash': 1916422475,
         'name': 'Rainbow 2'},
     {   'desc': 'Generate splatter-art with the "random walk" algorithm.',
-        'filename': 'random_walk.py',
+        'filename': 'randomwalk.py',
         'hash': 1080932263,
         'name': 'Random Walk'},
     {   'desc': 'A tile flipping game, also called reversi.',
@@ -285,13 +296,13 @@ PROGRAMS = [   {   'desc': 'A time-based quiz game to see how fast you can alpha
         'filename': 'rot13.py',
         'hash': 2790846069,
         'name': 'ROT13 Cipher'},
-    {'desc': 'A rotating cube animation.', 'filename': 'rotating_cube.py', 'hash': 2102537858, 'name': 'Rotating Cube'},
+    {'desc': 'A rotating cube animation.', 'filename': 'rotatingcube.py', 'hash': 2102537858, 'name': 'Rotating Cube'},
     {   'desc': 'A rotating cube animation.',
-        'filename': 'rotating_cube_bext.py',
+        'filename': 'rotatingcubebext.py',
         'hash': 3717843260,
         'name': 'Rotating Cube (Bext Version)'},
     {   'desc': 'A rotating sphere animation.',
-        'filename': 'rotating_sphere.py',
+        'filename': 'rotatingsphere.py',
         'hash': 1438669314,
         'name': 'Rotating Sphere'},
     {   'desc': 'A sliding tile puzzle game to move cars out of the way.',
@@ -300,7 +311,7 @@ PROGRAMS = [   {   'desc': 'A time-based quiz game to see how fast you can alpha
         'name': 'Rush Hour'},
     {'desc': 'A falling sand animation.', 'filename': 'sandfall.py', 'hash': 1878174128, 'name': 'Sand Fall'},
     {   'desc': 'A falling sand animation.',
-        'filename': 'sandfall_bext.py',
+        'filename': 'sandfallbext.py',
         'hash': 1646136057,
         'name': 'Sand Fall (Bext Version)'},
     {'desc': 'A seven-segment display module.', 'filename': 'sevseg.py', 'hash': 3998880389, 'name': 'Sevseg'},
@@ -333,7 +344,7 @@ PROGRAMS = [   {   'desc': 'A time-based quiz game to see how fast you can alpha
         'name': 'Three-Card Monte'},
     {'desc': 'The classic board game.', 'filename': 'tictactoe.py', 'hash': 1485160391, 'name': 'Tic Tac Toe'},
     {   'desc': 'The classic board game. (Object-oriented programming version.)',
-        'filename': 'tictactoe_oop.py',
+        'filename': 'tictactoeoop.py',
         'hash': 2945682246,
         'name': 'Tic Tac Toe (OOP)'},
     {   'desc': 'A puzzle where you must move the discs of one tower to another tower.',
@@ -346,7 +357,7 @@ PROGRAMS = [   {   'desc': 'A time-based quiz game to see how fast you can alpha
         'hash': 1502345600,
         'name': 'Water Bucket Puzzle'},
     {   'desc': 'A water pouring puzzle.',
-        'filename': 'waterbucket_oop.py',
+        'filename': 'waterbucketoop.py',
         'hash': 4196290161,
         'name': 'Water Bucket Puzzle (OOP)'},
     {'desc': 'A simple zig zag animation.', 'filename': 'zigzag.py', 'hash': 922535460, 'name': 'Zigzag'}]
@@ -360,11 +371,14 @@ from tkinter import ttk
 
 FOLDER_OF_THIS_FILE = os.path.dirname(os.path.abspath(__file__))
 
-# Check for any missing files and reload them from the originalFiles.zip file:
+
+# TODO - add code that checks for a corrupted _originalFiles.zip file. Disable the "undo changes" button in that case.
+
+# Check for any missing files and reload them from the _originalFiles.zip file:
 for program in PROGRAMS:
     if not os.path.exists(os.path.join(FOLDER_OF_THIS_FILE, program['filename'])):
-        # Restore the file from the original one in the originalFiles.zip backup.
-        originalFilesZipFile = zipfile.ZipFile(os.path.join(FOLDER_OF_THIS_FILE, 'originalFiles.zip'), 'r')
+        # Restore the file from the original one in the _originalFiles.zip backup.
+        originalFilesZipFile = zipfile.ZipFile(os.path.join(FOLDER_OF_THIS_FILE, '_originalFiles.zip'), 'r')
         originalFilesZipFile.extract(program['filename'], FOLDER_OF_THIS_FILE)
 
 
@@ -374,7 +388,7 @@ def _executable_exists(name):
 
 
 def programSelect(*args):
-    global CURRENT_SELECTED_INDEX
+    global CURRENT_SELECTED_INDEX, programListbox, descTextarea, undoChangesBtnSV, undoChangesButton
     # If, for some reason, nothing is currently selected in the listbox of programs, do nothing:
     if len(programListbox.curselection()) == 0:
         return
@@ -446,10 +460,11 @@ def viewSourceClick(*args):
 
 
 def undoChangesClick(*args):
+    global undoChangesBtnSV, undoChangesButton
     i = CURRENT_SELECTED_INDEX
 
-    # Restore the file from the original one in the originalFiles.zip backup.
-    originalFilesZipFile = zipfile.ZipFile(os.path.join(FOLDER_OF_THIS_FILE, 'originalFiles.zip'), 'r')
+    # Restore the file from the original one in the _originalFiles.zip backup.
+    originalFilesZipFile = zipfile.ZipFile(os.path.join(FOLDER_OF_THIS_FILE, '_originalFiles.zip'), 'r')
     originalFilesZipFile.extract(PROGRAMS[i]['filename'], FOLDER_OF_THIS_FILE)
 
     # Disable the undo button now that there are no changes.
@@ -478,6 +493,7 @@ def openFolderClick(*args):
 
 
 def quitLauncher(*args):
+    global root
     root.destroy()
     sys.exit()
 

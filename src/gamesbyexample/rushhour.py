@@ -12,14 +12,14 @@ WALL = chr(9608)
 
 def getRandomPuzzle():
     numberOfPuzzles = 0
-    puzzleFile = open('rushhour_puzzles.txt')
+    puzzleFile = open('rushhourpuzzles.txt')
     while puzzleFile.readline():
         numberOfPuzzles += 1
     puzzleFile.close()
 
     randomPuzzleNum = random.randint(1, numberOfPuzzles)
     counter = 1
-    puzzleFile = open('rushhour_puzzles.txt')
+    puzzleFile = open('rushhourpuzzles.txt')
     while True:
         if counter == randomPuzzleNum:
             return puzzleFile.readline()
