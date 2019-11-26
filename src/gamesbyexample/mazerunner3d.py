@@ -1,5 +1,6 @@
 # Maze 3D, by Al Sweigart al@inventwithpython.com
 # Move around a maze and try to escape... in 3D!
+__version__ = 1
 import copy, sys, os
 
 # Maze file constants:

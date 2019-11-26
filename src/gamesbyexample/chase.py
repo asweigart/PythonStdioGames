@@ -1,5 +1,6 @@
 # Daleks, by Al Sweigart al@inventwithpython.com
 # Try to get the robots to crash into each other.
+__version__ = 1
 
 import random, sys, os
 

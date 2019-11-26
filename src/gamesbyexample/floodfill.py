@@ -4,6 +4,7 @@
 # algorithms. This algorithm is commonly used in "fill tools" in
 # graphics programs like MS Paint or Photoshop. This algorithm is
 # also used in the floodit.py game.
+__version__ = 1
 
 import sys, random
 

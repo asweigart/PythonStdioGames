@@ -1,5 +1,6 @@
 # FizzBuzz Calculation, by Al Sweigart al@inventwithpython.com
 # Calculates the answers for the fizz buzz programming problem.
+__version__ = 1
 
 number = 1
 while number < 100000:

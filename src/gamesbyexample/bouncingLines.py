@@ -1,5 +1,6 @@
 # Bouncing Lines, by Al Sweigart al@inventwithpython.com
 # A bouncing line animation.
+__version__ = 1
 
 import sys, random, time
 

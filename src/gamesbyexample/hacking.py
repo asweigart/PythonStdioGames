@@ -1,5 +1,6 @@
 # Hacking, by Al Sweigart al@inventwithpython.com
 # The hacking mini-game from "Fallout 3".
+__version__ = 1
 
 import random
 

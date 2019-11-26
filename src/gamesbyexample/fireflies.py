@@ -1,5 +1,6 @@
 # Fireflies, by Al Sweigart al@inventwithpython.com
 # A beautiful animation of fireflies.
+__version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.
 

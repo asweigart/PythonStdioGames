@@ -1,5 +1,6 @@
 # Rock-Paper-Scissors (Always Win), by Al Sweigart al@inventwithpython.com
 # A hand game of luck, except you cannot lose.
+__version__ = 1
 
 import time, sys
 

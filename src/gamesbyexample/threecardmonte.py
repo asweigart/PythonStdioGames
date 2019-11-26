@@ -3,6 +3,7 @@
 # (In the real-life version, the scammer palms the Queen of Hearts so you
 # always lose.)
 # More info at https://en.wikipedia.org/wiki/Three-card_Monte
+__version__ = 1
 
 import random, time
 

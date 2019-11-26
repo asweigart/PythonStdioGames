@@ -1,5 +1,6 @@
 # Zigzag, by Al Sweigart al@inventwithpython.com
 # A simple zig zag animation.
+__version__ = 1
 
 # Press Ctrl-C to stop the program.
 

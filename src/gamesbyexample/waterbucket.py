@@ -1,6 +1,7 @@
 # Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com
 # A water pouring puzzle.
 # More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
+__version__ = 1
 
 import sys
 

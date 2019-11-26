@@ -1,5 +1,6 @@
 # Sticky Hands, by Al Sweigart al@inventwithpython.com
 # A jewel-stealing, movement puzzle game.
+__version__ = 1
 
 # Inspired by Herding Cats https://w.itch.io/herding-cats
 

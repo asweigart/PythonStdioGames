@@ -1,5 +1,6 @@
 # Pig Latin, by Al Sweigart al@inventwithpython.com
 # Translates English messages into Igpay Atinlay.
+__version__ = 1
 
 try:
     import pyperclip # pyperclip copies text to the clipboard.

@@ -1,5 +1,6 @@
 # Hamsburger, by Al Sweigart al@inventwithpython.com
 # A program for making silly pluralizations.
+__version__ = 1
 
 # nounlist.txt can be downloaded from
 # http://www.desiquintans.com/downloads/nounlist/nounlist.txt

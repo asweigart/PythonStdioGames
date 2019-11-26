@@ -1,6 +1,7 @@
 # Blackjack, by Al Sweigart al@inventwithpython.com
 # A card game also known as 21.
 # More info at: https://en.wikipedia.org/wiki/Blackjack
+__version__ = 1
 
 import random, sys
 

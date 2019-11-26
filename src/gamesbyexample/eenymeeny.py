@@ -2,6 +2,7 @@
 # An elimination game for multiple players.
 # More info at https://en.wikipedia.org/wiki/Eeny,_meeny,_miny,_moe
 # More info at https://en.wikipedia.org/wiki/Josephus_problem
+__version__ = 1
 
 import random, time, sys
 

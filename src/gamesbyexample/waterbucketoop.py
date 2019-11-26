@@ -1,6 +1,7 @@
 # Water Bucket Puzzle (OOP), by Al Sweigart al@inventwithpython.com
 # A water pouring puzzle. (Object-oriented programming style.)
 # More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
+__version__ = 1
 
 import sys
 

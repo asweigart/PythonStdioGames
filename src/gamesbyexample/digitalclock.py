@@ -2,6 +2,7 @@
 # Display a digital clock of the current time with a seven-segment display.
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
 # Requires our sevseg.py program.
+__version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.
 

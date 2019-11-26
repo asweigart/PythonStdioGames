@@ -1,5 +1,6 @@
 # Guess the Number, by Al Sweigart al@inventwithpython.com
 # While given hints, try to guess the secret number.
+__version__ = 1
 
 # A version of this game is featured in the book, "Invent Your Own
 # Computer Games with Python. https://nostarch.com/inventwithpython

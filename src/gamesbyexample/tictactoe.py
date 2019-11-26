@@ -1,5 +1,6 @@
 # Tic Tac Toe, by Al Sweigart al@inventwithpython.com
 # The classic board game.
+__version__ = 1
 
 ALL_SPACES = list('123456789') # The keys for a TTT board dictionary.
 X, O, BLANK = 'X', 'O', ' ' # Constants for string values.

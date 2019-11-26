@@ -1,5 +1,6 @@
 # Hour Glass Animation, by Al Sweigart al@inventwithpython.com
 # An animation of an hour glass filled with falling sand.
+__version__ = 1
 import random, time, sys
 
 try:

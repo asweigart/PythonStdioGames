@@ -1,5 +1,6 @@
 # Matching Parentheses, by Al Sweigart al@inventwithpython.com
 # A parentheses/bracket/braces matching algorithm.
+__version__ = 1
 
 def isMatchingParens(strToCheck):
     # A Python list is a stack data structure if we only push values on

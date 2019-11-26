@@ -1,5 +1,6 @@
 # Dice Roller, by Al Sweigart al@inventwithpython.com
 # Simulates dice rolls using the Dungeons & Dragons notation.
+__version__ = 1
 
 import random, sys
 

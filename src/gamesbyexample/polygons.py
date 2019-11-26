@@ -1,5 +1,6 @@
 # Polygons, by Al Sweigart al@inventwithpython.com
 # A turtle program to draw polygons. Every line is the same length.
+__version__ = 1
 
 import turtle
 

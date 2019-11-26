@@ -2,6 +2,7 @@
 # The ancient seed-sowing board game.
 # Rules at http://www.mancalarules.com/
 # More info at https://en.wikipedia.org/wiki/Mancala
+__version__ = 1
 
 import sys
 

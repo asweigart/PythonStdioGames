@@ -2,6 +2,7 @@
 # The Ulam spiral is a mysterious mathematics pattern for prime numbers
 # with turtle graphics.
 # More info at https://en.wikipedia.org/wiki/Ulam_spiral
+__version__ = 1
 
 import turtle
 import math

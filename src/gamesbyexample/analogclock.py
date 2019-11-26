@@ -1,5 +1,6 @@
 # Analog Clock, by Al Sweigart al@inventwithpython.com
 # An analog clock animation.
+__version__ = 1
 
 import time, math, sys
 

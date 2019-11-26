@@ -2,6 +2,7 @@
 # Play tic tac toe against the computer. Every possible move has been
 # hard-coded into this program. The program is 5700 lines long.
 # This is a joke program, don't actually write code like this.
+__version__ = 1
 
 import sys
 

@@ -1,5 +1,6 @@
 # Hangman with Random Letters, by Al Sweigart al@inventwithpython.com
 # A completely unfair word-guessing game. (This is a joke program.)
+__version__ = 1
 
 import random
 

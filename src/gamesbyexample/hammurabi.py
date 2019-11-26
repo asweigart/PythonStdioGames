@@ -1,5 +1,6 @@
 # Hammurabi, by Al Sweigart al@inventwithpython.com
 # The classic game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
+__version__ = 1
 
 import random
 

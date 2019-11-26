@@ -1,5 +1,6 @@
 # Rotating Sphere, by Al Sweigart al@inventwithpython.com
 # A rotating sphere animation.
+__version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.
 

@@ -2,6 +2,7 @@
 # Watch grass get cut and grow again.
 # Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 # https://bitbucket.org/jvillard/tondeuse/src/default/
+__version__ = 1
 
 import time, random, sys
 

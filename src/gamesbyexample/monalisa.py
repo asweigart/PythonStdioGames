@@ -1,6 +1,7 @@
 # Mona Lisa, by Al Sweigart al@inventwithpython.com
 # Draws an Andy Warhol-like drawing of the Mona Lisa with turtle
 # graphics.
+__version__ = 1
 
 import turtle
 turtle.tracer(400, 0) # Make the turtle draw faster.

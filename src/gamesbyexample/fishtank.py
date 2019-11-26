@@ -1,5 +1,6 @@
 # Fish Tank, by Al Sweigart al@inventwithpython.com
 # A peaceful animation of a fish tank.
+__version__ = 1
 
 import random, time, sys
 

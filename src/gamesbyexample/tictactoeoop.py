@@ -1,5 +1,6 @@
 # Tic Tac Toe (OOP), by Al Sweigart al@inventwithpython.com
 # The classic board game. (Object-oriented programming version.)
+__version__ = 1
 
 import copy
 

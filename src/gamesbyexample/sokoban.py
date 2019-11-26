@@ -1,5 +1,6 @@
 # Sokoban clone, by Al Sweigart al@inventwithpython.com
 # The classic crate-pushing game.
+__version__ = 1
 
 import copy, os, sys
 

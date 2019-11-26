@@ -3,6 +3,7 @@
 # More info at: https://en.wikipedia.org/wiki/hilbertCurve
 # Good videos on space-filling curves: https://youtu.be/RU0wScIj36o
 # and https://youtu.be/3s7h2MHQtxc
+__version__ = 1
 
 import turtle
 
