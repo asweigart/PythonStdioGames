@@ -15,13 +15,16 @@ SUPPORT_FILES = {'mazerunner2d.py': ['maze11x11s1.txt', 'maze51x17s42.txt'],
                  'sokoban.py': ['sokobanlevels.txt'],
                  'stickyhands.py': ['stickyhandslevels.txt'],
                  'periodictable.py': ['elements.csv'],
-                 'mazerunnerhtml.py': ['maze11x11s1', 'maze_html_images'],
-                 ''}
-"""
+                 'mazerunnerhtml.py': ['maze11x11s1', 'maze_html_images']}
+
 # This code reads in all the .py files to create the PROGRAMS list.
 # It copies the PROGRAMS dictionary to the clipboard to paste into this file.
-import os, pprint, zlib, sys, pyperclip
+import os, pprint, zlib, sys, pyperclip, zipfile
 PROGRAMS = []
+
+
+origFilesZip = zipfile.ZipFile('_originalFiles.zip', 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9)
+
 for filename in os.listdir('.'):
     if not filename.endswith('.py') or filename.startswith('_'):
         continue
@@ -30,12 +33,25 @@ for filename in os.listdir('.'):
         lines = fo.readlines()
         content = ''.join(lines)
 
+        # Get the title from the first line's comment:
         name, credit = lines[0][2:].split(',')
-        desc = lines[1][2:].strip()
+
+        # Get the description from the subsequent lines' comments:
+        descLines = []
+        for i in range(1, len(lines)):
+            if lines[i].startswith('#'):
+                descLines.append(lines[i][2:].strip())
+            else:
+                break
+        desc = ' '.join(descLines)
+
         hash = zlib.adler32(content.encode('utf-8'))
 
         entry = {'filename': filename, 'name':name, 'desc': desc, 'hash': hash}
         PROGRAMS.append(entry)
+
+    origFilesZip.write(filename)
+origFilesZip.close()
 
 pprint.pprint(PROGRAMS, indent=4, width=120)
 pyperclip.copy('PROGRAMS = ' + pprint.pformat(PROGRAMS, indent=4, width=120))
