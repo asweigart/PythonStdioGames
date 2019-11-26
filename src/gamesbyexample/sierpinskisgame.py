@@ -8,11 +8,34 @@ import turtle
 import random, time
 turtle.tracer(60, 0) # Make the turtle draw faster.
 turtle.setworldcoordinates(0, 0, 960, 810)
-turtle.bgcolor(0.1, 0.1, 0.1)
-turtle.penup()
 
 DOT_SIZE = 3
 NUMBER_OF_DOTS = 1500
+
+def main():
+    turtle.bgcolor(0.1, 0.1, 0.1)
+    turtle.penup()
+    while True:
+        # Pick a random color to draw with:
+        redAmount = random.randint(50, 100) / 100.0
+        greenAmount = random.randint(50, 100) / 100.0
+        blueAmount = random.randint(50, 100) / 100.0
+        turtle.pencolor(redAmount, greenAmount, blueAmount)
+
+        # Pick three random points for the triangle:
+        ax = random.randint(0, 960)
+        ay = random.randint(0, 810)
+        bx = random.randint(0, 960)
+        by = random.randint(0, 810)
+        cx = random.randint(0, 960)
+        cy = random.randint(0, 810)
+
+        # Play Sierpinski's Game to draw Sierpinski's Triangle:
+        playSierpinskisGame(ax, ay, bx, by, cx, cy)
+
+        time.sleep(2) # Pause for two seconds before clearing the screen.
+        turtle.clear()
+
 
 def halfway(x1, y1, x2, y2):
     # Find the distance halfway between x1, y1 and x2, y2:
@@ -58,23 +81,7 @@ def playSierpinskisGame(ax, ay, bx, by, cx, cy):
     turtle.update() # Finish drawing the screen.
 
 
-while True:
-    # Pick a random color to draw with:
-    redAmount = random.randint(50, 100) / 100.0
-    greenAmount = random.randint(50, 100) / 100.0
-    blueAmount = random.randint(50, 100) / 100.0
-    turtle.pencolor(redAmount, greenAmount, blueAmount)
-
-    # Pick three random points for the triangle:
-    ax = random.randint(0, 960)
-    ay = random.randint(0, 810)
-    bx = random.randint(0, 960)
-    by = random.randint(0, 810)
-    cx = random.randint(0, 960)
-    cy = random.randint(0, 810)
-
-    # Play Sierpinski's Game to draw Sierpinski's Triangle:
-    playSierpinskisGame(ax, ay, bx, by, cx, cy)
-
-    time.sleep(2) # Pause for two seconds before clearing the screen.
-    turtle.clear()
+try:
+    main()
+except turtle.Terminator:
+    pass # Do nothing when the turtle window is closed.

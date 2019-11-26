@@ -1,5 +1,5 @@
 # Rainbow 2, by Al Sweigart al@inventwithpython.com
-# Shows a simple squiggle rainbow animation.
+# Shows a simple squiggle rainbow animation. Press Ctrl-C to stop.
 __version__ = 1
 
 import time, random, sys
@@ -19,31 +19,33 @@ or a Command Prompt window (on Windows) and running:
 
 indent = 10 # How many spaces to indent.
 
+try:
+    while True:
+        print(' ' * indent, end='')
+        bext.fg('red')
+        print('##', end='')
+        bext.fg('yellow')
+        print('##', end='')
+        bext.fg('green')
+        print('##', end='')
+        bext.fg('blue')
+        print('##', end='')
+        bext.fg('cyan')
+        print('##', end='')
+        bext.fg('purple')
+        print('##')
 
-while True:
-    print(' ' * indent, end='')
-    bext.fg('red')
-    print('##', end='')
-    bext.fg('yellow')
-    print('##', end='')
-    bext.fg('green')
-    print('##', end='')
-    bext.fg('blue')
-    print('##', end='')
-    bext.fg('cyan')
-    print('##', end='')
-    bext.fg('purple')
-    print('##')
+        if random.randint(0, 1) == 0:
+            # Increase the number of spaces:
+            indent = indent + 1
+            if indent > 20:
+                indent = 20
+        else:
+            # Decrease the number of spaces:
+            indent = indent - 1
+            if indent < 0:
+                indent = 0
 
-    if random.randint(0, 1) == 0:
-        # Increase the number of spaces:
-        indent = indent + 1
-        if indent > 20:
-            indent = 20
-    else:
-        # Decrease the number of spaces:
-        indent = indent - 1
-        if indent < 0:
-            indent = 0
-
-    time.sleep(0.05) # Add a slight pause.
+        time.sleep(0.05) # Add a slight pause.
+except KeyboardInterrupt:
+    sys.exit() # When Ctrl-C is pressed, end the program.

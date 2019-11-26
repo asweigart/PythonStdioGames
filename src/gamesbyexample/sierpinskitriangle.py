@@ -7,12 +7,26 @@ import math
 
 turtle.tracer(1000, 0) # Make the turtle draw faster.
 turtle.setworldcoordinates(0, 0, 960, 810)
-turtle.bgcolor(0.9, 0.9, 0.9)
 
 BASE_SIZE = 13
 BASE_HEIGHT = BASE_SIZE * math.sin(60 * (math.pi / 180))
 START_X = 50
 START_Y = 20
+
+def main():
+    turtle.bgcolor(0.9, 0.9, 0.9)
+
+    # Loop from 5 to 0, drawing 5 levels of triangles:
+    for i in range(5, -1, -1):
+        red = 1 - (0.2 * i)
+        green = 0.1 * i
+        blue = 0.1 * i
+        drawSierpinski(START_X, START_Y, i, (red, green, blue))
+
+    turtle.hideturtle()
+    turtle.update() # Finish drawing the screen.
+    turtle.exitonclick() # When user clicks on the window, close it.
+
 
 def drawTriangle(x, y, color):
     turtle.penup()
@@ -38,13 +52,8 @@ def drawSierpinski(x, y, level, color):
         drawSierpinski(x + (BASE_SIZE * 0.5 * (2 ** level)), y + (BASE_HEIGHT * (2 ** level)), level - 1, color)
         drawSierpinski(x + (BASE_SIZE * (2 ** level)), y, level - 1, color)
 
-# Loop from 5 to 0, drawing 5 levels of triangles with different colors:
-for i in range(5, -1, -1):
-    red = 1 - (0.2 * i)
-    green = 0.1 * i
-    blue = 0.1 * i
-    drawSierpinski(START_X, START_Y, i, (red, green, blue))
 
-turtle.hideturtle()
-turtle.update() # Finish drawing the screen.
-turtle.exitonclick() # When user clicks on the window, close it.
+try:
+    main()
+except turtle.Terminator:
+    pass # Do nothing when the turtle window is closed.

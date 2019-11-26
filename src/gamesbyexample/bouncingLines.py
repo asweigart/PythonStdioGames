@@ -1,5 +1,5 @@
 # Bouncing Lines, by Al Sweigart al@inventwithpython.com
-# A bouncing line animation.
+# A bouncing line animation. Press Ctrl-C to stop.
 __version__ = 1
 
 import sys, random, time
@@ -20,11 +20,95 @@ or a Command Prompt window (on Windows) and running:
 
 bext.clear()
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1 # TODO Weird Windows bug.
+WIDTH -= 1 # Reduce width by 1 because of a weird Windows behavior.
 NUMBER_OF_POINTS = 4
 COLORS = ('red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white')
 DIRECTIONS = ('upright', 'upleft', 'downright', 'downleft')
 LINE_CHAR = '#'
+
+def main():
+    # Generate some points.
+    points = []
+    for i in range(NUMBER_OF_POINTS):
+        points.append({'x': random.randint(1, WIDTH - 2),
+                       'y': random.randint(1, HEIGHT - 2),
+                       'direction': random.choice(DIRECTIONS)})
+
+    while True: # Main game loop.
+        oldpointPositions = []
+
+        if random.randint(1, 50) == 1:
+            bext.fg('random')
+
+        for i, point in enumerate(points):
+            # Draw our lines:
+            if i == len(points) - 1:
+                # The last point connects to the first point.
+                pointA = point
+                pointB = points[0]
+            else:
+                pointA = point
+                pointB = points[i + 1]
+
+            for x, y in line(pointA['x'], pointA['y'], pointB['x'], pointB['y']):
+                bext.goto(x, y)
+                print(LINE_CHAR, end='')
+
+                oldpointPositions.append((x, y))
+        sys.stdout.flush() # (Required for bext-using programs.)
+        time.sleep(0.1)
+
+        for point in points:
+            # Move our points:
+            if point['direction'] == 'upright':
+                point['x'] += 1
+                point['y'] -= 1
+            elif point['direction'] == 'upleft':
+                point['x'] -= 1
+                point['y'] -= 1
+            elif point['direction'] == 'downright':
+                point['x'] += 1
+                point['y'] += 1
+            elif point['direction'] == 'downleft':
+                point['x'] -= 1
+                point['y'] += 1
+
+            # See if our points bounce off the corners:
+            if point['x'] == 0 and point['y'] == 0:
+                point['direction'] = 'downright'
+            elif point['x'] == 0 and point['y'] == HEIGHT - 1:
+                point['direction'] = 'upright'
+            elif point['x'] == WIDTH - 1 and point['y'] == 0:
+                point['direction'] = 'downleft'
+            elif point['x'] == WIDTH - 1 and point['y'] == HEIGHT - 1:
+                point['direction'] = 'upleft'
+
+            # See if our points bounce off the walls:
+            elif point['x'] == 0 and point['direction'] == 'upleft':
+                point['direction'] = 'upright'
+            elif point['x'] == 0 and point['direction'] == 'downleft':
+                point['direction'] = 'downright'
+
+            elif point['x'] == WIDTH - 1 and point['direction'] == 'upright':
+                point['direction'] = 'upleft'
+            elif point['x'] == WIDTH - 1 and point['direction'] == 'downright':
+                point['direction'] = 'downleft'
+
+            elif point['y'] == 0 and point['direction'] == 'upleft':
+                point['direction'] = 'downleft'
+            elif point['y'] == 0 and point['direction'] == 'upright':
+                point['direction'] = 'downright'
+
+            elif point['y'] == HEIGHT - 1 and point['direction'] == 'downleft':
+                point['direction'] = 'upleft'
+            elif point['y'] == HEIGHT - 1 and point['direction'] == 'downright':
+                point['direction'] = 'upright'
+
+        for pos in oldpointPositions:
+            # Erase all of the points.
+            bext.goto(pos[0], pos[1])
+            print(' ', end='')
+
 
 def line(x1, y1, x2, y2):
     """Returns a list of  all of the points in a line
@@ -80,84 +164,8 @@ def line(x1, y1, x2, y2):
                 error += deltax
     return points
 
-# Generate some points.
-points = []
-for i in range(NUMBER_OF_POINTS):
-    points.append({'x': random.randint(1, WIDTH - 2),
-                   'y': random.randint(1, HEIGHT - 2),
-                   'direction': random.choice(DIRECTIONS)})
 
-while True: # Main game loop.
-    oldpointPositions = []
-
-    if random.randint(1, 50) == 1:
-        bext.fg('random')
-
-    for i, point in enumerate(points):
-        # Draw our lines:
-        if i == len(points) - 1:
-            # The last point connects to the first point.
-            pointA = point
-            pointB = points[0]
-        else:
-            pointA = point
-            pointB = points[i + 1]
-
-        for x, y in line(pointA['x'], pointA['y'], pointB['x'], pointB['y']):
-            bext.goto(x, y)
-            print(LINE_CHAR, end='')
-
-            oldpointPositions.append((x, y))
-    sys.stdout.flush() # (Required for bext-using programs.)
-    time.sleep(0.1)
-
-    for point in points:
-        # Move our points:
-        if point['direction'] == 'upright':
-            point['x'] += 1
-            point['y'] -= 1
-        elif point['direction'] == 'upleft':
-            point['x'] -= 1
-            point['y'] -= 1
-        elif point['direction'] == 'downright':
-            point['x'] += 1
-            point['y'] += 1
-        elif point['direction'] == 'downleft':
-            point['x'] -= 1
-            point['y'] += 1
-
-        # See if our points bounce off the corners:
-        if point['x'] == 0 and point['y'] == 0:
-            point['direction'] = 'downright'
-        elif point['x'] == 0 and point['y'] == HEIGHT - 1:
-            point['direction'] = 'upright'
-        elif point['x'] == WIDTH - 1 and point['y'] == 0:
-            point['direction'] = 'downleft'
-        elif point['x'] == WIDTH - 1 and point['y'] == HEIGHT - 1:
-            point['direction'] = 'upleft'
-
-        # See if our points bounce off the walls:
-        elif point['x'] == 0 and point['direction'] == 'upleft':
-            point['direction'] = 'upright'
-        elif point['x'] == 0 and point['direction'] == 'downleft':
-            point['direction'] = 'downright'
-
-        elif point['x'] == WIDTH - 1 and point['direction'] == 'upright':
-            point['direction'] = 'upleft'
-        elif point['x'] == WIDTH - 1 and point['direction'] == 'downright':
-            point['direction'] = 'downleft'
-
-        elif point['y'] == 0 and point['direction'] == 'upleft':
-            point['direction'] = 'downleft'
-        elif point['y'] == 0 and point['direction'] == 'upright':
-            point['direction'] = 'downright'
-
-        elif point['y'] == HEIGHT - 1 and point['direction'] == 'downleft':
-            point['direction'] = 'upleft'
-        elif point['y'] == HEIGHT - 1 and point['direction'] == 'downright':
-            point['direction'] = 'upright'
-
-    for pos in oldpointPositions:
-        # Erase all of the points.
-        bext.goto(pos[0], pos[1])
-        print(' ', end='')
+try:
+    main()
+except KeyboardInterrupt:
+    sys.exit() # When Ctrl-C is pressed, end the program.

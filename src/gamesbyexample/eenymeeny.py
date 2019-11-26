@@ -1,5 +1,5 @@
 # Eeny-Meeny-Miny-Moe, by Al Sweigart al@inventwithpython.com
-# An elimination game for multiple players.
+# An elimination game for multiple players. Press Ctrl-C to stop.
 # More info at https://en.wikipedia.org/wiki/Eeny,_meeny,_miny,_moe
 # More info at https://en.wikipedia.org/wiki/Josephus_problem
 __version__ = 1
@@ -93,8 +93,7 @@ while len(participants) > 1:
     try:
         input('Press Enter to continue, or Ctrl-C to quit.')
     except KeyboardInterrupt:
-        # Player pressed Ctrl-C, so end the game.
-        sys.exit()
+        sys.exit() # When Ctrl-C is pressed, end the program.
 
 # Declare the winner:
 print(participants[0] + ' IS THE WINNER!!!')

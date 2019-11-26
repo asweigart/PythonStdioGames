@@ -1,5 +1,5 @@
 # Analog Clock, by Al Sweigart al@inventwithpython.com
-# An analog clock animation.
+# An analog clock animation. Press Ctrl-C to stop.
 __version__ = 1
 
 import time, math, sys
@@ -162,5 +162,5 @@ try:
             bext.goto(x, y)
             print(' ', end='')
 except KeyboardInterrupt:
-    pass
+    sys.exit() # When Ctrl-C is pressed, end the program.
 

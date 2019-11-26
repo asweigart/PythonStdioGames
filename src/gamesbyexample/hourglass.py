@@ -1,5 +1,6 @@
 # Hour Glass Animation, by Al Sweigart al@inventwithpython.com
 # An animation of an hour glass filled with falling sand.
+# Press Ctrl-C to stop.
 __version__ = 1
 import random, time, sys
 
@@ -151,4 +152,4 @@ try:
                     print(' ', end='')
                 break # Break out of main simultion loop to reset the hour glass.
 except KeyboardInterrupt:
-    pass
+    sys.exit() # When Ctrl-C is pressed, end the program.

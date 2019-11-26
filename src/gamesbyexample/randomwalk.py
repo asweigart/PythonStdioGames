@@ -1,5 +1,6 @@
 # Random Walk, by Al Sweigart al@inventwithpython.com
 # Generate splatter-art with the "random walk" algorithm.
+# Press Ctrl-C to stop.
 # More info at: https://en.wikipedia.org/wiki/Random_walk
 __version__ = 1
 
@@ -60,4 +61,4 @@ try:
                 time.sleep(0.1)
         time.sleep(1) # Pause after reaching the edge.
 except KeyboardInterrupt:
-    pass
+    sys.exit() # When Ctrl-C is pressed, end the program.

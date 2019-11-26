@@ -1,5 +1,6 @@
 # Digital Clock, by Al Sweigart al@inventwithpython.com
 # Display a digital clock of the current time with a seven-segment display.
+# Press Ctrl-C to stop.
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
 # Requires our sevseg.py program.
 __version__ = 1
@@ -54,4 +55,4 @@ try:
                 break
 
 except KeyboardInterrupt:
-    pass
+    sys.exit() # When Ctrl-C is pressed, end the program.

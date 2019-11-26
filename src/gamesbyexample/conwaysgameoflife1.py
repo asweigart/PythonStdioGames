@@ -1,9 +1,9 @@
 # Conway's Game of Life, by Al Sweigart al@inventwithpython.com
-# The classic cellular automata simulation.
+# The classic cellular automata simulation. Press Ctrl-C to stop.
 # More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 __version__ = 1
 
-import random, time, copy
+import random, time, copy, sys
 WIDTH = 79  # The width of the cell grid.
 HEIGHT = 20 # The height of the cell grid.
 ALIVE = 'O' # The character representing a living cell.
@@ -71,4 +71,8 @@ while True: # Main program loop.
             else:
                 # Everything else dies or stays dead:
                 nextCells[(x, y)] = DEAD
-    time.sleep(1) # Add a 1 second pause to reduce flickering.
+
+    try:
+        time.sleep(1) # Add a 1 second pause to reduce flickering.
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

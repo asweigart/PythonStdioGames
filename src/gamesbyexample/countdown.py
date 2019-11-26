@@ -1,5 +1,6 @@
 # Countdown, by Al Sweigart al@inventwithpython.com
 # Show a countdown timer animation using a seven-segment display.
+# Press Ctrl-C to stop.
 # More info at https://en.wikipedia.org/wiki/Seven-segment_display
 # Requires our sevseg.py program.
 __version__ = 1
@@ -69,4 +70,4 @@ try:
         secondsLeft -= 1
 
 except KeyboardInterrupt:
-    pass
+    sys.exit() # When Ctrl-C is pressed, end the program.)

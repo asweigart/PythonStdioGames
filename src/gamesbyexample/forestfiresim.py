@@ -1,5 +1,6 @@
 # Forest Fire Sim, by Al Sweigart al@inventwithpython.com
 # A simulation of fires spreading in a growing forest.
+# Press Ctrl-C to stop.
 # Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
 __version__ = 1
 
@@ -111,4 +112,4 @@ try:
 
         time.sleep(PAUSE_LENGTH)
 except KeyboardInterrupt:
-    pass # When Ctrl-C is pressed, stop looping.
+    sys.exit() # When Ctrl-C is pressed, end the program.

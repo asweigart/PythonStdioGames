@@ -13,6 +13,20 @@ turtle.pencolor(DARK_BROWN)
 
 turtle.tracer(10000, 0) # Make the turtle draw faster.
 
+def main():
+    seed = 0
+    while True:
+        # Get psuedorandom numbers for the branch properties:
+        random.seed(seed)
+        drawTree(0, -310, 90, seed)
+        time.sleep(2)
+        turtle.clear()
+        seed += 1
+
+    turtle.update() # Finish drawing the screen.
+    turtle.exitonclick() # When user clicks on the window, close it.
+
+
 def drawBranch(x, y, direction, branchLength):
     # if the branch is too small, just quit
     if branchLength < 5:
@@ -73,14 +87,8 @@ def drawTree(x, y, direction, seed):
     drawBranch(x, y, direction, START_SIZE)
     turtle.update() # Finish drawing the screen.
 
-seed = 0
-while True:
-    # Get psuedorandom numbers for the branch properties:
-    random.seed(seed)
-    drawTree(0, -310, 90, seed)
-    time.sleep(2)
-    turtle.clear()
-    seed += 1
 
-turtle.update() # Finish drawing the screen.
-turtle.exitonclick() # When user clicks on the window, close it.
+try:
+    main()
+except turtle.Terminator:
+    pass # Do nothing when the turtle window is closed.

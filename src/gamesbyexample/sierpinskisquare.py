@@ -11,8 +11,17 @@ LIGHT_ORANGE = '#FFD78E'
 BLUE = '#517DB2'
 FG_COLOR = LIGHT_ORANGE
 BG_COLOR = BLUE
-turtle.bgcolor(BG_COLOR)
-turtle.pencolor(FG_COLOR)
+
+def main():
+    turtle.bgcolor(BG_COLOR)
+    turtle.pencolor(FG_COLOR)
+
+    # Start the recursive drawing:
+    drawCarpet(-350, 350, 700, 700)
+
+    turtle.update() # Finish drawing the screen.
+    turtle.exitonclick() # When user clicks on the window, close it.
+
 
 def drawCarpet(left, top, width, height):
     if width < 5 or height < 5:
@@ -74,8 +83,8 @@ def drawCarpet(left, top, width, height):
     # Draw bottom-right:
     drawCarpet(left + (www * 2), top - (hhh * 2), www, hhh)
 
-# Start the recursive drawing:
-drawCarpet(-350, 350, 700, 700)
 
-turtle.update() # Finish drawing the screen.
-turtle.exitonclick() # When user clicks on the window, close it.
+try:
+    main()
+except turtle.Terminator:
+    pass # Do nothing when the turtle window is closed.

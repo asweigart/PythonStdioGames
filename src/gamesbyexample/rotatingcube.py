@@ -1,5 +1,5 @@
 # Rotating Cube, by Al Sweigart al@inventwithpython.com
-# A rotating cube animation.
+# A rotating cube animation. Press Ctrl-C to stop.
 __version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -160,4 +160,4 @@ try:
             os.system('clear')
 
 except KeyboardInterrupt:
-    pass # When Ctrl-C is pressed, stop looping.
+    sys.exit() # When Ctrl-C is pressed, end the program.

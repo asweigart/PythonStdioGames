@@ -1,5 +1,5 @@
 # Hamsburger, by Al Sweigart al@inventwithpython.com
-# A program for making silly pluralizations.
+# A program for making silly pluralizations. Press Ctrl-C to stop.
 __version__ = 1
 
 # nounlist.txt can be downloaded from
@@ -68,4 +68,4 @@ try:
         print(random.choice(sillyPluralizations))
         response = input()
 except KeyboardInterrupt:
-    sys.exit()
+    sys.exit() # When Ctrl-C is pressed, end the program.

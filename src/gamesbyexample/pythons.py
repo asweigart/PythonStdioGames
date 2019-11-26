@@ -12,6 +12,40 @@ GAP = 10
 THICKNESS = 20
 SNAKE_COLORS = ['#71BF2E', '#4C7F1E', '#97FF3D', '#26400F', '#88E537']
 
+def main():
+    turtle.pensize(4)
+    # Draw the snakes:
+    for i in range(10):
+        # Go to the starting position:
+        turtle.penup()
+        turtle.goto(random.randint(-400, 400), random.randint(-400, 400))
+        turtle.pendown()
+        turtle.setheading(random.randint(0, 360))
+
+        # Set up the snake coloration:
+        turtle.pencolor(random.choice(SNAKE_COLORS))
+
+        redAmount = random.randint(0, 100) / 100.0
+        greenAmount = random.randint(0, 100) / 100.0
+        blueAmount = random.randint(0, 100) / 100.0
+        # (!) Uncomment the following line to use random colors.
+        #turtle.pencolor(redAmount, greenAmount, blueAmount)
+
+        turtle.fillcolor(turtle.pencolor())
+
+        # Draw the snake:
+        lengths = []
+        # Each snake has a random amount of segments:
+        for j in range(random.randint(6, 12)):
+            # Each segment has random lengths:
+            lengths.append(random.randint(40, 150))
+        # Draw the segments:
+        drawSnake(lengths)
+
+    turtle.update() # Finish drawing the screen.
+    turtle.exitonclick() # When user clicks on the window, close it.
+
+
 def drawSnakeHead(length):
     turtle.begin_fill()
     final_position = turtle.position()
@@ -52,6 +86,7 @@ def drawSnakeHead(length):
     turtle.right(90)
     turtle.pendown()
     turtle.end_fill()
+
 
 def drawTwistUpSegment(length):
     turtle.begin_fill()
@@ -102,34 +137,8 @@ def drawSnake(lengths):
         drawTwistUpSegment(lengths[i])
         drawTwistDownSegment(lengths[i + 1])
 
-turtle.pensize(4)
-# Draw the snakes:
-for i in range(10):
-    # Go to the starting position:
-    turtle.penup()
-    turtle.goto(random.randint(-400, 400), random.randint(-400, 400))
-    turtle.pendown()
-    turtle.setheading(random.randint(0, 360))
 
-    # Set up the snake coloration:
-    turtle.pencolor(random.choice(SNAKE_COLORS))
-
-    redAmount = random.randint(0, 100) / 100.0
-    greenAmount = random.randint(0, 100) / 100.0
-    blueAmount = random.randint(0, 100) / 100.0
-    # (!) Uncomment the following line to use random colors.
-    #turtle.pencolor(redAmount, greenAmount, blueAmount)
-
-    turtle.fillcolor(turtle.pencolor())
-
-    # Draw the snake:
-    lengths = []
-    # Each snake has a random amount of segments:
-    for j in range(random.randint(6, 12)):
-        # Each segment has random lengths:
-        lengths.append(random.randint(40, 150))
-    # Draw the segments:
-    drawSnake(lengths)
-
-turtle.update() # Finish drawing the screen.
-turtle.exitonclick() # When user clicks on the window, close it.
+try:
+    main()
+except turtle.Terminator:
+    pass # Do nothing when the turtle window is closed.

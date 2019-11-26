@@ -1,5 +1,5 @@
 # Lawnmower, by Al Sweigart al@inventwithpython.com
-# Watch grass get cut and grow again.
+# Watch grass get cut and grow again. Press Ctrl-C to stop.
 # Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 # https://bitbucket.org/jvillard/tondeuse/src/default/
 __version__ = 1
@@ -79,21 +79,28 @@ while True:
     if mowerDirection == 'right':
         mowerx += 1 # Move the mower right.
         if mowerx > WIDTH:
-            # After going past the right edge, change position and direction.
+            # After going past the right edge,
+            # change position and direction.
             mowerDirection = 'left'
             mowery += 1
             if mowery == HEIGHT:
-                growMode = True # Done mowing, let the grass grow back.
+                # Done mowing, let the grass grow back:
+                growMode = True
     elif mowerDirection == 'left':
         mowerx -= 1 # Move the mower left.
         if mowerx < -MOWER_LEN:
-            # After going past the left edge, change position and direction.
+            # After going past the left edge,
+            # change position and direction.
             mowerDirection = 'right'
             mowery += 1
             if mowery == HEIGHT:
-                growMode = True # Done mowing, let the grass grow back.
+                # Done mowing, let the grass grow back.
+                growMode = True
     sys.stdout.flush() # (Required for bext-using programs.)
-    time.sleep(0.4) # Pause after mowing.
+    try:
+        time.sleep(0.4) # Pause after mowing.
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.
 
     if growMode:
         # Let the grass grow back one at a time:
@@ -113,5 +120,8 @@ while True:
             grassToGrow.remove((x, y))
             bext.goto(x, y)
             print(';')
-            time.sleep(0.4)
+            try:
+                time.sleep(0.4)
+            except KeyboardInterrupt:
+                sys.exit() # When Ctrl-C is pressed, end the program.
         growMode = False # Done growing grass.

@@ -1,5 +1,5 @@
 # DNA, by Al Sweigart al@inventwithpython.com
-# A simple animation of a DNA double-helix.
+# A simple animation of a DNA double-helix. Press Ctrl-C to stop.
 # Thanks to matoken for inspiration: https://asciinema.org/a/155441
 __version__ = 1
 
@@ -57,4 +57,4 @@ try:
         print(rows[rowIndex].format(leftNucleotide, rightNucleotide))
         time.sleep(0.15) # Add a slight pause.
 except KeyboardInterrupt:
-    pass # Make the program stop looping.
+    sys.exit() # When Ctrl-C is pressed, end the program.

@@ -1,5 +1,5 @@
 # Langton's Ant, by Al Sweigart al@inventwithpython.com
-# A cellular automata animation.
+# A cellular automata animation. Press Ctrl-C to stop.
 # More info: https://en.wikipedia.org/wiki/Langton%27s_ant
 __version__ = 1
 
@@ -94,4 +94,4 @@ try:
 
         board = nextBoard
 except KeyboardInterrupt:
-    pass # When Ctrl-C is pressed, stop looping.
+    sys.exit() # When Ctrl-C is pressed, end the program.

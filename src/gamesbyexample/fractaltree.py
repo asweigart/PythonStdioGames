@@ -36,25 +36,28 @@ def drawBranch(startPosition, direction, branchLength):
     drawBranch(endPosition, leftDirection, leftBranchLength)
     drawBranch(endPosition, rightDirection, rightBranchLength)
 
-seed = 0
-while True:
-    # Get psuedorandom numbers for the branch properties:
-    random.seed(seed)
-    LEFT_ANGLE     = random.randint(10,  30)
-    LEFT_DECREASE  = random.randint( 6,  15)
-    RIGHT_ANGLE    = random.randint(10,  30)
-    RIGHT_DECREASE = random.randint( 6,  15)
-    START_LENGTH   = random.randint(80, 120)
+try:
+    seed = 0
+    while True:
+        # Get psuedorandom numbers for the branch properties:
+        random.seed(seed)
+        LEFT_ANGLE     = random.randint(10,  30)
+        LEFT_DECREASE  = random.randint( 6,  15)
+        RIGHT_ANGLE    = random.randint(10,  30)
+        RIGHT_DECREASE = random.randint( 6,  15)
+        START_LENGTH   = random.randint(80, 120)
 
-    # Write out the seed number:
-    turtle.clear()
-    turtle.penup()
-    turtle.goto(10, 10)
-    turtle.write('Seed: %s' % (seed))
+        # Write out the seed number:
+        turtle.clear()
+        turtle.penup()
+        turtle.goto(10, 10)
+        turtle.write('Seed: %s' % (seed))
 
-    # Draw the tree:
-    drawBranch((350, 10), 90, START_LENGTH)
-    turtle.update() # Finish drawing the screen.
-    time.sleep(2)
+        # Draw the tree:
+        drawBranch((350, 10), 90, START_LENGTH)
+        turtle.update() # Finish drawing the screen.
+        time.sleep(2)
 
-    seed = seed + 1 # Use the next number for the next seed.
+        seed = seed + 1 # Use the next number for the next seed.
+except turtle.Terminator:
+    pass # Do nothing when the turtle window is closed.

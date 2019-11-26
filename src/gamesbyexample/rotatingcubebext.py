@@ -1,5 +1,5 @@
 # Rotating Cube (Bext Version), by Al Sweigart al@inventwithpython.com
-# A rotating cube animation.
+# A rotating cube animation. Press Ctrl-C to stop.
 __version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -206,4 +206,4 @@ try:
         bext.goto(0, HEIGHT - 1)
         print('Press Ctrl-C to quit.', end='')
 except KeyboardInterrupt:
-    pass
+    sys.exit() # When Ctrl-C is pressed, end the program.

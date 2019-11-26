@@ -1,5 +1,5 @@
 # Rainbow, by Al Sweigart al@inventwithpython.com
-# Shows a simple rainbow animation.
+# Shows a simple rainbow animation. Press Ctrl-C to stop.
 __version__ = 1
 
 import time, sys
@@ -20,32 +20,35 @@ or a Command Prompt window (on Windows) and running:
 indent = 0 # How many spaces to indent.
 indentIncreasing = True # Whether the indentation is increasing or not.
 
-while True:
-    print(' ' * indent, end='')
-    bext.fg('red')
-    print('##', end='')
-    bext.fg('yellow')
-    print('##', end='')
-    bext.fg('green')
-    print('##', end='')
-    bext.fg('blue')
-    print('##', end='')
-    bext.fg('cyan')
-    print('##', end='')
-    bext.fg('purple')
-    print('##')
+try:
+    while True:
+        print(' ' * indent, end='')
+        bext.fg('red')
+        print('##', end='')
+        bext.fg('yellow')
+        print('##', end='')
+        bext.fg('green')
+        print('##', end='')
+        bext.fg('blue')
+        print('##', end='')
+        bext.fg('cyan')
+        print('##', end='')
+        bext.fg('purple')
+        print('##')
 
-    if indentIncreasing:
-        # Increase the number of spaces:
-        indent = indent + 1
-        if indent == 20:
-            # Change direction:
-            indentIncreasing = False
-    else:
-        # Decrease the number of spaces:
-        indent = indent - 1
-        if indent == 0:
-            # Change direction:
-            indentIncreasing = True
+        if indentIncreasing:
+            # Increase the number of spaces:
+            indent = indent + 1
+            if indent == 20:
+                # Change direction:
+                indentIncreasing = False
+        else:
+            # Decrease the number of spaces:
+            indent = indent - 1
+            if indent == 0:
+                # Change direction:
+                indentIncreasing = True
 
-    time.sleep(0.05) # Add a slight pause.
+        time.sleep(0.05) # Add a slight pause.
+except KeyboardInterrupt:
+    sys.exit() # When Ctrl-C is pressed, end the program.

@@ -1,5 +1,5 @@
 # Conway's Game of Life (Terminal), by Al Sweigart al@inventwithpython.com
-# The classic cellular automata simulation.
+# The classic cellular automata simulation. Press Ctrl-C to stop.
 # More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 __version__ = 1
 
@@ -84,4 +84,4 @@ try:
 
         time.sleep(0.25) # Add a slight pause to reduce flickering.
 except KeyboardInterrupt:
-    pass
+    sys.exit() # When Ctrl-C is pressed, end the program.

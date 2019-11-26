@@ -1,5 +1,5 @@
 # Fish Tank, by Al Sweigart al@inventwithpython.com
-# A peaceful animation of a fish tank.
+# A peaceful animation of a fish tank. Press Ctrl-C to stop.
 __version__ = 1
 
 import random, time, sys
@@ -75,13 +75,10 @@ def main():
     # Run the simulation:
     step = 1
     while True:
-        try:
-            drawAquarium(step)
-            time.sleep(PAUSE)
-            bext.clear()
-            step += 1
-        except KeyboardInterrupt:
-            sys.exit()
+        drawAquarium(step)
+        time.sleep(PAUSE)
+        bext.clear()
+        step += 1
 
 
 def getRandomColor():
@@ -243,4 +240,7 @@ def drawAquarium(step):
     sys.stdout.flush() # (Required for bext-using programs.)
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.
