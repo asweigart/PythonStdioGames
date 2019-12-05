@@ -6,7 +6,8 @@ __version__ = '0.1.2'
 # TODO - check if the support files have been changed and let the user undo changes.
 
 
-PROGRAMS = [   {   'desc': 'A time-based quiz game to see how fast you can alphabetize letters.',
+PROGRAMS = [
+    {   'desc': 'A time-based quiz game to see how fast you can alphabetize letters.',
         'filename': 'alphabetizequiz.py',
         'hash': 491498882,
         'name': 'Alphabetize Quiz'},
