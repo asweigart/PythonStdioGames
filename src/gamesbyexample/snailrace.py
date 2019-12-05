@@ -36,16 +36,18 @@ for i in range(1, numSnailsRacing + 1):
         print('Choose a shorter name.')
     snailNames.append(name)
 
+print('\n' * 40)
+print('START' + (' ' * (FINISH_LINE - len('START')) + 'FINISH'))
+print('|' + (' ' * (FINISH_LINE - 1) + '|'))
 snailProgress = {}
 for snailName in snailNames:
+    print(snailName)
+    print('@v')
     snailProgress[snailName] = 0
 
-while True:
-    for snailName in snailNames:
-        spaces = snailProgress[snailName] - ((len(snailName) // 2) - 1)
-        print((' ' * spaces) + snailName)
+time.sleep(1.5)
 
-        print(('.' * snailProgress[snailName]) + '@v')
+while True:
 
     for i in range(random.randint(1, numSnailsRacing // 2)):
         randomSnailName = random.choice(snailNames)
@@ -56,4 +58,14 @@ while True:
 
     time.sleep(0.5)
     print('\n' * 40)
+    print('START' + (' ' * (FINISH_LINE - len('START')) + 'FINISH'))
+    print('|' + (' ' * (FINISH_LINE - 1) + '|'))
+
+    for snailName in snailNames:
+        spaces = snailProgress[snailName] - ((len(snailName) // 2) - 1)
+        print((' ' * spaces) + snailName)
+
+        print(('.' * snailProgress[snailName]) + '@v')
+
+
 
