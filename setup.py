@@ -30,8 +30,9 @@ setup(
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     test_suite='tests',
+    include_package_data=True,
     install_requires=['bext', 'pyperclip', 'windows-curses;platform_system=="Windows"'],
-    keywords='',
+    keywords='games',
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',

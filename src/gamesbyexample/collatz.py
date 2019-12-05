@@ -2,6 +2,8 @@
 # Generates numbers for the Collatz sequence, given a starting number.
 
 # More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
+# An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/
+__version__ = 1
 
 import sys, time
 PAUSE = 0.1 # Length of pauses in between printing sequence numbers.
@@ -46,6 +48,6 @@ while True: # Main program loop.
         time.sleep(PAUSE)
 
     print()
-    print('It seems that the starting number', response, ' produces a')
-    print('Collatz sequence that terminates after', length, 'numbers.')
+    print('It seems that the starting number', response, 'produces a')
+    print('Collatz sequence that is', length, 'numbers long.')
     print()

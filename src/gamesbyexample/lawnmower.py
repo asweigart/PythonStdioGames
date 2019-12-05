@@ -49,7 +49,10 @@ def drawMower(x, y, direction):
 
 # Draw the initially uncut grass field:
 bext.clear()
-bext.hide()
+
+if sys.platform == 'win32':
+    bext.hide() # Currently, hiding the cursor only works on Windows.
+
 bext.fg('green')
 for i in range(HEIGHT):
     print(';' * WIDTH)

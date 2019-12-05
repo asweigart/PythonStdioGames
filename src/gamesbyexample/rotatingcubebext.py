@@ -112,13 +112,13 @@ def rotateXYZ(x, y, z, ax, ay, az):
 
 
 def transformPoint(point1, point2, scalex=None, scaley=None, translatex=None, translatey=None):
-    if scalex is None:
+    if scalex == None:
         scalex = DEFAULT_SCALEX
-    if scaley is None:
+    if scaley == None:
         scaley = DEFAULT_SCALEY
-    if translatex is None:
+    if translatex == None:
         translatex = DEFAULT_TRANSLATEX
-    if translatey is None:
+    if translatey == None:
         translatey = DEFAULT_TRANSLATEY
 
 

@@ -130,7 +130,7 @@ try:
                         elif not canFallTwoLeft and canFallTwoRight:
                             fallingDirection = 2
 
-                    if fallingDirection is None:
+                    if fallingDirection == None:
                         continue # This sand can't fall, so move on to the next grain of sand.
 
                     # Move the grain of sand:

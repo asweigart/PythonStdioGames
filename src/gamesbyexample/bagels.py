@@ -1,5 +1,5 @@
 # Bagels, by Al Sweigart al@inventwithpython.com
-# A deductive logic game.
+# A deductive logic game where you must guess a number based on clues.
 __version__ = 1
 
 # A version of this game is featured in the book, "Invent Your Own Computer
@@ -39,9 +39,9 @@ def getClues(guess, secretNum):
     return ' '.join(clue)
 
 
-print('''BAGELS
+print('''BAGELS, a deductive logic game.
 By Al Sweigart al@inventwithpython.com
-print()
+
 I am thinking of a {}-digit number. Try to guess what it is.
 Here are some clues:
 When I say:    That means:
