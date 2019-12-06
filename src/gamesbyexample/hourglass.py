@@ -7,8 +7,8 @@ import random, time, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install by
-opening a Terminal window (on macOS & Linux) and running:
+    print("""This program requires the bext module, which you can install
+by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
@@ -141,6 +141,7 @@ try:
                     bext.goto(sand[X] + fallingDirection, sand[Y] + 1) # Move cursor to new sand location.
                     print(SAND, end='') # Draw new sand.
 
+            sys.stdout.flush()
             time.sleep(PAUSE_LENGTH) # Pause after this
 
             # If no sand has moved on this simulation step, reset the hourglass:
