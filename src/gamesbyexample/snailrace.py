@@ -31,9 +31,15 @@ for i in range(1, numSnailsRacing + 1):
     while True: # Keep asking until the player enters a valid name.
         print('Enter snail #' + str(i) + "'s name:")
         name = input()
-        if len(name) != 0 and len(name) <= MAX_NAME_LENGTH:
-            break
-        print('Choose a shorter name.')
+        if len(name) == 0:
+            print('Please enter a name.')
+        elif len(name) > MAX_NAME_LENGTH:
+            print('Choose a shorter name.')
+        elif name in snailNames:
+            print('Choose a name that has not already been used.')
+        else:
+            break # The entered name is acceptable.
+
     snailNames.append(name)
 
 print('\n' * 40)
@@ -62,7 +68,7 @@ while True:
     print('|' + (' ' * (FINISH_LINE - 1) + '|'))
 
     for snailName in snailNames:
-        spaces = snailProgress[snailName] - ((len(snailName) // 2) - 1)
+        spaces = snailProgress[snailName]
         print((' ' * spaces) + snailName)
 
         print(('.' * snailProgress[snailName]) + '@v')
