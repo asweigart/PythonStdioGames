@@ -4,13 +4,15 @@ __version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.
 
+PAUSE_AMOUNT = 0.1 # Pause length of one-tenth of a second.
+
 import math, time, sys
 
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install by
-opening a Terminal window (on macOS & Linux) and running:
+    print("""This program requires the bext module, which you can install
+by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
@@ -195,7 +197,7 @@ try:
             print(BLOCK, end='')
 
         sys.stdout.flush() # (Required for bext-using programs.)
-        time.sleep(0.2) # Pause for a bit.
+        time.sleep(PAUSE_AMOUNT) # Pause for a bit.
 
         # Erase cube:
         for x, y in screenPoints:

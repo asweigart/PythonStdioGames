@@ -21,20 +21,22 @@ def main():
     Try to get as close to 21 without going over.
     Kings, Queens, and Jacks are worth 10 points.
     Aces are worth 1 or 11 points.
-    2 through 10 are worth their face value.
+    Cards 2 through 10 are worth their face value.
     (H)it to take another card.
     (S)tand to stop taking cards.
-    On your first play, you can (D)ouble down to double up to your bet
+    On your first play, you can (D)ouble down to increase your bet
     but must hit exactly one more time before standing.
     In case of a tie, the pot carries over to the next round.
-    Dealer stops hitting themselves at 17.''')
+    The dealer stops hitting themselves at 17.''')
 
     money = 100
     pot = 0
     while True: # Main game loop.
         # Check if the player has run out of money:
         if money <= 0:
-            print("You've run out of money!")
+            print("You're broke!")
+            print("Good thing you weren't playing with real money.")
+            print('Thanks for playing!')
             sys.exit()
 
         # Let the player enter their bet for this round:
@@ -170,7 +172,7 @@ def getCardValue(cards):
 
 
 def getDeck():
-    # Create a deck of all 52 cards:
+    # Return a list of (rank, suit) tuples for all 52 cards:
     deck = []
     for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
         for rank in range(2, 11):
@@ -232,7 +234,9 @@ def getMove(playerHand, money):
         # Get the player's move:
         movePrompt = ', '.join(moves) + ': '
         move = input(movePrompt).upper()
-        if move in ('H', 'S') or (move == 'D' and '(D)ouble down' in moves):
+        if move in ('H', 'S'):
+            return move # Player has entered a valid move.
+        if move == 'D' and '(D)ouble down' in moves:
             return move # Player has entered a valid move.
 
 

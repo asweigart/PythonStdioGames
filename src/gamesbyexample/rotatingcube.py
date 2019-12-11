@@ -6,7 +6,7 @@ __version__ = 1
 
 import math, time, sys, os
 
-PAUSE_AMOUNT = 0.05
+PAUSE_AMOUNT = 0.1 # Pause length of one-tenth of a second.
 WIDTH, HEIGHT = 80, 24
 SCALEX = (WIDTH - 4) // 8
 SCALEY = (HEIGHT - 4) // 4 # Text cells are twice as tall as they are wide, so set scaley accordingly.

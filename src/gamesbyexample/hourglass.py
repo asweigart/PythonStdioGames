@@ -141,7 +141,7 @@ try:
                     bext.goto(sand[X] + fallingDirection, sand[Y] + 1) # Move cursor to new sand location.
                     print(SAND, end='') # Draw new sand.
 
-            sys.stdout.flush()
+            sys.stdout.flush() # (Required for bext-using programs.)
             time.sleep(PAUSE_LENGTH) # Pause after this
 
             # If no sand has moved on this simulation step, reset the hourglass:
