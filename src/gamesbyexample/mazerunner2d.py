@@ -59,7 +59,7 @@ HEIGHT = y
 assert playerx != None and playery != None, 'Missing start point in maze file.'
 assert exitx != None and exity != None, 'Missing exit point in maze file.'
 
-while True: # Main program loop.
+while True: # Main game loop.
     # Display the maze:
     for y in range(HEIGHT):
         for x in range(WIDTH):
@@ -97,6 +97,7 @@ while True: # Main program loop.
                 break
 
         print('You cannot move in that direction.')
+        # At this point, go back to the start of the loop.
 
     # At this point, move contains a valid direction to move in.
 
@@ -143,3 +144,4 @@ while True: # Main program loop.
         print('You have reached the exit! Good job!')
         print('Thanks for playing!')
         sys.exit()
+    # At this point, go back to the start of the main game loop.

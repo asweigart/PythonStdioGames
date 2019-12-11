@@ -41,7 +41,7 @@ For example, let's check the checksum for the number:
     input('Press Enter to continue...') # Pause to let the user press Enter.
 
 
-while True: # Main application loop.
+while True: # Main program loop.
     print('Enter a number to check its checksum (or QUIT):')
     originalNumber = input()
 
@@ -110,3 +110,4 @@ while True: # Main application loop.
     print() # Print some newlines for space.
     print()
     print()
+    # At this point, go back to the start of the main program loop.

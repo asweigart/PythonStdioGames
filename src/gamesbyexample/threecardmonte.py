@@ -89,7 +89,7 @@ for i in range(NUM_SWAPS):
 print('\n' * 25)
 
 # Ask the user to find the red lady:
-while True:
+while True: # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
     print('Which card has the Queen of Hearts? (LEFT MIDDLE RIGHT)')
     guess = input().upper()
 
@@ -102,6 +102,7 @@ while True:
         elif guess == 'RIGHT':
             guessIndex = 2
         break
+    # At this point, go back to the start of the loop.
 
 # Uncomment this code to make the player always lose:
 #if cards[guessIndex] == ('Q', HEARTS):

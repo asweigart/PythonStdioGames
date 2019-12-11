@@ -161,3 +161,4 @@ while True: # Main game loop.
         # Swap the two numbers on the board:
         board[selectedSpace] = selectedNumber
         board[spaceOfOriginalNumber] = numberAtOriginalSpace
+    # At this point, go back to the start of the main game loop.

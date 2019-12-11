@@ -20,7 +20,7 @@ if secondsLeft > 359999:
     secondsLeft = 359999
 
 try:
-    while True:
+    while True: # Main game loop.
         # Clear the screen:
         if sys.platform == 'win32':
             os.system('cls') # Clears Windows terminal.
@@ -68,6 +68,7 @@ try:
         time.sleep(1) # Insert a one-second pause.
 
         secondsLeft -= 1
+        # At this point, go back to the start of the main program loop.
 
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.)

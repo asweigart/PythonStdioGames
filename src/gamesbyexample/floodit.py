@@ -7,14 +7,14 @@ import random, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 BLOCK     = chr(9608) # Character 9608 is '█'
@@ -101,6 +101,7 @@ def getPlayerMove():
             sys.exit()
         if move in COLORS:
             return move
+        # At this point, go back to the start of the loop.
 
 
 def changeTile(move, board, x, y, charToChange=None):
@@ -142,7 +143,7 @@ def main():
     gameBoard = getNewBoard()
     movesLeft = 20
 
-    while True:
+    while True: # Main game loop.
         drawBoard(gameBoard)
 
         print('Moves left:', movesLeft)
@@ -157,7 +158,7 @@ def main():
         elif movesLeft == 0:
             print('You have run out of moves!')
             break
-
+        # At this point, go back to the start of the main game loop.
 
 if __name__ == '__main__':
     main()

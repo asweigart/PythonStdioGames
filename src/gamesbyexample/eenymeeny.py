@@ -24,6 +24,7 @@ while True:
         playerNames.append(playerName)
     else:
         break
+    # At this point, go back to the start of the loop.
 
 # Get the total number of participants:
 while True:
@@ -34,6 +35,7 @@ while True:
         continue # Player entered non-integer; ask again.
     if 2 <= numParticipants <= len(NAMES) + len(playerNames):
         break
+    # At this point, go back to the start of the loop.
 
 # Get the position of the player:
 participants = NAMES[:numParticipants - len(playerNames)] # Get the required number of names.
@@ -47,10 +49,11 @@ for playerName in playerNames:
         if 1 <= position <= len(participants) + 1:
             participants.insert(position - 1, playerName)
             break
+        # At this point, go back to the start of the loop.
 
 # Start the elimination process:
 startingPosition = 0
-while len(participants) > 1:
+while len(participants) > 1: # Main program loop.
     # Figure out how many names to put on each row:
     rows = ['']
     for name in participants:
@@ -94,6 +97,7 @@ while len(participants) > 1:
         input('Press Enter to continue, or Ctrl-C to quit.')
     except KeyboardInterrupt:
         sys.exit() # When Ctrl-C is pressed, end the program.
+    # At this point, go back to the start of the main program loop.
 
 # Declare the winner:
 print(participants[0] + ' IS THE WINNER!!!')

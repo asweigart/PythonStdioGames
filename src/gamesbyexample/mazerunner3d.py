@@ -226,7 +226,7 @@ assert exitx != None and exity != None, 'Missing exit point in maze file.'
 playerDirection = NORTH
 
 
-while True: # Main program loop.
+while True: # Main game loop.
     displayWallDict(makeWallDict(maze, playerx, playery, playerDirection, exitx, exity))
 
     while True: # Get user move.
@@ -277,3 +277,4 @@ while True: # Main program loop.
         print('Thanks for playing!')
         sys.exit()
 
+    # At this point, go back to the start of the main game loop.

@@ -10,14 +10,14 @@ import random, time, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 WIDTH = 80
@@ -36,7 +36,7 @@ bext.fg('yellow')
 bext.clear()
 
 allSand = []
-while True:
+while True: # Main program loop.
     # Generate sand from each source.
     for source in sources:
         if source['next'] <= 0 and (source['x'], source['y']) not in allSand:
@@ -81,5 +81,4 @@ while True:
     sys.stdout.flush() # (Required for bext-using programs.)
     # Draw the sand space on the screen:
     time.sleep(PAUSE_LENGTH)
-
-
+    # At this point, go back to the start of the main program loop.

@@ -84,3 +84,4 @@ while True: # Main program loop.
         for key in ALL_COLUMNS:
             print(key.rjust(LONGEST_COLUMN) + ': ' + ELEMENTS[response][key])
         input('Press Enter to continue...')
+    # At this point, go back to the start of the main program loop.

@@ -3,7 +3,7 @@
 __version__ = 1
 
 number = 1
-while number < 100000:
+while number < 100000: # Main program loop.
     if number % 3 == 0 and number % 5 == 0:
         # The number is evenly divisible by 3 and 5, so print "FizzBuzz":
         print('FizzBuzz', end='') # Don't print a newline at the end.
@@ -23,3 +23,4 @@ while number < 100000:
         print(', ', end='') # Print a separating comma.
     else:
         print() # Print a newline character.
+    # At this point, go back to the start of the main program loop.

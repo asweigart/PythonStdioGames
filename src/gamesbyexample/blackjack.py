@@ -6,12 +6,11 @@ __version__ = 1
 import random, sys
 
 # Setup constants:
-HEARTS   = chr(9829)
-DIAMONDS = chr(9830)
-SPADES   = chr(9824)
-CLUBS    = chr(9827)
+HEARTS   = chr(9829) # Character 9829 is '♥'.
+DIAMONDS = chr(9830) # Character 9830 is '♦'.
+SPADES   = chr(9824) # Character 9824 is '♠'.
+CLUBS    = chr(9827) # Character 9827 is '♣'.
 BACKSIDE = 'backside'
-
 
 def main():
     print('''BLACKJACK
@@ -52,7 +51,7 @@ def main():
 
         # Handle player actions:
         print('Pot:', pot)
-        while True:
+        while True: # Keep doing player actions until they stand or bust.
             showHands(playerHand, dealerHand, False)
             print()
 
@@ -68,13 +67,13 @@ def main():
                 # Player is doubling down, they can increase their bet:
                 additionalBet = getBet(min(bet, money))
                 money -= additionalBet
-                pot += additionalBet * 2 # Dealer matches the increased bet.
+                pot += additionalBet * 2 # Dealer matches the bet.
                 bet += additionalBet
                 print('Bet increased to {}.'.format(bet))
                 print('Pot:', pot)
 
             if move in ('H', 'D'):
-                # Hit: take another card. (Doubling down also takes a card.)
+                # Hit/doubling down takes another card.
                 newCard = deck.pop()
                 rank, suit = newCard
                 print('You drew a {} of {}.'.format(rank, suit))
@@ -85,9 +84,9 @@ def main():
                     continue
 
             if move in ('S', 'D'):
-                # Stand: stop playing this hand and let dealer draw cards.
-                # (Doubling down also causes the dealer to begin drawing.)
+                # Stand/doubling down stops the player's turn.
                 break
+            # At this point, go back to the start of the loop.
 
         # Handle the dealer's actions:
         if getCardValue(playerHand) <= 21:
@@ -185,7 +184,7 @@ def getDeck():
 
 def getBet(maxBet):
     # Ask the user how much they want to bet for this round:
-    while True:
+    while True: # Keep asking until they enter a valid amount.
         print('How much do you bet? (1-{}, or "quit")'.format(maxBet))
         bet = input().upper()
         if bet == 'QUIT':
@@ -193,11 +192,12 @@ def getBet(maxBet):
             sys.exit()
 
         if not bet.isdecimal():
-            continue # If the player didn't enter a number, just ask again.
+            continue # If the player didn't enter a number, ask again.
 
         bet = int(bet)
         if (1 <= bet <= maxBet):
             return bet # Player entered a valid bet.
+        # At this point, go back to the start of the loop.
 
 
 def showHands(playerHand, dealerHand, showDealerHand):
@@ -238,6 +238,7 @@ def getMove(playerHand, money):
             return move # Player has entered a valid move.
         if move == 'D' and '(D)ouble down' in moves:
             return move # Player has entered a valid move.
+        # At this point, go back to the start of the loop.
 
 
 main() # After defining all the functions, call main() to start the game.

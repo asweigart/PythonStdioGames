@@ -9,14 +9,14 @@ import time, random, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 
@@ -64,7 +64,7 @@ mowery = 0
 mowerDirection = 'right'
 growMode = False
 
-while True:
+while True: # Main program loop.
     # Draw the mower:
     drawMower(mowerx, mowery, mowerDirection)
 
@@ -128,3 +128,4 @@ while True:
             except KeyboardInterrupt:
                 sys.exit() # When Ctrl-C is pressed, end the program.
         growMode = False # Done growing grass.
+    # At this point, go back to the start of the main program loop.

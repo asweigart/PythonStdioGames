@@ -62,6 +62,7 @@ def main():
             printTowers() # Display the towers one last time.
             print('You have solved the puzzle! Well done!')
             sys.exit()
+        # At this point, go back to the start of the main program loop.
 
 
 def printDisc(discNum):

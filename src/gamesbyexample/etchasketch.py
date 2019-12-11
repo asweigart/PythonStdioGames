@@ -61,8 +61,7 @@ def getScreenString(screenData):
         screenStr += '\n' # Print a newline at the end of each row.
     return screenStr
 
-while True: # Main application loop.
-
+while True: # Main program loop.
     # Draw the screen:
     print(getScreenString(screen))
 
@@ -123,7 +122,7 @@ while True: # Main application loop.
                 screen[(cursorx, cursory)].add('D')
             elif command == 'D':
                 screen[(cursorx, cursory)].add('A')
-
+    # At this point, go back to the start of the main program loop.
 
 
 

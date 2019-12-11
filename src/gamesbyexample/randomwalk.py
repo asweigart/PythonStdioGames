@@ -9,20 +9,20 @@ import random, time, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 BLOCK = chr(9608)
 
 # Ask user what speed to run the simulation at:
-while True:
+while True: # Keep looping until the user enters F or S.
     print('Move (F)ast or (S)low?')
     speed = input().upper()
     if speed == 'F' or speed == 'S':
@@ -32,7 +32,7 @@ width, height = bext.size()
 bext.clear()
 
 try:
-    while True:
+    while True: # Main program loop.
         bext.fg('random') # Set to a random color.
         x, y = width // 2, height // 2 # Start in the middle of the screen.
 
@@ -60,5 +60,6 @@ try:
             if speed == 'S':
                 time.sleep(0.1)
         time.sleep(1) # Pause after reaching the edge.
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

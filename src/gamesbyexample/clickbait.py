@@ -32,6 +32,7 @@ def main():
         else:
             numberOfHeadlines = int(numberOfHeadlines)
             break
+        # At this point, go back to the start of the loop.
 
     for i in range(numberOfHeadlines):
         clickbaitType = random.randint(1, 8)

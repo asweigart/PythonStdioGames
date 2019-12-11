@@ -4,15 +4,15 @@ __version__ = 1
 
 import random, sys
 
-print('DICE ROLLER')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('Example input:')
-print('  3d6 rolls three 6-sided dice')
-print('  1d10+2 rolls one 10-sided dice, and adds 2')
-print('  2d17-1 rolls two 17-sided dice, and subtracts 1')
-print('  QUIT quits the program')
-print()
+print('''DICE ROLLER
+By Al Sweigart al@inventwithpython.com
+
+Example input:
+  3d6 rolls three 6-sided dice
+  1d10+2 rolls one 10-sided dice, and adds 2
+  2d17-1 rolls two 17-sided dice, and subtracts 1
+  QUIT quits the program
+''')
 
 while True: # Main program loop:
     try:
@@ -84,3 +84,4 @@ while True: # Main program loop:
         print('Invalid input. Enter something like `3d6` or `1d10+1`')
         print('Input was invalid because: ' + str(exc))
         continue # Go back to the dice string prompt.
+    # At this point, go back to the start of the main program loop.

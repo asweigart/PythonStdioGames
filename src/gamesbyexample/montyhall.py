@@ -96,7 +96,7 @@ switchWins = 0
 switchLosses = 0
 notSwitchWins = 0
 notSwitchLosses = 0
-while True:
+while True: # Main program loop.
     doorThatHasCar = random.randint(1, 3) # The computer picks which door has the car.
 
     # Ask the player to pick a door:
@@ -190,4 +190,4 @@ Not switching: {} wins, {} losses, success rate {}%
 
 Press Enter repeat the experiment again!'''.format(switchWins, switchLosses, switchSuccess, notSwitchWins, notSwitchLosses, notSwitchSuccess))
     input()
-
+    # At this point, go back to the start of the main program loop.

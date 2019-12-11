@@ -25,8 +25,6 @@ Bad ending:      >10% to 33%% population died or >7 to 9 acres per person.
 Worst ending:    >33%% population died or <7 acres per person.""")
     print()
 
-
-
     year = 1
     deaths = 0
     births = 5
@@ -40,7 +38,7 @@ Worst ending:    >33%% population died or <7 acres per person.""")
     totalPopulation = population
     percentageDiedEachYear = []
 
-    while True:
+    while True: # Main game loop.
         print()
         print('Hammurabi, I beg to report to you, in the year {}:'.format(year))
         print('- {} people starved'.format(deaths))
@@ -158,9 +156,9 @@ Worst ending:    >33%% population died or <7 acres per person.""")
             print('also been declared a national fink!!!!')
             return # Game over.
 
-
         population -= deaths # Update population.
         year += 1
+        # At this point, go back to the start of the main program loop.
 
     # Tell the player how they did:
     percentageDiedPerYear = sum(percentageDiedEachYear) // 10 # TODO This is wrong and needs to be corrected. Get the percentage deaths each year, and find the average of that. See original source.
@@ -171,8 +169,6 @@ Worst ending:    >33%% population died or <7 acres per person.""")
     print('You started with 10 acres per person and ended with')
     print('{} acres per person.'.format(acresPerPerson))
     print()
-
-
 
     if percentageDiedPerYear > 33 or acresPerPerson < 7:
         print('Due to this extreme mismanagement you have not only')
@@ -195,7 +191,6 @@ Worst ending:    >33%% population died or <7 acres per person.""")
     else:
         print('A fantastic performance!!! Mandela, Elizabeth II, and')
         print('Annan combined could not have done better!')
-
 
     print()
     print('So long for now.')

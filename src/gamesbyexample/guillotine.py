@@ -113,6 +113,7 @@ def getPlayerGuess(alreadyGuessed):
             print('Please enter a LETTER.')
         else:
             return guess
+        # At this point, go back to the start of the loop.
 
 
 print('''GUILLOTINE
@@ -153,3 +154,4 @@ while True: # Main game loop.
             print('You have run out of guesses!')
             print('The word was "{}"'.format(secretWord))
             break
+    # At this point, go back to the start of the main game loop.

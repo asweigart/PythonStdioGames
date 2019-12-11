@@ -125,7 +125,7 @@ rotatedPoints = [None] * len(originalPoints)
 rx = ry = rz = 0.0 # Rotation amounts for each axis.
 
 try:
-    while True:
+    while True: # Main program loop.
         # Rotate the cube:
         rx += 0.03
         ry += 0.08
@@ -158,6 +158,7 @@ try:
             os.system('cls')
         else:
             os.system('clear')
+        # At this point, go back to the start of the main program loop.
 
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

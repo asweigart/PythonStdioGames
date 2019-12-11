@@ -159,16 +159,17 @@ def getMove(board, turn):
             sys.exit()
         if srcMove in checkersThatCanMove:
             break
+        # At this point, go back to the start of the loop.
 
     while True: # Loop until a valid "destination" space is selected.
         dstMoves, dstCaptures = getPossibleDstMoves(board, srcMove)
         dstMoves += dstCaptures
         print('Enter the space to move', srcMove, 'to:')
         print(' '.join(dstMoves))
-
         dstMove = input().upper()
         if dstMove in dstMoves:
             break
+        # At this point, go back to the start of the loop.
 
     return (srcMove, dstMove)
 
@@ -208,6 +209,7 @@ def makeMove(board, srcMove, dstMove):
             doubleJumpMove = input().upper()
             if doubleJumpMove in dstCaptures:
                 break
+            # At this point, go back to the start of the loop.
         return makeMove(board, dstMove, doubleJumpMove)
     return board
 
@@ -222,8 +224,8 @@ def hasLost(board, player):
 
 
 # Main game code:
-print('CHECKERS')
-print('By Al Sweigart al@inventwithpython.com')
+print('''CHECKERS
+By Al Sweigart al@inventwithpython.com''')
 theBoard = getNewBoard() # Create a new checker board data structure.
 turn = 'X' # X goes first.
 while True: # Main game loop.
@@ -244,3 +246,4 @@ while True: # Main game loop.
         print(otherCheckers(turn)[1] + ' is the winner!')
         sys.exit()
     turn = otherCheckers(turn)[1] # Switch turns to the other player.
+    # At this point, go back to the start of the main game loop.

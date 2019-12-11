@@ -4,17 +4,21 @@ __version__ = 1
 
 import time, sys
 
-print('ROCK, PAPER, SCISSORS')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('- Rock beats scissors.')
-print('- Paper beats rocks.')
-print('- Scissors beats paper.')
+print('''ROCK, PAPER, SCISSORS
+By Al Sweigart al@inventwithpython.com
 
-wins = 0 # This variable keeps track of how many wins the player has.
+- Rock beats scissors.
+- Paper beats rocks.
+- Scissors beats paper.
+''')
 
-while True: # The main game loop.
-    while True: # Keep asking until player enters R/P/S/Q.
+# These variables keep track of the number of wins, losses, and ties.
+wins = 0
+losses = 0
+ties = 0
+
+while True: # Main game loop.
+    while True: # Keep asking until player enters R, P, S, or Q.
         print('{} Wins, 0 Losses, 0 Ties'.format(wins))
         print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
         playerMove = input().upper()
@@ -55,3 +59,4 @@ while True: # The main game loop.
 
     print('You win!')
     wins = wins + 1
+    # At this point, go back to the start of the main game loop.

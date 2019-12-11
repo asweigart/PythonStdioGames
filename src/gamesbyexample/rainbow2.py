@@ -7,20 +7,20 @@ import time, random, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 indent = 10 # How many spaces to indent.
 
 try:
-    while True:
+    while True: # Main program loop.
         print(' ' * indent, end='')
         bext.fg('red')
         print('##', end='')
@@ -47,5 +47,6 @@ try:
                 indent = 0
 
         time.sleep(0.05) # Add a slight pause.
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

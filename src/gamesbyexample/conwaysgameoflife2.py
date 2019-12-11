@@ -83,5 +83,6 @@ try:
                         nextCells[x, y] = True
 
         time.sleep(0.25) # Add a slight pause to reduce flickering.
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

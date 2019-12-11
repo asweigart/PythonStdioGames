@@ -31,7 +31,7 @@ time.sleep(2)
 rowIndex = 0
 
 try:
-    while True: # Main animation loop.
+    while True: # Main program loop.
         # Increment rowIndex to draw next row:
         rowIndex += 1
         if rowIndex == len(rows):
@@ -56,5 +56,6 @@ try:
         # Print the row.
         print(rows[rowIndex].format(leftNucleotide, rightNucleotide))
         time.sleep(0.15) # Add a slight pause.
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

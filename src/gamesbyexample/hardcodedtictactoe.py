@@ -3,30 +3,25 @@
 # hard-coded into this program. The program is 5700 lines long.
 # This is a joke program, don't actually write code like this.
 __version__ = 1
-
 import sys
-
 print('Welcome to Tic Tac Toe!')
 print('You are X.\n')
 print(' | | \n-+-+-\n | | \n-+-+-\n | | \n')
 print('Enter the number of your move:')
 print('  789\n  456\n  123')
 move = input()
-
 if move == '1':
     print('O moves on the bottom-right space.')
     print(' | | \n-+-+-\n | | \n-+-+-\nX| |O\n')
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '2':
         print('O moves on the top-right space.')
         print(' | |O\n-+-+-\n | | \n-+-+-\nX|X|O\n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '4':
             print('O moves on the right space.')
             print(' | |O\n-+-+-\nX| |O\n-+-+-\nX|X|O\n')
@@ -43,7 +38,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |O\n-+-+-\nX|O|X\n-+-+-\nX|X|O\n')
@@ -75,7 +69,6 @@ if move == '1':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print('O| | \n-+-+-\nX|O| \n-+-+-\nX|X|O\n')
@@ -87,7 +80,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-right space.')
                 print('O| |O\n-+-+-\nX|X|O\n-+-+-\nX|X|O\n')
@@ -123,7 +115,6 @@ if move == '1':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the right space.')
             print(' | |O\n-+-+-\n |X|O\n-+-+-\nX|X|O\n')
@@ -140,14 +131,12 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print(' |O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -158,7 +147,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -169,7 +157,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -190,14 +177,12 @@ if move == '1':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-left space.')
             print('O| |O\n-+-+-\n | |X\n-+-+-\nX|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |O\n-+-+-\nX|O|X\n-+-+-\nX|X|O\n')
@@ -219,7 +204,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-left space.')
                 print('O| |O\n-+-+-\nX|O|X\n-+-+-\nX|X|O\n')
@@ -240,14 +224,12 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print(' |O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -258,7 +240,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -269,7 +250,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -280,14 +260,12 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X| |O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -298,7 +276,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -309,7 +286,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -320,7 +296,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\n |O|X\n-+-+-\nX|X|O\n')
@@ -337,7 +312,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nX|O|O\n')
                     print('You have won!')
@@ -348,14 +322,12 @@ if move == '1':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-right space.')
             print('X| |O\n-+-+-\nO| | \n-+-+-\nX|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '5':
                 print('O moves on the right space.')
                 print('X| |O\n-+-+-\nO|X|O\n-+-+-\nX|X|O\n')
@@ -367,7 +339,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -383,7 +354,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('X| |O\n-+-+-\nO|X|O\n-+-+-\nX|X|O\n')
@@ -395,7 +365,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -411,14 +380,12 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X| |O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -429,7 +396,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -440,7 +406,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -451,7 +416,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('X|X|O\n-+-+-\nO| |O\n-+-+-\nX|X|O\n')
@@ -468,7 +432,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -479,7 +442,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('X| |X\n-+-+-\nO|O|O\n-+-+-\nX|X|O\n')
@@ -491,7 +453,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|X\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -506,7 +467,6 @@ if move == '1':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the right space.')
             print(' |X|O\n-+-+-\n | |O\n-+-+-\nX|X|O\n')
@@ -528,7 +488,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\n |O|X\n-+-+-\nX|X|O\n')
@@ -545,7 +504,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nX|O|O\n')
                     print('You have won!')
@@ -561,7 +519,6 @@ if move == '1':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\n |O| \n-+-+-\nX|X|O\n')
@@ -583,7 +540,6 @@ if move == '1':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('X| |X\n-+-+-\nO|O|O\n-+-+-\nX|X|O\n')
@@ -595,7 +551,6 @@ if move == '1':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|X\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -615,21 +570,18 @@ if move == '2':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '3':
         print('O moves on the top-left space.')
         print('O| | \n-+-+-\n | | \n-+-+-\nO|X|X\n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '4':
             print('O moves on the top-right space.')
             print('O| |O\n-+-+-\nX| | \n-+-+-\nO|X|X\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '5':
                 print('O moves on the top-center space.')
                 print('O|O|O\n-+-+-\nX|X| \n-+-+-\nO|X|X\n')
@@ -671,7 +623,6 @@ if move == '2':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '3':
             print('O moves on the center space.')
             print(' | |O\n-+-+-\nX|O| \n-+-+-\nO|X|X\n')
@@ -683,14 +634,12 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the top-left space.')
                 print('O| |O\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('You have won!')
@@ -725,14 +674,12 @@ if move == '2':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '3':
             print('O moves on the top-left space.')
             print('O|O| \n-+-+-\n |X| \n-+-+-\nO|X|X\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the top-right space.')
                 print('O|O|O\n-+-+-\nX|X| \n-+-+-\nO|X|X\n')
@@ -754,14 +701,12 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the top-left space.')
                 print('O|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -772,7 +717,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -783,7 +727,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -794,7 +737,6 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the top-left space.')
                 print('O|O| \n-+-+-\nO|X|X\n-+-+-\nO|X|X\n')
@@ -806,7 +748,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -822,14 +763,12 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print('X|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -840,7 +779,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -851,7 +789,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -862,14 +799,12 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print(' |O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -880,7 +815,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -891,7 +825,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -902,7 +835,6 @@ if move == '2':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '3':
             print('O moves on the center space.')
             print(' | |O\n-+-+-\n |O|X\n-+-+-\nO|X|X\n')
@@ -919,7 +851,6 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the top-left space.')
                 print('O| |O\n-+-+-\nO|X|X\n-+-+-\nO|X|X\n')
@@ -931,7 +862,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -956,7 +886,6 @@ if move == '2':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '3':
             print('O moves on the center space.')
             print('X| |O\n-+-+-\n |O| \n-+-+-\nO|X|X\n')
@@ -973,7 +902,6 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print('X| |O\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
@@ -985,7 +913,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -1010,7 +937,6 @@ if move == '2':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '3':
             print('O moves on the top-right space.')
             print(' |X|O\n-+-+-\n |O| \n-+-+-\nO|X|X\n')
@@ -1037,7 +963,6 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the left space.')
                 print('O|X|X\n-+-+-\nO|O| \n-+-+-\nO|X|X\n')
@@ -1059,21 +984,18 @@ if move == '2':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '4':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\nX| | \n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '5':
                 print('O moves on the right space.')
                 print('O| |X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -1094,14 +1016,12 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print(' |O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -1112,7 +1032,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -1123,7 +1042,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -1134,7 +1052,6 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -1156,14 +1073,12 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -1174,7 +1089,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -1185,7 +1099,6 @@ if move == '2':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -1196,7 +1109,6 @@ if move == '2':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the top-left space.')
                 print('O|X|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
@@ -1217,21 +1129,18 @@ if move == '3':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '2':
         print('O moves on the top-left space.')
         print('O| | \n-+-+-\n | | \n-+-+-\nO|X|X\n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '4':
             print('O moves on the top-right space.')
             print('O| |O\n-+-+-\nX| | \n-+-+-\nO|X|X\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '5':
                 print('O moves on the top-center space.')
                 print('O|O|O\n-+-+-\nX|X| \n-+-+-\nO|X|X\n')
@@ -1273,14 +1182,12 @@ if move == '3':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-right space.')
             print('O| |O\n-+-+-\nX| | \n-+-+-\nO|X|X\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '5':
                 print('O moves on the top-center space.')
                 print('O|O|O\n-+-+-\nX|X| \n-+-+-\nO|X|X\n')
@@ -1302,14 +1209,12 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1320,7 +1225,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -1331,7 +1235,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -1342,7 +1245,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-right space.')
                 print('O| |O\n-+-+-\nX|O|X\n-+-+-\nO|X|X\n')
@@ -1363,7 +1265,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nO|X|X\n')
@@ -1375,7 +1276,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nO|O|X\n')
                     print('You have won!')
@@ -1391,14 +1291,12 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1409,7 +1307,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -1420,7 +1317,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1431,7 +1327,6 @@ if move == '3':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the left space.')
             print('O| | \n-+-+-\nO|X| \n-+-+-\nO|X|X\n')
@@ -1443,14 +1338,12 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1461,7 +1354,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -1472,7 +1364,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -1498,7 +1389,6 @@ if move == '3':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print(' | |O\n-+-+-\n |O|X\n-+-+-\nO|X|X\n')
@@ -1515,7 +1405,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-left space.')
                 print('O| |O\n-+-+-\nO|X|X\n-+-+-\nO|X|X\n')
@@ -1546,7 +1435,6 @@ if move == '3':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-right space.')
             print('X| |O\n-+-+-\n |O| \n-+-+-\nO|X|X\n')
@@ -1573,7 +1461,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('X| |X\n-+-+-\nO|O|O\n-+-+-\nO|X|X\n')
@@ -1585,7 +1472,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1600,7 +1486,6 @@ if move == '3':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the left space.')
             print('O|X| \n-+-+-\nO| | \n-+-+-\nO|X|X\n')
@@ -1612,7 +1497,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nO|X|X\n')
@@ -1624,7 +1508,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nO|O|X\n')
                     print('You have won!')
@@ -1655,21 +1538,18 @@ if move == '3':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\n | |O\n-+-+-\nO|X|X\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1690,14 +1570,12 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1708,7 +1586,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -1719,7 +1596,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1730,7 +1606,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('O| |X\n-+-+-\nO|X|O\n-+-+-\nO|X|X\n')
@@ -1742,7 +1617,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1758,7 +1632,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('X| |X\n-+-+-\nO|O|O\n-+-+-\nO|X|X\n')
@@ -1770,7 +1643,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1785,7 +1657,6 @@ if move == '3':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('O|X|X\n-+-+-\nO| |O\n-+-+-\nO|X|X\n')
@@ -1797,7 +1668,6 @@ if move == '3':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -1813,14 +1683,12 @@ if move == '4':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '1':
         print('O moves on the top-right space.')
         print('O| |O\n-+-+-\nX| | \n-+-+-\nX| | \n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-center space.')
             print('O|O|O\n-+-+-\nX| | \n-+-+-\nX|X| \n')
@@ -1847,7 +1715,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|X|O\n')
@@ -1869,7 +1736,6 @@ if move == '4':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-center space.')
             print('O|O|O\n-+-+-\nX| | \n-+-+-\nX|X| \n')
@@ -1896,7 +1762,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the bottom-right space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|X|O\n')
@@ -1918,7 +1783,6 @@ if move == '4':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-center space.')
             print('O|O|O\n-+-+-\nX| | \n-+-+-\nX| |X\n')
@@ -1945,7 +1809,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nO|X|X\n')
@@ -1957,7 +1820,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nO|O|X\n')
                     print('You have won!')
@@ -1973,14 +1835,12 @@ if move == '4':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-right space.')
             print('O| |O\n-+-+-\nX|X|O\n-+-+-\nX| | \n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the bottom-right space.')
                 print('O| |O\n-+-+-\nX|X|O\n-+-+-\nX|X|O\n')
@@ -2002,7 +1862,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print('O|O|O\n-+-+-\nX|X|O\n-+-+-\nX|X| \n')
@@ -2019,7 +1878,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2030,14 +1888,12 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2048,7 +1904,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2059,7 +1914,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2070,14 +1924,12 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2088,7 +1940,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2099,7 +1950,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2110,14 +1960,12 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2128,7 +1976,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2139,7 +1986,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2150,7 +1996,6 @@ if move == '4':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the bottom-right space.')
             print('O| | \n-+-+-\nX|O|X\n-+-+-\nX| |O\n')
@@ -2167,7 +2012,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-center space.')
                 print('O|O|O\n-+-+-\nX|O|X\n-+-+-\nX| |X\n')
@@ -2199,14 +2043,12 @@ if move == '4':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the bottom-right space.')
             print('O|X|O\n-+-+-\nX| | \n-+-+-\nX| |O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|X|O\n')
@@ -2228,7 +2070,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the bottom-right space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|X|O\n')
@@ -2250,7 +2091,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nO|X|X\n')
@@ -2262,7 +2102,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nO|O|X\n')
                     print('You have won!')
@@ -2278,14 +2117,12 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the right space.')
                 print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2296,7 +2133,6 @@ if move == '4':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2311,7 +2147,6 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the bottom-right space.')
                 print('O|X|O\n-+-+-\nX|O|X\n-+-+-\nX| |O\n')
@@ -2333,7 +2168,6 @@ if move == '4':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the center space.')
             print('O| |X\n-+-+-\nX|O| \n-+-+-\nX| |O\n')
@@ -2350,14 +2184,12 @@ if move == '4':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('O| |X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -2387,14 +2219,12 @@ if move == '5':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '1':
         print('O moves on the top-right space.')
         print('O| |O\n-+-+-\n |X| \n-+-+-\nX| | \n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-center space.')
             print('O|O|O\n-+-+-\n |X| \n-+-+-\nX|X| \n')
@@ -2421,14 +2251,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the right space.')
                 print('O|X|O\n-+-+-\n |X|O\n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2439,7 +2267,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2450,7 +2277,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2461,7 +2287,6 @@ if move == '5':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-right space.')
             print('O|O|O\n-+-+-\n |X| \n-+-+-\nX|X| \n')
@@ -2488,7 +2313,6 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the left space.')
                 print('O|O|X\n-+-+-\nO|X| \n-+-+-\nO|X|X\n')
@@ -2500,7 +2324,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2516,7 +2339,6 @@ if move == '5':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the left space.')
             print('O| | \n-+-+-\nO|X| \n-+-+-\nO|X|X\n')
@@ -2528,14 +2350,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2546,7 +2366,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2557,7 +2376,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2583,14 +2401,12 @@ if move == '5':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-right space.')
             print('O| |O\n-+-+-\nX|X|O\n-+-+-\nX| | \n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the bottom-right space.')
                 print('O| |O\n-+-+-\nX|X|O\n-+-+-\nX|X|O\n')
@@ -2612,7 +2428,6 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print('O|O|O\n-+-+-\nX|X|O\n-+-+-\nX|X| \n')
@@ -2629,7 +2444,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2640,14 +2454,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2658,7 +2470,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2669,7 +2480,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2680,14 +2490,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2698,7 +2506,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2709,7 +2516,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2720,14 +2526,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2738,7 +2542,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -2749,7 +2552,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2760,14 +2562,12 @@ if move == '5':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-right space.')
             print('O| |O\n-+-+-\nO|X|X\n-+-+-\nX| | \n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X| \n')
@@ -2784,7 +2584,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2815,21 +2614,18 @@ if move == '5':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-right space.')
             print('O|X|O\n-+-+-\n |X| \n-+-+-\nX|O| \n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the right space.')
                 print('O|X|O\n-+-+-\n |X|O\n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2840,7 +2636,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2851,7 +2646,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2862,14 +2656,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the right space.')
                 print('O|X|O\n-+-+-\n |X|O\n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2880,7 +2672,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2891,7 +2682,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2902,14 +2692,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2920,7 +2708,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2931,7 +2718,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -2942,14 +2728,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -2970,7 +2754,6 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the left space.')
                 print('O|X|X\n-+-+-\nO|X| \n-+-+-\nO|O|X\n')
@@ -2992,7 +2775,6 @@ if move == '5':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the left space.')
             print('O| |X\n-+-+-\nO|X| \n-+-+-\nO|X| \n')
@@ -3009,14 +2791,12 @@ if move == '5':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -3027,7 +2807,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -3038,7 +2817,6 @@ if move == '5':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -3059,14 +2837,12 @@ if move == '6':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '1':
         print('O moves on the top-left space.')
         print('O| | \n-+-+-\n | |X\n-+-+-\nX| |O\n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print('O| | \n-+-+-\n |O|X\n-+-+-\nX|X|O\n')
@@ -3083,14 +2859,12 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O| \n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|O|X\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('You have won!')
@@ -3101,7 +2875,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('O|X|X\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('You have won!')
@@ -3126,14 +2899,12 @@ if move == '6':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-left space.')
             print('O| |O\n-+-+-\n | |X\n-+-+-\nX|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |O\n-+-+-\nX|O|X\n-+-+-\nX|X|O\n')
@@ -3155,7 +2926,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-left space.')
                 print('O| |O\n-+-+-\nX|O|X\n-+-+-\nX|X|O\n')
@@ -3177,14 +2947,12 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-center space.')
                 print(' |O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3195,7 +2963,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3210,7 +2977,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('X| |O\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -3222,7 +2988,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -3238,7 +3003,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-left space.')
                 print('O|X|O\n-+-+-\n |O|X\n-+-+-\nX|X|O\n')
@@ -3260,7 +3024,6 @@ if move == '6':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-left space.')
             print('O| | \n-+-+-\nX|O|X\n-+-+-\nX| |O\n')
@@ -3277,7 +3040,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-right space.')
                 print('X| |O\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -3309,21 +3071,18 @@ if move == '6':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-right space.')
             print(' | |O\n-+-+-\nO|X|X\n-+-+-\nX| |O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print(' |O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3334,7 +3093,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -3345,7 +3103,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -3356,14 +3113,12 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print(' |O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3374,7 +3129,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -3385,7 +3139,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -3396,14 +3149,12 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-center space.')
                 print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX| |O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3414,7 +3165,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3425,7 +3175,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -3436,14 +3185,12 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-right space.')
                 print(' |X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -3464,7 +3211,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-left space.')
                 print('O| |X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
@@ -3486,21 +3232,18 @@ if move == '6':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the left space.')
             print('X| |O\n-+-+-\nO| |X\n-+-+-\nX| |O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X| |O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3511,7 +3254,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3522,7 +3264,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|X|O\n-+-+-\nO|O|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3533,7 +3274,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('X| |O\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -3545,7 +3285,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -3561,7 +3300,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X| |O\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -3582,14 +3320,12 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the bottom-center space.')
                 print('X| |O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -3600,7 +3336,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('X|O|O\n-+-+-\nO|X|X\n-+-+-\nX|X|O\n')
                     print('It\'s a tie!')
@@ -3611,7 +3346,6 @@ if move == '6':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -3622,7 +3356,6 @@ if move == '6':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X|X|O\n-+-+-\n |O|X\n-+-+-\nO|X|O\n')
@@ -3644,14 +3377,12 @@ if move == '6':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print(' |X| \n-+-+-\n |O|X\n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the top-left space.')
                 print('O|X| \n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -3693,14 +3424,12 @@ if move == '6':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\n | |X\n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -3742,14 +3471,12 @@ if move == '7':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '2':
         print('O moves on the top-right space.')
         print('X| |O\n-+-+-\n | | \n-+-+-\nO|X| \n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '3':
             print('O moves on the center space.')
             print('X| |O\n-+-+-\n |O| \n-+-+-\nO|X|X\n')
@@ -3766,7 +3493,6 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print('X| |O\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
@@ -3778,7 +3504,6 @@ if move == '7':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -3803,7 +3528,6 @@ if move == '7':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-right space.')
             print('X| |O\n-+-+-\n |O| \n-+-+-\nO|X|X\n')
@@ -3830,7 +3554,6 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('X| |X\n-+-+-\nO|O|O\n-+-+-\nO|X|X\n')
@@ -3842,7 +3565,6 @@ if move == '7':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -3857,7 +3579,6 @@ if move == '7':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print('X| |O\n-+-+-\nX|O| \n-+-+-\nO|X| \n')
@@ -3874,7 +3595,6 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('X| |O\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
@@ -3905,21 +3625,18 @@ if move == '7':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-center space.')
             print('X|O| \n-+-+-\n |X| \n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print('X|O| \n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -3930,7 +3647,6 @@ if move == '7':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '9':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -3941,7 +3657,6 @@ if move == '7':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -3972,7 +3687,6 @@ if move == '7':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print('X| |O\n-+-+-\n |O|X\n-+-+-\nO|X| \n')
@@ -3994,14 +3708,12 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('X| |O\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -4026,7 +3738,6 @@ if move == '7':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print('X|X|O\n-+-+-\n |O| \n-+-+-\nO|X| \n')
@@ -4048,7 +3759,6 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('X|X|O\n-+-+-\n |X| \n-+-+-\nO|O|X\n')
                 print('You have won!')
@@ -4074,21 +3784,18 @@ if move == '7':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the bottom-right space.')
             print('X|O|X\n-+-+-\n | | \n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -4099,7 +3806,6 @@ if move == '7':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -4110,7 +3816,6 @@ if move == '7':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -4121,14 +3826,12 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('X|O|X\n-+-+-\n |O|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -4148,14 +3851,12 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -4176,14 +3877,12 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('X|O|X\n-+-+-\nO|X| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -4204,14 +3903,12 @@ if move == '7':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\n |O|X\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -4232,21 +3929,18 @@ if move == '8':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '1':
         print('O moves on the top-left space.')
         print('O|X|O\n-+-+-\n | | \n-+-+-\nX| | \n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the bottom-right space.')
             print('O|X|O\n-+-+-\n | | \n-+-+-\nX|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|X|O\n')
@@ -4267,14 +3961,12 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('O|X|O\n-+-+-\nX|O|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4285,7 +3977,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4296,7 +3987,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|O|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4307,7 +3997,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|X|O\n')
@@ -4329,14 +4018,12 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the right space.')
                 print('O|X|O\n-+-+-\n |X|O\n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4347,7 +4034,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4358,7 +4044,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4369,7 +4054,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\n |O|X\n-+-+-\nX|X|O\n')
@@ -4386,7 +4070,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nX|O|O\n')
                     print('You have won!')
@@ -4397,14 +4080,12 @@ if move == '8':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the bottom-right space.')
             print(' |X|O\n-+-+-\n |O| \n-+-+-\nX|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print(' |X|O\n-+-+-\nX|O|O\n-+-+-\nX|X|O\n')
@@ -4446,21 +4127,18 @@ if move == '8':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the bottom-center space.')
             print('O|X|O\n-+-+-\n | | \n-+-+-\nX|O|X\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('O|X|O\n-+-+-\nX|O|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4471,7 +4149,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4482,7 +4159,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|O|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4493,7 +4169,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nO|X|X\n')
@@ -4514,7 +4189,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\nX|O| \n-+-+-\nO|X|X\n')
@@ -4526,7 +4200,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nO|O|X\n')
                     print('You have won!')
@@ -4542,14 +4215,12 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the right space.')
                 print('O|X|O\n-+-+-\n |X|O\n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4560,7 +4231,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4571,7 +4241,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4582,7 +4251,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('O|X|O\n-+-+-\nO| |X\n-+-+-\nO|X|X\n')
@@ -4604,7 +4272,6 @@ if move == '8':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print(' |X|O\n-+-+-\nX|O| \n-+-+-\nO|X| \n')
@@ -4621,14 +4288,12 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('O moves on the right space.')
                 print(' |X|O\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|X|O\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('You have won!')
@@ -4658,14 +4323,12 @@ if move == '8':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the bottom-right space.')
             print(' |X|O\n-+-+-\n |X| \n-+-+-\nX|O|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print(' |X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|O\n')
@@ -4677,7 +4340,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -4693,14 +4355,12 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the right space.')
                 print('O|X|O\n-+-+-\n |X|O\n-+-+-\nX|O|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4711,7 +4371,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4722,7 +4381,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4733,7 +4391,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the bottom-right space.')
                 print(' |X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|O\n')
@@ -4745,7 +4402,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nX|X|O\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4761,14 +4417,12 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-left space.')
                 print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4779,7 +4433,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('O|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|X\n')
                     print('It\'s a tie!')
@@ -4790,7 +4443,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '1':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -4801,7 +4453,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the right space.')
                 print('X|X|O\n-+-+-\n |X|O\n-+-+-\nX|O|O\n')
@@ -4823,14 +4474,12 @@ if move == '8':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '1':
             print('O moves on the top-left space.')
             print('O|X|O\n-+-+-\n | |X\n-+-+-\nX| |O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|O\n-+-+-\n |O|X\n-+-+-\nX|X|O\n')
@@ -4847,7 +4496,6 @@ if move == '8':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('O|X|O\n-+-+-\nX|X|X\n-+-+-\nX|O|O\n')
                     print('You have won!')
@@ -4858,7 +4506,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-left space.')
                 print('O|X|O\n-+-+-\n |O|X\n-+-+-\nX|X|O\n')
@@ -4880,7 +4527,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the top-left space.')
                 print('O|X|O\n-+-+-\nX|O|X\n-+-+-\nX| |O\n')
@@ -4902,14 +4548,12 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '1':
                 print('O moves on the left space.')
                 print(' |X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|X|O\n-+-+-\nO|X|X\n-+-+-\nX|O|O\n')
                     print('It\'s a tie!')
@@ -4929,7 +4573,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X|X|O\n-+-+-\n |O|X\n-+-+-\nO|X|O\n')
@@ -4951,7 +4594,6 @@ if move == '8':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the center space.')
             print('X|X|O\n-+-+-\n |O| \n-+-+-\nO|X| \n')
@@ -4973,7 +4615,6 @@ if move == '8':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '3':
                 print('X|X|O\n-+-+-\n |X| \n-+-+-\nO|O|X\n')
                 print('You have won!')
@@ -4999,28 +4640,24 @@ if move == '9':
     print('Enter the number of your move:')
     print('  789\n  456\n  123')
     move = input()
-
     if move == '2':
         print('O moves on the bottom-right space.')
         print(' | |X\n-+-+-\n | | \n-+-+-\nO|X|O\n')
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '4':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\nX| | \n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '5':
                 print('O moves on the right space.')
                 print('O| |X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -5041,14 +4678,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the right space.')
                 print(' |O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5059,7 +4694,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '7':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5070,7 +4704,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5081,7 +4714,6 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -5103,14 +4735,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5121,7 +4751,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5132,7 +4761,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5143,7 +4771,6 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the top-left space.')
                 print('O|X|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
@@ -5164,21 +4791,18 @@ if move == '9':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\n | |O\n-+-+-\nO|X|X\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5199,14 +4823,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5217,7 +4839,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -5228,7 +4849,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5239,7 +4859,6 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('O| |X\n-+-+-\nO|X|O\n-+-+-\nO|X|X\n')
@@ -5251,7 +4870,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -5267,7 +4885,6 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('X| |X\n-+-+-\nO|O|O\n-+-+-\nO|X|X\n')
@@ -5279,7 +4896,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('X|O|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5294,7 +4910,6 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('O|X|X\n-+-+-\nO| |O\n-+-+-\nO|X|X\n')
@@ -5306,7 +4921,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|X|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5322,21 +4936,18 @@ if move == '9':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\nX| | \n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '5':
                 print('O moves on the right space.')
                 print('O| |X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '8':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('You have won!')
@@ -5377,7 +4988,6 @@ if move == '9':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the left space.')
             print('O| |X\n-+-+-\nO|X| \n-+-+-\nO|X| \n')
@@ -5394,14 +5004,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the top-center space.')
                 print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X| \n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5412,7 +5020,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '2':
                     print('O|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5423,7 +5030,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '3':
                     print('O|X|X\n-+-+-\nX|X|O\n-+-+-\nO|O|X\n')
                     print('It\'s a tie!')
@@ -5444,14 +5050,12 @@ if move == '9':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the top-left space.')
             print('O| |X\n-+-+-\n | |X\n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('O| |X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
@@ -5493,21 +5097,18 @@ if move == '9':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the bottom-right space.')
             print('X|O|X\n-+-+-\n | | \n-+-+-\nO|X|O\n')
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '4':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5518,7 +5119,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|X|O\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5529,7 +5129,6 @@ if move == '9':
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5540,14 +5139,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the right space.')
                 print('X|O|X\n-+-+-\n |O|O\n-+-+-\nO|X|X\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|O\n-+-+-\nO|X|X\n')
                     print('It\'s a tie!')
@@ -5567,14 +5164,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5595,14 +5190,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the left space.')
                 print('X|O|X\n-+-+-\nO|X| \n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '6':
                     print('X|O|X\n-+-+-\nO|X|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5623,14 +5216,12 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('X|O|X\n-+-+-\n |O|X\n-+-+-\nO|X|O\n')
                 print('Enter the number of your move:')
                 print('  789\n  456\n  123')
                 move = input()
-
                 if move == '4':
                     print('X|O|X\n-+-+-\nX|O|X\n-+-+-\nO|X|O\n')
                     print('It\'s a tie!')
@@ -5651,7 +5242,6 @@ if move == '9':
         print('Enter the number of your move:')
         print('  789\n  456\n  123')
         move = input()
-
         if move == '2':
             print('O moves on the left space.')
             print('O|X|X\n-+-+-\nO| | \n-+-+-\nO|X| \n')
@@ -5668,7 +5258,6 @@ if move == '9':
             print('Enter the number of your move:')
             print('  789\n  456\n  123')
             move = input()
-
             if move == '2':
                 print('O moves on the center space.')
                 print('O|X|X\n-+-+-\nX|O| \n-+-+-\nO|X|O\n')

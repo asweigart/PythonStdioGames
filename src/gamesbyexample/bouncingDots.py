@@ -7,14 +7,14 @@ import sys, random, time
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 bext.clear()
@@ -34,7 +34,7 @@ for i in range(NUMBER_OF_BALLS):
                   'direction': random.choice(DIRECTIONS)})
 
 try:
-    while True: # Main game loop.
+    while True: # Main program loop.
         oldBallPositions = []
 
         for ball in balls:
@@ -97,5 +97,6 @@ try:
             # Erase all of the balls.
             bext.goto(pos[0], pos[1])
             print(' ', end='')
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

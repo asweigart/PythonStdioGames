@@ -117,13 +117,13 @@ def printField(field):
         print() # Print a newline at the end of the row.
 
 
-print('FLOODFILL')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('This demo shows the floodfill algorithm. Pick a point and a new')
-print('new character to change TODO') # TODO use inkspill's algorithm to make blotches
+print('''FLOODFILL
+By Al Sweigart al@inventwithpython.com
 
-while True:
+This demo shows the floodfill algorithm. Pick a point and a new
+character to change TODO''') # TODO use inkspill's algorithm to make blotches
+
+while True: # Main program loop.
     printField(field)
     print('Enter "[x] [y] [char]" (e.g. "3 3 #", no quotes) or QUIT to quit:')
     response = input()
@@ -138,7 +138,9 @@ while True:
         print('Invalid input. Enter something like "3 3 #" (without quotes).')
         continue
 
-    # Call either the recursive or iterative flood fill algorithms:
+    # (!) Call either the recursive or iterative flood fill algorithms:
     # (They both do the same thing.)
     recursiveFloodFill(field, int(x), int(y), newChar)
     #iterativeFloodFill(field, int(x), int(y), newChar)
+
+    # At this point, go back to the start of the main program loop.

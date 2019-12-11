@@ -13,7 +13,7 @@ def main():
     gameBoard = HintTTTBoard() # Create a TTT board object.
     currentPlayer, nextPlayer = X, O # X goes first, O goes next.
 
-    while True:
+    while True: # Main game loop.
         print(gameBoard.getBoardStr()) # Display the board on the screen.
 
         # Keep asking the player until they enter a number 1-9:
@@ -33,6 +33,7 @@ def main():
             print('The game is a tie!')
             break
         currentPlayer, nextPlayer = nextPlayer, currentPlayer # Swap turns.
+        # At this point, go back to the start of the main program loop.
     print('Thanks for playing!')
 
 class TTTBoard:

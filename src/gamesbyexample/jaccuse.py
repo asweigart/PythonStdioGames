@@ -265,3 +265,4 @@ while True: # Main game loop.
                 knownSuspectsAndItems.append(clues[thePersonHere][thingBeingAskedAbout])
 
     input('Press Enter to continue...')
+    # At this point, go back to the start of the main game loop.

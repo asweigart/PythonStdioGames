@@ -33,6 +33,7 @@ while True: # Ask for a starting number range.
             if beginRange > 0 and endRange > 0 and beginRange < endRange:
                 break
     print('Enter a number range, with two numbers separated by a dash.')
+    # At this point, go back to the start of the loop.
 
 # Keep track of stats:
 shortestLength = None

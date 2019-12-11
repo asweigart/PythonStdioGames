@@ -24,7 +24,7 @@ while True: # Loop to get a year from the user.
     except:
         print('Please enter a numeric year, like 2019.')
         continue
-    break
+    # At this point, go back to the start of the loop.
 
 while True: # Loop to get a month from the user.
     print('Enter the month for the calendar, 1-12:')
@@ -38,6 +38,8 @@ while True: # Loop to get a month from the user.
 
     if 1 <= month <= 12:
         break
+    # At this point, go back to the start of the loop.
+
 
 def getCalendarFor(year, month):
     # Add the month and year label to the calendar:
@@ -60,10 +62,9 @@ def getCalendarFor(year, month):
     verticalLine = (('|' + (' ' * DAY_BOX_SIZE)) * 7) + '|\n'
 
     # Figure out on what day the month starts:
-    #breakpoint()
     calDate = datetime.date(year, month, 1)
 
-    while True: # Loop for each week.
+    while True: # Loop for each week in the month.
         if calDate.month != month:
             break # We are done with this month.
 
@@ -74,7 +75,8 @@ def getCalendarFor(year, month):
             if calDate.month != month:
                 break # We are done with this month.
 
-            calDay = (calDate.weekday() + 1) % 7 # Adjust since weekday() has Mon as 0.
+            # Adjust since weekday() has Mon as 0:
+            calDay = (calDate.weekday() + 1) % 7
             calLabelIndex = calDay * (DAY_BOX_SIZE + 1) + 1
             labeledLine = labeledLine[:calLabelIndex] + str(calDate.day).rjust(2) + labeledLine[calLabelIndex+2:]
 
@@ -82,24 +84,22 @@ def getCalendarFor(year, month):
 
             if calDate.weekday() == 6: # If we've reached Sunday, break and start a new week.
                 break
+            # At this point, go back to the start of the loop.
 
         # At this point, we're done with the labeled line.
         calText += labeledLine
 
         for i in range(DAY_BOX_SIZE // 2):
             calText += verticalLine
+        # At this point, go back to the start of the loop.
 
     # At this point, we're done with the month.
-
     calText += horizontalLine
-
     return calText
 
 
 calText = getCalendarFor(year, month)
-
-# Display the calendar:
-print(calText)
+print(calText) # Display the calendar.
 
 # Save the calendar to a text file:
 calendarFilename = 'calendar_{}_{}.txt'.format(year, month)

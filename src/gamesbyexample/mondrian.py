@@ -7,14 +7,14 @@ import sys, random
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 
@@ -61,7 +61,7 @@ numberOfSegmentsToDelete = int(numberOfSegmentsToDelete * 1.5)
 
 # Randomly select points and try to remove them.
 for i in range(numberOfSegmentsToDelete):
-    while True:
+    while True: # Keep selecting segments to try to delete.
         # Get a random start point on an existing segment:
         startx = random.randint(1, width - 2)
         starty = random.randint(1, height - 2)

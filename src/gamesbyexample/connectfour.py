@@ -57,6 +57,7 @@ def getPlayerMove(playerTile, board):
         for i in range(5, -1, -1):
             if board[(move, i)] == EMPTY_SPACE:
                 return (move, i)
+        # At this point, go back to the start of the loop.
 
 
 def isFull(board):
@@ -104,7 +105,7 @@ By Al Sweigart al@inventwithpython.com
     gameBoard = getNewBoard()
     playerTurn = X_PLAYER
 
-    while True:
+    while True: # Main game loop.
         # Draw board and get player's move:
         drawBoard(gameBoard)
 
@@ -126,6 +127,7 @@ By Al Sweigart al@inventwithpython.com
             playerTurn = O_PLAYER
         elif playerTurn == O_PLAYER:
             playerTurn = X_PLAYER
+        # At this point, go back to the start of the main game loop.
 
 
 if __name__ == '__main__':

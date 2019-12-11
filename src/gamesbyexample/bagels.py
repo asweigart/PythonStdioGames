@@ -75,4 +75,5 @@ while True: # Main game loop.
     print('Do you want to play again? (yes or no)')
     if not input().lower().startswith('y'):
         break
+    # At this point, go back to the start of the main game loop.
 print('Thanks for playing!')

@@ -221,7 +221,7 @@ def main():
     playerTile, computerTile = enterPlayerTile()
     isPlayersTurn = True
 
-    while True:
+    while True: # Main game loop.
         if getValidMoves(mainBoard, 'X') == [] and getValidMoves(mainBoard, 'O') == []:
             break # Neither player can move, so quit.
 
@@ -239,6 +239,7 @@ def main():
             makeMove(mainBoard, computerTile, x, y)
 
         isPlayersTurn = not isPlayersTurn
+        # At this point, go back to the start of the main program loop.
 
     # Display the final board and score.
     drawBoard(mainBoard)

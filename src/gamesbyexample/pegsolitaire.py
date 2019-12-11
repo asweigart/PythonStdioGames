@@ -113,6 +113,7 @@ def getPlayerMove(board):
 
         if space in moveablePegs:
             break # If the space has a moveable peg, break out of the loop.
+        # At this point, go back to the start of the loop.
 
     # Get the possible directions that the selected peg can jump:
     possibleDirections = []

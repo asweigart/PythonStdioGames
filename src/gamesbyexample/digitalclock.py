@@ -11,7 +11,7 @@ import time, os, sys
 import sevseg # Imports our sevseg.py program.
 
 try:
-    while True:
+    while True: # Main program loop.
         # Clear the screen:
         if sys.platform == 'win32':
             os.system('cls') # Clears Windows terminal.
@@ -53,6 +53,7 @@ try:
             time.sleep(0.01)
             if time.localtime().tm_sec != currentTime.tm_sec:
                 break
-
+            # At this point, go back to the start of the loop.
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

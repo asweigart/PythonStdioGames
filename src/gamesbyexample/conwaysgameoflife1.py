@@ -76,3 +76,4 @@ while True: # Main program loop.
         time.sleep(1) # Add a 1 second pause to reduce flickering.
     except KeyboardInterrupt:
         sys.exit() # When Ctrl-C is pressed, end the program.
+    # At this point, go back to the start of the main program loop.

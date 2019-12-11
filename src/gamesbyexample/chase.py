@@ -45,7 +45,7 @@ def getNewBoardAndRobots(width, height, numRobots):
             if board[(x, y)] == ' ': # Only add robots to empty spaces.
                 robots.append((x, y))
                 break
-
+            # At this point, go back to the start of the loop.
     return board, robots
 
 
@@ -58,6 +58,7 @@ def getStartingPlayerPosition(board, robots):
         if board[(x, y)] == ' ' and (x, y) not in robots:
             # Only add the player to an empty space.
             return (x, y)
+        # At this point, go back to the start of the loop.
 
 
 def drawBoard(board, robots, playerPosition):
@@ -181,10 +182,11 @@ def getPlayerMove(board, robots, playerPosition):
                     'Z': (x - 1, y + 1),
                     'A': (x - 1, y + 0),
                     'S': (x, y)         }[move]
+        # At this point, go back to the start of the loop.
 
-print('CHASE')
-print('By Al Sweigart al@inventwithpython.com')
-print()
+print('''CHASE
+By Al Sweigart al@inventwithpython.com
+''')
 
 # Set up a new game:
 theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
@@ -204,3 +206,4 @@ while True: # Main game loop.
             drawBoard(theBoard, theRobots, playerPosition)
             print('You got caught by a robot!')
             sys.exit()
+    # At this point, go back to the start of the main game loop.

@@ -188,6 +188,7 @@ def getPlayerMove():
             return move
         else:
             print('Enter one of "W", "A", "S", "D", or "Q".')
+        # At this point, go back to the start of the loop.
 
 
 def addTwoToBoard(board):
@@ -227,3 +228,4 @@ while True: # Main game loop.
         drawBoard(gameBoard)
         print('Game Over - Thanks for playing!')
         sys.exit()
+    # At this point, go back to the start of the main game loop.

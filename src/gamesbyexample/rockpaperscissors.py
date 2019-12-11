@@ -4,20 +4,21 @@ __version__ = 1
 
 import random, time, sys
 
-print('ROCK, PAPER, SCISSORS')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('- Rock beats scissors.')
-print('- Paper beats rocks.')
-print('- Scissors beats paper.')
+print('''ROCK, PAPER, SCISSORS
+By Al Sweigart al@inventwithpython.com
+
+- Rock beats scissors.
+- Paper beats rocks.
+- Scissors beats paper.
+''')
 
 # These variables keep track of the number of wins, losses, and ties.
 wins = 0
 losses = 0
 ties = 0
 
-while True: # The main game loop.
-    while True: # Keep asking until player enters R/P/S/Q.
+while True: # Main game loop.
+    while True: # Keep asking until player enters R, P, S, or Q.
         print('{} Wins, {} Losses, {} Ties'.format(wins, losses, ties))
         print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
         playerMove = input().upper()
@@ -28,6 +29,7 @@ while True: # The main game loop.
             break
         else:
             print('Type one of R, P, S, or Q.')
+        # At this point, go back to the start of the loop.
 
     # Display what the player chose:
     if playerMove == 'R':
@@ -82,3 +84,4 @@ while True: # The main game loop.
     elif playerMove == 'SCISSORS' and computerMove == 'ROCK':
         print('You lose!')
         losses = losses + 1
+    # At this point, go back to the start of the main game loop.

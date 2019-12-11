@@ -9,14 +9,14 @@ import random, time, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 WIDTH = 79
@@ -59,7 +59,7 @@ for i in range(NUMBER_OF_FIREWALLS):
 
 bext.clear()
 try:
-    while True:
+    while True: # Main program loop.
         # Draw the board data structure.
         bext.goto(0, 0)
         for y in range(board['height']):
@@ -111,5 +111,6 @@ try:
         board = nextBoard
 
         time.sleep(PAUSE_LENGTH)
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

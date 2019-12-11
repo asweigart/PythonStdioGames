@@ -38,7 +38,7 @@ def drawBranch(startPosition, direction, branchLength):
 
 try:
     seed = 0
-    while True:
+    while True: # Main program loop.
         # Get psuedorandom numbers for the branch properties:
         random.seed(seed)
         LEFT_ANGLE     = random.randint(10,  30)
@@ -59,5 +59,6 @@ try:
         time.sleep(2)
 
         seed = seed + 1 # Use the next number for the next seed.
+        # At this point, go back to the start of the main program loop.
 except turtle.Terminator:
     pass # Do nothing when the turtle window is closed.

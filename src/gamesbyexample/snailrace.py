@@ -23,6 +23,7 @@ while True: # Keep asking until the player enters a number.
         if 1 < numSnailsRacing <= MAX_NUM_SNAILS:
             break
     print('Enter a number between 2 and', MAX_NUM_SNAILS)
+    # At this point, go back to the start of the loop.
 
 # Enter the names of each snail:
 snailNames = [] # List of the string snail names.
@@ -39,6 +40,7 @@ for i in range(1, numSnailsRacing + 1):
             print('Choose a name that has not already been used.')
         else:
             break # The entered name is acceptable.
+        # At this point, go back to the start of the loop.
 
     snailNames.append(name)
 
@@ -53,8 +55,7 @@ for snailName in snailNames:
 
 time.sleep(1.5)
 
-while True:
-
+while True: # Main program loop.
     for i in range(random.randint(1, numSnailsRacing // 2)):
         randomSnailName = random.choice(snailNames)
         snailProgress[randomSnailName] += 1
@@ -72,6 +73,4 @@ while True:
         print((' ' * spaces) + snailName)
 
         print(('.' * snailProgress[snailName]) + '@v')
-
-
-
+    # At this point, go back to the start of the main program loop.

@@ -33,6 +33,7 @@ while True: # Main program loop.
         if response.isdecimal() and int(response) > 0:
             break
         print('You must enter an integer greater than 0.')
+        # At this point, go back to the start of the loop.
 
     n = int(response)
     length = 1
@@ -51,3 +52,4 @@ while True: # Main program loop.
     print('It seems that the starting number', response, 'produces a')
     print('Collatz sequence that is', length, 'numbers long.')
     print()
+    # At this point, go back to the start of the main game loop.

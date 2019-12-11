@@ -185,3 +185,4 @@ while True: # Main game loop.
             currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
             undoStack = [copy.copy(currentLevel)]
             break # Don't carry out any remaining moves.
+    # At this point, go back to the start of the main game loop.

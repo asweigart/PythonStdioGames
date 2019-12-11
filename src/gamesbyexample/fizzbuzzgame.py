@@ -4,7 +4,7 @@ __version__ = 1
 
 import time, sys
 
-print("""FIZZBUZZ GAME
+print('''FIZZBUZZ GAME
 By Al Sweigart al@inventwithpython.com
 
 Starting with 1, enter increasing numbers.
@@ -15,13 +15,13 @@ the number of is a multiple of 3 and 5, type "fizz buzz".
 A doom clock is counting down. Entering correct responses gives you
 more time. How long can you go?
 
-Press Enter to start...""")
+Press Enter to start...''')
 input()
 
 number = 1
 doomClock = time.time() + 10 # Player starts with 10 seconds.
 
-while True:
+while True: # Main game loop.
     # Determine the correct response:
     if number % 3 == 0 and number % 5 == 0:
         correctResponse = 'fizzbuzz'
@@ -58,3 +58,4 @@ while True:
     print()
 
     number += 1 # Increment the number.
+    # At this point, go back to the start of the main game loop.

@@ -9,10 +9,10 @@ print('''MULTIPLICATIVE PERSISTENCE
 By Al Sweigart al@inventwithpython.com
 ''')
 
-while True:
+while True: # Main program loop.
     print('Try to get the longest multiplicative persistence chain possible!')
     print('(Try 277777788888899, which has the longest known chain length.')
-    while True:
+    while True: # Keep asking until the player enters a number.
         print('Enter a number (or "quit" to quit):')
         try:
             response = input()
@@ -24,7 +24,7 @@ while True:
         break
 
     chainLength = 0
-    while number > 9: # Keep looping as long as number is 2 or more digits.
+    while number > 9: # Loop as long as number is 2 or more digits.
         chainLength += 1
         print(number, end='', flush=True)
         time.sleep(0.2)
@@ -44,9 +44,9 @@ while True:
 
         print(number, flush=True)
         time.sleep(0.6)
+        # At this point, go back to the start of the loop.
 
     print(number)
     print('Length of', response, 'chain:', chainLength)
     print()
-
-
+    # At this point, go back to the start of the main program loop.

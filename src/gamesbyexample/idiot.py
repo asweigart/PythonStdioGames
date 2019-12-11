@@ -10,5 +10,6 @@ while True: # Main program loop.
     if response.lower() == 'yes' or response.lower() == 'y':
         continue # If "yes", continue to the start of this loop.
     print('"{}" is not a valid yes/no response.'.format(response))
+    # At this point, go back to the start of the main program loop.
 
 print('Thank you. Have a nice day!')

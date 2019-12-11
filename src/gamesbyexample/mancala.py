@@ -157,6 +157,7 @@ By Al Sweigart al@inventwithpython.com
             drawBoard(gameBoard)
             print('There is a tie!')
             break
+        # At this point, go back to the start of the main game loop.
 
 
 # If the player runs this program (instead of importing it), run the game:

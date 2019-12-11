@@ -48,3 +48,4 @@ while True: # Main program loop.
         print('(Copied to clipboard.)')
     except:
         pass
+    # At this point, go back to the start of the main program loop.

@@ -148,3 +148,4 @@ while True: # Main game loop.
             print('You have run out of guesses!')
             print('The word was "{}"'.format(secretWord))
             break
+    # At this point, go back to the start of the main game loop.

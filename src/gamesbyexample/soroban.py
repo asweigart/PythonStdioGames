@@ -77,7 +77,7 @@ def main():
 
     abacusNumber = 0 # This is the number represented on the abacus.
 
-    while True:
+    while True: # Main program loop.
         drawAbacus(abacusNumber)
         drawControls()
 
@@ -135,6 +135,7 @@ def main():
         # The abacus can't show negative numbers:
         if abacusNumber < 0:
             abacusNumber = 0 # Change any negative numbers to 0.
+        # At this point, go back to the start of the main program loop.
 
 if __name__ == '__main__':
     main()

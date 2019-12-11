@@ -7,14 +7,14 @@ import random, time, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 # Setup the constants:
@@ -56,8 +56,8 @@ for wall in ALL_WALLS:
     bext.goto(wall[X], wall[Y])
     print(WALL, end='')
 
-try:
-    while True:
+while True: # Main program loop.
+    try:
         allSand = list(INITIAL_SAND)
         random.shuffle(allSand) # Mix up the order that the grains of sand are simulated.
 
@@ -66,7 +66,7 @@ try:
             bext.goto(sand[X], sand[Y])
             print(SAND, end='')
 
-        while True: # Main simulation loop.
+        while True: # Keep looping until sand has run out.
             # Simulate all sand in the sandspace:
             #allSand.sort(key=lambda v: v[Y], reverse=True) # Sort from bottom sand up.
             random.shuffle(allSand) # Random order of grain simulation.
@@ -152,5 +152,7 @@ try:
                     bext.goto(sand[X], sand[Y])
                     print(' ', end='')
                 break # Break out of main simultion loop to reset the hour glass.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+            # At this point, go back to the start of the loop.
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.
+    # At this point, go back to the start of the main program loop.

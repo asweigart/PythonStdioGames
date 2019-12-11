@@ -4,11 +4,11 @@ __version__ = 1
 
 import math, sys
 
-print('FACTORIZATION')
-print('by Al Sweigart al@inventwithpython.com')
-print()
+print('''FACTOR FINDER
+By Al Sweigart al@inventwithpython.com
+''')
 
-while True:
+while True: # Main program loop.
     print()
     print('Enter a number larger than zero to factor (or "quit" to quit):')
     response = input()
@@ -35,3 +35,4 @@ while True:
         factors[i] = str(factor)
 
     print(', '.join(factors))
+    # At this point, go back to the start of the loop.

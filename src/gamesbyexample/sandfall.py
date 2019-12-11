@@ -20,7 +20,7 @@ sources = [{'x': WIDTH // 2, 'y': 0, 'frequency': random.randint(2, 6), 'next': 
            {'x': 30, 'y': 0, 'frequency': random.randint(2, 6), 'next': 1}]
 sandspace = set() # Contains (x, y) tuples for each piece of sand.
 
-while True:
+while True: # Main program loop.
     # Clear the previously drawn text:
     if sys.platform == 'win32':
         os.system('cls') # Clears Windows terminal.
@@ -67,5 +67,4 @@ while True:
         print()
 
     time.sleep(PAUSE_LENGTH)
-
-
+    # At this point, go back to the start of the main program loop.

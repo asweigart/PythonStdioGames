@@ -11,14 +11,14 @@ import math, time, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 BLOCK = chr(9608) # Character 9608 is '█'
@@ -158,7 +158,7 @@ step = 0
 
 bext.clear()
 try:
-    while True:
+    while True: # Main program loop.
         # Change color every 15 steps:
         if step % 15 == 0:
             bext.fg('random')
@@ -207,5 +207,6 @@ try:
         # Print quit message:
         bext.goto(0, HEIGHT - 1)
         print('Press Ctrl-C to quit.', end='')
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

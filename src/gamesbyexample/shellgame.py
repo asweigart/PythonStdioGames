@@ -13,7 +13,7 @@ input()
 
 CUPS = ['diamond', 'pocket lint', 'nothing']
 
-while True:
+while True: # Main game loop.
     print()
     print('Shuffling the cups', end='')
     random.shuffle(CUPS) # This happens instantly.
@@ -46,3 +46,4 @@ while True:
     if not response.startswith('Y'):
         print('Thanks for playing!')
         sys.exit()
+    # At this point, go back to the start of the main game loop.

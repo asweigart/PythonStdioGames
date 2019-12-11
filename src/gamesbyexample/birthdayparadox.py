@@ -44,6 +44,7 @@ while True: # Keep asking until the user enters a valid amount.
     if response.isdecimal() and (0 < int(response) <= 100):
         number = int(response)
         break # User has entered a valid amount.
+    # At this point, go back to the start of the loop.
 print()
 
 # Generate and display the birthdays:

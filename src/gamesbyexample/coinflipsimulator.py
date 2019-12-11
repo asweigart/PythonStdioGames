@@ -14,6 +14,7 @@ while True:
     if response.isdecimal():
         numberOfFlips = int(response)
         break
+    # At this point, go back to the start of the loop.
 
 streakStats = {} # Keys are streak lengths, values are frequency.
 for i in range(numberOfFlips):

@@ -7,14 +7,14 @@ import time, math, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 HOURS_RADIUS = 4
@@ -104,8 +104,6 @@ def line(x1, y1, x2, y2):
 try:
     bext.clear()
     while True: # Main program loop.
-
-
         # Get the current time from the computer's clock:
         currentTime = time.localtime()
         h = currentTime.tm_hour % 12 # Use 12-hour clock, not 24.
@@ -161,6 +159,7 @@ try:
         for x, y in hourHandPoints:
             bext.goto(x, y)
             print(' ', end='')
+    # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.
 

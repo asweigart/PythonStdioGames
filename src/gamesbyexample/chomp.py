@@ -69,6 +69,7 @@ while True: # Main game loop.
             break
 
         print('Select a piece that hasn\'t already been eaten.')
+        # At this point, go back to the start of the loop.
 
     # Determine the other player's mark.
     if turn == 'X':
@@ -89,3 +90,4 @@ while True: # Main game loop.
 
     # Switch turns:
     turn = otherPlayer
+    # At this point, go back to the start of the main game loop.

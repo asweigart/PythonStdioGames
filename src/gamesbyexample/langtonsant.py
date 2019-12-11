@@ -8,14 +8,14 @@ import random, copy, sys
 try:
     import bext
 except ImportError:
-    print("""This program requires the bext module, which you can install
+    print('''This program requires the bext module, which you can install
 by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
 or a Command Prompt window (on Windows) and running:
 
-    python -m pip install --user bext""")
+    python -m pip install --user bext''')
     sys.exit()
 
 
@@ -40,7 +40,8 @@ for i in range(NUMBER_OF_ANTS):
     ants.append(ant)
 
 try:
-    while len(ants) > 0: # Keep running the simulation as long as we have ants.
+    # Keep running the simulation as long as we have ants:
+    while len(ants) > 0: # Main program loop.
         # Draw the board data structure:
         bext.goto(0, 0)
         for y in range(board['height']):
@@ -88,10 +89,12 @@ try:
             if ant['direction'] == 'E':
                 ant['x'] += 1
 
-            # If the ant goes past the edge of the screen, wrap around to other side.
+            # If the ant goes past the edge of the screen,
+            # it should wrap around to other side.
             ant['x'] = ant['x'] % WIDTH - 1
             ant['y'] = ant['y'] % HEIGHT - 1
 
         board = nextBoard
+        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.
