@@ -2,12 +2,7 @@
 
 A collection of games (with source code) to use for example programming lessons. Written in Python 3. Click on the **src** folder to view all of the programs.
 
-Some of them may require additional modules to run. You can use pip on Windows or pip3 on macOS/Linux to install them:
-
-* pip install bext
-* pip install pyperclip
-* pip install pyrect
-* pip install pybresenham
+Eventually, I will put all of these games into a launcher application that can be installed with `pip install gamesbyexample`.
 
 NOTE: Currently I'm not accepting pull requests at this time, but feel free to leave comments or send suggestions to al@inventwithpython.com
 
@@ -47,7 +42,7 @@ Additional guidelines include:
 * Use jsdifflib to create online diffs. *This is an easy way for students to find their own typos when copying the code. An example is here: https://inventwithpython.com/invent4thed/diff/*
 * Use `assert` statements to catch common typos the student makes when typing in the code, especially for constants that they may modify.
 * Use Python 3. *The only time Python 2 is appropriate to use is when there's a large existing codebase. But this is for new programmers working on greenfield projects.*
-* Stick to characters in CP437 "extended ASCII" encoding. *Windows' command line is the limiting factor here; it can't display all UTF-8 characters.*
+* Stick to characters in WGL4 character repertoire, which is basically CP 1252, code pages for Cyrillic/Greek/Turkish/Baltic characters, and the MS-DOS era CP437 "extended ASCII" encoding. *Windows' command line is the limiting factor here; it can't display all UTF-8 characters.*
 * The source code must be typeable. *Don't put box-drawing or extended ascii characters directly into the source code, but rather make chr() calls instead to acquire these characters.*
 * Time can be a factor, even if the programs aren't real-time. *You can check for time or add pauses in between calls to `input()`, but note that you'll never be able to interrupt when the user is typing.*
 * The `pyperclip` module can be used to interact with the clipboard. *Large amounts of text can be input-ed into or output-ed from the program using the clipboard.*

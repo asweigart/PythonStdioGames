@@ -7,7 +7,7 @@ __version__ = 1
 import random, time, sys
 
 MAX_NUM_SNAILS = 8
-MAX_NAME_LENGTH = 12
+MAX_NAME_LENGTH = 20
 FINISH_LINE = 40 # (!) Try modifying this number.
 
 print('''SNAIL RACE
@@ -27,15 +27,12 @@ while True: # Keep asking until the player enters a number.
 
 # Enter the names of each snail:
 snailNames = [] # List of the string snail names.
-print('(Names must be at most', MAX_NAME_LENGTH, 'characters.)')
 for i in range(1, numSnailsRacing + 1):
     while True: # Keep asking until the player enters a valid name.
         print('Enter snail #' + str(i) + "'s name:")
         name = input()
         if len(name) == 0:
             print('Please enter a name.')
-        elif len(name) > MAX_NAME_LENGTH:
-            print('Choose a shorter name.')
         elif name in snailNames:
             print('Choose a name that has not already been used.')
         else:
@@ -49,7 +46,7 @@ print('START' + (' ' * (FINISH_LINE - len('START')) + 'FINISH'))
 print('|' + (' ' * (FINISH_LINE - 1) + '|'))
 snailProgress = {}
 for snailName in snailNames:
-    print(snailName)
+    print(snailName[:MAX_NAME_LENGTH])
     print('@v')
     snailProgress[snailName] = 0
 
@@ -70,7 +67,7 @@ while True: # Main program loop.
 
     for snailName in snailNames:
         spaces = snailProgress[snailName]
-        print((' ' * spaces) + snailName)
+        print((' ' * spaces) + snailName[:MAX_NAME_LENGTH])
 
         print(('.' * snailProgress[snailName]) + '@v')
     # At this point, go back to the start of the main program loop.
