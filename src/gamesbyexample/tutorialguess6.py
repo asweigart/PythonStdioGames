@@ -1,5 +1,6 @@
 # Tutorial: Guess the Number, by Al Sweigart al@inventwithpython.com
 # Part 6 of a tutorial to make a "Guess the Number" game, bit by bit.
+
 # Try copying the code in this program on your own and running the
 # program before moving on to part 7. (You don't have to copy the
 # comments.)

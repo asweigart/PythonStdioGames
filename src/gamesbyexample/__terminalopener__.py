@@ -12,7 +12,12 @@ FOLDER_OF_THIS_FILE = os.path.dirname(os.path.abspath(__file__))
 CRASH_DETECTOR = os.path.join(FOLDER_OF_THIS_FILE, '__crashdetector__.py')
 
 # First, this script runs the crash detector to run the Python script:
-subprocess.call([sys.executable, CRASH_DETECTOR, sys.argv[1], sys.argv[2]])
+exitCode = subprocess.call([sys.executable, CRASH_DETECTOR, sys.argv[1], sys.argv[2]])
+
+
+# Pygame games only leave the terminal window open if there was no crash.
+if 'pygame_games/' in programToLaunch and exitCode == 0:
+    sys.exit()
 
 # Second, this script runs a shell so that the terminal window stays open
 # after the programToLaunch Python script terminates. (Otherwise, any

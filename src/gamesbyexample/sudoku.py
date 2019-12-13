@@ -146,7 +146,7 @@ with open('sudokupuzzles.txt') as puzzleFile:
 for i, puzzle in enumerate(puzzles):
     puzzles[i] = puzzle.strip()
 
-grid = SudokuGrid('53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79')#random.choice(puzzles))
+grid = SudokuGrid(random.choice(puzzles))
 
 while True: # Main game loop.
     grid.display()

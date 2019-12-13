@@ -1,7 +1,7 @@
 # Maze Runner HTML, by Al Sweigart al@inventwithpython.com
 # Move around a maze and try to escape... in 3D and IN YOUR WEB BROWSER!
 __version__ = 1
-import sys, os, shutil
+import sys, os, shutil, webbrowser
 
 # Maze file constants:
 WALL = '#'
@@ -21,8 +21,17 @@ By Al Sweigart al@inventwithpython.com
 
 # Get the maze file's filename from the user:
 while True:
-    print('Enter the filename of the maze (or "quit"):')
+    print('Enter the filename of the maze (or LIST or QUIT):')
     filename = input()
+
+    # List all the maze files in the current folder:
+    if filename.upper() == 'LIST':
+        print('Maze files found in', os.getcwd())
+        for fileInCurrentFolder in os.listdir():
+            if (fileInCurrentFolder.startswith('maze') and
+            fileInCurrentFolder.endswith('.txt')):
+                print('  ', fileInCurrentFolder)
+        continue
 
     if filename.upper() == 'QUIT':
         sys.exit()
@@ -30,22 +39,6 @@ while True:
     if os.path.exists(filename):
         break
     print('There is no file named', filename)
-
-# Get the folder name to save the files to:
-while True:
-    print('Enter the folder to save the maze files to:')
-    outputFolderName = input()
-
-    if os.path.exists(outputFolderName):
-        if os.path.isfile(outputFolderName):
-            print('A file named {} already exists.'.format(outputFolderName))
-            continue
-        else:
-            print('A folder named {} already exists. Use this name anyway? Y/N'.format(outputFolderName))
-            useAnyway = input().upper()
-            if not useAnyway.startswith('Y'):
-                continue
-    break
 
 # Load the maze from a file:
 mazeFile = open(filename)
@@ -76,6 +69,9 @@ assert exitx != None and exity != None, 'Missing exit point in maze file.'
 
 
 # Generate HTML files:
+
+# Cut off everything after the last dot (i.e. ".txt")
+outputFolderName = filename[:filename.rfind('.')]
 
 # TODO, file format is: "3_12_NORTH.html"
 numFilesWritten = 0
@@ -184,6 +180,8 @@ for x in range(WIDTH):
 
 
 print('Done. {} files written.'.format(numFilesWritten))
+print('Opening browser...')
+webbrowser.open(os.path.join(outputFolderName, 'index.html'))
 
 
 # TODO - add exit logic, obfuscate the URLs

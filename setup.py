@@ -31,7 +31,7 @@ setup(
     package_dir={'': 'src'},
     test_suite='tests',
     include_package_data=True,
-    install_requires=['bext', 'pyperclip', 'windows-curses;platform_system=="Windows"'],
+    install_requires=['bext', 'pyperclip', 'windows-curses;platform_system=="Windows"', 'pygame'],
     keywords='games',
     classifiers=[
         'License :: OSI Approved :: MIT License',

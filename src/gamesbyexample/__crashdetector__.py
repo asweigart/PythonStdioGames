@@ -3,10 +3,17 @@ import sys, os, datetime, re
 launcherVersion = sys.argv[1]
 programToLaunch = sys.argv[2]
 
+# Change the cwd to the folder that contains the program.
+os.chdir(os.path.dirname(programToLaunch))
+
+if 'pygame_games/' in programToLaunch:
+    print('(On Raspberry Pis, close this window to shut down the game.')
+
+
 try:
-  exitCode = os.system(sys.executable + ' ' + programToLaunch)
+    exitCode = os.system(sys.executable + ' ' + programToLaunch)
 except KeyboardInterrupt:
-  exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
+    exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
 
 if exitCode != 0:
 
@@ -39,3 +46,4 @@ In your issue report, copy/paste the above "Traceback" along with this text:
          Timestamp: {}
 
 '''.format(programToLaunch, programVersion, launcherVersion, sys.platform, sys.version, sys.executable, datetime.datetime.now()))
+    sys.exit(1) # Exit code of 1 signals to __terminalopener__.py to leave it open even if we were running a Pygame game.

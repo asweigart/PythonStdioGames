@@ -12,6 +12,9 @@ FINISH_LINE = 40 # (!) Try modifying this number.
 
 print('''SNAIL RACE
 By Al Sweigart al@inventwithpython.com
+
+    @v <-- snail
+
 ''')
 
 # Ask how many snails to race:
