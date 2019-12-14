@@ -83,8 +83,8 @@ def isMatchingParens(strToCheck):
 print("""MATCHING PARENTHESES ALGORITHM
 By Al Sweigart al@inventwithpython.com
 
-This program demonstrates an algorithm for detecting matching parentheses,
-curly braces, and square brackets in a string. For example:
+This program demonstrates an algorithm for detecting matching
+parentheses, curly braces, and square brackets in a string. For example:
 
     MATCHING     NOT MATCHING
     ()           )(
@@ -92,17 +92,17 @@ curly braces, and square brackets in a string. For example:
     ({[]})       ({)}
     {[][](())}   {}}
 
-The algorithm works by using a "stack" data structure, where values are only
-added or removed from the "top" of the stack.
+The algorithm works by using a "stack" data structure, where values are
+only added or removed from the "top" of the stack.
 
-To check a string, we loop over each character in order. Opening characters
-are "pushed" (added) to the stack, while closing characters "pop" (remove)
-the character off of the stack (but only if it's matches the opening
-character at the top of the stack.)
-The string has matching parentheses/braces/brackets if the stack is empty at
-the end of the string.
+To check a string, we loop over each character in order. Opening
+characters are "pushed" (added) to the stack, while closing characters
+"pop" (remove) the character off of the stack (but only if it's matches
+the opening character at the top of the stack.)
+The string has matching parentheses/braces/brackets if the stack is empty
+at the end of the string.
 
-Enter the string to check:""")
+Enter the string to check, for example {[][](())}:""")
 response = input()
 print()
 

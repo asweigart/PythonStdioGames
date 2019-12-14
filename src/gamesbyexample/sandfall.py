@@ -1,5 +1,5 @@
 # Sand Fall, by Al Sweigart al@inventwithpython.com
-# A falling sand animation.
+# A falling sand animation. (Must be run from a Terminal window.)
 # Inspired by https://asciinema.org/a/6515
 __version__ = 1
 
