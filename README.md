@@ -1,8 +1,10 @@
 # PythonStdioGames
 
-A collection of games (with source code) to use for example programming lessons. Written in Python 3. Click on the **src** folder to view all of the programs.
+INSTALL: `pip install gamesbyexample`
 
-Eventually, I will put all of these games into a launcher application that can be installed with `pip install gamesbyexample`.
+RUN LAUNCHER: `python -m gamesbyexample`
+
+A collection of games (with source code) to use for example programming lessons. Written in Python 3. Click on the **src** folder to view all of the programs.
 
 NOTE: Currently I'm not accepting pull requests at this time, but feel free to leave comments or send suggestions to al@inventwithpython.com
 
