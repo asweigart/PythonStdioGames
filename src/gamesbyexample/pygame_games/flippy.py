@@ -1,5 +1,5 @@
 # Flippy (a Reversi clone), by Al Sweigart al@inventwithpython.com
-# (Pygame) Play against the computer and try to flip their tiles.
+# (Requires Pygame) Play against the computer and try to flip their tiles.
 
 
 __version__ = 1

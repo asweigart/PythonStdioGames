@@ -1,5 +1,5 @@
 # Four-In-A-Row, by Al Sweigart al@inventwithpython.com
-# (Pygame) Play against the computer, dropping tiles to connect four.
+# (Requires Pygame) Play against the computer, dropping tiles to connect four.
 
 
 __version__ = 1

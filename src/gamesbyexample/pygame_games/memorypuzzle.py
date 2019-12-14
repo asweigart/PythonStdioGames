@@ -1,5 +1,5 @@
 # Memory Puzzle, by Al Sweigart al@inventwithpython.com
-# (Pygame) A simple memory matching game.
+# (Requires Pygame) A simple memory matching game.
 
 
 __version__ = 1

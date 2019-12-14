@@ -80,103 +80,131 @@ Completed Programs in This Collection
 
 *Alphabetize Word Quiz* - A time-based quiz game to see how fast you can alphabetize words.
 
-*Analog Clock* - An analog clock animation.
+*Analog Clock* - An analog clock animation. Press Ctrl-C to stop.
 
-*Bagels* - A deductive logic game.
+*Bagels* - A deductive logic game where you must guess a number based on clues.
 
-*Birthday Paradox Simulation* - Explore the mathematics of the "Birthday Paradox".
+*Birthday Paradox Simulation* - Explore the mathematics of the "Birthday Paradox". More info at https://en.wikipedia.org/wiki/Birthday_problem
 
-*Blackjack* - A card game also known as 21.
+*Blackjack* - A card game also known as 21. More info at: https://en.wikipedia.org/wiki/Blackjack
 
-*Bouncing Ball* - A bouncing ball animation.
+*Bouncing Ball* - A bouncing ball animation. Press Ctrl-C to stop.
 
-*Bouncing Lines* - A bouncing line animation.
+*Bouncing Lines* - A bouncing line animation. Press Ctrl-C to stop.
 
 *Calendar Maker* - Create monthly calendars, saved to a text file and fit for printing.
 
-*Chance Checkers* - Checkers, but you can move 3 random checkers per turn.
+*Chance Checkers* - Checkers, but you can move 3 random checkers per turn. These checkers are randomly decided, and can be the player's own checkers or their opponents', but you can't move your opponents' promoted checkers. In this version, capturing is not mandatory.
 
 *Daleks* - Try to get the robots to crash into each other.
 
-*Checkers* - The classic checkers board game.
+*Checkers* - The classic checkers board game. In this version, capturing is not mandatory.
 
-*Chomp* - A dangerously delicious logic game.
+*Chomp* - A dangerously delicious logic game. Inspired by a Frederik Schuh and David Gale puzzle, published by Martin Gardner in Scientific American (January 1973) More info at: https://en.wikipedia.org/wiki/Chomp
+
+*Clickbait Headline Generator* - A clickbait headline generator for your soulless content farm.
 
 *Coin Flip Simulator* - Simulate a large number of coin flips.
 
+*Collatz Sequence* - Generates numbers for the Collatz sequence, given a starting number.
+
+*Collatz Sequence Stats* - Finds out how long various Collatz Sequences are.
+
 *Connect Four* - A board game to get four tiles in a row.
 
-*Conway's Game of Life* - The classic cellular automata simulation.
+*Conway's Game of Life* - The classic cellular automata simulation. Press Ctrl-C to stop. More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
-*Conway's Game of Life (Terminal)* - The classic cellular automata simulation.
+*Conway's Game of Life (Terminal)* - The classic cellular automata simulation. Press Ctrl-C to stop. More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
-*Countdown* - Show a countdown timer animation using a seven-segment display.
+*Countdown* - Show a countdown timer animation using a seven-segment display. Press Ctrl-C to stop. More info at https://en.wikipedia.org/wiki/Seven-segment_display Requires our sevseg.py program.
 
-*Diagonal Maze* - Prints out a random, diagonal maze.
+*Diagonal Maze* - Prints out a random, diagonal maze. Inspired by the 10 PRINT CHR$(205.5+RND(1)); : GOTO 10 program.
 
 *Dice Roller* - Simulates dice rolls using the Dungeons & Dragons notation.
 
-*Digital Clock* - Display a digital clock of the current time with a seven-segment display.
+*Digital Clock* - Display a digital clock of the current time with a seven-segment display. Press Ctrl-C to stop. More info at https://en.wikipedia.org/wiki/Seven-segment_display Requires our sevseg.py program.
 
-*DNA* - A simple animation of a DNA double-helix.
+*DNA* - A simple animation of a DNA double-helix. Press Ctrl-C to stop. Thanks to matoken for inspiration: https://asciinema.org/a/155441
 
-*Eeny-Meeny-Miny-Moe* - An elimination game for multiple players.
+*Eeny-Meeny-Miny-Moe* - An elimination game for multiple players. Press Ctrl-C to stop. More info at https://en.wikipedia.org/wiki/Eeny,_meeny,_miny,_moe More info at https://en.wikipedia.org/wiki/Josephus_problem
 
 *Etch a Sketch* - Draw a trailing line on the screen.
 
 *Factorization* - Find all the factors of a number.
 
-*Fireflies* - A beautiful animation of fireflies.
+*Fireflies* - A beautiful animation of fireflies. Press Ctrl-C to stop.
 
-*Fish Tank* - A peaceful animation of a fish tank.
+*Fish Tank* - A peaceful animation of a fish tank. Press Ctrl-C to stop.
 
-*FizzBuzz Calculation* - Calculates and prints the answers for the fizz buzz programming problem.
+*FizzBuzz Calculation* - Calculates the answers for the fizz buzz programming problem.
 
 *FizzBuzz Game* - A number game where you also race against the clock.
 
-*Flood Fill* - An example of a "flood fill" algorithm.
+*Flippy (a Reversi clone)* - (Requires Pygame) Play against the computer and try to flip their tiles.
+
+*Flood Fill* - An example of a "flood fill" algorithm. This is a basic demo of both the recursive and iterative floodfill algorithms. This algorithm is commonly used in "fill tools" in graphics programs like MS Paint or Photoshop. This algorithm is also used in the floodit.py game.
 
 *Flood It!* - A colorful game where you try to fill the board with a single color.
 
-*Forest Fire Sim* - A simulation of fires spreading in a growing forest.
+*Forest Fire Sim* - A simulation of fires spreading in a growing forest. Press Ctrl-C to stop. Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
 
-*2048 Game* - A sliding tile game to combine exponentially-increasing numbers.
+*Four-In-A-Row* - (Requires Pygame) Play against the computer, dropping tiles to connect four.
+
+*Nonuniform Fractal Tree Drawer* - Draws nonuniform fractal trees with turtle graphics.
+
+*Fractal Tree Drawer* - Draws fractal trees with turtle graphics.
+
+*2048 Game* - A sliding tile game to combine exponentially-increasing numbers. Inspired by Gabriele Cirulli's 2048, which is a clone of Veewo Studios' 1024, which in turn is a clone of the Threes! game. More info at https://en.wikipedia.org/wiki/2048_(video_game)
+
+*Gemgem (a Bejeweled clone)* - (Requires Pygame) An addictive jewel matching game.
+
+*Ghost Leg Lottery* - Follow the trail to see who wins! More info at: https://en.wikipedia.org/wiki/Ghost_Leg
 
 *Guess the Number* - While given hints, try to guess the secret number.
 
-*Guillotine* - A variant of Hangman.
+*Guillotine* - A French variant of Hangman with different graphics. Ooh la la!
 
 *Hacking* - The hacking mini-game from "Fallout 3".
 
 *Hammurabi* - The classic game Hamurabi.bas by Doug Dyment, popularized by David Ahl.
 
-*Hamsburger* - A program for making silly pluralizations.
+*Hamsburger* - A program for making silly pluralizations. Press Ctrl-C to stop.
 
 *Hangman* - A word-guessing game.
 
-*Hour Glass Animation* - An animation of an hour glass filled with falling sand.
+*Hangman with Random Letters* - A completely unfair word-guessing game. (This is a joke program.)
 
-*Idiot* - How to keep an idiot busy for hours.
+*Hard-coded Tic Tac Toe* - Play tic tac toe against the computer. Every possible move has been hard-coded into this program. The program is 5700 lines long. This is a joke program, don't actually write code like this.
 
-*J'ACCUSE!* - A mystery game of intrigue and a missing cat.
+*Hilbert Curve* - Draws the Hilbert Curve fractal with turtle graphics. More info at: https://en.wikipedia.org/wiki/hilbertCurve Good videos on space-filling curves: https://youtu.be/RU0wScIj36o and https://youtu.be/3s7h2MHQtxc
 
-*Langton's Ant* - A cellular automata animation.
+*Hour Glass Animation* - An animation of an hour glass filled with falling sand. Press Ctrl-C to stop.
 
-*Lawnmower* - Watch grass get cut and grow again.
+*Idiot* - How to keep an idiot busy for hours. (This is a joke program.)
+
+*Ink Spill (a Flood It clone)* - (Requires Pygame) Try to make the entire field a single color.
+
+*J'ACCUSE!* - A mystery game of intrigue and a missing cat. Inspired by Homestar Runner's "Where's an Egg?" game
+
+*Koch Snowflake* - Draws a Koch snowflake fractal with turtle graphics.
+
+*Langton's Ant* - A cellular automata animation. Press Ctrl-C to stop. More info: https://en.wikipedia.org/wiki/Langton%27s_ant
+
+*Lawnmower* - Watch grass get cut and grow again. Press Ctrl-C to stop. Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743 https://bitbucket.org/jvillard/tondeuse/src/default/
 
 *Leetspeak* - Translates English messages into l33t5p34]<.
 
-*Luhn Checksum Algorithm* - The mathematics behind credit card numbers.
+*Luhn Checksum Algorithm* - The mathematics behind credit card numbers. More info at: https://en.wikipedia.org/wiki/Luhn_algorithm More info at: https://youtu.be/Erp8IAUouus
 
 *Magic Eight Ball* - Ask a question about your future.
 
-*Magic Hexagon* - Place numbers in a hexagon so each row adds up to 38.
+*Magic Hexagon* - Place numbers in a hexagon so each row adds up to 38. More info at https://en.wikipedia.org/wiki/Magic_hexagon More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0
 
-*Mancala* - The ancient seed-sowing board game.
+*Mancala* - The ancient seed-sowing board game. Rules at http://www.mancalarules.com/ More info at https://en.wikipedia.org/wiki/Mancala
 
 *Matching Parentheses* - A parentheses/bracket/braces matching algorithm.
 
-*Maze Maker* - Make mazes with the recursive backtracker algorithm.
+*Maze Maker* - Make mazes with the recursive backtracker algorithm. More info at: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker An animated demo: https://scratch.mit.edu/projects/17358777/
 
 *Maze Runner* - Move around a maze and try to escape.
 
@@ -184,91 +212,123 @@ Completed Programs in This Collection
 
 *Maze Runner HTML* - Move around a maze and try to escape... in 3D and IN YOUR WEB BROWSER!
 
+*Memory Puzzle* - (Requires Pygame) A simple memory matching game.
+
 *Middle Letter Scrambler* - Scrambles the middle letters of words, but not the first and last letters.
 
 *Million Dice Roll Stats* - A simulation of one million dice rolls.
 
+*Mona Lisa* - Draws an Andy Warhol-like drawing of the Mona Lisa with turtle graphics.
+
 *Mondrian Art Generator* - Randomly generates Mondrian-style art.
 
-*Monty Hall Problem* - A simulation of the Monty Hall game show problem.
+*Monty Hall Problem* - A simulation of the Monty Hall game show problem. More info at https://en.wikipedia.org/wiki/Monty_Hall_problem
 
-*Morse Code* - Translates between English and Morse Code.
+*Morse Code* - Translates between English and Morse Code. More info at: https://en.wikipedia.org/wiki/Morse_code
 
 *Multiplication Table* - Print a multiplication table.
 
-*Multiplicative Persistence* - A fun math challenge.
+*Multiplicative Persistence* - A fun math challenge. For more information about this topic, see https://youtu.be/Wim9WJeDTHQ
 
-*99 Bottles of Beer on the Wall* - Print the full lyrics to one of the most longest songs ever!
+*99 Bottles of Beer on the Wall* - Print the full lyrics to one of the most longest songs ever! Press Ctrl-C to stop.
 
-*Peg Solitaire* - A single-player, peg-jumping game to eliminate all the pegs.
+*Peg Solitaire* - A single-player, peg-jumping game to eliminate all the pegs. More info at https://en.wikipedia.org/wiki/Peg_solitaire
+
+*Pentomino* - (Requires Pygame) Like Pygame, except with 5-box blocks.
 
 *Periodic Table of Elements* - Displays atomic information for all the elements.
 
 *Pig Latin* - Translates English messages into Igpay Atinlay.
 
+*Polygons* - A turtle program to draw polygons. Every line is the same length.
+
 *Progress Bar* - A sample progress bar animation that can be used in other programs.
 
-*Rail Fence Cipher* - The "rail fence" cipher for encrypting text.
+*Pythons* - Drawing pythons with turtle graphics.
 
-*Rainbow* - Shows a simple rainbow animation.
+*Rail Fence Cipher* - The "rail fence" cipher for encrypting text. More info at: https://en.wikipedia.org/wiki/Rail_fence_cipher
 
-*Rainbow 2* - Shows a simple squiggle rainbow animation.
+*Rainbow* - Shows a simple rainbow animation. Press Ctrl-C to stop.
 
-*Random Walk* - Generate splatter-art with the "random walk" algorithm.
+*Rainbow 2* - Shows a simple squiggle rainbow animation. Press Ctrl-C to stop.
 
-*Reversi* - A tile flipping game, also called reversi.
+*Random Walk* - Generate splatter-art with the "random walk" algorithm. Press Ctrl-C to stop. More info at: https://en.wikipedia.org/wiki/Random_walk
+
+*Reversi* - A tile flipping game, also called reversi. More info https://en.wikipedia.org/wiki/Reversi
 
 *Rock-Paper-Scissors* - A hand game of luck.
 
 *Rock-Paper-Scissors (Always Win)* - A hand game of luck, except you cannot lose.
 
-*ROT13 Cipher* - The simplest cipher for encrypting and decrypting text.
+*ROT13 Cipher* - The simplest cipher for encrypting and decrypting text. More info at https://en.wikipedia.org/wiki/ROT13
 
-*Rotating Cube* - A rotating cube animation.
+*Rotating Cube* - A rotating cube animation. Press Ctrl-C to stop.
 
-*Rotating Cube (Bext Version)* - A rotating cube animation.
+*Rotating Cube (Bext Version)* - A rotating cube animation. Press Ctrl-C to stop.
 
-*Rotating Sphere* - A rotating sphere animation.
+*Rotating Sphere* - A rotating sphere animation. Press Ctrl-C to stop.
 
-*Rush Hour* - A sliding tile puzzle game to move cars out of the way.
+*Rush Hour* - A sliding tile puzzle game to move cars out of the way. Original game by Nob Yoshihagara More info at https://www.michaelfogleman.com/rush/
 
-*Sand Fall* - A falling sand animation.
+*Sand Fall* - A falling sand animation. Inspired by https://asciinema.org/a/6515
 
-*Sand Fall (Bext Version)* - A falling sand animation.
+*Sand Fall (Bext Version)* - A falling sand animation. Inspired by https://asciinema.org/a/6515
 
-*Sevseg* - A seven-segment display module.
+*Sevseg* - A seven-segment display module. More info at https://en.wikipedia.org/wiki/Seven-segment_display
 
 *Shell Game* - A random gambling game.
 
+*Sierpinkski's Game* - Sierpinkski's "game" is an algorithm that draws Sierpinski's Triangle with turtle graphics. More info at https://en.wikipedia.org/wiki/Chaos_game
+
+*Sierpinski Square* - Draws the Sierpinski Square (also called Carpet) with turtle graphics. More info at: https://en.wikipedia.org/wiki/Sierpinski_carpet
+
+*Sierpinski Triangle* - Draws the Sierpinski Triangle fractal with turtle graphics.
+
+*Simulate (a Simon clone)* - (Requires Pygame) Copy the pattern of flashing lights for as long as possible.
+
+*Slide Puzzle* - (Requires Pygame) The classic 15-tile slide puzzle.
+
 *15-Sliding Puzzle* - Slide the numbered tiles into the correct order.
+
+*Snail Race* - Fast-paced snail racing action!
 
 *Sokoban clone* - The classic crate-pushing game.
 
 *Sonar Treasure Hunt* - Try to locate treasure chests hidden under the waves.
 
-*Soroban* - A simulation of a Japanese abacus calculator tool.
+*Soroban* - A simulation of a Japanese abacus calculator tool. More info at: https://en.wikipedia.org/wiki/Soroban
 
 *Spiral* - Draws a simple square spiral.
 
 *sPoNgEtExT* - Translates English messages into sPOnGEtExT.
 
+*Squirrel Eat Squirrel* - (Requires Pygame) A game where squirrels eat each other and grow monstrously large.
+
+*Star Pusher (a Sokoban clone)* - (Requires Pygame) A puzzle game where you push the stars over their goals.
+
 *Sticky Hands* - A jewel-stealing, movement puzzle game.
 
-*Three-Card Monte* - Find the Queen of Hearts after cards have been swapped around.
+*Sudoku* - The classic 9x9 number placement puzzle. More info at https://en.wikipedia.org/wiki/Sudoku
+
+*Tetromino (a Tetris clone)* - (Requires Pygame) The classic block falling puzzle from the Soviet Union.
+
+*Tetromino for Idiots* - (Requires Pygame) Tetris, but... simpler.
+
+*Three-Card Monte* - Find the Queen of Hearts after cards have been swapped around. (In the real-life version, the scammer palms the Queen of Hearts so you always lose.) More info at https://en.wikipedia.org/wiki/Three-card_Monte
 
 *Tic Tac Toe* - The classic board game.
 
 *Tic Tac Toe (OOP)* - The classic board game. (Object-oriented programming version.)
 
-*Towers of Hanoi puzzle* - A puzzle where you must move the discs of one tower to another tower.
+*Towers of Hanoi puzzle* - A puzzle where you must move the discs of one tower to another tower. More info at https://en.wikipedia.org/wiki/Tower_of_Hanoi
 
-*Tsuro Map Maker* - Draws pretty routes.
+*Ulam Spiral* - The Ulam spiral is a mysterious mathematics pattern for prime numbers with turtle graphics. More info at https://en.wikipedia.org/wiki/Ulam_spiral
 
-*Water Bucket Puzzle* - A water pouring puzzle.
+*Water Bucket Puzzle* - A water pouring puzzle. More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 
-*Water Bucket Puzzle (OOP)* - A water pouring puzzle.
+*Wormy* - (Requires Pygame) Lead the green snake around the screen eating red apples.
 
-*Zigzag* - A simple zig zag animation.
+*Zigzag* - A simple zig zag animation. Press Ctrl-C to stop.
 
 
 TODO NOTES

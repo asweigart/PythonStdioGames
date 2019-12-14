@@ -9,13 +9,14 @@ os.chdir(os.path.dirname(programToLaunch))
 if 'pygame_games/' in programToLaunch:
     print('(On Raspberry Pis, close this window to shut down the game.')
 
-
+# Technically, any Ctrl-C should be caught here, making catching it
+# unnecessary for the .py files unless they aren't run from this launcher.
 try:
     exitCode = os.system(sys.executable + ' ' + programToLaunch)
 except KeyboardInterrupt:
     exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
 
-if exitCode != 0:
+if exitCode != 0 and sys.platform != 'darwin': # NOTE: We are currently disabling this on macOS because it keeps reporting keyboard interrupts, etc.
 
     # Get the program's __version__ variable:
     with open(programToLaunch) as fo:
@@ -35,6 +36,9 @@ You can help fix this by reporting it. Go to this website:
 
 ...and click the "New Issue" button. (You need a GitHub account to do this.
 It is free to sign up. Or, you can email me at al@inventwithpython.com)
+
+NOTE!!! If the error is KeyboardInterrupt, EOFError, or ModuleNotFoundError,
+you don't need to report it. Just disregard this message.
 
 In your issue report, copy/paste the above "Traceback" along with this text:
            Program: {}

@@ -1,5 +1,5 @@
 # Pentomino, by Al Sweigart al@inventwithpython.com
-# (Pygame) Like Pygame, except with 5-box blocks.
+# (Requires Pygame) Like Pygame, except with 5-box blocks.
 
 
 __version__ = 1

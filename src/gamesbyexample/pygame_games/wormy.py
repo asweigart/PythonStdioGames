@@ -1,5 +1,5 @@
 # Wormy, by Al Sweigart al@inventwithpython.com
-# (Pygame) Lead the green snake around the screen eating red apples.
+# (Requires Pygame) Lead the green snake around the screen eating red apples.
 
 
 __version__ = 1

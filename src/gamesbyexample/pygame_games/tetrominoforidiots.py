@@ -1,5 +1,5 @@
 # Tetromino for Idiots, by Al Sweigart al@inventwithpython.com
-# (Pygame) Tetris, but... simpler.
+# (Requires Pygame) Tetris, but... simpler.
 
 
 __version__ = 1

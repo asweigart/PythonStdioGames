@@ -1,5 +1,5 @@
 # Slide Puzzle, by Al Sweigart al@inventwithpython.com
-# (Pygame) The classic 15-tile slide puzzle.
+# (Requires Pygame) The classic 15-tile slide puzzle.
 
 
 __version__ = 1

@@ -1,5 +1,5 @@
 # Ink Spill (a Flood It clone), by Al Sweigart al@inventwithpython.com
-# (Pygame) Try to make the entire field a single color.
+# (Requires Pygame) Try to make the entire field a single color.
 
 
 __version__ = 1

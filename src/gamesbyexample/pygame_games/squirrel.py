@@ -1,5 +1,5 @@
 # Squirrel Eat Squirrel, by Al Sweigart al@inventwithpython.com
-# (Pygame) A game where squirrels eat each other and grow monstrously large.
+# (Requires Pygame) A game where squirrels eat each other and grow monstrously large.
 
 
 __version__ = 1

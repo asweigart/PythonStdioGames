@@ -1,5 +1,5 @@
 # Simulate (a Simon clone), by Al Sweigart al@inventwithpython.com
-# (Pygame) Copy the pattern of flashing lights for as long as possible.
+# (Requires Pygame) Copy the pattern of flashing lights for as long as possible.
 
 
 __version__ = 1
