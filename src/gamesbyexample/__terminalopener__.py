@@ -12,7 +12,11 @@ FOLDER_OF_THIS_FILE = os.path.dirname(os.path.abspath(__file__))
 CRASH_DETECTOR = os.path.join(FOLDER_OF_THIS_FILE, '__crashdetector__.py')
 
 # First, this script runs the crash detector to run the Python script:
-exitCode = subprocess.call([sys.executable, CRASH_DETECTOR, sys.argv[1], sys.argv[2]])
+try:
+    exitCode = subprocess.call([sys.executable, CRASH_DETECTOR, sys.argv[1], sys.argv[2]])
+except KeyboardInterrupt, EOFError:
+    exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
+
 
 
 # Pygame games only leave the terminal window open if there was no crash.

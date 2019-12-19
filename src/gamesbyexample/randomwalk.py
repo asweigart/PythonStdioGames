@@ -21,6 +21,10 @@ or a Command Prompt window (on Windows) and running:
 
 BLOCK = chr(9608)
 
+print('''Random Walk
+By Al Sweigart al@inventwithpython.com
+''')
+
 # Ask user what speed to run the simulation at:
 while True: # Keep looping until the user enters F or S.
     print('Move (F)ast or (S)low?')
@@ -58,8 +62,8 @@ try:
 
 
             if speed == 'S':
-                time.sleep(0.1)
-        time.sleep(1) # Pause after reaching the edge.
+                time.sleep(0.01)
+        time.sleep(0.5) # Pause after reaching the edge.
         # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

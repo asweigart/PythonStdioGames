@@ -31,10 +31,10 @@ def slowPrint(text, pauseAmount):
 
 
 # Fancy animation for the title:
-slowPrint(ALPHABET, 0.05)
-slowPrint('  ALPHABETIZE WORD QUIZ', 0.05)
-slowPrint(REVERSE_ALPHABET, 0.05)
-time.sleep(0.75)
+slowPrint(ALPHABET, 0.02)
+slowPrint('  ALPHABETIZE WORD QUIZ', 0.02)
+slowPrint(REVERSE_ALPHABET, 0.02)
+time.sleep(0.5)
 
 print('''
 By Al Sweigart al@inventwithpython.com
@@ -43,9 +43,9 @@ To play, enter the alphabetical order of the words shown as fast as
 possible. Try to get as many as possible in {} seconds!
 
 Example:
-    trade tracks transmit
+    trade tracks transmit  <-- The 1st, 2nd and 3rd word.
     1     2      3
-    > 213
+    > 213                  <-- The word numbers in alphabetical order.
 
 Press enter to start!
 '''.format(QUIZ_DURATION))

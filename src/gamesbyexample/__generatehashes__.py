@@ -69,9 +69,9 @@ for filename in allFiles:
             origFilesZip.write(supportFilename)
 origFilesZip.close()
 
-print('PROGRAMS = ', end='')
-pprint.pprint(PROGRAMS, indent=4, width=120)
-print('SUPPORT_FILES = ', end='')
-pprint.pprint(SUPPORT_FILES, indent=4, width=120)
-pyperclip.copy('PROGRAMS = ' + pprint.pformat(PROGRAMS, indent=4, width=120) + '\n' + 'SUPPORT_FILES = ' + pprint.pformat(SUPPORT_FILES, indent=4, width=120))
+with open('__programdata__.py', 'w') as programDataFile:
+    programDataFile.write('PROGRAMS = ' + pprint.pformat(PROGRAMS, indent=4, width=120))
+    programDataFile.write('\n\n\n')
+    programDataFile.write('SUPPORT_FILES = ' + pprint.pformat(SUPPORT_FILES, indent=4, width=120))
 
+print('Done.')

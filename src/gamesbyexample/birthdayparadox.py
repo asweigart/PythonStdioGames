@@ -84,8 +84,6 @@ for i in range(1, 100001):
         simMatch = simMatch + 1
 
 # Display simulation results:
-print('Out of 100,000 simulations of', number, 'people, there was a')
-print('matching birthday', simMatch, 'times.')
 probability = round(simMatch / 100000 * 100, 2)
-print('The probability is therefore', probability, '%')
-
+print('Out of 100,000 simulations of', number, 'people, there was a')
+print('matching birthday', simMatch, 'times, or', probability, '%')

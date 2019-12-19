@@ -81,7 +81,7 @@ while True: # Main program loop:
 
     except Exception as exc:
         # Catch any raised exceptions and display the message to the user:
-        print('Invalid input. Enter something like `3d6` or `1d10+1`')
+        print('Invalid input. Enter something like `3d6` or `1d10+2`')
         print('Input was invalid because: ' + str(exc))
         continue # Go back to the dice string prompt.
     # At this point, go back to the start of the main program loop.

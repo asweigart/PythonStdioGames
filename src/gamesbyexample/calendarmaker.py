@@ -24,7 +24,7 @@ while True: # Loop to get a year from the user.
     except:
         print('Please enter a numeric year, like 2019.')
         continue
-    # At this point, go back to the start of the loop.
+    break
 
 while True: # Loop to get a month from the user.
     print('Enter the month for the calendar, 1-12:')

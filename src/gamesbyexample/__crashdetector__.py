@@ -13,7 +13,7 @@ if 'pygame_games/' in programToLaunch:
 # unnecessary for the .py files unless they aren't run from this launcher.
 try:
     exitCode = os.system(sys.executable + ' ' + programToLaunch)
-except KeyboardInterrupt:
+except KeyboardInterrupt, EOFError:
     exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
 
 if exitCode != 0 and sys.platform != 'darwin': # NOTE: We are currently disabling this on macOS because it keeps reporting keyboard interrupts, etc.

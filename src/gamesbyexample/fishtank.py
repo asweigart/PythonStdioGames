@@ -28,7 +28,7 @@ bext.clear()
 NUM_KELP = 2
 NUM_FISH = 10
 NUM_BUBBLERS = 2
-PAUSE = 0.25
+FRAMES_PER_SECOND = 4
 
 FISH_TYPES = [
   {'right': ['><>'],          'left': ['<><']},
@@ -76,8 +76,9 @@ def main():
     step = 1
     while True:
         drawAquarium(step)
-        time.sleep(PAUSE)
-        bext.clear()
+        time.sleep(1 / FRAMES_PER_SECOND)
+        clearAquarium()
+        #bext.clear()
         step += 1
 
 
@@ -238,6 +239,31 @@ def drawAquarium(step):
     print(chr(9608) * (WIDTH - 1) , end='') # Draws '█' characters.
 
     sys.stdout.flush() # (Required for bext-using programs.)
+
+
+def clearAquarium():
+    global FISHES, BUBBLERS, BUBBLES, KELP
+
+    # Draw the bubbles:
+    for bubble in BUBBLES:
+        bext.goto(bubble['x'], bubble['y'])
+        print(' ', end='')
+
+    # Draw the fish:
+    for fish in FISHES:
+        bext.goto(fish['location']['x'], fish['location']['y'])
+
+        # Draw each character of the fish text in the right color.
+        print(' ' * len(fish['left'][0]), end='')
+
+    # Draw the kelp:
+    for kelp in KELPS:
+        for i, kelpSegment in enumerate(kelp['segments']):
+            bext.goto(kelp['x'], HEIGHT - 2 - i)
+            print('  ', end='')
+
+    sys.stdout.flush() # (Required for bext-using programs.)
+
 
 if __name__ == '__main__':
     try:

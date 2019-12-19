@@ -25,10 +25,10 @@ def slowPrint(text, pauseAmount):
 
 
 # Fancy animation for the title:
-slowPrint(ALPHABET, 0.05)
-slowPrint('    ALPHABETIZE QUIZ', 0.05)
-slowPrint(REVERSE_ALPHABET, 0.05)
-time.sleep(0.75)
+slowPrint(ALPHABET, 0.02)
+slowPrint('    ALPHABETIZE QUIZ', 0.02)
+slowPrint(REVERSE_ALPHABET, 0.02)
+time.sleep(0.5)
 
 print('''
 By Al Sweigart al@inventwithpython.com
@@ -37,8 +37,8 @@ To play, enter the alphabetical order of the letters shown as fast as
 possible. Try to get as many as possible in {} seconds!
 
 Example:
-    P M O T Q
-    > mopqt
+    P M O T Q  <-- The letters.
+    > mopqt    <-- The correct alphabetical order.
 
 Press enter to start!
 '''.format(QUIZ_DURATION))
