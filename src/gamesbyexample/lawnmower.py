@@ -9,8 +9,8 @@ import time, random, sys
 try:
     import bext
 except ImportError:
-    print('''This program requires the bext module, which you can install
-by opening a Terminal window (on macOS & Linux) and running:
+    print('''This program requires the bext module, which you can
+install by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
@@ -25,12 +25,12 @@ WIDTH = 79
 HEIGHT = 22
 
 # Constants for the mower text:
-FACE = chr(9786)
+FACE = chr(9786) # The '☺' character.
 MOWER_RIGHT = FACE + "`.=."
-MOWER_LEFT  = ".=.'" + FACE
+MOWER_LEFT = ".=.'" + FACE
 MOWER_LEN = 5
 
-MOWING_PAUSE = 0.1 # (!) Try changing this to 0.01.
+MOWING_PAUSE = 0.1  # (!) Try changing this to 0.01.
 GROWING_PAUSE = 0.001
 
 assert len(MOWER_RIGHT) == MOWER_LEN
@@ -54,7 +54,7 @@ def drawMower(x, y, direction):
 bext.clear()
 
 if sys.platform == 'win32':
-    bext.hide() # Currently, hiding the cursor only works on Windows.
+    bext.hide()  # Currently, hiding the cursor only works on Windows.
 
 bext.fg('green')
 for i in range(HEIGHT):
@@ -67,7 +67,7 @@ mowery = 0
 mowerDirection = 'right'
 growMode = False
 
-while True: # Main program loop.
+while True:  # Main program loop.
     # Draw the mower:
     drawMower(mowerx, mowery, mowerDirection)
 
@@ -83,7 +83,7 @@ while True: # Main program loop.
 
     # Move the mower:
     if mowerDirection == 'right':
-        mowerx += 1 # Move the mower right.
+        mowerx += 1  # Move the mower right.
         if mowerx > WIDTH:
             # After going past the right edge,
             # change position and direction.
@@ -93,7 +93,7 @@ while True: # Main program loop.
                 # Done mowing, let the grass grow back:
                 growMode = True
     elif mowerDirection == 'left':
-        mowerx -= 1 # Move the mower left.
+        mowerx -= 1  # Move the mower left.
         if mowerx < -MOWER_LEN:
             # After going past the left edge,
             # change position and direction.
@@ -102,16 +102,16 @@ while True: # Main program loop.
             if mowery == HEIGHT:
                 # Done mowing, let the grass grow back.
                 growMode = True
-    sys.stdout.flush() # (Required for bext-using programs.)
+    sys.stdout.flush()  # (Required for bext-using programs.)
     try:
-        time.sleep(MOWING_PAUSE) # Pause after mowing.
+        time.sleep(MOWING_PAUSE)  # Pause after mowing.
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.
 
     if growMode:
         # Let the grass grow back one at a time:
-        mowerx = -MOWER_LEN # Reset mower position.
-        mowery = 0 # Reset mower position.
+        mowerx = -MOWER_LEN  # Reset mower position.
+        mowery = 0  # Reset mower position.
         bext.fg('green')
 
         # Create a set of all the places the grass needs to grow:
@@ -127,8 +127,8 @@ while True: # Main program loop.
             bext.goto(x, y)
             print(';')
             try:
-                time.sleep(GROWING_PAUSE) # Pause after growing.
+                time.sleep(GROWING_PAUSE)  # Pause after growing.
             except KeyboardInterrupt:
-                sys.exit() # When Ctrl-C is pressed, end the program.
-        growMode = False # Done growing grass.
+                sys.exit()  # When Ctrl-C is pressed, end the program.
+        growMode = False  # Done growing grass.
     # At this point, go back to the start of the main program loop.

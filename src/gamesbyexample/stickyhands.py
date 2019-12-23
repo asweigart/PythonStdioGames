@@ -32,7 +32,7 @@ if not os.path.exists('stickyhandslevels.txt'):
     sys.exit()
 ALL_LEVELS = []
 with open('stickyhandslevels.txt') as levelFile:
-    currentLevelFromFile = {'width': 0, 'height': 0, 'diamonds': 0} # Each level is represented by a dictionary.
+    currentLevelFromFile = {'width': 0, 'height': 0, 'diamonds': 0, (0, 0): ''} # Each level is represented by a dictionary.
     y = 0
     for line in levelFile.readlines():
         if line.startswith(';'):

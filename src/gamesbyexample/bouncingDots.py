@@ -7,8 +7,8 @@ import sys, random, time
 try:
     import bext
 except ImportError:
-    print('''This program requires the bext module, which you can install
-by opening a Terminal window (on macOS & Linux) and running:
+    print('''This program requires the bext module, which you can
+install by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 

@@ -7,8 +7,8 @@ import time, random, sys
 try:
     import bext
 except ImportError:
-    print('''This program requires the bext module, which you can install
-by opening a Terminal window (on macOS & Linux) and running:
+    print('''This program requires the bext module, which you can
+install by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
@@ -38,15 +38,15 @@ try:
         if random.randint(0, 1) == 0:
             # Increase the number of spaces:
             indent = indent + 1
-            if indent > 20:
-                indent = 20
+            if indent > 60:
+                indent = 60
         else:
             # Decrease the number of spaces:
             indent = indent - 1
             if indent < 0:
                 indent = 0
 
-        time.sleep(0.05) # Add a slight pause.
+        time.sleep(0.02) # Add a slight pause.
         # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

@@ -7,8 +7,8 @@ import time, sys
 try:
     import bext
 except ImportError:
-    print('''This program requires the bext module, which you can install
-by opening a Terminal window (on macOS & Linux) and running:
+    print('''This program requires the bext module, which you can
+install by opening a Terminal window (on macOS & Linux) and running:
 
     python3 -m pip install --user bext
 
@@ -39,7 +39,7 @@ try:
         if indentIncreasing:
             # Increase the number of spaces:
             indent = indent + 1
-            if indent == 20:
+            if indent == 60:
                 # Change direction:
                 indentIncreasing = False
         else:
@@ -49,7 +49,7 @@ try:
                 # Change direction:
                 indentIncreasing = True
 
-        time.sleep(0.05) # Add a slight pause.
+        time.sleep(0.02) # Add a slight pause.
         # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit() # When Ctrl-C is pressed, end the program.

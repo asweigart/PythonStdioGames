@@ -10,7 +10,7 @@ __version__ = '0.1.2'
 
 import sys, os, subprocess, zlib, zipfile, webbrowser, random
 
-from __programdata__ import PROGRAMS, SUPPORT_FILES
+from .__programdata__ import PROGRAMS, SUPPORT_FILES
 
 from tkinter import *
 from tkinter import font
