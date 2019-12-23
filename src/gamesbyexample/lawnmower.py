@@ -30,6 +30,9 @@ MOWER_RIGHT = FACE + "`.=."
 MOWER_LEFT  = ".=.'" + FACE
 MOWER_LEN = 5
 
+MOWING_PAUSE = 0.1 # (!) Try changing this to 0.01.
+GROWING_PAUSE = 0.001
+
 assert len(MOWER_RIGHT) == MOWER_LEN
 assert len(MOWER_LEFT) == MOWER_LEN
 
@@ -101,7 +104,7 @@ while True: # Main program loop.
                 growMode = True
     sys.stdout.flush() # (Required for bext-using programs.)
     try:
-        time.sleep(0.4) # Pause after mowing.
+        time.sleep(MOWING_PAUSE) # Pause after mowing.
     except KeyboardInterrupt:
         sys.exit() # When Ctrl-C is pressed, end the program.
 
@@ -124,7 +127,7 @@ while True: # Main program loop.
             bext.goto(x, y)
             print(';')
             try:
-                time.sleep(0.4)
+                time.sleep(GROWING_PAUSE) # Pause after growing.
             except KeyboardInterrupt:
                 sys.exit() # When Ctrl-C is pressed, end the program.
         growMode = False # Done growing grass.
