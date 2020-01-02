@@ -2,6 +2,8 @@
 
 INSTALL: `pip install gamesbyexample`
 
+(Use `pip3` on macOS and Linux. Also try `pip install --user gamesbyexample` if you get permission errors.)
+
 RUN LAUNCHER: `python -m gamesbyexample`
 
 A collection of games (with source code) to use for example programming lessons. Written in Python 3. Click on the **src** folder to view all of the programs.
@@ -343,7 +345,7 @@ TODO - explain why I don't use cls/clear if it isn't necessary (it's to make pro
 Games should:
 
 * Have unit tests, which show how you can call the individual functions and see what they do with their input.
-* Should I include type hints?
+* Should I include type hints? (Decision: nah. They're often not needed and I feel like their occassional presence would be more distracting than illuminating.)
 * Maybe include a barebones version of games, with stub functions that specify what their input/output, and hint at what other functions in the program they'll call? And the data structures used?
 * I should focus on games that don't require data structures (this removes most board games).
 * Games should have logging messages that can be enabled?
