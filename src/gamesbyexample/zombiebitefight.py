@@ -1,9 +1,23 @@
 # Zombie Bite Fight, by Al Sweigart al@inventwithpython.com
 
 # TODO - add more comments and explanation.
+__version__ = 1
 
+import random, time, sys
 
-import random, time
+try:
+    import bext
+except ImportError:
+    print('''This program requires the bext module, which you can
+install by opening a Terminal window (on macOS & Linux) and running:
+
+    python3 -m pip install --user bext
+
+or a Command Prompt window (on Windows) and running:
+
+    python -m pip install --user bext''')
+    sys.exit()
+
 
 # Setup constants:
 NORTH = 'north'
@@ -15,12 +29,21 @@ RIGHT = 'right'
 FORWARD = 'forward'
 STAY = 'stay'
 
+WIDTH = 78
+HEIGHT = 22
+
+PAUSE_LENGTH = 0.0
+
+FACE_UP = chr(9650) # Character 9650 is '▲'.
+FACE_DOWN = chr(9660) # Character 9660 is '▼'.
+FACE_LEFT = chr(9668) # Character 9668 is '◄'.
+FACE_RIGHT = chr(9658) # Character 9658 is '►'.
 
 class Zombie:
-    def __init__(self, char):
-        if len(char) != 1:
-            raise Exception('The char argument must be a one-character string.')
-        self.char = char
+    def __init__(self, color):
+        if color not in ('red', 'green', 'blue', 'yellow', 'cyan', 'purple', 'white', 'black'):
+            raise Exception('color arg must be one of: red green blue yellow cyan purple white black')
+        self.__class__.color = color
         self.direction = random.choice([NORTH, SOUTH, EAST, WEST])
         self._x = None
         self._y = None
@@ -40,23 +63,26 @@ class TurningZombie(Zombie):
         return RIGHT
 
 
+class StillZombie(Zombie):
+    def getAction(self):
+        return STAY
+
+
 class Board:
-    def __init__(self, width, height, zombies):
-        self.width = width
-        self.height = height
+    def __init__(self, zombies):
         self.zombies = zombies
         random.shuffle(self.zombies)
 
         numberOfZombies = len(zombies)
-        numberOfSpaces = self.width * self.height
+        numberOfSpaces = WIDTH * HEIGHT
         if numberOfZombies >= numberOfSpaces:
             raise Exception('Too many zombies for this size board.')
 
         # Place the zombie objects on the board:
         for zombie in zombies:
             while True:
-                x = random.randint(0, width - 1)
-                y = random.randint(0, height - 1)
+                x = random.randint(0, WIDTH - 1)
+                y = random.randint(0, HEIGHT - 1)
                 zombieAtXY = self.getZombieAt(x, y)
 
                 if zombieAtXY == None:
@@ -73,41 +99,43 @@ class Board:
 
 
     def display(self):
-        # Loop over every possible space on this board:
-        for y in range(self.height):
-            for x in range(self.width):
-                zombieAtXY = self.getZombieAt(x, y)
-                if zombieAtXY:
-                    # Display the zombie's text character:
-                    print(zombieAtXY.char, end='')
-                    #if zombieAtXY.direction == NORTH:
-                    #    print('^', end='')
-                    #if zombieAtXY.direction == SOUTH:
-                    #    print('v', end='')
-                    #if zombieAtXY.direction == EAST:
-                    #    print('>', end='')
-                    #if zombieAtXY.direction == WEST:
-                    #    print('<', end='')
-                else:
-                    # Display an empty space:
-                    print(' ', end='')
-            print() # Print a newline.
+        for zombie in self.zombies:
+            bext.goto(zombie._x, zombie._y)
+            bext.fg(zombie.color)
+            # Display the zombie's text character:
+            if zombie.direction == NORTH:
+                print(FACE_UP, end='')
+            elif zombie.direction == SOUTH:
+                print(FACE_DOWN, end='')
+            elif zombie.direction == EAST:
+                print(FACE_RIGHT, end='')
+            elif zombie.direction == WEST:
+                print(FACE_LEFT, end='')
 
+        # Display a count of each kind of zombie:
+        # TODO - potential bug - erase full first
+        bext.goto(0, HEIGHT)
         count = {}
         for zombie in self.zombies:
-            count.setdefault(zombie.__class__.__name__, 0)
-            count[zombie.__class__.__name__] += 1
-        for zombieType in sorted(count.keys()):
-            print(zombieType + ': ' + str(count[zombieType]) + ' ', end='')
-        print()
+            count.setdefault(zombie.__class__, 0)
+            count[zombie.__class__] += 1
+        for zombieType in sorted(count.keys(), key=lambda x: x.__name__):
+            bext.fg(zombieType.color)
+            print(zombieType.__name__ + ': ' + str(count[zombieType]) + ' ', end='')
+        print('', flush=True)
 
     def runSimulation(self):
-        while True:
-            self.runSimulationStep()
+        try:
+            while True:
+                self.runSimulationStep()
+        except KeyboardInterrupt:
+            sys.exit()
 
 
     def runSimulationStep(self):
         random.shuffle(self.zombies)
+        bittenZombies = []
+        newZombies = []
         for zombie in self.zombies:
             action = zombie.getAction()
             if action == RIGHT:
@@ -133,20 +161,26 @@ class Board:
                     onTopRow = zombie._y == 0
                     zombieToTheNorth = self.getZombieAt(zombie._x, zombie._y - 1)
                     if not onTopRow and zombieToTheNorth == None:
+                        bext.goto(zombie._x, zombie._y)
+                        print(' ', end='')
                         # Move north.
                         zombie._y -= 1
 
                 elif zombie.direction == SOUTH:
-                    onBottomRow = zombie._y == self.height - 1
+                    onBottomRow = zombie._y == HEIGHT - 1
                     zombieToTheSouth = self.getZombieAt(zombie._x, zombie._y + 1)
                     if not onBottomRow and zombieToTheSouth == None:
+                        bext.goto(zombie._x, zombie._y)
+                        print(' ', end='')
                         # Move south.
                         zombie._y += 1
 
                 elif zombie.direction == EAST:
-                    onRightColumn = zombie._x == self.width - 1
+                    onRightColumn = zombie._x == WIDTH - 1
                     zombieToTheEast = self.getZombieAt(zombie._x + 1, zombie._y)
                     if not onRightColumn and zombieToTheEast == None:
+                        bext.goto(zombie._x, zombie._y)
+                        print(' ', end='')
                         # Move east.
                         zombie._x += 1
 
@@ -154,6 +188,8 @@ class Board:
                     onLeftColumn = zombie._x == 0
                     zombieToTheWest = self.getZombieAt(zombie._x - 1, zombie._y)
                     if not onLeftColumn and zombieToTheWest == None:
+                        bext.goto(zombie._x, zombie._y)
+                        print(' ', end='')
                         # Move west.
                         zombie._x -= 1
 
@@ -162,50 +198,47 @@ class Board:
 
             # Have the zombie bite the zombie in front of it:
             if zombie.direction == NORTH:
-                zombieToTheNorth = self.getZombieAt(zombie._x, zombie._y - 1)
-                if zombieToTheNorth != None and zombieToTheNorth.__class__ != zombie.__class__:
-                    self.zombies.remove(zombieToTheNorth)
-                    newZombie = zombie.__class__(zombie.char)
-                    newZombie._x = zombie._x
-                    newZombie._y = zombie._y - 1
-                    self.zombies.append(newZombie)
+                zombieInFront = self.getZombieAt(zombie._x, zombie._y - 1)
+            elif zombie.direction == SOUTH:
+                zombieInFront = self.getZombieAt(zombie._x, zombie._y + 1)
+            elif zombie.direction == EAST:
+                zombieInFront = self.getZombieAt(zombie._x + 1, zombie._y)
+            elif zombie.direction == WEST:
+                zombieInFront = self.getZombieAt(zombie._x - 1, zombie._y)
 
-                zombieToTheSouth = self.getZombieAt(zombie._x, zombie._y + 1)
-                if zombieToTheSouth != None and zombieToTheSouth.__class__ != zombie.__class__:
-                    self.zombies.remove(zombieToTheSouth)
-                    newZombie = zombie.__class__(zombie.char)
-                    newZombie._x = zombie._x
-                    newZombie._y = zombie._y + 1
-                    self.zombies.append(newZombie)
+            if zombieInFront != None and zombieInFront.__class__ != zombie.__class__:
+                bittenZombieIndex = self.zombies.index(zombieInFront)
+                newZombie = zombie.__class__(zombie.color)
+                newZombie._x = zombieInFront._x
+                newZombie._y = zombieInFront._y
+                newZombie.direction = zombieInFront.direction
+                self.zombies[bittenZombieIndex] = newZombie
 
-                zombieToTheEast = self.getZombieAt(zombie._x + 1, zombie._y)
-                if zombieToTheEast != None and zombieToTheEast.__class__ != zombie.__class__:
-                    self.zombies.remove(zombieToTheEast)
-                    newZombie = zombie.__class__(zombie.char)
-                    newZombie._x = zombie._x + 1
-                    newZombie._y = zombie._y
-                    self.zombies.append(newZombie)
-
-                zombieToTheWest = self.getZombieAt(zombie._x - 1, zombie._y)
-                if zombieToTheWest != None and zombieToTheWest.__class__ != zombie.__class__:
-                    self.zombies.remove(zombieToTheWest)
-                    newZombie = zombie.__class__(zombie.char)
-                    newZombie._x = zombie._x - 1
-                    newZombie._y = zombie._y
-                    self.zombies.append(newZombie)
 
         self.display()
-        time.sleep(0.25)
-        #print('\n' * 40) # Erase the screen.
-        import os
-        os.system('cls')
+        time.sleep(PAUSE_LENGTH)
+
 
 
 zombies = []
 for i in range(60):
-    zombies.append(WanderingZombie('w'))
-    zombies.append(TurningZombie('t'))
+    zombies.append(WanderingZombie('blue'))
+    zombies.append(TurningZombie('green'))
+    #zombies.append(StillZombie('yellow'))
 
-board = Board(72, 16, zombies)
+board = Board(zombies)
 
+
+print('''Zombie Bite Fight, by Al Sweigart al@inventwithpython.com
+
+In this zombie simulation, you program zombies to roam around biting
+each other, converting them into their type of zombie.
+
+The types of zombies set up for this simulation are:
+TODO
+
+Press Enter to begin...''')
+input()
+bext.clear()
 board.runSimulation()
+

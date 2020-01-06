@@ -95,7 +95,6 @@ for i in range(numPlays):
     # Come up with lottery numbers:
     random.shuffle(possibleNumbers)
     winningNumbers = possibleNumbers[0:5]
-    winningNumbers.sort()
     winningPowerball = random.randint(1, 26)
 
     # Display winning numbers:

@@ -2,6 +2,8 @@
 # A colorful game where you try to fill the board with a single color.
 __version__ = 1
 
+# TODO - add instructions, and make sure the last move's effects are visible
+
 import random, sys
 
 try:
