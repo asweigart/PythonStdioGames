@@ -4,7 +4,7 @@
 __version__ = 1
 
 import random, sys
-
+random.seed(42)
 # Setup constants:
 HEARTS   = chr(9829) # Character 9829 is '♥'.
 DIAMONDS = chr(9830) # Character 9830 is '♦'.
@@ -121,7 +121,7 @@ def main():
 
         pause()
 
-def printCards(cards):
+def displayCards(cards):
     # Display all the cards in the `cards` list:
     rows = ['', '', '', '', ''] # Stores the text to display.
 
@@ -186,7 +186,7 @@ def getBet(maxBet):
     # Ask the user how much they want to bet for this round:
     while True: # Keep asking until they enter a valid amount.
         print('How much do you bet? (1-{}, or "quit")'.format(maxBet))
-        bet = input().upper()
+        bet = input().upper().strip()
         if bet == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
@@ -205,15 +205,15 @@ def showHands(playerHand, dealerHand, showDealerHand):
     print()
     if showDealerHand:
         print('DEALER:', getCardValue(dealerHand))
-        printCards(dealerHand)
+        displayCards(dealerHand)
     else:
         print('DEALER: ???')
         # Hide the dealer's first card:
-        printCards([BACKSIDE] + dealerHand[1:])
+        displayCards([BACKSIDE] + dealerHand[1:])
 
     # Show the player's cards:
     print('PLAYER:', getCardValue(playerHand))
-    printCards(playerHand)
+    displayCards(playerHand)
 
 
 def pause():
@@ -240,5 +240,5 @@ def getMove(playerHand, money):
             return move # Player has entered a valid move.
         # At this point, go back to the start of the loop.
 
-
-main() # After defining all the functions, call main() to start the game.
+if __name__ == '__main__':
+    main() # Start the game if this file was run directly (not imported).
