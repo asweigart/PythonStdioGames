@@ -7,11 +7,15 @@ __version__ = 1
 import sys
 
 # Print the title and instructions:
-print('Welcome to Magic Hexagon!')
-print('-------------------------')
-print('Place the numbers 1 to 19 on spaces A through S such that all 15')
-print('horizontal and diagonal rows add up to 38.')
-print()
+print('''MAGIC HEXAGON
+By Al Sweigart al@inventwithpython.com
+
+Place the numbers 1 to 19 on spaces A through S such that all 15
+horizontal and diagonal rows add up to 38. The unused numbers are
+stored in the Z box until you place them.
+
+We'll start the board with 3 and 17 placed.
+''')
 input('Press enter to begin...')
 
 # A large, multi-line string that acts as a template for the game board:
@@ -38,15 +42,21 @@ boardTemplate = r"""Sum to 38:  {29}    {30}    {31}
             \     \     \
             {28}    {27}    {26}"""
 
-# The unused numbers box starts off with all integers 1 to 19:
+
+# The hex board starts off with 3 and 17 placed in A and B:
+board = {}
+for space in 'ABCDEFGHIJKLMNOPQRS':
+    board[space] = 0 # Set the space to blank (that is, 0).
+board['A'] = 3
+board['B'] = 17
+
+# The unused numbers box starts with integers 1 to 19, except 3 and 17:
 unusedNums = set()
 for i in range(1, 20):
     unusedNums.add(i)
+unusedNums.remove(3)
+unusedNums.remove(17)
 
-# The hex board starts off with just blanks (that is, 0s)
-board = {}
-for space in 'ABCDEFGHIJKLMNOPQRS':
-    board[space] = 0
 
 while True: # Main game loop.
     rowSums = {} # The keys are row numbers, values are sums for that row.

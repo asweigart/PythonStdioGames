@@ -1,4 +1,6 @@
 # Powerball Lottery, by Al Sweigart al@inventwithpython.com
+# A simulation of the lottery so you can experience the thrill of
+# losing the lottery without wasting your money.
 
 import random
 
@@ -99,9 +101,11 @@ for i in range(numPlays):
 
     # Display winning numbers:
     print('The winning numbers are: ', end='')
+    allWinningNums = ''
     for i in range(5):
-        print(str(winningNumbers[i]) + ' ', end='')
-    print('and', str(winningPowerball), end='')
+        allWinningNums += str(winningNumbers[i]) + ' '
+    allWinningNums += 'and ' + str(winningPowerball)
+    print(allWinningNums.ljust(21), end='')
 
     # TODO comment about sets
     if set(numbers) == set(winningNumbers) and \

@@ -76,6 +76,9 @@ QUESTIONS = [
  {'question': "What kind of vehicle has four wheels and flies?",
   'answer': "A garbage truck.",
   'accept': ['garbage', 'dump', 'trash']},
+ {'question': "What kind of vehicle has four wheels and flies?",
+  'answer': "An airplane.",
+  'accept': ['airplane', 'plane']},
  {'question': "What five-letter word becomes shorter by adding two letters?",
   'answer': "Short.",
   'accept': ['short']},
@@ -144,7 +147,7 @@ QUESTIONS = [
   'accept': ['thief', 'steal', 'take', 'literal']},
  {'question': "An electric train leaves the windy city of Chicago at 4pm on a Monday heading south at 100 kilometers per hour. Which way does the smoke blow from the smokestack?",
   'answer': "Electric trains don't have smokestacks.",
-  'accept': ["don't", 'not', 'no', 'none']},
+  'accept': ["don't", "doesn't", 'not', 'no', 'none']},
  {'question': 'What is the only word that rhymes with "orange"?',
   'answer': "Orange.",
   'accept': ['orange']},
@@ -160,8 +163,8 @@ QUESTIONS = [
  {'question': "What is the size of a rhino but weighs nothing?",
   'answer': "A rhino's shadow.",
   'accept': ['shadow']},
- {'question': "The clerk at a butcher shop is exactly 177 centimeters tall. What does he weigh?",
-  'answer': "Meat.",
+ {'question': "The clerk at a butcher shop is exactly 177 centimeters tall. What do they weigh?",
+  'answer': "The clerk weighs meat.",
   'accept': ['meat']}]
 
 CORRECT_TEXT = ['Correct!', 'That is right.', "You're right.",
@@ -186,7 +189,7 @@ for questionNumber, qa in enumerate(QUESTIONS): # Main program loop.
     print('Question:', questionNumber + 1)
     print('Score:', score, '/', len(QUESTIONS))
     print('QUESTION:', qa['question'])
-    response = input().lower()
+    response = input('  ANSWER: ').lower()
 
     if response == 'quit':
         print('Thanks for playing!')
@@ -209,7 +212,5 @@ for questionNumber, qa in enumerate(QUESTIONS): # Main program loop.
     if response == 'quit':
         print('Thanks for playing!')
         sys.exit()
-
-
 
 print("That's all the questions. Thanks for playing!")

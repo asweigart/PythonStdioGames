@@ -18,6 +18,8 @@ from tkinter import ttk
 
 FOLDER_OF_THIS_FILE = os.path.dirname(os.path.abspath(__file__))
 
+os.chdir(FOLDER_OF_THIS_FILE) # Launch all game programs with this folder as the cwd.
+
 # Sort the programs in "pygame_games/" without considering the folder name:
 PROGRAMS.sort(key=lambda x: os.path.basename(x['filename']))
 

@@ -10,7 +10,7 @@ import random
 NUM_DIGITS = 3
 MAX_GUESSES = 10
 
-def getSecretNum(NUM_DIGITS):
+def getSecretNum():
     # Returns a string that is NUM_DIGITS long, made up of unique random digits.
     numbers = list(range(10))
     random.shuffle(numbers)
@@ -25,18 +25,18 @@ def getClues(guess, secretNum):
     if guess == secretNum:
         return 'You got it!'
 
-    clue = []
+    clues = []
 
     for i in range(len(guess)):
         if guess[i] == secretNum[i]:
-            clue.append('Fermi')
+            clues.append('Fermi')
         elif guess[i] in secretNum:
-            clue.append('Pico')
-    if len(clue) == 0:
+            clues.append('Pico')
+    if len(clues) == 0:
         return 'Bagels'
 
-    clue.sort()
-    return ' '.join(clue)
+    clues.sort()
+    return ' '.join(clues)
 
 
 print('''BAGELS, a deductive logic game.
@@ -50,7 +50,7 @@ When I say:    That means:
   Bagels       No digit is correct.'''.format(NUM_DIGITS))
 
 while True: # Main game loop.
-    secretNum = getSecretNum(NUM_DIGITS)
+    secretNum = getSecretNum()
     print('I have thought up a number.')
     print(' You have {} guesses to get it.'.format(MAX_GUESSES))
 
@@ -61,8 +61,8 @@ while True: # Main game loop.
             print('Guess #{}: '.format(numGuesses))
             guess = input()
 
-        clue = getClues(guess, secretNum)
-        print(clue)
+        clues = getClues(guess, secretNum)
+        print(clues)
         numGuesses += 1
 
         if guess == secretNum:

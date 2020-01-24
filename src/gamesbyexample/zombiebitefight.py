@@ -1,6 +1,8 @@
 # Zombie Bite Fight, by Al Sweigart al@inventwithpython.com
 
 # TODO - add more comments and explanation.
+
+# TODO - bite should be a separate action!!!!
 __version__ = 1
 
 import random, time, sys
@@ -24,10 +26,12 @@ NORTH = 'north'
 SOUTH = 'south'
 EAST = 'east'
 WEST = 'west'
+
 LEFT = 'left'
 RIGHT = 'right'
 FORWARD = 'forward'
 STAY = 'stay'
+BITE = 'bite'
 
 WIDTH = 78
 HEIGHT = 22
@@ -54,18 +58,34 @@ class Zombie:
 
 
 class WanderingZombie(Zombie):
+    def __init__(self, color):
+        super().__init__(color)
+        self.biteNow = random.choice([True, False])
+
     def getAction(self):
-        return random.choice([RIGHT, LEFT, FORWARD])
+        self.biteNow = not self.biteNow
+        if self.biteNow:
+            return BITE
+        else:
+            return random.choice([RIGHT, LEFT, FORWARD])
 
 
 class TurningZombie(Zombie):
+    def __init__(self, color):
+        super().__init__(color)
+        self.biteNow = random.choice([True, False])
+
     def getAction(self):
-        return RIGHT
+        self.biteNow = not self.biteNow
+        if self.biteNow:
+            return BITE
+        else:
+            return RIGHT
 
 
 class StillZombie(Zombie):
     def getAction(self):
-        return STAY
+        return BITE
 
 
 class Board:
@@ -221,10 +241,12 @@ class Board:
 
 
 zombies = []
-for i in range(60):
-    zombies.append(WanderingZombie('blue'))
+for i in range(40):
+    # Colors must be one of 'red', 'green', 'blue', 'yellow', 'cyan',
+    # 'purple', 'white', or 'black'
     zombies.append(TurningZombie('green'))
-    #zombies.append(StillZombie('yellow'))
+    zombies.append(StillZombie('yellow'))
+    zombies.append(WanderingZombie('blue'))
 
 board = Board(zombies)
 
