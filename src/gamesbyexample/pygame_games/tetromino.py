@@ -1,5 +1,6 @@
-# Tetromino (a Tetris clone), by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) The classic block falling puzzle from the Soviet Union.
+"""Tetromino (a Tetris clone), by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) The classic block falling puzzle from the Soviet Union."""
 
 
 __version__ = 1

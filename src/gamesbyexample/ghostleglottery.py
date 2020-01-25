@@ -1,6 +1,7 @@
-# Ghost Leg Lottery, by Al Sweigart al@inventwithpython.com
-# Follow the trail to see who wins!
-# More info at: https://en.wikipedia.org/wiki/Ghost_Leg
+"""Ghost Leg Lottery, by Al Sweigart al@inventwithpython.com
+
+Follow the trail to see who wins!
+More info at: https://en.wikipedia.org/wiki/Ghost_Leg"""
 __version__ = 1
 
 # TODO - add more comments

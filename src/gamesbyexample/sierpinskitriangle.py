@@ -1,5 +1,6 @@
-# Sierpinski Triangle, by Al Sweigart al@inventwithpython.com
-# Draws the Sierpinski Triangle fractal with turtle graphics.
+"""Sierpinski Triangle, by Al Sweigart al@inventwithpython.com
+
+Draws the Sierpinski Triangle fractal with turtle graphics."""
 __version__ = 1
 
 import turtle

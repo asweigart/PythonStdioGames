@@ -1,5 +1,6 @@
-# Pentomino, by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) Like Pygame, except with 5-box blocks.
+"""Pentomino, by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) Like Pygame, except with 5-box blocks."""
 
 
 __version__ = 1

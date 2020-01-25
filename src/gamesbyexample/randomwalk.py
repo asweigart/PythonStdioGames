@@ -1,7 +1,8 @@
-# Random Walk, by Al Sweigart al@inventwithpython.com
-# Generate splatter-art with the "random walk" algorithm.
-# Press Ctrl-C to stop.
-# More info at: https://en.wikipedia.org/wiki/Random_walk
+"""Random Walk, by Al Sweigart al@inventwithpython.com
+
+Generate splatter-art with the "random walk" algorithm.
+Press Ctrl-C to stop.
+More info at: https://en.wikipedia.org/wiki/Random_walk"""
 __version__ = 1
 
 import random, time, sys

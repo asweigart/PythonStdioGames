@@ -1,5 +1,6 @@
-# Spiral, by Al Sweigart al@inventwithpython.com
-# Draws a simple square spiral.
+"""Spiral, by Al Sweigart al@inventwithpython.com
+
+Draws a simple square spiral."""
 __version__ = 1
 
 size = 22  # Change the size to any positive integer you want.

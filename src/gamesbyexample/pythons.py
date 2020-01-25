@@ -1,5 +1,6 @@
-# Pythons, by Al Sweigart al@inventwithpython.com
-# Drawing pythons with turtle graphics.
+"""Pythons, by Al Sweigart al@inventwithpython.com
+
+Drawing pythons with turtle graphics."""
 __version__ = 1
 
 import turtle

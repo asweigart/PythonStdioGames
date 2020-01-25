@@ -1,5 +1,6 @@
-# Rainbow, by Al Sweigart al@inventwithpython.com
-# Shows a simple rainbow animation. Press Ctrl-C to stop.
+"""Rainbow, by Al Sweigart al@inventwithpython.com
+
+Shows a simple rainbow animation. Press Ctrl-C to stop."""
 __version__ = 1
 
 import time, sys

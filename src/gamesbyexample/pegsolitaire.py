@@ -1,6 +1,7 @@
-# Peg Solitaire, by Al Sweigart al@inventwithpython.com
-# A single-player, peg-jumping game to eliminate all the pegs.
-# More info at https://en.wikipedia.org/wiki/Peg_solitaire
+"""Peg Solitaire, by Al Sweigart al@inventwithpython.com
+
+A single-player, peg-jumping game to eliminate all the pegs.
+More info at https://en.wikipedia.org/wiki/Peg_solitaire"""
 __version__ = 1
 
 import sys

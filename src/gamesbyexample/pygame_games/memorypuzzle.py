@@ -1,5 +1,6 @@
-# Memory Puzzle, by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) A simple memory matching game.
+"""Memory Puzzle, by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) A simple memory matching game."""
 
 
 __version__ = 1

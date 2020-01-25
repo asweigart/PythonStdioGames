@@ -1,7 +1,8 @@
-# Sierpinkski's Game, by Al Sweigart al@inventwithpython.com
-# Sierpinkski's "game" is an algorithm that draws Sierpinski's Triangle
-# with turtle graphics.
-# More info at https://en.wikipedia.org/wiki/Chaos_game
+"""Sierpinkski's Game, by Al Sweigart al@inventwithpython.com
+
+Sierpinkski's "game" is an algorithm that draws Sierpinski's Triangle
+with turtle graphics.
+More info at https://en.wikipedia.org/wiki/Chaos_game"""
 __version__ = 1
 
 import turtle

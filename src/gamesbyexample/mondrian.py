@@ -1,5 +1,6 @@
-# Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
-# Randomly generates Mondrian-style art.
+"""Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
+
+Randomly generates Mondrian-style art."""
 __version__ = 1
 
 import sys, random

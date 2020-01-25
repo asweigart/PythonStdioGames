@@ -1,5 +1,6 @@
-# Analog Clock, by Al Sweigart al@inventwithpython.com
-# An analog clock animation. Press Ctrl-C to stop.
+"""Analog Clock, by Al Sweigart al@inventwithpython.com
+
+An analog clock animation. Press Ctrl-C to stop."""
 __version__ = 1
 
 import time, math, sys

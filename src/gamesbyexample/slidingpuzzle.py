@@ -1,5 +1,6 @@
-# 15-Sliding Puzzle, by Al Sweigart al@inventwithpython.com
-# Slide the numbered tiles into the correct order.
+"""15-Sliding Puzzle, by Al Sweigart al@inventwithpython.com
+
+Slide the numbered tiles into the correct order."""
 __version__ = 1
 
 import random, sys

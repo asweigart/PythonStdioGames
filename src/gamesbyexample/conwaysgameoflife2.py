@@ -1,6 +1,7 @@
-# Conway's Game of Life (Terminal), by Al Sweigart al@inventwithpython.com
-# The classic cellular automata simulation. Press Ctrl-C to stop.
-# More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+"""Conway's Game of Life (Terminal), by Al Sweigart al@inventwithpython.com
+
+The classic cellular automata simulation. Press Ctrl-C to stop.
+More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"""
 __version__ = 1
 
 # TODO - improve comments now that we have the anti-flicker features.

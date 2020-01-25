@@ -1,6 +1,7 @@
-# Langton's Ant, by Al Sweigart al@inventwithpython.com
-# A cellular automata animation. Press Ctrl-C to stop.
-# More info: https://en.wikipedia.org/wiki/Langton%27s_ant
+"""Langton's Ant, by Al Sweigart al@inventwithpython.com
+
+A cellular automata animation. Press Ctrl-C to stop.
+More info: https://en.wikipedia.org/wiki/Langton%27s_ant"""
 __version__ = 1
 
 import random, copy, sys

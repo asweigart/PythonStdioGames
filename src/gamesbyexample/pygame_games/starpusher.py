@@ -1,5 +1,6 @@
-# Star Pusher (a Sokoban clone), by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) A puzzle game where you push the stars over their goals.
+"""Star Pusher (a Sokoban clone), by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) A puzzle game where you push the stars over their goals."""
 
 
 __version__ = 1

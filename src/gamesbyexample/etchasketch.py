@@ -1,5 +1,6 @@
-# Etch a Sketch, by Al Sweigart al@inventwithpython.com
-# Draw a trailing line on the screen.
+"""Etch a Sketch, by Al Sweigart al@inventwithpython.com
+
+Draw a trailing line on the screen."""
 __version__ = 1
 
 import sys

@@ -1,5 +1,6 @@
-# sPoNgEtExT, by Al Sweigart al@inventwithpython.com
-# Translates English messages into sPOnGEtExT.
+"""sPoNgEtExT, by Al Sweigart al@inventwithpython.com
+
+Translates English messages into sPOnGEtExT."""
 __version__ = 1
 
 import random

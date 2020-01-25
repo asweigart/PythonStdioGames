@@ -1,5 +1,6 @@
-# Bouncing Ball, by Al Sweigart al@inventwithpython.com
-# A bouncing ball animation. Press Ctrl-C to stop.
+"""Bouncing Ball, by Al Sweigart al@inventwithpython.com
+
+A bouncing ball animation. Press Ctrl-C to stop."""
 __version__ = 1
 
 import sys, random, time

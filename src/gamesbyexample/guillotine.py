@@ -1,5 +1,6 @@
-# Guillotine, by Al Sweigart al@inventwithpython.com
-# A French variant of Hangman with different graphics. Ooh la la!
+"""Guillotine, by Al Sweigart al@inventwithpython.com
+
+A French variant of Hangman with different graphics. Ooh la la!"""
 __version__ = 1
 
 import random

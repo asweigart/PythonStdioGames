@@ -1,7 +1,8 @@
-# Maze Maker, by Al Sweigart al@inventwithpython.com
-# Make mazes with the recursive backtracker algorithm.
-# More info at: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker
-# An animated demo: https://scratch.mit.edu/projects/17358777/
+"""Maze Maker, by Al Sweigart al@inventwithpython.com
+
+Make mazes with the recursive backtracker algorithm.
+More info at: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker
+An animated demo: https://scratch.mit.edu/projects/17358777/"""
 __version__ = 1
 
 import random

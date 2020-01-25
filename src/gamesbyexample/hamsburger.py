@@ -1,5 +1,6 @@
-# Hamsburger, by Al Sweigart al@inventwithpython.com
-# A program for making silly pluralizations. Press Ctrl-C to stop.
+"""Hamsburger, by Al Sweigart al@inventwithpython.com
+
+A program for making silly pluralizations. Press Ctrl-C to stop."""
 __version__ = 1
 
 # nounlist.txt can be downloaded from

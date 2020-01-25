@@ -1,5 +1,6 @@
-# Koch Snowflake, by Al Sweigart al@inventwithpython.com
-# Draws a Koch snowflake fractal with turtle graphics.
+"""Koch Snowflake, by Al Sweigart al@inventwithpython.com
+
+Draws a Koch snowflake fractal with turtle graphics."""
 __version__ = 1
 
 import turtle

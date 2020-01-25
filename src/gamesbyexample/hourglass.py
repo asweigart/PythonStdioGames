@@ -1,6 +1,7 @@
-# Hour Glass Animation, by Al Sweigart al@inventwithpython.com
-# An animation of an hour glass filled with falling sand.
-# Press Ctrl-C to stop.
+"""Hour Glass Animation, by Al Sweigart al@inventwithpython.com
+
+An animation of an hour glass filled with falling sand.
+Press Ctrl-C to stop."""
 __version__ = 1
 import random, time, sys
 

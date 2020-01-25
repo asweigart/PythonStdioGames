@@ -1,5 +1,6 @@
-# Idiot, by Al Sweigart al@inventwithpython.com
-# How to keep an idiot busy for hours. (This is a joke program.)
+"""Idiot, by Al Sweigart al@inventwithpython.com
+
+How to keep an idiot busy for hours. (This is a joke program.)"""
 __version__ = 1
 
 while True: # Main program loop.

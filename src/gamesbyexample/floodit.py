@@ -1,5 +1,6 @@
-# Flood It!, by Al Sweigart al@inventwithpython.com
-# A colorful game where you try to fill the board with a single color.
+"""Flood It!, by Al Sweigart al@inventwithpython.com
+
+A colorful game where you try to fill the board with a single color."""
 __version__ = 1
 
 # TODO - add instructions, and make sure the last move's effects are visible

@@ -1,5 +1,6 @@
-# Shell Game, by Al Sweigart al@inventwithpython.com
-# A random gambling game.
+"""Shell Game, by Al Sweigart al@inventwithpython.com
+
+A random gambling game."""
 __version__ = 1
 
 import random, time, sys

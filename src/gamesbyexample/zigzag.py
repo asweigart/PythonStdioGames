@@ -1,5 +1,6 @@
-# Zigzag, by Al Sweigart al@inventwithpython.com
-# A simple zig zag animation. Press Ctrl-C to stop.
+"""Zigzag, by Al Sweigart al@inventwithpython.com
+
+A simple zig zag animation. Press Ctrl-C to stop."""
 __version__ = 1
 
 import time, sys

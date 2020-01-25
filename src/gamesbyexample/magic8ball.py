@@ -1,5 +1,6 @@
-# Magic Eight Ball, by Al Sweigart al@inventwithpython.com
-# Ask a question about your future.
+"""Magic Eight Ball, by Al Sweigart al@inventwithpython.com
+
+Ask a question about your future."""
 __version__ = 1
 
 import random, time

@@ -1,6 +1,7 @@
-# Multiplicative Persistence, by Al Sweigart al@inventwithpython.com
-# A fun math challenge.
-# For more information about this topic, see https://youtu.be/Wim9WJeDTHQ
+"""Multiplicative Persistence, by Al Sweigart al@inventwithpython.com
+
+A fun math challenge.
+For more information about this topic, see https://youtu.be/Wim9WJeDTHQ"""
 __version__ = 1
 
 import time, sys

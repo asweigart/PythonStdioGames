@@ -1,6 +1,7 @@
-# Sudoku, by Al Sweigart al@inventwithpython.com
-# The classic 9x9 number placement puzzle.
-# More info at https://en.wikipedia.org/wiki/Sudoku
+"""Sudoku, by Al Sweigart al@inventwithpython.com
+
+The classic 9x9 number placement puzzle.
+More info at https://en.wikipedia.org/wiki/Sudoku"""
 
 import copy, random, sys
 

@@ -1,7 +1,8 @@
-# Forest Fire Sim, by Al Sweigart al@inventwithpython.com
-# A simulation of fires spreading in a growing forest.
-# Press Ctrl-C to stop.
-# Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
+"""Forest Fire Sim, by Al Sweigart al@inventwithpython.com
+
+A simulation of fires spreading in a growing forest.
+Press Ctrl-C to stop.
+Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/"""
 __version__ = 1
 
 import random, time, sys

@@ -1,5 +1,6 @@
-# Progress Bar, by Al Sweigart al@inventwithpython.com
-# A sample progress bar animation that can be used in other programs.
+"""Progress Bar, by Al Sweigart al@inventwithpython.com
+
+A sample progress bar animation that can be used in other programs."""
 __version__ = 1
 
 import random, time

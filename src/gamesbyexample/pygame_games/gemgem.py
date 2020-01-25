@@ -1,5 +1,6 @@
-# Gemgem (a Bejeweled clone), by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) An addictive jewel matching game.
+"""Gemgem (a Bejeweled clone), by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) An addictive jewel matching game."""
 
 
 __version__ = 1

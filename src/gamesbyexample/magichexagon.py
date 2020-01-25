@@ -1,7 +1,8 @@
-# Magic Hexagon, by Al Sweigart al@inventwithpython.com
-# Place numbers in a hexagon so each row adds up to 38.
-# More info at https://en.wikipedia.org/wiki/Magic_hexagon
-# More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0
+"""Magic Hexagon, by Al Sweigart al@inventwithpython.com
+
+Place numbers in a hexagon so each row adds up to 38.
+More info at https://en.wikipedia.org/wiki/Magic_hexagon
+More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0"""
 __version__ = 1
 
 import sys

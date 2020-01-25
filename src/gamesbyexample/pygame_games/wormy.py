@@ -1,5 +1,6 @@
-# Wormy, by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) Lead the green snake around the screen eating red apples.
+"""Wormy, by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) Lead the green snake around the screen eating red apples."""
 
 
 __version__ = 1

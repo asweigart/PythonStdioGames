@@ -1,5 +1,6 @@
-# Factorization, by Al Sweigart al@inventwithpython.com
-# Find all the factors of a number.
+"""Factorization, by Al Sweigart al@inventwithpython.com
+
+Find all the factors of a number."""
 __version__ = 1
 
 import math, sys

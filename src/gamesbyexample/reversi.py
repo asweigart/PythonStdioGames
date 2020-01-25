@@ -1,6 +1,7 @@
-# Reversi, by Al Sweigart al@inventwithpython.com
-# A tile flipping game, also called reversi.
-# More info https://en.wikipedia.org/wiki/Reversi
+"""Reversi, by Al Sweigart al@inventwithpython.com
+
+A tile flipping game, also called reversi.
+More info https://en.wikipedia.org/wiki/Reversi"""
 __version__ = 1
 
 # A version of this game is featured in the book, "Invent Your Own

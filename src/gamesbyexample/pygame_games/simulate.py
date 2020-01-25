@@ -1,5 +1,6 @@
-# Simulate (a Simon clone), by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) Copy the pattern of flashing lights for as long as possible.
+"""Simulate (a Simon clone), by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) Copy the pattern of flashing lights for as long as possible."""
 
 
 __version__ = 1

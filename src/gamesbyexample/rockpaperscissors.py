@@ -1,5 +1,6 @@
-# Rock-Paper-Scissors, by Al Sweigart al@inventwithpython.com
-# A hand game of luck.
+"""Rock-Paper-Scissors, by Al Sweigart al@inventwithpython.com
+
+A hand game of luck."""
 __version__ = 1
 
 import random, time, sys

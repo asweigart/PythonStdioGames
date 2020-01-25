@@ -1,5 +1,6 @@
-# Multiplication Table, by Al Sweigart al@inventwithpython.com
-# Print a multiplication table.
+"""Multiplication Table, by Al Sweigart al@inventwithpython.com
+
+Print a multiplication table."""
 __version__ = 1
 
 print('''MULTIPLICATION TABLE

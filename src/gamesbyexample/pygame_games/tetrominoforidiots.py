@@ -1,5 +1,6 @@
-# Tetromino for Idiots, by Al Sweigart al@inventwithpython.com
-# (Requires Pygame) Tetris, but... simpler.
+"""Tetromino for Idiots, by Al Sweigart al@inventwithpython.com
+
+(Requires Pygame) Tetris, but... simpler."""
 
 
 __version__ = 1

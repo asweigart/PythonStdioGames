@@ -1,5 +1,6 @@
-# Pig Latin, by Al Sweigart al@inventwithpython.com
-# Translates English messages into Igpay Atinlay.
+"""Pig Latin, by Al Sweigart al@inventwithpython.com
+
+Translates English messages into Igpay Atinlay."""
 __version__ = 1
 
 try:

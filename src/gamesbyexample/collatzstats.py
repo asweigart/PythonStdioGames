@@ -1,5 +1,6 @@
-# Collatz Sequence Stats, by Al Sweigart al@inventwithpython.com
-# Finds out how long various Collatz Sequences are.
+"""Collatz Sequence Stats, by Al Sweigart al@inventwithpython.com
+
+Finds out how long various Collatz Sequences are."""
 
 # More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
 __version__ = 1

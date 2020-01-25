@@ -1,5 +1,6 @@
-# Fish Tank, by Al Sweigart al@inventwithpython.com
-# A peaceful animation of a fish tank. Press Ctrl-C to stop.
+"""Fish Tank, by Al Sweigart al@inventwithpython.com
+
+A peaceful animation of a fish tank. Press Ctrl-C to stop."""
 __version__ = 1
 
 import random, time, sys

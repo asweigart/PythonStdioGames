@@ -1,5 +1,6 @@
-# Snail Race, by Al Sweigart al@inventwithpython.com
-# Fast-paced snail racing action!
+"""Snail Race, by Al Sweigart al@inventwithpython.com
+
+Fast-paced snail racing action!"""
 __version__ = 1
 
 # TODO finish

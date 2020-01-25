@@ -1,4 +1,4 @@
-# Zombie Bite Fight, by Al Sweigart al@inventwithpython.com
+"""Zombie Bite Fight, by Al Sweigart al@inventwithpython.com"""
 
 # TODO - add more comments and explanation.
 

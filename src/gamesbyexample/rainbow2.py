@@ -1,5 +1,6 @@
-# Rainbow 2, by Al Sweigart al@inventwithpython.com
-# Shows a simple squiggle rainbow animation. Press Ctrl-C to stop.
+"""Rainbow 2, by Al Sweigart al@inventwithpython.com
+
+Shows a simple squiggle rainbow animation. Press Ctrl-C to stop."""
 __version__ = 1
 
 import time, random, sys
