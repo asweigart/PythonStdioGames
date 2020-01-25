@@ -5,7 +5,7 @@ More info at: https://en.wikipedia.org/wiki/Blackjack"""
 __version__ = 1
 
 import random, sys
-random.seed(42)
+
 # Setup constants:
 HEARTS   = chr(9829) # Character 9829 is '♥'.
 DIAMONDS = chr(9830) # Character 9830 is '♦'.
@@ -107,18 +107,16 @@ def main():
         if getCardValue(dealerHand) > 21:
             print('Dealer busts! You win ${}!'.format(pot))
             money += pot
-            pot = 0 # Reset the pot.
         elif (getCardValue(playerHand) > 21) or (getCardValue(playerHand) < getCardValue(dealerHand)):
             print('You lost!')
-            pot = 0 # Reset the pot.
         elif getCardValue(playerHand) > getCardValue(dealerHand):
             print('You won ${}!'.format(pot))
             money += pot
-            pot = 0 # Reset the pot.
         elif getCardValue(playerHand) == getCardValue(dealerHand):
-            print('Tie! Pot carries over to the next round.')
+            print('It\'s a tie, the dealer wins.')
         else:
-            assert False
+            assert False  # This line should never run unless there's a bug.
+        pot = 0 # Reset the pot.
 
         pause()
 
