@@ -1,31 +1,22 @@
-# Connect Four, by Al Sweigart al@inventwithpython.com
-# A board game to get four tiles in a row.
+"""FOUR IN A ROW, by Al Sweigart al@inventwithpython.com
+A tile-dropping game to get four in a row, similar to Connect Four."""
 __version__ = 1
-
 import sys
 
-EMPTY_SPACE = '.'
-X_PLAYER = 'X'
-O_PLAYER = 'O'
+# Constants used for displaying the board:
+EMPTY_SPACE = '.'  # A period is easier to count than a space.
+PLAYER_X = 'X'
+PLAYER_O = 'O'
 
-def getNewBoard():
-    # Note: The board is 7x6, represented by a dictionary with keys
-    # of (x, y) tuples from (0, 0) to (6, 5), and values of '.' (empty),
-    # 'X' (X player), or 'O' (O player)
-    board = {}
-    for y in range(6):
-        for x in range(7):
-            board[(x, y)] = EMPTY_SPACE
-    return board
+# Note: Update BOARD_TEMPLATE & COLUMN_LABELS if BOARD_WIDTH is changed.
+BOARD_WIDTH = 7
+BOARD_HEIGHT = 6
+COLUMN_LABELS = ('1', '2', '3', '4', '5', '6', '7')
+assert len(COLUMN_LABELS) == BOARD_WIDTH
 
-
-def drawBoard(board):
-    tileChars = []
-    for y in range(6):
-        for x in range(7):
-            tileChars.append(board[(x, y)])
-
-    boardToDraw = """     1234567
+# The template string for displaying the board:
+BOARD_TEMPLATE = """
+     1234567
     +-------+
     |{}{}{}{}{}{}{}|
     |{}{}{}{}{}{}{}|
@@ -33,102 +24,157 @@ def drawBoard(board):
     |{}{}{}{}{}{}{}|
     |{}{}{}{}{}{}{}|
     |{}{}{}{}{}{}{}|
-    +-------+""".format(*tileChars)
-    print(boardToDraw)
-
-
-def getPlayerMove(playerTile, board):
-    # Let the player select a column to drop a tile into.
-    while True:
-        print('Player {}, enter your move (1-7) or QUIT:'.format(playerTile))
-        move = input()
-        if move == 'quit':
-            print('Thanks for playing!')
-            sys.exit()
-        if move not in '1234567':
-            continue # Ask again for their move.
-
-        try:
-            move = int(move) - 1 # - 1 adjust for 0-based index.
-        except:
-            continue # They didn't enter a number, ask again for their move.
-
-        # Starting from the bottom, find the first not-occupied space.
-        for i in range(5, -1, -1):
-            if board[(move, i)] == EMPTY_SPACE:
-                return (move, i)
-        # At this point, go back to the start of the loop.
-
-
-def isFull(board):
-    for y in range(6):
-        for x in range(7):
-            if board[(x, y)] != EMPTY_SPACE:
-                return False # Found an empty space, so return False.
-    return True # All spaces are full.
-
-
-def isWinner(playerTile, board):
-    b = board # Using a shorter name instead of `board`.
-
-    # Go through the entire board, checking for four-in-a-row:
-    for y in range(6):
-        for x in range(4):
-            # Check for four-in-a-row going across:
-            if b[(x, y)] == b[(x + 1, y)] == b[(x + 2, y)] == b[(x + 3, y)] == playerTile:
-                return True
-
-    for y in range(3):
-        for x in range(7):
-            # Check for four-in-a-row going down:
-            if b[(x, y)] == b[(x, y + 1)] == b[(x, y + 2)] == b[(x, y + 3)] == playerTile:
-                return True
-
-    for y in range(3):
-        for x in range(4):
-            # Check for four-in-a-row going right-down diagonal:
-            if b[(x, y)] == b[(x + 1, y + 1)] == b[(x + 2, y + 2)] == b[(x + 3, y + 3)] == playerTile:
-                return True
-
-            # Check for four-in-a-row going left-down diagonal:
-            if b[(x + 3, y)] == b[(x + 2, y + 1)] == b[(x + 1, y + 2)] == b[(x, y + 3)] == playerTile:
-                return True
-    return False
+    +-------+"""
 
 
 def main():
-    print('''CONNECT FOUR
-By Al Sweigart al@inventwithpython.com
-''')
+    """Runs a single game of Four in a Row."""
+    print(
+        """FOUR IN A ROW, by Al Sweigart al@inventwithpython.com
+
+Two players take turns dropping tiles into one of seven columns, trying
+to make four in a row horizontally, vertically, or diagonally.
+"""
+    )
 
     # Set up a new game:
     gameBoard = getNewBoard()
-    playerTurn = X_PLAYER
+    playerTurn = PLAYER_X
 
-    while True: # Main game loop.
-        # Draw board and get player's move:
-        drawBoard(gameBoard)
-
+    while True:  # Run a player's turn.
+        # Display the board and get player's move:
+        displayBoard(gameBoard)
         playerMove = getPlayerMove(playerTurn, gameBoard)
         gameBoard[playerMove] = playerTurn
 
         # Check for a win or tie:
         if isWinner(playerTurn, gameBoard):
-            drawBoard(gameBoard)
+            displayBoard(gameBoard)  # Display the board one last time.
             print('Player {} has won!'.format(playerTurn))
-            break
+            sys.exit()
         elif isFull(gameBoard):
-            drawBoard(gameBoard)
+            displayBoard(gameBoard)  # Display the board one last time.
             print('There is a tie!')
-            break
+            sys.exit()
 
-        # Switch turn to other player:
-        if playerTurn == X_PLAYER:
-            playerTurn = O_PLAYER
-        elif playerTurn == O_PLAYER:
-            playerTurn = X_PLAYER
-        # At this point, go back to the start of the main game loop.
+        # Switch turns to other player:
+        if playerTurn == PLAYER_X:
+            playerTurn = PLAYER_O
+        elif playerTurn == PLAYER_O:
+            playerTurn = PLAYER_X
 
 
+def getNewBoard():
+    """Returns a dictionary that represents a Four in a Row board.
+
+    The keys are (columnIndex, rowIndex) tuples of two integers, and the
+    values are one of the 'X', 'O' or '.' (empty space) strings."""
+    board = {}
+    for rowIndex in range(BOARD_HEIGHT):
+        for columnIndex in range(BOARD_WIDTH):
+            board[(columnIndex, rowIndex)] = EMPTY_SPACE
+    return board
+
+
+def displayBoard(board):
+    """Display the board and its tiles on the screen."""
+
+    # Prepare a list to pass to the format() string method for the board
+    # template. The list holds all of the board's tiles (and empty
+    # spaces) going left to right, top to bottom:
+    tileChars = []
+    for rowIndex in range(BOARD_HEIGHT):
+        for columnIndex in range(BOARD_WIDTH):
+            tileChars.append(board[(columnIndex, rowIndex)])
+
+    # Display the board:
+    print(BOARD_TEMPLATE.format(*tileChars))
+
+
+def getPlayerMove(playerTile, board):
+    """Let a player select a column on the board to drop a tile into.
+
+    Returns a tuple of the (column, row) that the tile falls into."""
+    while True:  # Keep asking player until they enter a valid move.
+        print(f'Player {playerTile}, enter 1 to {BOARD_WIDTH} or QUIT:')
+        response = input('> ').upper().strip()
+
+        if response == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
+
+        if response not in COLUMN_LABELS:
+            print(f'Enter a number from 1 to {BOARD_WIDTH}.')
+            continue  # Ask player again for their move.
+
+        columnIndex = int(response) - 1  # -1 for 0-based column indexes.
+
+        # If the column is full, ask for a move again:
+        if board[(columnIndex, 0)] != EMPTY_SPACE:
+            print('That column is full, select another one.')
+            continue  # Ask player again for their move.
+
+        # Starting from the bottom, find the first empty space.
+        for rowIndex in range(BOARD_HEIGHT - 1, -1, -1):
+            if board[(columnIndex, rowIndex)] == EMPTY_SPACE:
+                return (columnIndex, rowIndex)
+
+
+def isFull(board):
+    """Returns True if the `board` has no empty spaces, otherwise
+    returns False."""
+    for rowIndex in range(BOARD_HEIGHT):
+        for columnIndex in range(BOARD_WIDTH):
+            if board[(columnIndex, rowIndex)] == EMPTY_SPACE:
+                return False  # Found an empty space, so return False.
+    return True  # All spaces are full.
+
+
+def isWinner(playerTile, board):
+    """Returns True if `playerTile` has four tiles in a row on `board`,
+    otherwise returns False."""
+
+    # Go through the entire board, checking for four-in-a-row:
+    for columnIndex in range(BOARD_WIDTH - 3):
+        for rowIndex in range(BOARD_HEIGHT):
+            # Check for four-in-a-row going across to the right:
+            tile1 = board[(columnIndex, rowIndex)]
+            tile2 = board[(columnIndex + 1, rowIndex)]
+            tile3 = board[(columnIndex + 2, rowIndex)]
+            tile4 = board[(columnIndex + 3, rowIndex)]
+            if tile1 == tile2 == tile3 == tile4 == playerTile:
+                return True
+
+    for columnIndex in range(BOARD_WIDTH):
+        for rowIndex in range(BOARD_HEIGHT - 3):
+            # Check for four-in-a-row going down:
+            tile1 = board[(columnIndex, rowIndex)]
+            tile2 = board[(columnIndex, rowIndex + 1)]
+            tile3 = board[(columnIndex, rowIndex + 2)]
+            tile4 = board[(columnIndex, rowIndex + 3)]
+            if tile1 == tile2 == tile3 == tile4 == playerTile:
+                return True
+
+    for columnIndex in range(BOARD_WIDTH - 3):
+        for rowIndex in range(BOARD_HEIGHT - 3):
+            # Check for four-in-a-row going right-down diagonal:
+            tile1 = board[(columnIndex, rowIndex)]
+            tile2 = board[(columnIndex + 1, rowIndex + 1)]
+            tile3 = board[(columnIndex + 2, rowIndex + 2)]
+            tile4 = board[(columnIndex + 3, rowIndex + 3)]
+            if tile1 == tile2 == tile3 == tile4 == playerTile:
+                return True
+
+            # Check for four-in-a-row going left-down diagonal:
+            tile1 = board[(columnIndex + 3, rowIndex)]
+            tile2 = board[(columnIndex + 2, rowIndex + 1)]
+            tile3 = board[(columnIndex + 1, rowIndex + 2)]
+            tile4 = board[(columnIndex, rowIndex + 3)]
+            if tile1 == tile2 == tile3 == tile4 == playerTile:
+                return True
+    return False
+
+
+# If the program is run (instead of imported), run the game:
 if __name__ == '__main__':
     main()

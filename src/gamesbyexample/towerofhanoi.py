@@ -1,95 +1,115 @@
-# Towers of Hanoi puzzle, by Al Sweigart al@inventwithpython.com
-# A puzzle where you must move the discs of one tower to another tower.
-# More info at https://en.wikipedia.org/wiki/Tower_of_Hanoi
+"""THE TOWER OF HANOI, by Al Sweigart al@inventwithpython.com
+A stack-moving puzzle game."""
 __version__ = 1
-
+import copy
 import sys
 
-# Set up towers A, B, and C. The end of the list is the top of the tower.
-TOTAL_DISCS = 6
-HEIGHT = TOTAL_DISCS + 1
+TOTAL_DISKS = 5  # More disks means a more difficult puzzle.
 
-# Populate Tower A:
-completeTower = list(reversed(range(1, TOTAL_DISCS + 1)))
-TOWERS = {'A': completeTower,
-          'B': [],
-          'C': []}
+# Start with all disks on tower A:
+COMPLETE_TOWER = list(range(TOTAL_DISKS, 0, -1))
 
 
 def main():
-    print('''THE TOWERS OF HANOI
-    By Al Sweigart al@inventwithpython.com
+    """Runs a single game of The Tower of Hanoi."""
+    print(
+        """THE TOWER OF HANOI, by Al Sweigart al@inventwithpython.com
 
-    Move the tower of discs, one disc at a time, to another pole.
-    Larger discs cannot rest on top of a smaller disc.''')
+Move the tower of disks, one disk at a time, to another tower. Larger
+disks cannot rest on top of a smaller disk.
 
-    while True: # Main program loop.
-        # Display the towers and ask the user for a move:
-        printTowers()
-        print('Enter letter of "source" and "destination" tower: A, B, C, or QUIT to quit.')
-        print('(For example, "AB" to move the top disc of tower A to tower B.)')
-        print()
-        move = input().upper()
+More info at https://en.wikipedia.org/wiki/Tower_of_Hanoi
+"""
+    )
 
-        if move == 'QUIT':
-            sys.exit()
+    # Set up the towers. The end of the list is the top of the tower.
+    towers = {'A': copy.copy(COMPLETE_TOWER), 'B': [], 'C': []}
 
-        # Make sure the user entered two letters:
-        if len(move) != 2:
-            print('Invalid move: Enter two tower letters.')
-            continue
+    while True:  # Run a single turn.
+        # Display the towers and disks:
+        displayTowers(towers)
 
-        # Put the letters in move in more readable variable names:
-        srcTower = move[0]
-        dstTower = move[1]
+        # Ask the user for a move:
+        fromTower, toTower = getPlayerMove(towers)
 
-        # Make sure the user entered valid tower letters:
-        if srcTower not in 'ABC' or dstTower not in 'ABC' or srcTower == dstTower:
-            print('Invalid move: Enter letters A, B, or C for the two towers.')
-            continue
-
-        # Make sure the src disc is smaller than the dst tower's topmost disc:
-        if len(TOWERS[srcTower]) == 0 or (len(TOWERS[dstTower]) != 0 and TOWERS[dstTower][-1] < TOWERS[srcTower][-1]):
-            print('Invalid move. Larger discs cannot go on top of smaller discs.')
-            continue
-
-        # Move the top disc from srcTower to dstTower:
-        disc = TOWERS[srcTower].pop()
-        TOWERS[dstTower].append(disc)
+        # Move the top disk from fromTower to toTower:
+        disk = towers[fromTower].pop()
+        towers[toTower].append(disk)
 
         # Check if the user has solved the puzzle:
-        if completeTower in (TOWERS['B'], TOWERS['C']):
-            printTowers() # Display the towers one last time.
+        if COMPLETE_TOWER in (towers['B'], towers['C']):
+            displayTowers(towers)  # Display the towers one last time.
             print('You have solved the puzzle! Well done!')
             sys.exit()
-        # At this point, go back to the start of the main program loop.
 
 
-def printDisc(discNum):
-    # Print a single disc of width discNum.
-    emptySpace = ' ' * (TOTAL_DISCS - discNum)
-    if discNum == 0:
-        # Just draw the pole of the tower.
-        print(emptySpace + '||' + emptySpace, end='')
-    else:
-        # Draw the disc.
-        discSpace = '@' * discNum
-        discNumLabel = str(discNum).rjust(2, '_')
-        print(emptySpace + discSpace + discNumLabel + discSpace + emptySpace, end='')
+def getPlayerMove(towers):
+    """Asks the player for a move. Returns (fromTower, toTower)."""
 
-
-def printTowers():
-    # Print all three towers.
-    for level in range(HEIGHT - 1, -1, -1):
-        for tower in (TOWERS['A'], TOWERS['B'], TOWERS['C']):
-            if level >= len(tower):
-                printDisc(0)
-            else:
-                printDisc(tower[level])
+    while True:  # Keep asking player until they enter a valid move.
+        print('Enter the letters of "from" and "to" towers, or QUIT.')
+        print('(e.g. AB to moves a disk from tower A to tower B.)')
         print()
-    # Print the tower labels A, B, and C.
-    emptySpace = ' ' * (TOTAL_DISCS)
+        response = input('> ').upper().strip()
+
+        if response == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
+
+        # Make sure the user entered valid tower letters:
+        if response not in ('AB', 'AC', 'BA', 'BC', 'CA', 'CB'):
+            print('Enter one of AB, AC, BA, BC, CA, or CB.')
+            continue  # Ask player again for their move.
+
+        # Syntactic sugar - Use more descriptive variable names:
+        fromTower, toTower = response[0], response[1]
+
+        if len(towers[fromTower]) == 0:
+            # The "from" tower cannot be an empty tower:
+            print('You selected a tower with no disks.')
+            continue  # Ask player again for their move.
+        elif len(towers[toTower]) == 0:
+            # Any disk can be moved onto an empty "to" tower:
+            return fromTower, toTower
+        elif towers[toTower][-1] < towers[fromTower][-1]:
+            print('Can\'t put larger disks on top of smaller ones.')
+            continue  # Ask player again for their move.
+        else:
+            # This is a valid move, so return the selected towers:
+            return fromTower, toTower
+
+
+def displayTowers(towers):
+    """Display the current state."""
+
+    # Display the three towers:
+    for level in range(TOTAL_DISKS, -1, -1):
+        for tower in (towers['A'], towers['B'], towers['C']):
+            if level >= len(tower):
+                displayDisk(0)  # Display the bare pole with no disk.
+            else:
+                displayDisk(tower[level])  # Display the disk.
+        print()
+
+    # Display the tower labels A, B, and C.
+    emptySpace = ' ' * (TOTAL_DISKS)
     print('{0} A{0}{0} B{0}{0} C\n'.format(emptySpace))
 
 
-main() # After defining all the functions, call main() to start the game.
+def displayDisk(width):
+    """Display a disk of the given width. A width of 0 means no disk."""
+    emptySpace = ' ' * (TOTAL_DISKS - width)
+
+    if width == 0:
+        # Display a pole segment without a disk:
+        print(f'{emptySpace}||{emptySpace}', end='')
+    else:
+        # Display the disk:
+        disk = '@' * width
+        numLabel = str(width).rjust(2, '_')
+        print(emptySpace + disk + numLabel + disk + emptySpace, end='')
+
+
+# If the program is run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()
