@@ -5,7 +5,7 @@ These checkers are randomly decided, and can be the player's own
 checkers or their opponents', but you can't move your opponents'
 promoted checkers. In this version, capturing is not mandatory."""
 __version__ = 1
-
+# TODO - In real checkers, captures are mandatory.
 import random, copy, sys
 
 # Setup the constants:
@@ -20,29 +20,29 @@ def main():
     """Run a single game of Chance Checkers."""
     print('''CHANCE CHECKERS
     By Al Sweigart al@inventwithpython.com''')
-    theBoard = getNewBoard() # Create a new checker board data structure.
+    gameBoard = getNewBoard() # Create a new checker board.
     turn = 'X' # X goes first.
     while True: # Main game loop.
-        displayBoard(theBoard)
-        moves = random.sample('xxxooo', 3)  # Randomly pick 3 'x' and 'o'.
+        displayBoard(gameBoard)
+        moves = random.sample('xxxooo', 3)  # Randomly pick 3 Xs and Os.
         while moves != []:
             # Get the player's move and carry it out:
-            srcMove, dstMove = getPlayerMove(theBoard, turn, moves)
+            srcMove, dstMove = getPlayerMove(gameBoard, turn, moves)
             if (srcMove, dstMove) != (None, None):
-                moves.remove(theBoard[srcMove].lower())
-                theBoard = makeMove(theBoard, srcMove, dstMove)
+                moves.remove(gameBoard[srcMove].lower())
+                gameBoard = makeMove(gameBoard, srcMove, dstMove)
 
-            if hasLost(theBoard, otherCheckers(turn)[1]):
-                displayBoard(theBoard)
+            if hasLost(gameBoard, otherCheckers(turn)[1]):
+                displayBoard(gameBoard)
                 print(turn + ' is the winner!')
                 sys.exit()
             if (srcMove, dstMove) == (None, None):
-                displayBoard(theBoard)
+                displayBoard(gameBoard)
                 print(otherCheckers(turn)[1] + ' is the winner!')
                 sys.exit()
             if moves != []:
-                displayBoard(theBoard)
-        turn = otherCheckers(turn)[1]  # Switch turns to the other player.
+                displayBoard(gameBoard)
+        turn = otherCheckers(turn)[1]  # Switch turns.
         # At this point, go back to the start of the main game loop.
 
 
@@ -128,11 +128,14 @@ def otherCheckers(checker):
 
 
 def getPossibleDstMoves(board, srcSpace):
-    """Return a list of possible destination moves from `srcSpace`."""
-    if board.get(srcSpace) not in ('x', 'o', 'X', 'O'):
-        return []  # There are no checkers at `srcSpace`.
+    """Get all possible destination moves from `srcSpace`.
 
-    checker = board[srcSpace] # The checker at `srcSpace`
+    Returns a tuple of two lists. The first is a list of spaces the
+    checker at `srcSpace` can move to, the second is a list of spaces
+    the checker at `srcSpace` jumps to after capturing a checker."""
+    assert board.get(srcSpace) != EMPTY
+
+    checker = board[srcSpace] # The checker at `srcSpace`.
     possibleDstMoves = []     # Possible places the checker can move to.
     possibleDstCaptures = []  # Possible places to move after capturing.
 
@@ -182,12 +185,12 @@ def getPossibleDstMoves(board, srcSpace):
     return (possibleDstMoves, possibleDstCaptures)
 
 
-def getPlayerMove(board, turn, moves):
+def getPlayerMove(board, player, moves):
     """Ask the player to select a move."""
 
     # Present the player with valid moves and ask them to choose one:
-    assert turn in ('X', 'O')
-    print('Moves for ' + turn + ': ' + ' '.join(moves))
+    assert player in ('X', 'O')
+    print('Moves for ' + player + ': ' + ' '.join(moves))
 
     # Get possible "source" spaces to select:
     checkersThatCanMove = []
@@ -196,8 +199,8 @@ def getPlayerMove(board, turn, moves):
             thisSpace = column + str(row)
             checkerAtSpace = board.get(thisSpace, '')
             cantMove = checkerAtSpace.lower() not in moves
-            isPromotedChecker = checkerAtSpace == otherCheckers(turn)[1]
-            if cantMove or isPromotedChecker:
+            isPromoted = checkerAtSpace == otherCheckers(player)[1]
+            if cantMove or isPromoted:
                 continue  # This is not a checker the player can move.
 
             # See where the checker at this space can move:
@@ -209,9 +212,9 @@ def getPlayerMove(board, turn, moves):
         return (None, None)  # There are no valid moves.
 
     while True:  # Loop until a valid "source" space is selected.
-        print('Player', turn, 'select the checker to move:')
+        print('Player', player, 'select the checker to move:')
         print(' '.join(checkersThatCanMove), 'QUIT')
-        srcMove = input().upper()
+        srcMove = input().upper().strip()
         if srcMove == 'QUIT':
             sys.exit()
         if srcMove in checkersThatCanMove:
@@ -223,7 +226,7 @@ def getPlayerMove(board, turn, moves):
         dstMoves += dstCaptures
         print('Enter the space to move', srcMove, 'to:')
         print(' '.join(dstMoves))
-        dstMove = input().upper()
+        dstMove = input().upper().strip()
         if dstMove in dstMoves:
             break
         # At this point, go back to the start of the loop.
@@ -264,7 +267,7 @@ def makeMove(board, srcMove, dstMove):
         while True:  # Keep asking until valid input is entered.
             print('Enter the double jump to make:')
             print(' '.join(dstCaptures))
-            doubleJumpMove = input().upper()
+            doubleJumpMove = input().upper().strip()
             if doubleJumpMove in dstCaptures:
                 break
             # At this point, go back to the start of the loop.
