@@ -37,9 +37,10 @@ DEFAULT_TRANSLATEY = (HEIGHT - 4) // 2
 
 
 def line(x1, y1, x2, y2):
-    """Returns a list of  all of the points in a line
-    between `x1`, `y1` and `x2`, `y2`. Uses the Bresenham line algorithm.
-    More info at https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
+    """Returns a list of points in a line between the given points.
+
+    Uses the Bresenham line algorithm. More info at:
+    https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
     x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2) # TODO - Do we want this line?
 
     isSteep = abs(y2-y1) > abs(x2-x1)

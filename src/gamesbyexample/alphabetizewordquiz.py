@@ -96,3 +96,6 @@ while True: # Main game loop.
     print('got {} correct!'.format(numCorrect))
     print('Thanks for playing!')
 
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

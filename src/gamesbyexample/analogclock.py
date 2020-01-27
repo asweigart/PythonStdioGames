@@ -19,6 +19,9 @@ or a Command Prompt window (on Windows) and running:
     sys.exit()
 
 # Setup the constants:
+HOUR_HAND_CHAR = '@'
+MINUTE_HAND_CHAR = '*'
+SECOND_HAND_CHAR = '.'
 HOUR_HAND_LENGTH = 4
 MINUTE_HAND_LENGTH = 6
 SECOND_HAND_LENGTH = 8
@@ -50,6 +53,7 @@ CLOCKFACE = """       ##12###
 
 
 def main():
+    """Runs the Analog Clock program."""
     bext.clear()
     # Draw the circle of the clock:
     for y, row in enumerate(CLOCKFACE.splitlines()):
@@ -58,38 +62,47 @@ def main():
                 bext.goto(x, y)
                 print(char)
 
-    while True: # Main program loop.
+    while True:  # Main program loop.
         # Get the current time from the computer's clock:
         currentTime = time.localtime()
-        h = currentTime.tm_hour % 12 # Use 12-hour clock, not 24.
+        h = currentTime.tm_hour % 12  # Use 12-hour clock, not 24.
         m = currentTime.tm_min
         s = currentTime.tm_sec
 
         # Draw the second hand:
-        secondHandX = int(math.cos(COMPLETE_ARC * (s / 60) + OFFSET_90_DEGREES) * SECOND_HAND_LENGTH + CENTERX)
-        secondHandY = int(math.sin(COMPLETE_ARC * (s / 60) + OFFSET_90_DEGREES) * SECOND_HAND_LENGTH + CENTERY)
-        secondHandPoints = line(CENTERX, CENTERY, secondHandX, secondHandY)
-        for x, y in secondHandPoints:
+        secHandDirection = COMPLETE_ARC * (s / 60) + OFFSET_90_DEGREES
+        secHandXPos = math.cos(secHandDirection)
+        secHandYPos = math.sin(secHandDirection)
+        secHandX = int(secHandXPos * SECOND_HAND_LENGTH + CENTERX)
+        secHandY = int(secHandYPos * SECOND_HAND_LENGTH + CENTERY)
+        secHandPoints = line(CENTERX, CENTERY, secHandX, secHandY)
+        for x, y in secHandPoints:
             bext.goto(x, y)
-            print('.', end='')
+            print(SECOND_HAND_CHAR, end='')
 
         # Draw the minute hand:
-        minuteHandX = int(math.cos(COMPLETE_ARC * (m / 60) + OFFSET_90_DEGREES) * MINUTE_HAND_LENGTH + CENTERX)
-        minuteHandY = int(math.sin(COMPLETE_ARC * (m / 60) + OFFSET_90_DEGREES) * MINUTE_HAND_LENGTH + CENTERY)
-        minuteHandPoints = line(CENTERX, CENTERY, minuteHandX, minuteHandY)
-        for x, y in minuteHandPoints:
+        minHandDirection = COMPLETE_ARC * (m / 60) + OFFSET_90_DEGREES
+        minHandXPos = math.cos(minHandDirection)
+        minHandYPos = math.sin(minHandDirection)
+        minHandX = int(minHandXPos * MINUTE_HAND_LENGTH + CENTERX)
+        minHandY = int(minHandYPos * MINUTE_HAND_LENGTH + CENTERY)
+        minHandPoints = line(CENTERX, CENTERY, minHandX, minHandY)
+        for x, y in minHandPoints:
             bext.goto(x, y)
-            print('*', end='')
+            print(MINUTE_HAND_CHAR, end='')
 
         # Draw the hour hand:
-        hourHandX = int(math.cos(COMPLETE_ARC * (h / 12) + OFFSET_90_DEGREES) * HOUR_HAND_LENGTH + CENTERX)
-        hourHandY = int(math.sin(COMPLETE_ARC * (h / 12) + OFFSET_90_DEGREES) * HOUR_HAND_LENGTH + CENTERY)
+        hourHandDirection = COMPLETE_ARC * (h / 12) + OFFSET_90_DEGREES
+        hourHandXPos = math.cos(hourHandDirection)
+        hourHandYPos = math.sin(hourHandDirection)
+        hourHandX = int(hourHandXPos * HOUR_HAND_LENGTH + CENTERX)
+        hourHandY = int(hourHandYPos * HOUR_HAND_LENGTH + CENTERY)
         hourHandPoints = line(CENTERX, CENTERY, hourHandX, hourHandY)
         for x, y in hourHandPoints:
             bext.goto(x, y)
-            print('@', end='')
+            print(HOUR_HAND_CHAR, end='')
 
-        sys.stdout.flush() # (Required for bext-using programs.)
+        sys.stdout.flush()  # (Required for bext-using programs.)
 
         # Keep looping until the second changes:
         while True:
@@ -98,10 +111,10 @@ def main():
                 break
 
         # Erase the clock hands:
-        for x, y in secondHandPoints:
+        for x, y in secHandPoints:
             bext.goto(x, y)
             print(' ', end='')
-        for x, y in minuteHandPoints:
+        for x, y in minHandPoints:
             bext.goto(x, y)
             print(' ', end='')
         for x, y in hourHandPoints:
@@ -111,11 +124,12 @@ def main():
 
 
 def line(x1, y1, x2, y2):
-    """Returns a list of  all of the points in a line
-    between `x1`, `y1` and `x2`, `y2`. Uses the Bresenham line algorithm.
-    More info at https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
+    """Returns a list of points in a line between the given points.
+
+    Uses the Bresenham line algorithm. More info at:
+    https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
     points = []
-    isSteep = abs(y2-y1) > abs(x2-x1)
+    isSteep = abs(y2 - y1) > abs(x2 - x1)
     if isSteep:
         x1, y1 = y1, x1
         x2, y2 = y2, x2
@@ -126,7 +140,7 @@ def line(x1, y1, x2, y2):
         y1, y2 = y2, y1
 
         deltax = x2 - x1
-        deltay = abs(y2-y1)
+        deltay = abs(y2 - y1)
         error = int(deltax / 2)
         y = y2
         ystep = None
@@ -145,7 +159,7 @@ def line(x1, y1, x2, y2):
                 error += deltax
     else:
         deltax = x2 - x1
-        deltay = abs(y2-y1)
+        deltay = abs(y2 - y1)
         error = int(deltax / 2)
         y = y1
         ystep = None
@@ -170,4 +184,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

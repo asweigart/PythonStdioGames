@@ -20,87 +20,97 @@ or a Command Prompt window (on Windows) and running:
 
 # Setup the constants:
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1 # TODO Weird Windows bug.
+WIDTH -= 1  # Adjustment for Windows Command Prompt.
 NUMBER_OF_BALLS = 35
 COLORS = ('red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white')
-DIRECTIONS = ('upright', 'upleft', 'downright', 'downleft')
+UP_RIGHT = 'ur'
+UP_LEFT = 'ul'
+DOWN_RIGHT = 'dr'
+DOWN_LEFT = 'dl'
+DIRECTIONS = (UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT)
 BALL_CHAR = 'O'
+
+# Key names for ball dictionaries:
+COLOR = 'color'
+X = 'x'
+Y = 'y'
+DIR = 'direction'
 
 
 def main():
+    """Run the bouncing dots program."""
     bext.clear()
 
     # Generate some balls.
     balls = []
     for i in range(NUMBER_OF_BALLS):
-        balls.append({'color': random.choice(COLORS),
-                      'x': random.randint(1, WIDTH - 2),
-                      'y': random.randint(1, HEIGHT - 2),
-                      'direction': random.choice(DIRECTIONS)})
+        balls.append({COLOR: random.choice(COLORS),
+                      X: random.randint(1, WIDTH - 2),
+                      Y: random.randint(1, HEIGHT - 2),
+                      DIR: random.choice(DIRECTIONS)})
 
-
-    while True: # Main program loop.
+    while True:  # Main program loop.
         oldBallPositions = []
 
         for ball in balls:
             # Draw our balls:
-            bext.goto(ball['x'], ball['y'])
-            bext.fg(ball['color'])
+            bext.goto(ball[X], ball[Y])
+            bext.fg(ball[COLOR])
             print(BALL_CHAR, end='')
 
-            oldBallPositions.append((ball['x'], ball['y']))
-        sys.stdout.flush() # (Required for bext-using programs.)
+            oldBallPositions.append((ball[X], ball[Y]))
+        sys.stdout.flush()  # (Required for bext-using programs.)
         time.sleep(0.1)
 
         for ball in balls:
             # Move our balls:
-            if ball['direction'] == 'upright':
-                ball['x'] += 1
-                ball['y'] -= 1
-            elif ball['direction'] == 'upleft':
-                ball['x'] -= 1
-                ball['y'] -= 1
-            elif ball['direction'] == 'downright':
-                ball['x'] += 1
-                ball['y'] += 1
-            elif ball['direction'] == 'downleft':
-                ball['x'] -= 1
-                ball['y'] += 1
+            if ball[DIR] == UP_RIGHT:
+                ball[X] += 1
+                ball[Y] -= 1
+            elif ball[DIR] == UP_LEFT:
+                ball[X] -= 1
+                ball[Y] -= 1
+            elif ball[DIR] == DOWN_RIGHT:
+                ball[X] += 1
+                ball[Y] += 1
+            elif ball[DIR] == DOWN_LEFT:
+                ball[X] -= 1
+                ball[Y] += 1
 
             # See if our balls bounce off the corners:
-            if ball['x'] == 0 and ball['y'] == 0:
-                ball['direction'] = 'downright'
-            elif ball['x'] == 0 and ball['y'] == HEIGHT - 1:
-                ball['direction'] = 'upright'
-            elif ball['x'] == WIDTH - 1 and ball['y'] == 0:
-                ball['direction'] = 'downleft'
-            elif ball['x'] == WIDTH - 1 and ball['y'] == HEIGHT - 1:
-                ball['direction'] = 'upleft'
+            if ball[X] == 0 and ball[Y] == 0:
+                ball[DIR] = DOWN_RIGHT
+            elif ball[X] == 0 and ball[Y] == HEIGHT - 1:
+                ball[DIR] = UP_RIGHT
+            elif ball[X] == WIDTH - 1 and ball[Y] == 0:
+                ball[DIR] = DOWN_LEFT
+            elif ball[X] == WIDTH - 1 and ball[Y] == HEIGHT - 1:
+                ball[DIR] = UP_LEFT
 
             # See if our balls bounce off the walls:
-            elif ball['x'] == 0 and ball['direction'] == 'upleft':
-                ball['direction'] = 'upright'
-            elif ball['x'] == 0 and ball['direction'] == 'downleft':
-                ball['direction'] = 'downright'
+            elif ball[X] == 0 and ball[DIR] == UP_LEFT:
+                ball[DIR] = UP_RIGHT
+            elif ball[X] == 0 and ball[DIR] == DOWN_LEFT:
+                ball[DIR] = DOWN_RIGHT
 
-            elif ball['x'] == WIDTH - 1 and ball['direction'] == 'upright':
-                ball['direction'] = 'upleft'
-            elif ball['x'] == WIDTH - 1 and ball['direction'] == 'downright':
-                ball['direction'] = 'downleft'
+            elif ball[X] == WIDTH - 1 and ball[DIR] == UP_RIGHT:
+                ball[DIR] = UP_LEFT
+            elif ball[X] == WIDTH - 1 and ball[DIR] == DOWN_RIGHT:
+                ball[DIR] = DOWN_LEFT
 
-            elif ball['y'] == 0 and ball['direction'] == 'upleft':
-                ball['direction'] = 'downleft'
-            elif ball['y'] == 0 and ball['direction'] == 'upright':
-                ball['direction'] = 'downright'
+            elif ball[Y] == 0 and ball[DIR] == UP_LEFT:
+                ball[DIR] = DOWN_LEFT
+            elif ball[Y] == 0 and ball[DIR] == UP_RIGHT:
+                ball[DIR] = DOWN_RIGHT
 
-            elif ball['y'] == HEIGHT - 1 and ball['direction'] == 'downleft':
-                ball['direction'] = 'upleft'
-            elif ball['y'] == HEIGHT - 1 and ball['direction'] == 'downright':
-                ball['direction'] = 'upright'
+            elif ball[Y] == HEIGHT - 1 and ball[DIR] == DOWN_LEFT:
+                ball[DIR] = UP_LEFT
+            elif ball[Y] == HEIGHT - 1 and ball[DIR] == DOWN_RIGHT:
+                ball[DIR] = UP_RIGHT
 
-        for pos in oldBallPositions:
+        for position in oldBallPositions:
             # Erase all of the balls.
-            bext.goto(pos[0], pos[1])
+            bext.goto(position[0], position[1])
             print(' ', end='')
         # At this point, go back to the start of the main program loop.
 
@@ -110,4 +120,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

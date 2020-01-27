@@ -6,7 +6,9 @@ __version__ = 1
 
 import datetime, random
 
+
 def getBirthdays(number):
+    """Returns a list of `number` random date objects."""
     birthdays = []
     for i in range(number):
         startOfYear = datetime.date(2001, 1, 1)
@@ -15,16 +17,19 @@ def getBirthdays(number):
         birthdays.append(birthday)
     return birthdays
 
+
 def getMatch(birthdays):
+    """Returns the date object of a matching birthday.
+
+    This date object appears more than once in `birthdays`."""
     if len(birthdays) == len(set(birthdays)):
-        return None # All birthdays are unique, so return None.
+        return None  # All birthdays are unique, so return None.
 
     for a, birthdayA in enumerate(birthdays):
-        for b, birthdayB in enumerate(birthdays[a+1:]):
-            #if a == b:
-            #    continue # Don't compare a person's own birthday.
+        for b, birthdayB in enumerate(birthdays[a + 1 :]):
             if birthdayA == birthdayB:
-                return birthdayA # Return the matching birthday.
+                return birthdayA  # Return the matching birthday.
+
 
 # Display the intro:
 print('''Birthday Paradox
@@ -39,12 +44,12 @@ This program does a monte carlo simulation to explore this concept.
 MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
 
-while True: # Keep asking until the user enters a valid amount.
+while True:  # Keep asking until the user enters a valid amount.
     print('How many birthdays shall I generate? (Max 100)')
     response = input()
     if response.isdecimal() and (0 < int(response) <= 100):
         number = int(response)
-        break # User has entered a valid amount.
+        break  # User has entered a valid amount.
     # At this point, go back to the start of the loop.
 print()
 

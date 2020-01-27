@@ -20,7 +20,7 @@ or a Command Prompt window (on Windows) and running:
 
 # Setup the constants:
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1 # Adjustment for a Windows newline bug that happens when you print on the right edge.
+WIDTH -= 1 # Adjustment for Windows Command Prompt.
 
 # Constants
 NUM_KELP = 2

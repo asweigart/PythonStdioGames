@@ -28,7 +28,7 @@ PAUSE_LENGTH = 0.25
 
 WIDTH, HEIGHT = bext.size()
 HEIGHT = (HEIGHT - 1) * 2 # Leave a row free for "Press Ctrl-C..." message.
-WIDTH -= 1 # For a windows bug.
+WIDTH -= 1 # Adjustment for Windows Command Prompt.
 
 TOP_BLOCK = chr(9600) # Character 9600 is '▀'
 BOTTOM_BLOCK = chr(9604) # Character 9604 is '▄'

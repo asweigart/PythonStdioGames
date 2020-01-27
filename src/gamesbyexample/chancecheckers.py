@@ -13,49 +13,51 @@ ALL_COLUMNS = 'ABCDEFGH'
 # The columns where odd/even rows can have checkers on them.
 ODD_CHECKER_COLUMNS = 'BDFH'
 EVEN_CHECKER_COLUMNS = 'ACEG'
-EMPTY = ' ' # The character to use for an empty space on the board.
+EMPTY = ' '  # The character to use for an empty space on the board.
 
 
 def main():
-    # Main game code:
+    """Run a single game of Chance Checkers."""
     print('''CHANCE CHECKERS
     By Al Sweigart al@inventwithpython.com''')
     theBoard = getNewBoard() # Create a new checker board data structure.
     turn = 'X' # X goes first.
     while True: # Main game loop.
-        drawBoard(theBoard)
-        moves = random.sample('xxxooo', 3) # Randomly pick 3 'x' and 'o'.
+        displayBoard(theBoard)
+        moves = random.sample('xxxooo', 3)  # Randomly pick 3 'x' and 'o'.
         while moves != []:
             # Get the player's move and carry it out:
-            srcMove, dstMove = getMove(theBoard, turn, moves)
+            srcMove, dstMove = getPlayerMove(theBoard, turn, moves)
             if (srcMove, dstMove) != (None, None):
                 moves.remove(theBoard[srcMove].lower())
                 theBoard = makeMove(theBoard, srcMove, dstMove)
 
             if hasLost(theBoard, otherCheckers(turn)[1]):
-                drawBoard(theBoard)
+                displayBoard(theBoard)
                 print(turn + ' is the winner!')
                 sys.exit()
             if (srcMove, dstMove) == (None, None):
-                drawBoard(theBoard)
+                displayBoard(theBoard)
                 print(otherCheckers(turn)[1] + ' is the winner!')
                 sys.exit()
             if moves != []:
-                drawBoard(theBoard)
-        turn = otherCheckers(turn)[1] # Switch turns to the other player.
+                displayBoard(theBoard)
+        turn = otherCheckers(turn)[1]  # Switch turns to the other player.
         # At this point, go back to the start of the main game loop.
 
 
 def getNewBoard():
-    # Set up the board data structure with empty spaces.
-    board = {} # Keys of spaces like 'B1', and values of the checker or EMPTY.
+    """Set up a board data structure with empty spaces."""
+
+    # Keys are spaces (like 'B1'), values are the checker or EMPTY:
+    board = {}
 
     # Set every space to be empty:
     for row in range(1, 9):
-        if row % 2 == 0: # Set the spaces on even rows:
+        if row % 2 == 0:  # Set the spaces on even rows:
             for column in EVEN_CHECKER_COLUMNS:
                 board[column + str(row)] = EMPTY
-        elif row % 2 == 1: # Set the spaces on odd rows:
+        elif row % 2 == 1:  # Set the spaces on odd rows:
             for column in ODD_CHECKER_COLUMNS:
                 board[column + str(row)] = EMPTY
 
@@ -70,8 +72,9 @@ def getNewBoard():
     return board
 
 
-def drawBoard(board):
-    spaces = [] # This contains all the characters to print at each space.
+def displayBoard(board):
+    """Display the board data structure on the screen."""
+    spaces = []  # Contains all the characters to display at each space.
     for row in range(1, 9):
         if row % 2 == 0:
             for column in EVEN_CHECKER_COLUMNS:
@@ -103,35 +106,39 @@ def drawBoard(board):
 
 
 def prevCol(column):
-    # Return the column letter that comes before `column`, or '' if it's 'A'.
+    """Return the column letter that comes before `column`.
+
+    Returns '' if `column` 'A'."""
     return {'': '', 'A': '', 'B': 'A', 'C': 'B', 'D': 'C',
             'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G', '': ''}[column]
 
 
 def nextCol(column):
-    # Return the column letter that comes after `column`, or '' if it's 'H'.
+    """Return the column letter that comes after `column`.
+
+    Returns '' if `column` 'H'."""
     return {'': '', 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E',
             'E': 'F', 'F': 'G', 'G': 'H', 'H': '', '': ''}[column]
 
 
 def otherCheckers(checker):
-    # Return a string of the opponent's checkers.
+    """Return a string of the opponent's checkers."""
     return {'x': ('o', 'O'), 'X': ('o', 'O'),
             'o': ('x', 'X'), 'O': ('x', 'X')}[checker]
 
 
 def getPossibleDstMoves(board, srcSpace):
-    # Return a list of possible destination moves from `srcSpace`.
+    """Return a list of possible destination moves from `srcSpace`."""
     if board.get(srcSpace) not in ('x', 'o', 'X', 'O'):
-        return [] # There are no checkers at `srcSpace`.
+        return []  # There are no checkers at `srcSpace`.
 
     checker = board[srcSpace] # The checker at `srcSpace`
     possibleDstMoves = []     # Possible places the checker can move to.
-    possibleDstCaptures = []  # Possible places to move to after capturing.
+    possibleDstCaptures = []  # Possible places to move after capturing.
 
     # Setup variables for various spaces adjacent/near `srcSpace`.
-    column = srcSpace[0]   # Columns are letters.
-    row = int(srcSpace[1]) # E.g. convert string '1' to int 1.
+    column = srcSpace[0]    # Columns are letters.
+    row = int(srcSpace[1])  # E.g. convert string '1' to int 1.
     downLeftSpace    = prevCol(column) + str(row + 1)
     downRightSpace   = nextCol(column) + str(row + 1)
     upLeftSpace      = prevCol(column) + str(row - 1)
@@ -142,7 +149,7 @@ def getPossibleDstMoves(board, srcSpace):
     up2Right2Space   = nextCol(nextCol(column)) + str(row - 2)
 
     # See where the checker at this space can move:
-    if checker in ('x', 'X', 'O'):
+    if checker in ('x', 'X', 'O'):  # x, X, and O can move down.
         # Check the two spaces below this x:
         if board.get(downLeftSpace) == EMPTY:
             possibleDstMoves.append(downLeftSpace)
@@ -150,12 +157,14 @@ def getPossibleDstMoves(board, srcSpace):
             possibleDstMoves.append(downRightSpace)
 
         # Check the two spaces below this x if you can capture an o:
-        if board.get(downLeftSpace) in otherCheckers(checker) and board.get(down2Left2Space) == EMPTY:
+        canCapDL = board.get(downLeftSpace) in otherCheckers(checker)
+        if canCapDL and board.get(down2Left2Space) == EMPTY:
             possibleDstCaptures.append(down2Left2Space)
-        if board.get(downRightSpace) in otherCheckers(checker) and board.get(down2Right2Space) == EMPTY:
+        canCapDR = board.get(downRightSpace) in otherCheckers(checker)
+        if canCapDR and board.get(down2Right2Space) == EMPTY:
             possibleDstCaptures.append(down2Right2Space)
 
-    if checker in ('o', 'X', 'O'):
+    if checker in ('o', 'X', 'O'):  # o, X, and O can move up.
         # Check the two spaces above this o:
         if board.get(upLeftSpace) == EMPTY:
             possibleDstMoves.append(upLeftSpace)
@@ -163,28 +172,33 @@ def getPossibleDstMoves(board, srcSpace):
             possibleDstMoves.append(upRightSpace)
 
         # Check the two spaces below this o if you can capture an x:
-        if board.get(upLeftSpace) in otherCheckers(checker) and board.get(up2Left2Space) == EMPTY:
+        canCapUL = board.get(upLeftSpace) in otherCheckers(checker)
+        if canCapUL and board.get(up2Left2Space) == EMPTY:
             possibleDstCaptures.append(up2Left2Space)
-        if board.get(upRightSpace) in otherCheckers(checker) and board.get(up2Right2Space) == EMPTY:
+        canCapUR = board.get(upRightSpace) in otherCheckers(checker)
+        if canCapUR and board.get(up2Right2Space) == EMPTY:
             possibleDstCaptures.append(up2Right2Space)
 
     return (possibleDstMoves, possibleDstCaptures)
 
 
-def getMove(board, turn, availableMoves):
+def getPlayerMove(board, turn, moves):
+    """Ask the player to select a move."""
+
     # Present the player with valid moves and ask them to choose one:
     assert turn in ('X', 'O')
-    print('Available moves for', turn, 'player:', ' '.join(availableMoves))
+    print('Moves for ' + turn + ': ' + ' '.join(moves))
 
     # Get possible "source" spaces to select:
     checkersThatCanMove = []
-    for row in range(1, 9): # Loop over all the spaces on the board.
+    for row in range(1, 9):  # Loop over all the spaces on the board.
         for column in ALL_COLUMNS:
             thisSpace = column + str(row)
-            isNotAnAvailableMove = board.get(thisSpace, '').lower() not in availableMoves
-            isAPromotedChecker = board.get(thisSpace, '') == otherCheckers(turn)[1]
-            if isNotAnAvailableMove or isAPromotedChecker:
-                continue # This is not a checker the player can move.
+            checkerAtSpace = board.get(thisSpace, '')
+            cantMove = checkerAtSpace.lower() not in moves
+            isPromotedChecker = checkerAtSpace == otherCheckers(turn)[1]
+            if cantMove or isPromotedChecker:
+                continue  # This is not a checker the player can move.
 
             # See where the checker at this space can move:
             dstMoves, dstCaptures = getPossibleDstMoves(board, thisSpace)
@@ -192,9 +206,9 @@ def getMove(board, turn, availableMoves):
                 checkersThatCanMove.append(thisSpace)
 
     if checkersThatCanMove == []:
-        return (None, None) # There are no valid moves.
+        return (None, None)  # There are no valid moves.
 
-    while True: # Loop until a valid "source" space is selected.
+    while True:  # Loop until a valid "source" space is selected.
         print('Player', turn, 'select the checker to move:')
         print(' '.join(checkersThatCanMove), 'QUIT')
         srcMove = input().upper()
@@ -204,7 +218,7 @@ def getMove(board, turn, availableMoves):
             break
         # At this point, go back to the start of the loop.
 
-    while True: # Loop until a valid "destination" space is selected.
+    while True:  # Loop until a valid "destination" space is selected.
         dstMoves, dstCaptures = getPossibleDstMoves(board, srcMove)
         dstMoves += dstCaptures
         print('Enter the space to move', srcMove, 'to:')
@@ -218,8 +232,8 @@ def getMove(board, turn, availableMoves):
 
 
 def makeMove(board, srcMove, dstMove):
-    # Carry out the move and return a new board data structure.
-    board = copy.copy(board) # We'll modify a copy of the board object.
+    """Carry out the move and return a new board data structure."""
+    board = copy.copy(board)  # We'll modify a copy of the board object.
     srcColumn, srcRow = srcMove[0], int(srcMove[1])
     dstColumn, dstRow = dstMove[0], int(dstMove[1])
 
@@ -241,13 +255,13 @@ def makeMove(board, srcMove, dstMove):
     # See if we need to promote this checker:
     if dstRow == 1 or dstRow == 8:
         print(board[dstMove].upper(), 'has been promoted!')
-        board[dstMove] = board[dstMove].upper() # Promote this checker.
+        board[dstMove] = board[dstMove].upper()  # Promote this checker.
 
     # See if this checker can do another jump after jumping:
     dstMoves, dstCaptures = getPossibleDstMoves(board, dstMove)
     if dstCaptures != [] and abs(srcRow - dstRow) == 2:
-        drawBoard(board)
-        while True: # Keep asking until valid input is entered.
+        displayBoard(board)
+        while True:  # Keep asking until valid input is entered.
             print('Enter the double jump to make:')
             print(' '.join(dstCaptures))
             doubleJumpMove = input().upper()
@@ -259,7 +273,7 @@ def makeMove(board, srcMove, dstMove):
 
 
 def hasLost(board, player):
-    # Return True if `player` has no checkers on `board`, otherwise False.
+    """Return True if `player` has no checkers, otherwise False."""
     assert player in ('X', 'O')
     for row in range(1, 9):
         for column in ALL_COLUMNS:

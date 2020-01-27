@@ -2,7 +2,6 @@
 
 A silly bluffing game between two human players. Based on the game
 from the show, 8 Out of 10 Cats."""
-
 __version__ = 1
 
 import random
@@ -20,16 +19,11 @@ The first player looks into their box (the second player must close
 their eyes during this.) The first player then says "There is a carrot
 in my box" or "There is not a carrot in my box". The second player then
 gets to decide if they want to swap boxes or not.
+''')
+input('Press Enter to begin.')
 
-Press Enter to begin.''')
-
-input()
-
-print('Human player 1, enter your name:')
-p1Name = input()
-
-print('Human player 2, enter your name:')
-p2Name = input()
+p1Name = input('Human player 1, enter your name:')
+p2Name = input('Human player 2, enter your name:')
 
 print('''HERE ARE TWO BOXES:
   __________     __________
@@ -44,13 +38,11 @@ print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
 print()
 print(p1Name + ', you have a RED box in front of you.')
 print(p2Name + ', you have a GOLD box in front of you.')
-print('Press Enter to continue...')
-input()
+input('Press Enter to continue...')
 
 print(p1Name + ', you will get to look into your box.')
 print(p2Name.upper() + ', close your eyes and don\'t look!!!')
-print('When ' + p2Name + '\'s eyes are closed, press Enter...')
-input()
+input('When ' + p2Name + '\'s eyes are closed, press Enter...')
 
 print(p1Name + ' here is the inside of your box:')
 
@@ -88,18 +80,17 @@ else:
 (no carrot!)''')
     print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
 
-print('Press Enter to continue...')
-input()
+input('Press Enter to continue...')
+
 print('\n' * 100)
 print(p1Name + ', tell ' + p2Name + ' to open their eyes.')
-print('Press Enter to continue...')
-print()
+input('Press Enter to continue...')
+
 print(p1Name + ', say one of the following sentences to ' + p2Name + '.')
 print('  1) There is a carrot in my box.')
 print('  2) There is not a carrot in my box.')
 print()
-print('Then press Enter to continue...')
-input()
+input('Then press Enter to continue...')
 
 print(p2Name + ', do you want to swap boxes with ' + p1Name + '? YES/NO')
 while True:
@@ -132,8 +123,7 @@ else:
 +---------+    +---------+''')
     print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
 
-print('Press Enter to reveal the winner...')
-input()
+input('Press Enter to reveal the winner...')
 
 if swappedBoxes and carrotInRedBox:
     print('''

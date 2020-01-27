@@ -13,7 +13,9 @@ SPADES   = chr(9824) # Character 9824 is '♠'.
 CLUBS    = chr(9827) # Character 9827 is '♣'.
 BACKSIDE = 'backside'
 
+
 def main():
+    """Runs a single game of Blackjack."""
     print('''BLACKJACK
     By Al Sweigart al@inventwithpython.com
 
@@ -31,7 +33,7 @@ def main():
 
     money = 100
     pot = 0
-    while True: # Main game loop.
+    while True:  # Main game loop.
         # Check if the player has run out of money:
         if money <= 0:
             print("You're broke!")
@@ -44,7 +46,7 @@ def main():
         bet = getBet(money)
 
         # Set up the pot and deal the cards:
-        pot += bet * 2 # Dealer matches the player's bet.
+        pot += bet * 2  # Dealer matches the player's bet.
         money -= bet
         deck = getDeck()
         dealerHand = [deck.pop(), deck.pop()]
@@ -52,8 +54,8 @@ def main():
 
         # Handle player actions:
         print('Pot:', pot)
-        while True: # Keep doing player actions until they stand or bust.
-            showHands(playerHand, dealerHand, False)
+        while True:  # Keep looping until player stands or busts.
+            displayHands(playerHand, dealerHand, False)
             print()
 
             # Check if the player has bust:
@@ -68,7 +70,7 @@ def main():
                 # Player is doubling down, they can increase their bet:
                 additionalBet = getBet(min(bet, money))
                 money -= additionalBet
-                pot += additionalBet * 2 # Dealer matches the bet.
+                pot += additionalBet * 2  # Dealer matches the bet.
                 bet += additionalBet
                 print('Bet increased to {}.'.format(bet))
                 print('Pot:', pot)
@@ -95,37 +97,41 @@ def main():
                 # The dealer hits:
                 print('Dealer hits...')
                 dealerHand.append(deck.pop())
-                showHands(playerHand, dealerHand, False)
+                displayHands(playerHand, dealerHand, False)
 
                 if getCardValue(dealerHand) > 21:
-                    break # The dealer has busted.
+                    break  # The dealer has busted.
                 pause()
 
-        showHands(playerHand, dealerHand, True) # Show the final hands.
+        displayHands(playerHand, dealerHand, True)  # Show the final hands.
 
+        playerValue = getCardValue(playerHand)
+        dealerValue = getCardValue(dealerHand)
         # Handle whether the player won, lost, or tied.
-        if getCardValue(dealerHand) > 21:
+        if dealerValue > 21:
             print('Dealer busts! You win ${}!'.format(pot))
             money += pot
-        elif (getCardValue(playerHand) > 21) or (getCardValue(playerHand) < getCardValue(dealerHand)):
+        elif (playerValue > 21) or (playerValue < dealerValue):
             print('You lost!')
-        elif getCardValue(playerHand) > getCardValue(dealerHand):
+        elif playerValue > dealerValue:
             print('You won ${}!'.format(pot))
             money += pot
-        elif getCardValue(playerHand) == getCardValue(dealerHand):
+        elif playerValue == dealerValue:
             print('It\'s a tie, the dealer wins.')
         else:
-            assert False  # This line should never run unless there's a bug.
-        pot = 0 # Reset the pot.
+            # This line should never run unless there's a bug:
+            assert False
+        pot = 0  # Reset the pot.
 
         pause()
 
+
 def displayCards(cards):
-    # Display all the cards in the `cards` list:
-    rows = ['', '', '', '', ''] # Stores the text to display.
+    """Display all the cards in the `cards` list."""
+    rows = ['', '', '', '', '']  # Stores the text to display.
 
     for i, card in enumerate(cards):
-        rows[0] += ' ___  ' # Print the top line of the card.
+        rows[0] += ' ___  '  # Print the top line of the card.
         if card == BACKSIDE:
             # Print a card's back:
             rows[1] += '|## | '
@@ -133,7 +139,7 @@ def displayCards(cards):
             rows[3] += '|_##| '
         else:
             # Print the card's front:
-            rank, suit = card # The card is a tuple data structure.
+            rank, suit = card  # The card is a tuple data structure.
             rows[1] += '|{} | '.format(rank.ljust(2))
             rows[2] += '| {} | '.format(suit)
             rows[3] += '|_{}| '.format(rank.rjust(2, '_'))
@@ -151,39 +157,39 @@ def getCardValue(cards):
 
     # Add the value for the non-ace cards:
     for card in cards:
-        rank = card[0] # `card` is a tuple like (rank, suit)
+        rank = card[0]  # `card` is a tuple like (rank, suit)
         if rank == 'A':
             numberOfAces += 1
-        elif rank in ('K', 'Q', 'J'): # Face cards are worth 10 points.
+        elif rank in ('K', 'Q', 'J'):  # Face cards are worth 10 points.
             value += 10
         else:
-            value += int(rank) # Numbered cards are worth their number.
+            value += int(rank)  # Numbered cards are worth their number.
 
     # Add the value for the aces:
     for i in range(numberOfAces):
         if value + 11 <= 21:
-            value += 11 # Add 11 if it doesn't push the total over 21...
+            value += 11  # Add 11 if it doesn't push the total over 21...
         else:
-            value += 1 # ...otherwise, just add 1.
+            value += 1  # ...otherwise, just add 1.
 
     return value
 
 
 def getDeck():
-    # Return a list of (rank, suit) tuples for all 52 cards:
+    """Return a list of (rank, suit) tuples for all 52 cards."""
     deck = []
     for suit in (HEARTS, DIAMONDS, SPADES, CLUBS):
         for rank in range(2, 11):
-            deck.append((str(rank), suit)) # Add the numbered cards.
+            deck.append((str(rank), suit))  # Add the numbered cards.
         for rank in ('J', 'Q', 'K', 'A'):
-            deck.append((rank, suit)) # Add the face and ace cards.
+            deck.append((rank, suit))  # Add the face and ace cards.
     random.shuffle(deck)
     return deck
 
 
 def getBet(maxBet):
-    # Ask the user how much they want to bet for this round:
-    while True: # Keep asking until they enter a valid amount.
+    """Ask the user how much they want to bet for this round."""
+    while True:  # Keep asking until they enter a valid amount.
         print('How much do you bet? (1-{}, or "quit")'.format(maxBet))
         bet = input().upper().strip()
         if bet == 'QUIT':
@@ -191,16 +197,16 @@ def getBet(maxBet):
             sys.exit()
 
         if not bet.isdecimal():
-            continue # If the player didn't enter a number, ask again.
+            continue  # If the player didn't enter a number, ask again.
 
         bet = int(bet)
-        if (1 <= bet <= maxBet):
-            return bet # Player entered a valid bet.
+        if 1 <= bet <= maxBet:
+            return bet  # Player entered a valid bet.
         # At this point, go back to the start of the loop.
 
 
-def showHands(playerHand, dealerHand, showDealerHand):
-    # Show the dealer's cards:
+def displayHands(playerHand, dealerHand, showDealerHand):
+    """Show the player's and dealer's cards."""
     print()
     if showDealerHand:
         print('DEALER:', getCardValue(dealerHand))
@@ -221,9 +227,9 @@ def pause():
 
 
 def getMove(playerHand, money):
-    while True: # Keep looping until the player enters a correct move.
+    while True:  # Keep looping until the player enters a correct move.
         # Determine what moves the player can make:
-        moves = ['(H)it', '(S)tand'] # The player can always hit or stand.
+        moves = ['(H)it', '(S)tand']
 
         # The player can double down on their first move, which we can
         # tell because they'll have exactly two cards:
@@ -234,10 +240,12 @@ def getMove(playerHand, money):
         movePrompt = ', '.join(moves) + ': '
         move = input(movePrompt).upper()
         if move in ('H', 'S'):
-            return move # Player has entered a valid move.
+            return move  # Player has entered a valid move.
         if move == 'D' and '(D)ouble down' in moves:
-            return move # Player has entered a valid move.
+            return move  # Player has entered a valid move.
         # At this point, go back to the start of the loop.
 
+
+# If the program is run (instead of imported), run the game:
 if __name__ == '__main__':
-    main() # Start the game if this file was run directly (not imported).
+    main()

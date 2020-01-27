@@ -69,6 +69,7 @@ After making several of these programs, I've notice various "categories" of prog
 Additional modules I recommend using:
 
 * `bext` for colorful text and controlling the positioning of the text cursor.
+* `blessings` for a better version of curses.
 * `pyperclip` for copying/psating text with the clipboard.
 * `playsound` for playing sound files.
 * `pyttsx3` for text to speech.

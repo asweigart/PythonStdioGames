@@ -20,23 +20,35 @@ or a Command Prompt window (on Windows) and running:
 
 # Setup the constants:
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1 # Reduce width by 1 because of a weird Windows behavior.
+WIDTH -= 1  # Adjustment for Windows Command Prompt.
 NUMBER_OF_POINTS = 4
 COLORS = ('red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white')
-DIRECTIONS = ('upright', 'upleft', 'downright', 'downleft')
+UP_RIGHT = 'ur'
+UP_LEFT = 'ul'
+DOWN_RIGHT = 'dr'
+DOWN_LEFT = 'dl'
+DIRECTIONS = (UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT)
 LINE_CHAR = '#'
 
+# Key names for point dictionaries:
+COLOR = 'color'
+X = 'x'
+Y = 'y'
+DIR = 'direction'
+
+
 def main():
+    """Run the bouncing lines program."""
     bext.clear()
 
     # Generate some points.
     points = []
     for i in range(NUMBER_OF_POINTS):
-        points.append({'x': random.randint(1, WIDTH - 2),
-                       'y': random.randint(1, HEIGHT - 2),
-                       'direction': random.choice(DIRECTIONS)})
+        points.append({X: random.randint(1, WIDTH - 2),
+                       Y: random.randint(1, HEIGHT - 2),
+                       DIR: random.choice(DIRECTIONS)})
 
-    while True: # Main program loop.
+    while True:  # Main program loop.
         oldpointPositions = []
 
         if random.randint(1, 50) == 1:
@@ -52,73 +64,74 @@ def main():
                 pointA = point
                 pointB = points[i + 1]
 
-            for x, y in line(pointA['x'], pointA['y'], pointB['x'], pointB['y']):
+            for x, y in line(pointA[X], pointA[Y], pointB[X], pointB[Y]):
                 bext.goto(x, y)
                 print(LINE_CHAR, end='')
 
                 oldpointPositions.append((x, y))
-        sys.stdout.flush() # (Required for bext-using programs.)
+        sys.stdout.flush()  # (Required for bext-using programs.)
         time.sleep(0.1)
 
         for point in points:
             # Move our points:
-            if point['direction'] == 'upright':
-                point['x'] += 1
-                point['y'] -= 1
-            elif point['direction'] == 'upleft':
-                point['x'] -= 1
-                point['y'] -= 1
-            elif point['direction'] == 'downright':
-                point['x'] += 1
-                point['y'] += 1
-            elif point['direction'] == 'downleft':
-                point['x'] -= 1
-                point['y'] += 1
+            if point[DIR] == UP_RIGHT:
+                point[X] += 1
+                point[Y] -= 1
+            elif point[DIR] == UP_LEFT:
+                point[X] -= 1
+                point[Y] -= 1
+            elif point[DIR] == DOWN_RIGHT:
+                point[X] += 1
+                point[Y] += 1
+            elif point[DIR] == DOWN_LEFT:
+                point[X] -= 1
+                point[Y] += 1
 
             # See if our points bounce off the corners:
-            if point['x'] == 0 and point['y'] == 0:
-                point['direction'] = 'downright'
-            elif point['x'] == 0 and point['y'] == HEIGHT - 1:
-                point['direction'] = 'upright'
-            elif point['x'] == WIDTH - 1 and point['y'] == 0:
-                point['direction'] = 'downleft'
-            elif point['x'] == WIDTH - 1 and point['y'] == HEIGHT - 1:
-                point['direction'] = 'upleft'
+            if point[X] == 0 and point[Y] == 0:
+                point[DIR] = DOWN_RIGHT
+            elif point[X] == 0 and point[Y] == HEIGHT - 1:
+                point[DIR] = UP_RIGHT
+            elif point[X] == WIDTH - 1 and point[Y] == 0:
+                point[DIR] = DOWN_LEFT
+            elif point[X] == WIDTH - 1 and point[Y] == HEIGHT - 1:
+                point[DIR] = UP_LEFT
 
             # See if our points bounce off the walls:
-            elif point['x'] == 0 and point['direction'] == 'upleft':
-                point['direction'] = 'upright'
-            elif point['x'] == 0 and point['direction'] == 'downleft':
-                point['direction'] = 'downright'
+            elif point[X] == 0 and point[DIR] == UP_LEFT:
+                point[DIR] = UP_RIGHT
+            elif point[X] == 0 and point[DIR] == DOWN_LEFT:
+                point[DIR] = DOWN_RIGHT
 
-            elif point['x'] == WIDTH - 1 and point['direction'] == 'upright':
-                point['direction'] = 'upleft'
-            elif point['x'] == WIDTH - 1 and point['direction'] == 'downright':
-                point['direction'] = 'downleft'
+            elif point[X] == WIDTH - 1 and point[DIR] == UP_RIGHT:
+                point[DIR] = UP_LEFT
+            elif point[X] == WIDTH - 1 and point[DIR] == DOWN_RIGHT:
+                point[DIR] = DOWN_LEFT
 
-            elif point['y'] == 0 and point['direction'] == 'upleft':
-                point['direction'] = 'downleft'
-            elif point['y'] == 0 and point['direction'] == 'upright':
-                point['direction'] = 'downright'
+            elif point[Y] == 0 and point[DIR] == UP_LEFT:
+                point[DIR] = DOWN_LEFT
+            elif point[Y] == 0 and point[DIR] == UP_RIGHT:
+                point[DIR] = DOWN_RIGHT
 
-            elif point['y'] == HEIGHT - 1 and point['direction'] == 'downleft':
-                point['direction'] = 'upleft'
-            elif point['y'] == HEIGHT - 1 and point['direction'] == 'downright':
-                point['direction'] = 'upright'
+            elif point[Y] == HEIGHT - 1 and point[DIR] == DOWN_LEFT:
+                point[DIR] = UP_LEFT
+            elif point[Y] == HEIGHT - 1 and point[DIR] == DOWN_RIGHT:
+                point[DIR] = UP_RIGHT
 
-        for pos in oldpointPositions:
+        for position in oldpointPositions:
             # Erase all of the points.
-            bext.goto(pos[0], pos[1])
+            bext.goto(position[0], position[1])
             print(' ', end='')
         # At this point, go back to the start of the main program loop.
 
 
 def line(x1, y1, x2, y2):
-    """Returns a list of  all of the points in a line
-    between `x1`, `y1` and `x2`, `y2`. Uses the Bresenham line algorithm.
-    More info at https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
+    """Returns a list of points in a line between the given points.
+
+    Uses the Bresenham line algorithm. More info at:
+    https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
     points = []
-    isSteep = abs(y2-y1) > abs(x2-x1)
+    isSteep = abs(y2 - y1) > abs(x2 - x1)
     if isSteep:
         x1, y1 = y1, x1
         x2, y2 = y2, x2
@@ -129,7 +142,7 @@ def line(x1, y1, x2, y2):
         y1, y2 = y2, y1
 
         deltax = x2 - x1
-        deltay = abs(y2-y1)
+        deltay = abs(y2 - y1)
         error = int(deltax / 2)
         y = y2
         ystep = None
@@ -148,7 +161,7 @@ def line(x1, y1, x2, y2):
                 error += deltax
     else:
         deltax = x2 - x1
-        deltay = abs(y2-y1)
+        deltay = abs(y2 - y1)
         error = int(deltax / 2)
         y = y1
         ystep = None
@@ -173,4 +186,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

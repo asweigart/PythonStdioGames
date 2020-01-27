@@ -76,10 +76,10 @@ def test_getDeck():
             assert (str(rank), suit) in deck
 
 
-def test_showHands(capsys):
+def test_displayHands(capsys):
     playerHand = [('A', blackjack.HEARTS), ('K', blackjack.HEARTS)]
     dealerHand = [('6', blackjack.HEARTS), ('6', blackjack.DIAMONDS)]
-    blackjack.showHands(playerHand, dealerHand, False)
+    blackjack.displayHands(playerHand, dealerHand, False)
     captured = capsys.readouterr()
     assert captured.out == '\n' + \
                            'DEALER: ???\n' + \
@@ -93,7 +93,7 @@ def test_showHands(capsys):
                            '| ♥ | | ♥ | \n' + \
                            '|__A| |__K| \n'
 
-    blackjack.showHands(playerHand, dealerHand, True)
+    blackjack.displayHands(playerHand, dealerHand, True)
     captured = capsys.readouterr()
     assert captured.out == '\n' + \
                            'DEALER: 12\n' + \

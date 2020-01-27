@@ -25,16 +25,16 @@ def main():
     time.sleep(0.5)
 
     print('''
-    By Al Sweigart al@inventwithpython.com
+By Al Sweigart al@inventwithpython.com
 
-    To play, enter the alphabetical order of the letters shown as fast
-    as possible. Try to get as many as possible in {} seconds!
+To play, enter the alphabetical order of the letters shown as fast
+as possible. Try to get as many as possible in {} seconds!
 
-    Example:
-        P M O T Q  <-- The letters.
-        > mopqt    <-- The correct alphabetical order.
+Example:
+    P M O T Q  <-- The letters.
+    > mopqt    <-- The correct alphabetical order.
 
-    Press enter to start!
+Press enter to start!
     '''.format(QUIZ_DURATION))
     input()  # Let the player press Enter to start the game.
 
