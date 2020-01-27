@@ -5,8 +5,8 @@ __version__ = 1
 
 import random
 
-print('COIN FLIP SIMULATOR')
-print('By Al Sweigart al@inventwithpython.com')
+print('''COIN FLIP SIMULATOR
+By Al Sweigart al@inventwithpython.com''')
 
 # Ask the user how many flips to make:
 print('How many coin flips to make?')
@@ -17,7 +17,7 @@ while True:
         break
     # At this point, go back to the start of the loop.
 
-streakStats = {} # Keys are streak lengths, values are frequency.
+streakStats = {}  # Keys are streak lengths, values are frequency.
 for i in range(numberOfFlips):
     isFirstFlip = i == 0
 
@@ -26,7 +26,7 @@ for i in range(numberOfFlips):
         flip = 'heads'
     else:
         flip = 'tails'
-    print(flip[0], end='') # Print out "h" or "t".
+    print(flip[0], end='')  # Print out "h" or "t".
 
     if isFirstFlip:
         currentStreakLength = 0
