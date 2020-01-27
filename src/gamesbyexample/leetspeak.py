@@ -10,20 +10,6 @@ try:
 except ImportError:
     pass # If pyperclip cannot be found, do nothing. It's not a big deal.
 
-def englishToLeetspeak(message):
-    # Make sure all the keys in `charMapping` are lowercase.
-    charMapping = {
-    'a': ['4', '@', '/-\\'], 'c': ['('], 'd': ['|)'], 'e': ['3'], 'f': ['ph'],
-    'h': [']-[', '|-|'], 'i': ['1', '!', '|'], 'k': [']<'],
-    'o': ['0'], 's': ['$', '5'], 't': ['7', '+'], 'u': ['|_|'],
-    'v': ['\\/']}
-    leet = []
-    for char in message: # Check each character:
-        if char.lower() in charMapping and random.randint(1, 100) <= 70:
-            leet.append(random.choice(charMapping[char.lower()]))
-        else:
-            leet.append(char) # Don't translate this character.
-    return ''.join(leet)
 
 def main():
     print('''L3375P34]< (leetspeek)
@@ -41,5 +27,23 @@ Enter your leet message:''')
     except NameError:
         pass # Do nothing if pyperclip wasn't installed.
 
+
+def englishToLeetspeak(message):
+    # Make sure all the keys in `charMapping` are lowercase.
+    charMapping = {
+    'a': ['4', '@', '/-\\'], 'c': ['('], 'd': ['|)'], 'e': ['3'], 'f': ['ph'],
+    'h': [']-[', '|-|'], 'i': ['1', '!', '|'], 'k': [']<'],
+    'o': ['0'], 's': ['$', '5'], 't': ['7', '+'], 'u': ['|_|'],
+    'v': ['\\/']}
+    leet = []
+    for char in message: # Check each character:
+        if char.lower() in charMapping and random.randint(1, 100) <= 70:
+            leet.append(random.choice(charMapping[char.lower()]))
+        else:
+            leet.append(char) # Don't translate this character.
+    return ''.join(leet)
+
+
+# If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
     main()

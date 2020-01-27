@@ -18,12 +18,9 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
+# Setup the constants:
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1 # Adjustment for a Windows newline bug that happens when you print on the right edge.
-
-# Setup the screen.
-bext.bg('black')
-bext.clear()
 
 # Constants
 NUM_KELP = 2
@@ -52,6 +49,10 @@ LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
 
 
 def main():
+    # Setup the screen.
+    bext.bg('black')
+    bext.clear()
+
     global FISHES, BUBBLERS, BUBBLES, KELPS
 
     # Generate the global variables:
@@ -266,6 +267,7 @@ def clearAquarium():
     sys.stdout.flush() # (Required for bext-using programs.)
 
 
+# If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
     try:
         main()

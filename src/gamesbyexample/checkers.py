@@ -6,11 +6,39 @@ __version__ = 1
 
 import copy, sys
 
+# Setup the constants:
 ALL_COLUMNS = 'ABCDEFGH'
 # The columns where odd/even rows can have checkers on them.
 ODD_CHECKER_COLUMNS = 'BDFH'
 EVEN_CHECKER_COLUMNS = 'ACEG'
 EMPTY = ' ' # The character to use for an empty space on the board.
+
+
+def main():
+    print('''CHECKERS
+    By Al Sweigart al@inventwithpython.com''')
+    theBoard = getNewBoard() # Create a new checker board data structure.
+    turn = 'X' # X goes first.
+    while True: # Main game loop.
+        drawBoard(theBoard)
+
+        # Get the player's move and carry it out:
+        srcMove, dstMove = getMove(theBoard, turn)
+        if (srcMove, dstMove) == (None, None): # TODO - remove this?
+            break # If no moves can be made, end this player's turn.
+        theBoard = makeMove(theBoard, srcMove, dstMove)
+
+        if hasLost(theBoard, otherCheckers(turn)[1]):
+            drawBoard(theBoard)
+            print(turn + ' is the winner!')
+            sys.exit()
+        if (srcMove, dstMove) == (None, None):
+            drawBoard(theBoard)
+            print(otherCheckers(turn)[1] + ' is the winner!')
+            sys.exit()
+        turn = otherCheckers(turn)[1] # Switch turns to the other player.
+        # At this point, go back to the start of the main game loop.
+
 
 def getNewBoard():
     # Set up the board data structure with empty spaces.
@@ -34,6 +62,7 @@ def getNewBoard():
         board[space] = 'o'
 
     return board
+
 
 def drawBoard(board):
     spaces = [] # This contains all the characters to print at each space.
@@ -66,20 +95,24 @@ def drawBoard(board):
     +---+---+---+---+---+---+---+---+
       A   B   C   D   E   F   G   H""".format(*spaces))
 
+
 def prevCol(column):
     # Return the column letter that comes before `column`, or '' if it's 'A'.
     return {'': '', 'A': '', 'B': 'A', 'C': 'B', 'D': 'C',
             'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G', '': ''}[column]
+
 
 def nextCol(column):
     # Return the column letter that comes after `column`, or '' if it's 'H'.
     return {'': '', 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E',
             'E': 'F', 'F': 'G', 'G': 'H', 'H': '', '': ''}[column]
 
+
 def otherCheckers(checker):
     # Return a string of the opponent's checkers.
     return {'x': ('o', 'O'), 'X': ('o', 'O'),
             'o': ('x', 'X'), 'O': ('x', 'X')}[checker]
+
 
 def getPossibleDstMoves(board, srcSpace):
     # Return a list of possible destination moves from `srcSpace`.
@@ -131,6 +164,7 @@ def getPossibleDstMoves(board, srcSpace):
 
     return (possibleDstMoves, possibleDstCaptures)
 
+
 def getMove(board, turn):
     # Present the player with valid moves and ask them to choose one:
     assert turn in ('X', 'O')
@@ -174,6 +208,7 @@ def getMove(board, turn):
 
     return (srcMove, dstMove)
 
+
 def makeMove(board, srcMove, dstMove):
     # Carry out the move and return a new board data structure.
     board = copy.copy(board) # We'll modify a copy of the board object.
@@ -214,9 +249,10 @@ def makeMove(board, srcMove, dstMove):
         return makeMove(board, dstMove, doubleJumpMove)
     return board
 
+
 def hasLost(board, player):
     # Return True if `player` has no checkers on `board`, otherwise False.
-    assert turn in ('X', 'O')
+    assert player in ('X', 'O')
     for row in range(1, 9):
         for column in ALL_COLUMNS:
             if board.get(column + str(row), '').upper() == player:
@@ -224,27 +260,6 @@ def hasLost(board, player):
     return True
 
 
-# Main game code:
-print('''CHECKERS
-By Al Sweigart al@inventwithpython.com''')
-theBoard = getNewBoard() # Create a new checker board data structure.
-turn = 'X' # X goes first.
-while True: # Main game loop.
-    drawBoard(theBoard)
-
-    # Get the player's move and carry it out:
-    srcMove, dstMove = getMove(theBoard, turn)
-    if (srcMove, dstMove) == (None, None): # TODO - remove this?
-        break # If no moves can be made, end this player's turn.
-    theBoard = makeMove(theBoard, srcMove, dstMove)
-
-    if hasLost(theBoard, otherCheckers(turn)[1]):
-        drawBoard(theBoard)
-        print(turn + ' is the winner!')
-        sys.exit()
-    if (srcMove, dstMove) == (None, None):
-        drawBoard(theBoard)
-        print(otherCheckers(turn)[1] + ' is the winner!')
-        sys.exit()
-    turn = otherCheckers(turn)[1] # Switch turns to the other player.
-    # At this point, go back to the start of the main game loop.
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

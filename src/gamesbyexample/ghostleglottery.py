@@ -6,8 +6,9 @@ __version__ = 1
 
 # TODO - add more comments
 
-import random, time
+import random, time, sys
 
+# Setup the constants:
 VERTICAL_POLE  = chr(9474) # The character '│'
 HORIZONTAL_LEG = chr(9472) # The character '─'
 START_LEG      = chr(9500) # The character '├'
@@ -17,6 +18,37 @@ END_LEG        = chr(9508) # The character '┤'
 NUMBER_OF_ROWS = random.randint(10, 11)
 LEG_WIDTH = 10
 MAX_NUMBER_OF_PLAYERS = 6
+
+
+def main():
+    print('''GHOST LEG LOTTERY
+By Al Sweigart al@inventwithpython.com
+''')
+    players = getPlayerNames()
+    legs = getLegs(players)
+
+    placings = [] # index 0 is first place, index 1 is second place, etc.
+    for i in range(len(players)):
+        placings.append(None)
+
+    displayGhostLegs(legs, players, None, 0)
+    displayPlacings(placings)
+    time.sleep(2)
+
+    for i in range(len(players)):
+        for j in range(NUMBER_OF_ROWS + 1):
+            placement = displayGhostLegs(legs, players, i, j)
+            if placement == None:
+                displayPlacings(placings)
+                time.sleep(0.2)
+
+        playerName = players[i]
+        placings[placement] = playerName
+        displayPlacings(placings)
+        time.sleep(1)
+
+    print() # Print a newline.
+    print(placings[0], 'is the winner!', placings[-1], 'came in last.')
 
 
 def getPlayerNames():
@@ -159,31 +191,9 @@ def displayLeglessRow(playerNames, pathPole):
     print() # Print a newline.
 
 
-print('''GHOST LEG LOTTERY
-By Al Sweigart al@inventwithpython.com
-''')
-players = getPlayerNames()
-legs = getLegs(players)
-
-placings = [] # index 0 is first place, index 1 is second place, etc.
-for i in range(len(players)):
-    placings.append(None)
-
-displayGhostLegs(legs, players, None, 0)
-displayPlacings(placings)
-time.sleep(2)
-
-for i in range(len(players)):
-    for j in range(NUMBER_OF_ROWS + 1):
-        placement = displayGhostLegs(legs, players, i, j)
-        if placement == None:
-            displayPlacings(placings)
-            time.sleep(0.2)
-
-    playerName = players[i]
-    placings[placement] = playerName
-    displayPlacings(placings)
-    time.sleep(1)
-
-print() # Print a newline.
-print(placings[0], 'is the winner!', placings[-1], 'came in last.')
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

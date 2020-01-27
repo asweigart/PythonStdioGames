@@ -18,8 +18,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-
-bext.clear()
+# Setup the constants:
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1 # Reduce width by 1 because of a weird Windows behavior.
 NUMBER_OF_POINTS = 4
@@ -28,6 +27,8 @@ DIRECTIONS = ('upright', 'upleft', 'downright', 'downleft')
 LINE_CHAR = '#'
 
 def main():
+    bext.clear()
+
     # Generate some points.
     points = []
     for i in range(NUMBER_OF_POINTS):
@@ -167,7 +168,9 @@ def line(x1, y1, x2, y2):
     return points
 
 
-try:
-    main()
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

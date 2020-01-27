@@ -20,6 +20,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
+# Setup the constants:
 BLOCK     = chr(9608) # Character 9608 is '█'
 LEFTRIGHT = chr(9472) # Character 9472 is '─'
 UPDOWN    = chr(9474) # Character 9474 is '│'
@@ -33,6 +34,29 @@ CMAP = {'R': 'red', 'G': 'green', 'B': 'blue',
         'Y': 'yellow', 'C': 'cyan', 'P': 'purple'}
 COLORS = list(CMAP.keys())
 
+
+def main():
+    bext.fg('white')
+    print(' FLOOD IT! '.center(40, '*'))
+    gameBoard = getNewBoard()
+    movesLeft = 20
+
+    while True: # Main game loop.
+        drawBoard(gameBoard)
+
+        print('Moves left:', movesLeft)
+        playerMove = getPlayerMove()
+        changeTile(playerMove, gameBoard, 0, 0)
+        movesLeft -= 1
+
+        if hasWon(gameBoard):
+            drawBoard(gameBoard)
+            print('You have won!')
+            break
+        elif movesLeft == 0:
+            print('You have run out of moves!')
+            break
+        # At this point, go back to the start of the main game loop.
 
 def getNewBoard(width=16, height=16):
     assert width > 1 and height > 1
@@ -140,28 +164,6 @@ def hasWon(board):
     return True
 
 
-def main():
-    bext.fg('white')
-    print(' FLOOD IT! '.center(40, '*'))
-    gameBoard = getNewBoard()
-    movesLeft = 20
-
-    while True: # Main game loop.
-        drawBoard(gameBoard)
-
-        print('Moves left:', movesLeft)
-        playerMove = getPlayerMove()
-        changeTile(playerMove, gameBoard, 0, 0)
-        movesLeft -= 1
-
-        if hasWon(gameBoard):
-            drawBoard(gameBoard)
-            print('You have won!')
-            break
-        elif movesLeft == 0:
-            print('You have run out of moves!')
-            break
-        # At this point, go back to the start of the main game loop.
-
+# If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
     main()

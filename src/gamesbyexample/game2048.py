@@ -8,8 +8,30 @@ __version__ = 1
 
 import random, sys
 
-# Set up the constants:
+# Setup the constants:
 BLANK = '' # A value that represents a blank space on the board.
+
+
+def main():
+    print("""2048
+By Al Sweigart al@inventwithpython.com
+""")
+
+    gameBoard = getNewBoard()
+
+    while True: # Main game loop.
+        drawBoard(gameBoard)
+        print('Score:', getScore(gameBoard))
+        playerMove = getPlayerMove()
+        gameBoard = makeMove(gameBoard, playerMove)
+        addTwoToBoard(gameBoard)
+
+        if isFull(gameBoard):
+            drawBoard(gameBoard)
+            print('Game Over - Thanks for playing!')
+            sys.exit()
+        # At this point, go back to the start of the main game loop.
+
 
 def getNewBoard():
     """Returns a new data structure that represents a board; it's a
@@ -212,21 +234,9 @@ def isFull(board):
     return True # No space is blank, so return True.
 
 
-print("""2048
-By Al Sweigart al@inventwithpython.com
-""")
-
-gameBoard = getNewBoard()
-
-while True: # Main game loop.
-    drawBoard(gameBoard)
-    print('Score:', getScore(gameBoard))
-    playerMove = getPlayerMove()
-    gameBoard = makeMove(gameBoard, playerMove)
-    addTwoToBoard(gameBoard)
-
-    if isFull(gameBoard):
-        drawBoard(gameBoard)
-        print('Game Over - Thanks for playing!')
-        sys.exit()
-    # At this point, go back to the start of the main game loop.
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

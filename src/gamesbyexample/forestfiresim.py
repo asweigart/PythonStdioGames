@@ -20,6 +20,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
+# Setup the constants:
 WIDTH = 79
 HEIGHT = 21
 
@@ -33,33 +34,33 @@ WALL_CHAR = chr(9608)
 
 PAUSE_LENGTH = 0.05
 
+def main():
+    # Create a new board data structure.
+    board = {'width': WIDTH, 'height': HEIGHT}
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            if (random.randint(1, 10000) / 100) <= INITIAL_TREE_DENSITY:
+                board[(x, y)] = 'A' # Start as a tree.
+            else:
+                board[(x, y)] = ' ' # Start as an empty space.
 
-# Create a new board data structure.
-board = {'width': WIDTH, 'height': HEIGHT}
-for x in range(WIDTH):
-    for y in range(HEIGHT):
-        if (random.randint(1, 10000) / 100) <= INITIAL_TREE_DENSITY:
-            board[(x, y)] = 'A' # Start as a tree.
+    # Create firewalls
+    for i in range(NUMBER_OF_FIREWALLS):
+        if random.randint(0, 1) == 0:
+            # Make a horizontal firewall:
+            x = random.randint(0, max(WIDTH - FIREWALL_LENGTH - 1, 0))
+            y = random.randint(0, HEIGHT)
+            for ix in range(FIREWALL_LENGTH):
+                board[(x + ix, y)] = WALL_CHAR
         else:
-            board[(x, y)] = ' ' # Start as an empty space.
+            # Make a vertical firewall:
+            x = random.randint(0, WIDTH)
+            y = random.randint(0, max(HEIGHT - (FIREWALL_LENGTH // 2) - 1, 0))
+            for iy in range(FIREWALL_LENGTH // 2):
+                board[(x, y + iy)] = WALL_CHAR
 
-# Create firewalls
-for i in range(NUMBER_OF_FIREWALLS):
-    if random.randint(0, 1) == 0:
-        # Make a horizontal firewall:
-        x = random.randint(0, max(WIDTH - FIREWALL_LENGTH - 1, 0))
-        y = random.randint(0, HEIGHT)
-        for ix in range(FIREWALL_LENGTH):
-            board[(x + ix, y)] = WALL_CHAR
-    else:
-        # Make a vertical firewall:
-        x = random.randint(0, WIDTH)
-        y = random.randint(0, max(HEIGHT - (FIREWALL_LENGTH // 2) - 1, 0))
-        for iy in range(FIREWALL_LENGTH // 2):
-            board[(x, y + iy)] = WALL_CHAR
+    bext.clear()
 
-bext.clear()
-try:
     while True: # Main program loop.
         # Draw the board data structure.
         bext.goto(0, 0)
@@ -113,5 +114,11 @@ try:
 
         time.sleep(PAUSE_LENGTH)
         # At this point, go back to the start of the main program loop.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

@@ -18,7 +18,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-bext.clear()
+# Setup the constants:
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1 # TODO Weird Windows bug.
 NUMBER_OF_BALLS = 35
@@ -26,15 +26,19 @@ COLORS = ('red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white')
 DIRECTIONS = ('upright', 'upleft', 'downright', 'downleft')
 BALL_CHAR = 'O'
 
-# Generate some balls.
-balls = []
-for i in range(NUMBER_OF_BALLS):
-    balls.append({'color': random.choice(COLORS),
-                  'x': random.randint(1, WIDTH - 2),
-                  'y': random.randint(1, HEIGHT - 2),
-                  'direction': random.choice(DIRECTIONS)})
 
-try:
+def main():
+    bext.clear()
+
+    # Generate some balls.
+    balls = []
+    for i in range(NUMBER_OF_BALLS):
+        balls.append({'color': random.choice(COLORS),
+                      'x': random.randint(1, WIDTH - 2),
+                      'y': random.randint(1, HEIGHT - 2),
+                      'direction': random.choice(DIRECTIONS)})
+
+
     while True: # Main program loop.
         oldBallPositions = []
 
@@ -99,5 +103,11 @@ try:
             bext.goto(pos[0], pos[1])
             print(' ', end='')
         # At this point, go back to the start of the main program loop.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

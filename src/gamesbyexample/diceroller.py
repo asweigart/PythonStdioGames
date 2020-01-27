@@ -11,7 +11,7 @@ By Al Sweigart al@inventwithpython.com
 Example input:
   3d6 rolls three 6-sided dice
   1d10+2 rolls one 10-sided dice, and adds 2
-  2d17-1 rolls two 17-sided dice, and subtracts 1
+  2d38-1 rolls two 38-sided dice, and subtracts 1
   QUIT quits the program
 ''')
 

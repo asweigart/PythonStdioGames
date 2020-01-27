@@ -91,7 +91,8 @@ while True: # Main game loop.
         print('    Ack. :(\n')
     # At this point, go back to the start of the main game loop.
 
-# After the loop exits, the quiz is over. Show the final score:
-print('In {} seconds you got {} correct!'.format(QUIZ_DURATION, numCorrect))
-print('Thanks for playing!')
+    # After the loop exits, the quiz is over. Show the final score:
+    print('In {} seconds you'.format(QUIZ_DURATION))
+    print('got {} correct!'.format(numCorrect))
+    print('Thanks for playing!')
 

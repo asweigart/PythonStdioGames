@@ -18,9 +18,10 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-HOUR_HAND_RADIUS = 4
-MINUTE_HAND_RADIUS = 6
-SECOND_HAND_RADIUS = 8
+# Setup the constants:
+HOUR_HAND_LENGTH = 4
+MINUTE_HAND_LENGTH = 6
+SECOND_HAND_LENGTH = 8
 CENTERX, CENTERY = 10, 10
 COMPLETE_ARC = 2 * math.pi
 OFFSET_90_DEGREES = -0.5 * math.pi
@@ -46,6 +47,67 @@ CLOCKFACE = """       ##12###
     7           5
      ##       ##
        ###6###"""
+
+
+def main():
+    bext.clear()
+    # Draw the circle of the clock:
+    for y, row in enumerate(CLOCKFACE.splitlines()):
+        for x, char in enumerate(row):
+            if char != ' ':
+                bext.goto(x, y)
+                print(char)
+
+    while True: # Main program loop.
+        # Get the current time from the computer's clock:
+        currentTime = time.localtime()
+        h = currentTime.tm_hour % 12 # Use 12-hour clock, not 24.
+        m = currentTime.tm_min
+        s = currentTime.tm_sec
+
+        # Draw the second hand:
+        secondHandX = int(math.cos(COMPLETE_ARC * (s / 60) + OFFSET_90_DEGREES) * SECOND_HAND_LENGTH + CENTERX)
+        secondHandY = int(math.sin(COMPLETE_ARC * (s / 60) + OFFSET_90_DEGREES) * SECOND_HAND_LENGTH + CENTERY)
+        secondHandPoints = line(CENTERX, CENTERY, secondHandX, secondHandY)
+        for x, y in secondHandPoints:
+            bext.goto(x, y)
+            print('.', end='')
+
+        # Draw the minute hand:
+        minuteHandX = int(math.cos(COMPLETE_ARC * (m / 60) + OFFSET_90_DEGREES) * MINUTE_HAND_LENGTH + CENTERX)
+        minuteHandY = int(math.sin(COMPLETE_ARC * (m / 60) + OFFSET_90_DEGREES) * MINUTE_HAND_LENGTH + CENTERY)
+        minuteHandPoints = line(CENTERX, CENTERY, minuteHandX, minuteHandY)
+        for x, y in minuteHandPoints:
+            bext.goto(x, y)
+            print('*', end='')
+
+        # Draw the hour hand:
+        hourHandX = int(math.cos(COMPLETE_ARC * (h / 12) + OFFSET_90_DEGREES) * HOUR_HAND_LENGTH + CENTERX)
+        hourHandY = int(math.sin(COMPLETE_ARC * (h / 12) + OFFSET_90_DEGREES) * HOUR_HAND_LENGTH + CENTERY)
+        hourHandPoints = line(CENTERX, CENTERY, hourHandX, hourHandY)
+        for x, y in hourHandPoints:
+            bext.goto(x, y)
+            print('@', end='')
+
+        sys.stdout.flush() # (Required for bext-using programs.)
+
+        # Keep looping until the second changes:
+        while True:
+            time.sleep(0.01)
+            if time.localtime().tm_sec != currentTime.tm_sec:
+                break
+
+        # Erase the clock hands:
+        for x, y in secondHandPoints:
+            bext.goto(x, y)
+            print(' ', end='')
+        for x, y in minuteHandPoints:
+            bext.goto(x, y)
+            print(' ', end='')
+        for x, y in hourHandPoints:
+            bext.goto(x, y)
+            print(' ', end='')
+    # At this point, go back to the start of the main program loop.
 
 
 def line(x1, y1, x2, y2):
@@ -102,65 +164,10 @@ def line(x1, y1, x2, y2):
                 error += deltax
     return points
 
-bext.clear()
-# Draw the circle of the clock:
-for y, row in enumerate(CLOCKFACE.splitlines()):
-    for x, char in enumerate(row):
-        if char != ' ':
-            bext.goto(x, y)
-            print(char)
 
-try:
-    while True: # Main program loop.
-        # Get the current time from the computer's clock:
-        currentTime = time.localtime()
-        h = currentTime.tm_hour % 12 # Use 12-hour clock, not 24.
-        m = currentTime.tm_min
-        s = currentTime.tm_sec
-
-        # Draw the second hand:
-        secondHandX = int(math.cos(COMPLETE_ARC * (s / 60) + OFFSET_90_DEGREES) * SECOND_HAND_RADIUS + CENTERX)
-        secondHandY = int(math.sin(COMPLETE_ARC * (s / 60) + OFFSET_90_DEGREES) * SECOND_HAND_RADIUS + CENTERY)
-        secondHandPoints = line(CENTERX, CENTERY, secondHandX, secondHandY)
-        for x, y in secondHandPoints:
-            bext.goto(x, y)
-            print('.', end='')
-
-        # Draw the minute hand:
-        minuteHandX = int(math.cos(COMPLETE_ARC * (m / 60) + OFFSET_90_DEGREES) * MINUTE_HAND_RADIUS + CENTERX)
-        minuteHandY = int(math.sin(COMPLETE_ARC * (m / 60) + OFFSET_90_DEGREES) * MINUTE_HAND_RADIUS + CENTERY)
-        minuteHandPoints = line(CENTERX, CENTERY, minuteHandX, minuteHandY)
-        for x, y in minuteHandPoints:
-            bext.goto(x, y)
-            print('*', end='')
-
-        # Draw the hour hand:
-        hourHandX = int(math.cos(COMPLETE_ARC * (h / 12) + OFFSET_90_DEGREES) * HOUR_HAND_RADIUS + CENTERX)
-        hourHandY = int(math.sin(COMPLETE_ARC * (h / 12) + OFFSET_90_DEGREES) * HOUR_HAND_RADIUS + CENTERY)
-        hourHandPoints = line(CENTERX, CENTERY, hourHandX, hourHandY)
-        for x, y in hourHandPoints:
-            bext.goto(x, y)
-            print('@', end='')
-
-        sys.stdout.flush() # (Required for bext-using programs.)
-
-        # Keep looping until the second changes:
-        while True:
-            time.sleep(0.01)
-            if time.localtime().tm_sec != currentTime.tm_sec:
-                break
-
-        # Erase the clock hands:
-        for x, y in secondHandPoints:
-            bext.goto(x, y)
-            print(' ', end='')
-        for x, y in minuteHandPoints:
-            bext.goto(x, y)
-            print(' ', end='')
-        for x, y in hourHandPoints:
-            bext.goto(x, y)
-            print(' ', end='')
-    # At this point, go back to the start of the main program loop.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
-
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

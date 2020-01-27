@@ -8,7 +8,7 @@ __version__ = 1
 # TODO - note that the user shouldn't resize the window while it's running (add this comment to bouncing lines and bouncing balls programs also)
 # This program MUST be run in a Terminal/Command Prompt window.
 
-import os, random, shutil, sys, time
+import random, sys, time
 
 try:
     import bext
@@ -23,6 +23,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
+# Setup the constants:
 PAUSE_LENGTH = 0.25
 
 WIDTH, HEIGHT = bext.size()

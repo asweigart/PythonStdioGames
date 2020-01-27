@@ -5,6 +5,7 @@ __version__ = 1
 
 import random
 
+# Setup the constants:
 HANGMAN_PICS = [r"""
  +--+
  |  |
@@ -64,6 +65,52 @@ r"""
 CATEGORY = 'Random'
 
 
+def main():
+    print('''HANGMAN WITH RANDOM LETTERS
+By Al Sweigart al@inventwithpython.com
+''')
+
+    # Setup variables for a new game:
+    missedLetters = []
+    correctLetters = []
+
+    secretWord = ''
+    for i in range(random.randint(4, 9)): # The secret word has 4 to 9 letters.
+        secretWord += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
+
+    while True: # Main game loop.
+        drawHangman(missedLetters, correctLetters, secretWord)
+
+        # Let the player enter their letter guess:
+        guess = getPlayerGuess(missedLetters + correctLetters)
+
+        if guess in secretWord:
+            # The player has guessed correctly:
+            correctLetters.append(guess)
+
+            # Check if the player has won:
+            foundAllLetters = True
+            for i in range(len(secretWord)):
+                if secretWord[i] not in correctLetters:
+                    foundAllLetters = False
+                    break
+            if foundAllLetters:
+                print('Yes! The secret word is "' + secretWord + '"! You have won!')
+                break
+        else:
+            # The player has guessed incorrectly:
+            missedLetters.append(guess)
+
+            # Check if player has guessed too many times and lost
+            if len(missedLetters) == len(HANGMAN_PICS) - 1:
+                drawHangman(missedLetters, correctLetters, secretWord)
+                print('You have run out of guesses!')
+                print('The word was "{}"'.format(secretWord))
+                break
+        # At this point, go back to the start of the main game loop.
+
+
 def drawHangman(missedLetters, correctLetters, secretWord):
     """Draw the current state of the hangman, along with the missed and
     correctly-guessed letters of the secret word."""
@@ -108,46 +155,9 @@ def getPlayerGuess(alreadyGuessed):
             return guess
 
 
-print('''HANGMAN WITH RANDOM LETTERS
-By Al Sweigart al@inventwithpython.com
-''')
-
-# Setup variables for a new game:
-missedLetters = []
-correctLetters = []
-
-secretWord = ''
-for i in range(random.randint(4, 9)): # The secret word has 4 to 9 letters.
-    secretWord += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-
-
-while True: # Main game loop.
-    drawHangman(missedLetters, correctLetters, secretWord)
-
-    # Let the player enter their letter guess:
-    guess = getPlayerGuess(missedLetters + correctLetters)
-
-    if guess in secretWord:
-        # The player has guessed correctly:
-        correctLetters.append(guess)
-
-        # Check if the player has won:
-        foundAllLetters = True
-        for i in range(len(secretWord)):
-            if secretWord[i] not in correctLetters:
-                foundAllLetters = False
-                break
-        if foundAllLetters:
-            print('Yes! The secret word is "' + secretWord + '"! You have won!')
-            break
-    else:
-        # The player has guessed incorrectly:
-        missedLetters.append(guess)
-
-        # Check if player has guessed too many times and lost
-        if len(missedLetters) == len(HANGMAN_PICS) - 1:
-            drawHangman(missedLetters, correctLetters, secretWord)
-            print('You have run out of guesses!')
-            print('The word was "{}"'.format(secretWord))
-            break
-    # At this point, go back to the start of the main game loop.
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

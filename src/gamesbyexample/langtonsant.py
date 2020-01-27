@@ -3,7 +3,7 @@
 A cellular automata animation. Press Ctrl-C to stop.
 More info: https://en.wikipedia.org/wiki/Langton%27s_ant"""
 __version__ = 1
-
+# TODO - is this broken?
 import random, copy, sys
 
 try:
@@ -19,28 +19,29 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-
+# Setup the constants:
 WIDTH = 79
 HEIGHT = 22
 NUMBER_OF_ANTS = 10
 
-# Setup the screen:
-bext.fg('yellow') # Set foreground color.
-bext.bg('blue')   # Set background color.
-bext.clear()
 
-# Create a new board data structure:
-board = {'width': WIDTH, 'height': HEIGHT}
+def main():
+    # Setup the screen:
+    bext.fg('yellow') # Set foreground color.
+    bext.bg('blue')   # Set background color.
+    bext.clear()
 
-# Create ant data structures:
-ants = []
-for i in range(NUMBER_OF_ANTS):
-    ant = {'x': random.randint(0, WIDTH - 1),
-           'y': random.randint(0, HEIGHT - 1),
-           'direction': random.choice(['N', 'S', 'E', 'W'])}
-    ants.append(ant)
+    # Create a new board data structure:
+    board = {'width': WIDTH, 'height': HEIGHT}
 
-try:
+    # Create ant data structures:
+    ants = []
+    for i in range(NUMBER_OF_ANTS):
+        ant = {'x': random.randint(0, WIDTH - 1),
+               'y': random.randint(0, HEIGHT - 1),
+               'direction': random.choice(['N', 'S', 'E', 'W'])}
+        ants.append(ant)
+
     # Keep running the simulation as long as we have ants:
     while len(ants) > 0: # Main program loop.
         # Draw the board data structure:
@@ -97,5 +98,11 @@ try:
 
         board = nextBoard
         # At this point, go back to the start of the main program loop.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

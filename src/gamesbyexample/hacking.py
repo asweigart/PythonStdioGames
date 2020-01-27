@@ -5,8 +5,9 @@ word is the password by using clues each guess gives you."""
 
 __version__ = 1
 
-import random
+import random, sys
 
+# Setup the constants:
 # The "filler" characters for the board.
 GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\'
 
@@ -16,6 +17,27 @@ with open('sevenletterwords.txt') as dictionaryFile:
 for i in range(len(WORDS)):
     # Change the words in the WORDS list to uppercase and strip whitespace.
     WORDS[i] = WORDS[i].strip().upper()
+
+def main():
+    print('''HACKING MINIGAME
+By Al Sweigart al@inventwithpython.com
+''')
+
+    gameWords = getWords()
+    gameBoard = getBoard(gameWords)
+    secretPassword = random.choice(gameWords)
+
+    print('Find the password in the computer\'s memory:')
+    print(gameBoard)
+    for triesRemaining in range(4, 0, -1):
+        playerMove = getPlayerMove(gameWords, triesRemaining)
+        if playerMove == secretPassword:
+            print('A C C E S S   G R A N T E D')
+            return
+        else:
+            numMatches = numberOfMatchingLetters(secretPassword, playerMove)
+            print('Access Denied ({}/7 correct)'.format(numMatches))
+    print('Out of tries. Secret password was {}.'.format(secretPassword))
 
 
 def getBoard(words):
@@ -119,27 +141,9 @@ def getWords():
     return words
 
 
-def main():
-    print('''HACKING MINIGAME
-By Al Sweigart al@inventwithpython.com
-''')
-
-    gameWords = getWords()
-    gameBoard = getBoard(gameWords)
-    secretPassword = random.choice(gameWords)
-
-    print('Find the password in the computer\'s memory:')
-    print(gameBoard)
-    for triesRemaining in range(4, 0, -1):
-        playerMove = getPlayerMove(gameWords, triesRemaining)
-        if playerMove == secretPassword:
-            print('A C C E S S   G R A N T E D')
-            return
-        else:
-            numMatches = numberOfMatchingLetters(secretPassword, playerMove)
-            print('Access Denied ({}/7 correct)'.format(numMatches))
-    print('Out of tries. Secret password was {}.'.format(secretPassword))
-
-
+# If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

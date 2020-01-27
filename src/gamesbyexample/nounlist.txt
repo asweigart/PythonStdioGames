@@ -264,7 +264,7 @@ aquarium
 aquifer
 arcade
 arch
-arch-rival
+archrival
 archaeologist
 archaeology
 archeology
@@ -278,7 +278,7 @@ argument
 arithmetic
 ark
 arm
-arm-rest
+armrest
 armadillo
 armament
 armchair
@@ -388,7 +388,7 @@ babushka
 baby
 bachelor
 back
-back-up
+backup
 backbone
 backburn
 backdrop
@@ -542,7 +542,7 @@ benefit
 bengal
 beret
 berry
-best-seller
+bestseller
 bestseller
 bet
 beverage
@@ -570,7 +570,7 @@ biosphere
 biplane
 birch
 bird
-bird-watcher
+birdwatcher
 birdbath
 birdcage
 birdhouse
@@ -667,7 +667,7 @@ bother
 bottle
 bottling
 bottom
-bottom-line
+bottomline
 boudoir
 bough
 boulder
@@ -743,7 +743,7 @@ brood
 brook
 broom
 brother
-brother-in-law
+brotherinlaw
 brow
 brown
 brownie
@@ -772,7 +772,7 @@ building
 bulb
 bulk
 bull
-bull-fighter
+bullfighter
 bulldozer
 bullet
 bump
@@ -788,7 +788,7 @@ burglar
 burial
 burlesque
 burn
-burn-out
+burnout
 burning
 burrito
 burro
@@ -811,7 +811,7 @@ buyer
 buying
 buzz
 buzzard
-c-clamp
+cclamp
 cabana
 cabbage
 cabin
@@ -1062,7 +1062,7 @@ chinchilla
 chino
 chip
 chipmunk
-chit-chat
+chitchat
 chivalry
 chive
 chives
@@ -1175,7 +1175,7 @@ club
 clue
 cluster
 clutch
-co-producer
+coproducer
 coach
 coal
 coalition
@@ -1356,7 +1356,6 @@ consulting
 consumer
 consumption
 contact
-contact lens
 contagion
 container
 content
@@ -1394,7 +1393,7 @@ cooperation
 coordination
 coordinator
 cop
-cop-out
+copout
 cope
 copper
 copy
@@ -1443,7 +1442,7 @@ counsellor
 counselor
 count
 counter
-counter-force
+counterforce
 counterpart
 counterterrorism
 countess
@@ -1500,7 +1499,6 @@ credibility
 credit
 creditor
 creek
-creme brulee
 crepe
 crest
 crew
@@ -1528,8 +1526,8 @@ croissant
 crook
 crop
 cross
-cross-contamination
-cross-stitch
+crosscontamination
+crossstitch
 crotch
 croup
 crow
@@ -1551,7 +1549,7 @@ cub
 cuckoo
 cucumber
 cue
-cuff-link
+cufflink
 cuisine
 cultivar
 cultivator
@@ -1649,7 +1647,7 @@ decadence
 decency
 decimal
 decision
-decision-making
+decisionmaking
 deck
 declaration
 declination
@@ -1954,9 +1952,7 @@ dugout
 dulcimer
 dumbwaiter
 dump
-dump truck
 dune
-dune buggy
 dungarees
 dungeon
 duplexer
@@ -1964,7 +1960,6 @@ duration
 durian
 dusk
 dust
-dust storm
 duster
 duty
 dwarf
@@ -1975,9 +1970,9 @@ dynamite
 dynamo
 dynasty
 dysfunction
-e-book
-e-mail
-e-reader
+ebook
+email
+ereader
 eagle
 eaglet
 ear
@@ -2161,7 +2156,7 @@ evaluator
 evaporation
 eve
 evening
-evening-wear
+eveningwear
 event
 everybody
 everyone
@@ -2171,8 +2166,8 @@ evidence
 evil
 evocation
 evolution
-ex-husband
-ex-wife
+exhusband
+exwife
 exaggeration
 exam
 examination
@@ -2258,7 +2253,7 @@ faith
 faithful
 fall
 fallacy
-falling-out
+fallingout
 fame
 familiar
 familiarity
@@ -2267,7 +2262,7 @@ fan
 fang
 fanlight
 fanny
-fanny-pack
+fannypack
 fantasy
 farm
 farmer
@@ -2279,7 +2274,7 @@ fashion
 fat
 fate
 father
-father-in-law
+fatherinlaw
 fatigue
 fatigues
 faucet
@@ -2395,7 +2390,7 @@ flicker
 flight
 flint
 flintlock
-flip-flops
+flipflops
 flock
 flood
 floodplain
@@ -2538,7 +2533,7 @@ gaffer
 gain
 gaiters
 gale
-gall-bladder
+gallbladder
 gallery
 galley
 gallon
@@ -2547,7 +2542,7 @@ gambling
 game
 gamebird
 gaming
-gamma-ray
+gammaray
 gander
 gang
 gap
@@ -2639,7 +2634,7 @@ glut
 glutamate
 gnat
 gnu
-go-kart
+gokart
 goal
 goat
 gobbler
@@ -2656,7 +2651,7 @@ golf
 gondola
 gong
 good
-good-bye
+goodbye
 goodbye
 goodie
 goodness
@@ -2664,7 +2659,7 @@ goodnight
 goodwill
 goose
 gopher
-gore-tex
+goretex
 gorilla
 gosling
 gossip
@@ -2672,7 +2667,7 @@ governance
 government
 governor
 gown
-grab-bag
+grabbag
 grace
 grade
 gradient
@@ -2712,8 +2707,8 @@ gravity
 gravy
 gray
 grease
-great-grandfather
-great-grandmother
+greatgrandfather
+greatgrandmother
 greatness
 greed
 green
@@ -2773,8 +2768,8 @@ hair
 haircut
 hake
 half
-half-brother
-half-sister
+halfbrother
+halfsister
 halibut
 hall
 halloween
@@ -2786,7 +2781,7 @@ hammer
 hammock
 hamster
 hand
-hand-holding
+handholding
 handball
 handful
 handgun
@@ -2802,7 +2797,7 @@ happiness
 harald
 harbor
 harbour
-hard-hat
+hardhat
 hardboard
 hardcover
 hardening
@@ -2846,11 +2841,11 @@ headline
 headquarters
 headrest
 health
-health-care
+healthcare
 hearing
 hearsay
 heart
-heart-throb
+heartthrob
 heartache
 heartbeat
 hearth
@@ -2897,7 +2892,7 @@ hiccups
 hide
 hierarchy
 high
-high-rise
+highrise
 highland
 highlight
 highway
@@ -3026,7 +3021,7 @@ hypochondria
 hypothermia
 hypothesis
 ice
-ice-cream
+icecream
 iceberg
 icebreaker
 icecream
@@ -3075,8 +3070,8 @@ impropriety
 improvement
 impudence
 impulse
-in-joke
-in-laws
+injoke
+inlaws
 inability
 inauguration
 inbox
@@ -3311,7 +3306,7 @@ keyboard
 keyboarding
 keystone
 kick
-kick-off
+kickoff
 kid
 kidney
 kielbasa
@@ -3341,12 +3336,12 @@ knee
 kneejerk
 knickers
 knife
-knife-edge
+knifeedge
 knight
 knitting
 knock
 knot
-know-how
+knowhow
 knowledge
 knuckle
 koala
@@ -3625,7 +3620,7 @@ maintainer
 maintenance
 maize
 major
-major-league
+majorleague
 majority
 makeover
 maker
@@ -3794,7 +3789,7 @@ microlending
 micronutrient
 microphone
 microwave
-mid-course
+midcourse
 midden
 middle
 middleman
@@ -3827,7 +3822,7 @@ mine
 mineral
 mineshaft
 mini
-mini-skirt
+miniskirt
 minibus
 minimalism
 minimum
@@ -3837,7 +3832,7 @@ minister
 mink
 minnow
 minor
-minor-league
+minorleague
 minority
 mint
 minute
@@ -3927,7 +3922,7 @@ most
 motel
 moth
 mother
-mother-in-law
+motherinlaw
 motion
 motivation
 motive
@@ -3962,8 +3957,8 @@ musculature
 museum
 mushroom
 music
-music-box
-music-making
+musicbox
+musicmaking
 musician
 muskrat
 mussel
@@ -4125,7 +4120,7 @@ octopus
 odometer
 odyssey
 oeuvre
-off-ramp
+offramp
 offence
 offense
 offer
@@ -4381,7 +4376,7 @@ pedal
 peek
 peen
 peer
-peer-to-peer
+peertopeer
 pegboard
 pelican
 pelt
@@ -4490,7 +4485,7 @@ pimp
 pimple
 pin
 pinafore
-pince-nez
+pincenez
 pine
 pineapple
 pinecone
@@ -4567,7 +4562,7 @@ plunger
 plywood
 pneumonia
 pocket
-pocket-watch
+pocketwatch
 pocketbook
 pod
 podcast
@@ -4746,7 +4741,7 @@ prompt
 pronoun
 pronunciation
 proof
-proof-reader
+proofreader
 propaganda
 propane
 property
@@ -5128,7 +5123,7 @@ robotics
 rock
 rocker
 rocket
-rocket-ship
+rocketship
 rod
 role
 roll
@@ -5283,7 +5278,7 @@ screen
 screening
 screenwriting
 screw
-screw-up
+screwup
 screwdriver
 scrim
 scrip
@@ -5324,9 +5319,9 @@ segment
 seizure
 selection
 self
-self-confidence
-self-control
-self-esteem
+selfconfidence
+selfcontrol
+selfesteem
 seller
 selling
 semantics
@@ -5416,7 +5411,7 @@ shit
 shoat
 shock
 shoe
-shoe-horn
+shoehorn
 shoehorn
 shoelace
 shoemaker
@@ -5438,7 +5433,7 @@ shoulder
 shout
 shovel
 show
-show-stopper
+showstopper
 shower
 shred
 shrimp
@@ -5488,7 +5483,7 @@ sinuosity
 sip
 sir
 sister
-sister-in-law
+sisterinlaw
 sitar
 site
 situation
@@ -5754,7 +5749,7 @@ state
 statement
 statin
 station
-station-wagon
+stationwagon
 statistic
 statistics
 statue
@@ -5771,19 +5766,19 @@ stem
 stench
 stencil
 step
-step-aunt
-step-brother
-step-daughter
-step-father
-step-grandfather
-step-grandmother
-step-mother
-step-sister
-step-son
-step-uncle
+stepaunt
+stepbrother
+stepdaughter
+stepfather
+stepgrandfather
+stepgrandmother
+stepmother
+stepsister
+stepson
+stepuncle
 stepdaughter
 stepmother
-stepping-stone
+steppingstone
 stepson
 stereo
 stew
@@ -5796,11 +5791,11 @@ stimulation
 stimulus
 sting
 stinger
-stir-fry
+stirfry
 stitch
 stitcher
 stock
-stock-in-trade
+stockintrade
 stockings
 stole
 stomach
@@ -5815,7 +5810,7 @@ store
 storey
 storm
 story
-story-telling
+storytelling
 storyboard
 stot
 stove
@@ -5982,7 +5977,7 @@ synonym
 synthesis
 syrup
 system
-t-shirt
+tshirt
 tab
 tabby
 tabernacle
@@ -6001,13 +5996,12 @@ tail
 tailbud
 tailor
 tailspin
-take-out
+takeout
 takeover
 tale
 talent
 talk
 talking
-tam-o'-shanter
 tamale
 tambour
 tambourine
@@ -6015,7 +6009,7 @@ tan
 tandem
 tangerine
 tank
-tank-top
+tanktop
 tanker
 tankful
 tap
@@ -6189,7 +6183,7 @@ toilet
 tolerance
 tolerant
 toll
-tom-tom
+tomtom
 tomatillo
 tomato
 tomb
@@ -6208,7 +6202,7 @@ toothbrush
 toothpaste
 toothpick
 top
-top-hat
+tophat
 topic
 topsail
 toque
@@ -6223,12 +6217,12 @@ tosser
 total
 tote
 touch
-tough-guy
+toughguy
 tour
 tourism
 tourist
 tournament
-tow-truck
+towtruck
 towel
 tower
 town
@@ -6337,7 +6331,7 @@ tumbler
 tummy
 tuna
 tune
-tune-up
+tuneup
 tunic
 tunnel
 turban
@@ -6571,7 +6565,7 @@ wardrobe
 warfare
 warlock
 warlord
-warm-up
+warmup
 warming
 warmth
 warning
@@ -6628,10 +6622,10 @@ weird
 welcome
 welfare
 well
-well-being
+wellbeing
 west
 western
-wet-bar
+wetbar
 wetland
 wetsuit
 whack
@@ -6668,7 +6662,7 @@ willingness
 willow
 win
 wind
-wind-chime
+windchime
 windage
 window
 windscreen
@@ -6690,7 +6684,7 @@ wish
 wisteria
 wit
 witch
-witch-hunt
+witchhunt
 withdrawal
 witness
 wok
@@ -6780,5 +6774,5 @@ zone
 zoo
 zoologist
 zoology
-zoot-suit
+zootsuit
 zucchini

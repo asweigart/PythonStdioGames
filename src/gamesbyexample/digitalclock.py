@@ -11,7 +11,7 @@ __version__ = 1
 import time, os, sys
 import sevseg # Imports our sevseg.py program.
 
-try:
+def main():
     while True: # Main program loop.
         # Clear the screen:
         if sys.platform == 'win32':
@@ -56,5 +56,11 @@ try:
                 break
             # At this point, go back to the start of the loop.
         # At this point, go back to the start of the main program loop.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

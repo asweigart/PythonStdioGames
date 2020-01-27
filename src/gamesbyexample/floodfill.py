@@ -9,9 +9,7 @@ __version__ = 1
 
 import sys, random
 
-# To reproduce the same random rectangles, use the same seed:
-random.seed(42)
-
+# Setup the constants:
 # Constants for the size of the field:
 HEIGHT = 18
 WIDTH = 50

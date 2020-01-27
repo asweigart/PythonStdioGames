@@ -3,9 +3,10 @@
 Draw a trailing line on the screen."""
 __version__ = 1
 
+# TODO - change Q, it's way too easy to accidentally quit.
 import sys
 
-# Set up some constants
+# Setup the constants:
 UP_DOWN_CHAR    = chr(9474) # The '│' string.
 LEFT_RIGHT_CHAR = chr(9472) # The '─' string.
 DOWN_RIGHT_CHAR = chr(9484) # The '┌' string.

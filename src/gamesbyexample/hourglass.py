@@ -45,20 +45,20 @@ for i in range(21, 34):
 for i in range(22, 33):
     INITIAL_SAND.add((i, 7))
 
-bext.fg('yellow')
-bext.clear()
+def main():
+    bext.fg('yellow')
+    bext.clear()
 
-# Draw the quit message:
-bext.goto(0, 0)
-print('Ctrl-C to quit.', end='')
+    # Draw the quit message:
+    bext.goto(0, 0)
+    print('Ctrl-C to quit.', end='')
 
-# Draw the walls:
-for wall in ALL_WALLS:
-    bext.goto(wall[X], wall[Y])
-    print(WALL, end='')
+    # Draw the walls:
+    for wall in ALL_WALLS:
+        bext.goto(wall[X], wall[Y])
+        print(WALL, end='')
 
-while True: # Main program loop.
-    try:
+    while True: # Main program loop.
         allSand = list(INITIAL_SAND)
         random.shuffle(allSand) # Mix up the order that the grains of sand are simulated.
 
@@ -154,6 +154,12 @@ while True: # Main program loop.
                     print(' ', end='')
                 break # Break out of main simultion loop to reset the hour glass.
             # At this point, go back to the start of the loop.
+    # At this point, go back to the start of the main program loop.
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
     except KeyboardInterrupt:
         sys.exit() # When Ctrl-C is pressed, end the program.
-    # At this point, go back to the start of the main program loop.

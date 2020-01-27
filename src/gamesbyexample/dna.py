@@ -4,10 +4,11 @@ A simple animation of a DNA double-helix. Press Ctrl-C to stop.
 Thanks to matoken for inspiration: https://asciinema.org/a/155441"""
 __version__ = 1
 
-import random, time
+import random, sys, time
 
+# Setup the constants:
 # These are the individual rows of the DNA animation:
-rows = [
+ROWS = [
     '         ##', # Index 0 has no {}.
     '        #{}-{}#',
     '       #{}---{}#',
@@ -27,20 +28,21 @@ rows = [
     '       #{}---{}#',
     '        #{}-{}#']
 
-print('Press Ctrl-C to quit...')
-time.sleep(2)
-rowIndex = 0
 
-try:
+def main():
+    print('Press Ctrl-C to quit...')
+    time.sleep(2)
+    rowIndex = 0
+
     while True: # Main program loop.
         # Increment rowIndex to draw next row:
         rowIndex += 1
-        if rowIndex == len(rows):
+        if rowIndex == len(ROWS):
             rowIndex = 0
 
         # Row indexs 0 and 9 don't have nucleotides:
         if rowIndex == 0 or rowIndex == 9:
-            print(rows[rowIndex])
+            print(ROWS[rowIndex])
             continue
 
         # Select random nucleotide pairs:
@@ -55,8 +57,14 @@ try:
             leftNucleotide, rightNucleotide = 'G', 'C'
 
         # Print the row.
-        print(rows[rowIndex].format(leftNucleotide, rightNucleotide))
+        print(ROWS[rowIndex].format(leftNucleotide, rightNucleotide))
         time.sleep(0.15) # Add a slight pause.
         # At this point, go back to the start of the main program loop.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.

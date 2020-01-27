@@ -5,7 +5,35 @@ __version__ = 1
 
 import random, sys, os
 
+# Setup the constants:
 WALL = chr(9608) # Character 9608 is '█'
+
+
+def main():
+    print('''CHASE
+    By Al Sweigart al@inventwithpython.com
+    ''')
+
+    # Set up a new game:
+    theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
+    playerPosition = getStartingPlayerPosition(theBoard, theRobots)
+    while True: # Main game loop.
+        drawBoard(theBoard, theRobots, playerPosition)
+
+        if len(theRobots) == 0: # Check if the player has won.
+            print('You win!')
+            sys.exit()
+
+        playerPosition = getPlayerMove(theBoard, theRobots, playerPosition)
+        theRobots = moveRobots(theBoard, theRobots, playerPosition)
+
+        for x, y in theRobots: # Check if the player has lost.
+            if (x, y) == playerPosition:
+                drawBoard(theBoard, theRobots, playerPosition)
+                print('You got caught by a robot!')
+                sys.exit()
+        # At this point, go back to the start of the main game loop.
+
 
 def clearScreen():
     # Clear the previously drawn text:
@@ -185,26 +213,7 @@ def getPlayerMove(board, robots, playerPosition):
                     'S': (x, y)         }[move]
         # At this point, go back to the start of the loop.
 
-print('''CHASE
-By Al Sweigart al@inventwithpython.com
-''')
 
-# Set up a new game:
-theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
-playerPosition = getStartingPlayerPosition(theBoard, theRobots)
-while True: # Main game loop.
-    drawBoard(theBoard, theRobots, playerPosition)
-
-    if len(theRobots) == 0: # Check if the player has won.
-        print('You win!')
-        sys.exit()
-
-    playerPosition = getPlayerMove(theBoard, theRobots, playerPosition)
-    theRobots = moveRobots(theBoard, theRobots, playerPosition)
-
-    for x, y in theRobots: # Check if the player has lost.
-        if (x, y) == playerPosition:
-            drawBoard(theBoard, theRobots, playerPosition)
-            print('You got caught by a robot!')
-            sys.exit()
-    # At this point, go back to the start of the main game loop.
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

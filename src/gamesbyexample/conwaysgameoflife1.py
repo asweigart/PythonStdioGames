@@ -5,6 +5,8 @@ More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"""
 __version__ = 1
 
 import random, time, copy, sys
+
+# Setup the constants:
 WIDTH = 79  # The width of the cell grid.
 HEIGHT = 20 # The height of the cell grid.
 ALIVE = 'O' # The character representing a living cell.
@@ -77,4 +79,3 @@ while True: # Main program loop.
         time.sleep(1) # Add a 1 second pause to reduce flickering.
     except KeyboardInterrupt:
         sys.exit() # When Ctrl-C is pressed, end the program.
-    # At this point, go back to the start of the main program loop.

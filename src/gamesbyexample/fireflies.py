@@ -11,7 +11,8 @@ __version__ = 1
 
 import math, time, sys, os, random
 
-PAUSE_AMOUNT = 0.1
+# Setup the constants:
+PAUSE_AMOUNT = 0.15
 NUMBER_OF_FIREFLIES = 16
 WIDTH, HEIGHT = 80, 24 # Width & height of the swarm, in text cells.
 SCALEX = (WIDTH - 4) // 4
@@ -65,45 +66,46 @@ def transformPoint(point):
     return (int(point[X] * SCALEX + TRANSLATEX),
             int(point[Y] * SCALEY + TRANSLATEY))
 
-# Each firefly is represented by dictionary with keys 'originalPosition',
-# 'rotationAmount', 'rotationVelocity', 'timeToChange', 'isLit'.
-fireflies = []
-for i in range(NUMBER_OF_FIREFLIES):
-    firefly = {}
+def main():
+    # Each firefly is represented by dictionary with keys 'originalPosition',
+    # 'rotationAmount', 'rotationVelocity', 'timeToChange', 'isLit'.
+    fireflies = []
+    for i in range(NUMBER_OF_FIREFLIES):
+        firefly = {}
 
-    # Create the original XYZ positions of the firefly. (Really, they're
-    # just random points on a sphere that rotate around.)
+        # Create the original XYZ positions of the firefly. (Really, they're
+        # just random points on a sphere that rotate around.)
 
-    # Create points on a sphere based on random latitude and longitude:
-    latitude = math.acos(2 * random.random() - 1) - (math.pi / 2)
-    longitude = 2 * math.pi * random.random()
+        # Create points on a sphere based on random latitude and longitude:
+        latitude = math.acos(2 * random.random() - 1) - (math.pi / 2)
+        longitude = 2 * math.pi * random.random()
 
-    # Convert the latitude and longitude to an xyz point:
-    x = math.cos(latitude) * math.cos(longitude)
-    y = math.cos(latitude) * math.sin(longitude)
-    z = math.sin(latitude)
+        # Convert the latitude and longitude to an xyz point:
+        x = math.cos(latitude) * math.cos(longitude)
+        y = math.cos(latitude) * math.sin(longitude)
+        z = math.sin(latitude)
 
-    firefly['originalPosition'] = (x, y, z)
+        firefly['originalPosition'] = (x, y, z)
 
-    # Firefly positions start with no rotation from their original position:
-    firefly['rotationAmounts'] = [0, 0, 0]
+        # Firefly positions start with no rotation from their original position:
+        firefly['rotationAmounts'] = [0, 0, 0]
 
-    # Randomly decide how fast they rotate on each axis:
-    firefly['rotationVelocity'] = [random.randint(-100, 100) / 1000.0,
-                                   random.randint(-100, 100) / 1000.0,
-                                   random.randint(-100, 100) / 1000.0]
+        # Randomly decide how fast they rotate on each axis:
+        firefly['rotationVelocity'] = [random.randint(-100, 100) / 1000.0,
+                                       random.randint(-100, 100) / 1000.0,
+                                       random.randint(-100, 100) / 1000.0]
 
-    # Holds time until the firefly changes between light/dark:
-    firefly['timeToChange'] = random.randint(10, 40) / 10.0
+        # Holds time until the firefly changes between light/dark:
+        firefly['timeToChange'] = random.randint(10, 40) / 10.0
 
-    # Fireflies start off dark:
-    firefly['isLit'] = False
+        # Fireflies start off dark:
+        firefly['isLit'] = False
 
-    fireflies.append(firefly)
+        fireflies.append(firefly)
 
 
-lastTimeCheck = time.time()
-try:
+    lastTimeCheck = time.time()
+
     while True:
         screenPoints = []
         screenChars = {}
@@ -169,5 +171,10 @@ try:
         else:
             os.system('clear') # Clears macOS/Linux terminal.
 
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit() # When Ctrl-C is pressed, end the program.
