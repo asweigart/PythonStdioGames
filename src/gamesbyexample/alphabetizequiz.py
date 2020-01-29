@@ -18,6 +18,7 @@ REVERSE_ALPHABET = ''.join(sorted(ALPHABET, reverse=True))
 
 
 def main():
+    """Runs a single game of Alphabetize Quiz."""
     # Fancy animation for the title:
     slowPrint(ALPHABET, 0.02)
     slowPrint('    ALPHABETIZE QUIZ', 0.02)
@@ -42,8 +43,8 @@ Press enter to start!
     numCorrect = 0  # Number of questions answered correctly.
     while True:  # Main game loop.
         # Come up with QUESTION_SIZE letters for the question:
-        questionLetters = random.sample(ALPHABET, QUESTION_SIZE)
-        print(' '.join(questionLetters))
+        quizLetters = random.sample(ALPHABET, QUESTION_SIZE)
+        print(' '.join(quizLetters))
         print()
         response = input('> ').upper()
 
@@ -53,7 +54,7 @@ Press enter to start!
             break
 
         # Check if the response is correct:
-        if list(response) == sorted(questionLetters):
+        if list(response) == sorted(quizLetters):
             print('    Correct!\n')
             numCorrect += 1  # Increase the score by 1.
         else:
@@ -67,6 +68,7 @@ Press enter to start!
 
 
 def slowPrint(text, pauseAmount):
+    """Slowly print out the characters in `text` one at a time."""
     for character in text:
         # Set flush=True here so the text is immediately printed:
         print(character, flush=True, end='')  # end='' means no newline.

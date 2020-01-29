@@ -1,13 +1,15 @@
 """Collatz Sequence, by Al Sweigart al@inventwithpython.com
 
-Generates numbers for the Collatz sequence, given a starting number."""
+Generates numbers for the Collatz sequence, given a starting number.
 
-# More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
-# An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/
+More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
+An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/"""
 __version__ = 1
 
 import sys, time
-PAUSE = 0.1 # Length of pauses in between printing sequence numbers.
+
+# Setup the constants:
+PAUSE = 0.1
 
 print('''Collatz Sequence, or, the 3N+1 Problem
 By Al Sweigart al@inventwithpython.com
@@ -23,8 +25,8 @@ but so far not mathematically proven, that every starting number
 eventually terminates.
 ''')
 
-while True: # Main program loop.
-    while True: # Ask for a starting number.
+while True:  # Main program loop.
+    while True:  # Ask for a starting number.
         print('Enter a starting number (greater than 0) or QUIT:')
         response = input()
         if response.upper().startswith('Q'):
@@ -38,14 +40,14 @@ while True: # Main program loop.
 
     n = int(response)
     length = 1
-    print(n, end='')
+    print(n, end='', flush=True)
     while n != 1:
         if n % 2 == 0:  # If n is even...
             n = n // 2
-        else: # Otherwise, n is odd...
+        else:  # Otherwise, n is odd...
             n = 3 * n + 1
 
-        print(', ' + str(n), end='')
+        print(', ' + str(n), end='', flush=True)
         length += 1
         time.sleep(PAUSE)
 

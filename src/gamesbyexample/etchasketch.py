@@ -7,28 +7,31 @@ __version__ = 1
 import sys
 
 # Setup the constants:
-UP_DOWN_CHAR    = chr(9474) # The '│' string.
-LEFT_RIGHT_CHAR = chr(9472) # The '─' string.
-DOWN_RIGHT_CHAR = chr(9484) # The '┌' string.
-DOWN_LEFT_CHAR  = chr(9488) # The '┐' string.
-UP_RIGHT_CHAR   = chr(9492) # The '└' string.
-UP_LEFT_CHAR    = chr(9496) # The '┘' string.
+UP_DOWN_CHAR    = chr(9474)  # The '│' string.
+LEFT_RIGHT_CHAR = chr(9472)  # The '─' string.
+DOWN_RIGHT_CHAR = chr(9484)  # The '┌' string.
+DOWN_LEFT_CHAR  = chr(9488)  # The '┐' string.
+UP_RIGHT_CHAR   = chr(9492)  # The '└' string.
+UP_LEFT_CHAR    = chr(9496)  # The '┘' string.
 
-UP_DOWN_RIGHT_CHAR   = chr(9500) # The '├' string.
-UP_DOWN_LEFT_CHAR    = chr(9508) # The '┤' string.
-DOWN_LEFT_RIGHT_CHAR = chr(9516) # The '┬' string.
-UP_LEFT_RIGHT_CHAR   = chr(9524) # The '┴' string.
+UP_DOWN_RIGHT_CHAR   = chr(9500)  # The '├' string.
+UP_DOWN_LEFT_CHAR    = chr(9508)  # The '┤' string.
+DOWN_LEFT_RIGHT_CHAR = chr(9516)  # The '┬' string.
+UP_LEFT_RIGHT_CHAR   = chr(9524)  # The '┴' string.
 
-CROSS_CHAR = chr(9532) # The '┼' string.
-BLOCK_CHAR = chr(9608) # The '█' string.
+CROSS_CHAR = chr(9532)  # The '┼' string.
+BLOCK_CHAR = chr(9608)  # The '█' string.
 
 SCREEN_WIDTH = 79
 SCREEN_HEIGHT = 20
 
-
-screen = {} # Keys will be (x, y) tuples, value is a set of WASD letters that should be drawn for this cell.
+# The keys for screen will be (x, y) integer tuples for the coordinate,
+# and the value is a set of letters W, A, S, D that tell what kind of
+# line should be drawn.
+screen = {}
 cursorx = 0
 cursory = 0
+
 
 def getScreenString(screenData):
     screenStr = ''
@@ -60,14 +63,15 @@ def getScreenString(screenData):
                 screenStr += CROSS_CHAR
             else:
                 screenStr += ' '
-        screenStr += '\n' # Print a newline at the end of each row.
+        screenStr += '\n'  # Print a newline at the end of each row.
     return screenStr
 
-while True: # Main program loop.
+
+while True:  # Main program loop.
     # Draw the screen:
     print(getScreenString(screen))
 
-    print('Enter WASD keys to move, C to clear, F to save to file, Q to quit.')
+    print('Enter WASD keys to move, C to clear, F to save, Q to quit.')
     response = input().upper()
 
     for command in response:
@@ -85,11 +89,12 @@ while True: # Main program loop.
             except:
                 print('ERROR: Could not save file.')
         elif command in ('W', 'A', 'S', 'D'):
-            # For the first move, we draw in the other direction as well. # TODO fix this comment
             if screen == {}:
                 if command in ('W', 'S'):
+                    # Make the first line a horizontal one:
                     screen[(cursorx, cursory)] = set(['W', 'S'])
                 elif command in ('A', 'D'):
+                    # Make the first line a vertical one:
                     screen[(cursorx, cursory)] = set(['A', 'D'])
 
             screen[(cursorx, cursory)].add(command)
@@ -125,8 +130,3 @@ while True: # Main program loop.
             elif command == 'D':
                 screen[(cursorx, cursory)].add('A')
     # At this point, go back to the start of the main program loop.
-
-
-
-
-

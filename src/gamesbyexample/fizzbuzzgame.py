@@ -5,7 +5,7 @@ __version__ = 1
 
 import time, sys
 
-print('''FIZZBUZZ GAME
+print('''FIZZ BUZZ GAME
 By Al Sweigart al@inventwithpython.com
 
 Starting with 1, enter increasing numbers.
@@ -20,9 +20,9 @@ Press Enter to start...''')
 input()
 
 number = 1
-doomClock = time.time() + 10 # Player starts with 10 seconds.
+doomClock = time.time() + 10  # Player starts with 10 seconds.
 
-while True: # Main game loop.
+while True:  # Main game loop.
     # Determine the correct response:
     if number % 3 == 0 and number % 5 == 0:
         correctResponse = 'fizzbuzz'
@@ -42,11 +42,11 @@ while True: # Main game loop.
     # Get the player's response:
     response = input('Next response: {}'.format(hint))
     # Convert to lowercase, remove spaces:
-    respones = response.lower().replace(' ', '')
+    response = response.lower().replace(' ', '')
 
     # See if the player was correct:
     if response != correctResponse:
-        print('NOOOOO! The correct response is {}!'.format(correctResponse))
+        print('NOOOOO! Correct response: {}'.format(correctResponse))
         sys.exit()
     elif time.time() > doomClock:
         print('NOOOOO! You have run out of time!')
@@ -58,5 +58,5 @@ while True: # Main game loop.
     print('DOOM CLOCK: {} seconds remaining'.format(secondsRemaining))
     print()
 
-    number += 1 # Increment the number.
+    number += 1  # Increment the number.
     # At this point, go back to the start of the main game loop.

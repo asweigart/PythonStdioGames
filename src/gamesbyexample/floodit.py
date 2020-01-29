@@ -36,13 +36,19 @@ COLORS = list(CMAP.keys())
 
 
 def main():
+    """Run a single game of Flood It."""
     bext.fg('white')
-    print(' FLOOD IT! '.center(40, '*'))
+    print('''FLOOD IT!
+By Al Sweigart al@inventwithpython.com
+
+Set the color of the upper left square, which fills in all the
+adjacent squares of that color. Try to make the entire board the
+same color.''')
     gameBoard = getNewBoard()
     movesLeft = 20
 
-    while True: # Main game loop.
-        drawBoard(gameBoard)
+    while True:  # Main game loop.
+        displayBoard(gameBoard)
 
         print('Moves left:', movesLeft)
         playerMove = getPlayerMove()
@@ -50,7 +56,7 @@ def main():
         movesLeft -= 1
 
         if hasWon(gameBoard):
-            drawBoard(gameBoard)
+            displayBoard(gameBoard)
             print('You have won!')
             break
         elif movesLeft == 0:
@@ -58,7 +64,9 @@ def main():
             break
         # At this point, go back to the start of the main game loop.
 
+
 def getNewBoard(width=16, height=16):
+    """Return a dictionary of a new Flood It board."""
     assert width > 1 and height > 1
     board = []
 
@@ -77,7 +85,8 @@ def getNewBoard(width=16, height=16):
     return board
 
 
-def drawBoard(board):
+def displayBoard(board):
+    """Display the board on the screen."""
     width = len(board)
     height = len(board[0])
     bext.fg('white')
@@ -106,6 +115,7 @@ def drawBoard(board):
 
 
 def getPlayerMove():
+    """Let the player select a color to paint the upper left tile."""
     while True:
         bext.fg('white')
         print('Choose one of ', end='')
@@ -132,10 +142,11 @@ def getPlayerMove():
 
 
 def changeTile(move, board, x, y, charToChange=None):
+    """Change the color of a tile."""
     if x == 0 and y == 0:
         charToChange = board[x][y]
         if move == charToChange:
-            return # Already is the same color.
+            return  # Already is the same color.
 
     board[x][y] = move
 
@@ -153,6 +164,7 @@ def changeTile(move, board, x, y, charToChange=None):
 
 
 def hasWon(board):
+    """Return True if the entire board is one color."""
     tile = board[0][0]
     width = len(board)
     height = len(board[0])

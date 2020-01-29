@@ -9,37 +9,40 @@ __version__ = 1
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import time, os, sys
-import sevseg # Imports our sevseg.py program.
+import sevseg  # Imports our sevseg.py program.
+
 
 def main():
-    while True: # Main program loop.
+    """Run the digital clock program."""
+    while True:  # Main program loop.
         # Clear the screen:
         if sys.platform == 'win32':
-            os.system('cls') # Clears Windows terminal.
+            os.system('cls')  # Clears Windows terminal.
         else:
-            os.system('clear') # Clears macOS/Linux terminal.
+            os.system('clear')  # Clears macOS/Linux terminal.
 
         # Get the current time from the computer's clock:
         currentTime = time.localtime()
-        h = str(currentTime.tm_hour % 12) # Use a 12-hour clock, not 24.
-        if h == '0':
-            h = '12' # 12-hour clocks show 12:00, not 00:00.
-        m = str(currentTime.tm_min)
-        s = str(currentTime.tm_sec)
+        # % 12 so we use a 12-hour clock, not 24:
+        hours = str(currentTime.tm_hour % 12)
+        if hours == '0':
+            hours = '12'  # 12-hour clocks show 12:00, not 00:00.
+        minutes = str(currentTime.tm_min)
+        seconds = str(currentTime.tm_sec)
 
         # Pad these strings with zeros, if needed:
-        h = h.zfill(2)
-        m = m.zfill(2)
-        s = s.zfill(2)
+        hours = hours.zfill(2)
+        minutes = minutes.zfill(2)
+        seconds = seconds.zfill(2)
 
         # Get the digit strings from the sevseg module:
-        hDigits = sevseg.getSevSegStr(h)
+        hDigits = sevseg.getSevSegStr(hours)
         hTopRow, hMiddleRow, hBottomRow = hDigits.splitlines()
 
-        mDigits = sevseg.getSevSegStr(m)
+        mDigits = sevseg.getSevSegStr(minutes)
         mTopRow, mMiddleRow, mBottomRow = mDigits.splitlines()
 
-        sDigits = sevseg.getSevSegStr(s)
+        sDigits = sevseg.getSevSegStr(seconds)
         sTopRow, sMiddleRow, sBottomRow = sDigits.splitlines()
 
         # Display the digits:
@@ -63,4 +66,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

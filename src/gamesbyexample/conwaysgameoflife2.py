@@ -1,11 +1,14 @@
-"""Conway's Game of Life (Terminal), by Al Sweigart al@inventwithpython.com
+"""Conway's Game of Life, by Al Sweigart al@inventwithpython.com
+
+This version of Conway's Game of Life uses squares instead of text
+characters.
 
 The classic cellular automata simulation. Press Ctrl-C to stop.
-More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"""
+More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+
+NOTE: Do not resize the terminal window while this program is running."""
 __version__ = 1
 
-# TODO - improve comments now that we have the anti-flicker features.
-# TODO - note that the user shouldn't resize the window while it's running (add this comment to bouncing lines and bouncing balls programs also)
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import random, sys, time
@@ -30,42 +33,53 @@ WIDTH, HEIGHT = bext.size()
 HEIGHT = (HEIGHT - 1) * 2 # Leave a row free for "Press Ctrl-C..." message.
 WIDTH -= 1 # Adjustment for Windows Command Prompt.
 
-TOP_BLOCK = chr(9600) # Character 9600 is '▀'
-BOTTOM_BLOCK = chr(9604) # Character 9604 is '▄'
-FULL_BLOCK = chr(9608) # Character 9608 is '█'
+TOP_BLOCK = chr(9600)     # Character 9600 is '▀'
+BOTTOM_BLOCK = chr(9604)  # Character 9604 is '▄'
+FULL_BLOCK = chr(9608)    # Character 9608 is '█'
 
-# Create random cells:
-currentCells = {}
-nextCells = {}
-previousCells = {}
-for x in range(WIDTH):
-    for y in range(HEIGHT):
-        if random.randint(0, 1) == 0:
-            nextCells[x, y] = True
+def main():
+    """Runs the Conway's Game of Life simulation."""
+    # Create random cells:
+    currentCells = {}
+    nextCells = {}
+    previousCells = {}
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            if random.randint(0, 1) == 0:
+                nextCells[x, y] = True
 
-bext.clear()
-try:
-    while True: # Main program loop.
-        # Print the cells:
-        previousCells = currentCells # Previous cells exists so we know which cells have changed, so we minimize flicker.
+    bext.clear()
+
+    while True:  # Main program loop.
+        previousCells = currentCells
         currentCells = nextCells
-        for y in range(0, HEIGHT, 2): # Skip every other row.
+
+        # Print the cells:
+        for y in range(0, HEIGHT, 2):  # Skip every other row.
             for x in range(WIDTH):
-                top = (x, y) in currentCells
-                bottom = (x, y + 1) in currentCells
+                prevTopHalf = previousCells.get((x, y), False)
+                curTopHalf = currentCells.get((x, y), False)
+                topHalfHasChanged = prevTopHalf != curTopHalf
 
-                if (previousCells.get((x, y), False) != currentCells.get((x, y), False)) or (previousCells.get((x, y + 1), False) != currentCells.get((x, y + 1), False)):
+                prevBottomHalf = previousCells.get((x, y + 1), False)
+                curBottomHalf = currentCells.get((x, y + 1), False)
+                bottomHalfHasChanged = prevBottomHalf != curBottomHalf
+                if topHalfHasChanged or bottomHalfHasChanged:
                     bext.goto(x, y // 2)
-                    if top and bottom:
-                        print(FULL_BLOCK, end='') # Fill in both halves.
-                    elif top and not bottom:
-                        print(TOP_BLOCK, end='') # Fill in top half.
-                    elif not top and bottom:
-                        print(BOTTOM_BLOCK, end='') # Fill in bottom half.
-                    elif not top and not bottom:
-                        print(' ', end='') # Fill in nothing.
+                    if curTopHalf and curBottomHalf:
+                        # Fill in both halves:
+                        print(FULL_BLOCK, end='')
+                    elif curTopHalf and not curBottomHalf:
+                        # Fill in top half:
+                        print(TOP_BLOCK, end='')
+                    elif not curTopHalf and curBottomHalf:
+                        # Fill in bottom half:
+                        print(BOTTOM_BLOCK, end='')
+                    elif not curTopHalf and not curBottomHalf:
+                        # Fill in nothing:
+                        print(' ', end='')
 
-            print('') # Print a newline at the end of the row.
+            print()  # Print a newline at the end of the row.
         print('Press Ctrl-C to quit.', end='', flush=True)
 
         # Calculate next cells based on current cells:
@@ -105,7 +119,13 @@ try:
                     if numNeighbors == 3:
                         nextCells[x, y] = True
 
-        time.sleep(PAUSE_LENGTH) # Add a slight pause to reduce flickering.
+        time.sleep(PAUSE_LENGTH)  # Pause to reduce flickering.
         # At this point, go back to the start of the main program loop.
-except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+
+
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit()  # When Ctrl-C is pressed, end the program.

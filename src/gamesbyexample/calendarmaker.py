@@ -6,18 +6,39 @@ __version__ = 1
 import datetime
 
 # Setup the constants:
-DAYS = ('Sunday', 'Monday', 'Tuesday', 'Wednesday',
-        'Thursday', 'Friday', 'Saturday')
-MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July',
-          'August', 'September', 'October', 'November', 'December')
+DAYS = (
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+)
+MONTHS = (
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+)
 ONE_DAY = datetime.timedelta(days=1)
 
 DAY_BOX_SIZE = 10
 assert DAY_BOX_SIZE >= len('Wednesday')
 
-print('''Calendar Maker
+print(
+    '''Calendar Maker
 By Al Sweigart al@inventwithpython.com
-''')
+'''
+)
 
 while True:  # Loop to get a year from the user.
     print('Enter the year for the calendar:')

@@ -1,6 +1,8 @@
 """Bouncing Dots, by Al Sweigart al@inventwithpython.com
 
-A bouncing dots animation. Press Ctrl-C to stop."""
+A bouncing dots animation. Press Ctrl-C to stop.
+
+NOTE: Do not resize the terminal window while this program is running."""
 __version__ = 1
 
 import sys, random, time

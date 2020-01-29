@@ -115,9 +115,9 @@ def getScore(board):
 
 
 def combineTilesInColumn(column):
-    """The `column` is a list of four tile. Index 0 is the "bottom" of the
-    column, and tiles are pulled "down" and combine if they are the same.
-    For example, combineTilesInColumn([2, BLANK, 2, BLANK]) returns
+    """The `column` is a list of four tile. Index 0 is the "bottom" of
+    the column, and tiles are pulled "down" and combine if they are the
+    same. For example, combineTilesInColumn([2, BLANK, 2, BLANK]) returns
     [4, BLANK, BLANK, BLANK]."""
 
     # Copy only the numbers (not blanks) from `column` to `combinedTiles`
@@ -142,11 +142,11 @@ def combineTilesInColumn(column):
 
 
 def makeMove(board, move):
-    """Carries out the move in `move`, which is either 'W', 'A', 'S', or 'D'
-    and returns the resulting board data structure."""
+    """Carries out the move in `move`, which is either 'W', 'A', 'S', or
+    'D' and returns the resulting board data structure."""
 
-    # The board is split up into four columns, which are different depending
-    # on the direction of the move:
+    # The board is split up into four columns, which are different
+    # depending on the direction of the move:
     if move == 'W':
         allColumnsSpaces = [[(0, 0), (0, 1), (0, 2), (0, 3)],
                             [(1, 0), (1, 1), (1, 2), (1, 3)],
@@ -224,7 +224,7 @@ def addTwoToBoard(board):
 
 
 def isFull(board):
-    """Returns `True` if the `board` data structure has no blank tiles."""
+    """Returns `True` if the `board` data structure has no blanks."""
     # Loop over every space on the board:
     for x in range(4):
         for y in range(4):

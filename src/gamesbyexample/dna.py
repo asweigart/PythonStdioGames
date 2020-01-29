@@ -9,7 +9,7 @@ import random, sys, time
 # Setup the constants:
 # These are the individual rows of the DNA animation:
 ROWS = [
-    '         ##', # Index 0 has no {}.
+    '         ##',  # Index 0 has no {}.
     '        #{}-{}#',
     '       #{}---{}#',
     '      #{}-----{}#',
@@ -18,7 +18,7 @@ ROWS = [
     '    #{}-----{}#',
     '     #{}---{}#',
     '     #{}-{}#',
-    '      ##',    # Index 9 has no {}.
+    '      ##',  # Index 9 has no {}.
     '     #{}-{}#',
     '     #{}---{}#',
     '    #{}-----{}#',
@@ -30,11 +30,12 @@ ROWS = [
 
 
 def main():
+    """Run the DNA animation."""
     print('Press Ctrl-C to quit...')
     time.sleep(2)
     rowIndex = 0
 
-    while True: # Main program loop.
+    while True:  # Main program loop.
         # Increment rowIndex to draw next row:
         rowIndex += 1
         if rowIndex == len(ROWS):
@@ -58,7 +59,7 @@ def main():
 
         # Print the row.
         print(ROWS[rowIndex].format(leftNucleotide, rightNucleotide))
-        time.sleep(0.15) # Add a slight pause.
+        time.sleep(0.15)  # Add a slight pause.
         # At this point, go back to the start of the main program loop.
 
 
@@ -67,4 +68,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

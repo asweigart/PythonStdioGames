@@ -22,7 +22,7 @@ or a Command Prompt window (on Windows) and running:
 # Setup the constants:
 WIDTH = 79
 HEIGHT = 22
-NUMBER_OF_ANTS = 10
+NUMBER_OF_ANTS = 1
 
 
 def main():

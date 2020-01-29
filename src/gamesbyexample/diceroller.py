@@ -15,13 +15,13 @@ Example input:
   QUIT quits the program
 ''')
 
-while True: # Main program loop:
+while True:  # Main program loop:
     try:
-        diceStr = input('> ') # The prompt to enter the dice string.
+        diceStr = input('> ')  # The prompt to enter the dice string.
         if diceStr.upper() == 'QUIT':
             sys.exit()
 
-        # Clean up the dice string by removing spaces, converting to lowercase:
+        # Clean up the dice string:
         diceStr = diceStr.lower().replace(' ', '')
 
         # Find the number of dice to roll:
@@ -30,7 +30,7 @@ while True: # Main program loop:
             raise Exception('Missing the "d" character.')
 
         # Get the number of dice:
-        numberOfDice = diceStr[:dIndex] # The `3` in `3d6+1`.
+        numberOfDice = diceStr[:dIndex]  # The `3` in `3d6+1`.
         if not numberOfDice.isdecimal():
             raise Exception('Missing the number of dice.')
         numberOfDice = int(numberOfDice)
@@ -42,22 +42,22 @@ while True: # Main program loop:
 
         # Find the number of sides:
         if modIndex == -1:
-            numberOfSides = diceStr[dIndex + 1:] # The `6` in `3d6+1`.
+            numberOfSides = diceStr[dIndex + 1 :]  # The `6` in `3d6+1`.
             if not numberOfSides.isdecimal():
                 raise Exception('Missing the number of sides.')
             numberOfSides = int(numberOfSides)
 
             modAmount = 0
         else:
-            numberOfSides = diceStr[dIndex + 1:modIndex]
+            numberOfSides = diceStr[dIndex + 1 : modIndex]
             if not numberOfSides.isdecimal():
                 raise Exception('Missing the number of sides.')
             numberOfSides = int(numberOfSides)
 
             # Find the modifier amount:
-            modAmount = int(diceStr[modIndex + 1:]) # The `1` in `3d6+1`.
+            modAmount = int(diceStr[modIndex + 1 :])  # The `1` in `3d6+1`.
             if diceStr[modIndex] == '+':
-                pass # Do nothing if it's +.
+                pass  # Do nothing if it's +.
             elif diceStr[modIndex] == '-':
                 # Change the modification amount to negative:
                 modAmount = -modAmount
@@ -77,12 +77,13 @@ while True: # Main program loop:
 
         # Display the modifier amount:
         if modAmount != 0:
-            print(', {}{}'.format(diceStr[modIndex], abs(modAmount)), end='')
+            modSign = diceStr[modIndex]
+            print(', {}{}'.format(modSign, abs(modAmount)), end='')
         print(')')
 
     except Exception as exc:
-        # Catch any raised exceptions and display the message to the user:
+        # Catch any exceptions and display the message to the user:
         print('Invalid input. Enter something like `3d6` or `1d10+2`')
         print('Input was invalid because: ' + str(exc))
-        continue # Go back to the dice string prompt.
+        continue  # Go back to the dice string prompt.
     # At this point, go back to the start of the main program loop.
