@@ -4,7 +4,7 @@ A cellular automata animation. Press Ctrl-C to stop.
 More info: https://en.wikipedia.org/wiki/Langton%27s_ant"""
 __version__ = 1
 
-import random, copy, sys
+import random, copy, sys, time
 
 try:
     import bext
@@ -20,17 +20,18 @@ or a Command Prompt window (on Windows) and running:
     sys.exit()
 
 # Setup the constants:
-WIDTH, HEIGHT = 70, 20 #bext.size()
+WIDTH, HEIGHT = bext.size()
 WIDTH -= 1  # Adjustment for Windows Command Prompt.
 HEIGHT -= 1  # Adjustment for the quit message at the bottom.
-NUMBER_OF_ANTS = 1
+NUMBER_OF_ANTS = 10
 NORTH = 'north'
 SOUTH = 'south'
 EAST = 'east'
 WEST = 'west'
-
 BLACK = 'black'
 WHITE = 'white'
+PAUSE_AMOUNT = 0.1
+
 
 def main():
     """Run the Langton's Ant simulation."""
@@ -44,13 +45,18 @@ def main():
     # Create ant data structures:
     ants = []
     for i in range(NUMBER_OF_ANTS):
-        ant = {'x': 10,#random.randint(0, WIDTH - 1),
-               'y': 10,#random.randint(0, HEIGHT - 1),
-               'direction': random.choice([NORTH, SOUTH, EAST, WEST])}
+        ant = {
+            'x': random.randint(0, WIDTH - 1),
+            'y': random.randint(0, HEIGHT - 1),
+            'direction': random.choice([NORTH, SOUTH, EAST, WEST]),
+        }
         ants.append(ant)
 
-    while True: # Main program loop.
-        displayBoard(board, ants)
+    changedTiles = set()
+
+    while True:  # Main program loop.
+        displayBoard(board, ants, changedTiles)
+        changedTiles = set()
 
         # Run a single simulation step for each ant:
         nextBoard = copy.copy(board)
@@ -77,6 +83,7 @@ def main():
                     ant['direction'] = EAST
                 elif ant['direction'] == EAST:
                     ant['direction'] = NORTH
+            changedTiles.add((ant['x'], ant['y']))
 
             # Move the ant forward:
             if ant['direction'] == NORTH:
@@ -90,38 +97,46 @@ def main():
 
             # If the ant goes past the edge of the screen,
             # it should wrap around to other side.
-            ant['x'] = ant['x'] % (WIDTH - 1)
-            ant['y'] = ant['y'] % (HEIGHT - 1)
+            ant['x'] = ant['x'] % WIDTH
+            ant['y'] = ant['y'] % HEIGHT
+
+            changedTiles.add((ant['x'], ant['y']))
 
         board = nextBoard
         # At this point, go back to the start of the main program loop.
 
 
-def displayBoard(board, ants):
+def displayBoard(board, ants, changedTiles):
     # Draw the board data structure:
-    bext.goto(0, 0)
-    for y in range(board['height']):
-        for x in range(board['width']):
-            if board.get((x, y), False):
-                bext.bg(BLACK)
-            else:
-                bext.bg(WHITE)
+    for x, y in changedTiles:
+        bext.goto(x, y)
+        if board.get((x, y), False):
+            bext.bg(BLACK)
+        else:
+            bext.bg(WHITE)
 
-            for ant in ants:
-                if (x, y) == (ant['x'], ant['y']):
-                    if ant['direction'] == NORTH:
-                        print('^', end='')
-                    elif ant['direction'] == SOUTH:
-                        print('v', end='')
-                    elif ant['direction'] == EAST:
-                        print('>', end='')
-                    elif ant['direction'] == WEST:
-                        print('<', end='')
-                else:
-                    print(' ', end='')
-        print()
-    print('Press Ctrl-C to quit.')
+        antIsHere = False
+        for ant in ants:
+            if (x, y) == (ant['x'], ant['y']):
+                antIsHere = True
+                if ant['direction'] == NORTH:
+                    print('^', end='')
+                elif ant['direction'] == SOUTH:
+                    print('v', end='')
+                elif ant['direction'] == EAST:
+                    print('>', end='')
+                elif ant['direction'] == WEST:
+                    print('<', end='')
+                break
+        if not antIsHere:
+            print(' ', end='')
+
+    bext.goto(0, HEIGHT)
+    bext.bg(WHITE)
+    print('Press Ctrl-C to quit.', end='')
+
     sys.stdout.flush()  # (Required for bext-using programs.)
+    time.sleep(PAUSE_AMOUNT)
 
 
 # If this program was run (instead of imported), run the game:
@@ -129,4 +144,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.
