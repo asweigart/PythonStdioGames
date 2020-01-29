@@ -11,14 +11,15 @@ import random, sys
 # The "filler" characters for the board.
 GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\'
 
-# Load the WORDS list from a text file that has a 7-letter word on each line.
+# Load the WORDS list from a text file that has 7-letter words.
 with open('sevenletterwords.txt') as dictionaryFile:
     WORDS = dictionaryFile.readlines()
 for i in range(len(WORDS)):
-    # Change the words in the WORDS list to uppercase and strip whitespace.
     WORDS[i] = WORDS[i].strip().upper()
 
+
 def main():
+    """Run a single game of Hacking."""
     print('''HACKING MINIGAME
 By Al Sweigart al@inventwithpython.com
 ''')
@@ -35,18 +36,17 @@ By Al Sweigart al@inventwithpython.com
             print('A C C E S S   G R A N T E D')
             return
         else:
-            numMatches = numberOfMatchingLetters(secretPassword, playerMove)
+            numMatches = numMatchingLetters(secretPassword, playerMove)
             print('Access Denied ({}/7 correct)'.format(numMatches))
     print('Out of tries. Secret password was {}.'.format(secretPassword))
 
 
 def getBoard(words):
-    """Generate the string of the "computer memory" and return it as a
-    string. The memory is just cosmetic. It has two columns of 16 lines."""
+    """Return a string representing the "computer memory"."""
 
     # Pick which lines contain words:
     linesWithWords = random.sample(range(16 * 2), len(words))
-    # The starting memory address to show on the side (this is also cosmetic).
+    # The starting memory address (this is also cosmetic).
     memoryAddress = 16 * random.randint(0, 4000)
 
     #
@@ -68,17 +68,19 @@ def getBoard(words):
             rightLine = rightLine[:insertionIndex] + words[nextWord] + rightLine[insertionIndex + 7:]
             nextWord += 1
 
-        board.append('0x' + hex(memoryAddress)[2:].zfill(4)           +
+        board.append('0x' + hex(memoryAddress)[2:].zfill(4) +
                      '  ' + leftLine + '    ' +
                      '0x' + hex(memoryAddress + (16*16))[2:].zfill(4) +
                      '  ' + rightLine)
 
         memoryAddress += 16
 
-    return '\n'.join(board) # Each string in `board` is joined into one large string to return.
+    # Each string in `board` is joined into one large string to return:
+    return '\n'.join(board)
 
 
 def getPlayerMove(words, tries):
+    """Let the player enter a password guess."""
     while True:
         print('Enter password: ({} tries remaining)'.format(tries))
         move = input().upper()
@@ -87,7 +89,8 @@ def getPlayerMove(words, tries):
         print('That is not one of the possible passwords listed above.')
 
 
-def numberOfMatchingLetters(word1, word2):
+def numMatchingLetters(word1, word2):
+    """Returns the number of matching letters between these two words."""
     matches = 0
     for i in range(len(word1)):
         if word1[i] == word2[i]:
@@ -96,6 +99,7 @@ def numberOfMatchingLetters(word1, word2):
 
 
 def getOneWordExcept(blocklist=None):
+    """Returns a random word from WORDS that isn't in blocklist."""
     if blocklist == None:
         blocklist = []
 
@@ -106,32 +110,38 @@ def getOneWordExcept(blocklist=None):
 
 
 def getWords():
-    # To make the game fair, we want to only have at most 2 words that have 0 letters in common with the secret password.
+    """Return the words that could possibly be the password.
+
+    To make the game fair, we want to only have at most 2 words that
+    have 0 letters in common with the secret password."""
     secretPassword = random.choice(WORDS)
     words = [secretPassword]
 
-    # Find two words that have zero matching letters.
-    while len(words) < 3: # 3 because the secret password is already in `words`.
+    # Find two words more that have zero matching letters.
+    # `< 3` because the secret password is already in `words`.
+    while len(words) < 3:
         randomWord = getOneWordExcept(words)
-        if numberOfMatchingLetters(secretPassword, randomWord) == 0:
+        if numMatchingLetters(secretPassword, randomWord) == 0:
             words.append(randomWord)
 
-    # Find two words that have 3 matching letters (but give up at 500 tries if not enough can be found).
+    # Find two words that have 3 matching letters (but give up at 500
+    # tries if not enough can be found).
     for i in range(500):
         if len(words) == 5:
             break
 
         randomWord = getOneWordExcept(words)
-        if numberOfMatchingLetters(secretPassword, randomWord) == 3:
+        if numMatchingLetters(secretPassword, randomWord) == 3:
             words.append(randomWord)
 
-    # Find seven words that have at least one matching letter (but give up at 500 tries if not enough can be found).
+    # Find seven words that have at least one matching letter (but give
+    # up at 500 tries if not enough can be found).
     for i in range(500):
         if len(words) == 12:
             break
 
         randomWord = getOneWordExcept(words)
-        if numberOfMatchingLetters(secretPassword, randomWord) != 0:
+        if numMatchingLetters(secretPassword, randomWord) != 0:
             words.append(randomWord)
 
     # Add any random words needed to get 12 words total.
@@ -146,4 +156,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

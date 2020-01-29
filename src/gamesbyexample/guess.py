@@ -12,20 +12,20 @@ print('''GUESS THE NUMBER
 By Al Sweigart al@inventwithpython.com
 ''')
 
-secretNumber = random.randint(1, 100) # Select a random number.
+secretNumber = random.randint(1, 100)  # Select a random number.
 print('I am thinking of a number between 1 and 100.')
 
-for i in range(10): # Give the player 10 guesses.
+for i in range(10):  # Give the player 10 guesses.
     print('You have ' + str(10 - i) + ' guesses left. Take a guess.')
     while True:
         try:
-            guess = int(input()) # Enter the guess.
-            break # Break out of the while loop.
+            guess = int(input())  # Enter the guess.
+            break  # Break out of the while loop.
         except:
             print('Please enter a number.')
 
     if guess == secretNumber:
-        break # Break out of the for loop if the guess is correct.
+        break  # Break out of the for loop if the guess is correct.
 
     # Offer a hint:
     if guess < secretNumber:

@@ -1,6 +1,7 @@
 """Hammurabi, by Al Sweigart al@inventwithpython.com
 
-The classic game Hamurabi.bas by Doug Dyment, popularized by David Ahl."""
+The classic game Hamurabi.bas [sic] by Doug Dyment, popularized by David
+Ahl."""
 __version__ = 1
 
 import random
@@ -38,7 +39,7 @@ totalDeaths = 0
 totalPopulation = population
 percentageDiedEachYear = []
 
-while True: # Main game loop.
+while True:  # Main game loop.
     print()
     print('Hammurabi, I beg to report to you, in the year {}:'.format(year))
     print('- {} people starved'.format(deaths))
@@ -50,7 +51,7 @@ while True: # Main game loop.
     if random.randint(0, 99) <= 15:
         print('*** A HORRIBLE PLAGUE STRUCK! HALF THE PEOPLE DIED. ***')
         print()
-        population //= 2 # Halve the population.
+        population //= 2  # Halve the population.
 
     print('  Population: {} people'.format(population))
     print('        Land: {} acres ({} per person)'.format(acresOwned, acresOwned // population))
@@ -59,8 +60,8 @@ while True: # Main game loop.
     print('Grain stored: {} bushels in store.'.format(bushelsStored))
     print()
 
-    if year > 10: # End game after year 10.
-         break
+    if year > 10:  # End game after year 10.
+        break
 
     print('Phases: BUY/SELL LAND => FEED POPULATION => PLANT CROPS')
     print()
@@ -74,24 +75,24 @@ while True: # Main game loop.
         try:
             acresToBuy = int(input())
         except:
-            continue # Player didn't enter a number, ask again.
+            continue  # Player didn't enter a number, ask again.
         if acresToBuy > (bushelsStored // landPricePerAcre) or acresToBuy < 0:
-            continue # Ask again.
+            continue  # Ask again.
 
         bushelsStored -= acresToBuy * landPricePerAcre
         acresOwned += acresToBuy
         print('Spent {} bushels to buy {} acres. Current bushels: {} Current land: {}'.format(acresToBuy * landPricePerAcre, acresToBuy, bushelsStored, acresOwned))
         break
 
-    if acresToBuy == 0: # Only ask to sell land if they didn't buy land.
+    if acresToBuy == 0:  # Only ask to sell land if they didn't buy land.
         while True:
             print('How many acres do you wish to sell? (0-{})'.format(acresOwned))
             try:
                 acresToSell = int(input())
             except:
-                continue # Player didn't enter a number, ask again.
+                continue  # Player didn't enter a number, ask again.
             if acresToSell < 0 or acresToSell > acresOwned:
-                continue # Ask again.
+                continue  # Ask again.
 
             bushelsStored += acresToSell * landPricePerAcre
             acresOwned -= acresToSell
@@ -105,9 +106,9 @@ while True: # Main game loop.
         try:
             bushelsToFeed = int(input())
         except:
-            continue # Player didn't enter a number, ask again.
+            continue  # Player didn't enter a number, ask again.
         if bushelsToFeed > maxToFeed or bushelsToFeed < 0:
-            continue # Ask again.
+            continue  # Ask again.
 
         bushelsStored -= bushelsToFeed
         print('Fed {} people with {} bushels. Current bushels: {}'.format(bushelsToFeed // 20, bushelsToFeed, bushelsStored))
@@ -120,9 +121,9 @@ while True: # Main game loop.
         try:
             acresToPlant = int(input())
         except:
-            continue # Player didn't enter a number, ask again.
+            continue  # Player didn't enter a number, ask again.
         if acresToPlant > maxCanPlant or acresToPlant < 0:
-            continue # Ask again.
+            continue  # Ask again.
 
         bushelsStored -= acresToPlant * 2
         print('Planted {} acres using {} bushels. Current bushels: {}'.format(acresToPlant, acresToPlant * 2, bushelsStored))
@@ -131,7 +132,6 @@ while True: # Main game loop.
     # Calculate harvest:
     bushelsHarvestedPerAcre = random.randint(1, 5)
     bushelsHarvested = acresToPlant * bushelsHarvestedPerAcre
-
 
     # Chance for rats running wild:
     if random.randint(0, 99) <= 40:
@@ -154,9 +154,9 @@ while True: # Main game loop.
         print('Due to this extreme mismanagement you have not only')
         print('been impeached and thrown out of office but you have')
         print('also been declared a national fink!!!!')
-        return # Game over.
+        return  # Game over.
 
-    population -= deaths # Update population.
+    population -= deaths  # Update population.
     year += 1
     # At this point, go back to the start of the main program loop.
 

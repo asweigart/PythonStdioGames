@@ -9,7 +9,7 @@ __version__ = 1
 import random, os, sys
 
 def pluralize(word):
-    # Returns the pluralized form of `word`:
+    """Returns the pluralized form of `word`."""
     if word.endswith('o'):
         return word + 'es'
     elif word.endswith('y'):
@@ -20,9 +20,9 @@ def pluralize(word):
         return word + 's'
 
 
-print('HAMSBURGER')
-print('By Al Sweigart al@inventwithpython.com')
-print()
+print('''HAMSBURGER
+By Al Sweigart al@inventwithpython.com
+''')
 
 # Loading nouns from nounlist.txt
 if not os.path.exists('nounlist.txt'):
