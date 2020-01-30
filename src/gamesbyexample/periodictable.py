@@ -17,9 +17,10 @@ elementsCsvReader = csv.reader(elementsFile)
 elements = list(elementsCsvReader)
 elementsFile.close()
 
-ALL_COLUMNS = ['Atomic Number', 'Symbol', 'Element', 'Origin of name', 'Group',
-               'Period', 'Atomic weight', 'Density', 'Melting point',
-               'Boiling point', 'Specific heat capacity', 'Electronegativity',
+ALL_COLUMNS = ['Atomic Number', 'Symbol', 'Element', 'Origin of name',
+               'Group', 'Period', 'Atomic weight', 'Density',
+               'Melting point', 'Boiling point',
+               'Specific heat capacity', 'Electronegativity',
                'Abundance in earth\'s crust']
 
 # To justify the text, we need to find the longest string in ALL_COLUMNS.
@@ -29,7 +30,7 @@ for key in ALL_COLUMNS:
         LONGEST_COLUMN = len(key)
 
 # Put all the elements data into a data structure:
-ELEMENTS = {} # The data structure that stores all the element data.
+ELEMENTS = {}  # The data structure that stores all the element data.
 for line in elements:
     element = {'Atomic Number':  line[0],
                'Symbol':         line[1],
@@ -38,7 +39,7 @@ for line in elements:
                'Group':          line[4],
                'Period':         line[5],
                'Atomic weight':  line[6] + ' u', # atomic mass unit
-               'Density':        line[7] + ' g/cm^3', # grams per cubic cm
+               'Density':        line[7] + ' g/cm^3', # grams/cubic cm
                'Melting point':  line[8] + ' K', # kelvin
                'Boiling point':  line[9] + ' K', # kelvin
                'Specific heat capacity':      line[10] + ' J/(g*K)',
@@ -53,14 +54,14 @@ for line in elements:
         # Remove the [roman numeral] text:
         element[key] = re.sub(r'\[(I|V|X)+\]', '', value)
 
-    ELEMENTS[line[0]] = element # Map the atomic number to element.
-    ELEMENTS[line[1]] = element # Map the symbol to element.
+    ELEMENTS[line[0]] = element  # Map the atomic number to element.
+    ELEMENTS[line[1]] = element  # Map the symbol to element.
 
 print('PERIODIC TABLE OF ELEMENTS')
 print('By Al Sweigart al@inventwithpython.com')
 print()
 
-while True: # Main program loop.
+while True:  # Main program loop.
     # Show table and let the user select an element:
     print('''            Periodic Table of Elements
       1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18
@@ -75,7 +76,7 @@ while True: # Main program loop.
             Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu
             Th Pa U  Np Pu Am Cm Bk Cf Es Fm Md No Lr''')
     print('Enter a symbol or atomic number to examine, or QUIT to quit.')
-    response = input().title() # Convert to titlecase e.g. 'mg' to 'Mg'
+    response = input().title()  # Convert to titlecase e.g. 'mg' to 'Mg'
 
     if response == 'Quit':
         sys.exit()
@@ -83,6 +84,7 @@ while True: # Main program loop.
     # Display the selected element's data:
     if response in ELEMENTS:
         for key in ALL_COLUMNS:
-            print(key.rjust(LONGEST_COLUMN) + ': ' + ELEMENTS[response][key])
+            keyJustified = key.rjust(LONGEST_COLUMN)
+            print(keyJustified + ': ' + ELEMENTS[response][key])
         input('Press Enter to continue...')
     # At this point, go back to the start of the main program loop.

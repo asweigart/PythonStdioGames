@@ -4,7 +4,8 @@ A simulation of a Japanese abacus calculator tool.
 More info at: https://en.wikipedia.org/wiki/Soroban"""
 __version__ = 1
 
-def drawAbacus(number):
+
+def displayAbacus(number):
     numberList = list(str(number).zfill(10))
 
     hasBead = []
@@ -50,6 +51,7 @@ def drawAbacus(number):
             abacusChar.append('|')
 
     # Draw the abacus with the O/| characters.
+    chars = abacusChar + numberList
     print("""
 +================================+
 I  {}  {}  {}  {}  {}  {}  {}  {}  {}  {}  I
@@ -62,10 +64,10 @@ I  {}  {}  {}  {}  {}  {}  {}  {}  {}  {}  I
 I  {}  {}  {}  {}  {}  {}  {}  {}  {}  {}  I
 I  {}  {}  {}  {}  {}  {}  {}  {}  {}  {}  I
 I  {}  {}  {}  {}  {}  {}  {}  {}  {}  {}  I
-+=={}=={}=={}=={}=={}=={}=={}=={}=={}=={}==+""".format(*abacusChar + numberList))
++=={}=={}=={}=={}=={}=={}=={}=={}=={}=={}==+""".format(*chars))
 
 
-def drawControls():
+def displayControls():
     print('  +q  w  e  r  t  y  u  i  o  p')
     print('  -a  s  d  f  g  h  j  k  l  ;')
     print('(Enter a number, "quit", or a stream of up/down letters.)')
@@ -76,11 +78,11 @@ def main():
     print('By Al Sweigart al@inventwithpython.com')
     print()
 
-    abacusNumber = 0 # This is the number represented on the abacus.
+    abacusNumber = 0  # This is the number represented on the abacus.
 
-    while True: # Main program loop.
-        drawAbacus(abacusNumber)
-        drawControls()
+    while True:  # Main program loop.
+        displayAbacus(abacusNumber)
+        displayControls()
 
         commands = input()
         if commands == 'quit':
@@ -135,8 +137,9 @@ def main():
 
         # The abacus can't show negative numbers:
         if abacusNumber < 0:
-            abacusNumber = 0 # Change any negative numbers to 0.
+            abacusNumber = 0  # Change any negative numbers to 0.
         # At this point, go back to the start of the main program loop.
+
 
 if __name__ == '__main__':
     main()

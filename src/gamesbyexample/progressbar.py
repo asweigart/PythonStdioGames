@@ -5,12 +5,13 @@ __version__ = 1
 
 import random, time
 
+
 def getProgressBar(progress, total, barWidth=40):
     """Returns a string that represents a progress bar that has `barWidth`
     bars and has progressed `progress` amount out of a `total` amount."""
 
-    progressBar = '' # The progress bar will be a string value.
-    progressBar += '[' # Create the left end of the progress bar.
+    progressBar = ''  # The progress bar will be a string value.
+    progressBar += '['  # Create the left end of the progress bar.
 
     # Make sure that the amount of progress is between 0 and total:
     if progress > total:
@@ -21,17 +22,19 @@ def getProgressBar(progress, total, barWidth=40):
     # Calculate the number of "bars" to display:
     numberOfBars = int((progress / total) * barWidth)
 
-    progressBar += '*' * numberOfBars # Add the progress bar.
-    progressBar += ' ' * (barWidth - numberOfBars) # Add the empty space.
-    progressBar += ']' # Add the right end of the progress bar.
+    progressBar += '*' * numberOfBars  # Add the progress bar.
+    progressBar += ' ' * (barWidth - numberOfBars)  # Add the empty space.
+    progressBar += ']'  # Add the right end of the progress bar.
 
     # Calculate the percentage complete:
     percentComplete = round(progress / total * 100, 1)
-    progressBar += ' ' + str(percentComplete) + '%' # Add the percentage.
+    progressBar += ' ' + str(percentComplete) + '%'  # Add the percentage.
 
-    progressBar += ' ' + str(progress) + '/' + str(total) # Add the numbers.
+    # Add the numbers:
+    progressBar += ' ' + str(progress) + '/' + str(total)
 
-    return progressBar # Return the progress bar string.
+    return progressBar  # Return the progress bar string.
+
 
 # Simulate a download:
 bytesDownloaded = 0

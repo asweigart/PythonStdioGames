@@ -7,7 +7,7 @@ __version__ = 1
 
 import time, sys
 
-PAUSE_AMOUNT = 0.5 # Pause for 0.5 seconds at each step.
+PAUSE_AMOUNT = 0.5  # Pause for 0.5 seconds at each step.
 
 print('''LUHN ALGORITHM
 By Al Sweigart al@inventwithpython.com
@@ -16,8 +16,8 @@ By Al Sweigart al@inventwithpython.com
 # Display information about the Luhn algorithm if the user wants it:
 print('Would you like to see a description of the Luhn algorithm? Y/N')
 if input().upper().startswith('Y'):
-    print('''The Luhn algorithm is a checksum algorithm to make sure a serial number is
-correct. It's used by credit cards and other official numbers.
+    print('''Luhn is a checksum algorithm to make sure a serial number
+is correct. It's used by credit cards and other official numbers.
 More info at: https://en.wikipedia.org/wiki/Luhn_algorithm
 
 For example, let's check the checksum for the number:
@@ -39,15 +39,15 @@ For example, let's check the checksum for the number:
 
 79927398713 has a valid Luhn checksum.
 ''')
-    input('Press Enter to continue...') # Pause to let the user press Enter.
+    input('Press Enter to continue...')  # Pause until Enter is pressed.
 
 
-while True: # Main program loop.
+while True:  # Main program loop.
     print('Enter a number to check its checksum (or QUIT):')
     originalNumber = input()
 
     if originalNumber.upper().startswith('Q'):
-        sys.exit() # A response that begins with 'q' will quit the program.
+        sys.exit()
 
     if not originalNumber.isdecimal():
         print('Please enter a number.')
@@ -79,25 +79,25 @@ while True: # Main program loop.
     print('    ', end='')
     for i, number in enumerate(nonChecksumDigits):
         print(number, end=' ')
-        nonChecksumDigits[i] = int(number) # Convert str to int.
+        nonChecksumDigits[i] = int(number)  # Convert str to int.
     digitSum = sum(nonChecksumDigits)
     print('=', digitSum)
     time.sleep(PAUSE_AMOUNT)
 
     print('5) Multiply by 9:')
-    digitSumTimesNine = digitSum * 9
-    print('    {} * 9 = {}'.format(digitSum, digitSumTimesNine))
+    digitSum9x = digitSum * 9
+    print('    {} * 9 = {}'.format(digitSum, digitSum9x))
     time.sleep(PAUSE_AMOUNT)
 
     print('6) The checksum digit is the last digit:')
-    checksumDigit = str(digitSumTimesNine)[-1]
-    print('    {}[{}]'.format(str(digitSumTimesNine)[:-1], checksumDigit))
+    checksumDigit = str(digitSum9x)[-1]
+    print('    {}[{}]'.format(str(digitSum9x)[:-1], checksumDigit))
     time.sleep(PAUSE_AMOUNT)
 
     print('7) Append the checksum digit for the complete, valid number:')
     numberWithValidChecksum = originalNumber[:-1] + str(checksumDigit)
     print('    ' + numberWithValidChecksum)
-    print() # Print a newline.
+    print()  # Print a newline.
     time.sleep(PAUSE_AMOUNT)
 
     # Tell the user if they entered a valid number or not:
@@ -105,10 +105,9 @@ while True: # Main program loop.
         print('You entered a VALID NUMBER.')
     else:
         print('You entered a number with an INVALID CHECKSUM.')
-        print('The checksum should be {} not {}'.format(checksumDigit, originalNumber[-1]))
+        print('The checksum should be ' + str(checksumDigit) + ',')
+        print('not ' + str(originalNumber[-1]))
 
     input('Press Enter to continue...')
-    print() # Print some newlines for space.
-    print()
-    print()
+    print('\n\n')  # Print some newlines for space.
     # At this point, go back to the start of the main program loop.

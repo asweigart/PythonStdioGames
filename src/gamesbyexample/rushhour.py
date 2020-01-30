@@ -5,14 +5,38 @@ Original game by Nob Yoshihagara
 More info at https://www.michaelfogleman.com/rush/"""
 __version__ = 1
 
-# rushhour_puzzle.txt generated from puzzles by Michael Fogleman
+# rushhour_puzzle.txt generated from puzzles by Michael Fogleman.
 
 import math, random, sys
 
+# Set up the constants:
 EMPTY_SPACE = '.'
-WALL = chr(9608)
+WALL = chr(9608)  # Character 9608 is '█'
+
+
+def main():
+    """Run a single game of Rush Hour."""
+    print("""RUSH HOUR
+By Al Sweigart al@inventwithpython.com
+
+Get the "a" car to the right edge of the board.
+Enter moves as <car> <direction> <distance>.
+Directions are (l)eft, (r)ight, (u)p, and (d)own.
+""")
+
+    gameBoard = getBoard(getRandomPuzzle())
+    while True:
+        displayBoard(gameBoard)
+        playerMove = getPlayerMove(gameBoard)
+        makeMove(gameBoard, playerMove)
+        if hasWon(gameBoard):
+            displayBoard(gameBoard)
+            print('PUZZLE COMPLETE!')
+            sys.exit()
+
 
 def getRandomPuzzle():
+    """Return a string representing a randomly selected puzzle."""
     numberOfPuzzles = 0
     puzzleFile = open('rushhourpuzzles.txt')
     while puzzleFile.readline():
@@ -30,7 +54,8 @@ def getRandomPuzzle():
             counter += 1
 
 
-def readPuzzle(puzzleAsString):
+def getBoard(puzzleAsString):
+    """Return a board data structure based on the puzzle string."""
     # Set up data structure.
     board = {}
 
@@ -42,7 +67,8 @@ def readPuzzle(puzzleAsString):
     y = 0
     for character in puzzleAsString:
         if character == 'x':
-            character = WALL # Draw walls using the block character instead of x.
+            # Draw walls using the block character instead of x:
+            character = WALL
         board[(x, y)] = character
 
         if x == board['width'] - 1:
@@ -53,34 +79,41 @@ def readPuzzle(puzzleAsString):
     return board
 
 
-def drawBoard(board):
+def displayBoard(board):
+    """Display the board on the screen."""
     for y in range(board['height']):
-        for i in range(3): # We draw 3 rows per board-row.
+        for i in range(3):  # We draw 3 rows per board-row.
             if i == 0 and y != 0:
                 # Draw a horizontal dividing line:
                 for x in range(board['width']):
                     if board[(x, y)] != EMPTY_SPACE and board[(x, y)] == board[(x, y - 1)]:
-                        print(board[(x, y)] * 3 + ' ', end='') # Draw car in dividing line.
+                        # Draw car in dividing line:
+                        print(board[(x, y)] * 3 + ' ', end='')
                     else:
-                        print(' ' * 4, end='') # Draw empty dividing line.
+                        # Draw empty dividing line:
+                        print(' ' * 4, end='')
                 print()
 
             for x in range(board['width']):
-                print(board[(x, y)] * 3, end='') # Draw the board space.
+                # Draw the board space:
+                print(board[(x, y)] * 3, end='')
 
                 if x != board['width'] - 1 and board[(x, y)] != EMPTY_SPACE and board[(x, y)] == board[(x + 1, y)]:
-                    print(board[(x, y)], end='') # Draw car in vertical dividing line.
+                    # Draw car in vertical dividing line:
+                    print(board[(x, y)], end='')
                 else:
-                    print(' ', end='') # Draw empty vertical dividing line.
+                    # Draw empty vertical dividing line:
+                    print(' ', end='')
             print()
 
 
 def getValidMoves(board):
+    """Return a list of valid moves that can be made on the board."""
     validMoves = []
     for x in range(board['width']):
         for y in range(board['height']):
             if board[(x, y)] in (EMPTY_SPACE, WALL):
-                continue # Skip this empty or wall space.
+                continue  # Skip this empty or wall space.
 
             xNotOnLeftEdge = x != 0
             xNotOnRightEdge = x != board['width'] - 1
@@ -123,6 +156,7 @@ def getValidMoves(board):
 
 
 def makeMove(board, move):
+    """Carry out a move on the given board."""
     validMoves = getValidMoves(board)
     if move not in validMoves:
         return False
@@ -150,6 +184,7 @@ def makeMove(board, move):
 
 
 def hasWon(board):
+    """Return True if the 'a' car has reached the right edge."""
     # The puzzle is solved when the 'a' car reaches the right edge.
     for y in range(board['height']):
         if board[(board['width'] - 1, y)] == 'a':
@@ -159,6 +194,7 @@ def hasWon(board):
 
 
 def getPlayerMove(board):
+    """Let the player enter the car and direction they want to move."""
     validMoves = getValidMoves(board)
     while True:
         allValidMoves = '", "'.join(validMoves)
@@ -170,21 +206,6 @@ def getPlayerMove(board):
             return move
 
 
-print("""RUSH HOUR
-By Al Sweigart al@inventwithpython.com
-
-Get the "a" car to the right edge of the board.
-Enter moves as <car> <direction> <distance>.
-Directions are (l)eft, (r)ight, (u)p, and (d)own.
-""")
-
-gameBoard = readPuzzle(getRandomPuzzle())
-while True:
-    drawBoard(gameBoard)
-    playerMove = getPlayerMove(gameBoard)
-    makeMove(gameBoard, playerMove)
-    if hasWon(gameBoard):
-        drawBoard(gameBoard)
-        print('PUZZLE COMPLETE!')
-        sys.exit()
-
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

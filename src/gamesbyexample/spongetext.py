@@ -8,9 +8,11 @@ import random
 try:
     import pyperclip
 except ImportError:
-    pass # It's not a big deal if pyperclip is not installed.
+    pass  # It's not a big deal if pyperclip is not installed.
+
 
 def englishToSpongetext(message):
+    """Return the spongetext form of the given string."""
     spongetext = ''
     useUpper = False
 
@@ -24,7 +26,7 @@ def englishToSpongetext(message):
         else:
             spongetext += character.lower()
 
-        useUpper = not useUpper # Flip the case.
+        useUpper = not useUpper  # Flip the case.
 
         # Randomly flip the case again in 1 in 10 characters.
         if random.randint(1, 10) == 1:
@@ -33,6 +35,7 @@ def englishToSpongetext(message):
 
 
 def main():
+    """Run the Spongetext program."""
     print('''sPoNgEtExT
 bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
 
@@ -45,7 +48,9 @@ eNtEr YoUr MeSsAgE:''')
         pyperclip.copy(spongetext)
         print('(cOpIed SpOnGeTexT to ClIpbOaRd.)')
     except:
-        pass # Do nothing if pyperclip wasn't installed.
+        pass  # Do nothing if pyperclip wasn't installed.
 
+
+# If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
     main()

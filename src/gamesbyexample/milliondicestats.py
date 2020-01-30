@@ -5,10 +5,12 @@ __version__ = 1
 
 import random, time
 
-print('''MILLION DICE ROLL STATISTICS SIMULATOR
+print(
+    '''MILLION DICE ROLL STATISTICS SIMULATOR
 By Al Sweigart al@inventwithpython.com
 
-Enter how many six-sided dice you want to roll:''')
+Enter how many six-sided dice you want to roll:'''
+)
 numberOfDice = int(input())
 
 # Set up dictionary to store results:

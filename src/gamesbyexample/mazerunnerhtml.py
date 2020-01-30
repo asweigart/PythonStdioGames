@@ -66,79 +66,99 @@ for line in lines:
     y += 1
 HEIGHT = y
 
-assert startx != None and starty != None, 'Missing start point in maze file.'
-assert exitx != None and exity != None, 'Missing exit point in maze file.'
+assert startx != None and starty != None, 'No start point in maze file.'
+assert exitx != None and exity != None, 'No exit point in maze file.'
 
 
 # Generate HTML files:
 
 # Cut off everything after the last dot (i.e. ".txt")
-outputFolderName = filename[:filename.rfind('.')]
+outputFolder = filename[: filename.rfind('.')]
 
-# TODO, file format is: "3_12_NORTH.html"
 numFilesWritten = 0
-os.makedirs(outputFolderName, exist_ok=True)
+os.makedirs(outputFolder, exist_ok=True)
 for x in range(WIDTH):
     for y in range(HEIGHT):
-        # If this space is a wall, then the player can't be here, so skip this file.
+        # If this space is a wall, then the player can't be here.
         if maze[(x, y)] == WALL:
             continue
 
         for direction in (NORTH, EAST, SOUTH, WEST):
-            htmlFilename = '{}/{}_{}_{}.html'.format(outputFolderName, x, y, direction)
+            htmlFilename = '{}/{}_{}_{}.html'.format(outputFolder, x, y, direction)
             print('Writing {}...'.format(htmlFilename))
             numFilesWritten += 1
 
             with open(htmlFilename, 'w') as htmlFile:
                 if direction == NORTH:
                     # Map of the sections, relative  A
-                    # to the player @:              BCD (Player facing north)
+                    # to the player @:              BCD (Facing north)
                     #                               E@F
-                    offsets = (('A', 0, -2), ('B', -1, -1), ('C', 0, -1), ('D', 1, -1), ('E', -1, 0), ('F', 1, 0))
+                    offsets = (('A', 0, -2), ('B', -1, -1), ('C', 0, -1),
+                               ('D', 1, -1), ('E', -1, 0), ('F', 1, 0))
                 if direction == SOUTH:
                     # Map of the sections, relative F@E
-                    # to the player @:              DCB (Player facing south)
+                    # to the player @:              DCB (Facing south)
                     #                                A
-                    offsets = (('A', 0, 2), ('B', 1, 1), ('C', 0, 1), ('D', -1, 1), ('E', 1, 0), ('F', -1, 0))
+                    offsets = (('A', 0, 2), ('B', 1, 1), ('C', 0, 1),
+                               ('D', -1, 1), ('E', 1, 0), ('F', -1, 0))
                 if direction == EAST:
                     # Map of the sections, relative EB
-                    # to the player @:              @CA (Player facing east)
+                    # to the player @:              @CA (Facing east)
                     #                               FD
-                    offsets = (('A', 2, 0), ('B', 1, -1), ('C', 1, 0), ('D', 1, 1), ('E', 0, -1), ('F', 0, 1))
+                    offsets = (('A', 2, 0), ('B', 1, -1), ('C', 1, 0),
+                               ('D', 1, 1), ('E', 0, -1), ('F', 0, 1))
                 if direction == WEST:
                     # Map of the sections, relative  DF
-                    # to the player @:              AC@ (Player facing west)
+                    # to the player @:              AC@ (Facing west)
                     #                                BE
-                    offsets = (('A', -2, 0), ('B', -1, 1), ('C', -1, 0), ('D', -1, -1), ('E', 0, 1), ('F', 0, -1))
+                    offsets = (('A', -2, 0), ('B', -1, 1), ('C', -1, 0),
+                               ('D', -1, -1), ('E', 0, 1), ('F', 0, -1))
 
                 section = {}
                 for sec, xOffset, yOffset in offsets:
-                    section[sec] = maze.get((x + xOffset, y + yOffset), WALL)
+                    offSetPosition = (x + xOffset, y + yOffset)
+                    section[sec] = maze.get(offSetPosition, WALL)
                     if (x + xOffset, y + yOffset) == (exitx, exity):
                         section[sec] = EXIT
 
-                wallImageFilename = ''
+                wallImgFilename = ''
                 for sec in 'ABDCEF':
                     if section[sec] == WALL:
-                        wallImageFilename += sec
-                wallImageFilename = ''.join(sorted(list(wallImageFilename))) # put this back into alphabetical order because C and D are out of order
+                        wallImgFilename += sec
+                # Alphabetize order because C and D are out of order:
+                wallImgFilename = ''.join(sorted(list(wallImgFilename)))
 
                 # Draw the EXIT sign if needed:
                 if section['C'] == EXIT:
-                    wallImageFilename += '_exitback'
+                    wallImgFilename += '_exitback'
                 if section['E'] == EXIT:
-                    wallImageFilename += '_exitleft'
+                    wallImgFilename += '_exitleft'
                 if section['F'] == EXIT:
-                    wallImageFilename += '_exitright'
+                    wallImgFilename += '_exitright'
 
-                wallImageFilename += '.jpg'
+                wallImgFilename += '.jpg'
 
                 # Calculate turn URLs:
-                leftDirection = {NORTH: WEST, WEST: SOUTH, SOUTH: EAST, EAST: NORTH}[direction]
-                turnLeftURL = '{}_{}_{}.html'.format(x, y, leftDirection)
+                if direction == NORTH:
+                    leftDir = WEST
+                elif direction == WEST:
+                    leftDir = SOUTH
+                elif direction == SOUTH:
+                    leftDir = EAST
+                elif direction == EAST:
+                    leftDir = NORTH
+                turnLeftURL = '{}_{}_{}.html'.format(x, y, leftDir)
 
-                rightDirection = {NORTH: EAST, EAST: SOUTH, SOUTH: WEST, WEST: NORTH}[direction]
-                turnRightURL = '{}_{}_{}.html'.format(x, y, rightDirection)
+                if direction == NORTH:
+                    rightDir = EAST
+                elif direction == EAST:
+                    rightDir = SOUTH
+                elif direction == SOUTH:
+                    rightDir = WEST
+                elif direction == WEST:
+                    rightDir = NORTH
+
+                turnRightURL = '{}_{}_{}.html'.format(x, y, rightDir)
 
                 if section['C'] != WALL:
                     forwardURL = '{}_{}_{}.html'.format(x + offsets[2][1], y + offsets[2][2], direction)
@@ -165,25 +185,21 @@ for x in range(WIDTH):
 
     Facing: {}<br />
 
-    <!-- Everything between <a> and </a> is a clickable link. We make the
-         arrow images clickable links. -->
+    <!-- Everything between <a> and </a> is a clickable link. We make
+         the arrow images clickable links. -->
     <a href="{}"><img src="../maze_html_images/turn_left.png" /></a>
     <a href="{}"><img src="../maze_html_images/forward.png" /></a>
     <a href="{}"><img src="../maze_html_images/turn_right.png" /></a>
     </center>
 </body>
 </html>
-'''.format(filename, wallImageFilename, direction, turnLeftURL, forwardURL, turnRightURL))
+'''.format(filename, wallImgFilename, direction, turnLeftURL, forwardURL, turnRightURL))
+
             # After writing the html file, see if this is the starting position:
             if (startx, starty, direction) == (x, y, NORTH):
-                shutil.copy(htmlFilename, outputFolderName + '/index.html')
+                shutil.copy(htmlFilename, outputFolder + '/index.html')
                 numFilesWritten += 1
-
-
 
 print('Done. {} files written.'.format(numFilesWritten))
 print('Opening browser...')
-webbrowser.open(os.path.join(outputFolderName, 'index.html'))
-
-
-# TODO - add exit logic, obfuscate the URLs
+webbrowser.open(os.path.join(outputFolder, 'index.html'))

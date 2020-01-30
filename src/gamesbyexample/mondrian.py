@@ -1,6 +1,8 @@
 """Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
 
-Randomly generates Mondrian-style art."""
+Randomly generates art in the style of Piet Mondrian.
+
+More info at: https://en.wikipedia.org/wiki/Piet_Mondrian"""
 __version__ = 1
 
 import sys, random
@@ -18,7 +20,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-
+# Set up the constants:
 MIN_X_INCREASE = 6
 MAX_X_INCREASE = 16
 MIN_Y_INCREASE = 3
@@ -31,10 +33,10 @@ BLUE = 'blue'
 
 # Setup the screen:
 width, height = bext.size()
-width -= 1 # TODO Windows bug
+width -= 1  # TODO Windows bug
 height -= 3
 
-while True: # Main application loop.
+while True:  # Main application loop.
     # Pre-populate the board with blank spaces:
     board = {}
     for x in range(width):
@@ -63,7 +65,7 @@ while True: # Main application loop.
 
     # Randomly select points and try to remove them.
     for i in range(numberOfSegmentsToDelete):
-        while True: # Keep selecting segments to try to delete.
+        while True:  # Keep selecting segments to try to delete.
             # Get a random start point on an existing segment:
             startx = random.randint(1, width - 2)
             starty = random.randint(1, height - 2)
@@ -76,14 +78,16 @@ while True: # Main application loop.
             elif board[(startx, starty - 1)] == board[(startx, starty + 1)] == WHITE:
                 orientation = 'horizontal'
             else:
-                # The start point is on an intersection, so get a new random start point:
+                # The start point is on an intersection,
+                # so get a new random start point:
                 continue
 
             pointsToDelete = [(startx, starty)]
 
             canDeleteSegment = True
             if orientation == 'vertical':
-                # Go up one path from the start point, and see if we can remove this segment:
+                # Go up one path from the start point, and
+                # see if we can remove this segment:
                 for changey in (-1, 1):
                     y = starty
                     while 0 < y < height - 1:
@@ -95,14 +99,16 @@ while True: # Main application loop.
                                board[(startx + 1, y)] == BLACK) or
                               (board[(startx - 1, y)] == BLACK and
                                board[(startx + 1, y)] == WHITE)):
-                            # We've found a T-intersection; we can't delete this segment:
+                            # We've found a T-intersection; we can't
+                            # delete this segment:
                             canDeleteSegment = False
                             break
                         else:
                             pointsToDelete.append((startx, y))
 
             elif orientation == 'horizontal':
-                # Go up one path from the start point, and see if we can remove this segment:
+                # Go up one path from the start point, and
+                # see if we can remove this segment:
                 for changex in (-1, 1):
                     x = startx
                     while 0 < x < width - 1:
@@ -114,14 +120,15 @@ while True: # Main application loop.
                                board[(x, starty + 1)] == BLACK) or
                               (board[(x, starty - 1)] == BLACK and
                                board[(x, starty + 1)] == WHITE)):
-                            # We've found a T-intersection; we can't delete this segment:
+                            # We've found a T-intersection; we can't
+                            # delete this segment:
                             canDeleteSegment = False
                             break
                         else:
                             pointsToDelete.append((x, starty))
             if not canDeleteSegment:
-                continue # Get a new random start point.
-            break # Move on to delete the segment.
+                continue  # Get a new random start point.
+            break  # Move on to delete the segment.
 
         # If we can delete this segment, set all the points to white:
         for x, y in pointsToDelete:
@@ -129,11 +136,11 @@ while True: # Main application loop.
 
     # Add the border lines:
     for x in range(width):
-        board[(x, 0)] = BLACK # Top border.
-        board[(x, height - 1)] = BLACK # Bottom border.
+        board[(x, 0)] = BLACK  # Top border.
+        board[(x, height - 1)] = BLACK  # Bottom border.
     for y in range(height):
-        board[(0, y)] = BLACK # Left border.
-        board[(width - 1, y)] = BLACK # Right border.
+        board[(0, y)] = BLACK  # Left border.
+        board[(width - 1, y)] = BLACK  # Right border.
 
     # Paint the rectangles:
     for i in range(numberOfRectanglesToPaint):
@@ -142,7 +149,7 @@ while True: # Main application loop.
             starty = random.randint(1, height - 2)
 
             if board[(startx, starty)] != WHITE:
-                continue # Get a new random start point.
+                continue  # Get a new random start point.
             else:
                 break
 

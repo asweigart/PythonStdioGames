@@ -7,10 +7,13 @@ __version__ = 1
 
 import math, time, sys, os
 
-PAUSE_AMOUNT = 0.1 # Pause length of one-tenth of a second.
+# Set up the constants:
+PAUSE_AMOUNT = 0.1  # Pause length of one-tenth of a second.
 WIDTH, HEIGHT = 80, 24
 SCALEX = (WIDTH - 4) // 8
-SCALEY = (HEIGHT - 4) // 4 # Text cells are twice as tall as they are wide, so set scaley accordingly.
+SCALEY = (HEIGHT - 4) // 8
+# Text cells are twice as tall as they are wide, so set scaley:
+SCALEY *= 2
 TRANSLATEX = (WIDTH - 4) // 2
 TRANSLATEY = (HEIGHT - 4) // 2
 
@@ -26,7 +29,7 @@ def line(x1, y1, x2, y2):
     Uses the Bresenham line algorithm. More info at:
     https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
     points = []
-    isSteep = abs(y2-y1) > abs(x2-x1)
+    isSteep = abs(y2 - y1) > abs(x2 - x1)
     if isSteep:
         x1, y1 = y1, x1
         x2, y2 = y2, x2
@@ -37,7 +40,7 @@ def line(x1, y1, x2, y2):
         y1, y2 = y2, y1
 
         deltax = x2 - x1
-        deltay = abs(y2-y1)
+        deltay = abs(y2 - y1)
         error = int(deltax / 2)
         y = y2
         ystep = None
@@ -56,7 +59,7 @@ def line(x1, y1, x2, y2):
                 error += deltax
     else:
         deltax = x2 - x1
-        deltay = abs(y2-y1)
+        deltay = abs(y2 - y1)
         error = int(deltax / 2)
         y = y1
         ystep = None
@@ -77,8 +80,10 @@ def line(x1, y1, x2, y2):
 
 
 def rotatePoint(x, y, z, ax, ay, az):
-    """Returns an (x, y, z) point of the x, y, z point arguments rotated
-    around the 0, 0, 0 origin by angles ax, ay, az (in radians).
+    """Returns an (x, y, z) tuple of the x, y, z arguments rotated.
+
+    The rotation happens around the 0, 0, 0 origin by angles
+    ax, ay, az (in radians).
         Directions of each axis:
          -y
           |
@@ -108,32 +113,32 @@ def rotatePoint(x, y, z, ax, ay, az):
 
 
 def transformPoint(point):
-    """Converts the 3D xyz point to a 2D xy point. Resizes this 2D point by a
-    scale of scalex and scaley, then moves the point by translatex and
-    translatey."""
+    """Converts the 3D xyz point to a 2D xy point. Resizes this 2D point
+    by a scale of scalex and scaley, then moves the point by translatex
+    and translatey."""
     return (int(point[X] * SCALEX + TRANSLATEX),
             int(point[Y] * SCALEY + TRANSLATEY))
 
 
-originalPoints = [[-1, -1, -1],
-                  [ 1, -1, -1],
-                  [-1, -1,  1],
-                  [ 1, -1,  1],
-                  [-1,  1, -1],
-                  [ 1,  1, -1],
-                  [-1,  1,  1],
-                  [ 1,  1,  1]]
-rotatedPoints = [None] * len(originalPoints)
-rx = ry = rz = 0.0 # Rotation amounts for each axis.
+origPoints = [[-1, -1, -1],
+              [ 1, -1, -1],
+              [-1, -1,  1],
+              [ 1, -1,  1],
+              [-1,  1, -1],
+              [ 1,  1, -1],
+              [-1,  1,  1],
+              [ 1,  1,  1]]
+rotatedPoints = [None] * len(origPoints)
+rx = ry = rz = 0.0  # Rotation amounts for each axis.
 
 try:
-    while True: # Main program loop.
+    while True:  # Main program loop.
         # Rotate the cube:
         rx += 0.03
         ry += 0.08
         rz += 0.13
-        for i in range(len(originalPoints)):
-            rotatedPoints[i] = rotatePoint(*originalPoints[i], rx, ry, rz)
+        for i in range(len(origPoints)):
+            rotatedPoints[i] = rotatePoint(*origPoints[i], rx, ry, rz)
 
         # Get the points of the cube lines:
         cubePoints = []
@@ -141,19 +146,21 @@ try:
             transformedPoint1 = transformPoint(rotatedPoints[start])
             transformedPoint2 = transformPoint(rotatedPoints[end])
             cubePoints.extend(line(transformedPoint1[X], transformedPoint1[Y], transformedPoint2[X], transformedPoint2[Y]))
-        cubePoints = tuple(frozenset(cubePoints)) # Get rid of duplicate points.
-
+        # Get rid of duplicate points:
+        cubePoints = tuple(frozenset(cubePoints))
         # Draw the cube:
         for y in range(HEIGHT):
             for x in range(WIDTH):
                 if (x, y) in cubePoints:
-                    print(chr(9608), end='', flush=False) # Draw full block.
+                    # Draw full block:
+                    print(chr(9608), end='', flush=False)
                 else:
-                    print(' ', end='', flush=False) # Draw empty space.
+                    # Draw empty space:
+                    print(' ', end='', flush=False)
             print(flush=False)
         print('Press Ctrl-C to quit.', end='', flush=True)
 
-        time.sleep(PAUSE_AMOUNT) # Pause for a bit.
+        time.sleep(PAUSE_AMOUNT)  # Pause for a bit.
 
         # Erase the screen:
         if sys.platform == 'win32':
@@ -163,4 +170,4 @@ try:
         # At this point, go back to the start of the main program loop.
 
 except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+    sys.exit()  # When Ctrl-C is pressed, end the program.

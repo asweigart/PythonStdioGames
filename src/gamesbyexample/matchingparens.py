@@ -3,6 +3,7 @@
 A parentheses/bracket/braces matching algorithm."""
 __version__ = 1
 
+
 def isMatchingParens(strToCheck):
     # A Python list is a stack data structure if we only push values on
     # it with the append() method and pop values off it with the pop()
@@ -10,29 +11,29 @@ def isMatchingParens(strToCheck):
     stack = []
 
     # Loop over every character in strToCheck.
-    for i, character in enumerate(strToCheck):
-        if character == '(':
+    for i, char in enumerate(strToCheck):
+        if char == '(':
             stack.append('(')
             print(strToCheck)
             print((' ' * i) + '^ Push ( to the stack.')
             print('STACK:', stack)
-        elif character == '{':
+        elif char == '{':
             stack.append('{')
             print(strToCheck)
             print((' ' * i) + '^ Push { to the stack.')
             print('STACK:', stack)
-        elif character == '[':
+        elif char == '[':
             stack.append('[')
             print(strToCheck)
             print((' ' * i) + '^ Push [ to the stack.')
             print('STACK:', stack)
-        elif character == ')' or character == '}' or character == ']':
+        elif char == ')' or char == '}' or char == ']':
             if len(stack) == 0:
                 print(strToCheck)
                 print((' ' * i) + '^ Nothing to pop off the stack.')
                 print('STACK:', stack)
                 print('STACK IS ALREADY EMPTY.')
-                return False # Too many close parens/braces/brackets.
+                return False  # Too many close parens/braces/brackets.
 
             if stack[-1] == '(':
                 expectedCloseChar = ')'
@@ -41,33 +42,33 @@ def isMatchingParens(strToCheck):
             elif stack[-1] == '[':
                 expectedCloseChar = ']'
 
-            if character == ')' and stack[-1] != '(':
+            if char == ')' and stack[-1] != '(':
                 print(strToCheck)
-                print((' ' * i) + '^ Pop ' + character + ' off the stack.')
+                print((' ' * i) + '^ Pop ' + char + ' off the stack.')
                 print('STACK:', stack)
                 print('EXPECTED A ' + expectedCloseChar)
-                return False # Expected a close parenthesis.
-            elif character == '}' and stack[-1] != '{':
+                return False  # Expected a close parenthesis.
+            elif char == '}' and stack[-1] != '{':
                 print(strToCheck)
-                print((' ' * i) + '^ Pop ' + character + ' off the stack.')
+                print((' ' * i) + '^ Pop ' + char + ' off the stack.')
                 print('STACK:', stack)
                 print('EXPECTED A ' + expectedCloseChar)
-                return False # Expected a close brace.
-            elif character == ']' and stack[-1] != '[':
+                return False  # Expected a close brace.
+            elif char == ']' and stack[-1] != '[':
                 print(strToCheck)
-                print((' ' * i) + '^ Pop ' + character + ' off the stack.')
+                print((' ' * i) + '^ Pop ' + char + ' off the stack.')
                 print('STACK:', stack)
                 print('EXPECTED A ' + expectedCloseChar)
-                return False # Expected a close bracket.
+                return False  # Expected a close bracket.
 
-            # Remove the parens/braces/brackets from the end of the stack:
+            # Remove the parens/braces/brackets from the stack's end:
             stack.pop()
             print(strToCheck)
-            print((' ' * i) + '^ Pop "' + character + '" off the stack.')
+            print((' ' * i) + '^ Pop "' + char + '" off the stack.')
             print('STACK:', stack)
         else:
             print(strToCheck)
-            print((' ' * i) + '^ ' + character + ' is ignored.')
+            print((' ' * i) + '^ ' + char + ' is ignored.')
             print('STACK:', stack)
         print('Press enter to continue...')
         input()

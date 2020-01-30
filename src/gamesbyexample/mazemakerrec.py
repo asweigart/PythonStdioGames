@@ -7,11 +7,22 @@ __version__ = 1
 
 import random
 
-print('MAZE MAKER (Recursive Backtracker algorithm)')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('This program creates maze files. You can play these mazes with')
-print('mazerunner.py or maze3d.py')
+# Set up the constants:
+WALL = '#'
+EMPTY = ' '
+START = 'S'
+EXIT = 'E'
+
+NORTH = 'north'
+SOUTH = 'south'
+EAST = 'east'
+WEST = 'west'
+
+print('''MAZE MAKER (Recursive Backtracker algorithm
+By Al Sweigart al@inventwithpython.com
+
+This program creates maze files. You can play these mazes with
+mazerunner.py or maze3d.py''')
 
 while True:
     response = input('Enter width (must be odd and greater than 2): ')
@@ -33,16 +44,6 @@ while True:
             break
 
 random.seed(SEED)
-
-WALL = '#'
-EMPTY = ' '
-START = 'S'
-EXIT = 'E'
-
-NORTH = 'north'
-SOUTH = 'south'
-EAST = 'east'
-WEST = 'west'
 
 # Create the filled-in maze to start:
 maze = {}
@@ -106,7 +107,7 @@ for y in range(HEIGHT):
     for x in range(WIDTH):
         print(maze[(x, y)], end='')
         mazeFile.write(maze[(x, y)])
-    print() # Print a newline after printing the row.
+    print()  # Print a newline after printing the row.
     mazeFile.write('\n')
 mazeFile.close()
 

@@ -6,6 +6,7 @@ __version__ = 1
 
 import sys
 
+# Set up the constants:
 EMPTY = '.'
 PEG = 'O'
 NORTH = 'N'
@@ -14,7 +15,27 @@ EAST = 'E'
 WEST = 'W'
 ALL_SPACES = 'C1 D1 E1 C2 D2 E2 A3 B3 C3 D3 E3 F3 G3 A4 B4 C4 D4 E4 F4 G4 A5 B5 C5 D5 E5 F5 G5 C6 D6 E6 C7 D7 E7'.split()
 
+
+def main():
+    """Run a single game of Peg Solitaire."""
+    print('''PEG SOLITAIRE
+By Al Sweigart al@inventwithpython.com
+''')
+
+    theBoard = getNewBoard()
+
+    while True:
+        displayBoard(theBoard)
+        space, jumpDirection = getPlayerMove(theBoard)
+        makeMove(theBoard, space, jumpDirection)
+        if checkIfPlayerHasWon(theBoard):
+            displayBoard(theBoard)
+            print('You have solved the puzzle! Thanks for playing!')
+            sys.exit()
+
+
 def getNewBoard():
+    """Return a dictionary representing a board for a new game."""
     board = {}
     # Set every space on the board to a peg:
     for space in ALL_SPACES:
@@ -27,6 +48,7 @@ def getNewBoard():
 
 
 def displayBoard(board):
+    """Display the board on the screen."""
     spaces = []
     for space in ALL_SPACES:
         spaces.append(board[space])
@@ -44,25 +66,27 @@ def displayBoard(board):
 
 
 def getNeighboringSpaces(space, direction):
-    x, y = space # Split up `space` into the x and y coordinates.
+    """Return the two spaces in the direction from the space argument."""
+    x, y = space  # Split up `space` into the x and y coordinates.
 
     if direction == NORTH:
-        neighborSpace = x + str(int(y) - 1) # E.g. convert y of 3 to '2'
-        secondNeighborSpace = x + str(int(y) - 2) # E.g. convert y of 3 to '1'
+        neighborSpace = x + str(int(y) - 1)  # E.g. convert y of 3 to '2'
+        secondNeighborSpace = x + str(int(y) - 2)  # E.g. y of 3 to '1'
     elif direction == SOUTH:
-        neighborSpace = x + str(int(y) + 1) # E.g. convert y of 3 to '4'
-        secondNeighborSpace = x + str(int(y) + 2) # E.g. convert y of 3 to '5'
+        neighborSpace = x + str(int(y) + 1)  # E.g. convert y of 3 to '4'
+        secondNeighborSpace = x + str(int(y) + 2)  # E.g. y of 3 to '5'
     elif direction == WEST:
-        neighborSpace = chr(ord(x) - 1) + y # E.g. convert 'C' to 'B'
-        secondNeighborSpace = chr(ord(x) - 2) + y # E.g. convert 'C' to 'A'
+        neighborSpace = chr(ord(x) - 1) + y  # E.g. convert 'C' to 'B'
+        secondNeighborSpace = chr(ord(x) - 2) + y  # E.g. 'C' to 'A'
     elif direction == EAST:
-        neighborSpace = chr(ord(x) + 1) + y # E.g. convert 'C' to 'D'
-        secondNeighborSpace = chr(ord(x) + 2) + y # E.g. convert 'C' to 'E'
+        neighborSpace = chr(ord(x) + 1) + y  # E.g. convert 'C' to 'D'
+        secondNeighborSpace = chr(ord(x) + 2) + y  # E.g. 'C' to 'E'
 
     return neighborSpace, secondNeighborSpace
 
 
 def canMoveInDirection(board, space, direction):
+    """Return True if the peg can make the given move."""
     neighborSpace, secondNeighborSpace = getNeighboringSpaces(space, direction)
 
     # Check if the neighboring space exists:
@@ -78,10 +102,11 @@ def canMoveInDirection(board, space, direction):
 
 
 def getMoveablePegs(board):
-    moveablePegs = [] # Contain a list of spaces whose peg can jump.
+    """Return a list of spaces that have pegs that can be moved."""
+    moveablePegs = []  # Contain a list of spaces whose peg can jump.
     for space in ALL_SPACES:
         if board[space] == EMPTY:
-            continue # There's no peg here, so it's not a valid move.
+            continue  # There's no peg here, so it's not a valid move.
 
         # Determine if the peg at this space can move:
         if canMoveInDirection(board, space, NORTH) or \
@@ -95,6 +120,7 @@ def getMoveablePegs(board):
 
 
 def getPlayerMove(board):
+    """Let the player enter their move."""
     while True:
         # Ask the player to select a peg to move:
         moveablePegs = getMoveablePegs(board)
@@ -113,7 +139,7 @@ def getPlayerMove(board):
             sys.exit()
 
         if space in moveablePegs:
-            break # If the space has a moveable peg, break out of the loop.
+            break
         # At this point, go back to the start of the loop.
 
     # Get the possible directions that the selected peg can jump:
@@ -132,20 +158,22 @@ def getPlayerMove(board):
             jumpDirection = input().upper()
 
             if jumpDirection in possibleDirections:
-                break # If the jump direction is a valid move, break out of the loop.
+                break
 
     return (space, jumpDirection)
 
 
 def makeMove(board, space, direction):
+    """Carry out the peg move on the given board."""
     neighborSpace, secondNeighborSpace = getNeighboringSpaces(space, direction)
 
-    board[space] = EMPTY # Moving the peg in the space to a different space.
-    board[neighborSpace] = EMPTY # Removing the jumped-over peg.
-    board[secondNeighborSpace] = PEG # The moved peg lands here.
+    board[space] = EMPTY  # Peg is no longer in this space.
+    board[neighborSpace] = EMPTY  # Removing the jumped-over peg.
+    board[secondNeighborSpace] = PEG  # The moved peg lands here.
 
 
 def checkIfPlayerHasWon(board):
+    """Return True if there is only one peg left on the board."""
     pegCount = 0
     for space in ALL_SPACES:
         if board[space] == PEG:
@@ -153,17 +181,6 @@ def checkIfPlayerHasWon(board):
     return pegCount == 1
 
 
-print('PEG SOLITAIRE')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-
-theBoard = getNewBoard()
-
-while True:
-    displayBoard(theBoard)
-    space, jumpDirection = getPlayerMove(theBoard)
-    makeMove(theBoard, space, jumpDirection)
-    if checkIfPlayerHasWon(theBoard):
-        displayBoard(theBoard)
-        print('You have solved the puzzle! Thanks for playing!')
-        sys.exit()
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

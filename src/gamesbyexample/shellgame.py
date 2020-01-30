@@ -14,10 +14,10 @@ input()
 
 CUPS = ['diamond', 'pocket lint', 'nothing']
 
-while True: # Main game loop.
+while True:  # Main game loop.
     print()
     print('Shuffling the cups', end='')
-    random.shuffle(CUPS) # This happens instantly.
+    random.shuffle(CUPS)  # This happens instantly.
 
     # We add fake pauses to make it seem more interesting:
     time.sleep(0.3)

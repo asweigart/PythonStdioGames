@@ -7,7 +7,9 @@ import random, sys
 
 BLANK = '  '
 
+
 def main():
+    """Run a single game of Sliding Puzzle."""
     print('''SLIDING PUZZLE
 By Al Sweigart al@inventwithpython.com
 
@@ -21,18 +23,22 @@ back into their original order:
     gameBoard = getNewPuzzle()
 
     while True:
-        drawBoard(gameBoard)
+        displayBoard(gameBoard)
         playerMove = getPlayerMove(gameBoard)
         makeMove(gameBoard, playerMove)
 
         if gameBoard == getNewBoard():
             print('You won!')
 
+
 def getNewBoard():
-    return [['1 ', '5 ', '9 ', '13'], ['2 ', '6 ', '10', '14'], ['3 ', '7 ', '11', '15'], ['4 ', '8 ', '12', BLANK]]
+    """Return a list of lists that represents a new tile puzzle."""
+    return [['1 ', '5 ', '9 ', '13'], ['2 ', '6 ', '10', '14'],
+            ['3 ', '7 ', '11', '15'], ['4 ', '8 ', '12', BLANK]]
 
 
-def drawBoard(board):
+def displayBoard(board):
+    """Display the given board on the screen."""
     labels = [board[0][0], board[1][0], board[2][0], board[3][0],
               board[0][1], board[1][1], board[2][1], board[3][1],
               board[0][2], board[1][2], board[2][2], board[3][2],
@@ -60,6 +66,7 @@ def drawBoard(board):
 
 
 def findBlankSpace(board):
+    """Return an (x, y) tuple of the blank space's location."""
     for x in range(4):
         for y in range(4):
             if board[x][y] == '  ':
@@ -67,6 +74,7 @@ def findBlankSpace(board):
 
 
 def getPlayerMove(board):
+    """Let the player select a tile to slide."""
     blankx, blanky = findBlankSpace(board)
 
     w = 'W' if blanky != 3 else ' '
@@ -75,8 +83,8 @@ def getPlayerMove(board):
     d = 'D' if blankx != 0 else ' '
 
     while True:
-        print('                               ({})'.format(w))
-        print('Enter your move (or QUIT): ({}) ({}) ({})'.format(a, s, d))
+        print('                           ({})'.format(w))
+        print('Enter move (or QUIT): ({}) ({}) ({})'.format(a, s, d))
 
         response = input().upper()
         if response == 'QUIT':
@@ -86,20 +94,22 @@ def getPlayerMove(board):
 
 
 def makeMove(board, move):
+    """Carry out the given move on the given board."""
     # Note: This function assumes that the move is valid.
-    blankx, blanky = findBlankSpace(board)
+    bx, by = findBlankSpace(board)
 
     if move == 'W':
-        board[blankx][blanky], board[blankx][blanky + 1] = board[blankx][blanky + 1], board[blankx][blanky]
+        board[bx][by], board[bx][by+1] = board[bx][by+1], board[bx][by]
     elif move == 'A':
-        board[blankx][blanky], board[blankx + 1][blanky] = board[blankx + 1][blanky], board[blankx][blanky]
+        board[bx][by], board[bx+1][by] = board[bx+1][by], board[bx][by]
     elif move == 'S':
-        board[blankx][blanky], board[blankx][blanky - 1] = board[blankx][blanky - 1], board[blankx][blanky]
+        board[bx][by], board[bx][by-1] = board[bx][by-1], board[bx][by]
     elif move == 'D':
-        board[blankx][blanky], board[blankx - 1][blanky] = board[blankx - 1][blanky], board[blankx][blanky]
+        board[bx][by], board[bx-1][by] = board[bx-1][by], board[bx][by]
 
 
 def makeRandomMove(board):
+    """Perform a slide in a random direction."""
     blankx, blanky = findBlankSpace(board)
     validMoves = []
     if blanky != 3:
@@ -115,6 +125,7 @@ def makeRandomMove(board):
 
 
 def getNewPuzzle(moves=200):
+    """Get a new puzzle by making random slides from a solved state."""
     board = getNewBoard()
 
     for i in range(moves):
@@ -122,4 +133,6 @@ def getNewPuzzle(moves=200):
     return board
 
 
-main() # After defining all the functions, call main() to start the game.
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

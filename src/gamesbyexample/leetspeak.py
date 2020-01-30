@@ -6,12 +6,13 @@ __version__ = 1
 import random
 
 try:
-    import pyperclip # pyperclip copies text to the clipboard.
+    import pyperclip  # pyperclip copies text to the clipboard.
 except ImportError:
-    pass # If pyperclip cannot be found, do nothing. It's not a big deal.
+    pass  # If pyperclip cannot be found, do nothing. It's not a big deal.
 
 
 def main():
+    """Run the Leetspeak program."""
     print('''L3375P34]< (leetspeek)
 By Al Sweigart al@inventwithpython.com
 
@@ -25,22 +26,23 @@ Enter your leet message:''')
         pyperclip.copy(leetspeak)
         print('(Copied leetspeak to clipboard.)')
     except NameError:
-        pass # Do nothing if pyperclip wasn't installed.
+        pass  # Do nothing if pyperclip wasn't installed.
 
 
 def englishToLeetspeak(message):
+    """Convert the English string in message and return leetspeak."""
     # Make sure all the keys in `charMapping` are lowercase.
     charMapping = {
-    'a': ['4', '@', '/-\\'], 'c': ['('], 'd': ['|)'], 'e': ['3'], 'f': ['ph'],
-    'h': [']-[', '|-|'], 'i': ['1', '!', '|'], 'k': [']<'],
+    'a': ['4', '@', '/-\\'], 'c': ['('], 'd': ['|)'], 'e': ['3'],
+    'f': ['ph'], 'h': [']-[', '|-|'], 'i': ['1', '!', '|'], 'k': [']<'],
     'o': ['0'], 's': ['$', '5'], 't': ['7', '+'], 'u': ['|_|'],
     'v': ['\\/']}
     leet = []
-    for char in message: # Check each character:
+    for char in message:  # Check each character:
         if char.lower() in charMapping and random.randint(1, 100) <= 70:
             leet.append(random.choice(charMapping[char.lower()]))
         else:
-            leet.append(char) # Don't translate this character.
+            leet.append(char)  # Don't translate this character.
     return ''.join(leet)
 
 

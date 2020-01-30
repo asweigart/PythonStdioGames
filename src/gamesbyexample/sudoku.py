@@ -6,14 +6,15 @@ More info at https://en.wikipedia.org/wiki/Sudoku"""
 import copy, random, sys
 
 EMPTY_SPACE = '.'
-GRID_LENGTH = 9 # also the number of spaces in rows, columns and boxes.
+GRID_LENGTH = 9  # also the number of spaces in rows, columns and boxes.
 BOX_LENGTH = 3
 FULL_GRID_SIZE = GRID_LENGTH * GRID_LENGTH
+
 
 class SudokuGrid:
     def __init__(self, originalNumbers):
         self.originalNumbers = originalNumbers
-        self.grid = {} # keys are tuples (0, 8) and values are strings '2'
+        self.grid = {}  # keys are tuples (0, 8), values are strings '2'
         self.resetGrid()
         self.moves = []
 
@@ -23,64 +24,63 @@ class SudokuGrid:
                 self.grid[(x, y)] = EMPTY_SPACE
 
         assert len(self.originalNumbers) == FULL_GRID_SIZE
-        i = 0 # i goes from 0 to 80
-        y = 0 # y goes from 0 to 8
+        i = 0  # i goes from 0 to 80
+        y = 0  # y goes from 0 to 8
         while i < FULL_GRID_SIZE:
             for x in range(GRID_LENGTH):
                 self.grid[(x, y)] = self.originalNumbers[i]
                 i += 1
             y += 1
 
-
     def makeMove(self, column, row, number):
         # keys in self.grid are 0-based
-        x = 'ABCDEFGHI'.find(column) # convert this to an integer
+        x = 'ABCDEFGHI'.find(column)  # convert this to an integer
         y = int(row) - 1
 
-        # Check if the move is being made on one of the original given numbers:
+        # Check if the move is being made on a "given" number:
         if self.originalNumbers[y * GRID_LENGTH + x] != EMPTY_SPACE:
             return False
 
         self.grid[(x, y)] = number
 
-        self.moves.append(copy.copy(self.grid)) # note: for dictionaries you have to make a copy with copy.copy()
+        # NOTE: For dictionaries, make a copy with copy.copy():
+        self.moves.append(copy.copy(self.grid))
         return True
 
     def undo(self):
         if self.moves == []:
-            return # noop if moves is already empty
+            return  # no-op if self.moves is already empty
 
         self.moves.pop()
 
         if self.moves == []:
-            self.resetGrid() # reset the grid back to the original numbers
+            self.resetGrid()
         else:
             # set the grid to the last move.
             self.grid = copy.copy(self.moves[-1])
 
-
     def display(self):
-        print('   A B C   D E F   G H I') # Display column labels.
-        #print() # Print a newline.
+        print('   A B C   D E F   G H I')  # Display column labels.
         for y in range(GRID_LENGTH):
             for x in range(GRID_LENGTH):
                 if x == 0:
-                    print(str(y + 1) + '  ', end='') # Display row label.
+                    # Display row label:
+                    print(str(y + 1) + '  ', end='')
 
                 print(self.grid[(x, y)] + ' ', end='')
                 if x == 2 or x == 5:
-                    print('| ', end='') # Display a vertical line.
-            print() # Print a newline.
+                    # Display a vertical line:
+                    print('| ', end='')
+            print()  # Print a newline.
 
             if y == 2 or y == 5:
-                print('   ------+-------+------') # Display a horizontal line.
-
+                # Display a horizontal line:
+                print('   ------+-------+------')
 
     def _isCompleteSetOfNumbers(self, numbers):
         if EMPTY_SPACE in numbers:
             return False
         return len(set(numbers)) == GRID_LENGTH
-
 
     def isSolved(self):
         # Check each row:
@@ -149,7 +149,7 @@ for i, puzzle in enumerate(puzzles):
 
 grid = SudokuGrid(random.choice(puzzles))
 
-while True: # Main game loop.
+while True:  # Main game loop.
     grid.display()
 
     # Check if the puzzle is solved.
@@ -159,8 +159,8 @@ while True: # Main game loop.
         sys.exit()
 
     # Get the player's action:
-    while True: # Keep asking until the player enters a valid action.
-        print() # Print a newline.
+    while True:  # Keep asking until the player enters a valid action.
+        print()  # Print a newline.
         print('Enter a move, or RESET, NEW, UNDO, ORIGINAL, or QUIT:')
         print('(For example, a move looks like "B4 9".)')
 
@@ -184,9 +184,9 @@ while True: # Main game loop.
             if not (1 <= int(number) <= 9):
                 print('Please select a number from 1 to 9, not ', number)
                 continue
-            break # Player entered a valid move.
+            break  # Player entered a valid move.
 
-    print() # Print a newline.
+    print()  # Print a newline.
 
     if action.startswith('R'):
         # Reset the grid:
@@ -220,5 +220,3 @@ while True: # Main game loop.
         print('You cannot overwrite the original grid\'s numbers.')
         print('Enter ORIGINAL to view the original grid.')
         input('Press Enter to continue...')
-
-

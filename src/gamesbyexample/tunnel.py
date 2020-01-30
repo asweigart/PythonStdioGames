@@ -21,6 +21,8 @@ while True:
     rightWidth = WIDTH - gapWidth - leftWidth
     print(('#' * leftWidth) + (' ' * gapWidth) + ('#' * rightWidth))
 
+    time.sleep(PAUSE_AMOUNT)
+
     # Adjust the left side width:
     r = random.randint(1, 4)
     if r == 1 and leftWidth > 1:
@@ -44,5 +46,3 @@ while True:
     else:
         # Do nothing; no change in gap width.
         pass
-
-    time.sleep(PAUSE_AMOUNT)

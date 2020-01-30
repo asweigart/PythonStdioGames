@@ -26,8 +26,8 @@ X = 0
 Y = 1
 PAUSE_LENGTH = 0.20
 WIDE_FALL_CHANCE = 0.50
-SAND = chr(9617) # Character 9617 is '░'
-WALL = chr(9608) # Character 9608 is '█'
+SAND = chr(9617)  # Character 9617 is '░'
+WALL = chr(9608)  # Character 9608 is '█'
 
 # Setup the walls and initial sand at the top of the hourglass:
 ALL_WALLS = set([(18, 1), (36, 1), (18, 2), (36, 2), (18, 3), (36, 3), (18, 4), (36, 4), (19, 5), (35, 5), (20, 6), (34, 6), (21, 7), (33, 7), (22, 8), (32, 8), (23, 9), (31, 9), (24, 10), (30, 10), (25, 11), (29, 11), (26, 12), (28, 12), (25, 13), (29, 13), (24, 14), (30, 14), (23, 15), (31, 15), (22, 16), (32, 16), (21, 17), (33, 17), (20, 18), (34, 18), (19, 19), (35, 19), (18, 20), (36, 20), (18, 21), (36, 21), (18, 22), (36, 22), (18, 23), (36, 23)])
@@ -45,6 +45,7 @@ for i in range(21, 34):
 for i in range(22, 33):
     INITIAL_SAND.add((i, 7))
 
+
 def main():
     bext.fg('yellow')
     bext.clear()
@@ -58,24 +59,25 @@ def main():
         bext.goto(wall[X], wall[Y])
         print(WALL, end='')
 
-    while True: # Main program loop.
+    while True:  # Main program loop.
         allSand = list(INITIAL_SAND)
-        random.shuffle(allSand) # Mix up the order that the grains of sand are simulated.
+        # Mix up the order that the grains of sand are simulated:
+        random.shuffle(allSand)
 
         # Draw the initial sand:
         for sand in allSand:
             bext.goto(sand[X], sand[Y])
             print(SAND, end='')
 
-        while True: # Keep looping until sand has run out.
+        while True:  # Keep looping until sand has run out.
             # Simulate all sand in the sandspace:
-            #allSand.sort(key=lambda v: v[Y], reverse=True) # Sort from bottom sand up.
-            random.shuffle(allSand) # Random order of grain simulation.
+            random.shuffle(allSand)  # Random order of grain simulation.
 
             sandMovedOnThisStep = False
             for i, sand in enumerate(allSand):
                 if sand[Y] == HEIGHT - 1:
-                    continue # Sand is on the very bottom, so it won't move at all.
+                    # Sand is on the very bottom, so it won't move:
+                    continue
 
                 # If nothing is under this sand, move it down:
                 noSandBelow = (sand[X], sand[Y] + 1) not in allSand
@@ -112,7 +114,8 @@ def main():
                     elif canFallLeft and canFallRight:
                         fallingDirection = random.choice((-1, 1))
 
-                    # Check if the sand can "wide" fall two spaces to the left or right:
+                    # Check if the sand can "wide" fall two spaces to
+                    # the left or right:
                     if random.random() <= WIDE_FALL_CHANCE:
                         noSandBelowTwoLeft = (sand[X] - 2, sand[Y] + 1) not in allSand
                         noWallBelowTwoLeft = (sand[X] - 2, sand[Y] + 1) not in ALL_WALLS
@@ -132,27 +135,28 @@ def main():
                             fallingDirection = 2
 
                     if fallingDirection == None:
-                        continue # This sand can't fall, so move on to the next grain of sand.
+                        # This sand can't fall, so move on.
+                        continue
 
                     # Move the grain of sand:
                     allSand[i] = (sand[X] + fallingDirection, sand[Y] + 1)
                     sandMovedOnThisStep = True
-                    bext.goto(sand[X], sand[Y]) # Move cursor to old sand location.
-                    print(' ', end='') # Erase old sand.
-                    bext.goto(sand[X] + fallingDirection, sand[Y] + 1) # Move cursor to new sand location.
-                    print(SAND, end='') # Draw new sand.
+                    bext.goto(sand[X], sand[Y])
+                    print(' ', end='')  # Erase old sand.
+                    bext.goto(sand[X] + fallingDirection, sand[Y] + 1)
+                    print(SAND, end='')  # Draw new sand.
 
-            sys.stdout.flush() # (Required for bext-using programs.)
-            time.sleep(PAUSE_LENGTH) # Pause after this
+            sys.stdout.flush()  # (Required for bext-using programs.)
+            time.sleep(PAUSE_LENGTH)  # Pause after this
 
-            # If no sand has moved on this simulation step, reset the hourglass:
+            # If no sand has moved on this step, reset the hourglass:
             if not sandMovedOnThisStep:
                 time.sleep(2)
                 # Erase the sand:
                 for sand in allSand:
                     bext.goto(sand[X], sand[Y])
                     print(' ', end='')
-                break # Break out of main simultion loop to reset the hour glass.
+                break  # Break out of main simulation loop.
             # At this point, go back to the start of the loop.
     # At this point, go back to the start of the main program loop.
 
@@ -162,4 +166,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

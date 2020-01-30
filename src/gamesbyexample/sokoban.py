@@ -6,14 +6,14 @@ __version__ = 1
 import copy, os, sys
 
 # Setup the constants:
-WALL = chr(9608)
-FACE = chr(9786)
-CRATE = chr(9679)
-GOAL = chr(9675)
+WALL = chr(9608)   # Character 9608 is '█'
+FACE = chr(9786)   # Character 9786 is '☺'
+CRATE = chr(9679)  # Character 9679 is '●'
+GOAL = chr(9675)   # Character 9675 is '○'
 CRATE_ON_GOAL = '*'
 PLAYER_ON_GOAL = FACE
 CHAR_MAP = {'#': WALL, '@': FACE, '$': CRATE, '+': PLAYER_ON_GOAL,
-            '.': GOAL, '*': CRATE_ON_GOAL, ' ': ' '} # TODO add comment
+            '.': GOAL, '*': CRATE_ON_GOAL, ' ': ' '}
 
 # Display the title banner and instructions:
 print('''SOKOBAN: The classic crate-pushing game.
@@ -26,25 +26,26 @@ You can enter multiple WASD or U letters to make several moves at
 once.
 ''')
 
-# Load each level from sokobanlevels.txt
+# Load each level from sokobanlevels.txt:
 if not os.path.exists('sokobanlevels.txt'):
     print('Download the level file from https://github.com/asweigart/PythonStdioGames/blob/master/src/sokobanlevels.txt')
     sys.exit()
 ALL_LEVELS = []
 with open('sokobanlevels.txt') as levelFile:
-    currentLevelFromFile = {'width': 0, 'height': 0} # Each level is represented by a dictionary.
+    # Each level is represented by a dictionary:
+    currentLevelFromFile = {'width': 0, 'height': 0}
     y = 0
     for line in levelFile.readlines():
         if line.startswith(';'):
-            continue # Ignore comments in the level file.
+            continue  # Ignore comments in the level file.
 
         if line == '\n':
             if currentLevelFromFile == {'width': 0, 'height': 0}:
-                continue # Ignore this line, and continue to the next line.
+                continue  # Ignore this level file line.
             # Finished with the current level:
             ALL_LEVELS.append(currentLevelFromFile)
             currentLevelFromFile = {'width': 0, 'height': 0}
-            y = 0 # Reset y back to 0.
+            y = 0  # Reset y back to 0.
             continue
 
         # Add the line to the current level.
@@ -57,6 +58,7 @@ with open('sokobanlevels.txt') as levelFile:
             currentLevelFromFile['width'] = len(line) - 1
         if y > currentLevelFromFile['height']:
             currentLevelFromFile['height'] = y
+
 
 def drawLevel(levelNum, levelData):
     # Draw the current level.
@@ -72,7 +74,7 @@ currentLevelNumber = 0
 currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
 undoStack = [copy.copy(currentLevel)]
 
-while True: # Main game loop.
+while True:  # Main game loop.
     drawLevel(currentLevelNumber, currentLevel)
 
     # Get the input from the player:
@@ -111,8 +113,8 @@ while True: # Main game loop.
 
         if move == 'U':
             if len(undoStack) == 1:
-                continue # Can't undo past the first move.
-            undoStack.pop() # Remove the last item from the undoStack list.
+                continue  # Can't undo past the first move.
+            undoStack.pop()  # Remove the last item from undoStack.
             currentLevel = copy.copy(undoStack[-1])
             continue
 
@@ -149,7 +151,9 @@ while True: # Main game loop.
         elif moveToSpace in ('$', '*'):
             spaceAfterMoveToSpace = currentLevel.get((playerx + (movex * 2), playery + (movey * 2)), ' ')
             if spaceAfterMoveToSpace in ('#', '$', '*'):
-                continue # Can't push the crate because there's a wall or crate behind it.
+                # Can't push the crate because there's a wall or crate
+                # behind it:
+                continue
             if spaceAfterMoveToSpace in ('.', ' '):
                 # Change the player's old position:
                 if currentLevel[(playerx, playery)] == '@':
@@ -185,5 +189,5 @@ while True: # Main game loop.
             currentLevelNumber = (currentLevelNumber + 1) % len(ALL_LEVELS)
             currentLevel = copy.copy(ALL_LEVELS[currentLevelNumber])
             undoStack = [copy.copy(currentLevel)]
-            break # Don't carry out any remaining moves.
+            break  # Don't carry out any remaining moves.
     # At this point, go back to the start of the main game loop.

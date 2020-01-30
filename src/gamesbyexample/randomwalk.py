@@ -27,7 +27,7 @@ By Al Sweigart al@inventwithpython.com
 ''')
 
 # Ask user what speed to run the simulation at:
-while True: # Keep looping until the user enters F or S.
+while True:  # Keep looping until the user enters F or S.
     print('Move (F)ast or (S)low?')
     speed = input().upper()
     if speed == 'F' or speed == 'S':
@@ -37,9 +37,10 @@ width, height = bext.size()
 bext.clear()
 
 try:
-    while True: # Main program loop.
-        bext.fg('random') # Set to a random color.
-        x, y = width // 2, height // 2 # Start in the middle of the screen.
+    while True:  # Main program loop.
+        bext.fg('random')  # Set to a random color.
+        # Start in the middle of the screen:
+        x, y = width // 2, height // 2
 
         # Display quit instructions:
         bext.goto(0, height - 2)
@@ -61,10 +62,9 @@ try:
             elif direction == 3:
                 y -= 1
 
-
             if speed == 'S':
                 time.sleep(0.01)
-        time.sleep(0.5) # Pause after reaching the edge.
+        time.sleep(0.5)  # Pause after reaching the edge.
         # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+    sys.exit()  # When Ctrl-C is pressed, end the program.

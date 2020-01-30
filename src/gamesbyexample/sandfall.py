@@ -8,25 +8,28 @@ __version__ = 1
 
 import random, time, os, sys
 
+# Set up the constants:
 WIDTH = 80
 HEIGHT = 25
-
 X = 0
 Y = 1
 PAUSE_LENGTH = 0.2
-SAND = chr(9617) # Character 9617 is '░'
+SAND = chr(9617)  # Character 9617 is '░'
 
-sources = [{'x': WIDTH // 2, 'y': 0, 'frequency': random.randint(2, 6), 'next': 1},
-           {'x': 10, 'y': 0, 'frequency': random.randint(2, 6), 'next': 1},
-           {'x': 30, 'y': 0, 'frequency': random.randint(2, 6), 'next': 1}]
+sources = [{'x': WIDTH // 2, 'y': 0,
+            'frequency': random.randint(2, 6), 'next': 1},
+           {'x': 10, 'y': 0,
+            'frequency': random.randint(2, 6), 'next': 1},
+           {'x': 30, 'y': 0,
+            'frequency': random.randint(2, 6), 'next': 1}]
 sandspace = set() # Contains (x, y) tuples for each piece of sand.
 
-while True: # Main program loop.
+while True:  # Main program loop.
     # Clear the previously drawn text:
     if sys.platform == 'win32':
-        os.system('cls') # Clears Windows terminal.
+        os.system('cls')  # Clears Windows terminal.
     else:
-        os.system('clear') # Clears macOS/Linux terminal.
+        os.system('clear')  # Clears macOS/Linux terminal.
 
     # Generate sand from each source.
     for source in sources:
@@ -41,7 +44,7 @@ while True: # Main program loop.
 
     for i, sand in enumerate(allSand):
         if sand[Y] == HEIGHT - 1:
-            continue # Sand is on the very bottom, so it won't move at all.
+            continue  # Sand is on the very bottom, so it won't move at all.
 
         # If nothing is under this sand, move it down:
         if (sand[X], sand[Y] + 1) not in allSand:

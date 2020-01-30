@@ -18,8 +18,8 @@ wins = 0
 losses = 0
 ties = 0
 
-while True: # Main game loop.
-    while True: # Keep asking until player enters R, P, S, or Q.
+while True:  # Main game loop.
+    while True:  # Keep asking until player enters R, P, S, or Q.
         print('{} Wins, 0 Losses, 0 Ties'.format(wins))
         print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
         playerMove = input().upper()

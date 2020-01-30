@@ -6,29 +6,10 @@ __version__ = 1
 import datetime
 
 # Setup the constants:
-DAYS = (
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-)
-MONTHS = (
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-)
+DAYS = ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
+        'Friday', 'Saturday')
+MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July',
+          'August', 'September', 'October', 'November', 'December')
 ONE_DAY = datetime.timedelta(days=1)
 
 DAY_BOX_SIZE = 10

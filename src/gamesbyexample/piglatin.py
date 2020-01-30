@@ -4,14 +4,15 @@ Translates English messages into Igpay Atinlay."""
 __version__ = 1
 
 try:
-    import pyperclip # pyperclip copies text to the clipboard.
+    import pyperclip  # pyperclip copies text to the clipboard.
 except ImportError:
-    pass # It's not a big deal if pyperclip is not installed.
+    pass  # It's not a big deal if pyperclip is not installed.
 
 VOWELS = ('a', 'e', 'i', 'o', 'u', 'y')
 
+
 def englishToPigLatin(message):
-    pigLatin = '' # A string of the pig latin translation.
+    pigLatin = ''  # A string of the pig latin translation.
     for word in message.split():
         # Separate the non-letters at the start of this word:
         prefixNonLetters = ''
@@ -32,7 +33,7 @@ def englishToPigLatin(message):
         wasUpper = word.isupper()
         wasTitle = word.istitle()
 
-        word = word.lower() # Make the word lowercase for translation.
+        word = word.lower()  # Make the word lowercase for translation.
 
         # Separate the consonants at the start of this word:
         prefixConsonants = ''
@@ -53,7 +54,7 @@ def englishToPigLatin(message):
             word = word.title()
 
         # Add the non-letters back to the start or end of the word.
-        pigLatin = pigLatin + prefixNonLetters + word + suffixNonLetters + ' '
+        pigLatin += prefixNonLetters + word + suffixNonLetters + ' '
     return pigLatin
 
 
@@ -71,7 +72,7 @@ Enter your message:''')
         pyperclip.copy(pigLatin)
         print('(Copied pig latin to clipboard.)')
     except NameError:
-        pass # Do nothing if pyperclip wasn't installed.
+        pass  # Do nothing if pyperclip wasn't installed.
 
 
 if __name__ == '__main__':

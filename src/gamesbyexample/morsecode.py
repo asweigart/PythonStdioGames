@@ -5,20 +5,18 @@ More info at: https://en.wikipedia.org/wiki/Morse_code"""
 __version__ = 1
 
 try:
-    import pyperclip # pyperclip copies text to the clipboard.
+    import pyperclip  # pyperclip copies text to the clipboard.
 except:
-    pass # If pyperclip cannot be found, do nothing. It's not a big deal.
+    pass  # If pyperclip cannot be found, do nothing. It's not a big deal.
 
-ENGLISH_TO_MORSE = {'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',
-                    'E': '.',     'F': '..-.',  'G': '--.',   'H': '....',
-                    'I': '..',    'J': '.---',  'K': '-.-',   'L': '.-..',
-                    'M': '--',    'N': '-.',    'O': '---',   'P': '.--.',
-                    'Q': '--.-',  'R': '.-.',   'S': '...',   'T': '-',
-                    'U': '..-',   'V': '...-',  'W': '.--',   'X': '-..-',
-                    'Y': '-.--',  'Z': '--..',  '1': '.----', '2': '..---',
-                    '3': '...--', '4': '....-', '5': '.....', '6': '-....',
-                    '7': '--...', '8': '---..', '9': '----.', '0': '-----',
-                    ' ': '/'}
+ENGLISH_TO_MORSE = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..',
+    'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..',
+    'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.',
+    'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...',
+    'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+    'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
+    '4': '....-', '5': '.....', '6': '-....', '7': '--...',
+    '8': '---..', '9': '----.', '0': '-----', ' ': '/', }
 
 # Instead of typing it out, use code to generate MORSE_TO_ENGLISH.
 MORSE_TO_ENGLISH = {}
@@ -27,7 +25,7 @@ for key, value in ENGLISH_TO_MORSE.items():
 
 
 def englishToMorse(message):
-    morse = [] # Make a list of each letter's morse code.
+    morse = []  # Make a list of each letter's morse code.
     for character in message:
         if character in ENGLISH_TO_MORSE:
             morse.append(ENGLISH_TO_MORSE[character])
@@ -36,7 +34,7 @@ def englishToMorse(message):
 
 def morseToEnglish(message):
     message = message.split(' ')
-    english = [] # Make a list of English letters from the morse code.
+    english = []  # Make a list of English letters from the morse code.
     for code in message:
         if code in MORSE_TO_ENGLISH:
             english.append(MORSE_TO_ENGLISH[code])
@@ -66,7 +64,7 @@ if response == 'E':
     except:
         pass
 elif response == 'M':
-    print('Enter Morse code (with spaces in between each letter\'s code):')
+    print('Enter Morse code (with spaces in between each code letter):')
     morse = input()
     print('English:')
     english = morseToEnglish(morse)
@@ -76,4 +74,4 @@ elif response == 'M':
         pyperclip.copy(english)
         print('(English text copied to clipboard.)')
     except:
-        pass # If pyperclip cannot be found, it's not a big deal.
+        pass  # If pyperclip cannot be found, it's not a big deal.

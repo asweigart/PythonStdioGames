@@ -1,4 +1,4 @@
-"""Lawnmower, by Al Sweigart al@inventwithpython.com
+"""Lawn mower, by Al Sweigart al@inventwithpython.com
 
 Watch grass get cut and grow again. Press Ctrl-C to stop.
 Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
@@ -26,7 +26,7 @@ WIDTH = 79
 HEIGHT = 22
 
 # Constants for the mower text:
-FACE = chr(9786) # The '☺' character.
+FACE = chr(9786)  # The '☺' character.
 MOWER_RIGHT = FACE + "`.=."
 MOWER_LEFT = ".=.'" + FACE
 MOWER_LEN = 5
@@ -38,20 +38,21 @@ assert len(MOWER_RIGHT) == MOWER_LEN
 assert len(MOWER_LEFT) == MOWER_LEN
 
 
-
 def main():
+    """Run the lawn mower animation."""
+
     # Draw the initially uncut grass field:
     bext.clear()
 
     if sys.platform == 'win32':
-        bext.hide()  # Currently, hiding the cursor only works on Windows.
+        bext.hide()  # (Hiding the cursor only works on Windows.)
 
     bext.fg('green')
     for i in range(HEIGHT):
         print(';' * WIDTH)
     print('Press Ctrl-C to quit.')
 
-    # mowerx and mowery refer to the left edge of the lower, despite direction.
+    # mowerx and mowery is the left edge of the mower, despite direction.
     mowerx = -MOWER_LEN
     mowery = 0
     mowerDirection = 'right'
@@ -114,15 +115,13 @@ def main():
                 grassToGrow.remove((x, y))
                 bext.goto(x, y)
                 print(';')
-                try:
-                    time.sleep(GROWING_PAUSE)  # Pause after growing.
-                except KeyboardInterrupt:
-                    sys.exit()  # When Ctrl-C is pressed, end the program.
+                time.sleep(GROWING_PAUSE)  # Pause after growing.
             growMode = False  # Done growing grass.
         # At this point, go back to the start of the main program loop.
 
 
 def drawMower(mowerx, mowery, direction):
+    """Draw the lawn mower with its left edge at mowerx, mowery."""
     bext.fg('red')
     if direction == 'right':
         mowerText = MOWER_RIGHT
@@ -140,4 +139,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

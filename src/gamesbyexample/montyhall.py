@@ -15,7 +15,7 @@ ALL_CLOSED = """
 |      |  |      |  |      |
 +------+  +------+  +------+"""
 
-FIRST_GOAT  = """
+FIRST_GOAT = """
 +------+  +------+  +------+
 |  ((  |  |      |  |      |
 |  oo  |  |   2  |  |   3  |
@@ -24,7 +24,7 @@ FIRST_GOAT  = """
 |GOAT|||  |      |  |      |
 +------+  +------+  +------+"""
 
-SECOND_GOAT  = """
+SECOND_GOAT = """
 +------+  +------+  +------+
 |      |  |  ((  |  |      |
 |   1  |  |  oo  |  |   3  |
@@ -33,7 +33,7 @@ SECOND_GOAT  = """
 |      |  |GOAT|||  |      |
 +------+  +------+  +------+"""
 
-THIRD_GOAT  = """
+THIRD_GOAT = """
 +------+  +------+  +------+
 |      |  |      |  |  ((  |
 |   1  |  |   2  |  |  oo  |
@@ -73,7 +73,7 @@ print('''THE MONTY HALL PROBLEM
 By Al Sweigart al@inventwithpython.com
 
 In the Monty Hall game show, you can pick one of three doors. One door
-has a brand new car for a prize. The other two doors have worthless goats:
+has a new car for a prize. The other two doors have worthless goats:
 {}
 Say you pick Door #1.
 Before the door you choose is opened, another door with a goat is opened:
@@ -92,17 +92,17 @@ https://en.wikipedia.org/wiki/Monty_Hall_problem
 input('Press Enter to start...')
 
 
-
 switchWins = 0
 switchLosses = 0
 notSwitchWins = 0
 notSwitchLosses = 0
-while True: # Main program loop.
-    doorThatHasCar = random.randint(1, 3) # The computer picks which door has the car.
+while True:  # Main program loop.
+    # The computer picks which door has the car:
+    doorThatHasCar = random.randint(1, 3)
 
     # Ask the player to pick a door:
     print(ALL_CLOSED)
-    while True: # Keep asking the player until they enter a valid door.
+    while True:  # Keep asking the player until they enter a valid door.
         print('Pick a door 1, 2, or 3 (or "quit" to stop):')
         response = input().upper()
         if response == 'QUIT':
@@ -114,8 +114,9 @@ while True: # Main program loop.
             break
     doorPick = int(response)
 
-    # Figure out which goat door to show the player.
-    while True: # Select a door that is a goat and not picked by the player.
+    # Figure out which goat door to show the player:
+    while True:
+        # Select a door that is a goat and not picked by the player:
         goatDoorOpened = random.randint(1, 3)
         if goatDoorOpened != doorPick and goatDoorOpened != doorThatHasCar:
             break
@@ -131,7 +132,7 @@ while True: # Main program loop.
     print('Door {} contains a goat!'.format(goatDoorOpened))
 
     # Ask the player if they want to switch:
-    while True: # Keep asking until the player enters Y or N.
+    while True:  # Keep asking until the player enters Y or N.
         print('Do you want to switch doors? Y/N')
         switch = input().upper()
         if switch == 'Y' or switch == 'N':
@@ -181,7 +182,7 @@ while True: # Main program loop.
         switchSuccess = round(switchWins / (switchWins + switchLosses) * 100, 1)
     else:
         switchSuccess = 0.0
-    if (notSwitchWins + notSwitchLosses) != 0: # Prevent zero-divide error.
+    if (notSwitchWins + notSwitchLosses) != 0: # Prevent zero-divide.
         notSwitchSuccess = round(notSwitchWins / (notSwitchWins + notSwitchLosses) * 100, 1)
     else:
         notSwitchSuccess = 0.0

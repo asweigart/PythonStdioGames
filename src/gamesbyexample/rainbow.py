@@ -18,11 +18,11 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-indent = 0 # How many spaces to indent.
-indentIncreasing = True # Whether the indentation is increasing or not.
+indent = 0  # How many spaces to indent.
+indentIncreasing = True  # Whether the indentation is increasing or not.
 
 try:
-    while True: # Main program loop.
+    while True:  # Main program loop.
         print(' ' * indent, end='')
         bext.fg('red')
         print('##', end='')
@@ -50,7 +50,7 @@ try:
                 # Change direction:
                 indentIncreasing = True
 
-        time.sleep(0.02) # Add a slight pause.
+        time.sleep(0.02)  # Add a slight pause.
         # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+    sys.exit()  # When Ctrl-C is pressed, end the program.

@@ -7,9 +7,10 @@ __version__ = 1
 
 import random, time, sys
 
+# Set up the constants:
 MAX_NUM_SNAILS = 8
 MAX_NAME_LENGTH = 20
-FINISH_LINE = 40 # (!) Try modifying this number.
+FINISH_LINE = 40  # (!) Try modifying this number.
 
 print('''SNAIL RACE
 By Al Sweigart al@inventwithpython.com
@@ -19,7 +20,7 @@ By Al Sweigart al@inventwithpython.com
 ''')
 
 # Ask how many snails to race:
-while True: # Keep asking until the player enters a number.
+while True:  # Keep asking until the player enters a number.
     print('How many snails will race? Max:', MAX_NUM_SNAILS)
     response = input()
     if response.isdecimal():
@@ -30,9 +31,9 @@ while True: # Keep asking until the player enters a number.
     # At this point, go back to the start of the loop.
 
 # Enter the names of each snail:
-snailNames = [] # List of the string snail names.
+snailNames = []  # List of the string snail names.
 for i in range(1, numSnailsRacing + 1):
-    while True: # Keep asking until the player enters a valid name.
+    while True:  # Keep asking until the player enters a valid name.
         print('Enter snail #' + str(i) + "'s name:")
         name = input()
         if len(name) == 0:
@@ -40,7 +41,7 @@ for i in range(1, numSnailsRacing + 1):
         elif name in snailNames:
             print('Choose a name that has not already been used.')
         else:
-            break # The entered name is acceptable.
+            break  # The entered name is acceptable.
         # At this point, go back to the start of the loop.
 
     snailNames.append(name)
@@ -56,7 +57,7 @@ for snailName in snailNames:
 
 time.sleep(1.5)
 
-while True: # Main program loop.
+while True:  # Main program loop.
     for i in range(random.randint(1, numSnailsRacing // 2)):
         randomSnailName = random.choice(snailNames)
         snailProgress[randomSnailName] += 1

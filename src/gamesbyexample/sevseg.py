@@ -21,11 +21,13 @@ Each digit in a seven-segment display:
 
 """
 
+
 def getSevSegStr(number, digits=0):
     """Return a seven-segment display string of `number`. The `digits`
-    argument is the minimum number of digits in the returned string, padded
-    with zeros if needed."""
-    number = str(number).zfill(digits) # Convert to string in case it's an int or float.
+    argument is the minimum number of digits in the returned string,
+    padded with zeros if needed."""
+    # Convert to string in case it's an int or float:
+    number = str(number).zfill(digits)
 
     rows = ['', '', '']
     for i, numeral in enumerate(number):
@@ -34,7 +36,7 @@ def getSevSegStr(number, digits=0):
             rows[0] += ' '
             rows[1] += ' '
             rows[2] += '.'
-            continue # Skip the space in between digits.
+            continue  # Skip the space in between digits.
         elif numeral == '-':
             # Render the negative sign:
             rows[0] += '    '
@@ -91,8 +93,8 @@ def getSevSegStr(number, digits=0):
             rows[1] += '|__|'
             rows[2] += ' __|'
 
-        # Add a space (for the space in between numerals) if this isn't the
-        # last numeral:
+        # Add a space (for the space in between numerals) if this
+        # isn't the last numeral:
         if i != len(number) - 1:
             rows[0] += ' '
             rows[1] += ' '

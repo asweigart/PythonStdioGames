@@ -5,14 +5,52 @@ More info at: https://en.wikipedia.org/wiki/Rail_fence_cipher"""
 __version__ = 1
 
 try:
-    import pyperclip # pyperclip copies text to the clipboard.
+    import pyperclip  # pyperclip copies text to the clipboard.
 except:
-    pass # If pyperclip cannot be found, do nothing. It's not a big deal.
+    pass  # If pyperclip cannot be found, do nothing. It's not a big deal.
+
+
+def main():
+    print('''RAIL FENCE CIPHER
+By Al Sweigart al@inventwithpython.com
+''')
+
+    # Ask the user if they want to encrypt or decrypt:
+    while True:
+        print('Do you want to (E)ncrypt or (D)ecrypt?')
+        mode = input().upper()
+        if mode == 'E' or mode == 'D':
+            break
+
+    # Ask the user for the message to encrypt or decrypt:
+    while True:
+        print('Enter a message up to 79 characters long:')
+        print('|' + ('-' * 77) + '|')
+        message = input()
+        if len(message) <= 79:
+            break
+
+    # Ask the user for the key number.
+    while True:
+        print('Enter the key number 2 to 12:')
+        response = input()
+        try:
+            key = int(response)
+        except:
+            print('You must enter a number.')
+        if 2 <= key <= 12:
+            break
+
+    # Encrypt or decrypt the message:
+    if mode == 'E':
+        encryptMessage(message, key)
+    elif mode == 'D':
+        decryptMessage(message, key)
 
 
 def putMessageOnRails(message, key):
     """Lay out the letters in `message` on `key` number of rails."""
-    rails = [] # A list of lists, where each list is a rail of letters.
+    rails = []  # A list of lists, where each list is a rail of letters.
     for i in range(len(message)):
         rails.append([' '] * key)
     return rails
@@ -27,7 +65,7 @@ def displayRails(rails):
 
 
 def getRailCoordinates(message, key):
-    """Return a list of x, y coordinates of the rail in its zig zag order."""
+    """Return a list of x, y coordinates of the zig zag order rail."""
     railCoordinates = []
     y = 0
     direction = 'DOWN'
@@ -35,24 +73,24 @@ def getRailCoordinates(message, key):
         railCoordinates.append((x, y))
         if direction == 'DOWN':
             y += 1
-            if y == key: # Reached the bottom rail, now go up.
+            if y == key:  # Reached the bottom rail, now go up.
                 direction = 'UP'
                 y -= 2
         elif direction == 'UP':
             y -= 1
-            if y == -1: # Reached the top rail, now go down.
+            if y == -1:  # Reached the top rail, now go down.
                 direction = 'DOWN'
                 y += 2
     return railCoordinates
 
 
 def copyIfPossible(text):
-    """Copy `text` to the clipboard if pyperclip was previously imported."""
+    """Copy `text` to the clipboard if pyperclip is installed."""
     try:
         print('Copied to clipboard.')
-        pyperclip.copy(text) # Copy the text to the clipboard.
+        pyperclip.copy(text)  # Copy the text to the clipboard.
     except:
-        pass # If pyperclip wasn't imported, do nothing.
+        pass  # If pyperclip wasn't imported, do nothing.
 
 
 def encryptMessage(message, key):
@@ -103,38 +141,6 @@ def decryptMessage(message, key):
     copyIfPossible(decryptedText)
 
 
-print('''RAIL FENCE CIPHER
-By Al Sweigart al@inventwithpython.com
-''')
-
-# Ask the user if they want to encrypt or decrypt:
-while True:
-    print('Do you want to (E)ncrypt or (D)ecrypt?')
-    mode = input().upper()
-    if mode == 'E' or mode == 'D':
-        break
-
-# Ask the user for the message to encrypt or decrypt:
-while True:
-    print('Enter a message up to 79 characters long:')
-    print('|' + ('-' * 77) + '|')
-    message = input()
-    if len(message) <= 79:
-        break
-
-# Ask the user for the key number.
-while True:
-    print('Enter the key number 2 to 12:')
-    response = input()
-    try:
-        key = int(response)
-    except:
-        print('You must enter a number.')
-    if 2 <= key <= 12:
-        break
-
-# Encrypt or decrypt the message:
-if mode == 'E':
-    encryptMessage(message, key)
-elif mode == 'D':
-    decryptMessage(message, key)
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

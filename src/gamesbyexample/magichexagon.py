@@ -47,7 +47,7 @@ boardTemplate = r"""Sum to 38:  {29}    {30}    {31}
 # The hex board starts off with 3 and 17 placed in A and B:
 board = {}
 for space in 'ABCDEFGHIJKLMNOPQRS':
-    board[space] = 0 # Set the space to blank (that is, 0).
+    board[space] = 0  # Set the space to blank (that is, 0).
 board['A'] = 3
 board['B'] = 17
 
@@ -59,8 +59,8 @@ unusedNums.remove(3)
 unusedNums.remove(17)
 
 
-while True: # Main game loop.
-    rowSums = {} # The keys are row numbers, values are sums for that row.
+while True:  # Main game loop.
+    rowSums = {}  # The keys are row numbers, value is the row's sum.
 
     # ROW NUMBERING:
     #       12  14
@@ -75,7 +75,7 @@ while True: # Main game loop.
     #    10 9 8
 
     # Calculate the sum for each of the 15 rows:
-    b = board # Syntactic sugar to have a shorter variable name.
+    b = board  # Syntactic sugar to have a shorter variable name.
     rowSums[1] = b['A'] + b['B'] + b['C']
     rowSums[2] = b['D'] + b['E'] + b['F'] + b['G']
     rowSums[3] = b['H'] + b['I'] + b['J'] + b['K'] + b['L']
@@ -118,26 +118,27 @@ while True: # Main game loop.
 
     # Quit the program if all rows add up to 38:
     isSolved = True
-    for i in range(1, 16): # Loop over all 15 rows.
+    for i in range(1, 16):  # Loop over all 15 rows.
         if rowSums[i] != 38:
-            isSolved = False # Unsolved if at least one row isn't 38.
+            isSolved = False  # Unsolved if at least one row isn't 38.
     if isSolved:
         print('You\'ve solved the puzzle! Hurray!')
         break
 
     # Get the selected space from the user:
     while True:
-        response = input('Select a space A to S (or Z or QUIT): ').upper()
+        response = input('Select a space A to S (or Z or QUIT): ')
+        response = response.upper()
         if response == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
-        if (response in 'ABCDEFGHIJKLMNOPQRS' + 'Z') and (response != ''):
+        if response in tuple('ABCDEFGHIJKLMNOPQRSZ'):
             selectedSpace = response
             break
 
-    # Get the selected number from the user to place on the selected space:
+    # Get the selected number from the user to put on the selected space:
     while True:
-        print('Enter a number 1 to 19 for', selectedSpace, '(or "quit"):')
+        print('Enter 1 to 19 for', selectedSpace, '(or "quit"):')
         response = input()
         if response.lower().startswith('q'):
             print('Thanks for playing!')
@@ -151,18 +152,18 @@ while True: # Main game loop.
         unusedNums.add(selectedNumber)
         for space in 'ABCDEFGHIJKLMNOPQRS':
             if board[space] == selectedNumber:
-                board[space] = 0 # Set this space to blank.
+                board[space] = 0  # Set this space to blank.
 
     elif selectedNumber in unusedNums:
         # Move the number from the unused numbers box to the board:
         numberAtOriginalSpace = board[selectedSpace]
-        board[selectedSpace] = selectedNumber # Put the number on the board.
+        board[selectedSpace] = selectedNumber  # Put number on board.
         unusedNums.remove(selectedNumber)
         if numberAtOriginalSpace != 0:
             unusedNums.add(numberAtOriginalSpace)
     else:
-        # Since the number must already be on the board, do a swap to move
-        # it to the selected space:
+        # Since the number must already be on the board, do a swap to
+        # move it to the selected space:
         for space in 'ABCDEFGHIJKLMNOPQRS':
             if board[space] == selectedNumber:
                 spaceOfOriginalNumber = space

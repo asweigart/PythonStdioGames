@@ -185,8 +185,8 @@ input('Press Enter to begin...')
 random.shuffle(QUESTIONS)
 score = 0
 
-for questionNumber, qa in enumerate(QUESTIONS): # Main program loop.
-    print('\n' * 40) # "Clear" the screen.
+for questionNumber, qa in enumerate(QUESTIONS):  # Main program loop.
+    print('\n' * 40)  # "Clear" the screen.
     print('Question:', questionNumber + 1)
     print('Score:', score, '/', len(QUESTIONS))
     print('QUESTION:', qa['question'])

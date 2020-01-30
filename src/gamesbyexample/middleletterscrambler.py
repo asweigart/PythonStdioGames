@@ -1,16 +1,19 @@
 """Middle Letter Scrambler, by Al Sweigart al@inventwithpython.com
 
-Scrambles the middle letters of words, but not the first and last letters."""
+Scrambles the middle letters of words, but not the first and last
+letters."""
 __version__ = 1
 
 import random
 
 try:
-    import pyperclip # pyperclip copies text to the clipboard.
+    import pyperclip  # pyperclip copies text to the clipboard.
 except ImportError:
-    pass # It's not a big deal if pyperclip is not installed.
+    pass  # It's not a big deal if pyperclip is not installed.
+
 
 def englishToMiddleLetterScramble(message):
+    """Convert the string message into middle-letter scrambled text."""
     if message == '':
         # If the message is blank, the scrambled text is blank too.
         return ''
@@ -20,19 +23,23 @@ def englishToMiddleLetterScramble(message):
     words = message.split()
     for word in words:
         if len(word) <= 3:
-            scrambled += word + ' ' # Add the short word unscrambled.
+            scrambled += word + ' '  # Add the short word unscrambled.
             continue
 
-        middleLetters = list(word[1:-1]) # Convert the middle letters to a list.
-        random.shuffle(middleLetters) # Shuffle the middle letters.
-        middleLetters = ''.join(middleLetters) # Convert the list back into a string.
+        # Convert the middle letters to a list:
+        middleLetters = list(word[1:-1])
+        # Shuffle the middle letters:
+        random.shuffle(middleLetters)
+        # Convert the list back into a string:
+        middleLetters = ''.join(middleLetters)
 
         scrambled += word[0] + middleLetters + word[-1] + ' '
 
-    return scrambled[:-1] # [:-1] to cut off the final added ' ' space.
+    return scrambled[:-1]  # [:-1] to cut off the final added ' ' space.
 
 
 def main():
+    """Run the Middle Letter Scrambler program."""
     print('''Middle Letter Scrambler
 By Al Sweigart al@inventwithpython.com
 
@@ -48,7 +55,9 @@ Enter your message:''')
         pyperclip.copy(scrambled)
         print('(Copied scrambled text to clipboard.)')
     except:
-        pass # Do nothing if pyperclip wasn't installed.
+        pass  # Do nothing if pyperclip wasn't installed.
 
+
+# If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
     main()

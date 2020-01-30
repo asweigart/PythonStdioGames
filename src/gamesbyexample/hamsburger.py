@@ -8,6 +8,7 @@ __version__ = 1
 
 import random, os, sys
 
+
 def pluralize(word):
     """Returns the pluralized form of `word`."""
     if word.endswith('o'):
@@ -34,7 +35,7 @@ nouns = fo.readlines()
 fo.close()
 
 for i, noun in enumerate(nouns):
-    nouns[i] = noun.strip() # Remove the trailing \n from each string.
+    nouns[i] = noun.strip()  # Remove the trailing \n from each string.
 
 if not os.path.exists('hamsburger.txt'):
     print('Generating silly pluralizations for hamsburger.txt...')
@@ -60,7 +61,7 @@ else:
     fo.close()
 
     for i, line in enumerate(sillyPluralizations):
-        sillyPluralizations[i] = line.strip() # Remove the \n.
+        sillyPluralizations[i] = line.strip()  # Remove the \n.
 
 
 print('Press Ctrl-C to quit, or press Enter for more words.')
@@ -69,4 +70,4 @@ try:
         print(random.choice(sillyPluralizations))
         response = input()
 except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+    sys.exit()  # When Ctrl-C is pressed, end the program.

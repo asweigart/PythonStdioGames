@@ -7,7 +7,7 @@ __version__ = 1
 try:
     import pyperclip
 except ImportError:
-    pass # Don't do anything if pyperclip fails to import.
+    pass  # Don't do anything if pyperclip fails to import.
 
 upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 lowerLetters = 'abcdefghijklmnopqrstuvwxyz'
@@ -16,12 +16,12 @@ print('ROT 13 CIPHER')
 print('By Al Sweigart al@inventwithpython.com')
 print()
 
-while True: # Main program loop.
+while True:  # Main program loop.
     print('Enter a message to encrypt or decrypt (or `quit` to quit):')
     message = input('> ')
 
     if message.lower() == 'quit':
-        break # Break out of the main program loop.
+        break  # Break out of the main program loop.
 
     # Rotate the letters in message by 13 characters.
     translated = ''

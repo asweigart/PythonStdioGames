@@ -7,20 +7,20 @@ __version__ = 1
 import sys
 
 # Setup the constants:
-UP_DOWN_CHAR    = chr(9474)  # The '│' string.
-LEFT_RIGHT_CHAR = chr(9472)  # The '─' string.
-DOWN_RIGHT_CHAR = chr(9484)  # The '┌' string.
-DOWN_LEFT_CHAR  = chr(9488)  # The '┐' string.
-UP_RIGHT_CHAR   = chr(9492)  # The '└' string.
-UP_LEFT_CHAR    = chr(9496)  # The '┘' string.
+UP_DOWN_CHAR    = chr(9474)  # Character 9474 is '│'
+LEFT_RIGHT_CHAR = chr(9472)  # Character 9472 is '─'
+DOWN_RIGHT_CHAR = chr(9484)  # Character 9484 is '┌'
+DOWN_LEFT_CHAR  = chr(9488)  # Character 9488 is '┐'
+UP_RIGHT_CHAR   = chr(9492)  # Character 9492 is '└'
+UP_LEFT_CHAR    = chr(9496)  # Character 9496 is '┘'
 
-UP_DOWN_RIGHT_CHAR   = chr(9500)  # The '├' string.
-UP_DOWN_LEFT_CHAR    = chr(9508)  # The '┤' string.
-DOWN_LEFT_RIGHT_CHAR = chr(9516)  # The '┬' string.
-UP_LEFT_RIGHT_CHAR   = chr(9524)  # The '┴' string.
+UP_DOWN_RIGHT_CHAR   = chr(9500)  # Character 9500 is '├'
+UP_DOWN_LEFT_CHAR    = chr(9508)  # Character 9508 is '┤'
+DOWN_LEFT_RIGHT_CHAR = chr(9516)  # Character 9516 is '┬'
+UP_LEFT_RIGHT_CHAR   = chr(9524)  # Character 9524 is '┴'
 
-CROSS_CHAR = chr(9532)  # The '┼' string.
-BLOCK_CHAR = chr(9608)  # The '█' string.
+CROSS_CHAR = chr(9532)  # Character 9532 is '┼'
+BLOCK_CHAR = chr(9608)  # Character 9608 is '█'
 
 SCREEN_WIDTH = 79
 SCREEN_HEIGHT = 20

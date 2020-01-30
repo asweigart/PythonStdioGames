@@ -6,26 +6,26 @@ __version__ = 1
 
 import time, sys
 
-print('NINETY NINE BOTTLES OF BEER')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-print('(Press Ctrl-C to quit.)')
-print()
+print('''NINETY NINE BOTTLES OF BEER
+By Al Sweigart al@inventwithpython.com
+
+(Press Ctrl-C to quit.)''')
+
 
 time.sleep(2)
 
-bottles = 99 # This is the starting number of bottles.
-PAUSE = 1 # A constant that sets how many seconds each pause is.
+bottles = 99  # This is the starting number of bottles.
+PAUSE = 1  # A constant that sets how many seconds each pause is.
 
 try:
-    while bottles > 1: # Keep looping and display the lyrics.
-        print(bottles, 'of beer on the wall,')
-        time.sleep(PAUSE) # Pause for PAUSE number of seconds.
+    while bottles > 1:  # Keep looping and display the lyrics.
+        print(bottles, 'bottles of beer on the wall,')
+        time.sleep(PAUSE)  # Pause for PAUSE number of seconds.
         print(bottles, 'bottles of beer,')
         time.sleep(PAUSE)
         print('Take one down, pass it around,')
         time.sleep(PAUSE)
-        bottles = bottles - 1 # Decrease the number of bottles by one.
+        bottles = bottles - 1  # Decrease the number of bottles by one.
         print(bottles, 'bottles of beer on the wall!')
         time.sleep(PAUSE)
         print()
@@ -39,4 +39,4 @@ try:
     time.sleep(PAUSE)
     print('No more bottles of beer on the wall!')
 except KeyboardInterrupt:
-    sys.exit() # When Ctrl-C is pressed, end the program.
+    sys.exit()  # When Ctrl-C is pressed, end the program.
