@@ -53,7 +53,7 @@ def englishToPigLatin(message):
             word = word.title()
 
         # Add the non-letters back to the start or end of the word.
-        pigLatin = pigLatin + prefixNonLetters + word + suffixNonLetters + ' '
+        pigLatin = pigLatin + prefixNonLetters + word + suffixNonLetters[::-1] + ' '
     return pigLatin
 
 
