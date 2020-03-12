@@ -3,14 +3,12 @@
 Fast-paced snail racing action!"""
 __version__ = 1
 
-# TODO finish
-
 import random, time, sys
 
 # Set up the constants:
 MAX_NUM_SNAILS = 8
 MAX_NAME_LENGTH = 20
-FINISH_LINE = 40  # (!) Try modifying this number.
+FINISH_LINE = 40  # (!) EXPERIMENT: Try modifying this number.
 
 print('''SNAIL RACE
 By Al Sweigart al@inventwithpython.com
@@ -43,36 +41,46 @@ for i in range(1, numSnailsRacing + 1):
         else:
             break  # The entered name is acceptable.
         # At this point, go back to the start of the loop.
-
     snailNames.append(name)
 
+# Display each snail at the start line.
 print('\n' * 40)
 print('START' + (' ' * (FINISH_LINE - len('START')) + 'FINISH'))
-print('|' + (' ' * (FINISH_LINE - 1) + '|'))
+print('|' + (' ' * (FINISH_LINE - len('|')) + '|'))
 snailProgress = {}
 for snailName in snailNames:
     print(snailName[:MAX_NAME_LENGTH])
     print('@v')
     snailProgress[snailName] = 0
 
-time.sleep(1.5)
+time.sleep(1.5)  # The pause right before the race starts.
 
 while True:  # Main program loop.
+    # Pick random snails to move forward:
     for i in range(random.randint(1, numSnailsRacing // 2)):
         randomSnailName = random.choice(snailNames)
         snailProgress[randomSnailName] += 1
+
+        # Check if a snail has reached the finish line:
         if snailProgress[randomSnailName] == FINISH_LINE:
             print(randomSnailName, 'has won!')
             sys.exit()
 
-    time.sleep(0.5)
+    # (!) EXPERIMENT: Add a cheat here that increases a snail's progress
+    # if it has your name.
+
+    time.sleep(0.5)  # (!) EXPERIMENT: Try changing this value.
+
+    # (!) EXPERIMENT: What happens if you comment this line out?
     print('\n' * 40)
+
+    # Display the start and finish lines:
     print('START' + (' ' * (FINISH_LINE - len('START')) + 'FINISH'))
     print('|' + (' ' * (FINISH_LINE - 1) + '|'))
 
+    # Display the snails (with name tags):
     for snailName in snailNames:
         spaces = snailProgress[snailName]
         print((' ' * spaces) + snailName[:MAX_NAME_LENGTH])
-
         print(('.' * snailProgress[snailName]) + '@v')
     # At this point, go back to the start of the main program loop.

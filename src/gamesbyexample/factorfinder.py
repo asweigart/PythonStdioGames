@@ -6,8 +6,7 @@ __version__ = 1
 import math, sys
 
 print('''FACTOR FINDER
-By Al Sweigart al@inventwithpython.com
-''')
+By Al Sweigart al@inventwithpython.com''')
 
 while True:  # Main program loop.
     print()

@@ -30,8 +30,7 @@ class Bucket:
         intoBucket.water = intoBucket.water + amountToPour
 
 print('''WATER BUCKET PUZZLE
-By Al Sweigart al@inventwithpython.com
-''')
+By Al Sweigart al@inventwithpython.com''')
 
 GOAL = 4  # The exact amount of water to have in a bucket to win.
 steps = 0  # Keep track of how many steps the player made to solve this.
@@ -42,7 +41,8 @@ waterInBucket = {'8': 0, '5': 0, '3': 0}
 while True:  # Main game loop.
     # Display the current state of the buckets:
     print()
-    print('Try to get ' + str(GOAL) + 'L of water with these 3 buckets:')
+    print('Try to get ' + str(GOAL) + 'L of water into one of these')
+    print('buckets:')
 
     waterDisplay = []  # Contains strings for water or empty space.
 
@@ -96,17 +96,17 @@ while True:  # Main game loop.
 
     while True:  # Keep asking until the player enters a valid action.
         move = input().upper()
-        if move in ('F', 'E', 'P', 'Q'):
-            break  # Player has selected a valid action.
-        print('Enter F, E, P, or Q')
-
-        if move == 'QUIT':
+        if move == 'QUIT' or move == 'Q':
             print('Thanks for playing!')
             sys.exit()
+
+        if move in ('F', 'E', 'P'):
+            break  # Player has selected a valid action.
+        print('Enter F, E, P, or Q')
         # At this point, go back to the start of the loop.
 
     # Let the player select a bucket:
-    while True:  # Keep asking until the player enters a valid bucket.
+    while True:  # Keep asking until valid bucket entered.
         print('Select a bucket 8, 5, 3, or QUIT:')
         srcBucket = input().upper()
 
@@ -131,7 +131,7 @@ while True:  # Main game loop.
 
     elif move == 'P':
         # Let the player select a bucket to pour into:
-        while True:  # Keep asking until the player enters a valid bucket.
+        while True:  # Keep asking until valid bucket entered.
             print('Select a bucket to pour into: 8, 5, or 3')
             dstBucket = input().upper()
             if dstBucket in ('8', '5', '3'):

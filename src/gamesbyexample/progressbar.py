@@ -1,4 +1,4 @@
-"""Progress Bar, by Al Sweigart al@inventwithpython.com
+"""Progress Bar Simulation, by Al Sweigart al@inventwithpython.com
 
 A sample progress bar animation that can be used in other programs."""
 __version__ = 1
@@ -37,6 +37,7 @@ def getProgressBar(progress, total, barWidth=40):
 
 
 # Simulate a download:
+print('Progress Bar Simulation:')
 bytesDownloaded = 0
 downloadSize = 4098
 while bytesDownloaded < downloadSize:

@@ -79,9 +79,9 @@ def getNewBoard():
 def displayBoard(board):
     """Display the board and its tiles on the screen."""
 
-    # Prepare a list to pass to the format() string method for the board
-    # template. The list holds all of the board's tiles (and empty
-    # spaces) going left to right, top to bottom:
+    '''Prepare a list to pass to the format() string method for the board
+    template. The list holds all of the board's tiles (and empty
+    spaces) going left to right, top to bottom:'''
     tileChars = []
     for rowIndex in range(BOARD_HEIGHT):
         for columnIndex in range(BOARD_WIDTH):
