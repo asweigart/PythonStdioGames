@@ -1,15 +1,18 @@
-WIDTH = 6
-LENGTH = 4
+"""Shining Carpet, by Al Sweigart al@inventwithpython.com
 
-lines = []
-lines.append(' \\_/ ___ \\ \\')
-lines.append('\\___/ _ \\ \\ ')
-lines.append('_____/ \\ \\ \\')
-lines.append(' ___ \\_/ / /')
-lines.append('/ _ \\___/ / ')
-lines.append(' / \\_____/ /')
+Displays a tesselation of the carpet pattern from The Shining."""
+__version__ = 1
+
+# Setup the constants:
 
 
-for i in range(LENGTH):
-    for line in lines:
-        print(line * WIDTH)
+X_REPEAT = 6
+Y_REPEAT = 4
+
+for i in range(Y_REPEAT):
+    print(' \\_/ ___ \\ \\' * X_REPEAT)
+    print('\\___/ _ \\ \\ ' * X_REPEAT)
+    print('_____/ \\ \\ \\' * X_REPEAT)
+    print(' ___ \\_/ / /' * X_REPEAT)
+    print('/ _ \\___/ / ' * X_REPEAT)
+    print(' / \\_____/ /' * X_REPEAT)
