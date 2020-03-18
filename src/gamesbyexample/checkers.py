@@ -25,7 +25,7 @@ def main():
 
         # Get the player's move and carry it out:
         srcMove, dstMove = getPlayerMove(gameBoard, turn)
-        if (srcMove, dstMove) == (None, None):  # TODO - remove this?
+        if (srcMove, dstMove) == (None, None):
             break  # If no moves can be made, end this player's turn.
         gameBoard = makeMove(gameBoard, srcMove, dstMove)
 

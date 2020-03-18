@@ -3,8 +3,6 @@
 A colorful game where you try to fill the board with a single color."""
 __version__ = 1
 
-# TODO - add instructions, and make sure the last move's effects are visible
-
 import random, sys
 
 try:
@@ -21,13 +19,15 @@ or a Command Prompt window (on Windows) and running:
     sys.exit()
 
 # Set up the constants:
-BLOCK     = chr(9608) # Character 9608 is '█'
-LEFTRIGHT = chr(9472) # Character 9472 is '─'
-UPDOWN    = chr(9474) # Character 9474 is '│'
-DOWNRIGHT = chr(9484) # Character 9484 is '┌'
-DOWNLEFT  = chr(9488) # Character 9488 is '┐'
-UPRIGHT   = chr(9492) # Character 9492 is '└'
-UPLEFT    = chr(9496) # Character 9496 is '┘'
+WIDTH = 16
+HEIGHT = 14
+BLOCK     = chr(9608)  # Character 9608 is '█'
+LEFTRIGHT = chr(9472)  # Character 9472 is '─'
+UPDOWN    = chr(9474)  # Character 9474 is '│'
+DOWNRIGHT = chr(9484)  # Character 9484 is '┌'
+DOWNLEFT  = chr(9488)  # Character 9488 is '┐'
+UPRIGHT   = chr(9492)  # Character 9492 is '└'
+UPLEFT    = chr(9496)  # Character 9496 is '┘'
 
 # This constant maps letters to colors.
 CMAP = {'R': 'red', 'G': 'green', 'B': 'blue',
@@ -60,58 +60,54 @@ same color.''')
             print('You have won!')
             break
         elif movesLeft == 0:
+            displayBoard(gameBoard)
             print('You have run out of moves!')
             break
         # At this point, go back to the start of the main game loop.
 
 
-def getNewBoard(width=16, height=16):
+def getNewBoard():
     """Return a dictionary of a new Flood It board."""
-    assert width > 1 and height > 1
-    board = []
+    board = {}
 
     # Create random colors for the board.
-    for x in range(height):
-        column = []
-        for y in range(width):
-            column.append(random.choice(COLORS))
-        board.append(column)
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            board[(x, y)] = random.choice(COLORS)
 
     # Make several tiles the same color as their neighbor.
-    for i in range(width * height):
-        x = random.randint(0, width - 2)
-        y = random.randint(0, height - 1)
-        board[x + 1][y] = board[x][y]
+    for i in range(WIDTH * HEIGHT):
+        x = random.randint(0, WIDTH - 2)
+        y = random.randint(0, HEIGHT - 1)
+        board[(x + 1, y)] = board[(x, y)]
     return board
 
 
 def displayBoard(board):
     """Display the board on the screen."""
-    width = len(board)
-    height = len(board[0])
     bext.fg('white')
-    print(DOWNRIGHT + (LEFTRIGHT * width) + DOWNLEFT)
+    print(DOWNRIGHT + (LEFTRIGHT * WIDTH) + DOWNLEFT)
 
     # Print first row with '>'.
     bext.fg('white')
     print('>', end='')
-    for x in range(width):
-        bext.fg(CMAP[board[x][0]])
+    for x in range(WIDTH):
+        bext.fg(CMAP[board[(x, 0)]])
         print(BLOCK, end='')
     bext.fg('white')
     print(UPDOWN)
 
     # Print each row after the first.
-    for y in range(1, height):
+    for y in range(1, HEIGHT):
         bext.fg('white')
         print(UPDOWN, end='')
-        for x in range(width):
-            bext.fg(CMAP[board[x][y]])
+        for x in range(WIDTH):
+            bext.fg(CMAP[board[(x, y)]])
             print(BLOCK, end='')
         bext.fg('white')
         print(UPDOWN)
     bext.fg('white')
-    print(UPRIGHT + (LEFTRIGHT * width) + UPLEFT)
+    print(UPRIGHT + (LEFTRIGHT * WIDTH) + UPLEFT)
 
 
 def getPlayerMove():
@@ -132,7 +128,7 @@ def getPlayerMove():
         bext.fg('purple')
         print('P ', end='')
         bext.fg('white')
-        print(' or quit:')
+        print(' or QUIT:')
         move = input().upper()
         if move == 'QUIT':
             sys.exit()
@@ -144,34 +140,29 @@ def getPlayerMove():
 def changeTile(move, board, x, y, charToChange=None):
     """Change the color of a tile."""
     if x == 0 and y == 0:
-        charToChange = board[x][y]
+        charToChange = board[(x, y)]
         if move == charToChange:
             return  # Already is the same color.
 
-    board[x][y] = move
+    board[(x, y)] = move
 
-    width = len(board)
-    height = len(board[0])
-
-    if x > 0 and board[x - 1][y] == charToChange:
+    if x > 0 and board[(x - 1, y)] == charToChange:
         changeTile(move, board, x - 1, y, charToChange)
-    if y > 0 and board[x][y - 1] == charToChange:
+    if y > 0 and board[(x, y - 1)] == charToChange:
         changeTile(move, board, x, y - 1, charToChange)
-    if x < width - 1 and board[x + 1][y] == charToChange:
+    if x < WIDTH - 1 and board[(x + 1, y)] == charToChange:
         changeTile(move, board, x + 1, y, charToChange)
-    if y < height - 1 and board[x][y + 1] == charToChange:
+    if y < HEIGHT - 1 and board[(x, y + 1)] == charToChange:
         changeTile(move, board, x, y + 1, charToChange)
 
 
 def hasWon(board):
     """Return True if the entire board is one color."""
-    tile = board[0][0]
-    width = len(board)
-    height = len(board[0])
+    tile = board[(0, 0)]
 
-    for x in range(width):
-        for y in range(height):
-            if board[x][y] != tile:
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
+            if board[(x, y)] != tile:
                 return False
     return True
 
