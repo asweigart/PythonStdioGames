@@ -7,7 +7,7 @@ __version__ = 1
 import random, shutil, sys, time
 
 # Set up the constants:
-DENSITY = 20  # Density can range from 0 to 1000.
+DENSITY = 2  # Density can range from 0 to 100.
 MIN_BEAD_LENGTH = 6
 MAX_BEAD_LENGTH = 14
 
@@ -27,7 +27,7 @@ try:
         # setup drips
         for c in range(WIDTH):
             if drips[c] == 0:
-                if random.randint(1, 1000) <= DENSITY:
+                if random.randint(1, 100) <= DENSITY:
                     drips[c] = random.randint(MIN_BEAD_LENGTH, MAX_BEAD_LENGTH)
 
             if drips[c] != 0:
@@ -36,7 +36,7 @@ try:
             else:
                 print(' ', end='')
         print()
-        sys.stdout.flush()
+        sys.stdout.flush()  # Make sure text appears on the screen.
         time.sleep(0.1)
 except KeyboardInterrupt:
     sys.exit()
