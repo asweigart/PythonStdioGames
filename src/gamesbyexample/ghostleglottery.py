@@ -4,15 +4,13 @@ Follow the trail to see who wins!
 More info at: https://en.wikipedia.org/wiki/Ghost_Leg"""
 __version__ = 1
 
-# TODO - add more comments
-
 import random, time, sys
 
 # Set up the constants:
-VERTICAL_POLE  = chr(9474) # The character '│'
-HORIZONTAL_LEG = chr(9472) # The character '─'
-START_LEG      = chr(9500) # The character '├'
-END_LEG        = chr(9508) # The character '┤'
+VERTICAL_POLE  = chr(9474) # Character 9474 is '│'
+HORIZONTAL_LEG = chr(9472) # Character 9472 is '─'
+START_LEG      = chr(9500) # Character 9500 is '├'
+END_LEG        = chr(9508) # Character 9508 is '┤'
 
 # Random number of rows because if we only have two players, the
 # results would always be the same.
@@ -32,7 +30,7 @@ By Al Sweigart al@inventwithpython.com
     players = getPlayerNames()
     legs = getLegs(players)
 
-    placings = []  # index 0 is first place, index 1 is second place, etc.
+    placings = []  # Index 0 is 1st place, index 1 is 2nd place, etc.
     for i in range(len(players)):
         placings.append(None)
 
