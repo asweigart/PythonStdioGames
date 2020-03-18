@@ -92,7 +92,7 @@ def main():
 
 
 def slowPrint(text, pauseAmount):
-    """Slowly print out the characters in `text` one at a time."""
+    """Slowly print out the characters in text one at a time."""
     for character in text:
         # Set flush=True here so the text is immediately printed:
         print(character, flush=True, end='') # end='' means no newline.

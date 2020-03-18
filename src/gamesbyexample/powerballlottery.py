@@ -42,7 +42,7 @@ while True:
             continue
 
     # Check that the numbers are unique:
-    # (Create a set from `number` to remove duplicates.)
+    # (Create a set from number to remove duplicates.)
     if len(set(numbers)) != 5:
         print('You must enter 5 different numbers.')
         continue
@@ -80,7 +80,7 @@ while True:
         print('Please enter a number, like 3, 15, or 22000.')
         continue
 
-    # Check that the number is between 1 and 26:
+    # Check that the number is between 1 and 1000000:
     if not (1 <= numPlays <= 1000000):
         print('You can play between 1 and 1000000 times.')
         continue
@@ -89,7 +89,8 @@ while True:
 
 # Run the simulation:
 price = '$' + str(2 * numPlays)
-print('It costs', price, 'to play', numPlays, 'times.')
+print('It costs', price, 'to play', numPlays, 'times, but don\'t')
+print('worry. I\'m sure you\'ll win it all back.')
 print('Press Enter to start...')
 input()
 
@@ -108,7 +109,8 @@ for i in range(numPlays):
     allWinningNums += 'and ' + str(winningPowerball)
     print(allWinningNums.ljust(21), end='')
 
-    # TODO comment about sets
+    # NOTE: Sets are not ordered, so it doesn't matter what order the
+    # integers in set(numbers) and set(winningNumbers) are.
     if set(numbers) == set(winningNumbers) and \
     powerball == winningPowerball:
         print()
@@ -118,4 +120,5 @@ for i in range(numPlays):
     else:
         print(' You lost.')
 
+print('You have wasted', price)
 print('Thanks for playing!')

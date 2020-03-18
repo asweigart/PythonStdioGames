@@ -7,8 +7,8 @@ import random, time
 
 
 def getProgressBar(progress, total, barWidth=40):
-    """Returns a string that represents a progress bar that has `barWidth`
-    bars and has progressed `progress` amount out of a `total` amount."""
+    """Returns a string that represents a progress bar that has barWidth
+    bars and has progressed progress amount out of a total amount."""
 
     progressBar = ''  # The progress bar will be a string value.
     progressBar += '['  # Create the left end of the progress bar.
@@ -23,12 +23,12 @@ def getProgressBar(progress, total, barWidth=40):
     numberOfBars = int((progress / total) * barWidth)
 
     progressBar += '*' * numberOfBars  # Add the progress bar.
-    progressBar += ' ' * (barWidth - numberOfBars)  # Add the empty space.
+    progressBar += ' ' * (barWidth - numberOfBars)  # Add empty space.
     progressBar += ']'  # Add the right end of the progress bar.
 
     # Calculate the percentage complete:
     percentComplete = round(progress / total * 100, 1)
-    progressBar += ' ' + str(percentComplete) + '%'  # Add the percentage.
+    progressBar += ' ' + str(percentComplete) + '%'  # Add percentage.
 
     # Add the numbers:
     progressBar += ' ' + str(progress) + '/' + str(total)

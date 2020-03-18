@@ -38,7 +38,7 @@ def getNewBoard():
     """Returns a new data structure that represents a board.
 
     It's a dictionary with keys of (x, y) tuples and values of the tile
-    at that space. The tile is either a power-of-two integer or `BLANK`.
+    at that space. The tile is either a power-of-two integer or BLANK.
     The coordinates are laid out as:
        X0 1 2 3
       Y+-+-+-+-+
@@ -70,7 +70,7 @@ def getNewBoard():
 
 
 def drawBoard(board):
-    """Draws the `board` data structure on the screen."""
+    """Draws the board data structure on the screen."""
 
     # Go through each possible space left-to-right, top-to-bottom, and
     # create a list of what each space's label should be.
@@ -105,7 +105,7 @@ def drawBoard(board):
 
 
 def getScore(board):
-    """Returns the sum of all the tiles on the `board` data structure."""
+    """Returns the sum of all the tiles on the board data structure."""
     score = 0
     # Loop over every space and add the tile to the score:
     for x in range(4):
@@ -117,13 +117,13 @@ def getScore(board):
 
 
 def combineTilesInColumn(column):
-    """The `column` is a list of four tile. Index 0 is the "bottom" of
+    """The column is a list of four tile. Index 0 is the "bottom" of
     the column, and tiles are pulled "down" and combine if they are the
     same. For example, combineTilesInColumn([2, BLANK, 2, BLANK])
     returns [4, BLANK, BLANK, BLANK]."""
 
-    # Copy only the numbers (not blanks) from `column` to `combinedTiles`
-    combinedTiles = []  # A list of the non-blank tiles in `column`.
+    # Copy only the numbers (not blanks) from column to combinedTiles
+    combinedTiles = []  # A list of the non-blank tiles in column.
     for i in range(4):
         if column[i] != BLANK:
             combinedTiles.append(column[i])
@@ -139,14 +139,14 @@ def combineTilesInColumn(column):
             # Move the tiles above it down one space:
             for aboveIndex in range(i + 1, 3):
                 combinedTiles[aboveIndex] = combinedTiles[aboveIndex + 1]
-            combinedTiles[3] = BLANK  # Topmost space is always `BLANK`.
+            combinedTiles[3] = BLANK  # Topmost space is always BLANK.
     return combinedTiles
 
 
 def makeMove(board, move):
     """Carries out the move on the board.
 
-    The `move` argument is either 'W', 'A', 'S', or 'D' and the function
+    The move argument is either 'W', 'A', 'S', or 'D' and the function
     returns the resulting board data structure."""
 
     # The board is split up into four columns, which are different
@@ -229,7 +229,7 @@ def addTwoToBoard(board):
 
 
 def isFull(board):
-    """Returns `True` if the `board` data structure has no blanks."""
+    """Returns True if the board data structure has no blanks."""
     # Loop over every space on the board:
     for x in range(4):
         for y in range(4):

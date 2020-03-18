@@ -101,17 +101,17 @@ def displayBoard(board):
 
 
 def prevCol(column):
-    """Return the column letter that comes before `column`.
+    """Return the column letter that comes before column.
 
-    Returns '' if `column` 'A'."""
+    Returns '' if column 'A'."""
     return {'': '', 'A': '', 'B': 'A', 'C': 'B', 'D': 'C',
             'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G', '': ''}[column]
 
 
 def nextCol(column):
-    """Return the column letter that comes after `column`.
+    """Return the column letter that comes after column.
 
-    Returns '' if `column` 'H'."""
+    Returns '' if column 'H'."""
     return {'': '', 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E',
             'E': 'F', 'F': 'G', 'G': 'H', 'H': '', '': ''}[column]
 
@@ -123,18 +123,18 @@ def otherCheckers(checker):
 
 
 def getPossibleDstMoves(board, srcSpace):
-    """Get all possible destination moves from `srcSpace`.
+    """Get all possible destination moves from srcSpace.
 
     Returns a tuple of two lists. The first is a list of spaces the
-    checker at `srcSpace` can move to, the second is a list of spaces
-    the checker at `srcSpace` jumps to after capturing a checker."""
+    checker at srcSpace can move to, the second is a list of spaces
+    the checker at srcSpace jumps to after capturing a checker."""
     assert board.get(srcSpace) != EMPTY
 
-    checker = board[srcSpace] # The checker at `srcSpace`.
+    checker = board[srcSpace] # The checker at srcSpace.
     possibleDstMoves = []     # Possible places the checker can move to.
     possibleDstCaptures = []  # Possible places to move after capturing.
 
-    # Setup variables for various spaces adjacent/near `srcSpace`.
+    # Setup variables for various spaces adjacent/near srcSpace.
     column = srcSpace[0]    # Columns are letters.
     row = int(srcSpace[1])  # E.g. convert string '1' to int 1.
     downLeftSpace    = prevCol(column) + str(row + 1)
@@ -267,7 +267,7 @@ def makeMove(board, srcMove, dstMove):
 
 
 def hasLost(board, player):
-    """Return True if `player` has no checkers, otherwise False."""
+    """Return True if player has no checkers, otherwise False."""
     assert player in ('X', 'O')
     for row in range(1, 9):
         for column in ALL_COLUMNS:

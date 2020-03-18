@@ -21,7 +21,7 @@ while True:  # Main program loop.
 
     factors = []
 
-    # Find the factors of `number`:
+    # Find the factors of number:
     for i in range(1, int(math.sqrt(number)) + 1):
         if number % i == 0:  # If there's no remainder, it is a factor.
             factors.append(i)

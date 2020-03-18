@@ -99,7 +99,7 @@ def getNewBoard():
 
 
 def displayBoard(board):
-    """Displays the game board as ASCII-art based on the `board`
+    """Displays the game board as ASCII-art based on the board
     dictionary."""
 
     seedAmounts = []
@@ -143,8 +143,8 @@ def getPlayerMove(playerTurn, board):
 
 
 def makeMove(board, playerTurn, pit):
-    """Modify the `board` data structure so that the player 1 or 2 in
-    `turn` selected `pit` as their pit to sow seeds from. Returns either
+    """Modify the board data structure so that the player 1 or 2 in
+    turn selected pit as their pit to sow seeds from. Returns either
     '1' or '2' for whose turn it is next."""
 
     seedsToSow = board[pit]  # Get number of seeds from selected pit.
@@ -182,7 +182,7 @@ def makeMove(board, playerTurn, pit):
 
 
 def checkForWinner(board):
-    """Looks at `board` and returns either '1' or '2' if there is a
+    """Looks at board and returns either '1' or '2' if there is a
     winner or 'tie' or 'no winner' if there isn't. The game ends when a
     player's pits are all empty; the other player claims the remaining
     seeds for their store. The winner is whoever has the most seeds."""

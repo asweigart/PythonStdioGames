@@ -49,7 +49,7 @@ By Al Sweigart al@inventwithpython.com
 
 
 def putMessageOnRails(message, key):
-    """Lay out the letters in `message` on `key` number of rails."""
+    """Lay out the letters in message on key number of rails."""
     rails = []  # A list of lists, where each list is a rail of letters.
     for i in range(len(message)):
         rails.append([' '] * key)
@@ -85,7 +85,7 @@ def getRailCoordinates(message, key):
 
 
 def copyIfPossible(text):
-    """Copy `text` to the clipboard if pyperclip is installed."""
+    """Copy text to the clipboard if pyperclip is installed."""
     try:
         print('Copied to clipboard.')
         pyperclip.copy(text)  # Copy the text to the clipboard.
@@ -97,7 +97,7 @@ def encryptMessage(message, key):
     rails = putMessageOnRails(message, key)
     railCoordinates = getRailCoordinates(message, key)
 
-    # Lay out the letters in `rails`:
+    # Lay out the letters in rails:
     messageIndex = 0
     for x, y in railCoordinates:
         rails[x][y] = message[messageIndex]
@@ -121,7 +121,7 @@ def decryptMessage(message, key):
     rails = putMessageOnRails(message, key)
     railCoordinates = getRailCoordinates(message, key)
 
-    # Lay out the letters on the `rails`:
+    # Lay out the letters on the rails:
     messageIndex = 0
     for railNumber in range(key):
         for x, y in railCoordinates:

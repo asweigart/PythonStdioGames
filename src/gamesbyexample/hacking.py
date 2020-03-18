@@ -75,7 +75,7 @@ def getBoard(words):
 
         memoryAddress += 16
 
-    # Each string in `board` is joined into one large string to return:
+    # Each string in board is joined into one large string to return:
     return '\n'.join(board)
 
 
@@ -118,7 +118,7 @@ def getWords():
     words = [secretPassword]
 
     # Find two words more that have zero matching letters.
-    # `< 3` because the secret password is already in `words`.
+    # "< 3" because the secret password is already in words.
     while len(words) < 3:
         randomWord = getOneWordExcept(words)
         if numMatchingLetters(secretPassword, randomWord) == 0:

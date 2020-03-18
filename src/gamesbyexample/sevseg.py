@@ -23,7 +23,7 @@ Each digit in a seven-segment display:
 
 
 def getSevSegStr(number, digits=0):
-    """Return a seven-segment display string of `number`. The `digits`
+    """Return a seven-segment display string of number. The digits
     argument is the minimum number of digits in the returned string,
     padded with zeros if needed."""
     # Convert to string in case it's an int or float:

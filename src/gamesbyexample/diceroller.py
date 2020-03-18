@@ -29,8 +29,8 @@ while True:  # Main program loop:
         if dIndex == -1:
             raise Exception('Missing the "d" character.')
 
-        # Get the number of dice:
-        numberOfDice = diceStr[:dIndex]  # The `3` in `3d6+1`.
+        # Get the number of dice. (The "3" in "3d6+1"):
+        numberOfDice = diceStr[:dIndex]
         if not numberOfDice.isdecimal():
             raise Exception('Missing the number of dice.')
         numberOfDice = int(numberOfDice)
@@ -40,9 +40,9 @@ while True:  # Main program loop:
         if modIndex == -1:
             modIndex = diceStr.find('-')
 
-        # Find the number of sides:
+        # Find the number of sides. (The "6" in "3d6+1"):
         if modIndex == -1:
-            numberOfSides = diceStr[dIndex + 1 :]  # The `6` in `3d6+1`.
+            numberOfSides = diceStr[dIndex + 1 :]
             if not numberOfSides.isdecimal():
                 raise Exception('Missing the number of sides.')
             numberOfSides = int(numberOfSides)
@@ -54,8 +54,8 @@ while True:  # Main program loop:
                 raise Exception('Missing the number of sides.')
             numberOfSides = int(numberOfSides)
 
-            # Find the modifier amount:
-            modAmount = int(diceStr[modIndex + 1 :])  # The `1` in `3d6+1`.
+            # Find the modifier amount. (The "1" in "3d6+1"):
+            modAmount = int(diceStr[modIndex + 1 :])
             if diceStr[modIndex] == '+':
                 pass  # Do nothing if it's +.
             elif diceStr[modIndex] == '-':
@@ -83,7 +83,7 @@ while True:  # Main program loop:
 
     except Exception as exc:
         # Catch any exceptions and display the message to the user:
-        print('Invalid input. Enter something like `3d6` or `1d10+2`')
+        print('Invalid input. Enter something like "3d6" or "1d10+2"')
         print('Input was invalid because: ' + str(exc))
         continue  # Go back to the dice string prompt.
     # At this point, go back to the start of the main program loop.

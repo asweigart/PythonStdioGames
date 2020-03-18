@@ -48,7 +48,7 @@ print()
 while True:
     print('Are you going to enter (E)nglish or (M)orse code?')
     response = input().upper()
-    # Note that you DON'T want `response == 'E' or 'M'` here:
+    # Note that you DON'T want "response == 'E' or 'M'" here:
     if response == 'E' or response == 'M':
         break
 

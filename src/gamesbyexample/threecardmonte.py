@@ -22,7 +22,7 @@ MIDDLE = 1
 RIGHT  = 2
 
 def printCards(cards):
-    # Display all the cards in the `cards` list:
+    # Display all the cards in the cards list:
     rows = ['', '', '', '', '']  # Stores the text to display.
 
     for i, card in enumerate(cards):

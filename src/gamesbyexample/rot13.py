@@ -9,18 +9,19 @@ try:
 except ImportError:
     pass  # Don't do anything if pyperclip fails to import.
 
-upperLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-lowerLetters = 'abcdefghijklmnopqrstuvwxyz'
+# Set up the constants:
+UPPER_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LOWER_LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
 print('ROT 13 CIPHER')
 print('By Al Sweigart al@inventwithpython.com')
 print()
 
 while True:  # Main program loop.
-    print('Enter a message to encrypt or decrypt (or `quit` to quit):')
+    print('Enter a message to encrypt or decrypt (or QUIT to quit):')
     message = input('> ')
 
-    if message.lower() == 'quit':
+    if message.upper() == 'QUIT':
         break  # Break out of the main program loop.
 
     # Rotate the letters in message by 13 characters.
@@ -28,12 +29,12 @@ while True:  # Main program loop.
     for character in message:
         if character.isupper():
             # Concatenate uppercase translated character.
-            transCharIndex = (upperLetters.find(character) + 13) % 26
-            translated += upperLetters[transCharIndex]
+            transCharIndex = (UPPER_LETTERS.find(character) + 13) % 26
+            translated += UPPER_LETTERS[transCharIndex]
         elif character.islower():
             # Concatenate lowercase translated character.
-            transCharIndex = (lowerLetters.find(character) + 13) % 26
-            translated += lowerLetters[transCharIndex]
+            transCharIndex = (LOWER_LETTERS.find(character) + 13) % 26
+            translated += LOWER_LETTERS[transCharIndex]
         else:
             # Concatenate the character untranslated.
             translated += character

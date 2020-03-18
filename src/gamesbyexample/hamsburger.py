@@ -10,7 +10,7 @@ import random, os, sys
 
 
 def pluralize(word):
-    """Returns the pluralized form of `word`."""
+    """Returns the pluralized form of word."""
     if word.endswith('o'):
         return word + 'es'
     elif word.endswith('y'):

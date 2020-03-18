@@ -8,7 +8,7 @@ import datetime, random
 
 
 def getBirthdays(number):
-    """Returns a list of `number` random date objects."""
+    """Returns a list of number random date objects."""
     birthdays = []
     for i in range(number):
         startOfYear = datetime.date(2001, 1, 1)
@@ -21,7 +21,7 @@ def getBirthdays(number):
 def getMatch(birthdays):
     """Returns the date object of a matching birthday.
 
-    This date object appears more than once in `birthdays`."""
+    This date object appears more than once in birthdays."""
     if len(birthdays) == len(set(birthdays)):
         return None  # All birthdays are unique, so return None.
 

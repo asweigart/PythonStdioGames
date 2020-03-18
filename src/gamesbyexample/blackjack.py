@@ -130,7 +130,7 @@ def main():
 
 
 def displayCards(cards):
-    """Display all the cards in the `cards` list."""
+    """Display all the cards in the cards list."""
     rows = ['', '', '', '', '']  # Stores the text to display.
 
     for i, card in enumerate(cards):
@@ -160,7 +160,7 @@ def getCardValue(cards):
 
     # Add the value for the non-ace cards:
     for card in cards:
-        rank = card[0]  # `card` is a tuple like (rank, suit)
+        rank = card[0]  # card is a tuple like (rank, suit)
         if rank == 'A':
             numberOfAces += 1
         elif rank in ('K', 'Q', 'J'):  # Face cards are worth 10 points.

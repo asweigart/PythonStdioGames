@@ -67,7 +67,7 @@ def displayBoard(board):
 
 def getNeighboringSpaces(space, direction):
     """Return the two spaces in the direction from the space argument."""
-    x, y = space  # Split up `space` into the x and y coordinates.
+    x, y = space  # Split up space into the x and y coordinates.
 
     if direction == NORTH:
         neighborSpace = x + str(int(y) - 1)  # E.g. convert y of 3 to '2'
