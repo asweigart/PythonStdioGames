@@ -101,9 +101,11 @@ def main():
 
                 if getCardValue(dealerHand) > 21:
                     break  # The dealer has busted.
-                pause()
+                input('Press Enter to continue...')
+                print('\n\n')
 
-        displayHands(playerHand, dealerHand, True)  # Show the final hands.
+        # Show the final hands:
+        displayHands(playerHand, dealerHand, True)
 
         playerValue = getCardValue(playerHand)
         dealerValue = getCardValue(dealerHand)
@@ -123,7 +125,8 @@ def main():
             assert False
         pot = 0  # Reset the pot.
 
-        pause()
+        input('Press Enter to continue...')
+        print('\n\n')
 
 
 def displayCards(cards):
@@ -219,11 +222,6 @@ def displayHands(playerHand, dealerHand, showDealerHand):
     # Show the player's cards:
     print('PLAYER:', getCardValue(playerHand))
     displayCards(playerHand)
-
-
-def pause():
-    input('Press Enter to continue...')
-    print('\n\n')
 
 
 def getMove(playerHand, money):
