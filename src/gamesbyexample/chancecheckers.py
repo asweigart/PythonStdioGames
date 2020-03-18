@@ -5,7 +5,7 @@ These checkers are randomly decided, and can be the player's own
 checkers or their opponents', but you can't move your opponents'
 promoted checkers. In this version, capturing is not mandatory."""
 __version__ = 1
-# TODO - In real checkers, captures are mandatory.
+
 import random, copy, sys
 
 # Setup the constants:

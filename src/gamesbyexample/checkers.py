@@ -3,7 +3,7 @@
 The classic checkers board game.
 In this version, capturing is not mandatory."""
 __version__ = 1
-# TODO - In real checkers, captures are mandatory.
+
 import copy, sys
 
 # Setup the constants:
