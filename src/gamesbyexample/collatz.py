@@ -8,7 +8,7 @@ __version__ = 1
 
 import sys, time
 
-# Setup the constants:
+# Set up the constants:
 PAUSE = 0.1
 
 print('''Collatz Sequence, or, the 3N+1 Problem

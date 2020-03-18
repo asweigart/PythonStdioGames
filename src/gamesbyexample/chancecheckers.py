@@ -8,7 +8,7 @@ __version__ = 1
 
 import random, copy, sys
 
-# Setup the constants:
+# Set up the constants:
 ALL_COLUMNS = 'ABCDEFGH'
 # The columns where odd/even rows can have checkers on them.
 ODD_CHECKER_COLUMNS = 'BDFH'

@@ -11,7 +11,7 @@ __version__ = 1
 
 import math, time, sys, os, random
 
-# Setup the constants:
+# Set up the constants:
 PAUSE_AMOUNT = 0.15
 NUMBER_OF_FIREFLIES = 16
 WIDTH, HEIGHT = 80, 24  # Width & height of the swarm, in text cells.

@@ -26,7 +26,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-# Setup the constants:
+# Set up the constants:
 PAUSE_LENGTH = 0.25
 
 WIDTH, HEIGHT = bext.size()

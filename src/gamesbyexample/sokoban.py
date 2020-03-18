@@ -5,7 +5,7 @@ __version__ = 1
 
 import copy, os, sys
 
-# Setup the constants:
+# Set up the constants:
 WALL = chr(9608)   # Character 9608 is '█'
 FACE = chr(9786)   # Character 9786 is '☺'
 CRATE = chr(9679)  # Character 9679 is '●'

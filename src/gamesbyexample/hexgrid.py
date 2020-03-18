@@ -3,7 +3,7 @@
 Displays a simple tesselation of a hexagon grid."""
 __version__ = 1
 
-# Setup the constants:
+# Set up the constants:
 Y_REPEAT = 12
 X_REPEAT = 19
 

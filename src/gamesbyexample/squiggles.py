@@ -3,7 +3,9 @@
 A program that draws a bunch of random squiggles."""
 __version__ = 1
 
-# Setup the constants:
+import random
+
+# Set up the constants:
 LEFTRIGHT = chr(9472)  # Character 9472 is '─'
 UPDOWN    = chr(9474)  # Character 9474 is '│'
 DOWNRIGHT = chr(9484)  # Character 9484 is '┌'
@@ -26,8 +28,6 @@ ALL_DIRECTIONS = [
 NUMBER_OF_SQUIGGLES = 15
 WIDTH = 79
 HEIGHT = 24
-
-import random
 
 screen = {}
 for i in range(NUMBER_OF_SQUIGGLES):

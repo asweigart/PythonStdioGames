@@ -6,7 +6,7 @@ __version__ = 1
 
 import random, time, copy, sys
 
-# Setup the constants:
+# Set up the constants:
 WIDTH = 79   # The width of the cell grid.
 HEIGHT = 20  # The height of the cell grid.
 ALIVE = 'O'  # The character representing a living cell.

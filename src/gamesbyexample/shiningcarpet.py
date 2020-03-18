@@ -3,7 +3,7 @@
 Displays a tesselation of the carpet pattern from The Shining."""
 __version__ = 1
 
-# Setup the constants:
+# Set up the constants:
 
 
 X_REPEAT = 6

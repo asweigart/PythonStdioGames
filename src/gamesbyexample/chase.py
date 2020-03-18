@@ -5,7 +5,7 @@ __version__ = 1
 
 import random, sys, os
 
-# Setup the constants:
+# Set up the constants:
 WALL = chr(9608) # Character 9608 is '█'
 
 

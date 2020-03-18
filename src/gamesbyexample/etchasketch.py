@@ -18,7 +18,7 @@ __version__ = 1
 
 import sys
 
-# Setup the constants:
+# Set up the constants:
 UP_DOWN_CHAR         = chr(9474)  # Character 9474 is '│'
 LEFT_RIGHT_CHAR      = chr(9472)  # Character 9472 is '─'
 DOWN_RIGHT_CHAR      = chr(9484)  # Character 9484 is '┌'

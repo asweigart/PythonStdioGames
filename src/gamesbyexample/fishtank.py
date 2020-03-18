@@ -1,6 +1,8 @@
 """Fish Tank, by Al Sweigart al@inventwithpython.com
 
-A peaceful animation of a fish tank. Press Ctrl-C to stop."""
+A peaceful animation of a fish tank. Press Ctrl-C to stop.
+Similar to ASCIIQuarium, but mine is based on an older ASCII fish tank
+program for DOS. https://robobunny.com/projects/asciiquarium/html/"""
 __version__ = 1
 
 import random, time, sys
@@ -18,7 +20,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-# Setup the constants:
+# Set up the constants:
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1  # Adjustment for Windows Command Prompt.
 

@@ -7,7 +7,7 @@ __version__ = 1
 
 import random, sys
 
-# Setup the constants:
+# Set up the constants:
 # The "filler" characters for the board.
 GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\'
 

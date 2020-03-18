@@ -5,7 +5,7 @@ __version__ = 1
 
 import random
 
-# Setup the constants:
+# Set up the constants:
 HANGMAN_PICS = [r"""
  +--+
  |  |

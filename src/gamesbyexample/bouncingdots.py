@@ -20,7 +20,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-# Setup the constants:
+# Set up the constants:
 WIDTH, HEIGHT = bext.size()
 WIDTH -= 1  # Adjustment for Windows Command Prompt.
 NUMBER_OF_DOTS = 35

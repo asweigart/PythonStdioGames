@@ -8,7 +8,7 @@ __version__ = 1
 
 import turtle
 
-# Setup the constants:
+# Set up the constants:
 SIZE  = 10 # (!) Try changing the line length by a litte.
 ANGLE = 90 # (!) Try changing the turning angle by a litte.
 LEVEL = 5  # (!) Try changing the recursive level by a litte.

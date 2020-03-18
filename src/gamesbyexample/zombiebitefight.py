@@ -21,7 +21,7 @@ or a Command Prompt window (on Windows) and running:
     sys.exit()
 
 
-# Setup constants:
+# Set up the constants:
 NORTH = 'north'
 SOUTH = 'south'
 EAST = 'east'

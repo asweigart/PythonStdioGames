@@ -8,7 +8,7 @@ __version__ = 1
 
 import random, time, sys
 
-# Setup the constants:
+# Set up the constants:
 VERTICAL_POLE  = chr(9474) # The character '│'
 HORIZONTAL_LEG = chr(9472) # The character '─'
 START_LEG      = chr(9500) # The character '├'

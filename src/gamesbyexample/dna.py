@@ -6,7 +6,7 @@ __version__ = 1
 
 import random, sys, time
 
-# Setup the constants:
+# Set up the constants:
 # These are the individual rows of the DNA animation:
 ROWS = [
     '         ##',  # Index 0 has no {}.

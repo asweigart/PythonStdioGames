@@ -20,7 +20,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-# Setup the constants:
+# Set up the constants:
 BLOCK     = chr(9608) # Character 9608 is '█'
 LEFTRIGHT = chr(9472) # Character 9472 is '─'
 UPDOWN    = chr(9474) # Character 9474 is '│'

@@ -20,7 +20,7 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
-# Setup the constants:
+# Set up the constants:
 # Constants for the size of the grass field:
 WIDTH = 79
 HEIGHT = 22

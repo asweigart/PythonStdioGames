@@ -8,7 +8,7 @@ __version__ = 1
 
 import random, sys
 
-# Setup the constants:
+# Set up the constants:
 BLANK = ''  # A value that represents a blank space on the board.
 
 
