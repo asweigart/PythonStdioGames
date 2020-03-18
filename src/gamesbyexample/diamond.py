@@ -11,6 +11,7 @@ Draws diamonds of various sizes.
  \/   \/    \/     \/      \/       \/"""
 __version__ = 1
 
+
 def displayOutlineDiamond(size):
     # Display the top half of the diamond:
     for i in range(size):
@@ -27,6 +28,7 @@ def displayOutlineDiamond(size):
         print(' ' * ((size - i - 1) * 2), end='')  # Interior of diamond.
         print('/', end='')  # Right side of diamond.
         print()  # A newline.
+
 
 def displayFilledDiamond(size):
     # Display the top half of the diamond:

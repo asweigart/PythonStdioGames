@@ -114,9 +114,8 @@ while True:  # Main program loop.
             # Make sure the filename ends with .txt:
             if not filename.endswith('.txt'):
                 filename += '.txt'
-            file = open(filename, 'w', encoding='utf-8')
-            file.write(getScreenString(screen, None, None))
-            file.close()
+            with open(filename, 'w', encoding='utf-8') as file:
+                file.write(getScreenString(screen, None, None))
         except:
             print('ERROR: Could not save file.')
 
