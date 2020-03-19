@@ -8,6 +8,11 @@ __version__ = 1
 
 import math, random, sys
 
+# Set up the constants:
+UPDOWN    = chr(9474)  # Character 9474 is '│'
+LEFTRIGHT = chr(9472)  # Character 9472 is '─'
+CROSS     = chr(9532)  # Character 9532 is '┼'
+
 WIDTH = 18  # The number of vertical avenues on the map.
 HEIGHT = 8  # The number of horizontal streets on the map.
 
@@ -131,11 +136,11 @@ def displayMap(playerx, playery, visitedIntersections):
             elif (x, y) in visitedIntersections:
                 print('O', end='')  # Print a visited intersection.
             else:
-                print('+', end='')  # Print an unvisited intersection.
+                print(CROSS, end='')  # Print an unvisited intersection.
 
             # Print the horizontal street segment:
             if x < WIDTH - 1:
-                print('--', end='')
+                print(LEFTRIGHT * 2, end='')
 
         # Print the compass rose in the lower right corner:
         if y == 1:
@@ -150,13 +155,13 @@ def displayMap(playerx, playery, visitedIntersections):
             for x in range(WIDTH - 1):
                 if x == 0:
                     print('       ', end='')  # Print indentation.
-                print('|  ', end='')  # Print an avenue segment.
-            print('|', end='')  # Print the rightmost avenue segment.
+                print(UPDOWN + '  ', end='')  # Print an avenue segment.
+            print(UPDOWN, end='')  # Print the rightmost avenue segment.
 
         # Print the compass rose in the lower right corner:
         if y == 1:
-            print(' W-+-E')
-        else:
+            print(' W' + LEFTRIGHT + CROSS + LEFTRIGHT + 'E')
+        elif y != 0:
             print()  # Just print a newline.
 
     # Print the odd avenue names at the bottom:
