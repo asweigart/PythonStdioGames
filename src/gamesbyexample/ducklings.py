@@ -14,7 +14,7 @@ __version__ = 1
 import random, shutil, sys, time
 
 # Set up the constants:
-DENSITY = 10  # Density can range from 0 to 100.
+DENSITY = 10.0  # Density can range from 0.0 to 100.0.
 DUCKLING_WIDTH = 5
 LEFT = 'left'
 RIGHT = 'right'
@@ -50,7 +50,7 @@ def main():
     while True:  # Main program loop.
         for laneNum, ducklingObj in enumerate(ducklingLanes):
             # See if we should create a duckling in this lane:
-            if ducklingObj == None and random.randint(1, 100) <= DENSITY:
+            if ducklingObj == None and (random.randint(1, 10000) / 100) <= DENSITY:
                 # Place a duckling in this lane:
                 ducklingObj = Duckling()
                 ducklingLanes[laneNum] = ducklingObj

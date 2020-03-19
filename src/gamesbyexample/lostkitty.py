@@ -82,7 +82,19 @@ def getOrdIndicator(number):
     """Returns the "ordinal indicator" of number, e.g. 'st' for 1 and
     'rd' for 23, because we write them as "1st" and "23rd"."""
     lastDigit = str(number)[-1]
-    if lastDigit == '1':
+
+    if len(str(number)) >= 2:
+        secondToLastDigit = str(number)[-2]
+    else:
+        secondToLastDigit = ''
+
+    if secondToLastDigit + lastDigit == '11':
+        return 'th'
+    elif secondToLastDigit + lastDigit == '12':
+        return 'th'
+    elif secondToLastDigit + lastDigit == '13':
+        return 'th'
+    elif lastDigit == '1':
         return 'st'
     elif lastDigit == '2':
         return 'nd'

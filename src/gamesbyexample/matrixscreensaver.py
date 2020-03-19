@@ -7,7 +7,7 @@ __version__ = 1
 import random, shutil, sys, time
 
 # Set up the constants:
-DENSITY = 2  # Density can range from 0 to 100.
+DENSITY = 2.0  # Density can range from 0.0 to 100.0.
 MIN_BEAD_LENGTH = 6
 MAX_BEAD_LENGTH = 14
 
@@ -17,7 +17,7 @@ WIDTH = shutil.get_terminal_size()[0]
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-print('Matrix "Rain" Screensaver')
+print('Matrix "Digital Rain" Screensaver')
 print('Press Ctrl-C to quit...')
 time.sleep(3)
 
@@ -27,7 +27,7 @@ try:
         # setup drips
         for c in range(WIDTH):
             if drips[c] == 0:
-                if random.randint(1, 100) <= DENSITY:
+                if (random.randint(1, 10000) / 100) <= DENSITY:
                     drips[c] = random.randint(MIN_BEAD_LENGTH, MAX_BEAD_LENGTH)
 
             if drips[c] != 0:
