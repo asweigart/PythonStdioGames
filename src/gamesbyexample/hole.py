@@ -1,4 +1,4 @@
-"""Tunnel Animation, by Al Sweigart al@inventwithpython.com
+"""Hole, by Al Sweigart al@inventwithpython.com
 
 A tunnel animation."""
 
@@ -12,7 +12,7 @@ PAUSE_AMOUNT = 0.05
 leftWidth = 20
 gapWidth = 10
 
-print('Tunnel Animation, by Al Sweigart al@inventwithpython.com')
+print('Hole, by Al Sweigart al@inventwithpython.com')
 print('Press Ctrl-C to stop.')
 time.sleep(3)
 

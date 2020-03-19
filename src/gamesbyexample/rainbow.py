@@ -18,6 +18,10 @@ or a Command Prompt window (on Windows) and running:
     python -m pip install --user bext''')
     sys.exit()
 
+print('Rainbow, by Al Sweigart al@inventwithpython.com')
+print('Press Ctrl-C to stop.')
+time.sleep(3)
+
 indent = 0  # How many spaces to indent.
 indentIncreasing = True  # Whether the indentation is increasing or not.
 
