@@ -2,7 +2,7 @@
 
 A sample progress bar animation that can be used in other programs.
 Tags: short, module"""
-__version__ = 1
+__version__ = 0
 
 import random, time
 

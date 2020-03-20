@@ -3,7 +3,7 @@
 Move around a maze and try to escape... in 3D and IN YOUR WEB BROWSER!
 Tags: large, maze"""
 
-__version__ = 1
+__version__ = 0
 import sys, os, shutil, webbrowser
 
 # Maze file constants:

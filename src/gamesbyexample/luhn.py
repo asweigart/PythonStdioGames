@@ -4,7 +4,7 @@ The mathematics behind credit card numbers.
 More info at: https://en.wikipedia.org/wiki/Luhn_algorithm
 More info at: https://youtu.be/Erp8IAUouus
 Tags: short, math, algorithm"""
-__version__ = 1
+__version__ = 0
 
 import time, sys
 

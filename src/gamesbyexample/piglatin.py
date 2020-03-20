@@ -2,7 +2,7 @@
 
 Translates English messages into Igpay Atinlay.
 Tags: short, word"""
-__version__ = 1
+__version__ = 0
 
 try:
     import pyperclip  # pyperclip copies text to the clipboard.

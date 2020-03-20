@@ -2,7 +2,7 @@
 
 Move around a maze and try to escape... in 3D!
 Tags: extra-large, maze, game, artistic"""
-__version__ = 1
+__version__ = 0
 import copy, sys, os
 
 # Set up the constants:

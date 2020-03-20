@@ -2,7 +2,7 @@
 
 The classic crate-pushing game.
 Tags: large, game, puzzle game"""
-__version__ = 1
+__version__ = 0
 
 import copy, os, sys
 

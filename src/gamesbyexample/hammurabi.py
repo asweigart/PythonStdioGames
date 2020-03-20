@@ -3,7 +3,7 @@
 The classic game Hamurabi.bas [sic] by Doug Dyment, popularized by David
 Ahl.
 Tags: large, game, simulation"""
-__version__ = 1
+__version__ = 0
 
 import random
 

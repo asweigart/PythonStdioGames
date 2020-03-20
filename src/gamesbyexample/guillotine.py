@@ -2,7 +2,7 @@
 
 A French variant of Hangman with different graphics. Ooh la la!
 Tags: large, game, word, puzzle game"""
-__version__ = 1
+__version__ = 0
 
 import random
 

@@ -3,7 +3,7 @@
 A falling sand animation. (Must be run from a Terminal window.)
 Inspired by https://asciinema.org/a/6515
 Tags: short, simulation"""
-__version__ = 1
+__version__ = 0
 
 # This program MUST be run in a Terminal/Command Prompt window.
 

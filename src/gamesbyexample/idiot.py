@@ -2,7 +2,7 @@
 
 How to keep an idiot busy for hours. (This is a joke program.)
 Tags: tiny, humor"""
-__version__ = 1
+__version__ = 0
 
 while True:  # Main program loop.
     print('Would you like to know how to keep an idiot busy for hours?')

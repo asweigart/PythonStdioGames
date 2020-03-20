@@ -3,7 +3,7 @@
 A tile flipping game, also called reversi.
 More info https://en.wikipedia.org/wiki/Reversi
 Tags: extra-large, game, two-player, board game"""
-__version__ = 1
+__version__ = 0
 
 # A version of this game is featured in the book, "Invent Your Own
 # Computer Games with Python. https://nostarch.com/inventwithpython

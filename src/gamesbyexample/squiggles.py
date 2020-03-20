@@ -2,7 +2,7 @@
 
 A program that draws a bunch of random squiggles.
 Tags: large, artistic"""
-__version__ = 1
+__version__ = 0
 
 import random
 

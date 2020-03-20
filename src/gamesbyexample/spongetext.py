@@ -2,7 +2,7 @@
 
 Translates English messages into sPOnGEtExT.
 Tags: tiny, word"""
-__version__ = 1
+__version__ = 0
 
 import random
 

@@ -2,7 +2,7 @@
 
 Finds all the factors of a number.
 Tags: tiny, math"""
-__version__ = 1
+__version__ = 0
 
 import math, sys
 

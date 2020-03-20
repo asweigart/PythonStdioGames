@@ -10,7 +10,7 @@ Ducklings based on ASCII art designs from the now-defunct Moijie's Room:
 http://www.geocities.jp/luckynopopo/
 Tags: large, scrolling, artistic
 """
-__version__ = 1
+__version__ = 0
 
 import random, shutil, sys, time
 

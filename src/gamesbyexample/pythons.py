@@ -1,7 +1,7 @@
 """Pythons, by Al Sweigart al@inventwithpython.com
 
 Drawing pythons with turtle graphics."""
-__version__ = 1
+__version__ = 0
 
 import turtle
 import random

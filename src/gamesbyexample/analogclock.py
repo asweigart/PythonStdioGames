@@ -2,7 +2,7 @@
 
 An analog clock animation. Press Ctrl-C to stop.
 Tags: large, artistic, bext"""
-__version__ = 1
+__version__ = 0
 
 import time, math, sys
 

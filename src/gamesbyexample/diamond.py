@@ -10,7 +10,7 @@ Draws diamonds of various sizes.
 \  / \\//  \  /   \\//    \  /     \\//
  \/   \/    \/     \/      \/       \/
  Tags: short, artistic"""
-__version__ = 1
+__version__ = 0
 
 
 def main():

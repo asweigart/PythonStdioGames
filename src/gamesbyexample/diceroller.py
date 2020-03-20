@@ -2,7 +2,7 @@
 
 Simulates dice rolls using the Dungeons & Dragons notation.
 Tags: short, simulation"""
-__version__ = 1
+__version__ = 0
 
 import random, sys
 

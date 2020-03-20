@@ -3,7 +3,7 @@
 Scrambles the middle letters of words, but not the first and last
 letters.
 Tags: tiny, word"""
-__version__ = 1
+__version__ = 0
 
 import random
 

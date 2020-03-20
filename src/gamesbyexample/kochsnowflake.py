@@ -1,7 +1,7 @@
 """Koch Snowflake, by Al Sweigart al@inventwithpython.com
 
 Draws a Koch snowflake fractal with turtle graphics."""
-__version__ = 1
+__version__ = 0
 
 import turtle
 turtle.tracer(1, 0) # Make the turtle draw faster.

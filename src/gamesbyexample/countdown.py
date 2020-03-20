@@ -5,7 +5,7 @@ Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
 Requires our sevseg.py program.
 Tags: short"""
-__version__ = 1
+__version__ = 0
 
 # This program MUST be run in a Terminal/Command Prompt window.
 

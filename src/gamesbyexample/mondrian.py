@@ -4,7 +4,7 @@ Randomly generates art in the style of Piet Mondrian.
 
 More info at: https://en.wikipedia.org/wiki/Piet_Mondrian
 Tags: large, artistic"""
-__version__ = 1
+__version__ = 0
 
 import sys, random
 

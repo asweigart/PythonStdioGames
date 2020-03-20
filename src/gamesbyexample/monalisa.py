@@ -2,7 +2,7 @@
 
 Draws an Andy Warhol-like drawing of the Mona Lisa with turtle
 graphics."""
-__version__ = 1
+__version__ = 0
 
 import turtle
 turtle.tracer(400, 0) # Make the turtle draw faster.

@@ -4,7 +4,7 @@ The hacking mini-game from "Fallout 3". Find out which seven-letter
 word is the password by using clues each guess gives you.
 Tags: large, game, artistic"""
 
-__version__ = 1
+__version__ = 0
 
 import random, sys
 

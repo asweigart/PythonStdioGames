@@ -5,7 +5,7 @@ streets and avenues. You'll get hints at how near or far she is.
 This game that teaches cartesian coordinates, cardinal directions, and
 the Pythagorean Theorem.
 Tags: large, game"""
-__version__ = 1
+__version__ = 0
 
 import math, random, sys
 
@@ -14,7 +14,7 @@ UPDOWN    = chr(9474)  # Character 9474 is '│'
 LEFTRIGHT = chr(9472)  # Character 9472 is '─'
 CROSS     = chr(9532)  # Character 9532 is '┼'
 
-WIDTH = 18  # The number of vertical avenues on the map.
+WIDTH = 16  # The number of vertical avenues on the map.
 HEIGHT = 8  # The number of horizontal streets on the map.
 
 assert WIDTH < 100, 'The map is set too wide!'
@@ -113,18 +113,18 @@ def getOrdIndicator(number):
 def displayMap(playerx, playery, visitedIntersections):
     """Display the map, with visited intersections and the player's
     current position."""
-    # Print the even avenue names at the top:
-    print('      ', end='')  # Print indentation.
-    for x in range(0, WIDTH, 2):
-        print(x, getOrdIndicator(x), '  ', sep='', end='')
+    # Print the avenue names at the top:
+    print('      ', end='')
+    for x in range(WIDTH):
+        print(x, getOrdIndicator(x), sep='', end='')
         if x < 10:
             # Single-digit names need an extra space at the end:
             print(' ', end='')
     print()  # Print a newline.
 
-    print('      ', end='')  # Print indentation.
-    for x in range(0, WIDTH, 2):
-        print('Ave   ', end='')
+    print('      ', end='')
+    for x in range(WIDTH):
+        print('Ave ', end='')
     print()  # Print a newline.
 
     # Print the lines for all the roads:
@@ -141,7 +141,7 @@ def displayMap(playerx, playery, visitedIntersections):
 
             # Print the horizontal street segment:
             if x < WIDTH - 1:
-                print(LEFTRIGHT * 2, end='')
+                print(LEFTRIGHT * 3, end='')
 
         # Print the compass rose in the lower right corner:
         if y == 1:
@@ -156,7 +156,7 @@ def displayMap(playerx, playery, visitedIntersections):
             for x in range(WIDTH - 1):
                 if x == 0:
                     print('       ', end='')  # Print indentation.
-                print(UPDOWN + '  ', end='')  # Print an avenue segment.
+                print(UPDOWN + '   ', end='')  # Print an avenue segment.
             print(UPDOWN, end='')  # Print the rightmost avenue segment.
 
         # Print the compass rose in the lower right corner:
@@ -164,20 +164,6 @@ def displayMap(playerx, playery, visitedIntersections):
             print(' W' + LEFTRIGHT + CROSS + LEFTRIGHT + 'E')
         elif y != 0:
             print()  # Just print a newline.
-
-    # Print the odd avenue names at the bottom:
-    print('         ', end='')
-    for x in range(1, WIDTH, 2):
-        print(x, getOrdIndicator(x), '  ', sep='', end='')
-        if x < 10:
-            # Single-digit names need an extra space at the end:
-            print(' ', end='')
-    print()  # Print a newline.
-
-    print('         ', end='')
-    for x in range(1, WIDTH, 2):
-        print('Ave   ', end='')
-    print()  # Print a newline.
 
 
 def getPlayerMove(playerx, playery):

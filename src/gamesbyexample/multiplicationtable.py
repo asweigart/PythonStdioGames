@@ -2,7 +2,7 @@
 
 Print a multiplication table.
 Tags: tiny, math"""
-__version__ = 1
+__version__ = 0
 
 print('''MULTIPLICATION TABLE
 By Al Sweigart al@inventwithpython.com

@@ -2,7 +2,7 @@
 
 Displays a tessellation of the carpet pattern from The Shining.
 Tags: tiny, artistic"""
-__version__ = 1
+__version__ = 0
 
 # Set up the constants:
 X_REPEAT = 6  # How many times to tessellate horizontally.

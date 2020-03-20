@@ -4,7 +4,7 @@ Watch grass get cut and grow again. Press Ctrl-C to stop.
 Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 https://bitbucket.org/jvillard/tondeuse/src/default/
 Tags: large, artistic"""
-__version__ = 1
+__version__ = 0
 
 import time, random, sys
 

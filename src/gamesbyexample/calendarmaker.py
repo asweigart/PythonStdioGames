@@ -2,7 +2,7 @@
 
 Create monthly calendars, saved to a text file and fit for printing.
 Tags: short, artistic"""
-__version__ = 1
+__version__ = 0
 
 import datetime
 

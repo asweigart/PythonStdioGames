@@ -2,7 +2,7 @@
 
 Slide the numbered tiles into the correct order.
 Tags: large, game, puzzle game"""
-__version__ = 1
+__version__ = 0
 
 import random, sys
 

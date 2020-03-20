@@ -2,7 +2,7 @@
 
 Translates English messages into l33t5p34]<.
 Tags: tiny, word, pyperclip"""
-__version__ = 1
+__version__ = 0
 
 import random
 

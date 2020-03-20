@@ -1,7 +1,7 @@
 """FOUR IN A ROW, by Al Sweigart al@inventwithpython.com
 A tile-dropping game to get four in a row, similar to Connect Four.
 Tags: large, game, board game, two-player"""
-__version__ = 1
+__version__ = 0
 import sys
 
 # Constants used for displaying the board:

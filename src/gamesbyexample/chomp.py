@@ -5,7 +5,7 @@ Inspired by a Frederik Schuh and David Gale puzzle, published by
 Martin Gardner in Scientific American (January 1973).
 More info at: https://en.wikipedia.org/wiki/Chomp
 Tags: short, game, puzzle game"""
-__version__ = 1
+__version__ = 0
 
 import random, sys
 

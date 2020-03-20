@@ -3,7 +3,7 @@
 Shows the equivalent numbers in decimal, hexadecimal, and binary.
 Tags: short, math"""
 
-__version__ = 1
+__version__ = 0
 
 print('''Numeral System Counters
 By Al Sweigart al@inventwithpython.com

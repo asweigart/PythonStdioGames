@@ -4,7 +4,7 @@ A bouncing line animation. Press Ctrl-C to stop.
 
 NOTE: Do not resize the terminal window while this program is running.
 Tags: large, artistic, bext"""
-__version__ = 1
+__version__ = 0
 
 import sys, random, time
 

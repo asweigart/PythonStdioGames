@@ -4,7 +4,7 @@ Generate splatter-art with the "random walk" algorithm.
 Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Random_walk
 Tags: short, artistic, bext"""
-__version__ = 1
+__version__ = 0
 
 import random, time, sys
 

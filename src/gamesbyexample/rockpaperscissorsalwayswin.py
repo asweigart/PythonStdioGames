@@ -2,7 +2,7 @@
 
 A hand game of luck, except you cannot lose.
 Tags: tiny, game, humor"""
-__version__ = 1
+__version__ = 0
 
 import time, sys
 

@@ -2,7 +2,7 @@
 
 A beautiful animation of fireflies. Press Ctrl-C to stop.
 Tags: large, artistic"""
-__version__ = 1
+__version__ = 0
 
 # This program MUST be run in a Terminal/Command Prompt window.
 

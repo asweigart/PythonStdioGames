@@ -3,7 +3,7 @@
 Follow the trail to see who wins!
 More info at: https://en.wikipedia.org/wiki/Ghost_Leg
 Tags: large, artistic"""
-__version__ = 1
+__version__ = 0
 
 import random, time, sys
 

@@ -5,7 +5,7 @@ Generates numbers for the Collatz sequence, given a starting number.
 More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
 An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/
 Tags: short, math, algorithm"""
-__version__ = 1
+__version__ = 0
 
 import sys, time
 

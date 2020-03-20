@@ -3,7 +3,7 @@
 A cellular automata animation. Press Ctrl-C to stop.
 More info: https://en.wikipedia.org/wiki/Langton%27s_ant
 Tags: large, simulation, bext, artistic"""
-__version__ = 1
+__version__ = 0
 
 import random, copy, sys, time
 

@@ -2,7 +2,7 @@
 
 The classic board game.
 Tags: short, game, two-player"""
-__version__ = 1
+__version__ = 0
 
 ALL_SPACES = list('123456789') # The keys for a TTT board dictionary.
 X, O, BLANK = 'X', 'O', ' ' # Constants for string values.

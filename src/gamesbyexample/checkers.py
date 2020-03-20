@@ -3,7 +3,7 @@
 The classic checkers board game.
 In this version, capturing is not mandatory.
 Tags: extra-large, board game, game, two-player"""
-__version__ = 1
+__version__ = 0
 
 import copy, sys
 

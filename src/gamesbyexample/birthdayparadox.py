@@ -3,7 +3,7 @@
 Explore the mathematics of the "Birthday Paradox".
 More info at https://en.wikipedia.org/wiki/Birthday_problem
 Tags: short, math, simulation"""
-__version__ = 1
+__version__ = 0
 
 import datetime, random
 

@@ -2,7 +2,7 @@
 
 Ask a yes/no question about your future.
 Tags: tiny, humor"""
-__version__ = 1
+__version__ = 0
 
 import random, time
 
