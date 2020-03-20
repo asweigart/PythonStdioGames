@@ -1,7 +1,7 @@
 # Games By Example
 # By Al Sweigart al@inventwithpython.com
 
-__version__ = '0.1.4'
+__version__ = '0.1.5'
 
 # TODO - check if the support files have been changed and let the user undo changes.
 
