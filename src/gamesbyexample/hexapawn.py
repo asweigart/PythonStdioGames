@@ -7,7 +7,8 @@ board with six pawns, but this program lets you use boards of any
 size.
 
 Based on Martin Gardner's puzzle.
-More info at: https://en.wikipedia.org/wiki/Hexapawn"""
+More info at: https://en.wikipedia.org/wiki/Hexapawn
+Tags: extra-large, game, two-player, board game"""
 __version__ = 1
 
 import sys

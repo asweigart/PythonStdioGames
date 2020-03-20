@@ -5,7 +5,8 @@ multiple of 3, you say "fizz" instead of the number. If the number is a
 multiple of 5, you say "buzz" instead of the number. If the number is a
 multiple of 3 and 5, you say "fizzbuzz".
 
-More info at: https://en.wikipedia.org/wiki/Fizz_buzz"""
+More info at: https://en.wikipedia.org/wiki/Fizz_buzz
+Tags: tiny, math"""
 __version__ = 1
 
 number = 1

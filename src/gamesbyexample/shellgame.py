@@ -1,6 +1,7 @@
 """Shell Game, by Al Sweigart al@inventwithpython.com
 
-A random gambling game."""
+A random gambling game.
+Tags: tiny, game"""
 __version__ = 1
 
 import random, time, sys

@@ -1,7 +1,8 @@
 """Soroban, by Al Sweigart al@inventwithpython.com
 
 A simulation of a Japanese abacus calculator tool.
-More info at: https://en.wikipedia.org/wiki/Soroban"""
+More info at: https://en.wikipedia.org/wiki/Soroban
+Tags: large, simulation, math, artistic"""
 __version__ = 1
 
 

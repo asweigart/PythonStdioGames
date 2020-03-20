@@ -1,4 +1,6 @@
-"""Zombie Bite Fight, by Al Sweigart al@inventwithpython.com"""
+"""Zombie Bite Fight, by Al Sweigart al@inventwithpython.com
+
+Tags: extra-large, simulation, bext"""
 
 # TODO - add more comments and explanation.
 

@@ -1,7 +1,8 @@
 """Matrix Screensaver, by Al Sweigart al@inventwithpython.com
 
 A screensaver in the style of The Matrix movie's "digital rain"
-visual."""
+visual.
+Tags: tiny, scrolling, artistic"""
 __version__ = 1
 
 import random, shutil, sys, time

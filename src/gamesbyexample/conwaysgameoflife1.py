@@ -1,7 +1,8 @@
 """Conway's Game of Life, by Al Sweigart al@inventwithpython.com
 
 The classic cellular automata simulation. Press Ctrl-C to stop.
-More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"""
+More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+Tags: short, artistic, simulation"""
 __version__ = 1
 
 import random, time, copy, sys

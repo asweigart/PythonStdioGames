@@ -1,6 +1,7 @@
 """Multiplication Table, by Al Sweigart al@inventwithpython.com
 
-Print a multiplication table."""
+Print a multiplication table.
+Tags: tiny, math"""
 __version__ = 1
 
 print('''MULTIPLICATION TABLE

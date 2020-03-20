@@ -1,7 +1,8 @@
 """Middle Letter Scrambler, by Al Sweigart al@inventwithpython.com
 
 Scrambles the middle letters of words, but not the first and last
-letters."""
+letters.
+Tags: tiny, word"""
 __version__ = 1
 
 import random

@@ -1,6 +1,7 @@
 """Snail Race, by Al Sweigart al@inventwithpython.com
 
-Fast-paced snail racing action!"""
+Fast-paced snail racing action!
+Tags: short, artistic, game, multiplayer"""
 __version__ = 1
 
 import random, time, sys

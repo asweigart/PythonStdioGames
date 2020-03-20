@@ -3,7 +3,8 @@
 Find the Queen of Hearts after cards have been swapped around.
 (In the real-life version, the scammer palms the Queen of Hearts so you
 always lose.)
-More info at https://en.wikipedia.org/wiki/Three-card_Monte"""
+More info at https://en.wikipedia.org/wiki/Three-card_Monte
+Tags: large, game, card game"""
 __version__ = 1
 
 import random, time

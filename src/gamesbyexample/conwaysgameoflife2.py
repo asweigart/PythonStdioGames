@@ -6,7 +6,8 @@ characters.
 The classic cellular automata simulation. Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
-NOTE: Do not resize the terminal window while this program is running."""
+NOTE: Do not resize the terminal window while this program is running.
+Tags: large, artistic, simulation, bext"""
 __version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.

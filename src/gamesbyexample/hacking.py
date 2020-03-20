@@ -1,7 +1,8 @@
 """Hacking, by Al Sweigart al@inventwithpython.com
 
 The hacking mini-game from "Fallout 3". Find out which seven-letter
-word is the password by using clues each guess gives you."""
+word is the password by using clues each guess gives you.
+Tags: large, game, artistic"""
 
 __version__ = 1
 

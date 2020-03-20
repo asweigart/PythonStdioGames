@@ -8,6 +8,7 @@ A screensaver of many many ducklings.
 
 Ducklings based on ASCII art designs from the now-defunct Moijie's Room:
 http://www.geocities.jp/luckynopopo/
+Tags: large, scrolling, artistic
 """
 __version__ = 1
 

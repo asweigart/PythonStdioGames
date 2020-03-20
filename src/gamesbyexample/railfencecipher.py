@@ -1,7 +1,8 @@
 """Rail Fence Cipher, by Al Sweigart al@inventwithpython.com
 
 The "rail fence" cipher for encrypting text.
-More info at: https://en.wikipedia.org/wiki/Rail_fence_cipher"""
+More info at: https://en.wikipedia.org/wiki/Rail_fence_cipher
+Tags: large, cryptography, pyperclip"""
 __version__ = 1
 
 try:

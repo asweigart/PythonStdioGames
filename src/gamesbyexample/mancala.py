@@ -1,5 +1,6 @@
 """MANCALA, by Al Sweigart al@inventwithpython.com
-The ancient seed-sowing game."""
+The ancient seed-sowing game.
+Tags: large, game, board game, two-player"""
 __version__ = 1
 import sys
 

@@ -8,7 +8,8 @@ Draws diamonds of various sizes.
  /\   /\  /    \ ///\\\ \      / \\\\////
 /  \ //\\ \    / \\\///  \    /   \\\///
 \  / \\//  \  /   \\//    \  /     \\//
- \/   \/    \/     \/      \/       \/"""
+ \/   \/    \/     \/      \/       \/
+ Tags: short, artistic"""
 __version__ = 1
 
 

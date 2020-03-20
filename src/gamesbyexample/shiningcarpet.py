@@ -1,6 +1,7 @@
 """Shining Carpet, by Al Sweigart al@inventwithpython.com
 
-Displays a tessellation of the carpet pattern from The Shining."""
+Displays a tessellation of the carpet pattern from The Shining.
+Tags: tiny, artistic"""
 __version__ = 1
 
 # Set up the constants:

@@ -2,7 +2,8 @@
 
 A bouncing dots animation. Press Ctrl-C to stop.
 
-NOTE: Do not resize the terminal window while this program is running."""
+NOTE: Do not resize the terminal window while this program is running.
+Tags: short, artistic, bext"""
 __version__ = 1
 
 import sys, random, time

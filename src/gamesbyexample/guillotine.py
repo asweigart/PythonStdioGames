@@ -1,6 +1,7 @@
 """Guillotine, by Al Sweigart al@inventwithpython.com
 
-A French variant of Hangman with different graphics. Ooh la la!"""
+A French variant of Hangman with different graphics. Ooh la la!
+Tags: large, game, word, puzzle game"""
 __version__ = 1
 
 import random

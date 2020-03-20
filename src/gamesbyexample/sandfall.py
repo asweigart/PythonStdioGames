@@ -1,7 +1,8 @@
 """Sand Fall, by Al Sweigart al@inventwithpython.com
 
 A falling sand animation. (Must be run from a Terminal window.)
-Inspired by https://asciinema.org/a/6515"""
+Inspired by https://asciinema.org/a/6515
+Tags: short, simulation"""
 __version__ = 1
 
 # This program MUST be run in a Terminal/Command Prompt window.

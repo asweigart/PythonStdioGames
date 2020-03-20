@@ -1,7 +1,8 @@
 """Sudoku, by Al Sweigart al@inventwithpython.com
 
 The classic 9x9 number placement puzzle.
-More info at https://en.wikipedia.org/wiki/Sudoku"""
+More info at https://en.wikipedia.org/wiki/Sudoku
+Tags: large, game, puzzle game"""
 
 import copy, random, sys
 

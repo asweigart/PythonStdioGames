@@ -1,6 +1,7 @@
 """Zigzag, by Al Sweigart al@inventwithpython.com
 
-A simple zig zag animation. Press Ctrl-C to stop."""
+A simple zig zag animation. Press Ctrl-C to stop.
+Tags: tiny, artistic, scrolling"""
 __version__ = 1
 
 import time, sys

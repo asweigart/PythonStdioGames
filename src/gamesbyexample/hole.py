@@ -1,6 +1,7 @@
 """Hole, by Al Sweigart al@inventwithpython.com
 
-A tunnel animation."""
+A tunnel animation.
+Tags: tiny, scrolling, artistic"""
 
 __version__ = 1
 import random, time, sys

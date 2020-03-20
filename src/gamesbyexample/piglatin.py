@@ -1,6 +1,7 @@
 """Pig Latin, by Al Sweigart al@inventwithpython.com
 
-Translates English messages into Igpay Atinlay."""
+Translates English messages into Igpay Atinlay.
+Tags: short, word"""
 __version__ = 1
 
 try:

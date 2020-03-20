@@ -2,7 +2,8 @@
 
 Place numbers in a hexagon so each row adds up to 38.
 More info at https://en.wikipedia.org/wiki/Magic_hexagon
-More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0"""
+More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0
+Tags: large, game, puzzle game, board game"""
 __version__ = 1
 
 import sys

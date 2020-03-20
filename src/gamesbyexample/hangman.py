@@ -1,6 +1,7 @@
 """Hangman, by Al Sweigart al@inventwithpython.com
 
-A word-guessing game."""
+A word-guessing game.
+Tags: large, game, word, puzzle game"""
 __version__ = 1
 
 # A version of this game is featured in the book, "Invent Your Own

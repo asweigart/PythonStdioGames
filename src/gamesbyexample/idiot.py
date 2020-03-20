@@ -1,6 +1,7 @@
 """Idiot, by Al Sweigart al@inventwithpython.com
 
-How to keep an idiot busy for hours. (This is a joke program.)"""
+How to keep an idiot busy for hours. (This is a joke program.)
+Tags: tiny, humor"""
 __version__ = 1
 
 while True:  # Main program loop.

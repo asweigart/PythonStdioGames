@@ -1,7 +1,8 @@
 """Langton's Ant, by Al Sweigart al@inventwithpython.com
 
 A cellular automata animation. Press Ctrl-C to stop.
-More info: https://en.wikipedia.org/wiki/Langton%27s_ant"""
+More info: https://en.wikipedia.org/wiki/Langton%27s_ant
+Tags: large, simulation, bext, artistic"""
 __version__ = 1
 
 import random, copy, sys, time

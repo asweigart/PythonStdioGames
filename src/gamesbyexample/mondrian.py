@@ -2,7 +2,8 @@
 
 Randomly generates art in the style of Piet Mondrian.
 
-More info at: https://en.wikipedia.org/wiki/Piet_Mondrian"""
+More info at: https://en.wikipedia.org/wiki/Piet_Mondrian
+Tags: large, artistic"""
 __version__ = 1
 
 import sys, random

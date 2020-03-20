@@ -1,6 +1,7 @@
 """Rainbow, by Al Sweigart al@inventwithpython.com
 
-Shows a simple rainbow animation. Press Ctrl-C to stop."""
+Shows a simple rainbow animation. Press Ctrl-C to stop.
+Tags: tiny, scrolling, artistic, bext"""
 __version__ = 1
 
 import time, sys

@@ -1,6 +1,7 @@
 """Sokoban clone, by Al Sweigart al@inventwithpython.com
 
-The classic crate-pushing game."""
+The classic crate-pushing game.
+Tags: large, game, puzzle game"""
 __version__ = 1
 
 import copy, os, sys

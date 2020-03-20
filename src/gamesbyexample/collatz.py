@@ -3,7 +3,8 @@
 Generates numbers for the Collatz sequence, given a starting number.
 
 More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
-An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/"""
+An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/
+Tags: short, math, algorithm"""
 __version__ = 1
 
 import sys, time

@@ -3,7 +3,8 @@
 A dangerously delicious logic game.
 Inspired by a Frederik Schuh and David Gale puzzle, published by
 Martin Gardner in Scientific American (January 1973)
-More info at: https://en.wikipedia.org/wiki/Chomp"""
+More info at: https://en.wikipedia.org/wiki/Chomp
+Tags: short, game, puzzle game"""
 __version__ = 1
 
 import random, sys
@@ -30,7 +31,6 @@ for x in 'ABCDEFGHI'[:width]:
 
 turn = 'X'
 while True:  # Main game loop.
-
     # Display the chocolate bar:
     print(' ABCDEFGHI'[: width + 1])  # Print the horizontal labels.
     for iy in range(height):

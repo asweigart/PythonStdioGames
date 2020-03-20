@@ -1,6 +1,7 @@
 """Squiggles, by Al Sweigart al@inventwithpython.com
 
-A program that draws a bunch of random squiggles."""
+A program that draws a bunch of random squiggles.
+Tags: large, artistic"""
 __version__ = 1
 
 import random

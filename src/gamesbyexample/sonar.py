@@ -1,6 +1,7 @@
 """Sonar Treasure Hunt, by Al Sweigart al@inventwithpython.com
 
-Try to locate treasure chests hidden under the waves."""
+Try to locate treasure chests hidden under the waves.
+Tags: large, game"""
 __version__ = 1
 
 # A version of this game is featured in the book, "Invent Your Own

@@ -1,8 +1,8 @@
 """Matching Parentheses, by Al Sweigart al@inventwithpython.com
 
-A parentheses/bracket/braces matching algorithm."""
+A parentheses/bracket/braces matching algorithm.
+Tags: short, algorithm"""
 __version__ = 1
-
 
 
 def main():

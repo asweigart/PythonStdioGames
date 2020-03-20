@@ -1,6 +1,7 @@
 """Hex Grid, by Al Sweigart al@inventwithpython.com
 
-Displays a simple tessellation of a hexagon grid."""
+Displays a simple tessellation of a hexagon grid.
+Tags: tiny, artistic"""
 __version__ = 1
 
 # Set up the constants:

@@ -1,6 +1,7 @@
 """Fast Draw, by Al Sweigart al@inventwithpython.com
 
-Try to out-draw the computer in this gunfighter game."""
+Try to out-draw the computer in this gunfighter game.
+Tags: tiny, game"""
 
 import random, sys, time
 

@@ -2,7 +2,8 @@
 
 Play tic tac toe against the computer. Every possible move has been
 hard-coded into this program. The program is 5200 lines long.
-This is a joke program, don't actually write code like this."""
+This is a joke program, don't actually write code like this.
+Tags: extra-large, game"""
 __version__ = 1
 import sys
 print('Welcome to Tic Tac Toe!')

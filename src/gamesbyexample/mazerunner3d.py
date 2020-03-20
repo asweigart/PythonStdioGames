@@ -1,6 +1,7 @@
 """Maze 3D, by Al Sweigart al@inventwithpython.com
 
-Move around a maze and try to escape... in 3D!"""
+Move around a maze and try to escape... in 3D!
+Tags: extra-large, maze, game, artistic"""
 __version__ = 1
 import copy, sys, os
 

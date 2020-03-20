@@ -1,7 +1,8 @@
 """99 Bottles of Beer on the Wall, by Al Sweigart al@inventwithpython.com
 
 Print the full lyrics to one of the most longest songs ever!
-Press Ctrl-C to stop."""
+Press Ctrl-C to stop.
+Tags: tiny, scrolling"""
 __version__ = 1
 
 import time, sys

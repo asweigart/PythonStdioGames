@@ -1,7 +1,8 @@
 """Hour Glass Animation, by Al Sweigart al@inventwithpython.com
 
 An animation of an hour glass filled with falling sand.
-Press Ctrl-C to stop."""
+Press Ctrl-C to stop.
+Tags: large, artistic, simulation, bext"""
 __version__ = 1
 import random, time, sys
 

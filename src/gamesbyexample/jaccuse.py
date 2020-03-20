@@ -1,7 +1,8 @@
 """J'ACCUSE!, by Al Sweigart al@inventwithpython.com
 
 A mystery game of intrigue and a missing cat.
-Inspired by Homestar Runner's "Where's an Egg?" game"""
+Inspired by Homestar Runner's "Where's an Egg?" game
+Tags: extra-large, game, puzzle game, humor"""
 __version__ = 1
 
 # Play the original Flash game at:
