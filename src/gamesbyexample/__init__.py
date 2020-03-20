@@ -1,7 +1,7 @@
 # Games By Example
 # By Al Sweigart al@inventwithpython.com
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 # TODO - check if the support files have been changed and let the user undo changes.
 
@@ -190,7 +190,7 @@ def main():
     openFolderButton = ttk.Button(mainframe, text='Open Folder', command=openFolderClick)
     openFolderButton.grid(column=0, row=1, stick=(N, S, E, W))
 
-    descTextarea = Text(mainframe, width=50, height=6)
+    descTextarea = Text(mainframe, width=60, height=6)
     descTextarea.grid(column=2, row=0, columnspan=3, sticky=(N, S, E, W))
     descTextarea.configure(font=('Arial', 12))
     descTextarea.configure(state='disabled')
@@ -228,6 +228,9 @@ def main():
     programListbox.event_generate("<<ListboxSelect>>")
 
     root.bind('<Escape>', quitLauncher) # Bind Esc key to quit the program.
+
+    root.resizable(False, False) # TODO: until we make the text area resize, disable resizing.
+
     root.mainloop()
 
 

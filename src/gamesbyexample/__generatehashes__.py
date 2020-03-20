@@ -31,30 +31,42 @@ SUPPORT_FILES = {'mazerunner2d.py': ['maze11x11s1.txt', 'maze51x17s42.txt'],
                  'pygame_games/wormy.py': ['pygame_games/freesansbold.ttf'],
                  }
 
+IGNORE_FILES = ['stickyhands.py', 'tutorialguess1.py', 'tutorialguess2.py',
+                'tutorialguess3.py', 'tutorialguess4.py', 'tutorialguess5.py',
+                'tutorialguess6.py', 'tutorialguess7.py', 'zombiebitefight.py']
+
 origFilesZip = zipfile.ZipFile('_originalFiles.zip', 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9)
 
 
 allFiles = os.listdir('.') + ['pygame_games/' + f for f in os.listdir('pygame_games')]
 
 for filename in allFiles:
-    if not filename.endswith('.py') or filename.startswith('_'):
+    if not filename.endswith('.py') or filename.startswith('_') or filename in IGNORE_FILES:
         continue
+
+    print('Processing', filename)
 
     with open(filename, encoding='utf-8') as fo:
         lines = fo.readlines()
         content = ''.join(lines)
-
+        #breakpoint()
         # Get the title from the first line's comment:
-        name, credit = lines[0][2:].split(',')
+        try:
+            name, credit = lines[0][3:].split(',')
+        except:
+            #breakpoint()
+            print('ERROR: Badly formed credit docstring in', filename)
+            raise
 
         # Get the description from the subsequent lines' comments:
         descLines = []
-        for i in range(1, len(lines)):
-            if lines[i].startswith('#'):
-                descLines.append(lines[i][2:].strip())
+        for i in range(2, len(lines)):
+            if '"""' not in lines[i]:
+                descLines.append(lines[i])
             else:
+                descLines.append(lines[i].replace('"""', ''))
                 break
-        desc = ' '.join(descLines)
+        desc = ''.join(descLines)
 
         hash = zlib.adler32(content.encode('utf-8'))
 
