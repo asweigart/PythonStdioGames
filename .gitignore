@@ -2,6 +2,9 @@
 # However, it should be included in the PyPI distribution.
 _originalFiles.zip
 _research/
+inprogress/
+__pyflakescheck__.bat
+__programdata__.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

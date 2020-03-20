@@ -1,7 +1,8 @@
 """Sticky Hands, by Al Sweigart al@inventwithpython.com
 
-A jewel-stealing, movement puzzle game."""
-__version__ = 1
+A jewel-stealing, movement puzzle game.
+Tags: large, game, puzzle game"""
+__version__ = 0
 
 # Inspired by Herding Cats https://w.itch.io/herding-cats
 
@@ -9,10 +10,11 @@ __version__ = 1
 
 import copy, os, sys
 
-# Setup the constants:
-WALL = chr(9608)
-FACE = chr(9786)
-DIAMOND = chr(9830)
+# Set up the constants:
+WALL    = chr(9608)  # Character 9608 is '█'
+FACE    = chr(9786)  # Character 9786 is '☺'
+DIAMOND = chr(9830)  # Character 9830 is '♦'
+
 CHAR_MAP = {'#': WALL, '@': FACE, '$': DIAMOND, ' ': ' '} # TODO add comment
 
 # Display the title banner and instructions:
@@ -33,7 +35,7 @@ if not os.path.exists('stickyhandslevels.txt'):
     sys.exit()
 ALL_LEVELS = []
 with open('stickyhandslevels.txt') as levelFile:
-    currentLevelFromFile = {'width': 0, 'height': 0, 'diamonds': 0, (0, 0): ''} # Each level is represented by a dictionary.
+    currentLevelFromFile = {'width': 0, 'height': 0, 'diamonds': 0} # Each level is represented by a dictionary.
     y = 0
     for line in levelFile.readlines():
         if line.startswith(';'):

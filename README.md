@@ -1,16 +1,14 @@
 # PythonStdioGames
 
-INSTALL: `pip install gamesbyexample`
+A collection of Python 3 source code for simple, text-based games & simulations to use as example programs.
 
-(Use `pip3` on macOS and Linux. Also try `pip install --user gamesbyexample` if you get permission errors.)
+INSTALL: `pip install --user gamesbyexample`
+
+(Use `pip3` on macOS and Linux.)
 
 RUN LAUNCHER: `python -m gamesbyexample`
 
-A collection of games (with source code) to use for example programming lessons. Written in Python 3. Click on the **src** folder to view all of the programs.
-
-NOTE: Currently I'm not accepting pull requests at this time, but feel free to leave comments or send suggestions to al@inventwithpython.com
-
-(Other nifty modules are pyttsx3 (for text-to-speech) and playsound (for playing wav and mp3 files).)
+I'm not accepting pull requests currently, but feel free to leave comments or send suggestions to al@inventwithpython.com
 
 About this Collection
 =====================
