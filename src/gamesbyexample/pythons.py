@@ -26,10 +26,10 @@ def main():
         # Set up the snake coloration:
         turtle.pencolor(random.choice(SNAKE_COLORS))
 
-        redAmount = random.randint(0, 100) / 100.0
-        greenAmount = random.randint(0, 100) / 100.0
-        blueAmount = random.randint(0, 100) / 100.0
-        # (!) Uncomment the following line to use random colors.
+        # (!) Uncomment the following 4 lines to use random colors.
+        #redAmount = random.randint(0, 100) / 100.0
+        #greenAmount = random.randint(0, 100) / 100.0
+        #blueAmount = random.randint(0, 100) / 100.0
         #turtle.pencolor(redAmount, greenAmount, blueAmount)
 
         turtle.fillcolor(turtle.pencolor())

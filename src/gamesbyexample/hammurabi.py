@@ -5,7 +5,7 @@ Ahl.
 Tags: large, game, simulation"""
 __version__ = 0
 
-import random
+import random, sys
 
 print('HAMMURABI by Doug Dyment and others')
 print('Try your hand at governing ancient Sumeria for a ten-year term of office.')
@@ -155,7 +155,7 @@ while True:  # Main game loop.
         print('Due to this extreme mismanagement you have not only')
         print('been impeached and thrown out of office but you have')
         print('also been declared a national fink!!!!')
-        return  # Game over.
+        sys.exit()  # Game over.
 
     population -= deaths  # Update population.
     year += 1
@@ -175,13 +175,13 @@ if percentageDiedPerYear > 33 or acresPerPerson < 7:
     print('Due to this extreme mismanagement you have not only')
     print('been impeached and thrown out of office but you have')
     print('also been declared a national fink!!!!')
-    return
+    sys.exit()
 
 elif percentageDiedPerYear > 10 or acresPerPerson < 9:
     print('Your heavy-handed performance smacks of Nero and Ivan IV.')
     print('The people (remaining) find you an unpleasant ruler, and,')
     print('frankly, hate your guts!!')
-    return
+    sys.exit()
 
 elif percentageDiedPerYear > 3 or acresPerPerson < 10:
     print('Your performance could have been somewhat better, but')

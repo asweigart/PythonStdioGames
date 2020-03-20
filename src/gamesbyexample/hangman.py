@@ -7,7 +7,7 @@ __version__ = 0
 # A version of this game is featured in the book, "Invent Your Own
 # Computer Games with Python. https://nostarch.com/inventwithpython
 
-import random
+import random, sys
 
 # Set up the constants:
 HANGMAN_PICS = [r"""
