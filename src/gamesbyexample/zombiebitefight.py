@@ -239,7 +239,6 @@ class Board:
         time.sleep(PAUSE_LENGTH)
 
 
-
 zombies = []
 for i in range(40):
     # Colors must be one of 'red', 'green', 'blue', 'yellow', 'cyan',

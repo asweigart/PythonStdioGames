@@ -24,6 +24,43 @@ for key, value in ENGLISH_TO_MORSE.items():
     MORSE_TO_ENGLISH[value] = key
 
 
+def main():
+    print('MORSE CODE')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
+
+    while True:
+        print('Are you going to enter (E)nglish or (M)orse code?')
+        response = input().upper()
+        # Note that you DON'T want "response == 'E' or 'M'" here:
+        if response == 'E' or response == 'M':
+            break
+
+    if response == 'E':
+        print('Enter English text:')
+        english = input().upper()
+        print('Morse code:')
+        morse = englishToMorse(english)
+        print(morse)
+        try:
+            pyperclip.copy(morse)
+            print('(Morse copied to clipboard.)')
+        except:
+            pass
+    elif response == 'M':
+        print('Enter Morse code (with spaces in between each code letter):')
+        morse = input()
+        print('English:')
+        english = morseToEnglish(morse)
+        print(english)
+
+        try:
+            pyperclip.copy(english)
+            print('(English text copied to clipboard.)')
+        except:
+            pass  # If pyperclip cannot be found, it's not a big deal.
+
+
 def englishToMorse(message):
     morse = []  # Make a list of each letter's morse code.
     for character in message:
@@ -41,37 +78,6 @@ def morseToEnglish(message):
     return ''.join(english)
 
 
-print('MORSE CODE')
-print('By Al Sweigart al@inventwithpython.com')
-print()
-
-while True:
-    print('Are you going to enter (E)nglish or (M)orse code?')
-    response = input().upper()
-    # Note that you DON'T want "response == 'E' or 'M'" here:
-    if response == 'E' or response == 'M':
-        break
-
-if response == 'E':
-    print('Enter English text:')
-    english = input().upper()
-    print('Morse code:')
-    morse = englishToMorse(english)
-    print(morse)
-    try:
-        pyperclip.copy(morse)
-        print('(Morse copied to clipboard.)')
-    except:
-        pass
-elif response == 'M':
-    print('Enter Morse code (with spaces in between each code letter):')
-    morse = input()
-    print('English:')
-    english = morseToEnglish(morse)
-    print(english)
-
-    try:
-        pyperclip.copy(english)
-        print('(English text copied to clipboard.)')
-    except:
-        pass  # If pyperclip cannot be found, it's not a big deal.
+# If the program is run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

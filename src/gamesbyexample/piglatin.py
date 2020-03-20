@@ -11,6 +11,23 @@ except ImportError:
 VOWELS = ('a', 'e', 'i', 'o', 'u', 'y')
 
 
+def main():
+    print('''IGPAY ATINLAY (Pig Latin)
+By Al Sweigart al@inventwithpython.com
+
+Enter your message:''')
+    pigLatin = englishToPigLatin(input())
+
+    # Join all the words back together into a single string:
+    print(pigLatin)
+
+    try:
+        pyperclip.copy(pigLatin)
+        print('(Copied pig latin to clipboard.)')
+    except NameError:
+        pass  # Do nothing if pyperclip wasn't installed.
+
+
 def englishToPigLatin(message):
     pigLatin = ''  # A string of the pig latin translation.
     for word in message.split():
@@ -56,23 +73,6 @@ def englishToPigLatin(message):
         # Add the non-letters back to the start or end of the word.
         pigLatin += prefixNonLetters + word + suffixNonLetters + ' '
     return pigLatin
-
-
-def main():
-    print('''IGPAY ATINLAY (Pig Latin)
-By Al Sweigart al@inventwithpython.com
-
-Enter your message:''')
-    pigLatin = englishToPigLatin(input())
-
-    # Join all the words back together into a single string:
-    print(pigLatin)
-
-    try:
-        pyperclip.copy(pigLatin)
-        print('(Copied pig latin to clipboard.)')
-    except NameError:
-        pass  # Do nothing if pyperclip wasn't installed.
 
 
 if __name__ == '__main__':

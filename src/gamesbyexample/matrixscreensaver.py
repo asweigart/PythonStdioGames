@@ -1,6 +1,6 @@
 """Matrix Screensaver, by Al Sweigart al@inventwithpython.com
 
-A "screensaver" in the style of The Matrix movie's "digital rain bead"
+A screensaver in the style of The Matrix movie's "digital rain"
 visual."""
 __version__ = 1
 

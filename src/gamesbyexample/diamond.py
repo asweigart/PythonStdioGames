@@ -12,6 +12,19 @@ Draws diamonds of various sizes.
 __version__ = 1
 
 
+def main():
+    print('Diamond Drawings')
+    print('By Al Sweigart al@inventwithpython.com')
+    print()
+
+    # Display diamonds of sizes 1 through 6:
+    for diamondSize in range(1, 6):
+        displayOutlineDiamond(diamondSize)
+        print()
+        displayFilledDiamond(diamondSize)
+        print()
+
+
 def displayOutlineDiamond(size):
     # Display the top half of the diamond:
     for i in range(size):
@@ -50,12 +63,6 @@ def displayFilledDiamond(size):
         print()  # A newline.
 
 
-print('Diamond Drawings, by Al Sweigart al@inventwithpython.com')
-print()
-
-# Display diamonds of sizes 1 through 6:
-for diamondSize in range(1, 6):
-    displayOutlineDiamond(diamondSize)
-    print()
-    displayFilledDiamond(diamondSize)
-    print()
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

@@ -11,14 +11,14 @@ BLANK = '  '
 def main():
     """Run a single game of Sliding Puzzle."""
     print('''SLIDING PUZZLE
-By Al Sweigart al@inventwithpython.com
+    By Al Sweigart al@inventwithpython.com
 
-Use the WASD keys to move the tiles
-back into their original order:
-       1  2  3  4
-       5  6  7  8
-       9 10 11 12
-      13 14 15   ''')
+    Use the WASD keys to move the tiles
+    back into their original order:
+           1  2  3  4
+           5  6  7  8
+           9 10 11 12
+          13 14 15   ''')
 
     gameBoard = getNewPuzzle()
 

@@ -21,7 +21,7 @@ def main():
     print('''CHANCE CHECKERS
     By Al Sweigart al@inventwithpython.com''')
     gameBoard = getNewBoard() # Create a new checker board.
-    turn = 'X' # X goes first.
+    turn = 'O' # O goes first.
     while True: # Main game loop.
         displayBoard(gameBoard)
         moves = random.sample('xxxooo', 3)  # Randomly pick 3 Xs and Os.

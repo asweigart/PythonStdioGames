@@ -6,6 +6,29 @@ __version__ = 1
 import random, time
 
 
+def main():
+    # Simulate a download:
+    print('Progress Bar Simulation:')
+    bytesDownloaded = 0
+    downloadSize = 4098
+    while bytesDownloaded < downloadSize:
+        # "Download" a random amount of "bytes":
+        bytesDownloaded += random.randint(0, 100)
+
+        # Get the progress bar string for this amount of progress:
+        barStr = getProgressBar(bytesDownloaded, downloadSize)
+
+        # Don't print a newline at the end, and immediately flush the
+        # printed string to the screen:
+        print(barStr, end='', flush=True)
+
+        # Pause for a little bit:
+        time.sleep(0.2)
+
+        # Print backspaces to erase the previously printed progress bar:
+        print('\b' * len(barStr), end='', flush=True)
+
+
 def getProgressBar(progress, total, barWidth=40):
     """Returns a string that represents a progress bar that has barWidth
     bars and has progressed progress amount out of a total amount."""
@@ -36,23 +59,6 @@ def getProgressBar(progress, total, barWidth=40):
     return progressBar  # Return the progress bar string.
 
 
-# Simulate a download:
-print('Progress Bar Simulation:')
-bytesDownloaded = 0
-downloadSize = 4098
-while bytesDownloaded < downloadSize:
-    # "Download" a random amount of "bytes":
-    bytesDownloaded += random.randint(0, 100)
-
-    # Get the progress bar string for this amount of progress:
-    barStr = getProgressBar(bytesDownloaded, downloadSize)
-
-    # Don't print a newline at the end, and immediately flush the
-    # printed string to the screen:
-    print(barStr, end='', flush=True)
-
-    # Pause for a little bit:
-    time.sleep(0.2)
-
-    # Print backspaces to erase the previously printed progress bar:
-    print('\b' * len(barStr), end='', flush=True)
+# If the program is run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()

@@ -12,6 +12,26 @@ except ImportError:
     pass  # It's not a big deal if pyperclip is not installed.
 
 
+def main():
+    """Run the Middle Letter Scrambler program."""
+    print('''Middle Letter Scrambler
+By Al Sweigart al@inventwithpython.com
+
+Your biran can pbablroy raed sambcerld wrdos as lnog as the fsirt and
+last lteters are in the rihgt pcale.
+
+Enter your message:''')
+    scrambled = englishToMiddleLetterScramble(input())
+    print()
+    print(scrambled)
+
+    try:
+        pyperclip.copy(scrambled)
+        print('(Copied scrambled text to clipboard.)')
+    except:
+        pass  # Do nothing if pyperclip wasn't installed.
+
+
 def englishToMiddleLetterScramble(message):
     """Convert the string message into middle-letter scrambled text."""
     if message == '':
@@ -36,26 +56,6 @@ def englishToMiddleLetterScramble(message):
         scrambled += word[0] + middleLetters + word[-1] + ' '
 
     return scrambled[:-1]  # [:-1] to cut off the final added ' ' space.
-
-
-def main():
-    """Run the Middle Letter Scrambler program."""
-    print('''Middle Letter Scrambler
-By Al Sweigart al@inventwithpython.com
-
-Your biran can pbablroy raed sambcerld wrdos as lnog as the fsirt and
-last lteters are in the rihgt pcale.
-
-Enter your message:''')
-    scrambled = englishToMiddleLetterScramble(input())
-    print()
-    print(scrambled)
-
-    try:
-        pyperclip.copy(scrambled)
-        print('(Copied scrambled text to clipboard.)')
-    except:
-        pass  # Do nothing if pyperclip wasn't installed.
 
 
 # If this program was run (instead of imported), run the game:

@@ -1,6 +1,6 @@
 """Duckling Screensaver, by Al Sweigart al@inventwithpython.com
 
-A "screensaver" of many many ducklings.
+A screensaver of many many ducklings.
 
 >" )   ='')    (``=   ("=  >")    ("=
 (  >)  (  ^)  (v  )  (^ )  ( >)  (v )

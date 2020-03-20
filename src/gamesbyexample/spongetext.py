@@ -11,6 +11,23 @@ except ImportError:
     pass  # It's not a big deal if pyperclip is not installed.
 
 
+def main():
+    """Run the Spongetext program."""
+    print('''sPoNgEtExT
+bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
+
+eNtEr YoUr MeSsAgE:''')
+    spongetext = englishToSpongetext(input())
+    print()
+    print(spongetext)
+
+    try:
+        pyperclip.copy(spongetext)
+        print('(cOpIed SpOnGeTexT to ClIpbOaRd.)')
+    except:
+        pass  # Do nothing if pyperclip wasn't installed.
+
+
 def englishToSpongetext(message):
     """Return the spongetext form of the given string."""
     spongetext = ''
@@ -32,23 +49,6 @@ def englishToSpongetext(message):
         if random.randint(1, 10) == 1:
             useUpper = not useUpper
     return spongetext
-
-
-def main():
-    """Run the Spongetext program."""
-    print('''sPoNgEtExT
-bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
-
-eNtEr YoUr MeSsAgE:''')
-    spongetext = englishToSpongetext(input())
-    print()
-    print(spongetext)
-
-    try:
-        pyperclip.copy(spongetext)
-        print('(cOpIed SpOnGeTexT to ClIpbOaRd.)')
-    except:
-        pass  # Do nothing if pyperclip wasn't installed.
 
 
 # If this program was run (instead of imported), run the game:

@@ -4,6 +4,38 @@ A parentheses/bracket/braces matching algorithm."""
 __version__ = 1
 
 
+
+def main():
+    print("""MATCHING PARENTHESES ALGORITHM
+    By Al Sweigart al@inventwithpython.com
+
+    This demonstrates an algorithm for detecting matching parentheses,
+    curly braces, and square brackets in a string. For example:
+
+        MATCHING     NOT MATCHING
+        ()           )(
+        {}[]         [[]
+        ({[]})       ({)}
+        {[][](())}   {}}
+
+    The algorithm works by using a "stack" data structure, where values
+    are only added or removed from the "top" of the stack.
+
+    To check a string, we loop over each symbol in order. Opening
+    symbols are "pushed" (added) to the stack, while closing symbols
+    "pop" (remove) the symbol off of the stack (but only if it's matches
+    the opening symbol at the top of the stack.)
+    The string has matching parentheses/braces/brackets if the stack is
+    empty at the end of the string.
+    """)
+    print('Enter the string to check, for example {[][](())}:')
+    response = input()
+    print()
+
+    result = isMatchingParens(response)
+    print('"' + response + '"', 'IS MATCHING:', result)
+
+
 def isMatchingParens(strToCheck):
     # A Python list is a stack data structure if we only push values on
     # it with the append() method and pop values off it with the pop()
@@ -82,31 +114,6 @@ def isMatchingParens(strToCheck):
     return isMatching
 
 
-print("""MATCHING PARENTHESES ALGORITHM
-By Al Sweigart al@inventwithpython.com
-
-This program demonstrates an algorithm for detecting matching
-parentheses, curly braces, and square brackets in a string. For example:
-
-    MATCHING     NOT MATCHING
-    ()           )(
-    {}[]         [[]
-    ({[]})       ({)}
-    {[][](())}   {}}
-
-The algorithm works by using a "stack" data structure, where values are
-only added or removed from the "top" of the stack.
-
-To check a string, we loop over each character in order. Opening
-characters are "pushed" (added) to the stack, while closing characters
-"pop" (remove) the character off of the stack (but only if it's matches
-the opening character at the top of the stack.)
-The string has matching parentheses/braces/brackets if the stack is empty
-at the end of the string.
-
-Enter the string to check, for example {[][](())}:""")
-response = input()
-print()
-
-result = isMatchingParens(response)
-print('"' + response + '"', 'IS MATCHING:', result)
+# If this program was run (instead of imported), run the game:
+if __name__ == '__main__':
+    main()
