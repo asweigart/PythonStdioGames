@@ -11,6 +11,7 @@ GRID_LENGTH = 9  # also the number of spaces in rows, columns and boxes.
 BOX_LENGTH = 3
 FULL_GRID_SIZE = GRID_LENGTH * GRID_LENGTH
 
+# TODO - add "show solution" option
 
 class SudokuGrid:
     def __init__(self, originalNumbers):

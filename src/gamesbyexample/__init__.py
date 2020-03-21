@@ -3,12 +3,17 @@
 
 __version__ = '0.1.5'
 
+import sys, pymsgbox
+if sys.version_info[0] == 2:
+    pymsgbox.alert('ERROR: You\'re running Python 2, but the gamesbyexample module requires Python 3.')
+    sys.exit()
+
 # TODO - check if the support files have been changed and let the user undo changes.
 
 
 
 
-import sys, os, subprocess, zlib, zipfile, webbrowser, random
+import os, subprocess, zlib, zipfile, webbrowser, random
 
 from .__programdata__ import PROGRAMS, SUPPORT_FILES
 

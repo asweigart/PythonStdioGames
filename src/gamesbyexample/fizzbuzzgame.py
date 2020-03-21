@@ -48,9 +48,11 @@ while True:  # Main game loop.
     # See if the player was correct:
     if response != correctResponse:
         print('NOOOOO! Correct response: {}'.format(correctResponse))
+        print('Thanks for playing!')
         sys.exit()
     elif time.time() > doomClock:
         print('NOOOOO! You have run out of time!')
+        print('Thanks for playing!')
         sys.exit()
 
     # If the player was right, add 2 seconds to the doom clock.

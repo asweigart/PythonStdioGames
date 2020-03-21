@@ -9,6 +9,8 @@ More info at: https://en.wikipedia.org/wiki/Fizz_buzz
 Tags: tiny, math"""
 __version__ = 0
 
+# TODO - intro
+
 number = 1
 while number < 100000:  # Main program loop.
     if number % 3 == 0 and number % 5 == 0:
