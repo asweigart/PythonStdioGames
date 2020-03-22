@@ -9,7 +9,7 @@ import random, time, sys
 # Set up the constants:
 MAX_NUM_SNAILS = 8
 MAX_NAME_LENGTH = 20
-FINISH_LINE = 40  # (!) EXPERIMENT: Try modifying this number.
+FINISH_LINE = 40  # (!) Try modifying this number.
 
 print('''SNAIL RACE
 By Al Sweigart al@inventwithpython.com
