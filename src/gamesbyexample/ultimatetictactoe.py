@@ -2,7 +2,7 @@
 
 Tags: large, game, board game, two-player"""
 
-# TODO - not finished, and needs a LOT of polishing.
+# TODO - Comments need updating.
 
 import sys
 
@@ -29,14 +29,7 @@ def main():
         focusX, focusY = getPlayerMove(turn, gameBoard, focusX, focusY)
 
         # Check for a global winner:
-        globalBoard = {}
-        for x in range(BOARD_WIDTH):
-            for y in range(BOARD_HEIGHT):
-                winner = getWinner(gameBoard[(x, y)])
-                if winner in (TIED, None):
-                    globalBoard[(x, y)] = EMPTY_SPACE
-                elif winner in (X_PLAYER, O_PLAYER):
-                    globalBoard[(x, y)] = winner
+        globalBoard = makeBoardFromLocalBoards(gameBoard)
         globalWinner = getWinner(globalBoard)
         if globalWinner == TIED:
             displayBoard(gameBoard)
@@ -124,7 +117,7 @@ def displayBoard(board):
 
 def getWinner(board):
     for i in range(9): # sanity check
-        assert board[(i % 3, i // 3)] in (X_PLAYER, O_PLAYER, EMPTY_SPACE)
+        assert board[(i % 3, i // 3)] in (X_PLAYER, O_PLAYER, EMPTY_SPACE, TIED)
 
     topLeft  = board[(0, 0)]
     topMid   = board[(1, 0)]
@@ -148,19 +141,12 @@ def getWinner(board):
             return player
 
     # Check for a tie:
-    isTied = True
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
             if board[(x, y)] == EMPTY_SPACE:
-                isTied = False
-    if isTied:
-        return TIED
-
-    # Return None because there is no winner yet:
-    return None
-
-
-
+                # Return None because there is no winner yet:
+                return None
+    return TIED
 
 
 def getPlayerMove(player, board, focusX, focusY):
@@ -191,7 +177,7 @@ def getPlayerMove(player, board, focusX, focusY):
     board[(focusX, focusY)][(x, y)] = player
 
     # Figure out the local board that the next player must move on:
-    if getWinner(board[(focusX, focusY)]) == None:
+    if getWinner(board[(x, y)]) == None:
         return (x, y)
     else:
         # Otherwise if there's a winner or it's tied, the next player can move on any local board:
@@ -223,47 +209,18 @@ def enter1Through9(validMoves):
         print('You cannot select that space.')
 
 
-
-
-
-
-
-
-
-r"""
-  A B C D E F G H I
-1 . . .|. O .|. . . 1
-2 . X .|. . .|. . . 2
-3 . . .|. . .|. . . 3
-  -----+-----+-----
-4 . . .| \ / |. . . 4
-5 . . .|  X  |. . . 5
-6 . . .| / \ |. . . 6
-  -----+-----+-----
-7 #####|. . .|  _   7
-8 #####|. . .| / \  8
-9 #####|. . .| \_/  9
-  A B C D E F G H I
-
-  A B C D E F G H I
-1 . . .|. O .|. . . 1
-2 . X .|. . .|. . . 2
-3 . . .|. . .|. . . 3
-  -----+-----+-----
-4 . . .| # # |. . . 4
-5 . . .|  #  |. . . 5
-6 . . .| # # |. . . 6
-  -----+-----+-----
-7 #####|. . .| ###  7
-8 #####|. . .| # #  8
-9 #####|. . .| ###  9
-  A B C D E F G H I
-
-        1 2 3
-        4 5 6
-        7 8 9
-"""
-
+def makeBoardFromLocalBoards(localBoards):
+    globalBoard = {}
+    for x in range(BOARD_WIDTH):
+        for y in range(BOARD_HEIGHT):
+            winner = getWinner(localBoards[(x, y)])
+            if winner == None:
+                globalBoard[(x, y)] = EMPTY_SPACE
+            elif winner == TIED:
+                globalBoard[(x, y)] = TIED
+            elif winner in (X_PLAYER, O_PLAYER):
+                globalBoard[(x, y)] = winner
+    return globalBoard
 
 
 # If the program is run (instead of imported), run the game:

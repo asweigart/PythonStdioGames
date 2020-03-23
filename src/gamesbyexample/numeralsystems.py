@@ -15,7 +15,7 @@ hexadecimal (base 16), and binary (base 2) numeral systems.
 ''')
 
 while True:
-    response = input('Enter the starting number> ')
+    response = input('Enter the starting number (e.g. 0) > ')
     if response == '':
         response = '0'  # Start at 0 by default.
         break
@@ -25,7 +25,7 @@ while True:
 start = int(response)
 
 while True:
-    response = input('Enter how many numbers to display> ')
+    response = input('Enter how many numbers to display (e.g. 1000) > ')
     if response == '':
         response = '1000'  # Display 1000 numbers by default.
         break
