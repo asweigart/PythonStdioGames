@@ -23,19 +23,6 @@ NEXT_PIT = {'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': '1',
 # Every pit label, in counterclockwise order starting with A:
 PIT_LABELS = 'ABCDEF1LKJIHG2'
 
-# The template string for displaying the board:
-BOARD_TEMPLATE = """
-+------+--<<<<<-Player 2---+----+----+------+
-|2     |G   |H   |I   |J   |K   |L   |1     |
-S      | {} | {} | {} | {} | {} | {} |      S
-T      |    |    |    |    |    |    |      T
-O  {}  +----+----+----+----+----+----+  {}  O
-R      |A   |B   |C   |D   |E   |F   |      R
-E      | {} | {} | {} | {} | {} | {} |      E
-|      |    |    |    |    |    |    |      |
-+------+----+---Player 1->>>>>--+----+------+
-"""
-
 # How many seeds are in each pit at the start of a new game:
 STARTING_NUMBER_OF_SEEDS = 4
 
@@ -110,7 +97,17 @@ def displayBoard(board):
         numSeedsInThisPit = str(board[pit]).rjust(2)
         seedAmounts.append(numSeedsInThisPit)
 
-    print(BOARD_TEMPLATE.format(*seedAmounts))
+    print("""
++------+--<<<<<-Player 2---+----+----+------+
+|2     |G   |H   |I   |J   |K   |L   |1     |
+S      | {} | {} | {} | {} | {} | {} |      S
+T      |    |    |    |    |    |    |      T
+O  {}  +----+----+----+----+----+----+  {}  O
+R      |A   |B   |C   |D   |E   |F   |      R
+E      | {} | {} | {} | {} | {} | {} |      E
+|      |    |    |    |    |    |    |      |
++------+----+---Player 1->>>>>--+----+------+
+""".format(*seedAmounts))
 
 
 def getPlayerMove(playerTurn, board):

@@ -7,6 +7,7 @@ Kaprekar Numbers are numbers whose square in that base can be split into
 
 Tags: tiny, math
 """
+__version__ = 0
 
 print("""Kaprekar Numbers, by Al Sweigart al@inventwithpython.com
 

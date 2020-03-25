@@ -7,6 +7,9 @@ Barca was invented by Andrew Caldwell http://playbarca.com
 More info at https://en.wikipedia.org/wiki/Barca_(board_game)
 """
 
+# TODO - add docstrings, comments, replace data structures with simple helper functions
+# TODO - display the board again with possible moves.
+
 import sys
 
 # Set up the constants:
@@ -23,12 +26,14 @@ ROUND_LION = '(Li)'
 ROUND_ELEPHANT = '(El)'
 LAND = ' __ '
 WATER = ' ~~ '
-AFRAID_OF = {SQUARE_MOUSE: ROUND_LION,
-             SQUARE_LION: ROUND_ELEPHANT,
-             SQUARE_ELEPHANT: ROUND_MOUSE,
-             ROUND_MOUSE: SQUARE_LION,
-             ROUND_LION: SQUARE_ELEPHANT,
-             ROUND_ELEPHANT: SQUARE_MOUSE}
+FEARED_PIECE = {SQUARE_MOUSE: ROUND_LION,
+                SQUARE_LION: ROUND_ELEPHANT,
+                SQUARE_ELEPHANT: ROUND_MOUSE,
+                ROUND_MOUSE: SQUARE_LION,
+                ROUND_LION: SQUARE_ELEPHANT,
+                ROUND_ELEPHANT: SQUARE_MOUSE}
+PLAYER_PIECE = {SQUARE_PLAYER: (SQUARE_MOUSE, SQUARE_LION, SQUARE_ELEPHANT),
+                ROUND_PLAYER: (ROUND_MOUSE, ROUND_LION, ROUND_ELEPHANT)}
 
 UPLEFT   = (-1, -1)
 UP       = (0, -1)
@@ -42,12 +47,18 @@ CARDINAL_DIRECTIONS = (UP, LEFT, RIGHT, DOWN)
 DIAGONAL_DIRECTIONS = (UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT)
 ALL_DIRECTIONS = CARDINAL_DIRECTIONS + DIAGONAL_DIRECTIONS
 
-AFRAID_OF_MOVEMENTS = {SQUARE_MOUSE: DIAGONAL_DIRECTIONS,
-                       SQUARE_LION: ALL_DIRECTIONS,
-                       SQUARE_ELEPHANT: CARDINAL_DIRECTIONS,
-                       ROUND_MOUSE: DIAGONAL_DIRECTIONS,
-                       ROUND_LION: ALL_DIRECTIONS,
-                       ROUND_ELEPHANT: CARDINAL_DIRECTIONS}
+ANIMAL_DIRECTIONS = {SQUARE_MOUSE: CARDINAL_DIRECTIONS,
+                     SQUARE_LION: DIAGONAL_DIRECTIONS,
+                     SQUARE_ELEPHANT: ALL_DIRECTIONS,
+                     ROUND_MOUSE: CARDINAL_DIRECTIONS,
+                     ROUND_LION: DIAGONAL_DIRECTIONS,
+                     ROUND_ELEPHANT: ALL_DIRECTIONS}
+FEARED_ANIMAL_DIRECTIONS = {SQUARE_MOUSE: DIAGONAL_DIRECTIONS,
+                            SQUARE_LION: ALL_DIRECTIONS,
+                            SQUARE_ELEPHANT: CARDINAL_DIRECTIONS,
+                            ROUND_MOUSE: DIAGONAL_DIRECTIONS,
+                            ROUND_LION: ALL_DIRECTIONS,
+                            ROUND_ELEPHANT: CARDINAL_DIRECTIONS}
 
 EMPTY_SPACE = 'empty'
 WATERING_HOLES = ((3, 3), (6, 3), (3, 6), (6, 6))
@@ -65,16 +76,18 @@ before other animals can move.
 
 Barca was invented by Andrew Caldwell http://playbarca.com
 """)
+    print('Press Enter to begin...')
+    input()
 
     turn = ROUND_PLAYER
     gameBoard = getNewBoard()
     while True:  # Main game loop.
-        breakpoint()
         displayBoard(gameBoard)
 
-        #move = getPlayerMove(turn, gameBoard)
-        #if isWinner(turn):
-        #    pass
+        doPlayerMove(turn, gameBoard)
+        if isWinner(turn, gameBoard):
+            print(turn, 'has won!')
+            sys.exit()
 
         # Switch turns to the next player.
         if turn == SQUARE_PLAYER:
@@ -142,7 +155,7 @@ def getAnimalStr(board, x, y):
     piece = board[(x, y)]
     assert piece in (SQUARE_MOUSE, SQUARE_LION, SQUARE_ELEPHANT, ROUND_MOUSE, ROUND_LION, ROUND_ELEPHANT)
 
-    for offsetX, offsetY in AFRAID_OF_MOVEMENTS[piece]:
+    for offsetX, offsetY in FEARED_ANIMAL_DIRECTIONS[piece]:
         # Check the directions of the animal this piece is afraid of:
         checkX, checkY = x, y  # Start at the piece's location.
         while True:
@@ -151,7 +164,7 @@ def getAnimalStr(board, x, y):
             checkY += offsetY
             if not isOnBoard(checkX, checkY):
                 break  # This space is off-board, so stop checking.
-            if board[(checkX, checkY)] == AFRAID_OF[piece]:
+            if board[(checkX, checkY)] == FEARED_PIECE[piece]:
                 return piece[0:-1] + '!'  # This piece is afraid.
             elif board[(checkX, checkY)] != EMPTY_SPACE:
                 break  # Another animal is blocking any feared animals.
@@ -164,8 +177,111 @@ def isOnBoard(x, y):
     return (0 <= x < BOARD_WIDTH) and (0 <= y < BOARD_HEIGHT)
 
 
-def getPlayerMove(player, board):
-    pass
+def doPlayerMove(player, board):
+    validMoves = getPieceMovements(player, board)
+    assert len(validMoves) > 0
+
+    validMovesInA1 = []
+    for x, y in validMoves.keys():
+        validMovesInA1.append(xyToA1(x, y))
+    print(player + ', select piece to move (or QUIT):', ', '.join(validMovesInA1))
+    while True:  # Keep asking the player until they select a valid piece.
+        response = input('> ').upper()
+        if response == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
+        if response in validMovesInA1:
+            selectedPiece = A1ToXy(response)
+            break  # Player has selected a valid piece.
+        print('Please select one of the given pieces.')
+
+    moveToInA1 = []
+    for x, y in validMoves[selectedPiece]:
+        moveToInA1.append(xyToA1(x, y))
+    print('Select where to move this piece:', ', '.join(moveToInA1))
+    while True:  # Keep asking the player until they select a valid space to move the piece to.
+        response = input('> ').upper()
+        if response == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
+        if response in moveToInA1:
+            moveTo = A1ToXy(response)
+            break  # Player has selected a valid space to move to.
+        print('Please select one of the given spaces.')
+
+    movePiece(selectedPiece, moveTo, board)
+
+
+def movePiece(pieceXY, moveTo, board):
+    # TODO - note that board is a dictionary so changes made here existed outside the function.
+    # Carry out the move:
+    board[moveTo] = board[pieceXY]  # Place a piece at "move to".
+    board[pieceXY] = EMPTY_SPACE  # Remove the piece from its original location.
+
+
+def getPieceMovements(player, board):
+    # Figure out which pieces can move (afraid ones must move first).
+    afraidPiecePositions = []  # List of (x, y) tuples of pieces.
+    unafraidPiecePositions = []  # List of (x, y) tuples of pieces.
+    for y in range(BOARD_HEIGHT):
+        for x in range(BOARD_WIDTH):
+            if board[(x, y)] in PLAYER_PIECE[player]:
+                # Check if the animal is afraid or not:
+                if getAnimalStr(board, x, y).endswith('!'):
+                    afraidPiecePositions.append((x, y))
+                else:
+                    unafraidPiecePositions.append((x, y))
+
+    if len(afraidPiecePositions) != 0:
+        # Unafraid pieces can't move if there are afraid pieces.
+        unafraidPiecePositions = []
+
+    # Go through all of the pieces and get their valid moves:
+    validMoves = {}  # Keys are (x, y) tuples, values are list of (x, y) tuples of where they can move.
+    for piecePosition in afraidPiecePositions + unafraidPiecePositions:
+        x, y = piecePosition
+        piece = board[(x, y)]
+        validMoves[(x, y)] = []  # This list will contain this piece's valid move locations.
+        # Check the cardinal directions to see where this mouse can move:
+        for offsetX, offsetY in ANIMAL_DIRECTIONS[piece]:
+            checkX, checkY = x, y  # Start at the piece's location.
+            while True:
+                # The space check moves further in the current direction:
+                checkX += offsetX
+                checkY += offsetY
+                if not isOnBoard(checkX, checkY) or board[(checkX, checkY)] != EMPTY_SPACE:
+                    break  # This space is off-board or blocked by another animal, so stop checking.
+                elif board[(checkX, checkY)] == EMPTY_SPACE:
+                    validMoves[(x, y)].append((checkX, checkY))
+
+    # Remove the possible moves that would end up putting the piece into a feared position.
+    for piecePosition, possibleMoves in validMoves.items():
+        x, y = piecePosition
+        piece = board[(x, y)]
+        fearedPositions = []  # List of (x, y) tuples where this piece doesn't want to move.
+        for moveToX, moveToY in possibleMoves:
+            # Simulate what would happen if we move the piece to moveToX, moveToY:
+            movePiece(piecePosition, (moveToX, moveToY), board)
+            if getAnimalStr(board, moveToX, moveToY).endswith('!'):
+                # Moving here would make the piece afraid, so don't let it move here.
+                fearedPositions.append((moveToX, moveToY))
+            movePiece((moveToX, moveToY), piecePosition, board)  # Move the piece back to the original space.
+        if len(possibleMoves) != len(fearedPositions):
+            # Some of the moves will make this piece afraid, so remove those from the possible moves.
+            # (If all of the moves were feared, then the piece isn't restricted at all.)
+            for fearedX, fearedY in fearedPositions:
+                validMoves[piecePosition].remove((fearedX, fearedY))
+    return validMoves
+
+
+def xyToA1(x, y):
+    return chr(x + 65) + str(y + 1)
+
+
+def A1ToXy(space):
+    column = space[0]
+    row = space[1:]
+    return (ord(column) - 65, int(row) - 1)
 
 
 def isWinner(player, board):
@@ -185,40 +301,6 @@ def isWinner(player, board):
         return False
 
 
-
 # If the program is run (instead of imported), run the game:
 if __name__ == '__main__':
     main()
-
-
-"""
-     A   B   C   D   E   F   G   H
-  +--------------------------------+
-  |                                |
-1 | __  __  __ [El][El] __  __  __ | 1
-  |                                |
-2 | __  __ [Li][Mo][Mo][Li] __  __ | 2
-  |                                |
-3 | __  __  ~~  __  __  ~~  __  __ | 3
-  |                                |
-4 | __  __  __  __  __  __  __  __ | 4
-  |                                |
-5 | __  __  __  __  __  __  __  __ | 5
-  |                                |
-6 | __  __  ~~  __  __  ~~  __  __ | 6
-  |                                |
-7 | __  __ (Li)(Mo)(Mo)(Li) __  __ | 7
-  |                                |
-8 | __  __  __ (El)(El) __  __  __ | 8
-  +--------------------------------+
-     A   B   C   D   E   F   G   H
-{El}
-{Li}
-{Mo}
-
-[El]
-[Li]
-[Mo]
-
-
-"""
