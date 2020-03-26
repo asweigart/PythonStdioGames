@@ -200,7 +200,7 @@ def getPlayerMove(board):
     while True:
         allValidMoves = '", "'.join(validMoves)
         print('Enter a move: "{}" or "quit".'.format(allValidMoves))
-        move = input().lower()
+        move = input('> ').lower()
         if move == 'quit':
             sys.exit()
         if move in validMoves:

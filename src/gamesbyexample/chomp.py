@@ -51,7 +51,7 @@ while True:  # Main game loop.
     while True:
         print()
         print('Select the piece to eat (or QUIT):')
-        response = input().upper()
+        response = input('> ').upper()
 
         # Check if the player wants to stop playing:
         if response == 'QUIT':

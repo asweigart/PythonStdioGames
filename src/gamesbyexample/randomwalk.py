@@ -30,7 +30,7 @@ By Al Sweigart al@inventwithpython.com
 # Ask user what speed to run the simulation at:
 while True:  # Keep looping until the user enters F or S.
     print('Move (F)ast or (S)low?')
-    speed = input().upper()
+    speed = input('> ').upper()
     if speed == 'F' or speed == 'S':
         break
 

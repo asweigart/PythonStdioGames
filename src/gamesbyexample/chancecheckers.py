@@ -215,7 +215,7 @@ def getPlayerMove(board, player, moves):
     while True:  # Loop until a valid "source" space is selected.
         print('Player', player, 'select the checker to move:')
         print(' '.join(checkersThatCanMove), 'QUIT')
-        srcMove = input().upper().strip()
+        srcMove = input('> ').upper().strip()
         if srcMove == 'QUIT':
             sys.exit()
         if srcMove in checkersThatCanMove:
@@ -227,7 +227,7 @@ def getPlayerMove(board, player, moves):
         dstMoves += dstCaptures
         print('Enter the space to move', srcMove, 'to:')
         print(' '.join(dstMoves))
-        dstMove = input().upper().strip()
+        dstMove = input('> ').upper().strip()
         if dstMove in dstMoves:
             break
         # At this point, go back to the start of the loop.
@@ -268,7 +268,7 @@ def makeMove(board, srcMove, dstMove):
         while True:  # Keep asking until valid input is entered.
             print('Enter the double jump to make:')
             print(' '.join(dstCaptures))
-            doubleJumpMove = input().upper().strip()
+            doubleJumpMove = input('> ').upper().strip()
             if doubleJumpMove in dstCaptures:
                 break
             # At this point, go back to the start of the loop.

@@ -20,7 +20,7 @@ for i in range(10):  # Give the player 10 guesses.
     print('You have ' + str(10 - i) + ' guesses left. Take a guess.')
     while True:
         try:
-            guess = int(input())  # Enter the guess.
+            guess = int(input('> '))  # Enter the guess.
             break  # Break out of the while loop.
         except:
             print('Please enter a number.')

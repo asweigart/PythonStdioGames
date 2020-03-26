@@ -77,7 +77,7 @@ while True:  # Main program loop.
             Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu
             Th Pa U  Np Pu Am Cm Bk Cf Es Fm Md No Lr''')
     print('Enter a symbol or atomic number to examine, or QUIT to quit.')
-    response = input().title()  # Convert to titlecase e.g. 'mg' to 'Mg'
+    response = input('> ').title()  # Convert to titlecase e.g. 'mg' to 'Mg'
 
     if response == 'Quit':
         sys.exit()

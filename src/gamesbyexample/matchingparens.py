@@ -29,7 +29,7 @@ def main():
     empty at the end of the string.
     """)
     print('Enter the string to check, for example {[][](())}:')
-    response = input()
+    response = input('> ')
     print()
 
     result = isMatchingParens(response)
@@ -102,8 +102,7 @@ def isMatchingParens(strToCheck):
             print(strToCheck)
             print((' ' * i) + '^ ' + char + ' is ignored.')
             print('STACK:', stack)
-        print('Press enter to continue...')
-        input()
+        input('Press Enter to continue...')
 
     # The parens/braces/brackets are matching if the stack is empty.
     isMatching = len(stack) == 0

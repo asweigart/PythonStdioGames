@@ -61,8 +61,7 @@ cards = [('Q', HEARTS), getRandomCard(), getRandomCard()]
 random.shuffle(cards)  # Put the queen of hearts in a random place.
 print('Here are the cards:')
 printCards(cards)
-print('Press Enter when you are ready to begin...')
-input()
+input('Press Enter when you are ready to begin...')
 
 # Print the swaps:
 for i in range(NUM_SWAPS):
@@ -95,7 +94,7 @@ print('\n' * 25)
 # Ask the user to find the red lady:
 while True:  # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
     print('Which card has the Queen of Hearts? (LEFT MIDDLE RIGHT)')
-    guess = input().upper()
+    guess = input('> ').upper()
 
     # Get the index in cards for the position that the player entered:
     if guess in ['LEFT', 'MIDDLE', 'RIGHT']:

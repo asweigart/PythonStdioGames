@@ -12,7 +12,7 @@ By Al Sweigart al@inventwithpython.com''')
 while True:  # Main program loop.
     print()
     print('Enter a number to factor (or "QUIT" to quit):')
-    response = input()
+    response = input('> ')
     if response.upper() == 'QUIT':
         sys.exit()
 

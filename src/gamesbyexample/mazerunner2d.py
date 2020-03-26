@@ -24,7 +24,7 @@ By Al Sweigart al@inventwithpython.com
 # Get the maze file's filename from the user:
 while True:
     print('Enter the filename of the maze (or LIST or QUIT):')
-    filename = input()
+    filename = input('> ')
 
     # List all the maze files in the current folder:
     if filename.upper() == 'LIST':
@@ -86,7 +86,7 @@ while True:  # Main game loop.
     while True:  # Get user move.
         print('                           W')
         print('Enter direction, or QUIT: ASD')
-        move = input().upper()
+        move = input('> ').upper()
 
         if move == 'QUIT':
             print('Thanks for playing!')

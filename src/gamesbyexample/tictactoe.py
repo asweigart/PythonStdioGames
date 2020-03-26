@@ -20,7 +20,7 @@ def main():
         move = None
         while not isValidSpace(gameBoard, move):
             print('What is {}\'s move? (1-9)'.format(currentPlayer))
-            move = input()
+            move = input('> ')
         updateBoard(gameBoard, move, currentPlayer) # Make the move.
 
         # Check if the game is over:

@@ -130,7 +130,7 @@ def getPlayerMove():
         print('P ', end='')
         bext.fg('white')
         print(' or QUIT:')
-        move = input().upper()
+        move = input('> ').upper()
         if move == 'QUIT':
             sys.exit()
         if move in COLORS:

@@ -43,9 +43,8 @@ def main():
         1     2      3         <-- Word numbers.
         > 213                  <-- Word numbers in alphabetical order.
 
-    Press enter to start!
     '''.format(QUIZ_DURATION))
-    input() # Let the player press Enter to start the game.
+    input('Press Enter to begin...')
 
     startTime = time.time() # Get the current time for the start time.
     numCorrect = 0 # Number of questions answered correctly.

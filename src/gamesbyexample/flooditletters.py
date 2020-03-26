@@ -85,7 +85,7 @@ def getPlayerMove():
     """Let the player select a letter to paint the upper left tile."""
     while True:
         print('Choose one of s o x m a i or QUIT.')
-        move = input().lower()
+        move = input('> ').lower()
         if move == 'quit':
             sys.exit()
         if move in LETTERS:

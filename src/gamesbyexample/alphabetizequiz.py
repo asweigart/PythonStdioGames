@@ -36,9 +36,8 @@ Example:
     P M O T Q  <-- The letters.
     > mopqt    <-- The correct alphabetical order.
 
-Press enter to start!
     '''.format(QUIZ_DURATION))
-    input()  # Let the player press Enter to start the game.
+    input('Press enter to begin...')
 
     startTime = time.time()  # Get the current time for the start time.
     numCorrect = 0  # Number of questions answered correctly.

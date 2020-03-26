@@ -20,7 +20,7 @@ This simulation gives you the thrill of playing without wasting money.
 while True:
     print('Enter 5 different numbers from 1 to 69, with spaces between')
     print('each number.')
-    response = input()
+    response = input('> ')
 
     # Check that the player entered 5 things:
     numbers = response.split()
@@ -53,7 +53,7 @@ while True:
 # Let the player select the powerball, 1 to 26:
 while True:
     print('Enter the powerball number from 1 to 26.')
-    response = input()
+    response = input('> ')
 
     # Convert the strings into integers:
     try:
@@ -72,7 +72,7 @@ while True:
 # Enter the number of times you want to play:
 while True:
     print('How many times do you want to play? (Max: 1000000)')
-    response = input()
+    response = input('> ')
 
     # Convert the strings into integers:
     try:
@@ -92,8 +92,7 @@ while True:
 price = '$' + str(2 * numPlays)
 print('It costs', price, 'to play', numPlays, 'times, but don\'t')
 print('worry. I\'m sure you\'ll win it all back.')
-print('Press Enter to start...')
-input()
+input('Press Enter to start...')
 
 possibleNumbers = list(range(1, 70))
 for i in range(numPlays):

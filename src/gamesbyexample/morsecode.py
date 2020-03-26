@@ -32,14 +32,14 @@ def main():
 
     while True:
         print('Are you going to enter (E)nglish or (M)orse code?')
-        response = input().upper()
+        response = input('> ').upper()
         # Note that you DON'T want "response == 'E' or 'M'" here:
         if response == 'E' or response == 'M':
             break
 
     if response == 'E':
         print('Enter English text:')
-        english = input().upper()
+        english = input('> ').upper()
         print('Morse code:')
         morse = englishToMorse(english)
         print(morse)
@@ -50,7 +50,7 @@ def main():
             pass
     elif response == 'M':
         print('Enter Morse code (with spaces in between each code letter):')
-        morse = input()
+        morse = input('> ')
         print('English:')
         english = morseToEnglish(morse)
         print(english)

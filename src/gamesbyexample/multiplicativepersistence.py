@@ -17,10 +17,10 @@ while True:  # Main program loop.
     print('(Start with 277777788888899, which has the longest known')
     print('chain length.)')
     while True:  # Keep asking until the player enters a number.
-        print('Enter a number (or "quit" to quit):')
+        print('Enter a number (or "QUIT" to quit):')
         try:
-            response = input()
-            if response.lower().startswith('q'):
+            response = input('> ')
+            if response.upper().startswith('Q'):
                 sys.exit()
             number = int(response)
         except ValueError:

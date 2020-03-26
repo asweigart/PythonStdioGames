@@ -85,12 +85,13 @@ def getScreenString(screenData, cx, cy):
     return screenStr
 
 
+moves = []
 while True:  # Main program loop.
     # Draw the lines based on the data in screen:
     print(getScreenString(screen, cursorx, cursory))
 
     print('WASD keys to move, H for help, C to clear, F to save, or QUIT.')
-    response = input().upper()
+    response = input('> ').upper()
 
     if response == 'QUIT':
         sys.exit()  # Quit the program.
@@ -101,20 +102,22 @@ while True:  # Main program loop.
         print()
         print('You can save your drawing to a text file by entering F.')
         print('Press Enter to return to the program...')
-        input()
+        input('> ')
         continue
     elif response == 'C':
         screen = {}  # Erase the screen data.
+        moves.append('C')  # Record this move.
     elif response == 'F':
         # Save the screen string to a text file:
         try:
             print('Enter filename to save to:')
-            filename = input()
+            filename = input('> ')
 
             # Make sure the filename ends with .txt:
             if not filename.endswith('.txt'):
                 filename += '.txt'
             with open(filename, 'w', encoding='utf-8') as file:
+                file.write(''.join(moves) + '\n')
                 file.write(getScreenString(screen, None, None))
         except:
             print('ERROR: Could not save file.')
@@ -122,6 +125,7 @@ while True:  # Main program loop.
     for command in response:
         if command not in ('W', 'A', 'S', 'D'):
             continue  # Ignore this letter and continue to the next one.
+        moves.append(command)  # Record this move.
 
         # The first line we add needs to form a full line:
         if screen == {}:

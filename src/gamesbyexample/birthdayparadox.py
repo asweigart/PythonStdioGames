@@ -47,7 +47,7 @@ MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
 
 while True:  # Keep asking until the user enters a valid amount.
     print('How many birthdays shall I generate? (Max 100)')
-    response = input()
+    response = input('> ')
     if response.isdecimal() and (0 < int(response) <= 100):
         number = int(response)
         break  # User has entered a valid amount.
@@ -78,8 +78,7 @@ else:
 print()
 
 # Run through 1000 simulations and get the matching birthday probability.
-print('Press Enter to run 100,000 more monte carlo simulations.')
-input()
+input('Press Enter to run 100,000 more monte carlo simulations.')
 
 print('Running simulations of', number, 'people...')
 simMatch = 0

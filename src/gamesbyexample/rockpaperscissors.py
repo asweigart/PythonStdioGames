@@ -23,7 +23,7 @@ while True:  # Main game loop.
     while True:  # Keep asking until player enters R, P, S, or Q.
         print('{} Wins, {} Losses, {} Ties'.format(wins, losses, ties))
         print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
-        playerMove = input().upper()
+        playerMove = input('> ').upper()
         if playerMove == 'Q':
             sys.exit()
 

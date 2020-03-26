@@ -195,7 +195,7 @@ def getBet(maxBet):
     """Ask the user how much they want to bet for this round."""
     while True:  # Keep asking until they enter a valid amount.
         print('How much do you bet? (1-{}, or "quit")'.format(maxBet))
-        bet = input().upper().strip()
+        bet = input('> ').upper().strip()
         if bet == 'QUIT':
             print('Thanks for playing!')
             sys.exit()

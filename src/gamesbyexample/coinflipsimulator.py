@@ -12,7 +12,7 @@ By Al Sweigart al@inventwithpython.com''')
 # Ask the user how many flips to make:
 print('How many coin flips to make?')
 while True:
-    response = input()
+    response = input('> ')
     if response.isdecimal():
         numberOfFlips = int(response)
         break

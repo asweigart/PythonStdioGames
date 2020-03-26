@@ -18,7 +18,7 @@ def main():
 bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
 
 eNtEr YoUr MeSsAgE:''')
-    spongetext = englishToSpongetext(input())
+    spongetext = englishToSpongetext(input('> '))
     print()
     print(spongetext)
 

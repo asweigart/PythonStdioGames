@@ -17,7 +17,7 @@ def main():
 By Al Sweigart al@inventwithpython.com
 
 Enter your message:''')
-    pigLatin = englishToPigLatin(input())
+    pigLatin = englishToPigLatin(input('> '))
 
     # Join all the words back together into a single string:
     print(pigLatin)

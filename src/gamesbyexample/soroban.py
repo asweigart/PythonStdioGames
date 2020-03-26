@@ -17,7 +17,7 @@ def main():
         displayAbacus(abacusNumber)
         displayControls()
 
-        commands = input()
+        commands = input('> ')
         if commands == 'quit':
             # Quit the program:
             break

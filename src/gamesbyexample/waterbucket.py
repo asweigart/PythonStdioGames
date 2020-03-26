@@ -96,7 +96,7 @@ while True:  # Main game loop.
     print('  (Q)uit')
 
     while True:  # Keep asking until the player enters a valid action.
-        move = input().upper()
+        move = input('> ').upper()
         if move == 'QUIT' or move == 'Q':
             print('Thanks for playing!')
             sys.exit()
@@ -109,7 +109,7 @@ while True:  # Main game loop.
     # Let the player select a bucket:
     while True:  # Keep asking until valid bucket entered.
         print('Select a bucket 8, 5, 3, or QUIT:')
-        srcBucket = input().upper()
+        srcBucket = input('> ').upper()
 
         if srcBucket == 'QUIT':
             print('Thanks for playing!')
@@ -134,7 +134,7 @@ while True:  # Main game loop.
         # Let the player select a bucket to pour into:
         while True:  # Keep asking until valid bucket entered.
             print('Select a bucket to pour into: 8, 5, or 3')
-            dstBucket = input().upper()
+            dstBucket = input('> ').upper()
             if dstBucket in ('8', '5', '3'):
                 break  # Player has selected a valid bucket.
 

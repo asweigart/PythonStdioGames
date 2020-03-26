@@ -22,7 +22,7 @@ Your biran can pbablroy raed sambcerld wrdos as lnog as the fsirt and
 last lteters are in the rihgt pcale.
 
 Enter your message:''')
-    scrambled = englishToMiddleLetterScramble(input())
+    scrambled = englishToMiddleLetterScramble(input('> '))
     print()
     print(scrambled)
 

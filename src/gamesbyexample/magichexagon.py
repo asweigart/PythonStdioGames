@@ -128,8 +128,8 @@ while True:  # Main game loop.
 
     # Get the selected space from the user:
     while True:
-        response = input('Select a space A to S (or Z or QUIT): ')
-        response = response.upper()
+        print('Select a space A to S (or Z or QUIT): ')
+        response = input('> ').upper()
         if response == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
@@ -140,7 +140,7 @@ while True:  # Main game loop.
     # Get the selected number from the user to put on the selected space:
     while True:
         print('Enter 1 to 19 for', selectedSpace, '(or "quit"):')
-        response = input()
+        response = input('> ')
         if response.lower().startswith('q'):
             print('Thanks for playing!')
             sys.exit()

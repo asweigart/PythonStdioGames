@@ -98,7 +98,7 @@ def enterPlayerMove(previousMoves):
     # Let the player enter their move. Return a two-item list of int xy coordinates.
     print('Where do you want to drop the next sonar device? (0-59 0-14) (or type quit)')
     while True:
-        move = input()
+        move = input('> ')
         if move.lower() == 'quit':
             print('Thanks for playing!')
             sys.exit()
@@ -168,7 +168,7 @@ Press enter to continue...''')
 print('S O N A R !')
 print()
 print('Would you like to view the instructions? (yes/no)')
-if input().lower().startswith('y'):
+if input('> ').lower().startswith('y'):
     showInstructions()
 
 while True:
@@ -211,5 +211,5 @@ while True:
             print('    {}, {}'.format(x, y))
 
     print('Do you want to play again? (yes or no)')
-    if not input().lower().startswith('y'):
+    if not input('> ').lower().startswith('y'):
         sys.exit()

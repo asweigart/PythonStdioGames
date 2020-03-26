@@ -29,7 +29,7 @@ eventually terminates.
 while True:  # Main program loop.
     while True:  # Ask for a starting number.
         print('Enter a starting number (greater than 0) or QUIT:')
-        response = input()
+        response = input('> ')
         if response.upper().startswith('Q'):
             print('Thanks for playing!')
             sys.exit()

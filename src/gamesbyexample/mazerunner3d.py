@@ -198,7 +198,7 @@ By Al Sweigart al@inventwithpython.com
 # Get the maze file's filename from the user:
 while True:
     print('Enter the filename of the maze (or LIST or QUIT):')
-    filename = input()
+    filename = input('> ')
 
     # List all the maze files in the current folder:
     if filename.upper() == 'LIST':
@@ -252,7 +252,7 @@ while True: # Main game loop.
         print('Location ({}, {})  Compass: {}'.format(playerx, playery, playerDirection))
         print('                            (F)ORWARD           (W)')
         print('Enter direction, or QUIT: (L)EFT (R)IGHT -or- (A) (D)')
-        move = input().upper()
+        move = input('> ').upper()
 
         if move == 'QUIT':
             print('Thanks for playing!')

@@ -19,7 +19,7 @@ By Al Sweigart al@inventwithpython.com
     # Ask the user if they want to encrypt or decrypt:
     while True:
         print('Do you want to (E)ncrypt or (D)ecrypt?')
-        mode = input().upper()
+        mode = input('> ').upper()
         if mode == 'E' or mode == 'D':
             break
 
@@ -27,14 +27,14 @@ By Al Sweigart al@inventwithpython.com
     while True:
         print('Enter a message up to 79 characters long:')
         print('|' + ('-' * 77) + '|')
-        message = input()
+        message = input('> ')
         if len(message) <= 79:
             break
 
     # Ask the user for the key number.
     while True:
         print('Enter the key number 2 to 12:')
-        response = input()
+        response = input('> ')
         try:
             key = int(response)
         except:

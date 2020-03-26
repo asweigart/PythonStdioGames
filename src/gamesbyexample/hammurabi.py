@@ -74,7 +74,7 @@ while True:  # Main game loop.
     while True:
         print('How many acres do you wish to buy? (0-{})'.format(bushelsStored // landPricePerAcre))
         try:
-            acresToBuy = int(input())
+            acresToBuy = int(input('> '))
         except:
             continue  # Player didn't enter a number, ask again.
         if acresToBuy > (bushelsStored // landPricePerAcre) or acresToBuy < 0:
@@ -89,7 +89,7 @@ while True:  # Main game loop.
         while True:
             print('How many acres do you wish to sell? (0-{})'.format(acresOwned))
             try:
-                acresToSell = int(input())
+                acresToSell = int(input('> '))
             except:
                 continue  # Player didn't enter a number, ask again.
             if acresToSell < 0 or acresToSell > acresOwned:
@@ -105,7 +105,7 @@ while True:  # Main game loop.
         maxToFeed = min(bushelsStored, population * 20)
         print('20 bushels feeds 1 person: How many bushels do you wish to feed your people? (0-{})'.format(maxToFeed))
         try:
-            bushelsToFeed = int(input())
+            bushelsToFeed = int(input('> '))
         except:
             continue  # Player didn't enter a number, ask again.
         if bushelsToFeed > maxToFeed or bushelsToFeed < 0:
@@ -120,7 +120,7 @@ while True:  # Main game loop.
         maxCanPlant = min(acresOwned, bushelsStored // 2, population * 10)
         print('2 bushels to plant 1 acre, 1 person can plant 10 acres: How many acres do you wish to plant with seed? (0-{})'.format(maxCanPlant))
         try:
-            acresToPlant = int(input())
+            acresToPlant = int(input('> '))
         except:
             continue  # Player didn't enter a number, ask again.
         if acresToPlant > maxCanPlant or acresToPlant < 0:

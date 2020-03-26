@@ -31,7 +31,7 @@ while True:  # Main game loop.
     print()
     while True:
         print('Okay! Pick a cup 1-{}'.format(len(CUPS)))
-        pickedCup = input()
+        pickedCup = input('> ')
         if pickedCup.isdecimal() and 1 <= int(pickedCup) <= len(CUPS):
             break
         print('Type a number between 1 and {}.'.format(len(CUPS)))
@@ -44,7 +44,7 @@ while True:  # Main game loop.
 
 
     print('Would you like to play again? Y/N')
-    response = input().upper()
+    response = input('> ').upper()
     if not response.startswith('Y'):
         print('Thanks for playing!')
         sys.exit()

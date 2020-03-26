@@ -34,7 +34,7 @@ When I say:    That means:
             guess = ''
             while len(guess) != NUM_DIGITS or not guess.isdecimal():
                 print('Guess #{}: '.format(numGuesses))
-                guess = input()
+                guess = input('> ')
 
             clues = getClues(guess, secretNum)
             print(clues)
@@ -48,7 +48,7 @@ When I say:    That means:
 
         # Ask player if thye want to play again.
         print('Do you want to play again? (yes or no)')
-        if not input().lower().startswith('y'):
+        if not input('> ').lower().startswith('y'):
             break
         # At this point, go back to the start of the main game loop.
     print('Thanks for playing!')

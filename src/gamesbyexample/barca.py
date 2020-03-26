@@ -76,8 +76,7 @@ before other animals can move.
 
 Barca was invented by Andrew Caldwell http://playbarca.com
 """)
-    print('Press Enter to begin...')
-    input()
+    input('Press Enter to begin...')
 
     turn = ROUND_PLAYER
     gameBoard = getNewBoard()

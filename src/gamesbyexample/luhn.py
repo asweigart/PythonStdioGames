@@ -16,7 +16,7 @@ By Al Sweigart al@inventwithpython.com
 
 # Display information about the Luhn algorithm if the user wants it:
 print('Would you like to see a description of the Luhn algorithm? Y/N')
-if input().upper().startswith('Y'):
+if input('> ').upper().startswith('Y'):
     print('''Luhn is a checksum algorithm to make sure a serial number
 is correct. It's used by credit cards and other official numbers.
 More info at: https://en.wikipedia.org/wiki/Luhn_algorithm
@@ -45,7 +45,7 @@ For example, let's check the checksum for the number:
 
 while True:  # Main program loop.
     print('Enter a number to check its checksum (or QUIT):')
-    originalNumber = input()
+    originalNumber = input('> ')
 
     if originalNumber.upper().startswith('Q'):
         sys.exit()

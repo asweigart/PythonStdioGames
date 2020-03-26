@@ -21,7 +21,7 @@ By Al Sweigart al@inventwithpython.com
 # Ask how many snails to race:
 while True:  # Keep asking until the player enters a number.
     print('How many snails will race? Max:', MAX_NUM_SNAILS)
-    response = input()
+    response = input('> ')
     if response.isdecimal():
         numSnailsRacing = int(response)
         if 1 < numSnailsRacing <= MAX_NUM_SNAILS:
@@ -34,7 +34,7 @@ snailNames = []  # List of the string snail names.
 for i in range(1, numSnailsRacing + 1):
     while True:  # Keep asking until the player enters a valid name.
         print('Enter snail #' + str(i) + "'s name:")
-        name = input()
+        name = input('> ')
         if len(name) == 0:
             print('Please enter a name.')
         elif name in snailNames:

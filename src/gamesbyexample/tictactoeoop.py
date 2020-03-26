@@ -22,7 +22,7 @@ def main():
         move = None
         while not gameBoard.isValidSpace(move):
             print('What is {}\'s move? (1-9)'.format(currentPlayer))
-            move = input()
+            move = input('> ')
         gameBoard.updateBoard(move, currentPlayer) # Make the move.
 
         # Check if the game is over:

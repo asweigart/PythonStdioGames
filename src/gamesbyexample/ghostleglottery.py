@@ -59,7 +59,7 @@ def getPlayerNames():
     """Ask how many players there are."""
     while True:  # Keep asking until the player enters a number.
         print('How many players are there? Max:', MAX_NUMBER_OF_PLAYERS)
-        response = input()
+        response = input('> ')
         if response.isdecimal():
             numPlayers = int(response)
             if 1 < numPlayers <= MAX_NUMBER_OF_PLAYERS:
@@ -72,7 +72,7 @@ def getPlayerNames():
     for i in range(1, numPlayers + 1):
         while True:  # Keep asking until the player enters a valid name.
             print('Enter player #' + str(i) + "'s name:")
-            name = input()
+            name = input('> ')
             if len(name) == 0:
                 print('Please enter a name.')
             elif name in playerNames:

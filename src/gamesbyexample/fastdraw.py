@@ -9,8 +9,7 @@ print('Fast Draw, by Al Sweigart al@inventwithpython.com')
 print('When you see "DRAW", press Enter. You have 0.3 seconds to draw.')
 print('But you lose if you press Enter before "DRAW" appears.')
 print()
-print('Press Enter to begin...')
-input()
+input('Press Enter to begin...')
 
 while True:
     time.sleep(random.randint(20, 50) / 10.0)
@@ -30,7 +29,7 @@ while True:
         print('You are the fastest gun in the west! You win!')
 
     print('Enter QUIT to stop, or just press Enter to play again.')
-    response = input().upper()
+    response = input('> ').upper()
     if response == 'QUIT':
         print('Thanks for playing!')
         sys.exit()

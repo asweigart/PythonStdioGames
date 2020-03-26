@@ -190,7 +190,7 @@ def getPlayerMove(board, robots, playerPosition):
         print('                             ({}) (S) ({})'.format(a, d))
         print('Enter your move (or "quit"): ({}) ({}) ({})'.format(z, _x, c))
 
-        move = input().upper()
+        move = input('> ').upper()
         if move == 'QUIT':
             sys.exit()
         elif move == 'T' and board['teleports'] > 0:

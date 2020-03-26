@@ -105,7 +105,7 @@ while True:  # Main program loop.
     print(ALL_CLOSED)
     while True:  # Keep asking the player until they enter a valid door.
         print('Pick a door 1, 2, or 3 (or "quit" to stop):')
-        response = input().upper()
+        response = input('> ').upper()
         if response == 'QUIT':
             # End the game.
             print('Thanks for playing!')
@@ -135,7 +135,7 @@ while True:  # Main program loop.
     # Ask the player if they want to switch:
     while True:  # Keep asking until the player enters Y or N.
         print('Do you want to switch doors? Y/N')
-        switch = input().upper()
+        switch = input('> ').upper()
         if switch == 'Y' or switch == 'N':
             break
 
@@ -190,7 +190,6 @@ while True:  # Main program loop.
     print('''
 Switching:     {} wins, {} losses, success rate {}%
 Not switching: {} wins, {} losses, success rate {}%
-
-Press Enter repeat the experiment again!'''.format(switchWins, switchLosses, switchSuccess, notSwitchWins, notSwitchLosses, notSwitchSuccess))
-    input()
+'''.format(switchWins, switchLosses, switchSuccess, notSwitchWins, notSwitchLosses, notSwitchSuccess))
+    input('Press Enter repeat the experiment again.')
     # At this point, go back to the start of the main program loop.

@@ -84,7 +84,7 @@ def getPlayerMove(words, tries):
     """Let the player enter a password guess."""
     while True:
         print('Enter password: ({} tries remaining)'.format(tries))
-        move = input().upper()
+        move = input('> ').upper()
         if move in words:
             return move
         print('That is not one of the possible passwords listed above.')

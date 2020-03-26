@@ -24,7 +24,7 @@ By Al Sweigart al@inventwithpython.com
 
 while True:  # Loop to get a year from the user.
     print('Enter the year for the calendar:')
-    response = input()
+    response = input('> ')
 
     if not response.isdecimal():
         print('Please enter a numeric year, like 2019.')
@@ -35,7 +35,7 @@ while True:  # Loop to get a year from the user.
 
 while True:  # Loop to get a month from the user.
     print('Enter the month for the calendar, 1-12:')
-    response = input()
+    response = input('> ')
 
     if not response.isdecimal():
         print('Please enter a numeric month, like 3 for March.')

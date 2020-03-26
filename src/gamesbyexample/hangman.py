@@ -143,7 +143,7 @@ def getPlayerGuess(alreadyGuessed):
     player entered a single letter they haven't guessed before."""
     while True: # Keep asking until the player enters a valid letter.
         print('Guess a letter.')
-        guess = input()
+        guess = input('> ')
         guess = guess.upper()
         if len(guess) != 1:
             print('Please enter a single letter.')

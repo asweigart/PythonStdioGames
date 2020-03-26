@@ -18,7 +18,7 @@ def main():
 By Al Sweigart al@inventwithpython.com
 
 Enter your leet message:''')
-    english = input()
+    english = input('> ')
     print()
     leetspeak = englishToLeetspeak(english)
     print(leetspeak)

@@ -87,7 +87,7 @@ def getPlayerMove(board):
         print('                           ({})'.format(w))
         print('Enter move (or QUIT): ({}) ({}) ({})'.format(a, s, d))
 
-        response = input().upper()
+        response = input('> ').upper()
         if response == 'QUIT':
             sys.exit()
         if response in (w + a + s + d).replace(' ', ''):

@@ -16,9 +16,8 @@ the number of is a multiple of 3 and 5, type "fizz buzz".
 
 A doom clock is counting down. Entering correct responses gives you
 more time. How long can you go?
-
-Press Enter to start...''')
-input()
+''')
+input('Press Enter to begin...')
 
 number = 1
 doomClock = time.time() + 10  # Player starts with 10 seconds.

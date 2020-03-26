@@ -95,7 +95,7 @@ input('Then press Enter to continue...')
 
 print(p2Name + ', do you want to swap boxes with ' + p1Name + '? YES/NO')
 while True:
-    response = input().upper()
+    response = input('> ').upper()
     if not (response.startswith('Y') or response.startswith('N')):
         print(p2Name + ', please enter "YES" or "NO"')
     else:

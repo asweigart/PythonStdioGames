@@ -24,7 +24,7 @@ eventually terminates.
 
 while True: # Ask for a starting number range.
     print('Enter a starting number range (like 1-1000):')
-    response = input()
+    response = input('> ')
 
     rangeOfNums = response.split('-')
     if len(rangeOfNums) == 2:

@@ -24,7 +24,7 @@ def slowSpacePrint(text, interval):
 slowSpacePrint('MAGIC EIGHT BALL, BY AL SWEiGART', 0.1)
 time.sleep(0.5)
 slowSpacePrint('ASK ME YOUR YES/NO QUESTION.', 0.1)
-input()
+input('> ')
 
 # Display a brief reply:
 replies = [

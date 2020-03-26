@@ -25,7 +25,7 @@ print()
 playerNames = []
 while True:
     print('Enter a player\'s name, or enter nothing when finished:')
-    playerName = input().upper()
+    playerName = input('> ').upper()
     if playerName != '':  # Player can enter anything except a blank name.
         playerNames.append(playerName)
     else:
@@ -37,7 +37,7 @@ while True:
     numPlayers = len(NAMES) + len(playerNames)
     print('How many participants total (2-' + str(numPlayers) + '):')
     try:
-        numParticipants = int(input())
+        numParticipants = int(input('> '))
     except ValueError:
         continue  # Player entered non-integer; ask again.
     if 2 <= numParticipants <= len(NAMES) + len(playerNames):
@@ -51,7 +51,7 @@ for playerName in playerNames:
         places = str(len(participants) + 1)
         print('Where does ' + playerName + ' go? (1-' + places + '):')
         try:
-            position = int(input())
+            position = int(input('> '))
         except ValueError:
             continue  # Player entered non-integer; ask again.
         if 1 <= position <= len(participants) + 1:

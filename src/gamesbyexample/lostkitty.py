@@ -34,8 +34,7 @@ def main():
     print()
     print('Zophie the kitten is lost in the city! Move around until')
     print('you find her!')
-    print('Press Enter to begin...')
-    input()
+    input('Press Enter to begin...')
 
     # Get a random hidden position for the cat.
     while True:
@@ -172,7 +171,7 @@ def getPlayerMove(playerx, playery):
     the map."""
     while True:
         print('Enter your move: north south east west or QUIT')
-        response = input().lower()
+        response = input('> ').lower()
         if response == 'quit':
             print('Thanks for playing!')
             sys.exit()

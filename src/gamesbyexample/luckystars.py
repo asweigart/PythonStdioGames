@@ -61,7 +61,7 @@ even.
 
 print('How many players are there?')
 while True:  # Loop until the user enters a number.
-    response = input()
+    response = input('> ')
     if response.isdecimal() and int(response) > 1:
         numPlayers = int(response)
         break
@@ -72,7 +72,7 @@ playerScores = {}
 for i in range(numPlayers):
     while True:  # Keep looping until a name is entered.
         print('What is player #' + str(i + 1) + '\'s name?')
-        response = input()
+        response = input('> ')
         if response != '' and response not in playerNames:
             playerNames.append(response)
             playerScores[response] = 0
@@ -159,13 +159,12 @@ while True:  # Main game loop.
         # Check if they've collected 3 or more skulls:
         if skulls >= 3:
             print('3 or more skulls means you\'ve lost your stars!')
-            print('Press Enter to continue...')
-            input()
+            input('Press Enter to continue...')
             break
 
         print('Do you want to roll again? Y/N')
         while True:  # Keep asking the player until they enter Y or N:
-            response = input().upper()
+            response = input('> ').upper()
             if response != '' and response[0] in ('Y', 'N'):
                 break
             print('Please enter Yes or No.')

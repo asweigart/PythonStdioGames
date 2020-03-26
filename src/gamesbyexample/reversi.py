@@ -146,7 +146,7 @@ def enterPlayerTile():
     tile = ''
     while not (tile == 'X' or tile == 'O'):
         print('Do you want to be X or O?')
-        tile = input().upper()
+        tile = input('> ').upper()
 
     # The first string is the player's tile:
     if tile == 'X':
@@ -190,7 +190,7 @@ def getPlayerMove(board, playerTile):
     (or returns the string 'QUIT')"""
     while True:
         print('Enter your move, or type quit to end the game.')
-        move = input().upper()
+        move = input('> ').upper()
         if move == 'QUIT':
             return 'QUIT'
 

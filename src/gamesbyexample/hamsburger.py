@@ -69,6 +69,6 @@ print('Press Ctrl-C to quit, or press Enter for more words.')
 try:
     while True:
         print(random.choice(sillyPluralizations))
-        response = input()
+        input()
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.

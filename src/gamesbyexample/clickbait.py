@@ -29,7 +29,7 @@ def main():
     while True:
         print('Our website needs to trick people into looking at ads!')
         print('Enter the number of headlines to generate:')
-        response = input()
+        response = input('> ')
         if not response.isdecimal():
             print('Please enter a number.')
         else:

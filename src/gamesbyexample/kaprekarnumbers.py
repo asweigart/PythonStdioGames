@@ -25,8 +25,7 @@ while True:  # Keep looping until the user enters a number > 3.
 
 number = int(response) - 1
 print('Ctrl-C will stop the program.')
-print('Press Enter to begin...')
-input()
+input('Press Enter to begin...')
 print('Calculating Kraprekar numbers...')
 
 foundKraprekarNumbers = []

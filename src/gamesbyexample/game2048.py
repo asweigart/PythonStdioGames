@@ -206,7 +206,7 @@ def getPlayerMove():
     Ensures they enter a valid move: either 'W', 'A', 'S' or 'D'."""
     print('Enter move: (WASD or Q to quit)')
     while True:  # Keep looping until they enter a valid move.
-        move = input().upper()
+        move = input('> ').upper()
         if move == 'Q':
             # End the program:
             print('Thanks for playing!')

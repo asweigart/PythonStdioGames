@@ -133,7 +133,7 @@ def getPlayerMove(board):
 
         # Let the player select which peg they want to move:
         print('Enter the peg you want to move: ' + ' '.join(moveablePegs) + ' QUIT')
-        space = input().upper()
+        space = input('> ').upper()
 
         if space == 'QUIT':
             print('Thanks for playing!')
@@ -156,7 +156,7 @@ def getPlayerMove(board):
         while True:
             # Ask the player which direction to jump:
             print('Enter the direction to jump: ' + ' '.join(possibleDirections))
-            jumpDirection = input().upper()
+            jumpDirection = input('> ').upper()
 
             if jumpDirection in possibleDirections:
                 break

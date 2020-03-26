@@ -56,7 +56,7 @@ def getBoardSize():
     for dimension in [WIDTH, HEIGHT]:
         while True:  # Keep looping until the user enters a valid size.
             print('Enter the board', dimension, 'to play on:')
-            response = input()
+            response = input('> ')
 
             if response.isdecimal() and (3 <= int(response) <= 26):
                 if dimension == WIDTH:
@@ -154,7 +154,7 @@ def doPlayerMove(player, board):
     print('Select which pawn you want to move:', ' '.join(validMoves))
     print('(Or enter QUIT to quit.)')
     while True:  # Keep looping until the player enters a valid move.
-        selectedPawn = input().upper()
+        selectedPawn = input('> ').upper()
 
         if selectedPawn == 'QUIT':
             print('Thanks for playing!')
@@ -187,7 +187,7 @@ def doPlayerMove(player, board):
             print('(R)ight Capture', end='')
         print()
         while True:  # Keep asking the player until they enter a valid move.
-            move = input().upper()
+            move = input('> ').upper()
             if move in possibleMoves:
                 break
             print('Enter which move this pawn will take.')

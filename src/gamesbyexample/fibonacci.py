@@ -20,7 +20,7 @@ while True:  # Main program loop.
         print()
         print('Enter the Nth Fibonacci number you wish to')
         print('calculate (such as 5 or 50), or QUIT to quit:')
-        response = input().upper()
+        response = input('> ').upper()
 
         if response == 'QUIT':
             sys.exit()
@@ -49,8 +49,7 @@ while True:  # Main program loop.
         print('WARNING: This will take a while to display on the')
         print('screen. If you want to quit this program before it is')
         print('done, press Ctrl-C.')
-        print('Press Enter to begin...')
-        input()
+        input('Press Enter to begin...')
 
     # Calculate the Nth Fibonacci number:
     secondToLastNumber = 0

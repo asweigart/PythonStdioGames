@@ -84,7 +84,7 @@ def makePlayerMove(player, board):
     print('It is ' + player.upper() + '\'s turn.')
     while True:  # Keep looping until the player enters a valid move:
         print('Enter a move (such as B3) or PASS or QUIT:')
-        response = input().upper()
+        response = input('> ').upper()
 
         if response == 'QUIT':
             print('Thanks for playing!')

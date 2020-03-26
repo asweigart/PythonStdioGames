@@ -12,7 +12,7 @@ By Al Sweigart al@inventwithpython.com
 
 Enter how many six-sided dice you want to roll:'''
 )
-numberOfDice = int(input())
+numberOfDice = int(input('> '))
 
 # Set up dictionary to store results:
 results = {}
