@@ -1,7 +1,7 @@
 """Shining Carpet, by Al Sweigart al@inventwithpython.com
 
 Displays a tessellation of the carpet pattern from The Shining.
-Tags: tiny, artistic"""
+Tags: tiny, beginner, artistic"""
 __version__ = 0
 # Set up the constants:
 X_REPEAT = 6  # How many times to tessellate horizontally.

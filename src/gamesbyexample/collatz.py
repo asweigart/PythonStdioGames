@@ -4,55 +4,39 @@ Generates numbers for the Collatz sequence, given a starting number.
 
 More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
 An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/
-Tags: short, math, algorithm"""
+Tags: short, beginner, math, algorithm"""
 __version__ = 0
 import sys, time
 
-# Set up the constants:
-PAUSE = 0.1
-
-print('''Collatz Sequence, or, the 3N+1 Problem
+print('''Collatz Sequence, or, the 3n+1 Problem
 By Al Sweigart al@inventwithpython.com
 
-The Collatz sequence is a sequence of numbers produced from a
-starting number, following two rules:
+The Collatz sequence is a sequence of numbers produced from a starting
+number n, following three rules:
 
-1) If the current number N is even, the next number is N / 2.
-2) If the current Number N is odd, the next number is N * 3 + 1.
+1) If n is even, the next number n is n / 2.
+2) If n is odd, the next number n is n * 3 + 1.
+3) If n is 1, stop. Otherwise, repeat.
 
-The sequence terminates when N becomes 1. It is generally thought,
-but so far not mathematically proven, that every starting number
-eventually terminates.
+It is generally thought, but so far not mathematically proven, that
+every starting number eventually terminates at 1.
 ''')
 
-while True:  # Main program loop.
-    while True:  # Ask for a starting number.
-        print('Enter a starting number (greater than 0) or QUIT:')
-        response = input('> ')
-        if response.upper().startswith('Q'):
-            print('Thanks for playing!')
-            sys.exit()
+print('Enter a starting number (greater than 0) or QUIT:')
+response = input('> ')
 
-        if response.isdecimal() and int(response) > 0:
-            break
-        print('You must enter an integer greater than 0.')
-        # At this point, go back to the start of the loop.
+if not response.isdecimal() or response == '0':
+    print('You must enter an integer greater than 0.')
+    sys.exit()
 
-    n = int(response)
-    length = 1
-    print(n, end='', flush=True)
-    while n != 1:
-        if n % 2 == 0:  # If n is even...
-            n = n // 2
-        else:  # Otherwise, n is odd...
-            n = 3 * n + 1
+n = int(response)
+print(n, end='', flush=True)
+while n != 1:
+    if n % 2 == 0:  # If n is even...
+        n = n // 2
+    else:  # Otherwise, n is odd...
+        n = 3 * n + 1
 
-        print(', ' + str(n), end='', flush=True)
-        length += 1
-        time.sleep(PAUSE)
-
-    print()
-    print('It seems that the starting number', response, 'produces a')
-    print('Collatz sequence that is', length, 'numbers long.')
-    print()
-    # At this point, go back to the start of the main game loop.
+    print(', ' + str(n), end='', flush=True)
+    time.sleep(0.1)
+print()

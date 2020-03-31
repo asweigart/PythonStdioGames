@@ -1,7 +1,7 @@
 """Hex Grid, by Al Sweigart al@inventwithpython.com
 
 Displays a simple tessellation of a hexagon grid.
-Tags: tiny, artistic"""
+Tags: tiny, beginner, artistic"""
 __version__ = 0
 # Set up the constants:
 X_REPEAT = 19  # How many times to tessellate horizontally.

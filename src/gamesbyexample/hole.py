@@ -1,7 +1,7 @@
 """Hole, by Al Sweigart al@inventwithpython.com
 
 A tunnel animation.
-Tags: tiny, scrolling, artistic"""
+Tags: tiny, beginner, scrolling, artistic"""
 
 __version__ = 0
 import random, time, sys
