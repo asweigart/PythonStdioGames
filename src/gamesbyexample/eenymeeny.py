@@ -5,7 +5,6 @@ More info at https://en.wikipedia.org/wiki/Eeny,_meeny,_miny,_moe
 More info at https://en.wikipedia.org/wiki/Josephus_problem
 Tags: short, game, multiplayer"""
 __version__ = 0
-
 import random, time, sys
 
 SCREEN_WIDTH = 60

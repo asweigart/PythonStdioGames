@@ -4,7 +4,6 @@ The simplest cipher for encrypting and decrypting text.
 More info at https://en.wikipedia.org/wiki/ROT13
 Tags: tiny, cryptography, pyperclip"""
 __version__ = 0
-
 try:
     import pyperclip
 except ImportError:

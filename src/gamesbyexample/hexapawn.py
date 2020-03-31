@@ -10,7 +10,6 @@ Based on Martin Gardner's puzzle.
 More info at: https://en.wikipedia.org/wiki/Hexapawn
 Tags: extra-large, game, two-player, board game"""
 __version__ = 0
-
 import sys
 
 # Set up the constants:

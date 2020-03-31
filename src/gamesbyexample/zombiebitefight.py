@@ -6,7 +6,6 @@ Tags: extra-large, simulation, bext"""
 
 # TODO - bite should be a separate action!!!!
 __version__ = 0
-
 import random, time, sys
 
 try:

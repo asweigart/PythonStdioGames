@@ -5,7 +5,6 @@ maze, but rather an artistic maze-like picture.)
 Inspired by the 10 PRINT CHR$(205.5+RND(1)); : GOTO 10 program.
 Tags: tiny, artistic, maze"""
 __version__ = 0
-
 import random
 
 FORWARD = chr(9585) # The ╱ character.

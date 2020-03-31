@@ -3,7 +3,6 @@
 Shows a simple squiggle rainbow animation. Press Ctrl-C to stop.
 Tags: tiny, scrolling, artistic, bext"""
 __version__ = 0
-
 import time, random, sys
 
 try:

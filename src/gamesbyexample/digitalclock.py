@@ -6,7 +6,6 @@ More info at https://en.wikipedia.org/wiki/Seven-segment_display
 Requires our sevseg.py program.
 Tags: short"""
 __version__ = 0
-
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import time, os, sys

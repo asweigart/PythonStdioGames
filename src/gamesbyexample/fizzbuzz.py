@@ -8,7 +8,6 @@ multiple of 3 and 5, you say "fizzbuzz".
 More info at: https://en.wikipedia.org/wiki/Fizz_buzz
 Tags: tiny, math"""
 __version__ = 0
-
 # TODO - intro
 
 number = 1

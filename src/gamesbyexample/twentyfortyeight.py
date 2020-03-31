@@ -6,7 +6,6 @@ Inspired by Gabriele Cirulli's 2048, which is a clone of Veewo Studios'
 More info at https://en.wikipedia.org/wiki/2048_(video_game)
 Tags: large, game, puzzle game"""
 __version__ = 0
-
 import random, sys
 
 # Set up the constants:

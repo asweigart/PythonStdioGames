@@ -2,7 +2,6 @@
 
 Draws nonuniform fractal trees with turtle graphics."""
 __version__ = 0
-
 import turtle
 import random
 import time

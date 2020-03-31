@@ -4,7 +4,6 @@ A screensaver of multicolor worms moving around.
 NOTE: Do not resize the terminal window while this program is running.
 Tags: large, artistic, simulation, bext"""
 __version__ = 0
-
 import random, shutil, sys, time
 try:
     import bext

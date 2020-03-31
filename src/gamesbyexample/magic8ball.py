@@ -3,7 +3,6 @@
 Ask a yes/no question about your future.
 Tags: tiny, humor"""
 __version__ = 0
-
 import random, time
 
 # Slowly display text with an additional space:

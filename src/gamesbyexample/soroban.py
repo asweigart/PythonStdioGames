@@ -4,7 +4,7 @@ A simulation of a Japanese abacus calculator tool.
 More info at: https://en.wikipedia.org/wiki/Soroban
 Tags: large, simulation, math, artistic"""
 __version__ = 0
-
+NUMBER_OF_DIGITS = 10
 
 def main():
     print('SOROBAN - The Japanese Abacus')
@@ -75,40 +75,40 @@ def main():
 
 
 def displayAbacus(number):
-    numberList = list(str(number).zfill(10))
+    numberList = list(str(number).zfill(NUMBER_OF_DIGITS))
 
     hasBead = []
 
     # Top heaven row has a bead for digits 0, 1, 2, 3, and 4.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '01234')
 
     # Bottom heaven row has a bead for digits 5, 6, 7, 8, and 9.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '56789')
 
     # 1st (topmost) earth row has a bead for all digits except 0.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '12346789')
 
     # 2nd earth row has a bead for digits 2, 3, 4, 7, 8, and 9.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '234789')
 
     # 3rd earth row has a bead for digits 0, 3, 4, 5, 8, and 9.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '034589')
 
     # 4th earth row has a bead for digits 0, 1, 2, 4, 5, 6, and 9.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '014569')
 
     # 5th earth row has a bead for digits 0, 1, 2, 5, 6, and 7.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '012567')
 
     # 6th earth row has a bead for digits 0, 1, 2, 3, 5, 6, 7, and 8.
-    for i in range(10):
+    for i in range(NUMBER_OF_DIGITS):
         hasBead.append(numberList[i] in '01235678')
 
     # Convert these True or False values into O or | characters.

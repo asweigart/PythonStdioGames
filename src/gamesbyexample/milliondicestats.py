@@ -3,7 +3,6 @@
 A simulation of one million dice rolls.
 Tags: tiny, simulation"""
 __version__ = 0
-
 import random, time
 
 print(

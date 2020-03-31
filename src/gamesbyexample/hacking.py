@@ -5,7 +5,6 @@ word is the password by using clues each guess gives you.
 Tags: large, game, artistic"""
 
 __version__ = 0
-
 import random, sys
 
 # Set up the constants:

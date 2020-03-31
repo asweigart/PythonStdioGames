@@ -3,7 +3,6 @@
 Fast-paced snail racing action!
 Tags: short, artistic, game, multiplayer"""
 __version__ = 0
-
 import random, time, sys
 
 # Set up the constants:

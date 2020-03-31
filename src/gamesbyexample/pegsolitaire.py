@@ -4,7 +4,6 @@ A single-player, peg-jumping game to eliminate all the pegs.
 More info at https://en.wikipedia.org/wiki/Peg_solitaire
 Tags: large, game, board game"""
 __version__ = 0
-
 import sys
 
 # Set up the constants:

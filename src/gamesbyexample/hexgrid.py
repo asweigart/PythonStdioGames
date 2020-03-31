@@ -3,7 +3,6 @@
 Displays a simple tessellation of a hexagon grid.
 Tags: tiny, artistic"""
 __version__ = 0
-
 # Set up the constants:
 X_REPEAT = 19  # How many times to tessellate horizontally.
 Y_REPEAT = 12  # How many times to tessellate vertically.

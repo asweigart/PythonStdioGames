@@ -3,7 +3,6 @@
 A program for making silly pluralizations. Press Ctrl-C to stop.
 Tags: short, word, humor"""
 __version__ = 0
-
 # nounlist.txt can be downloaded from
 # http://www.desiquintans.com/downloads/nounlist/nounlist.txt
 

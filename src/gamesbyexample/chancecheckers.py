@@ -6,7 +6,6 @@ checkers or their opponents', but you can't move your opponents'
 promoted checkers. In this version, capturing is not mandatory.
 Tags: extra-large, board game, game, two-player"""
 __version__ = 0
-
 import random, copy, sys
 
 # Set up the constants:

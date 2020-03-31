@@ -4,7 +4,6 @@ A silly bluffing game between two human players. Based on the game
 from the show, 8 Out of 10 Cats.
 Tags: large, game, two-player"""
 __version__ = 0
-
 import random
 
 print('''Carrot in a Box

@@ -2,7 +2,6 @@
 
 Drawing pythons with turtle graphics."""
 __version__ = 0
-
 import turtle
 import random
 

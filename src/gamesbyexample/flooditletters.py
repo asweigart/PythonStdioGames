@@ -4,7 +4,6 @@ A colorful game where you try to fill the board with a single color.
 (This version uses letters instead of colors for colorblind users.)
 Tags: short, game"""
 __version__ = 0
-
 import random, sys
 
 # Set up the constants:

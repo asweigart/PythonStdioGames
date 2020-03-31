@@ -3,7 +3,6 @@
 A random gambling game.
 Tags: tiny, game"""
 __version__ = 0
-
 import random, time, sys
 
 print('''SHELL GAME

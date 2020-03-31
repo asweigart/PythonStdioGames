@@ -5,7 +5,6 @@ Similar to ASCIIQuarium, but mine is based on an older ASCII fish tank
 program for DOS. https://robobunny.com/projects/asciiquarium/html/
 Tags: extra-large, artistic, bext"""
 __version__ = 0
-
 import random, time, sys
 
 try:

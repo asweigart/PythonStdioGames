@@ -4,7 +4,6 @@ Print the full lyrics to one of the most longest songs ever!
 Press Ctrl-C to stop.
 Tags: tiny, scrolling"""
 __version__ = 0
-
 import time, sys
 
 print('''NINETY NINE BOTTLES OF BEER

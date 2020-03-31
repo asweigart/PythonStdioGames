@@ -3,7 +3,6 @@
 The classic board game. (Object-oriented programming version.)
 Tags: large, game, two-player, board game, object-oriented"""
 __version__ = 0
-
 import copy
 
 ALL_SPACES = list('123456789') # The keys for a TTT board.

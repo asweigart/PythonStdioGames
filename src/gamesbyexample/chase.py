@@ -3,7 +3,6 @@
 Try to get the robots to crash into each other.
 Tags: large, game"""
 __version__ = 0
-
 import random, sys, os
 
 # Set up the constants:

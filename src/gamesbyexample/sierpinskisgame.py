@@ -4,7 +4,6 @@ Sierpinkski's "game" is an algorithm that draws Sierpinski's Triangle
 with turtle graphics.
 More info at https://en.wikipedia.org/wiki/Chaos_game"""
 __version__ = 0
-
 import turtle
 import random, time
 turtle.tracer(60, 0) # Make the turtle draw faster.

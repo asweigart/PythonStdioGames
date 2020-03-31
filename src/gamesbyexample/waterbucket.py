@@ -4,7 +4,6 @@ A water pouring puzzle.
 More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 Tags: large, object-oriented, game, puzzle game, math"""
 __version__ = 0
-
 import sys
 
 

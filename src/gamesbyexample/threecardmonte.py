@@ -6,7 +6,6 @@ always lose.)
 More info at https://en.wikipedia.org/wiki/Three-card_Monte
 Tags: large, game, card game"""
 __version__ = 0
-
 import random, time
 
 # Set up the constants:

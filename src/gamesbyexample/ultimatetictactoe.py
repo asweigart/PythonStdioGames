@@ -2,7 +2,6 @@
 
 Tags: large, game, board game, two-player"""
 __version__ = 0
-
 # TODO - Comments need updating.
 
 import sys

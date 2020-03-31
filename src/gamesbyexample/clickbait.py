@@ -3,7 +3,6 @@
 A clickbait headline generator for your soulless content farm.
 Tags: large, humor, word"""
 __version__ = 0
-
 import random
 
 OBJECT_PRONOUNS = ['Her', 'Him', 'Them']

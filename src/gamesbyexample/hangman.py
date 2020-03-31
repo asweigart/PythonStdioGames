@@ -3,7 +3,6 @@
 A word-guessing game.
 Tags: large, game, word, puzzle game"""
 __version__ = 0
-
 # A version of this game is featured in the book, "Invent Your Own
 # Computer Games with Python. https://nostarch.com/inventwithpython
 

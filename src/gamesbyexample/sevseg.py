@@ -4,7 +4,6 @@ A seven-segment display module.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
 Tags: short, module"""
 __version__ = 0
-
 """
 A labeled seven-segment display, with each segment labeled A to G:
  __A__

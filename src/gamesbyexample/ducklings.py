@@ -11,7 +11,6 @@ http://www.geocities.jp/luckynopopo/
 Tags: large, scrolling, artistic
 """
 __version__ = 0
-
 import random, shutil, sys, time
 
 # Set up the constants:

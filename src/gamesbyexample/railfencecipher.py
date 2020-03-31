@@ -4,7 +4,6 @@ The "rail fence" cipher for encrypting text.
 More info at: https://en.wikipedia.org/wiki/Rail_fence_cipher
 Tags: large, cryptography, pyperclip"""
 __version__ = 0
-
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
 except:

@@ -9,7 +9,6 @@ More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 NOTE: Do not resize the terminal window while this program is running.
 Tags: large, artistic, simulation, bext"""
 __version__ = 0
-
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import random, sys, time

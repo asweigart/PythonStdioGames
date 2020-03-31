@@ -4,7 +4,6 @@ A mystery game of intrigue and a missing cat.
 Inspired by Homestar Runner's "Where's an Egg?" game
 Tags: extra-large, game, puzzle game, humor"""
 __version__ = 0
-
 # Play the original Flash game at:
 # https://homestarrunner.com/videlectrix/wheresanegg.html
 # More info at: http://www.hrwiki.org/wiki/Where's_an_Egg%3F

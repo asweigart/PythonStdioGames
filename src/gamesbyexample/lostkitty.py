@@ -6,7 +6,6 @@ This game that teaches cartesian coordinates, cardinal directions, and
 the Pythagorean Theorem.
 Tags: large, game"""
 __version__ = 0
-
 import math, random, sys
 
 # Set up the constants:

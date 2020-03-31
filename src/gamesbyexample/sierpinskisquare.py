@@ -3,7 +3,6 @@
 Draws the Sierpinski Square (also called Carpet) with turtle graphics.
 More info at: https://en.wikipedia.org/wiki/Sierpinski_carpet"""
 __version__ = 0
-
 import turtle
 turtle.tracer(100, 0) # Make the turtle draw faster.
 

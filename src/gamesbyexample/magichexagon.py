@@ -5,7 +5,6 @@ More info at https://en.wikipedia.org/wiki/Magic_hexagon
 More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0
 Tags: large, game, puzzle game, board game"""
 __version__ = 0
-
 import sys
 
 # Print the title and instructions:

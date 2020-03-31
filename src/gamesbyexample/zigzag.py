@@ -3,7 +3,6 @@
 A simple zig zag animation. Press Ctrl-C to stop.
 Tags: tiny, artistic, scrolling"""
 __version__ = 0
-
 import time, sys
 
 indentSize = 0  # How many spaces to indent.

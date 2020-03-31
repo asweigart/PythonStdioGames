@@ -5,7 +5,6 @@ Press Ctrl-C to stop.
 Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
 Tags: short, simulation, bext"""
 __version__ = 0
-
 import random, time, sys
 
 try:

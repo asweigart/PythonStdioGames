@@ -12,7 +12,6 @@ Draws diamonds of various sizes.
  Tags: short, artistic"""
 __version__ = 0
 
-
 def main():
     print('Diamond Drawings')
     print('By Al Sweigart al@inventwithpython.com')

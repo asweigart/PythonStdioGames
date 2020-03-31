@@ -3,7 +3,6 @@
 A program that draws a bunch of random squiggles.
 Tags: large, artistic"""
 __version__ = 0
-
 import random
 
 # Set up the constants:

@@ -3,7 +3,6 @@
 A rotating cube animation. Press Ctrl-C to stop.
 Tags: large, artistic, math"""
 __version__ = 0
-
 # This program MUST be run in a Terminal/Command Prompt window.
 
 import math, time, sys, os

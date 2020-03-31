@@ -3,7 +3,6 @@
 A time-based quiz game to see how fast you can alphabetize letters.
 Tags: short, game"""
 __version__ = 0
-
 # EXPERIMENT! Try changing the QUESTION_SIZE and QUIZ_DURATION constants.
 
 import random, time

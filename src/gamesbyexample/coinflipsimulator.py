@@ -3,7 +3,6 @@
 Simulate a large number of coin flips.
 Tags: tiny, simulation"""
 __version__ = 0
-
 import random
 
 print('''COIN FLIP SIMULATOR

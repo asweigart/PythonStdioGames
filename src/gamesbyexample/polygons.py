@@ -2,7 +2,6 @@
 
 A turtle program to draw polygons. Every line is the same length."""
 __version__ = 0
-
 import turtle
 
 turtle.tracer(1, 0) # Make the turtle draw faster.

@@ -4,7 +4,6 @@ A parentheses/bracket/braces matching algorithm.
 Tags: short, algorithm"""
 __version__ = 0
 
-
 def main():
     print("""MATCHING PARENTHESES ALGORITHM
     By Al Sweigart al@inventwithpython.com

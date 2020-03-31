@@ -4,7 +4,6 @@ A card game also known as 21.
 More info at: https://en.wikipedia.org/wiki/Blackjack
 Tags: large, game, card game"""
 __version__ = 0
-
 import random, sys
 
 # Set up the constants:

@@ -3,7 +3,6 @@
 Calculates numbers in the Fibonacci sequence: 0 1 1 2 3 5 8 13...
 Tags: short, math, algorithm"""
 __version__ = 0
-
 import sys
 
 

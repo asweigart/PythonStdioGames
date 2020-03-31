@@ -3,7 +3,6 @@
 A colorful game where you try to fill the board with a single color.
 Tags: large, game, bext"""
 __version__ = 0
-
 import random, sys
 
 try:

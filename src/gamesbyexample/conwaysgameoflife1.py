@@ -4,7 +4,6 @@ The classic cellular automata simulation. Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 Tags: short, artistic, simulation"""
 __version__ = 0
-
 import random, time, copy, sys
 
 # Set up the constants:

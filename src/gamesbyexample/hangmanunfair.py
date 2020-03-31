@@ -3,7 +3,6 @@
 A completely unfair word-guessing game. (This is a joke program.)
 Tags: large, game, word, puzzle game, humor"""
 __version__ = 0
-
 import random, sys
 
 # Set up the constants:

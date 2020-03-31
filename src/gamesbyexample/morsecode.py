@@ -4,7 +4,6 @@ Translates between English and Morse Code.
 More info at: https://en.wikipedia.org/wiki/Morse_code
 Tags: short, word"""
 __version__ = 0
-
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
 except:

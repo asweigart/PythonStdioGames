@@ -5,7 +5,6 @@ Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Random_walk
 Tags: short, artistic, bext"""
 __version__ = 0
-
 import random, time, sys
 
 try:

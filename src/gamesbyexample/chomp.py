@@ -6,7 +6,6 @@ Martin Gardner in Scientific American (January 1973).
 More info at: https://en.wikipedia.org/wiki/Chomp
 Tags: short, game, two-player, puzzle game"""
 __version__ = 0
-
 import random, sys
 
 print('''CHOMP

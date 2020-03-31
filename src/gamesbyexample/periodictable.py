@@ -3,7 +3,6 @@
 Displays atomic information for all the elements.
 Tags: short, science"""
 __version__ = 0
-
 # Data from https://en.wikipedia.org/wiki/List_of_chemical_elements
 # Highlight the table, copy it, then paste it into a spreadsheet program
 # like Excel or Google Sheets like in https://invpy.com/elements

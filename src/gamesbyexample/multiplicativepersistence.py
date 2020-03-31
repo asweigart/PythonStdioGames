@@ -5,7 +5,6 @@ A fun math challenge.
 For more information about this topic, see https://youtu.be/Wim9WJeDTHQ
 Tags: tiny, math"""
 __version__ = 0
-
 import time, sys
 
 print('''MULTIPLICATIVE PERSISTENCE

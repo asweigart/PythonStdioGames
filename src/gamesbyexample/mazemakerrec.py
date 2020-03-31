@@ -5,7 +5,6 @@ More info at: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_
 An animated demo: https://scratch.mit.edu/projects/17358777/
 Tags: short, maze"""
 __version__ = 0
-
 import random
 
 # Set up the constants:
