@@ -2,20 +2,18 @@
 
 Print the full lyrics to one of the most longest songs ever!
 Press Ctrl-C to stop.
-Tags: tiny, scrolling"""
+Tags: tiny, beginner, scrolling"""
 __version__ = 0
-import time, sys
+import sys, time
 
-print('''NINETY NINE BOTTLES OF BEER
-By Al Sweigart al@inventwithpython.com
-
-(Press Ctrl-C to quit.)''')
-
+print('Ninety Nine Bottles, by Al Sweigart al@inventwithpython.com')
+print()
+print('(Press Ctrl-C to quit.)')
 
 time.sleep(2)
 
 bottles = 99  # This is the starting number of bottles.
-PAUSE = 1  # A constant that sets how many seconds each pause is.
+PAUSE = 2  # (!) Try changing the pause amount.
 
 try:
     while bottles > 1:  # Keep looping and display the lyrics.

@@ -1,7 +1,7 @@
 """Sine Sign, by Al Sweigart al@inventwithpython.com
 
 Create a sine-wavy message.
-Tags: tiny, beginner, artistic"""
+Tags: tiny, artistic"""
 __version__ = 0
 import math, shutil, sys, time
 
@@ -22,7 +22,7 @@ while True:
     print('Message must be 1 to', WIDTH // 2, 'characters long.')
 
 
-step = 0.0  # The "step" determines how far into the wave we are.
+step = 0.0  # The "step" determines how far into the sine wave we are.
 # Sine goes from -1.0 to 1.0, so we need to change it by a multiplier:
 multipler = WIDTH - len(message)
 try:
@@ -37,4 +37,4 @@ try:
         time.sleep(0.1)
         step += 0.25  # (!) Try changing this.
 except KeyboardInterrupt:
-    sys.exit()  # If the user presses Ctrl-C, quit.
+    sys.exit()  # When Ctrl-C is pressed, end the program.

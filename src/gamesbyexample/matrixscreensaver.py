@@ -2,7 +2,7 @@
 
 A screensaver in the style of The Matrix movie's "digital rain"
 visual.
-Tags: tiny, scrolling, artistic"""
+Tags: tiny, beginner, scrolling, artistic"""
 __version__ = 0
 import random, shutil, sys, time
 
@@ -39,4 +39,4 @@ try:
         sys.stdout.flush()  # Make sure text appears on the screen.
         time.sleep(0.1)
 except KeyboardInterrupt:
-    sys.exit()
+    sys.exit()  # When Ctrl-C is pressed, end the program.

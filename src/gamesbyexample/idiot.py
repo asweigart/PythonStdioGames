@@ -3,8 +3,10 @@
 How to keep an idiot busy for hours. (This is a joke program.)
 Tags: tiny, beginner, humor"""
 __version__ = 0
+print('Idiot, by Al Sweigart al@inventwithpython.com')
+
 while True:  # Main program loop.
-    print('Would you like to know how to keep an idiot busy for hours?')
+    print('Do you want to know how to keep an idiot busy for hours? Y/N')
     response = input('> ')  # Get the user's response.
     if response.lower() == 'no' or response.lower() == 'n':
         break  # If "no", break out of this loop.

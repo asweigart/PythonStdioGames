@@ -198,4 +198,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit()
+        sys.exit()  # When Ctrl-C is pressed, end the program.

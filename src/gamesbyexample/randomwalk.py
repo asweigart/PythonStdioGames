@@ -10,14 +10,9 @@ import random, time, sys
 try:
     import bext
 except ImportError:
-    print('''This program requires the bext module, which you can
-install by opening a Terminal window (on macOS & Linux) and running:
-
-    python3 -m pip install --user bext
-
-or a Command Prompt window (on Windows) and running:
-
-    python -m pip install --user bext''')
+    print('This program requires the bext module, which you')
+    print('can install by following the instructions at')
+    print('https://pypi.org/project/Bext/')
     sys.exit()
 
 BLOCK = chr(9608)

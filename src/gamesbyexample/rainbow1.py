@@ -1,21 +1,16 @@
 """Rainbow, by Al Sweigart al@inventwithpython.com
 
 Shows a simple rainbow animation. Press Ctrl-C to stop.
-Tags: tiny, scrolling, artistic, bext"""
+Tags: tiny, beginner, scrolling, artistic, bext"""
 __version__ = 0
 import time, sys
 
 try:
     import bext
 except ImportError:
-    print('''This program requires the bext module, which you can
-install by opening a Terminal window (on macOS & Linux) and running:
-
-    python3 -m pip install --user bext
-
-or a Command Prompt window (on Windows) and running:
-
-    python -m pip install --user bext''')
+    print('This program requires the bext module, which you')
+    print('can install by following the instructions at')
+    print('https://pypi.org/project/Bext/')
     sys.exit()
 
 print('Rainbow, by Al Sweigart al@inventwithpython.com')

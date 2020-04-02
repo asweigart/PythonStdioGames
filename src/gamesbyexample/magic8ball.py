@@ -1,7 +1,7 @@
 """Magic Eight Ball, by Al Sweigart al@inventwithpython.com
 
 Ask a yes/no question about your future.
-Tags: tiny, humor"""
+Tags: tiny, beginner, humor"""
 __version__ = 0
 import random, time
 

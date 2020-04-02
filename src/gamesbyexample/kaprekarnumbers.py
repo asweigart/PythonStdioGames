@@ -10,7 +10,7 @@ Tags: tiny, math
 __version__ = 0
 print("""Kaprekar Numbers, by Al Sweigart al@inventwithpython.com
 
-Kaprekar Numbers are numbers whose square in that base can be split into
+Kaprekar Numbers are numbers whose square can be split into
 2 parts that add up to the original number. For example:
 
 45^2 = 2025 -> 20 + 25 = 45""")

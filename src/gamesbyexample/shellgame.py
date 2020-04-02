@@ -5,41 +5,46 @@ Tags: tiny, beginner, game"""
 __version__ = 0
 import random, time, sys
 
-print('''SHELL GAME
-By Al Sweigart al@inventwithpython.com
+print('Shell Game')
+print('By Al Sweigart al@inventwithpython.com')
+print()
+print('I will hide a diamond in one of three cups.')
+print('Try to find the diamond!')
+input('Press Enter to begin...')
 
-Try to find the diamond!
-Press Enter to continue...''')
-input()
-
-CUPS = ['diamond', 'pocket lint', 'nothing']
+# This list has the contents of the cups:
+CUPS = ['diamond', 'a peanut', 'nothing']
 
 while True:  # Main game loop.
     print()
-    print('Shuffling the cups', end='')
-    random.shuffle(CUPS)  # This happens instantly.
+    print('Shuffling the cups...')
+    random.shuffle(CUPS)  # This changes the order of the items in CUPS.
 
     # We add fake pauses to make it seem more interesting:
-    time.sleep(0.3)
-    print('.', end='')
-    time.sleep(0.3)
-    print('.', end='')
-    time.sleep(0.3)
-    print('.', end='')
-    time.sleep(0.3)
+    time.sleep(0.5)
+    print('  shuffle...')
+    time.sleep(0.5)
+    print('    shuffle...')
+    time.sleep(0.5)
+    print('      shuffle...')
+    time.sleep(0.5)
+    print('        shuffle...')
+    time.sleep(0.5)
+    print('          shuffle...')
+    time.sleep(0.5)
     print()
-    while True:
-        print('Okay! Pick a cup 1-{}'.format(len(CUPS)))
+    while True:  # Keep asking until the player enters a cup number.
+        print('Okay! Pick a cup 1, 2, or 3')
         pickedCup = input('> ')
-        if pickedCup.isdecimal() and 1 <= int(pickedCup) <= len(CUPS):
+        if pickedCup.isdecimal() and 1 <= int(pickedCup) <= 3:
             break
-        print('Type a number between 1 and {}.'.format(len(CUPS)))
+        print('Type a number between 1 and 3.')
         print()
 
     if CUPS[int(pickedCup) - 1] == 'diamond':
         print('You found the cup with the diamond!')
     else:
-        print('Nope! You picked the cup that had {} in it.'.format(CUPS[int(pickedCup) - 1]))
+        print('Nope! You picked a cup that had {} in it.'.format(CUPS[int(pickedCup) - 1]))
 
 
     print('Would you like to play again? Y/N')

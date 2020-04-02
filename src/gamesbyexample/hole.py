@@ -25,7 +25,7 @@ while True:
     try:
         time.sleep(PAUSE_AMOUNT)
     except KeyboardInterrupt:
-        sys.exit()
+        sys.exit()  # When Ctrl-C is pressed, end the program.
 
     # Adjust the left side width:
     r = random.randint(1, 4)
@@ -34,11 +34,9 @@ while True:
     elif r == 2 and leftWidth + gapWidth < WIDTH - 1:
         leftWidth = leftWidth + 1  # Increase left side width.
     else:
-        # Do nothing; no change in left side width.
-        pass
+        pass  # Do nothing; no change in left side width.
 
     # (!) EXPERIMENT: Try commenting out all of the following code:
-
     # Adjust the gap width:
     r = random.randint(1, 4)
     if r == 1 and gapWidth > 1:
@@ -46,5 +44,4 @@ while True:
     elif r == 2 and leftWidth + gapWidth < WIDTH - 1:
         gapWidth = gapWidth + 1  # Increase gap width.
     else:
-        # Do nothing; no change in gap width.
-        pass
+        pass  # Do nothing; no change in gap width.
