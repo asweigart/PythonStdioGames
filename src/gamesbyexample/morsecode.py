@@ -24,8 +24,7 @@ for key, value in ENGLISH_TO_MORSE.items():
 
 
 def main():
-    print('MORSE CODE')
-    print('By Al Sweigart al@inventwithpython.com')
+    print('Morse Code, by Al Sweigart al@inventwithpython.com')
     print()
 
     while True:

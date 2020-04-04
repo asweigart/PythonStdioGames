@@ -47,7 +47,6 @@ CLOCKFACE = """       ##12###
 
 
 def main():
-    """Runs the Analog Clock program."""
     bext.clear()
     # Draw the circle of the clock:
     for y, row in enumerate(CLOCKFACE.splitlines()):
@@ -118,7 +117,7 @@ def main():
 
 
 def line(x1, y1, x2, y2):
-    """Returns a list of points in a line between the given points.
+    """Returns a list of points in a line between (x1, y1) and (x2, y2).
 
     Uses the Bresenham line algorithm. More info at:
     https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""

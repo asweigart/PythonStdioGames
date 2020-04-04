@@ -20,7 +20,7 @@ WHEN = ['Soon', 'This Year', 'Later Today', 'RIGHT NOW', 'Next Week']
 
 
 def main():
-    print('CLICKBAIT TITLE GENERATOR')
+    print('Clickbait Title Generator')
     print('By Al Sweigart al@inventwithpython.com')
     print()
 

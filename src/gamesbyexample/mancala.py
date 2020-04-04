@@ -28,9 +28,7 @@ STARTING_NUMBER_OF_SEEDS = 4
 
 
 def main():
-    """Runs a single game of Mancala."""
-    print(
-        """MANCALA, by Al Sweigart al@inventwithpython.com
+    print('''Mancala, by Al Sweigart al@inventwithpython.com
 
 The ancient two-player, seed-sowing game. Grab the seeds from a pit on
 your side and place one in each following pit, going counterclockwise and
@@ -44,8 +42,7 @@ claims the remaining seeds for their store, and the winner is the one
 with the most seeds.
 
 More info at https://en.wikipedia.org/wiki/Mancala
-"""
-    )
+''')
     input('Press Enter to begin...')
 
     gameBoard = getNewBoard()

@@ -134,7 +134,7 @@ device shows a 3 because the closest chest is 3 spaces away.
                     1         2         3
 (In the real game, the chests are not visible in the ocean.)
 
-Press enter to continue...''')
+Press Enter to continue...''')
     input()
 
     print('''When you drop a sonar device directly on a chest, you retrieve

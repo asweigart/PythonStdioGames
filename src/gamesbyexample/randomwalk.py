@@ -16,9 +16,7 @@ except ImportError:
 
 BLOCK = chr(9608)
 
-print('''Random Walk
-By Al Sweigart al@inventwithpython.com
-''')
+print('Random Walk, by Al Sweigart al@inventwithpython.com')
 
 # Ask user what speed to run the simulation at:
 while True:  # Keep looping until the user enters F or S.

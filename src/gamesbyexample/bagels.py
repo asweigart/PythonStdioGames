@@ -11,7 +11,6 @@ MAX_GUESSES = 10
 
 
 def main():
-    """Runs a single game of Bagels."""
     print('''BAGELS, a deductive logic game.
 By Al Sweigart al@inventwithpython.com
 

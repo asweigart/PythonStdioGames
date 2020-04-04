@@ -33,8 +33,6 @@ Z = 2
 
 
 def main():
-    """Run the firefly animation."""
-
     # Each firefly is represented by dictionary with keys
     # 'originalPosition', 'rotationAmount', 'rotationVelocity',
     # 'changeTime', 'isLit'.
@@ -140,9 +138,11 @@ def main():
 
         # Clear the screen:
         if sys.platform == 'win32':
-            os.system('cls')  # Clears Windows terminal.
+            # Clear the Windows terminal with the cls command:
+            os.system('cls')
         else:
-            os.system('clear')  # Clears macOS/Linux terminal.
+            # Clear macOS/Linux terminals with the clear command:
+            os.system('clear')
 
 
 def rotatePoint(x, y, z, ax, ay, az):

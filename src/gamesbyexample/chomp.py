@@ -7,8 +7,7 @@ Tags: short, game, two-player, puzzle game"""
 __version__ = 0
 import random, sys
 
-print('''CHOMP
-By Al Sweigart al@inventwithpython.com
+print('''Chomp, by Al Sweigart al@inventwithpython.com
 Inspired by a Frederik Schuh and David Gale puzzle.
 
 In this two player game, players take turns picking a piece from a

@@ -1,11 +1,12 @@
 """Hammurabi, by Al Sweigart al@inventwithpython.com
-The classic game Hamurabi.bas [sic] by Doug Dyment, popularized by David
-Ahl.
+The classic game Hamurabi.bas [sic] by Doug Dyment and others,
+popularized by David Ahl.
 Tags: large, game, simulation"""
 __version__ = 0
 import random, sys
 
-print('HAMMURABI by Doug Dyment and others')
+print('Hammurabi, by Al Sweigart al@inventwithpython.com')
+print('Originally by Doug Dyment and others')
 print('Try your hand at governing ancient Sumeria for a ten-year term of office.')
 print()
 print("""Game mechanics:

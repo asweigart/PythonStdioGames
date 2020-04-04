@@ -5,9 +5,9 @@ Tags: tiny, math"""
 __version__ = 0
 import time, sys
 
-print('''MULTIPLICATIVE PERSISTENCE
-By Al Sweigart al@inventwithpython.com
-''')
+print('Multiplicative Persistence Game')
+print('By Al Sweigart al@inventwithpython.com')
+print()
 
 while True:  # Main program loop.
     print('Try to get the longest multiplicative persistence chain!')

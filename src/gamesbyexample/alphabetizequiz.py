@@ -2,11 +2,11 @@
 A time-based quiz game to see how fast you can alphabetize letters.
 Tags: short, game"""
 __version__ = 0
-# EXPERIMENT! Try changing the QUESTION_SIZE and QUIZ_DURATION constants.
 
 import random, time
 
 # Set up the constants:
+# (!) Try changing these constants.
 QUESTION_SIZE = 5  # Each question shows 5 letters to alphabetize.
 QUIZ_DURATION = 30  # The quiz lasts 30 seconds.
 assert QUESTION_SIZE <= 26
@@ -17,10 +17,9 @@ REVERSE_ALPHABET = ''.join(sorted(ALPHABET, reverse=True))
 
 
 def main():
-    """Runs a single game of Alphabetize Quiz."""
     # Fancy animation for the title:
     slowPrint(ALPHABET, 0.02)
-    slowPrint('    ALPHABETIZE QUIZ', 0.02)
+    slowPrint('    Alphabetize Quiz', 0.02)
     slowPrint(REVERSE_ALPHABET, 0.02)
     time.sleep(0.5)
 
@@ -32,15 +31,15 @@ as possible. Try to get as many as possible in {} seconds!
 
 Example:
     P M O T Q  <-- The letters.
-    > mopqt    <-- The correct alphabetical order.
+    > mopqt    <-- Enter the correct alphabetical order.
 
     '''.format(QUIZ_DURATION))
-    input('Press enter to begin...')
+    input('Press Enter to begin...')
 
     startTime = time.time()  # Get the current time for the start time.
     numCorrect = 0  # Number of questions answered correctly.
     while True:  # Main game loop.
-        # Come up with QUESTION_SIZE letters for the question:
+        # Come up with letters for the question:
         quizLetters = random.sample(ALPHABET, QUESTION_SIZE)
         print(' '.join(quizLetters))
         print()

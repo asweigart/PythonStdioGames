@@ -11,7 +11,6 @@ except ImportError:
 
 
 def main():
-    """Run the Leetspeak program."""
     print('''L3375P34]< (leetspeek)
 By Al Sweigart al@inventwithpython.com
 

@@ -6,7 +6,7 @@ __version__ = 0
 NUMBER_OF_DIGITS = 10
 
 def main():
-    print('SOROBAN - The Japanese Abacus')
+    print('Soroban - The Japanese Abacus')
     print('By Al Sweigart al@inventwithpython.com')
     print()
 

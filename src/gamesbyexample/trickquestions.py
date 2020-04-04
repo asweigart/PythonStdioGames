@@ -173,8 +173,7 @@ CORRECT_TEXT = ['Correct!', 'That is right.', "You're right.",
 INCORRECT_TEXT = ['Incorrect!', "Nope, that isn't it.", 'Nope.',
                       'Not quite.', 'You missed it.']
 
-print('''TRICK QUESTIONS
-By Al Sweigart al@inventwithpython.com
+print('''Trick Questions, by Al Sweigart al@inventwithpython.com
 
 Can you figure out the answers to these trick questions?
 (Enter QUIT to quit at any time.)

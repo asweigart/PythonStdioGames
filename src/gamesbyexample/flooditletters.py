@@ -1,4 +1,4 @@
-"""Flood It! (Letter Version), by Al Sweigart al@inventwithpython.com
+"""Flood It (Letter Version), by Al Sweigart al@inventwithpython.com
 A colorful game where you try to fill the board with a single color.
 (This version uses letters instead of colors for colorblind users.)
 Tags: short, game"""
@@ -14,8 +14,7 @@ LETTERS = ('s', 'o', 'x', 'm', 'a', 'i')
 
 
 def main():
-    """Run a single game of Flood It."""
-    print('''FLOOD IT! (Letter Version)
+    print('''Flood It (Letter Version)
 By Al Sweigart al@inventwithpython.com
 
 Set the letter of the upper left square, which fills in all the

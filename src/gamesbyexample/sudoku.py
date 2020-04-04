@@ -116,8 +116,7 @@ class SudokuGrid:
         return True
 
 
-print('''SUDOKU
-By Al Sweigart al@inventwithpython.com
+print('''Sudoku, by Al Sweigart al@inventwithpython.com
 
 Sudoku is a number placement logic puzzle game. A Sudoku grid is a 9x9
 grid of numbers. Try to place numbers in the grid such that every row,

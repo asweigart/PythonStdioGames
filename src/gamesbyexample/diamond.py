@@ -1,5 +1,4 @@
 r"""Diamond Drawings, by Al Sweigart al@inventwithpython.com
-
 Draws diamonds of various sizes.
                            /\       /\
                           /  \     //\\

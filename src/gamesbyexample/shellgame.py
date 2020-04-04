@@ -4,8 +4,7 @@ Tags: tiny, beginner, game"""
 __version__ = 0
 import random, time, sys
 
-print('Shell Game')
-print('By Al Sweigart al@inventwithpython.com')
+print('Shell Game, by Al Sweigart al@inventwithpython.com')
 print()
 print('I will hide a diamond in one of three cups.')
 print('Try to find the diamond!')

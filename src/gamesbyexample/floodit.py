@@ -1,4 +1,4 @@
-"""Flood It!, by Al Sweigart al@inventwithpython.com
+"""Flood It, by Al Sweigart al@inventwithpython.com
 A colorful game where you try to fill the board with a single color.
 Tags: large, game, bext"""
 __version__ = 0
@@ -32,8 +32,7 @@ COLORS = list(CMAP.keys())
 def main():
     """Run a single game of Flood It."""
     bext.fg('white')
-    print('''FLOOD IT!
-By Al Sweigart al@inventwithpython.com
+    print('''Flood It, by Al Sweigart al@inventwithpython.com
 
 Set the color of the upper left square, which fills in all the
 adjacent squares of that color. Try to make the entire board the

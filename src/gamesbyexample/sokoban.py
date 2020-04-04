@@ -1,4 +1,4 @@
-"""Sokoban clone, by Al Sweigart al@inventwithpython.com
+"""Sokoban Clone, by Al Sweigart al@inventwithpython.com
 The classic crate-pushing game.
 Tags: large, game, puzzle game"""
 __version__ = 0
@@ -15,7 +15,7 @@ CHAR_MAP = {'#': WALL, '@': FACE, '$': CRATE, '+': PLAYER_ON_GOAL,
             '.': GOAL, '*': CRATE_ON_GOAL, ' ': ' '}
 
 # Display the title banner and instructions:
-print('''SOKOBAN: The classic crate-pushing game.
+print('''Sokoban: The classic crate-pushing game.
 By Al Sweigart al@inventwithpython.com
 
 Push the solid crates onto the squares. You can only push, you
@@ -27,7 +27,8 @@ once.
 
 # Load each level from sokobanlevels.txt:
 if not os.path.exists('sokobanlevels.txt'):
-    print('Download the level file from https://github.com/asweigart/PythonStdioGames/blob/master/src/sokobanlevels.txt')
+    print('Download the level file from ')
+    print('https://inventwithpython.com/sokobanlevels.txt')
     sys.exit()
 ALL_LEVELS = []
 with open('sokobanlevels.txt') as levelFile:

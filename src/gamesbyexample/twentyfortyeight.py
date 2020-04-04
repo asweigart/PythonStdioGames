@@ -12,10 +12,8 @@ BLANK = ''  # A value that represents a blank space on the board.
 
 
 def main():
-    """Run a single game of 2048."""
-    print("""2048
-By Al Sweigart al@inventwithpython.com
-""")
+    print('2048, by Al Sweigart al@inventwithpython.com')
+    # TODO needs instructions
 
     gameBoard = getNewBoard()
 

@@ -2,11 +2,11 @@
 A time-based quiz game to see how fast you can alphabetize words.
 Tags: short, game"""
 __version__ = 0
-# EXPERIMENT! Try changing the QUESTION_SIZE and QUIZ_DURATION constants.
 
 import random, time
 
 # Set up the constants:
+# (!) Try changing these constants.
 QUESTION_SIZE = 3 # Each question shows 3 words to alphabetize.
 WORD_RANGE = 50 # How closely grouped the selected words are.
 QUIZ_DURATION = 30 # The quiz lasts 30 seconds.
@@ -23,10 +23,9 @@ with open('commonenglishwords.txt') as wordFile:
 
 
 def main():
-    """Runs a single game of Alphabetize Word Quiz."""
     # Fancy animation for the title:
     slowPrint(ALPHABET, 0.02)
-    slowPrint('  ALPHABETIZE WORD QUIZ', 0.02)
+    slowPrint('  Alphabetize Word Quiz', 0.02)
     slowPrint(REVERSE_ALPHABET, 0.02)
     time.sleep(0.5)
 
@@ -39,7 +38,7 @@ def main():
     Example:
         trade tracks transmit  <-- The 1st, 2nd and 3rd word.
         1     2      3         <-- Word numbers.
-        > 213                  <-- Word numbers in alphabetical order.
+        > 213                  <-- Enter the alphabetical order.
 
     '''.format(QUIZ_DURATION))
     input('Press Enter to begin...')

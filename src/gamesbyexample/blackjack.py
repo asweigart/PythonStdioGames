@@ -14,7 +14,6 @@ BACKSIDE = 'backside'
 
 
 def main():
-    """Runs a single game of Blackjack."""
     print('''BLACKJACK
     By Al Sweigart al@inventwithpython.com
 

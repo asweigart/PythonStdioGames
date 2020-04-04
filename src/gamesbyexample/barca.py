@@ -17,6 +17,7 @@ ROUND_PLAYER = 'Round Player'
 BOARD_WIDTH = 10
 BOARD_HEIGHT = 10
 
+# The strings to display on the board:
 SQUARE_MOUSE = '[Mo]'
 SQUARE_LION = '[Li]'
 SQUARE_ELEPHANT = '[El]'
@@ -25,15 +26,19 @@ ROUND_LION = '(Li)'
 ROUND_ELEPHANT = '(El)'
 LAND = ' __ '
 WATER = ' ~~ '
+
+# PLAYER_PIECE[x] is a tuple of the x player's pieces:
+PLAYER_PIECE = {SQUARE_PLAYER: (SQUARE_MOUSE, SQUARE_LION, SQUARE_ELEPHANT),
+                ROUND_PLAYER: (ROUND_MOUSE, ROUND_LION, ROUND_ELEPHANT)}
+# FEARED_PIECE[x] is the piece that x is afraid of:
 FEARED_PIECE = {SQUARE_MOUSE: ROUND_LION,
                 SQUARE_LION: ROUND_ELEPHANT,
                 SQUARE_ELEPHANT: ROUND_MOUSE,
                 ROUND_MOUSE: SQUARE_LION,
                 ROUND_LION: SQUARE_ELEPHANT,
                 ROUND_ELEPHANT: SQUARE_MOUSE}
-PLAYER_PIECE = {SQUARE_PLAYER: (SQUARE_MOUSE, SQUARE_LION, SQUARE_ELEPHANT),
-                ROUND_PLAYER: (ROUND_MOUSE, ROUND_LION, ROUND_ELEPHANT)}
 
+# Changes to x and y for moving in different directions:
 UPLEFT   = (-1, -1)
 UP       = (0, -1)
 UPRIGHT  = (1, -1)
@@ -46,12 +51,15 @@ CARDINAL_DIRECTIONS = (UP, LEFT, RIGHT, DOWN)
 DIAGONAL_DIRECTIONS = (UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT)
 ALL_DIRECTIONS = CARDINAL_DIRECTIONS + DIAGONAL_DIRECTIONS
 
+# ANIMAL_DIRECTIONS[x] is a tuple of directions that x can move:
 ANIMAL_DIRECTIONS = {SQUARE_MOUSE: CARDINAL_DIRECTIONS,
                      SQUARE_LION: DIAGONAL_DIRECTIONS,
                      SQUARE_ELEPHANT: ALL_DIRECTIONS,
                      ROUND_MOUSE: CARDINAL_DIRECTIONS,
                      ROUND_LION: DIAGONAL_DIRECTIONS,
                      ROUND_ELEPHANT: ALL_DIRECTIONS}
+# FEARED_ANIMAL_DIRECTIONS[x] is a tuple of directions that the piece
+# that x is afraid of can move:
 FEARED_ANIMAL_DIRECTIONS = {SQUARE_MOUSE: DIAGONAL_DIRECTIONS,
                             SQUARE_LION: ALL_DIRECTIONS,
                             SQUARE_ELEPHANT: CARDINAL_DIRECTIONS,
@@ -65,9 +73,10 @@ WATERING_HOLES = ((3, 3), (6, 3), (3, 6), (6, 6))
 
 def main():
     print("""Barca, by Al Sweigart al@inventwithpython.com
-Barca is a chess variant where each player has two mice (rooks), lions
-(bishops), and elephants (queens). The object of the game is to occupy
-three of the four "watering hole" spaces near the middle of the board.
+Barca is a chess variant where each player has two mice (which move like
+chess rooks), lions (bishops), and elephants (queens). The object of the
+game is to occupy three of the four "watering hole" spaces near the
+middle of the board.
 
 Mice are afraid of lions, lions are afraid of elephants, and elephants
 are afraid of mice. Afraid animals are in "check", and must move away

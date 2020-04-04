@@ -8,9 +8,7 @@ BLANK = '  '
 
 
 def main():
-    """Run a single game of Sliding Puzzle."""
-    print('''SLIDING PUZZLE
-    By Al Sweigart al@inventwithpython.com
+    print('''Sliding Puzzle, by Al Sweigart al@inventwithpython.com
 
     Use the WASD keys to move the tiles
     back into their original order:

@@ -4,7 +4,7 @@ Tags: short, algorithm"""
 __version__ = 0
 
 def main():
-    print("""MATCHING PARENTHESES ALGORITHM
+    print('''Matching Parentheses Algorithm
     By Al Sweigart al@inventwithpython.com
 
     This demonstrates an algorithm for detecting matching parentheses,
@@ -25,7 +25,7 @@ def main():
     the opening symbol at the top of the stack.)
     The string has matching parentheses/braces/brackets if the stack is
     empty at the end of the string.
-    """)
+    ''')
     print('Enter the string to check, for example {[][](())}:')
     response = input('> ')
     print()

@@ -1,5 +1,4 @@
 """Diagonal Maze, by Al Sweigart al@inventwithpython.com
-
 Prints out a random, diagonal maze. (It is not a true
 maze, but rather an artistic maze-like picture.)
 Inspired by the 10 PRINT CHR$(205.5+RND(1)); : GOTO 10 program.

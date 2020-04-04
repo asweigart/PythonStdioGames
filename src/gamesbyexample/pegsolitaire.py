@@ -16,10 +16,7 @@ ALL_SPACES = 'C1 D1 E1 C2 D2 E2 A3 B3 C3 D3 E3 F3 G3 A4 B4 C4 D4 E4 F4 G4 A5 B5 
 
 
 def main():
-    """Run a single game of Peg Solitaire."""
-    print('''PEG SOLITAIRE
-By Al Sweigart al@inventwithpython.com
-''')
+    print('Peg Solitaire, by Al Sweigart al@inventwithpython.com')
 
     theBoard = getNewBoard()
 

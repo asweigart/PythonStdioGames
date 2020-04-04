@@ -1,5 +1,4 @@
 """Counting Quiz, by Al Sweigart al@inventwithpython.com
-
 Use multiplication and subtraction to count the number of stars shown
 as fast as possible.
 

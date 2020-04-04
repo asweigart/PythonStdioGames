@@ -1,5 +1,4 @@
 """Coin Flip Simulator, by Al Sweigart al@inventwithpython.com
-
 Simulate a large number of coin flips.
 Tags: tiny, simulation"""
 __version__ = 0

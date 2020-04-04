@@ -12,13 +12,9 @@ MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July',
 ONE_DAY = datetime.timedelta(days=1)
 
 DAY_BOX_SIZE = 10
-assert DAY_BOX_SIZE >= len('Wednesday')
+assert DAY_BOX_SIZE >= len('Wednesday')  # This day has the most letters.
 
-print(
-    '''Calendar Maker
-By Al Sweigart al@inventwithpython.com
-'''
-)
+print('Calendar Maker, by Al Sweigart al@inventwithpython.com')
 
 while True:  # Loop to get a year from the user.
     print('Enter the year for the calendar:')

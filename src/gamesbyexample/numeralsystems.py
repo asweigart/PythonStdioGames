@@ -3,8 +3,7 @@ Shows the equivalent numbers in decimal, hexadecimal, and binary.
 Tags: short, math"""
 
 __version__ = 0
-print('''Numeral System Counters
-By Al Sweigart al@inventwithpython.com
+print('''Numeral System Counters, by Al Sweigart al@inventwithpython.com
 
 This program shows you equivalent numbers in decimal (base 10),
 hexadecimal (base 16), and binary (base 2) numeral systems.

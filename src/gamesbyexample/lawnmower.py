@@ -15,7 +15,6 @@ except ImportError:
     sys.exit()
 
 # Set up the constants:
-# Constants for the size of the grass field:
 WIDTH = 79
 HEIGHT = 22
 
@@ -24,7 +23,6 @@ FACE = chr(9786)  # The '☺' character.
 MOWER_RIGHT = FACE + "`.=."
 MOWER_LEFT = ".=.'" + FACE
 MOWER_LEN = 5
-
 MOWING_PAUSE = 0.1  # (!) Try changing this to 0.01.
 GROWING_PAUSE = 0.001
 

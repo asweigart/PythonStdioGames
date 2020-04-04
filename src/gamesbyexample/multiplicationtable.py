@@ -2,9 +2,7 @@
 Print a multiplication table.
 Tags: tiny, beginner, math"""
 __version__ = 0
-print('''MULTIPLICATION TABLE
-By Al Sweigart al@inventwithpython.com
-''')
+print('Multiplication Table, by Al Sweigart al@inventwithpython.com')
 
 # Print the horizontal number labels:
 print('  |  0   1   2   3   4   5   6   7   8   9  10  11  12')

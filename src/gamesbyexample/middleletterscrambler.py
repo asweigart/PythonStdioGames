@@ -12,7 +12,6 @@ except ImportError:
 
 
 def main():
-    """Run the Middle Letter Scrambler program."""
     print('''Middle Letter Scrambler
 By Al Sweigart al@inventwithpython.com
 

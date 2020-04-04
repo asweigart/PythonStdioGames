@@ -29,7 +29,6 @@ PAUSE_LENGTH = 0.05
 
 
 def main():
-    """Run the Forest Fire simulation."""
     forest = createNewForest()
 
     bext.clear()

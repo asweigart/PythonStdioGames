@@ -15,8 +15,11 @@ except ImportError:
 
 # Set up the constants:
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1  # Adjustment for Windows Command Prompt.
 HEIGHT -= 1  # Adjustment for the quit message at the bottom.
+# We can't print to the last column on Windows without it adding a
+# newline automatically, so reduce the width by one:
+WIDTH -= 1
+
 NUMBER_OF_ANTS = 10
 NORTH = 'north'
 SOUTH = 'south'
@@ -28,7 +31,6 @@ PAUSE_AMOUNT = 0.1
 
 
 def main():
-    """Run the Langton's Ant simulation."""
     bext.fg('red')
     bext.bg(WHITE)  # Set the background to white to start.
     bext.clear()

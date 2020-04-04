@@ -16,7 +16,10 @@ except ImportError:
 
 # Set up the constants:
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1  # Adjustment for Windows Command Prompt.
+# We can't print to the last column on Windows without it adding a
+# newline automatically, so reduce the width by one:
+WIDTH -= 1
+
 NUMBER_OF_POINTS = 4
 COLORS = ('red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white')
 UP_RIGHT = 'ur'
@@ -24,7 +27,7 @@ UP_LEFT = 'ul'
 DOWN_RIGHT = 'dr'
 DOWN_LEFT = 'dl'
 DIRECTIONS = (UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT)
-LINE_CHAR = '#'
+LINE_CHAR = '#'  # (!) Try changing this to 'O' or '.' or '*' or '_'
 
 # Key names for point dictionaries:
 COLOR = 'color'
@@ -34,7 +37,7 @@ DIR = 'direction'
 
 
 def main():
-    """Run the bouncing lines program."""
+
     bext.clear()
 
     # Generate some points.
@@ -126,54 +129,58 @@ def line(x1, y1, x2, y2):
 
     Uses the Bresenham line algorithm. More info at:
     https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm"""
-    points = []
+    points = []  # Contains the points of the line.
+    # "Steep" means the slope of the line is greater than 45 degrees or
+    # less than -45 degrees:
     isSteep = abs(y2 - y1) > abs(x2 - x1)
     if isSteep:
+        # This algorithm only handles non-steep lines, so let's change
+        # the slope to non-steep and change it back later.
         x1, y1 = y1, x1
         x2, y2 = y2, x2
-    isReversed = x1 > x2
+    isReversed = x1 > x2  # True if the line goes right-to-left.
 
-    if isReversed:
+    if isReversed:  # Get the points on the line going right-to-left.
         x1, x2 = x2, x1
         y1, y2 = y2, y1
 
         deltax = x2 - x1
         deltay = abs(y2 - y1)
-        error = int(deltax / 2)
-        y = y2
-        ystep = None
+        extray = int(deltax / 2)
+        currenty = y2
         if y1 < y2:
-            ystep = 1
+            ydirection = 1
         else:
-            ystep = -1
-        for x in range(x2, x1 - 1, -1):
+            ydirection = -1
+        # Calculate the y for every x in this line:
+        for currentx in range(x2, x1 - 1, -1):
             if isSteep:
-                points.append((y, x))
+                points.append((currenty, currentx))
             else:
-                points.append((x, y))
-            error -= deltay
-            if error <= 0:
-                y -= ystep
-                error += deltax
-    else:
+                points.append((currentx, currenty))
+            extray -= deltay
+            if extray <= 0:  # Only change y once extray <= 0.
+                currenty -= ydirection
+                extray += deltax
+    else:  # Get the points on the line going left-to-right.
         deltax = x2 - x1
         deltay = abs(y2 - y1)
-        error = int(deltax / 2)
-        y = y1
-        ystep = None
+        extray = int(deltax / 2)
+        currenty = y1
         if y1 < y2:
-            ystep = 1
+            ydirection = 1
         else:
-            ystep = -1
-        for x in range(x1, x2 + 1):
+            ydirection = -1
+        # Calculate the y for every x in this line:
+        for currentx in range(x1, x2 + 1):
             if isSteep:
-                points.append((y, x))
+                points.append((currenty, currentx))
             else:
-                points.append((x, y))
-            error -= deltay
-            if error < 0:
-                y += ystep
-                error += deltax
+                points.append((currentx, currenty))
+            extray -= deltay
+            if extray < 0:  # Only change y once extray < 0.
+                currenty += ydirection
+                extray += deltax
     return points
 
 

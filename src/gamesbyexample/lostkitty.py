@@ -20,15 +20,13 @@ assert HEIGHT < 10, 'The map is set too tall!'
 
 
 def main():
-    """Runs the game."""
     steps = 0  # Keep track of how many steps the player has moved.
     playerx = 4  # Current x position of the player.
     playery = 2  # Current y position of the player.
     # (x, y) tuples of intersections the player has already visited:
     visitedIntersections = set()
 
-    print('LOST KITTY')
-    print('By Al Sweigart al@inventwithpython.com')
+    print('Lost Kitty, by Al Sweigart al@inventwithpython.com')
     print()
     print('Zophie the kitten is lost in the city! Move around until')
     print('you find her!')

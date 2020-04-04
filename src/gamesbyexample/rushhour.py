@@ -1,6 +1,6 @@
 """Rush Hour, by Al Sweigart al@inventwithpython.com
 A sliding tile puzzle game to move cars out of the way.
-Original game by Nob Yoshihagara
+Original game by Nob Yoshihagara.
 More info at https://www.michaelfogleman.com/rush/
 Tags: large, game, puzzle game, board game"""
 __version__ = 0
@@ -14,9 +14,9 @@ WALL = chr(9608)  # Character 9608 is '█'
 
 
 def main():
-    """Run a single game of Rush Hour."""
-    print("""RUSH HOUR
-By Al Sweigart al@inventwithpython.com
+    print("""Rush Hour, by Al Sweigart al@inventwithpython.com
+Original game by Nob Yoshihagara.
+Puzzles by Michael Fogleman.
 
 Get the "a" car to the right edge of the board.
 Enter moves as <car> <direction> <distance>.

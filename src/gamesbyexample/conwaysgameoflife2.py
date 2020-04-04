@@ -1,8 +1,6 @@
 """Conway's Game of Life, by Al Sweigart al@inventwithpython.com
-
 This version of Conway's Game of Life uses squares instead of text
 characters.
-
 The classic cellular automata simulation. Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
@@ -26,14 +24,15 @@ PAUSE_LENGTH = 0.25
 
 WIDTH, HEIGHT = bext.size()
 HEIGHT = (HEIGHT - 1) * 2 # Leave a row free for "Press Ctrl-C..." message.
-WIDTH -= 1 # Adjustment for Windows Command Prompt.
+# We can't print to the last column on Windows without it adding a
+# newline automatically, so reduce the width by one:
+WIDTH -= 1
 
 TOP_BLOCK = chr(9600)     # Character 9600 is '▀'
 BOTTOM_BLOCK = chr(9604)  # Character 9604 is '▄'
 FULL_BLOCK = chr(9608)    # Character 9608 is '█'
 
 def main():
-    """Runs the Conway's Game of Life simulation."""
     print('Conway\'s Game of Life')
     print('By Al Sweigart al@inventwithpython.com')
     print('Press Ctrl-C to quit...')

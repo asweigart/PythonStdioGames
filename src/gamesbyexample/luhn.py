@@ -8,9 +8,7 @@ import time, sys
 
 PAUSE_AMOUNT = 0.5  # Pause for 0.5 seconds at each step.
 
-print('''LUHN ALGORITHM
-By Al Sweigart al@inventwithpython.com
-''')
+print('Luhn Algorithm, by Al Sweigart al@inventwithpython.com')
 
 # Display information about the Luhn algorithm if the user wants it:
 print('Would you like to see a description of the Luhn algorithm? Y/N')

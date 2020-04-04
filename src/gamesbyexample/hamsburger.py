@@ -20,9 +20,7 @@ def pluralize(word):
         return word + 's'
 
 
-print('''HAMSBURGER
-By Al Sweigart al@inventwithpython.com
-''')
+print('Hamsburger, by Al Sweigart al@inventwithpython.com')
 
 # Loading nouns from nounlist.txt
 if not os.path.exists('nounlist.txt'):

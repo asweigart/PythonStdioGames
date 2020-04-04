@@ -4,9 +4,7 @@ Tags: short, game"""
 __version__ = 0
 import random, time, sys
 
-print('''ROCK, PAPER, SCISSORS
-By Al Sweigart al@inventwithpython.com
-
+print('''Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
 - Rock beats scissors.
 - Paper beats rocks.
 - Scissors beats paper.

@@ -1,5 +1,4 @@
 """Countdown, by Al Sweigart al@inventwithpython.com
-
 Show a countdown timer animation using a seven-segment display.
 Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
@@ -8,7 +7,7 @@ Tags: short"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
 
-import time, os, sys
+import time, sys
 import sevseg  # Imports our sevseg.py program.
 
 if len(sys.argv) > 1:
@@ -22,11 +21,8 @@ if secondsLeft > 359999:
 
 try:
     while True:  # Main game loop.
-        # Clear the screen:
-        if sys.platform == 'win32':
-            os.system('cls')  # Clears Windows terminal.
-        else:
-            os.system('clear')  # Clears macOS/Linux terminal.
+        # Clear the screen by printing a bunch of newlines:
+        print('\n' * 60)
 
         # Get the hours/minutes/seconds from secondsLeft:
         # For example: 7265 is 2 hours, 1 minute, 5 seconds.

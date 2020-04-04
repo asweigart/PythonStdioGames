@@ -26,9 +26,11 @@ sandspace = set() # Contains (x, y) tuples for each piece of sand.
 while True:  # Main program loop.
     # Clear the previously drawn text:
     if sys.platform == 'win32':
-        os.system('cls')  # Clears Windows terminal.
+        # Clear the Windows terminal with the cls command:
+        os.system('cls')
     else:
-        os.system('clear')  # Clears macOS/Linux terminal.
+        # Clear macOS/Linux terminals with the clear command:
+        os.system('clear')
 
     # Generate sand from each source.
     for source in sources:

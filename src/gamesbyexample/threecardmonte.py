@@ -48,10 +48,10 @@ def getRandomCard():
             return (rank, suit)
 
 
-print('THREE-CARD MONTE')
-print('By Al Sweigart al@inventwithpython.com')
+print('Three-Card Monte, by Al Sweigart al@inventwithpython.com')
 print()
-print('Find the red lady! Keep an eye on how the cards move.')
+print('Find the red lady (the Queen of Hearts)! Keep an eye on how')
+print('the cards move.')
 print()
 
 # Show the original arrangement:

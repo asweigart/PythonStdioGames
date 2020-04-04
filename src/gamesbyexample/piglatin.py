@@ -11,7 +11,7 @@ VOWELS = ('a', 'e', 'i', 'o', 'u', 'y')
 
 
 def main():
-    print('''IGPAY ATINLAY (Pig Latin)
+    print('''Igpay Atinlay (Pig Latin)
 By Al Sweigart al@inventwithpython.com
 
 Enter your message:''')

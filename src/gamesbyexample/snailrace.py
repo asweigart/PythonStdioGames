@@ -9,8 +9,7 @@ MAX_NUM_SNAILS = 8
 MAX_NAME_LENGTH = 20
 FINISH_LINE = 40  # (!) Try modifying this number.
 
-print('''SNAIL RACE
-By Al Sweigart al@inventwithpython.com
+print('''Snail Race, by Al Sweigart al@inventwithpython.com
 
     @v <-- snail
 

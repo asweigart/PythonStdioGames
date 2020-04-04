@@ -10,9 +10,7 @@ except:
 
 
 def main():
-    print('''RAIL FENCE CIPHER
-By Al Sweigart al@inventwithpython.com
-''')
+    print('Rail Fence Cipher, by Al Sweigart al@inventwithpython.com')
 
     # Ask the user if they want to encrypt or decrypt:
     while True:

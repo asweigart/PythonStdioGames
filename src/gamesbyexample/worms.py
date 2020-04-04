@@ -20,6 +20,10 @@ WIDTH, HEIGHT = shutil.get_terminal_size()
 # We can't print to the last column on Windows without it adding a
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
+
+# Characters in the terminal are twice as tall as they are wide, so to
+# make ours worms look square we pretend two characters horizontally
+# is one. This gives us half of the effective width of the terminal:
 WIDTH //= 2
 
 NUMBER_OF_WORMS = 12  # (!) Try changing this value.

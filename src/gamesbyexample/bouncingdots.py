@@ -16,7 +16,10 @@ except ImportError:
 
 # Set up the constants:
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1  # Adjustment for Windows Command Prompt.
+# We can't print to the last column on Windows without it adding a
+# newline automatically, so reduce the width by one:
+WIDTH -= 1
+
 NUMBER_OF_DOTS = 35
 COLORS = ('red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white')
 UP_RIGHT   = 'ur'
@@ -34,7 +37,6 @@ DIR = 'direction'
 
 
 def main():
-    """Run the bouncing dots program."""
     bext.clear()
 
     # Generate some dots.

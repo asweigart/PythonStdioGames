@@ -16,13 +16,16 @@ except ImportError:
 
 # Set up the constants:
 WIDTH, HEIGHT = bext.size()
-WIDTH -= 1  # Adjustment for Windows Command Prompt.
+# We can't print to the last column on Windows without it adding a
+# newline automatically, so reduce the width by one:
+WIDTH -= 1
 
-# Constants
-NUM_KELP = 2
-NUM_FISH = 10
-NUM_BUBBLERS = 1
-FRAMES_PER_SECOND = 4
+NUM_KELP = 2  # (!) Try changing this number.
+NUM_FISH = 10  # (!) Try changing this number.
+NUM_BUBBLERS = 1  # (!) Try changing this number.
+FRAMES_PER_SECOND = 4  # (!) Try changing this number.
+# (!) Try changing the constants to create a fish tank with only kelp,
+# or only bubblers.
 
 FISH_TYPES = [
   {'right': ['><>'],          'left': ['<><']},
@@ -40,7 +43,7 @@ FISH_TYPES = [
              '-._.-._^=>', '._.-._.^=>'],
    'left':  ['<=^-._.-._', '<=^.-._.-.',
              '<=^_.-._.-', '<=^._.-._.']},
-  ]
+  ]  # (!) Try adding your own fish to FISH_TYPES.
 LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
 
 # The x position where a fish runs into the edge of the screen:

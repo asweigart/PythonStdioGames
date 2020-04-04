@@ -4,8 +4,7 @@ Tags: tiny, math"""
 __version__ = 0
 import math, sys
 
-print('''FACTOR FINDER
-By Al Sweigart al@inventwithpython.com''')
+print('Factor Finder, by Al Sweigart al@inventwithpython.com')
 
 while True:  # Main program loop.
     print()

@@ -12,8 +12,7 @@ except ImportError:
 
 def main():
     """Run the Spongetext program."""
-    print('''sPoNgEtExT
-bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
+    print('''sPoNgEtExT, bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
 
 eNtEr YoUr MeSsAgE:''')
     spongetext = englishToSpongetext(input('> '))

@@ -5,7 +5,6 @@ Tags: short, artistic, scrolling, science"""
 __version__ = 0
 import random, sys, time
 
-# Set up the constants:
 # These are the individual rows of the DNA animation:
 ROWS = [
     '         ##',  # Index 0 has no {}.
@@ -29,7 +28,6 @@ ROWS = [
 
 
 def main():
-    """Run the DNA animation."""
     print('Press Ctrl-C to quit...')
     time.sleep(2)
     rowIndex = 0
@@ -40,12 +38,13 @@ def main():
         if rowIndex == len(ROWS):
             rowIndex = 0
 
-        # Row indexs 0 and 9 don't have nucleotides:
+        # Row indexes 0 and 9 don't have nucleotides:
         if rowIndex == 0 or rowIndex == 9:
             print(ROWS[rowIndex])
             continue
 
-        # Select random nucleotide pairs:
+        # Select random nucleotide pairs, guanine-cytosine and
+        # adenine-thymine:
         randomSelection = random.randint(1, 4)
         if randomSelection == 1:
             leftNucleotide, rightNucleotide = 'A', 'T'

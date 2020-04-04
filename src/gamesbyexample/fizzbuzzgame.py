@@ -4,8 +4,7 @@ Tags: tiny, game, math"""
 __version__ = 0
 import time, sys
 
-print('''FIZZ BUZZ GAME
-By Al Sweigart al@inventwithpython.com
+print('''Fizz Buzz Game, by Al Sweigart al@inventwithpython.com
 
 Starting with 1, enter increasing numbers.
 However, if the number is a multiple of 3, type "fizz" instead of

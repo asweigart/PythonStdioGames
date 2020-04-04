@@ -22,10 +22,7 @@ MAX_NUMBER_OF_PLAYERS = 6
 
 
 def main():
-    """Run a single game of Ghost Leg Lottery."""
-    print('''GHOST LEG LOTTERY
-By Al Sweigart al@inventwithpython.com
-''')
+    print('Ghost Leg Lottery, by Al Sweigart al@inventwithpython.com')
     players = getPlayerNames()
     legs = getLegs(players)
 

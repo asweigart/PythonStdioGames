@@ -28,8 +28,7 @@ class Bucket:
         # Put the poured out water into the other bucket:
         intoBucket.water = intoBucket.water + amountToPour
 
-print('''WATER BUCKET PUZZLE
-By Al Sweigart al@inventwithpython.com''')
+print('Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com')
 
 GOAL = 4  # The exact amount of water to have in a bucket to win.
 steps = 0  # Keep track of how many steps the player made to solve this.

@@ -7,8 +7,7 @@ __version__ = 0
 import sys
 
 # Print the title and instructions:
-print('''MAGIC HEXAGON
-By Al Sweigart al@inventwithpython.com
+print('''Magic Hexagon, by Al Sweigart al@inventwithpython.com
 
 Place the numbers 1 to 19 on spaces A through S such that all 15
 horizontal and diagonal rows add up to 38. The unused numbers are
@@ -16,7 +15,7 @@ stored in the Z box until you place them.
 
 We'll start the board with 3 and 17 placed.
 ''')
-input('Press enter to begin...')
+input('Press Enter to begin...')
 
 # A large, multi-line string that acts as a template for the game board:
 # You can copy/paste this from https://pastebin.com/raw/h9ufKzSz

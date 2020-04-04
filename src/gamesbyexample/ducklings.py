@@ -40,7 +40,6 @@ WIDTH -= 1
 
 
 def main():
-    """Run the screensaver."""
     print('Duckling Screensaver, by Al Sweigart al@inventwithpython.com')
     print('Press Ctrl-C to quit...')
     time.sleep(3)

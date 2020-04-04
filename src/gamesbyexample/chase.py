@@ -1,4 +1,4 @@
-"""Daleks, by Al Sweigart al@inventwithpython.com
+"""Chase, by Al Sweigart al@inventwithpython.com
 Try to get the robots to crash into each other.
 Tags: large, game"""
 __version__ = 0
@@ -9,9 +9,7 @@ WALL = chr(9608) # Character 9608 is '█'
 
 
 def main():
-    print('''CHASE
-    By Al Sweigart al@inventwithpython.com
-    ''')
+    print('Chase, by Al Sweigart al@inventwithpython.com')
 
     # Set up a new game:
     theBoard, theRobots = getNewBoardAndRobots(40, 20, 6)
@@ -37,9 +35,11 @@ def main():
 def clearScreen():
     # Clear the previously drawn text:
     if sys.platform == 'win32':
-        os.system('cls') # Clears Windows terminal.
+        # Clear the Windows terminal with the cls command:
+        os.system('cls')
     else:
-        os.system('clear') # Clears macOS/Linux terminal.
+        # Clear macOS/Linux terminals with the clear command:
+        os.system('clear')
 
 
 def getNewBoardAndRobots(width, height, numRobots):

@@ -19,7 +19,7 @@ SOUTH = 'south'
 EAST = 'east'
 WEST = 'west'
 
-print('''MAZE MAKER (Recursive Backtracker algorithm)
+print('''Maze Maker (Recursive Backtracker algorithm)
 By Al Sweigart al@inventwithpython.com
 
 This program creates maze files. You can play these mazes with

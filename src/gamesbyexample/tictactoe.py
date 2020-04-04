@@ -6,7 +6,6 @@ ALL_SPACES = list('123456789') # The keys for a TTT board dictionary.
 X, O, BLANK = 'X', 'O', ' ' # Constants for string values.
 
 def main():
-    """Runs a game of Tic Tac Toe."""
     print('Welcome to Tic Tac Toe!')
     gameBoard = getBlankBoard() # Create a TTT board dictionary.
     currentPlayer, nextPlayer = X, O # X goes first, O goes next.

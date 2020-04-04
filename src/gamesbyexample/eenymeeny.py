@@ -1,7 +1,7 @@
 """Eeny-Meeny-Miny-Moe, by Al Sweigart al@inventwithpython.com
 An elimination game for multiple players. Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Eeny,_meeny,_miny,_moe
-More info at https://en.wikipedia.org/wiki/Josephus_problem
+and https://en.wikipedia.org/wiki/Josephus_problem
 Tags: short, game, multiplayer"""
 __version__ = 0
 import random, time, sys

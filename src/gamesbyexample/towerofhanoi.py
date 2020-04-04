@@ -12,9 +12,7 @@ COMPLETE_TOWER = list(range(TOTAL_DISKS, 0, -1))
 
 
 def main():
-    """Runs a single game of The Tower of Hanoi."""
-    print(
-        """THE TOWER OF HANOI, by Al Sweigart al@inventwithpython.com
+    print("""The Tower of Hanoi, by Al Sweigart al@inventwithpython.com
 
 Move the tower of disks, one disk at a time, to another tower. Larger
 disks cannot rest on top of a smaller disk.

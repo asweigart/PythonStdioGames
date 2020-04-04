@@ -4,12 +4,10 @@ Tags: tiny, beginner, simulation"""
 __version__ = 0
 import random, time
 
-print(
-    '''MILLION DICE ROLL STATISTICS SIMULATOR
+print('''Million Dice Roll Statistics Simulator
 By Al Sweigart al@inventwithpython.com
 
-Enter how many six-sided dice you want to roll:'''
-)
+Enter how many six-sided dice you want to roll:''')
 numberOfDice = int(input('> '))
 
 # Set up dictionary to store results:
@@ -18,7 +16,7 @@ for i in range(numberOfDice, (numberOfDice * 6) + 1):
     results[i] = 0
 
 # Simulate dice rolls.
-print('Simulating 1,000,000 dice rolls...')
+print('Simulating 1,000,000 rolls of {} dice...'.format(numberOfDice))
 lastPrintTime = time.time()
 for i in range(1000000):
     if time.time() > lastPrintTime + 1:

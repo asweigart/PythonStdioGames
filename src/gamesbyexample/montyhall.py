@@ -68,8 +68,7 @@ THIRD_CAR_OTHERS_GOAT = """
 |GOAT|||  |GOAT|||  |   O  |
 +------+  +------+  +------+"""
 
-print('''THE MONTY HALL PROBLEM
-By Al Sweigart al@inventwithpython.com
+print('''The Monty Hall Problem, by Al Sweigart al@inventwithpython.com
 
 In the Monty Hall game show, you can pick one of three doors. One door
 has a new car for a prize. The other two doors have worthless goats:

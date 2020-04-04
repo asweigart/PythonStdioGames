@@ -19,9 +19,7 @@ for i in range(len(WORDS)):
 
 def main():
     """Run a single game of Hacking."""
-    print('''HACKING MINIGAME
-By Al Sweigart al@inventwithpython.com
-''')
+    print('Hacking Minigame, by Al Sweigart al@inventwithpython.com')
 
     gameWords = getWords()
     gameBoard = getBoard(gameWords)
