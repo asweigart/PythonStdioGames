@@ -1,5 +1,4 @@
 """Barca, by Al Sweigart al@inventwithpython.com
-
 A chess-variant where each player's mice, lions, and elephants try to
 occupy the watering holes near the center of the board.
 

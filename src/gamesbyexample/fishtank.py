@@ -1,5 +1,4 @@
 """Fish Tank, by Al Sweigart al@inventwithpython.com
-
 A peaceful animation of a fish tank. Press Ctrl-C to stop.
 Similar to ASCIIQuarium, but mine is based on an older ASCII fish tank
 program for DOS. https://robobunny.com/projects/asciiquarium/html/

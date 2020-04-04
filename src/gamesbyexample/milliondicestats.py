@@ -1,5 +1,4 @@
 """Million Dice Roll Stats, by Al Sweigart al@inventwithpython.com
-
 A simulation of one million dice rolls.
 Tags: tiny, beginner, simulation"""
 __version__ = 0

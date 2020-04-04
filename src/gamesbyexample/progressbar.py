@@ -1,5 +1,4 @@
 """Progress Bar Simulation, by Al Sweigart al@inventwithpython.com
-
 A sample progress bar animation that can be used in other programs.
 Tags: short, module"""
 __version__ = 0

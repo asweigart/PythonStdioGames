@@ -4,8 +4,7 @@ Finds out how long various Collatz Sequences are.
 More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
 Tags: short, math"""
 __version__ = 0
-print('''Collatz Sequence Stats
-By Al Sweigart al@inventwithpython.com
+print('''Collatz Sequence Stats, by Al Sweigart al@inventwithpython.com
 
 The Collatz sequence is a sequence of numbers produced from a
 starting number, following two rules:

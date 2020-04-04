@@ -1,5 +1,4 @@
 """Nonuniform Fractal Tree Drawer, by Al Sweigart al@inventwithpython.com
-
 Draws nonuniform fractal trees with turtle graphics."""
 __version__ = 0
 import turtle

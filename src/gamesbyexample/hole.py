@@ -1,5 +1,4 @@
 """Hole, by Al Sweigart al@inventwithpython.com
-
 A tunnel animation.
 Tags: tiny, beginner, scrolling, artistic"""
 

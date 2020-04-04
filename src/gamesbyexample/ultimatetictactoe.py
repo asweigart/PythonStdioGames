@@ -1,5 +1,4 @@
 """Ultimate Tic-Tac-Toe, by Al Sweigart al@inventwithpython.com
-
 Tags: large, game, board game, two-player"""
 __version__ = 0
 # TODO - Comments need updating.

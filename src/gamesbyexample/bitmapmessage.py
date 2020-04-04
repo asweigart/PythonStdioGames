@@ -1,5 +1,4 @@
 """Bitmap Message, by Al Sweigart al@inventwithpython.com
-
 Displays a text message according to the provided bitmap image.
 Tags: tiny, beginner, artistic"""
 

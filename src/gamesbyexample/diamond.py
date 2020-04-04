@@ -13,8 +13,7 @@ Draws diamonds of various sizes.
 __version__ = 0
 
 def main():
-    print('Diamond Drawings')
-    print('By Al Sweigart al@inventwithpython.com')
+    print('Diamond Drawings, by Al Sweigart al@inventwithpython.com')
     print()
 
     # Display diamonds of sizes 1 through 6:

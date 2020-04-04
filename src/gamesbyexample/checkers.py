@@ -1,5 +1,4 @@
 """Checkers, by Al Sweigart al@inventwithpython.com
-
 The classic checkers board game.
 In this version, capturing is not mandatory.
 Tags: extra-large, board game, game, two-player"""

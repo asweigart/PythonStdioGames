@@ -1,5 +1,4 @@
 """Ulam Spiral, by Al Sweigart al@inventwithpython.com
-
 The Ulam spiral is a mysterious mathematics pattern for prime numbers
 with turtle graphics.
 More info at https://en.wikipedia.org/wiki/Ulam_spiral"""

@@ -1,5 +1,4 @@
 """Fireflies, by Al Sweigart al@inventwithpython.com
-
 A beautiful animation of fireflies. Press Ctrl-C to stop.
 Tags: large, artistic"""
 __version__ = 0

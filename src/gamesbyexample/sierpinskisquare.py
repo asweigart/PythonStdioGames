@@ -1,5 +1,4 @@
 """Sierpinski Square, by Al Sweigart al@inventwithpython.com
-
 Draws the Sierpinski Square (also called Carpet) with turtle graphics.
 More info at: https://en.wikipedia.org/wiki/Sierpinski_carpet"""
 __version__ = 0

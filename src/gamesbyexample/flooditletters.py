@@ -1,5 +1,4 @@
 """Flood It! (Letter Version), by Al Sweigart al@inventwithpython.com
-
 A colorful game where you try to fill the board with a single color.
 (This version uses letters instead of colors for colorblind users.)
 Tags: short, game"""

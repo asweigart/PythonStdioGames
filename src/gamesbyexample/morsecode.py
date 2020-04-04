@@ -1,5 +1,4 @@
 """Morse Code, by Al Sweigart al@inventwithpython.com
-
 Translates between English and Morse Code.
 More info at: https://en.wikipedia.org/wiki/Morse_code
 Tags: short, word"""

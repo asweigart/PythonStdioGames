@@ -1,5 +1,4 @@
 """Digital Clock, by Al Sweigart al@inventwithpython.com
-
 Display a digital clock of the current time with a seven-segment display.
 Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display

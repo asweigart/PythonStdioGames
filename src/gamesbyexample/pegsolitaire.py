@@ -1,5 +1,4 @@
 """Peg Solitaire, by Al Sweigart al@inventwithpython.com
-
 A single-player, peg-jumping game to eliminate all the pegs.
 More info at https://en.wikipedia.org/wiki/Peg_solitaire
 Tags: large, game, board game"""

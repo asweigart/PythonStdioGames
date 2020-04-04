@@ -1,5 +1,4 @@
 """Guess the Number, by Al Sweigart al@inventwithpython.com
-
 While given hints, try to guess the secret number.
 Tags: tiny, beginner, game"""
 __version__ = 0

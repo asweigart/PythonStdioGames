@@ -1,5 +1,4 @@
 """Hexapawn, by Al Sweigart al@inventwithpython.com
-
 A pawn-only chess variant where you must try to move one of your
 pawns to the opposite end of the board. You also win if you block
 your opponent from making a move. The original Hexapawn had a 3x3

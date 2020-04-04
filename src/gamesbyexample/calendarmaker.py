@@ -1,5 +1,4 @@
 """Calendar Maker, by Al Sweigart al@inventwithpython.com
-
 Create monthly calendars, saved to a text file and fit for printing.
 Tags: short, artistic"""
 __version__ = 0

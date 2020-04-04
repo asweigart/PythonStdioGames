@@ -34,6 +34,11 @@ FULL_BLOCK = chr(9608)    # Character 9608 is '█'
 
 def main():
     """Runs the Conway's Game of Life simulation."""
+    print('Conway\'s Game of Life')
+    print('By Al Sweigart al@inventwithpython.com')
+    print('Press Ctrl-C to quit...')
+    time.sleep(3)
+
     # Create random cells:
     currentCells = {}
     nextCells = {}

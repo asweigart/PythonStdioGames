@@ -1,5 +1,4 @@
 """Clickbait Headline Generator, by Al Sweigart al@inventwithpython.com
-
 A clickbait headline generator for your soulless content farm.
 Tags: large, humor, word"""
 __version__ = 0

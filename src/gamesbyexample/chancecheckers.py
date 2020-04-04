@@ -1,5 +1,4 @@
 """Chance Checkers, by Al Sweigart al@inventwithpython.com
-
 Checkers, but you can move 3 random checkers per turn.
 These checkers are randomly decided, and can be the player's own
 checkers or their opponents', but you can't move your opponents'

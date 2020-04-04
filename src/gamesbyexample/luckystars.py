@@ -1,5 +1,4 @@
 """Lucky Stars, by Al Sweigart al@inventwithpython.com
-
 A "press your luck" game where you roll dice to gather as many stars
 as possible. You can roll as many times as you want, but if you roll
 three skulls you lose all your stars.

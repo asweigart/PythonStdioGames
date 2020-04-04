@@ -1,5 +1,4 @@
 """Idiot, by Al Sweigart al@inventwithpython.com
-
 How to keep an idiot busy for hours. (This is a joke program.)
 Tags: tiny, beginner, humor"""
 __version__ = 0

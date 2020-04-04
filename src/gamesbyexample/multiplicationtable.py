@@ -1,5 +1,4 @@
 """Multiplication Table, by Al Sweigart al@inventwithpython.com
-
 Print a multiplication table.
 Tags: tiny, beginner, math"""
 __version__ = 0

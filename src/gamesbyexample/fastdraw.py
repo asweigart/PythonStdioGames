@@ -1,5 +1,4 @@
 """Fast Draw, by Al Sweigart al@inventwithpython.com
-
 Test your reflexes to see if you're the fastest draw in the west.
 Tags: tiny, beginner, game"""
 

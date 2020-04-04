@@ -1,5 +1,4 @@
 """Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com
-
 A water pouring puzzle.
 More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 Tags: large, object-oriented, game, puzzle game, math"""

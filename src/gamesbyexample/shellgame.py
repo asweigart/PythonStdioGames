@@ -1,5 +1,4 @@
 """Shell Game, by Al Sweigart al@inventwithpython.com
-
 A random gambling game.
 Tags: tiny, beginner, game"""
 __version__ = 0

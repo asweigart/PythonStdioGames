@@ -4,13 +4,17 @@ The classic cellular automata simulation. Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 Tags: short, artistic, simulation"""
 __version__ = 0
-import random, time, copy, sys
+import copy, random, sys, time
 
 # Set up the constants:
 WIDTH = 79   # The width of the cell grid.
 HEIGHT = 20  # The height of the cell grid.
 ALIVE = 'O'  # The character representing a living cell.
 DEAD = ' '   # The character representing a dead cell.
+
+print('Conway\'s Game of Life, by Al Sweigart al@inventwithpython.com')
+print('Press Ctrl-C to quit...')
+time.sleep(3)
 
 # Create a list of list for the cells:
 nextCells = {}

@@ -1,5 +1,4 @@
 """Bouncing Lines, by Al Sweigart al@inventwithpython.com
-
 A bouncing line animation. Press Ctrl-C to stop.
 
 NOTE: Do not resize the terminal window while this program is running.

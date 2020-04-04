@@ -1,5 +1,4 @@
 """Sine Sign, by Al Sweigart al@inventwithpython.com
-
 Create a sine-wavy message.
 Tags: tiny, artistic"""
 __version__ = 0

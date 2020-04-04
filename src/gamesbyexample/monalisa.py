@@ -1,5 +1,4 @@
 """Mona Lisa, by Al Sweigart al@inventwithpython.com
-
 Draws an Andy Warhol-like drawing of the Mona Lisa with turtle
 graphics."""
 __version__ = 0

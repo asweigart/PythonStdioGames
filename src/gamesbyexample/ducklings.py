@@ -1,5 +1,4 @@
 """Duckling Screensaver, by Al Sweigart al@inventwithpython.com
-
 A screensaver of many many ducklings.
 
 >" )   ='')    (``=   ("=  >")    ("=
@@ -14,7 +13,8 @@ __version__ = 0
 import random, shutil, sys, time
 
 # Set up the constants:
-DENSITY = 10.0  # Density can range from 0.0 to 100.0.
+PAUSE = 0.2
+DENSITY = 10.0  # (!) Density can range from 0.0 to 100.0.
 DUCKLING_WIDTH = 5
 LEFT = 'left'
 RIGHT = 'right'
@@ -67,7 +67,7 @@ def main():
 
         print()  # Print a newline.
         sys.stdout.flush()  # Make sure text appears on the screen.
-        time.sleep(0.2)
+        time.sleep(PAUSE)
 
 
 class Duckling:

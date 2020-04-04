@@ -1,5 +1,4 @@
 """Birthday Paradox Simulation, by Al Sweigart al@inventwithpython.com
-
 Explore the mathematics of the "Birthday Paradox".
 More info at https://en.wikipedia.org/wiki/Birthday_problem
 Tags: short, math, simulation"""

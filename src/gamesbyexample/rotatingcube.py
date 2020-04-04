@@ -1,5 +1,4 @@
 """Rotating Cube, by Al Sweigart al@inventwithpython.com
-
 A rotating cube animation. Press Ctrl-C to stop.
 Tags: large, artistic, math"""
 __version__ = 0

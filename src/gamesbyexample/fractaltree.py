@@ -1,5 +1,4 @@
 """Fractal Tree Drawer, by Al Sweigart al@inventwithpython.com
-
 Draws fractal trees with turtle graphics."""
 __version__ = 0
 import random

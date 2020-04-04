@@ -1,5 +1,4 @@
 """sPoNgEtExT, by Al Sweigart al@inventwithpython.com
-
 Translates English messages into sPOnGEtExT.
 Tags: tiny, word"""
 __version__ = 0

@@ -1,5 +1,4 @@
 """Trick Questions, by Al Sweigart al@inventwithpython.com
-
 A quiz of several trick questions.
 Tags: large, humor"""
 

@@ -1,5 +1,4 @@
 """Rush Hour, by Al Sweigart al@inventwithpython.com
-
 A sliding tile puzzle game to move cars out of the way.
 Original game by Nob Yoshihagara
 More info at https://www.michaelfogleman.com/rush/

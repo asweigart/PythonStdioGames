@@ -1,5 +1,4 @@
 """Etch a Sketch, by Al Sweigart al@inventwithpython.com
-
 An art program that draws a continuous line around the screen using the
 WASD keys.
 

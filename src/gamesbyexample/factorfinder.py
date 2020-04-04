@@ -1,5 +1,4 @@
 """Factorization, by Al Sweigart al@inventwithpython.com
-
 Finds all the factors of a number.
 Tags: tiny, math"""
 __version__ = 0

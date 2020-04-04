@@ -1,5 +1,4 @@
 """Daleks, by Al Sweigart al@inventwithpython.com
-
 Try to get the robots to crash into each other.
 Tags: large, game"""
 __version__ = 0

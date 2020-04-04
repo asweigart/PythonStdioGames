@@ -1,5 +1,4 @@
 """Periodic Table of Elements, by Al Sweigart al@inventwithpython.com
-
 Displays atomic information for all the elements.
 Tags: short, science"""
 __version__ = 0

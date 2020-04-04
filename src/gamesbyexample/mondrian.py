@@ -1,5 +1,4 @@
 """Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
-
 Randomly generates art in the style of Piet Mondrian.
 
 More info at: https://en.wikipedia.org/wiki/Piet_Mondrian

@@ -1,5 +1,4 @@
 """Worm animation, by Al Sweigart al@inventwithpython.com
-
 A screensaver of multicolor worms moving around.
 NOTE: Do not resize the terminal window while this program is running.
 Tags: large, artistic, simulation, bext"""

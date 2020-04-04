@@ -1,5 +1,4 @@
 """Rock-Paper-Scissors, by Al Sweigart al@inventwithpython.com
-
 A hand game of luck.
 Tags: short, game"""
 __version__ = 0

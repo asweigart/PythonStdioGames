@@ -1,9 +1,12 @@
 """Zigzag, by Al Sweigart al@inventwithpython.com
-
 A simple zig zag animation. Press Ctrl-C to stop.
 Tags: tiny, beginner, artistic, scrolling"""
 __version__ = 0
-import time, sys
+import sys, time
+
+print('Zigzag, by Al Sweigart al@inventwithpython.com')
+print('Press Ctrl-C to quit.')
+time.sleep(3)
 
 indentSize = 0  # How many spaces to indent.
 

@@ -1,5 +1,4 @@
 """Gomoku, by Al Sweigart al@inventwithpython.com
-
 Gomoku is a Japanese board game where two players take turns placing
 down tiles. The first player to place five tiles in a row horizontally,
 vertically, or diagonally wins.

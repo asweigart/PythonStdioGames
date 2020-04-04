@@ -1,5 +1,4 @@
 """Numeral System Counters, by Al Sweigart al@inventwithpython.com
-
 Shows the equivalent numbers in decimal, hexadecimal, and binary.
 Tags: short, math"""
 

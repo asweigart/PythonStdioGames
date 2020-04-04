@@ -1,5 +1,4 @@
 """Hex Grid, by Al Sweigart al@inventwithpython.com
-
 Displays a simple tessellation of a hexagon grid.
 Tags: tiny, beginner, artistic"""
 __version__ = 0

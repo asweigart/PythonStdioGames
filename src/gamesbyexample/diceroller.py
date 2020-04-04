@@ -5,8 +5,7 @@ Tags: short, simulation"""
 __version__ = 0
 import random, sys
 
-print('''DICE ROLLER
-By Al Sweigart al@inventwithpython.com
+print('''Dice Roller, by Al Sweigart al@inventwithpython.com
 
 Example input:
   3d6 rolls three 6-sided dice

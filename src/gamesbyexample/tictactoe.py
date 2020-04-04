@@ -1,5 +1,4 @@
 """Tic Tac Toe, by Al Sweigart al@inventwithpython.com
-
 The classic board game.
 Tags: short, game, two-player"""
 __version__ = 0

@@ -5,8 +5,7 @@ Tags: tiny, simulation"""
 __version__ = 0
 import random
 
-print('''COIN FLIP SIMULATOR
-By Al Sweigart al@inventwithpython.com''')
+print('Coin Flip Simulator, by Al Sweigart al@inventwithpython.com')
 
 # Ask the user how many flips to make:
 print('How many coin flips to make?')

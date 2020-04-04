@@ -1,5 +1,4 @@
 """Fizz Buzz Calculation, by Al Sweigart al@inventwithpython.com
-
 Fizz Buzz is a game where you count up from 1. If the number is a
 multiple of 3, you say "fizz" instead of the number. If the number is a
 multiple of 5, you say "buzz" instead of the number. If the number is a

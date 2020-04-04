@@ -1,5 +1,4 @@
 """Hilbert Curve, by Al Sweigart al@inventwithpython.com
-
 Draws the Hilbert Curve fractal with turtle graphics.
 More info at: https://en.wikipedia.org/wiki/hilbertCurve
 Good videos on space-filling curves: https://youtu.be/RU0wScIj36o

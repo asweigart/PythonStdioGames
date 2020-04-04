@@ -1,5 +1,4 @@
 """Leetspeak, by Al Sweigart al@inventwithpython.com
-
 Translates English messages into l33t5p34]<.
 Tags: tiny, word, pyperclip"""
 __version__ = 0
