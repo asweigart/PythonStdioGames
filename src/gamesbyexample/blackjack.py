@@ -1,6 +1,7 @@
 """Blackjack, by Al Sweigart al@inventwithpython.com
 A card game also known as 21.
 More info at: https://en.wikipedia.org/wiki/Blackjack
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, card game"""
 __version__ = 0
 import random, sys
@@ -87,7 +88,6 @@ def main():
             if move in ('S', 'D'):
                 # Stand/doubling down stops the player's turn.
                 break
-            # At this point, go back to the start of the loop.
 
         # Handle the dealer's actions:
         if getCardValue(playerHand) <= 21:
@@ -203,7 +203,6 @@ def getBet(maxBet):
         bet = int(bet)
         if 1 <= bet <= maxBet:
             return bet  # Player entered a valid bet.
-        # At this point, go back to the start of the loop.
 
 
 def displayHands(playerHand, dealerHand, showDealerHand):
@@ -239,7 +238,6 @@ def getMove(playerHand, money):
             return move  # Player has entered a valid move.
         if move == 'D' and '(D)ouble down' in moves:
             return move  # Player has entered a valid move.
-        # At this point, go back to the start of the loop.
 
 
 # If the program is run (instead of imported), run the game:

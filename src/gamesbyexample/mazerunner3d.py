@@ -1,5 +1,6 @@
 """Maze 3D, by Al Sweigart al@inventwithpython.com
 Move around a maze and try to escape... in 3D!
+This and other games are available at https://nostarch.com/XX
 Tags: extra-large, maze, game, artistic"""
 __version__ = 0
 import copy, sys, os
@@ -294,5 +295,3 @@ while True: # Main game loop.
         print('You have reached the exit! Good job!')
         print('Thanks for playing!')
         sys.exit()
-
-    # At this point, go back to the start of the main game loop.

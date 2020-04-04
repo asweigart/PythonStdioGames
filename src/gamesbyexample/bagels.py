@@ -2,6 +2,7 @@
 A deductive logic game where you must guess a number based on clues.
 A version of this game is featured in the book, "Invent Your Own Computer
 # Games with Python. https://nostarch.com/inventwithpython
+This and other games are available at https://nostarch.com/XX
 Tags: short, game, puzzle game"""
 __version__ = 0
 import random
@@ -47,7 +48,6 @@ When I say:    That means:
         print('Do you want to play again? (yes or no)')
         if not input('> ').lower().startswith('y'):
             break
-        # At this point, go back to the start of the main game loop.
     print('Thanks for playing!')
 
 

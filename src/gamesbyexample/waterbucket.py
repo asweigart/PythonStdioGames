@@ -1,6 +1,7 @@
 """Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com
 A water pouring puzzle.
 More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
+This and other games are available at https://nostarch.com/XX
 Tags: large, object-oriented, game, puzzle game, math"""
 __version__ = 0
 import sys
@@ -101,7 +102,6 @@ while True:  # Main game loop.
         if move in ('F', 'E', 'P'):
             break  # Player has selected a valid action.
         print('Enter F, E, P, or Q')
-        # At this point, go back to the start of the loop.
 
     # Let the player select a bucket:
     while True:  # Keep asking until valid bucket entered.
@@ -114,7 +114,6 @@ while True:  # Main game loop.
 
         if srcBucket in ('8', '5', '3'):
             break  # Player has selected a valid bucket.
-        # At this point, go back to the start of the loop.
 
     # Carry out the selected action:
     if move == 'F':
@@ -151,4 +150,3 @@ while True:  # Main game loop.
     elif move == 'C':
         pass  # If the player selected Cancel, do nothing.
 
-    # At this point, go back to the start of the main game loop.

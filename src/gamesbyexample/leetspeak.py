@@ -1,5 +1,6 @@
 """Leetspeak, by Al Sweigart al@inventwithpython.com
 Translates English messages into l33t5p34]<.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, word, pyperclip"""
 __version__ = 0
 import random

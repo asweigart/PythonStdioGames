@@ -1,5 +1,6 @@
 """Hole, by Al Sweigart al@inventwithpython.com
 A tunnel animation.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, scrolling, artistic"""
 
 __version__ = 0

@@ -1,5 +1,6 @@
 """Hamsburger, by Al Sweigart al@inventwithpython.com
 A program for making silly pluralizations. Press Ctrl-C to stop.
+This and other games are available at https://nostarch.com/XX
 Tags: short, word, humor"""
 __version__ = 0
 # nounlist.txt can be downloaded from

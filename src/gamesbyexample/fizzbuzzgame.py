@@ -2,17 +2,20 @@
 A number game where you also race against the clock.
 Tags: tiny, game, math"""
 __version__ = 0
-import time, sys
+import sys, time
 
 print('''Fizz Buzz Game, by Al Sweigart al@inventwithpython.com
 
 Starting with 1, enter increasing numbers.
 However, if the number is a multiple of 3, type "fizz" instead of
 the number. If the number is a multiple of 5, type "buzz". If the
-the number of is a multiple of 3 and 5, type "fizz buzz".
+the number of is a multiple of 3 and 5, type "fizzbuzz".
+
+So the pattern is:
+1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16...
 
 A doom clock is counting down. Entering correct responses gives you
-more time. How long can you go?
+more time. How long can you keep entering the correct pattern?
 ''')
 input('Press Enter to begin...')
 
@@ -20,7 +23,7 @@ number = 1
 doomClock = time.time() + 10  # Player starts with 10 seconds.
 
 while True:  # Main game loop.
-    # Determine the correct response:
+    # Determine the correct response for the current number:
     if number % 3 == 0 and number % 5 == 0:
         correctResponse = 'fizzbuzz'
     elif number % 3 == 0:
@@ -32,16 +35,18 @@ while True:  # Main game loop.
 
     # For the first 16 responses, give them the answer:
     if number <= 16:
-        hint = '(Enter {}) '.format(correctResponse)
+        hint = '(Enter {})'.format(correctResponse)
+    elif number == 17:
+        hint = '(You are on your own now!)'
     else:
         hint = ''
 
     # Get the player's response:
-    response = input('Next response: {}'.format(hint))
+    response = input('Next response: {} '.format(hint))
     # Convert to lowercase, remove spaces:
     response = response.lower().replace(' ', '')
 
-    # See if the player was correct:
+    # See if the player has lost:
     if response != correctResponse:
         print('NOOOOO! Correct response: {}'.format(correctResponse))
         print('Thanks for playing!')
@@ -57,5 +62,4 @@ while True:  # Main game loop.
     print('DOOM CLOCK: {} seconds remaining'.format(secondsRemaining))
     print()
 
-    number += 1  # Increment the number.
-    # At this point, go back to the start of the main game loop.
+    number += 1  # Proceed to the next number to enter.

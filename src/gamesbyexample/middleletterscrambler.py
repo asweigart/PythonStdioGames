@@ -1,6 +1,7 @@
 """Middle Letter Scrambler, by Al Sweigart al@inventwithpython.com
 Scrambles the middle letters of words, but not the first and last
 letters.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, word"""
 __version__ = 0
 import random

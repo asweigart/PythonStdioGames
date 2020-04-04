@@ -1,6 +1,7 @@
 """DNA, by Al Sweigart al@inventwithpython.com
 A simple animation of a DNA double-helix. Press Ctrl-C to stop.
 Inspired by matoken https://asciinema.org/a/155441
+This and other games are available at https://nostarch.com/XX
 Tags: short, artistic, scrolling, science"""
 __version__ = 0
 import random, sys, time
@@ -58,7 +59,6 @@ def main():
         # Print the row.
         print(ROWS[rowIndex].format(leftNucleotide, rightNucleotide))
         time.sleep(0.15)  # Add a slight pause.
-        # At this point, go back to the start of the main program loop.
 
 
 # If this program was run (instead of imported), run the game:

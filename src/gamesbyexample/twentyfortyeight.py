@@ -3,6 +3,7 @@ A sliding tile game to combine exponentially-increasing numbers.
 Inspired by Gabriele Cirulli's 2048, which is a clone of Veewo Studios'
 1024, which in turn is a clone of the Threes! game.
 More info at https://en.wikipedia.org/wiki/2048_(video_game)
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, puzzle game"""
 __version__ = 0
 import random, sys
@@ -28,7 +29,6 @@ def main():
             drawBoard(gameBoard)
             print('Game Over - Thanks for playing!')
             sys.exit()
-        # At this point, go back to the start of the main game loop.
 
 
 def getNewBoard():
@@ -213,7 +213,6 @@ def getPlayerMove():
             return move
         else:
             print('Enter one of "W", "A", "S", "D", or "Q".')
-        # At this point, go back to the start of the loop.
 
 
 def addTwoToBoard(board):

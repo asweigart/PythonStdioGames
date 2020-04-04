@@ -1,6 +1,7 @@
 """Langton's Ant, by Al Sweigart al@inventwithpython.com
 A cellular automata animation. Press Ctrl-C to stop.
 More info: https://en.wikipedia.org/wiki/Langton%27s_ant
+This and other games are available at https://nostarch.com/XX
 Tags: large, simulation, bext, artistic"""
 __version__ = 0
 import random, copy, sys, time
@@ -99,7 +100,6 @@ def main():
             changedTiles.add((ant['x'], ant['y']))
 
         board = nextBoard
-        # At this point, go back to the start of the main program loop.
 
 
 def displayBoard(board, ants, changedTiles):

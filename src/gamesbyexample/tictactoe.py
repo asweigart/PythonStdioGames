@@ -1,5 +1,6 @@
 """Tic Tac Toe, by Al Sweigart al@inventwithpython.com
 The classic board game.
+This and other games are available at https://nostarch.com/XX
 Tags: short, game, two-player"""
 __version__ = 0
 ALL_SPACES = list('123456789') # The keys for a TTT board dictionary.
@@ -30,7 +31,6 @@ def main():
             print('The game is a tie!')
             break
         currentPlayer, nextPlayer = nextPlayer, currentPlayer # Swap turns.
-        # At this point, go back to the start of the main program loop.
     print('Thanks for playing!')
 
 def getBlankBoard():

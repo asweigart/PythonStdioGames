@@ -58,6 +58,5 @@ try:
         time.sleep(2)
 
         seed = seed + 1 # Use the next number for the next seed.
-        # At this point, go back to the start of the main program loop.
 except turtle.Terminator:
     pass # Do nothing when the turtle window is closed.

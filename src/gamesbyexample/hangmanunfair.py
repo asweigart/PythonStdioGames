@@ -1,5 +1,6 @@
 """Hangman with Random Letters, by Al Sweigart al@inventwithpython.com
 A completely unfair word-guessing game. (This is a joke program.)
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, word, puzzle game, humor"""
 __version__ = 0
 import random, sys
@@ -107,7 +108,6 @@ By Al Sweigart al@inventwithpython.com
                 print('You have run out of guesses!')
                 print('The word was "{}"'.format(secretWord))
                 break
-        # At this point, go back to the start of the main game loop.
 
 
 def drawHangman(missedLetters, correctLetters, secretWord):

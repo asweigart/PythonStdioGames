@@ -1,6 +1,7 @@
 """ROT13 Cipher, by Al Sweigart al@inventwithpython.com
 The simplest cipher for encrypting and decrypting text.
 More info at https://en.wikipedia.org/wiki/ROT13
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, cryptography, pyperclip"""
 __version__ = 0
 try:
@@ -48,4 +49,3 @@ while True:  # Main program loop.
         print('(Copied to clipboard.)')
     except:
         pass
-    # At this point, go back to the start of the main program loop.

@@ -1,5 +1,6 @@
 """Bitmap Message, by Al Sweigart al@inventwithpython.com
 Displays a text message according to the provided bitmap image.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, artistic"""
 
 # (!) Try changing this multiline string to any image you like:

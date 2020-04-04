@@ -2,6 +2,7 @@
 A simulation of fires spreading in a growing forest.
 Press Ctrl-C to stop.
 Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
+This and other games are available at https://nostarch.com/XX
 Tags: short, simulation, bext"""
 __version__ = 0
 import random, time, sys
@@ -72,7 +73,6 @@ def main():
         forest = nextForest
 
         time.sleep(PAUSE_LENGTH)
-        # At this point, go back to the start of the main program loop.
 
 
 def createNewForest():

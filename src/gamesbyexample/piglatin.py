@@ -1,5 +1,6 @@
 """Pig Latin, by Al Sweigart al@inventwithpython.com
 Translates English messages into Igpay Atinlay.
+This and other games are available at https://nostarch.com/XX
 Tags: short, word"""
 __version__ = 0
 try:

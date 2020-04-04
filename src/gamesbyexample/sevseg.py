@@ -1,6 +1,7 @@
 """Sevseg, by Al Sweigart al@inventwithpython.com
 A seven-segment display module.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
+This and other games are available at https://nostarch.com/XX
 Tags: short, module"""
 __version__ = 0
 """

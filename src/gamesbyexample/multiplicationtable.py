@@ -1,5 +1,6 @@
 """Multiplication Table, by Al Sweigart al@inventwithpython.com
 Print a multiplication table.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, math"""
 __version__ = 0
 print('Multiplication Table, by Al Sweigart al@inventwithpython.com')

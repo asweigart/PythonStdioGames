@@ -3,6 +3,7 @@ Find the Queen of Hearts after cards have been swapped around.
 (In the real-life version, the scammer palms the Queen of Hearts so you
 always lose.)
 More info at https://en.wikipedia.org/wiki/Three-card_Monte
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, card game"""
 __version__ = 0
 import random, time
@@ -103,7 +104,6 @@ while True:  # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
         elif guess == 'RIGHT':
             guessIndex = 2
         break
-    # At this point, go back to the start of the loop.
 
 # Uncomment this code to make the player always lose:
 #if cards[guessIndex] == ('Q', HEARTS):

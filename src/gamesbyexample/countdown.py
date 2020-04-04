@@ -3,6 +3,7 @@ Show a countdown timer animation using a seven-segment display.
 Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
 Requires our sevseg.py program.
+This and other games are available at https://nostarch.com/XX
 Tags: short"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -65,7 +66,6 @@ try:
         time.sleep(1)  # Insert a one-second pause.
 
         secondsLeft -= 1
-        # At this point, go back to the start of the main program loop.
 
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.)

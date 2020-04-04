@@ -1,6 +1,7 @@
 """J'ACCUSE!, by Al Sweigart al@inventwithpython.com
 A mystery game of intrigue and a missing cat.
 Inspired by Homestar Runner's "Where's an Egg?" game
+This and other games are available at https://nostarch.com/XX
 Tags: extra-large, game, puzzle game, humor"""
 __version__ = 0
 # Play the original Flash game at:
@@ -285,4 +286,3 @@ while True:  # Main game loop.
                 knownSuspectsAndItems.append(clues[thePersonHere][thingBeingAskedAbout])
 
     input('Press Enter to continue...')
-    # At this point, go back to the start of the main game loop.

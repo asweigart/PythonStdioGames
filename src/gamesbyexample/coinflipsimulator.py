@@ -1,5 +1,6 @@
 """Coin Flip Simulator, by Al Sweigart al@inventwithpython.com
 Simulate a large number of coin flips.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, simulation"""
 __version__ = 0
 import random
@@ -13,7 +14,6 @@ while True:
     if response.isdecimal():
         numberOfFlips = int(response)
         break
-    # At this point, go back to the start of the loop.
 
 streakStats = {}  # Keys are streak lengths, values are frequency.
 for i in range(numberOfFlips):

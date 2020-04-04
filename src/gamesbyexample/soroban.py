@@ -1,6 +1,7 @@
 """Soroban, by Al Sweigart al@inventwithpython.com
 A simulation of a Japanese abacus calculator tool.
 More info at: https://en.wikipedia.org/wiki/Soroban
+This and other games are available at https://nostarch.com/XX
 Tags: large, simulation, math, artistic"""
 __version__ = 0
 NUMBER_OF_DIGITS = 10
@@ -70,7 +71,6 @@ def main():
         # The abacus can't show negative numbers:
         if abacusNumber < 0:
             abacusNumber = 0  # Change any negative numbers to 0.
-        # At this point, go back to the start of the main program loop.
 
 
 def displayAbacus(number):

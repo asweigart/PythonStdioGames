@@ -1,5 +1,6 @@
 """Alphabetize Quiz, by Al Sweigart al@inventwithpython.com
 A time-based quiz game to see how fast you can alphabetize letters.
+This and other games are available at https://nostarch.com/XX
 Tags: short, game"""
 __version__ = 0
 
@@ -56,7 +57,6 @@ Example:
             numCorrect += 1  # Increase the score by 1.
         else:
             print('    Ack. :(\n')
-        # At this point, go back to the start of the main game loop.
 
     # After the loop exits, the quiz is over. Show the final score:
     print('In {} seconds you'.format(QUIZ_DURATION))

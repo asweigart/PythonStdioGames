@@ -5,6 +5,7 @@ multiple of 5, you say "buzz" instead of the number. If the number is a
 multiple of 3 and 5, you say "fizzbuzz".
 
 More info at: https://en.wikipedia.org/wiki/Fizz_buzz
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, math"""
 __version__ = 0
 # TODO - intro
@@ -30,4 +31,3 @@ while number < 100000:  # Main program loop.
         print(', ', end='')  # Print a separating comma.
     else:
         print()  # Print a newline character.
-    # At this point, go back to the start of the main program loop.

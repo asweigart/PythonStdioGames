@@ -1,6 +1,7 @@
 """Monty Hall Problem, by Al Sweigart al@inventwithpython.com
 A simulation of the Monty Hall game show problem.
 More info at https://en.wikipedia.org/wiki/Monty_Hall_problem
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, math, simulation"""
 __version__ = 0
 import random, sys
@@ -189,4 +190,3 @@ Switching:     {} wins, {} losses, success rate {}%
 Not switching: {} wins, {} losses, success rate {}%
 '''.format(switchWins, switchLosses, switchSuccess, notSwitchWins, notSwitchLosses, notSwitchSuccess))
     input('Press Enter repeat the experiment again.')
-    # At this point, go back to the start of the main program loop.

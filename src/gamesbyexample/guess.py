@@ -1,5 +1,6 @@
 """Guess the Number, by Al Sweigart al@inventwithpython.com
 While given hints, try to guess the secret number.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game"""
 __version__ = 0
 import random

@@ -1,5 +1,6 @@
 """Progress Bar Simulation, by Al Sweigart al@inventwithpython.com
 A sample progress bar animation that can be used in other programs.
+This and other games are available at https://nostarch.com/XX
 Tags: short, module"""
 __version__ = 0
 import random, time

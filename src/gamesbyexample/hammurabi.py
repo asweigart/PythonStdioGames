@@ -1,6 +1,7 @@
 """Hammurabi, by Al Sweigart al@inventwithpython.com
 The classic game Hamurabi.bas [sic] by Doug Dyment and others,
 popularized by David Ahl.
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, simulation"""
 __version__ = 0
 import random, sys
@@ -158,7 +159,6 @@ while True:  # Main game loop.
 
     population -= deaths  # Update population.
     year += 1
-    # At this point, go back to the start of the main program loop.
 
 # Tell the player how they did:
 percentageDiedPerYear = sum(percentageDiedEachYear) // 10 # TODO This is wrong and needs to be corrected. Get the percentage deaths each year, and find the average of that. See original source.

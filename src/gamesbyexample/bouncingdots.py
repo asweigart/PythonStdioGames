@@ -2,6 +2,7 @@
 A bouncing dots animation. Press Ctrl-C to stop.
 
 NOTE: Do not resize the terminal window while this program is running.
+This and other games are available at https://nostarch.com/XX
 Tags: short, artistic, bext"""
 __version__ = 0
 import sys, random, time
@@ -110,7 +111,6 @@ def main():
             # Erase all of the dots.
             bext.goto(position[0], position[1])
             print(' ', end='')
-        # At this point, go back to the start of the main program loop.
 
 
 # If this program was run (instead of imported), run the game:

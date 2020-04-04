@@ -1,6 +1,7 @@
 """Checkers, by Al Sweigart al@inventwithpython.com
 The classic checkers board game.
 In this version, capturing is not mandatory.
+This and other games are available at https://nostarch.com/XX
 Tags: extra-large, board game, game, two-player"""
 __version__ = 0
 import copy, sys
@@ -35,7 +36,6 @@ def main():
             print(otherCheckers(turn)[1] + ' is the winner!')
             sys.exit()
         turn = otherCheckers(turn)[1]  # Switch turns.
-        # At this point, go back to the start of the main game loop.
 
 
 def getNewBoard():
@@ -207,7 +207,6 @@ def getPlayerMove(board, player):
             sys.exit()
         if srcMove in checkersThatCanMove:
             break
-        # At this point, go back to the start of the loop.
 
     while True:  # Loop until a valid "destination" space is selected.
         dstMoves, dstCaptures = getPossibleDstMoves(board, srcMove)
@@ -217,7 +216,6 @@ def getPlayerMove(board, player):
         dstMove = input('> ').upper().strip()
         if dstMove in dstMoves:
             break
-        # At this point, go back to the start of the loop.
 
     return (srcMove, dstMove)
 
@@ -258,7 +256,6 @@ def makeMove(board, srcMove, dstMove):
             doubleJumpMove = input('> ').upper().strip()
             if doubleJumpMove in dstCaptures:
                 break
-            # At this point, go back to the start of the loop.
         return makeMove(board, dstMove, doubleJumpMove)
     return board
 

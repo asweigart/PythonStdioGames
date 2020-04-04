@@ -1,5 +1,6 @@
 """Matching Parentheses, by Al Sweigart al@inventwithpython.com
 A parentheses/bracket/braces matching algorithm.
+This and other games are available at https://nostarch.com/XX
 Tags: short, algorithm"""
 __version__ = 0
 

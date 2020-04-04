@@ -4,6 +4,7 @@ Kaprekar Numbers are numbers whose square in that base can be split into
 
 45^2 = 2025 -> 20 + 25 = 45
 
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, math
 """
 __version__ = 0

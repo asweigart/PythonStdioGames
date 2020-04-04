@@ -1,5 +1,6 @@
 """Mancala, by Al Sweigart al@inventwithpython.com
 The ancient seed-sowing game.
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, board game, two-player"""
 __version__ = 0
 import sys

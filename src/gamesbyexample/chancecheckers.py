@@ -3,6 +3,7 @@ Checkers, but you can move 3 random checkers per turn.
 These checkers are randomly decided, and can be the player's own
 checkers or their opponents', but you can't move your opponents'
 promoted checkers. In this version, capturing is not mandatory.
+This and other games are available at https://nostarch.com/XX
 Tags: extra-large, board game, game, two-player"""
 __version__ = 0
 import random, copy, sys
@@ -40,7 +41,6 @@ def main():
             if moves != []:
                 displayBoard(gameBoard)
         turn = otherCheckers(turn)[1]  # Switch turns.
-        # At this point, go back to the start of the main game loop.
 
 
 def getNewBoard():
@@ -216,7 +216,6 @@ def getPlayerMove(board, player, moves):
             sys.exit()
         if srcMove in checkersThatCanMove:
             break
-        # At this point, go back to the start of the loop.
 
     while True:  # Loop until a valid "destination" space is selected.
         dstMoves, dstCaptures = getPossibleDstMoves(board, srcMove)
@@ -226,7 +225,6 @@ def getPlayerMove(board, player, moves):
         dstMove = input('> ').upper().strip()
         if dstMove in dstMoves:
             break
-        # At this point, go back to the start of the loop.
 
     return (srcMove, dstMove)
 
@@ -267,7 +265,6 @@ def makeMove(board, srcMove, dstMove):
             doubleJumpMove = input('> ').upper().strip()
             if doubleJumpMove in dstCaptures:
                 break
-            # At this point, go back to the start of the loop.
         return makeMove(board, dstMove, doubleJumpMove)
     return board
 

@@ -1,6 +1,7 @@
 """Birthday Paradox Simulation, by Al Sweigart al@inventwithpython.com
 Explore the mathematics of the "Birthday Paradox".
 More info at https://en.wikipedia.org/wiki/Birthday_problem
+This and other games are available at https://nostarch.com/XX
 Tags: short, math, simulation"""
 __version__ = 0
 import datetime, random
@@ -49,7 +50,6 @@ while True:  # Keep asking until the user enters a valid amount.
     if response.isdecimal() and (0 < int(response) <= 100):
         number = int(response)
         break  # User has entered a valid amount.
-    # At this point, go back to the start of the loop.
 print()
 
 # Generate and display the birthdays:

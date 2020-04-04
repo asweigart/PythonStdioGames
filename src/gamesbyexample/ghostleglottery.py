@@ -1,6 +1,7 @@
 """Ghost Leg Lottery, by Al Sweigart al@inventwithpython.com
 Follow the trail to see who wins!
 More info at: https://en.wikipedia.org/wiki/Ghost_Leg
+This and other games are available at https://nostarch.com/XX
 Tags: large, artistic"""
 __version__ = 0
 import random, time, sys
@@ -60,7 +61,6 @@ def getPlayerNames():
             if 1 < numPlayers <= MAX_NUMBER_OF_PLAYERS:
                 break
         print('Enter a number between 2 and', MAX_NUMBER_OF_PLAYERS)
-        # At this point, go back to the start of the loop.
 
     # Enter the names of each player:
     playerNames = []  # List of the string player names.
@@ -74,7 +74,6 @@ def getPlayerNames():
                 print('Choose a name that has not already been used.')
             else:
                 break  # The entered name is acceptable.
-            # At this point, go back to the start of the loop.
 
         playerNames.append(name)
     return playerNames

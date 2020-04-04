@@ -1,5 +1,6 @@
 """Factorization, by Al Sweigart al@inventwithpython.com
 Finds all the factors of a number.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, math"""
 __version__ = 0
 import math, sys
@@ -33,4 +34,3 @@ while True:  # Main program loop.
         factors[i] = str(factor)
 
     print(', '.join(factors))
-    # At this point, go back to the start of the loop.

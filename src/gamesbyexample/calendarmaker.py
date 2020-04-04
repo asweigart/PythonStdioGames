@@ -1,5 +1,6 @@
 """Calendar Maker, by Al Sweigart al@inventwithpython.com
 Create monthly calendars, saved to a text file and fit for printing.
+This and other games are available at https://nostarch.com/XX
 Tags: short, artistic"""
 __version__ = 0
 import datetime
@@ -39,7 +40,6 @@ while True:  # Loop to get a month from the user.
 
     if 1 <= int(response) <= 12:
         break
-    # At this point, go back to the start of the loop.
 
 
 def getCalendarFor(year, month):
@@ -92,16 +92,13 @@ def getCalendarFor(year, month):
             # If we've reached Sunday, break and start a new week:
             if calDate.weekday() == 6:
                 break
-            # At this point, go back to the start of the loop.
 
-        # At this point, we're done with the labeled line.
-        calText += labeledLine
+        calText += labeledLine  # Add this line to the calendar text.
 
         for i in range(DAY_BOX_SIZE // 2):
             calText += verticalLine
-        # At this point, go back to the start of the loop.
 
-    # At this point, we're done with the month.
+    # Add the horizontal line at the very bottom of the calendar.
     calText += horizontalLine
     return calText
 

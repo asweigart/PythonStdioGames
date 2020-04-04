@@ -2,6 +2,7 @@
 Generate splatter-art with the "random walk" algorithm.
 Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Random_walk
+This and other games are available at https://nostarch.com/XX
 Tags: short, artistic, bext"""
 __version__ = 0
 import random, time, sys
@@ -57,6 +58,5 @@ try:
             if speed == 'S':
                 time.sleep(0.01)
         time.sleep(0.5)  # Pause after reaching the edge.
-        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.

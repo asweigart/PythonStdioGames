@@ -1,5 +1,6 @@
 """Snail Race, by Al Sweigart al@inventwithpython.com
 Fast-paced snail racing action!
+This and other games are available at https://nostarch.com/XX
 Tags: short, artistic, game, multiplayer"""
 __version__ = 0
 import random, time, sys
@@ -24,7 +25,6 @@ while True:  # Keep asking until the player enters a number.
         if 1 < numSnailsRacing <= MAX_NUM_SNAILS:
             break
     print('Enter a number between 2 and', MAX_NUM_SNAILS)
-    # At this point, go back to the start of the loop.
 
 # Enter the names of each snail:
 snailNames = []  # List of the string snail names.
@@ -38,7 +38,6 @@ for i in range(1, numSnailsRacing + 1):
             print('Choose a name that has not already been used.')
         else:
             break  # The entered name is acceptable.
-        # At this point, go back to the start of the loop.
     snailNames.append(name)
 
 # Display each snail at the start line.
@@ -81,4 +80,3 @@ while True:  # Main program loop.
         spaces = snailProgress[snailName]
         print((' ' * spaces) + snailName[:MAX_NAME_LENGTH])
         print(('.' * snailProgress[snailName]) + '@v')
-    # At this point, go back to the start of the main program loop.

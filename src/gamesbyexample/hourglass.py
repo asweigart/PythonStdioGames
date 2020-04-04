@@ -1,6 +1,7 @@
 """Hour Glass Animation, by Al Sweigart al@inventwithpython.com
 An animation of an hour glass filled with falling sand.
 Press Ctrl-C to stop.
+This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, simulation, bext"""
 __version__ = 0
 import random, time, sys
@@ -152,8 +153,6 @@ def main():
                     bext.goto(sand[X], sand[Y])
                     print(' ', end='')
                 break  # Break out of main simulation loop.
-            # At this point, go back to the start of the loop.
-    # At this point, go back to the start of the main program loop.
 
 
 # If this program was run (instead of imported), run the game:

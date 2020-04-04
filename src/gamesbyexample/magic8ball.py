@@ -1,5 +1,6 @@
 """Magic Eight Ball, by Al Sweigart al@inventwithpython.com
 Ask a yes/no question about your future.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, humor"""
 __version__ = 0
 import random, time

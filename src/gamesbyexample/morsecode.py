@@ -1,6 +1,7 @@
 """Morse Code, by Al Sweigart al@inventwithpython.com
 Translates between English and Morse Code.
 More info at: https://en.wikipedia.org/wiki/Morse_code
+This and other games are available at https://nostarch.com/XX
 Tags: short, word"""
 __version__ = 0
 try:

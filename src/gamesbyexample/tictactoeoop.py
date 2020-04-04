@@ -1,5 +1,6 @@
 """Tic Tac Toe (OOP), by Al Sweigart al@inventwithpython.com
 The classic board game. (Object-oriented programming version.)
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, two-player, board game, object-oriented"""
 __version__ = 0
 import copy
@@ -32,7 +33,6 @@ def main():
             print('The game is a tie!')
             break
         currentPlayer, nextPlayer = nextPlayer, currentPlayer # Swap turns.
-        # At this point, go back to the start of the main program loop.
     print('Thanks for playing!')
 
 class TTTBoard:

@@ -1,5 +1,6 @@
 """Chase, by Al Sweigart al@inventwithpython.com
 Try to get the robots to crash into each other.
+This and other games are available at https://nostarch.com/XX
 Tags: large, game"""
 __version__ = 0
 import random, sys, os
@@ -29,7 +30,6 @@ def main():
                 drawBoard(theBoard, theRobots, playerPosition)
                 print('You got caught by a robot!')
                 sys.exit()
-        # At this point, go back to the start of the main game loop.
 
 
 def clearScreen():
@@ -73,7 +73,6 @@ def getNewBoardAndRobots(width, height, numRobots):
             if board[(x, y)] == ' ': # Only add robots to empty spaces.
                 robots.append((x, y))
                 break
-            # At this point, go back to the start of the loop.
     return board, robots
 
 
@@ -86,7 +85,6 @@ def getStartingPlayerPosition(board, robots):
         if board[(x, y)] == ' ' and (x, y) not in robots:
             # Only add the player to an empty space.
             return (x, y)
-        # At this point, go back to the start of the loop.
 
 
 def drawBoard(board, robots, playerPosition):
@@ -210,7 +208,6 @@ def getPlayerMove(board, robots, playerPosition):
                     'Z': (x - 1, y + 1),
                     'A': (x - 1, y + 0),
                     'S': (x, y)         }[move]
-        # At this point, go back to the start of the loop.
 
 
 # If this program was run (instead of imported), run the game:

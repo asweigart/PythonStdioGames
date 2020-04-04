@@ -1,5 +1,6 @@
 """Rock-Paper-Scissors (Always Win), by Al Sweigart al@inventwithpython.com
 A hand game of luck, except you cannot lose.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, game, humor"""
 __version__ = 0
 import time, sys
@@ -58,4 +59,3 @@ while True:  # Main game loop.
 
     print('You win!')
     wins = wins + 1
-    # At this point, go back to the start of the main game loop.

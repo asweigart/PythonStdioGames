@@ -1,5 +1,6 @@
 """Shining Carpet, by Al Sweigart al@inventwithpython.com
 Displays a tessellation of the carpet pattern from The Shining.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, artistic"""
 __version__ = 0
 # Set up the constants:

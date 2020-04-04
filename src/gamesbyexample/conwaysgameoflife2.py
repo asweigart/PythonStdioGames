@@ -5,6 +5,7 @@ The classic cellular automata simulation. Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 NOTE: Do not resize the terminal window while this program is running.
+This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, simulation, bext"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -119,7 +120,6 @@ def main():
                         nextCells[x, y] = True
 
         time.sleep(PAUSE_LENGTH)  # Pause to reduce flickering.
-        # At this point, go back to the start of the main program loop.
 
 
 # If this program was run (instead of imported), run the game:

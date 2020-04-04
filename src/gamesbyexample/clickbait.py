@@ -1,5 +1,6 @@
 """Clickbait Headline Generator, by Al Sweigart al@inventwithpython.com
 A clickbait headline generator for your soulless content farm.
+This and other games are available at https://nostarch.com/XX
 Tags: large, humor, word"""
 __version__ = 0
 import random
@@ -33,7 +34,6 @@ def main():
         else:
             numberOfHeadlines = int(response)
             break
-        # At this point, go back to the start of the loop.
 
     for i in range(numberOfHeadlines):
         clickbaitType = random.randint(1, 8)

@@ -1,5 +1,6 @@
 """Dice Roller, by Al Sweigart al@inventwithpython.com
 Simulates dice rolls using the Dungeons & Dragons notation.
+This and other games are available at https://nostarch.com/XX
 Tags: short, simulation"""
 __version__ = 0
 import random, sys
@@ -84,4 +85,3 @@ while True:  # Main program loop:
         print('Invalid input. Enter something like "3d6" or "1d10+2"')
         print('Input was invalid because: ' + str(exc))
         continue  # Go back to the dice string prompt.
-    # At this point, go back to the start of the main program loop.

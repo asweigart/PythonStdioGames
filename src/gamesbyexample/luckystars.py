@@ -4,6 +4,7 @@ as possible. You can roll as many times as you want, but if you roll
 three skulls you lose all your stars.
 
 Inspired by the Zombie Dice game from Steve Jackson games.
+This and other games are available at https://nostarch.com/XX
 Tags: game, multiplayer"""
 
 # TODO - add more comments

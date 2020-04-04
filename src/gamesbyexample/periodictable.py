@@ -1,5 +1,6 @@
 """Periodic Table of Elements, by Al Sweigart al@inventwithpython.com
 Displays atomic information for all the elements.
+This and other games are available at https://nostarch.com/XX
 Tags: short, science"""
 __version__ = 0
 # Data from https://en.wikipedia.org/wiki/List_of_chemical_elements
@@ -86,4 +87,3 @@ while True:  # Main program loop.
             keyJustified = key.rjust(LONGEST_COLUMN)
             print(keyJustified + ': ' + ELEMENTS[response][key])
         input('Press Enter to continue...')
-    # At this point, go back to the start of the main program loop.

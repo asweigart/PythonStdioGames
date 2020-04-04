@@ -1,5 +1,6 @@
 """Zigzag, by Al Sweigart al@inventwithpython.com
 A simple zig zag animation. Press Ctrl-C to stop.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, artistic, scrolling"""
 __version__ = 0
 import sys, time
@@ -25,6 +26,5 @@ try:
             indentation = ' ' * indentSize
             print(indentation + '********')
             time.sleep(0.05)  # Pause for 50 milliseconds.
-    # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.

@@ -1,5 +1,6 @@
 """Flood It, by Al Sweigart al@inventwithpython.com
 A colorful game where you try to fill the board with a single color.
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, bext"""
 __version__ = 0
 import random, sys
@@ -56,7 +57,6 @@ same color.''')
             displayBoard(gameBoard)
             print('You have run out of moves!')
             break
-        # At this point, go back to the start of the main game loop.
 
 
 def getNewBoard():
@@ -127,7 +127,6 @@ def getPlayerMove():
             sys.exit()
         if move in COLORS:
             return move
-        # At this point, go back to the start of the loop.
 
 
 def changeTile(move, board, x, y, charToChange=None):

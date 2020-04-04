@@ -1,6 +1,7 @@
 """Collatz Sequence Stats, by Al Sweigart al@inventwithpython.com
 Finds out how long various Collatz Sequences are.
 More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
+This and other games are available at https://nostarch.com/XX
 Tags: short, math"""
 __version__ = 0
 print('''Collatz Sequence Stats, by Al Sweigart al@inventwithpython.com
@@ -31,7 +32,6 @@ while True: # Ask for a starting number range.
             if beginRange > 0 and endRange > 0 and beginRange < endRange:
                 break
     print('Enter a number range, with two numbers separated by a dash.')
-    # At this point, go back to the start of the loop.
 
 # Keep track of stats:
 shortestLength = None

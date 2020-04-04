@@ -1,6 +1,7 @@
 """Reversi, by Al Sweigart al@inventwithpython.com
 A tile flipping game, also called reversi.
 More info https://en.wikipedia.org/wiki/Reversi
+This and other games are available at https://nostarch.com/XX
 Tags: extra-large, game, two-player, board game"""
 __version__ = 0
 # A version of this game is featured in the book, "Invent Your Own
@@ -267,7 +268,6 @@ def main():
             makeMove(mainBoard, computerTile, x, y)
 
         isPlayersTurn = not isPlayersTurn
-        # At this point, go back to the start of the main program loop.
 
     # Display the final board and score.
     displayBoard(mainBoard)

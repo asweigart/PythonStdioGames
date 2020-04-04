@@ -2,6 +2,7 @@
 An elimination game for multiple players. Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Eeny,_meeny,_miny,_moe
 and https://en.wikipedia.org/wiki/Josephus_problem
+This and other games are available at https://nostarch.com/XX
 Tags: short, game, multiplayer"""
 __version__ = 0
 import random, time, sys
@@ -28,7 +29,6 @@ while True:
         playerNames.append(playerName)
     else:
         break
-    # At this point, go back to the start of the loop.
 
 # Get the total number of participants:
 while True:
@@ -40,7 +40,6 @@ while True:
         continue  # Player entered non-integer; ask again.
     if 2 <= numParticipants <= len(NAMES) + len(playerNames):
         break
-    # At this point, go back to the start of the loop.
 
 # Get the position of the player:
 participants = NAMES[: numParticipants - len(playerNames)]
@@ -55,7 +54,6 @@ for playerName in playerNames:
         if 1 <= position <= len(participants) + 1:
             participants.insert(position - 1, playerName)
             break
-        # At this point, go back to the start of the loop.
 
 # Start the elimination process:
 startPosition = 0
@@ -104,7 +102,6 @@ while len(participants) > 1:  # Main program loop.
         input('Press Enter to continue, or Ctrl-C to quit.')
     except KeyboardInterrupt:
         sys.exit()  # When Ctrl-C is pressed, end the program.
-    # At this point, go back to the start of the main program loop.
 
 # Declare the winner:
 print(participants[0] + ' IS THE WINNER!!!')

@@ -1,5 +1,6 @@
 """THE TOWER OF HANOI, by Al Sweigart al@inventwithpython.com
 A stack-moving puzzle game.
+This and other games are available at https://nostarch.com/XX
 Tags: short, game, puzzle game"""
 __version__ = 0
 import copy

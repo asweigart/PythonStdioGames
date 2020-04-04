@@ -1,6 +1,7 @@
 """Multiplicative Persistence, by Al Sweigart al@inventwithpython.com
 A fun math challenge.
 For more information about this topic, see https://youtu.be/Wim9WJeDTHQ
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, math"""
 __version__ = 0
 import time, sys
@@ -45,9 +46,7 @@ while True:  # Main program loop.
 
         print(number, flush=True)
         time.sleep(0.6)
-        # At this point, go back to the start of the loop.
 
     print(number)
     print('Length of', response, 'chain:', chainLength)
     print()
-    # At this point, go back to the start of the main program loop.

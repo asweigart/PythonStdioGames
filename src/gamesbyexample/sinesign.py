@@ -1,5 +1,6 @@
 """Sine Sign, by Al Sweigart al@inventwithpython.com
 Create a sine-wavy message.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, artistic"""
 __version__ = 0
 import math, shutil, sys, time

@@ -1,5 +1,6 @@
 """Rainbow 2, by Al Sweigart al@inventwithpython.com
 Shows a simple squiggle rainbow animation. Press Ctrl-C to stop.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, scrolling, artistic, bext"""
 __version__ = 0
 import time, random, sys
@@ -46,6 +47,5 @@ try:
                 indent = 0
 
         time.sleep(0.02)  # Add a slight pause.
-        # At this point, go back to the start of the main program loop.
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.

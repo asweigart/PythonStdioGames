@@ -5,6 +5,7 @@ your opponent from making a move. The original Hexapawn had a 3x3
 board with six pawns, but this program lets you use boards of any
 size. Based on Martin Gardner's puzzle.
 More info at: https://en.wikipedia.org/wiki/Hexapawn
+This and other games are available at https://nostarch.com/XX
 Tags: extra-large, game, two-player, board game"""
 __version__ = 0
 import sys

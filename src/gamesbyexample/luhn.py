@@ -2,6 +2,7 @@
 The mathematics behind credit card numbers.
 More info at: https://en.wikipedia.org/wiki/Luhn_algorithm
 More info at: https://youtu.be/Erp8IAUouus
+This and other games are available at https://nostarch.com/XX
 Tags: short, math, algorithm"""
 __version__ = 0
 import time, sys
@@ -107,4 +108,3 @@ while True:  # Main program loop.
 
     input('Press Enter to continue...')
     print('\n\n')  # Print some newlines for space.
-    # At this point, go back to the start of the main program loop.

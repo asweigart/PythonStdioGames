@@ -3,6 +3,7 @@ Try to find your lost kitten Zophie by moving around the neighborhood
 streets and avenues. You'll get hints at how near or far she is.
 This game that teaches cartesian coordinates, cardinal directions, and
 the Pythagorean Theorem.
+This and other games are available at https://nostarch.com/XX
 Tags: large, game"""
 __version__ = 0
 import math, random, sys

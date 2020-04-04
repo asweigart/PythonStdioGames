@@ -2,6 +2,7 @@
 Prints out a random, diagonal maze. (It is not a true
 maze, but rather an artistic maze-like picture.)
 Inspired by the 10 PRINT CHR$(205.5+RND(1)); : GOTO 10 program.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, artistic, maze"""
 __version__ = 0
 import random

@@ -2,6 +2,7 @@
 Generates numbers for the Collatz sequence, given a starting number.
 More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
 An XKCD comic about Collatz numbers is at: https://www.xkcd.com/710/
+This and other games are available at https://nostarch.com/XX
 Tags: short, beginner, math, algorithm"""
 __version__ = 0
 import sys, time

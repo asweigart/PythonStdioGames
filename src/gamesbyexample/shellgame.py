@@ -1,5 +1,6 @@
 """Shell Game, by Al Sweigart al@inventwithpython.com
 A random gambling game.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game"""
 __version__ = 0
 import random, time, sys
@@ -50,4 +51,3 @@ while True:  # Main game loop.
     if not response.startswith('Y'):
         print('Thanks for playing!')
         sys.exit()
-    # At this point, go back to the start of the main game loop.

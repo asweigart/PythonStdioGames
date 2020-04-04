@@ -1,5 +1,6 @@
 """Fireflies, by Al Sweigart al@inventwithpython.com
 A beautiful animation of fireflies. Press Ctrl-C to stop.
+This and other games are available at https://nostarch.com/XX
 Tags: large, artistic"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.

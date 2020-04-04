@@ -1,6 +1,7 @@
 """Flood It (Letter Version), by Al Sweigart al@inventwithpython.com
 A colorful game where you try to fill the board with a single color.
 (This version uses letters instead of colors for colorblind users.)
+This and other games are available at https://nostarch.com/XX
 Tags: short, game"""
 __version__ = 0
 import random, sys
@@ -39,7 +40,6 @@ same letter.''')
             displayBoard(gameBoard)
             print('You have run out of moves!')
             break
-        # At this point, go back to the start of the main game loop.
 
 
 def getNewBoard():
@@ -87,7 +87,6 @@ def getPlayerMove():
             sys.exit()
         if move in LETTERS:
             return move
-        # At this point, go back to the start of the loop.
 
 
 def changeTile(move, board, x, y, charToChange=None):

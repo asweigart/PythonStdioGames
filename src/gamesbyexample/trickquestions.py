@@ -1,5 +1,6 @@
 """Trick Questions, by Al Sweigart al@inventwithpython.com
 A quiz of several trick questions.
+This and other games are available at https://nostarch.com/XX
 Tags: large, humor"""
 
 import random, sys

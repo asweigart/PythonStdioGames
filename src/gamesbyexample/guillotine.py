@@ -1,5 +1,6 @@
 """Guillotine, by Al Sweigart al@inventwithpython.com
 A French variant of Hangman with different graphics. Ooh la la!
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, word, puzzle game"""
 __version__ = 0
 import random, sys
@@ -111,7 +112,6 @@ By Al Sweigart al@inventwithpython.com
                 print('You have run out of guesses!')
                 print('The word was "{}"'.format(secretWord))
                 break
-        # At this point, go back to the start of the main game loop.
 
 
 def drawGuillotine(missedLetters, correctLetters, secretWord):
@@ -156,7 +156,6 @@ def getPlayerGuess(alreadyGuessed):
             print('Please enter a LETTER.')
         else:
             return guess
-        # At this point, go back to the start of the loop.
 
 
 # If this program was run (instead of imported), run the game:

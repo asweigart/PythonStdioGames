@@ -1,5 +1,6 @@
 """Analog Clock, by Al Sweigart al@inventwithpython.com
 An analog clock animation. Press Ctrl-C to stop.
+This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, bext"""
 __version__ = 0
 import time, math, sys
@@ -113,7 +114,6 @@ def main():
         for x, y in hourHandPoints:
             bext.goto(x, y)
             print(' ', end='')
-    # At this point, go back to the start of the main program loop.
 
 
 def line(x1, y1, x2, y2):

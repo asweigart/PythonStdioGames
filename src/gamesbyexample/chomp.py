@@ -3,6 +3,7 @@ A dangerously delicious logic game.
 Inspired by a Frederik Schuh and David Gale puzzle, published by
 Martin Gardner in Scientific American (January 1973).
 More info at: https://en.wikipedia.org/wiki/Chomp
+This and other games are available at https://nostarch.com/XX
 Tags: short, game, two-player, puzzle game"""
 __version__ = 0
 import random, sys
@@ -69,7 +70,6 @@ while True:  # Main game loop.
             break
 
         print('Select a piece that hasn\'t already been eaten.')
-        # At this point, go back to the start of the loop.
 
     # Determine the other player's mark.
     if turn == 'X':
@@ -90,4 +90,3 @@ while True:  # Main game loop.
 
     # Switch turns to the other player:
     turn = otherPlayer
-    # At this point, go back to the start of the main game loop.

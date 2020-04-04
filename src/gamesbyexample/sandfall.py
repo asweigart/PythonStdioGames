@@ -1,6 +1,7 @@
 """Sand Fall, by Al Sweigart al@inventwithpython.com
 A falling sand animation. (Must be run from a Terminal window.)
 Inspired by https://asciinema.org/a/6515
+This and other games are available at https://nostarch.com/XX
 Tags: short, simulation"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -72,4 +73,3 @@ while True:  # Main program loop.
         print()
 
     time.sleep(PAUSE_LENGTH)
-    # At this point, go back to the start of the main program loop.

@@ -1,5 +1,6 @@
 """Rock-Paper-Scissors, by Al Sweigart al@inventwithpython.com
 A hand game of luck.
+This and other games are available at https://nostarch.com/XX
 Tags: short, game"""
 __version__ = 0
 import random, time, sys
@@ -27,7 +28,6 @@ while True:  # Main game loop.
             break
         else:
             print('Type one of R, P, S, or Q.')
-        # At this point, go back to the start of the loop.
 
     # Display what the player chose:
     if playerMove == 'R':
@@ -82,4 +82,3 @@ while True:  # Main game loop.
     elif playerMove == 'SCISSORS' and computerMove == 'ROCK':
         print('You lose!')
         losses = losses + 1
-    # At this point, go back to the start of the main game loop.

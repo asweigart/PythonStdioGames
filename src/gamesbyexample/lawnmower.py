@@ -2,6 +2,7 @@
 Watch grass get cut and grow again. Press Ctrl-C to stop.
 Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 https://bitbucket.org/jvillard/tondeuse/src/default/
+This and other games are available at https://nostarch.com/XX
 Tags: large, artistic"""
 __version__ = 0
 import time, random, sys
@@ -109,7 +110,6 @@ def main():
                 print(';')
                 time.sleep(GROWING_PAUSE)  # Pause after growing.
             growMode = False  # Done growing grass.
-        # At this point, go back to the start of the main program loop.
 
 
 def drawMower(mowerx, mowery, direction):

@@ -7,6 +7,7 @@ A screensaver of many many ducklings.
 
 Ducklings based on ASCII art designs from the now-defunct Moijie's Room:
 http://www.geocities.jp/luckynopopo/
+This and other games are available at https://nostarch.com/XX
 Tags: large, scrolling, artistic
 """
 __version__ = 0

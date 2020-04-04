@@ -1,5 +1,6 @@
 """Hangman, by Al Sweigart al@inventwithpython.com
 A word-guessing game.
+This and other games are available at https://nostarch.com/XX
 Tags: large, game, word, puzzle game"""
 __version__ = 0
 # A version of this game is featured in the book, "Invent Your Own
@@ -107,7 +108,7 @@ By Al Sweigart al@inventwithpython.com
                 print('You have run out of guesses!')
                 print('The word was "{}"'.format(secretWord))
                 break
-        # At this point, go back to the start of the main game loop.
+
 
 def drawHangman(missedLetters, correctLetters, secretWord):
     """Draw the current state of the hangman, along with the missed and
