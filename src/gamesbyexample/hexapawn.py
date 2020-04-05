@@ -69,7 +69,7 @@ def getBoardSize():
         print('WARNING: You may have to resize the terminal window to')
         print('view a board this big.')
 
-    return width, height
+    return (width, height)
 
 
 def getNewBoard(width, height):

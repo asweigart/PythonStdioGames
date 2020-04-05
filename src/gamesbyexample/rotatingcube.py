@@ -31,6 +31,13 @@ def line(x1, y1, x2, y2):
     points = []  # Contains the points of the line.
     # "Steep" means the slope of the line is greater than 45 degrees or
     # less than -45 degrees:
+
+    # Check for the special case where the start and end points are
+    # certain neighbors, which this function doesn't handle correctly,
+    # and return a hard coded list instead:
+    if (x1 == x2 and y1 == y2 + 1) or (y1 == y2 and x1 == x2 + 1):
+        return [(x1, y1), (x2, y2)]
+
     isSteep = abs(y2 - y1) > abs(x2 - x1)
     if isSteep:
         # This algorithm only handles non-steep lines, so let's change

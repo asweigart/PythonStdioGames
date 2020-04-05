@@ -147,11 +147,11 @@ def enterPlayerTile():
         print('Do you want to be X or O?')
         tile = input('> ').upper()
 
-    # The first string is the player's tile:
+    # The first item is the player's tile, the second is the computer's:
     if tile == 'X':
-        return ['X', 'O']
+        return ('X', 'O')
     else:
-        return ['O', 'X']
+        return ('O', 'X')
 
 
 def makeMove(board, tile, xstart, ystart):
@@ -205,7 +205,7 @@ def getPlayerMove(board, playerTile):
             print('Type the column (A-H) and row (1-8).')
             print('For example, H1 will be the top-right corner.')
 
-    return [x, y]
+    return (x, y)
 
 
 def getComputerMove(board, computerTile):
@@ -220,7 +220,7 @@ def getComputerMove(board, computerTile):
     # Always go for a corner if available:
     for x, y in possibleMoves:
         if isOnCorner(x, y):
-            return [x, y]
+            return (x, y)
 
     # Go through all possible moves and remember the best scoring move:
     bestScore = -1

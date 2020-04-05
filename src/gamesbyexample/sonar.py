@@ -107,7 +107,7 @@ def enterPlayerMove(previousMoves):
             if [int(move[0]), int(move[1])] in previousMoves:
                 print('You already moved there.')
                 continue
-            return [int(move[0]), int(move[1])]
+            return (int(move[0]), int(move[1]))
 
         print('Enter a number from 0 to 59, a space, then a number from 0 to 14.')
 

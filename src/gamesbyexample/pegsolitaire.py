@@ -79,7 +79,7 @@ def getNeighboringSpaces(space, direction):
         neighborSpace = chr(ord(x) + 1) + y  # E.g. convert 'C' to 'D'
         secondNeighborSpace = chr(ord(x) + 2) + y  # E.g. 'C' to 'E'
 
-    return neighborSpace, secondNeighborSpace
+    return (neighborSpace, secondNeighborSpace)
 
 
 def canMoveInDirection(board, space, direction):
