@@ -12,8 +12,8 @@ EMPTY = ' '
 START = 'S'
 EXIT = 'E'
 
-FACE = chr(9786)
-BLOCK = chr(9608)
+PLAYER = '@'
+BLOCK = chr(9617)  # Character 9617 is '░'
 
 print('''Maze Runner, by Al Sweigart al@inventwithpython.com
 
@@ -72,7 +72,7 @@ while True:  # Main game loop.
     for y in range(HEIGHT):
         for x in range(WIDTH):
             if (x, y) == (playerx, playery):
-                print(FACE, end='')
+                print(PLAYER, end='')
             elif (x, y) == (exitx, exity):
                 print('X', end='')
             elif maze[(x, y)] == WALL:

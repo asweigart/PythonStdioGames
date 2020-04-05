@@ -1,6 +1,5 @@
 """Roomba Simulator, by Al Sweigart al@inventwithpython.com
 Watch a roomba move around and collect dirt.
-
 Tags: large, artistic, simulation"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -83,21 +82,22 @@ def main():
 
         # The roomba has reached its destination, so find the
         # closest dirt pile:
-        closestDirtDistance = None
-        closestDirtX = roombaX
-        closestDirtY = roombaY
-        for dirtX in range(WIDTH):
-            for dirtY in range(HEIGHT):
-                if dirtPiles[(dirtX, dirtY)] == 0:
-                    continue  # Skip clean spots.
-                distance = getDistance(roombaX, roombaY, dirtX, dirtY)
-                if closestDirtDistance == None or distance < closestDirtDistance:
-                    closestDirtDistance = distance
-                    closestDirtX = dirtX
-                    closestDirtY = dirtY
-        if closestDirtDistance != None:
-            moveTo = line(roombaX, roombaY, closestDirtX, closestDirtY)[1:] # TODO don't include index 0 because that is the current roomba xy
-
+        if len(moveTo) == 0:
+            closestDirtDistance = None
+            closestDirts = []
+            for dirtX in range(WIDTH):
+                for dirtY in range(HEIGHT):
+                    if dirtPiles[(dirtX, dirtY)] == 0:
+                        continue  # Skip clean spots.
+                    distance = getDistance(roombaX, roombaY, dirtX, dirtY)
+                    if closestDirtDistance == None or distance < closestDirtDistance:
+                        closestDirtDistance = distance
+                        closestDirts = [(dirtX, dirtY)]
+                    elif distance == closestDirtDistance:
+                        closestDirts.append((dirtX, dirtY))
+            if closestDirtDistance != None:
+                closestDirtX, closestDirtY = random.choice(closestDirts)
+                moveTo = line(roombaX, roombaY, closestDirtX, closestDirtY)[1:] # TODO don't include index 0 because that is the current roomba xy
 
         # Determine if the roomba should head back to base to recharge:
         distanceToDirt = len(moveTo)

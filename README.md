@@ -10,6 +10,8 @@ RUN LAUNCHER: `python -m gamesbyexample`
 
 I'm not accepting pull requests currently, but feel free to leave comments or send suggestions to al@inventwithpython.com
 
+If you need help installing Python, visit https://installpython3.com/
+
 About this Collection
 =====================
 

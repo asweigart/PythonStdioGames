@@ -1,12 +1,10 @@
 """Kaprekar Numbers, by Al Sweigart al@inventwithpython.com
 Kaprekar Numbers are numbers whose square in that base can be split into
 2 parts that add up to the original number. For example:
-
 45^2 = 2025 -> 20 + 25 = 45
-
+More info at: https://en.wikipedia.org/wiki/Kaprekar_number
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, math
-"""
+Tags: tiny, math, scrolling"""
 __version__ = 0
 print("""Kaprekar Numbers, by Al Sweigart al@inventwithpython.com
 

@@ -4,8 +4,7 @@ down tiles. The first player to place five tiles in a row horizontally,
 vertically, or diagonally wins.
 More info at: https://en.wikipedia.org/wiki/Gomoku
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, board game, two-player
-"""
+Tags: large, game, board game, two-player"""
 
 import sys
 

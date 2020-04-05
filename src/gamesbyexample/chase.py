@@ -15,7 +15,7 @@ NUM_WALLS = 100      # (!) Try changing this number.
 
 WALL = chr(9617)  # Character 9617 is '░'
 EMPTY_SPACE = ' '
-PLAYER = 'p'
+PLAYER = '@'
 ROBOT = 'R'
 DEAD_ROBOT = 'X'
 

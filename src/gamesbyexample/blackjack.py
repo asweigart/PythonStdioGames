@@ -30,7 +30,7 @@ def main():
     In case of a tie, the pot carries over to the next round.
     The dealer stops hitting themselves at 17.''')
 
-    money = 100
+    money = 5000
     pot = 0
     while True:  # Main game loop.
         # Check if the player has run out of money:

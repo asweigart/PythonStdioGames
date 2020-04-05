@@ -1,7 +1,7 @@
 """Tic Tac Toe, by Al Sweigart al@inventwithpython.com
 The classic board game.
 This and other games are available at https://nostarch.com/XX
-Tags: short, game, two-player"""
+Tags: short, game, two-player, board game"""
 __version__ = 0
 ALL_SPACES = list('123456789') # The keys for a TTT board dictionary.
 X, O, BLANK = 'X', 'O', ' ' # Constants for string values.

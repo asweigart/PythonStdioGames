@@ -21,7 +21,7 @@ EMPTY = ' '
 
 # How objects should be displayed on the screen:
 WALL_DISPLAY = chr(9617)   # Character 9617 is '░'
-FACE_DISPLAY = chr(9786)   # Character 9786 is '☺'
+FACE_DISPLAY = '@'
 CRATE_DISPLAY = chr(9632)  # Character 9679 is '■'
 GOAL_DISPLAY = chr(9633)   # Character 9633 is '□'
 CRATE_ON_GOAL_DISPLAY = '*'
@@ -43,115 +43,113 @@ Push the solid crates onto the circle outlines. You can only push,
 you cannot pull. Enter W-A-S-D letters to move up-left-down-right,
 respectively. Enter numbers to switch levels, U to undo a move, or
 QUIT to quit the game.
-
-You can enter multiple WASD or U letters to make several moves at once.
 ''')
 
     allLevels = loadLevels('sokobanlevels.txt')
-    currentLevelNumber = 0
-    currentLevel = copy.copy(allLevels[currentLevelNumber])
+    currentLevelNum = 0
+    currentLevel = copy.copy(allLevels[currentLevelNum])
     undoStack = [copy.copy(currentLevel)]
 
     while True:  # Main game loop.
-        displayLevel(currentLevelNumber, len(allLevels), currentLevel)
+        displayLevel(currentLevelNum, len(allLevels), currentLevel)
+        move = getPlayerMove(len(allLevels))
 
-        moves = getPlayerMoves(len(allLevels))
-
-        if len(moves) == 0:
-            continue  # Player entered no moves.
-        elif moves[0].isdecimal():
-            currentLevelNumber = int(moves[0]) # Set new level number.
+        # Change to a different level:
+        if move.isdecimal():
+            currentLevelNum = int(move) # Set new level number.
             # Refresh the level data and undo stack:
-            currentLevel = copy.copy(allLevels[currentLevelNumber])
+            currentLevel = copy.copy(allLevels[currentLevelNum])
             undoStack = [copy.copy(currentLevel)]
             continue
 
-        # Carry out the moves:
-        for move in moves:
-            # Find the player position:
-            for position, character in currentLevel.items():
-                if character in (FACE, PLAYER_ON_GOAL):
-                    playerx, playery = position
+        # Undo the last move.
+        if move == 'U':
+            if len(undoStack) == 1:
+                continue  # Can't undo past the first move.
+            undoStack.pop()  # Remove the last item from undoStack.
+            currentLevel = copy.copy(undoStack[-1])
+            continue
 
-            if move == 'U':
-                if len(undoStack) == 1:
-                    continue  # Can't undo past the first move.
-                undoStack.pop()  # Remove the last item from undoStack.
-                currentLevel = copy.copy(undoStack[-1])
+        # Find the player position:
+        for position, character in currentLevel.items():
+            if character in (FACE, PLAYER_ON_GOAL):
+                playerX, playerY = position
+
+        if move == 'W':
+            moveX, moveY = 0, -1
+        elif move == 'A':
+            moveX, moveY = -1, 0
+        elif move == 'S':
+            moveX, moveY = 0, 1
+        elif move == 'D':
+            moveX, moveY = 1, 0
+        moveToX = playerX + moveX
+        moveToY = playerY + moveY
+
+        moveToSpace = currentLevel.get((moveToX, moveToY), EMPTY)
+
+        # If the move-to space is empty or a goal, just move there:
+        if moveToSpace == EMPTY or moveToSpace == GOAL:
+            # Change the player's old position:
+            if currentLevel[(playerX, playerY)] == FACE:
+                currentLevel[(playerX, playerY)] = EMPTY
+            elif currentLevel[(playerX, playerY)] == PLAYER_ON_GOAL:
+                currentLevel[(playerX, playerY)] = GOAL
+
+            # Set the player's new position:
+            if moveToSpace == EMPTY:
+                currentLevel[(moveToX, moveToY)] = FACE
+            elif moveToSpace == GOAL:
+                currentLevel[(moveToX, moveToY)] = PLAYER_ON_GOAL
+
+        # If the move-to space is a wall, don't move at all:
+        elif moveToSpace == WALL:
+            pass
+
+        # If the move-to space has a crate, see if we can push it:
+        elif moveToSpace in (CRATE, CRATE_ON_GOAL):
+            behindMoveToX = playerX + (moveX * 2)
+            behindMoveToY = playerY + (moveY * 2)
+            behindMoveToSpace = currentLevel.get((behindMoveToX, behindMoveToY), EMPTY)
+            if behindMoveToSpace in (WALL, CRATE, CRATE_ON_GOAL):
+                # Can't push the crate because there's a wall or
+                # crate behind it:
                 continue
-
-            if move == 'W':
-                movex, movey = 0, -1
-            elif move == 'A':
-                movex, movey = -1, 0
-            elif move == 'S':
-                movex, movey = 0, 1
-            elif move == 'D':
-                movex, movey = 1, 0
-
-            moveToSpace = currentLevel.get((playerx + movex, playery + movey), EMPTY)
-
-            # If the move-to space is empty or a goal, just move there:
-            if moveToSpace in (EMPTY, GOAL):
+            if behindMoveToSpace in (GOAL, EMPTY):
                 # Change the player's old position:
-                if currentLevel[(playerx, playery)] == FACE:
-                    currentLevel[(playerx, playery)] = EMPTY
-                elif currentLevel[(playerx, playery)] == PLAYER_ON_GOAL:
-                    currentLevel[(playerx, playery)] = GOAL
+                if currentLevel[(playerX, playerY)] == FACE:
+                    currentLevel[(playerX, playerY)] = EMPTY
+                elif currentLevel[(playerX, playerY)] == PLAYER_ON_GOAL:
+                    currentLevel[(playerX, playerY)] = GOAL
 
                 # Set the player's new position:
-                if moveToSpace == EMPTY:
-                    currentLevel[(playerx + movex, playery + movey)] = FACE
-                elif moveToSpace == GOAL:
-                    currentLevel[(playerx + movex, playery + movey)] = PLAYER_ON_GOAL
+                if moveToSpace == CRATE:
+                    currentLevel[(moveToX, moveToY)] = FACE
+                elif moveToSpace == CRATE_ON_GOAL:
+                    currentLevel[(moveToX, moveToY)] = PLAYER_ON_GOAL
 
-            # If the move-to space is a wall, don't move at all:
-            elif moveToSpace == WALL:
-                pass
+                # Set the crate's new position:
+                if behindMoveToSpace == EMPTY:
+                    currentLevel[(behindMoveToX, behindMoveToY)] = CRATE
+                elif behindMoveToSpace == GOAL:
+                    currentLevel[(behindMoveToX, behindMoveToY)] = CRATE_ON_GOAL
 
-            # If the move-to space is a crate, determine if we can push it:
-            elif moveToSpace in (CRATE, CRATE_ON_GOAL):
-                spaceAfterMoveToSpace = currentLevel.get((playerx + (movex * 2), playery + (movey * 2)), EMPTY)
-                if spaceAfterMoveToSpace in (WALL, CRATE, CRATE_ON_GOAL):
-                    # Can't push the crate because there's a wall or crate
-                    # behind it:
-                    continue
-                if spaceAfterMoveToSpace in (GOAL, EMPTY):
-                    # Change the player's old position:
-                    if currentLevel[(playerx, playery)] == FACE:
-                        currentLevel[(playerx, playery)] = EMPTY
-                    elif currentLevel[(playerx, playery)] == PLAYER_ON_GOAL:
-                        currentLevel[(playerx, playery)] = GOAL
+        # Save the state of the level for the undo feature:
+        undoStack.append(copy.copy(currentLevel))
 
-                    # Set the player's new position:
-                    if moveToSpace == CRATE:
-                        currentLevel[(playerx + movex, playery + movey)] = FACE
-                    elif moveToSpace == CRATE_ON_GOAL:
-                        currentLevel[(playerx + movex, playery + movey)] = PLAYER_ON_GOAL
-
-                    # Set the crate's new position:
-                    if spaceAfterMoveToSpace == EMPTY:
-                        currentLevel[(playerx + (movex * 2), playery + (movey * 2))] = CRATE
-                    elif spaceAfterMoveToSpace == GOAL:
-                        currentLevel[(playerx + (movex * 2), playery + (movey * 2))] = CRATE_ON_GOAL
-
-            # Save the state of the level for the undo feature:
-            undoStack.append(copy.copy(currentLevel))
-
-            # Check if the player has finished the level:
-            levelIsSolved = True
-            for position, character in currentLevel.items():
-                if character == CRATE:
-                    levelIsSolved = False
-                    break
-            if levelIsSolved:
-                displayLevel(currentLevelNumber, len(allLevels), currentLevel)
-                print('Level complete!')
-                input('Press Enter to continue...')
-                currentLevelNumber = (currentLevelNumber + 1) % len(allLevels)
-                currentLevel = copy.copy(allLevels[currentLevelNumber])
-                undoStack = [copy.copy(currentLevel)]
-                break  # Don't carry out any remaining moves.
+        # Check if the player has finished the level:
+        levelIsSolved = True
+        for position, character in currentLevel.items():
+            if character == CRATE:
+                levelIsSolved = False
+                break
+        if levelIsSolved:
+            displayLevel(currentLevelNum, len(allLevels), currentLevel)
+            print('Level complete!')
+            input('Press Enter to continue...')
+            currentLevelNum = (currentLevelNum + 1) % len(allLevels)
+            currentLevel = copy.copy(allLevels[currentLevelNum])
+            undoStack = [copy.copy(currentLevel)]
 
 
 def loadLevels(levelFilename):
@@ -208,31 +206,28 @@ def displayLevel(levelNum, maxLevelNum, levelData):
     print(solvedCrates, '/', totalCrates, 'solved.')
 
 
-def getPlayerMoves(maxLevelNum):
+def getPlayerMove(maxLevelNum):
     # Get the input from the player:
-    moves = input('Enter move(s)> ').upper()
+    while True:
+        move = input('Enter move> ').upper()
 
-    if moves == 'QUIT':
-        print('Thanks for playing!')
-        sys.exit()
+        if move == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
 
-    if moves.isdecimal():
-        if not (1 <= int(moves) < maxLevelNum):
-            print('Level numbers are between 1 and', maxLevelNum)
-            return []  # Player entered no valid move.
-        return [str(int(moves) - 1)]  # Return the new level number.
+        if move.isdecimal():
+            if not (1 <= int(move) < maxLevelNum):
+                # There's no level for the number the player entered:
+                print('Level numbers are between 1 and', maxLevelNum)
+                continue
+            return str(int(move) - 1)  # Return the new level number.
 
-    # Validate the input; make sure it only has W, A, S, D, or U:
-    movesAreValid = True
-    for move in moves:
-        if move not in ('W', 'A', 'S', 'D', 'U'):
-            movesAreValid = False
-            print(move, 'is not a valid move.')
-            break
-    if not movesAreValid:
-        return []  # Player entered no valid move.
+        # Check that the input is a valid WASD move or U for undo:
+        if move in ('W', 'A', 'S', 'D', 'U'):
+            return move
 
-    return moves
+        print(move, 'is not a valid move.')
+
 
 # If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
