@@ -7,14 +7,31 @@ __version__ = 0
 import copy, os, sys
 
 # Set up the constants:
-WALL = chr(9608)   # Character 9608 is '█'
-FACE = chr(9786)   # Character 9786 is '☺'
-CRATE = chr(9679)  # Character 9679 is '●'
-GOAL = chr(9675)   # Character 9675 is '○'
+WIDTH = 'width'
+HEIGHT = 'height'
+
+# Characters in level files that represent objects:
+WALL = '#'
+FACE = '@'
+CRATE = '$'
+GOAL = '.'
 CRATE_ON_GOAL = '*'
-PLAYER_ON_GOAL = FACE
-CHAR_MAP = {'#': WALL, '@': FACE, '$': CRATE, '+': PLAYER_ON_GOAL,
-            '.': GOAL, '*': CRATE_ON_GOAL, ' ': ' '}
+PLAYER_ON_GOAL = '+'
+EMPTY = ' '
+
+# How objects should be displayed on the screen:
+WALL_DISPLAY = chr(9617)   # Character 9617 is '░'
+FACE_DISPLAY = chr(9786)   # Character 9786 is '☺'
+CRATE_DISPLAY = chr(9632)  # Character 9679 is '■'
+GOAL_DISPLAY = chr(9633)   # Character 9633 is '□'
+CRATE_ON_GOAL_DISPLAY = '*'
+PLAYER_ON_GOAL_DISPLAY = FACE_DISPLAY
+EMPTY_DISPLAY = ' '
+
+CHAR_MAP = {WALL: WALL_DISPLAY, FACE: FACE_DISPLAY,
+            CRATE: CRATE_DISPLAY, PLAYER_ON_GOAL: PLAYER_ON_GOAL_DISPLAY,
+            GOAL: GOAL_DISPLAY, CRATE_ON_GOAL: CRATE_ON_GOAL_DISPLAY,
+            EMPTY: EMPTY_DISPLAY}
 
 
 def main():
@@ -36,40 +53,24 @@ You can enter multiple WASD or U letters to make several moves at once.
     undoStack = [copy.copy(currentLevel)]
 
     while True:  # Main game loop.
-        displayLevel(currentLevelNumber, currentLevel, len(allLevels))
+        displayLevel(currentLevelNumber, len(allLevels), currentLevel)
 
-        # Get the input from the player:
-        moves = input('Enter moves> ').upper()
+        moves = getPlayerMoves(len(allLevels))
 
-        if moves == 'QUIT':
-            print('Thanks for playing!')
-            sys.exit()
-
-        if moves.isdecimal():
-            if not (1 <= int(moves) < len(allLevels)):
-                print('Level numbers are between 1 and', len(allLevels))
-                continue
-            # Change the current level:
-            currentLevelNumber = int(moves) - 1
+        if len(moves) == 0:
+            continue  # Player entered no moves.
+        elif moves[0].isdecimal():
+            currentLevelNumber = int(moves[0]) # Set new level number.
+            # Refresh the level data and undo stack:
             currentLevel = copy.copy(allLevels[currentLevelNumber])
             undoStack = [copy.copy(currentLevel)]
-            continue
-
-        # Validate the input; make sure it only has W, A, S, D, or U:
-        movesAreValid = True
-        for move in moves:
-            if move not in ('W', 'A', 'S', 'D', 'U'):
-                movesAreValid = False
-                print(move, 'is not a valid move.')
-                break
-        if not movesAreValid:
             continue
 
         # Carry out the moves:
         for move in moves:
             # Find the player position:
             for position, character in currentLevel.items():
-                if character in ('@', '+'):
+                if character in (FACE, PLAYER_ON_GOAL):
                     playerx, playery = position
 
             if move == 'U':
@@ -88,51 +89,51 @@ You can enter multiple WASD or U letters to make several moves at once.
             elif move == 'D':
                 movex, movey = 1, 0
 
-            moveToSpace = currentLevel.get((playerx + movex, playery + movey), ' ')
+            moveToSpace = currentLevel.get((playerx + movex, playery + movey), EMPTY)
 
             # If the move-to space is empty or a goal, just move there:
-            if moveToSpace in (' ', '.'):
+            if moveToSpace in (EMPTY, GOAL):
                 # Change the player's old position:
-                if currentLevel[(playerx, playery)] == '@':
-                    currentLevel[(playerx, playery)] = ' '
-                elif currentLevel[(playerx, playery)] == '+':
-                    currentLevel[(playerx, playery)] = '.'
+                if currentLevel[(playerx, playery)] == FACE:
+                    currentLevel[(playerx, playery)] = EMPTY
+                elif currentLevel[(playerx, playery)] == PLAYER_ON_GOAL:
+                    currentLevel[(playerx, playery)] = GOAL
 
                 # Set the player's new position:
-                if moveToSpace == ' ':
-                    currentLevel[(playerx + movex, playery + movey)] = '@'
-                elif moveToSpace == '.':
-                    currentLevel[(playerx + movex, playery + movey)] = '+'
+                if moveToSpace == EMPTY:
+                    currentLevel[(playerx + movex, playery + movey)] = FACE
+                elif moveToSpace == GOAL:
+                    currentLevel[(playerx + movex, playery + movey)] = PLAYER_ON_GOAL
 
             # If the move-to space is a wall, don't move at all:
-            elif moveToSpace == '#':
+            elif moveToSpace == WALL:
                 pass
 
             # If the move-to space is a crate, determine if we can push it:
-            elif moveToSpace in ('$', '*'):
-                spaceAfterMoveToSpace = currentLevel.get((playerx + (movex * 2), playery + (movey * 2)), ' ')
-                if spaceAfterMoveToSpace in ('#', '$', '*'):
+            elif moveToSpace in (CRATE, CRATE_ON_GOAL):
+                spaceAfterMoveToSpace = currentLevel.get((playerx + (movex * 2), playery + (movey * 2)), EMPTY)
+                if spaceAfterMoveToSpace in (WALL, CRATE, CRATE_ON_GOAL):
                     # Can't push the crate because there's a wall or crate
                     # behind it:
                     continue
-                if spaceAfterMoveToSpace in ('.', ' '):
+                if spaceAfterMoveToSpace in (GOAL, EMPTY):
                     # Change the player's old position:
-                    if currentLevel[(playerx, playery)] == '@':
-                        currentLevel[(playerx, playery)] = ' '
-                    elif currentLevel[(playerx, playery)] == '+':
-                        currentLevel[(playerx, playery)] = '.'
+                    if currentLevel[(playerx, playery)] == FACE:
+                        currentLevel[(playerx, playery)] = EMPTY
+                    elif currentLevel[(playerx, playery)] == PLAYER_ON_GOAL:
+                        currentLevel[(playerx, playery)] = GOAL
 
                     # Set the player's new position:
-                    if moveToSpace == '$':
-                        currentLevel[(playerx + movex, playery + movey)] = '@'
-                    elif moveToSpace == '*':
-                        currentLevel[(playerx + movex, playery + movey)] = '+'
+                    if moveToSpace == CRATE:
+                        currentLevel[(playerx + movex, playery + movey)] = FACE
+                    elif moveToSpace == CRATE_ON_GOAL:
+                        currentLevel[(playerx + movex, playery + movey)] = PLAYER_ON_GOAL
 
                     # Set the crate's new position:
-                    if spaceAfterMoveToSpace == ' ':
-                        currentLevel[(playerx + (movex * 2), playery + (movey * 2))] = '$'
-                    elif spaceAfterMoveToSpace == '.':
-                        currentLevel[(playerx + (movex * 2), playery + (movey * 2))] = '*'
+                    if spaceAfterMoveToSpace == EMPTY:
+                        currentLevel[(playerx + (movex * 2), playery + (movey * 2))] = CRATE
+                    elif spaceAfterMoveToSpace == GOAL:
+                        currentLevel[(playerx + (movex * 2), playery + (movey * 2))] = CRATE_ON_GOAL
 
             # Save the state of the level for the undo feature:
             undoStack.append(copy.copy(currentLevel))
@@ -140,17 +141,18 @@ You can enter multiple WASD or U letters to make several moves at once.
             # Check if the player has finished the level:
             levelIsSolved = True
             for position, character in currentLevel.items():
-                if character == '$':
+                if character == CRATE:
                     levelIsSolved = False
                     break
             if levelIsSolved:
-                displayLevel(currentLevelNumber, currentLevel)
+                displayLevel(currentLevelNumber, len(allLevels), currentLevel)
                 print('Level complete!')
                 input('Press Enter to continue...')
                 currentLevelNumber = (currentLevelNumber + 1) % len(allLevels)
                 currentLevel = copy.copy(allLevels[currentLevelNumber])
                 undoStack = [copy.copy(currentLevel)]
                 break  # Don't carry out any remaining moves.
+
 
 def loadLevels(levelFilename):
     if not os.path.exists('sokobanlevels.txt'):
@@ -160,18 +162,18 @@ def loadLevels(levelFilename):
     allLevels = []
     with open(levelFilename) as levelFile:
         # Each level is represented by a dictionary:
-        currentLevelFromFile = {'width': 0, 'height': 0}
+        currentLevelFromFile = {WIDTH: 0, HEIGHT: 0}
         y = 0
         for line in levelFile.readlines():
             if line.startswith(';'):
                 continue  # Ignore comments in the level file.
 
             if line == '\n':
-                if currentLevelFromFile == {'width': 0, 'height': 0}:
+                if currentLevelFromFile == {WIDTH: 0, HEIGHT: 0}:
                     continue  # Ignore this level file line.
                 # Finished with the current level:
                 allLevels.append(currentLevelFromFile)
-                currentLevelFromFile = {'width': 0, 'height': 0}
+                currentLevelFromFile = {WIDTH: 0, HEIGHT: 0}
                 y = 0  # Reset y back to 0.
                 continue
 
@@ -181,21 +183,56 @@ def loadLevels(levelFilename):
                 currentLevelFromFile[(x, y)] = levelChar
             y += 1
 
-            if len(line) - 1 > currentLevelFromFile['width']:
-                currentLevelFromFile['width'] = len(line) - 1
-            if y > currentLevelFromFile['height']:
-                currentLevelFromFile['height'] = y
+            if len(line) - 1 > currentLevelFromFile[WIDTH]:
+                currentLevelFromFile[WIDTH] = len(line) - 1
+            if y > currentLevelFromFile[HEIGHT]:
+                currentLevelFromFile[HEIGHT] = y
+    return allLevels
 
 
 def displayLevel(levelNum, maxLevelNum, levelData):
     # Draw the current level.
+    solvedCrates = 0
+    unsolvedCrates = 0
     print('Level #' + str(levelNum + 1), 'of', maxLevelNum)
-    for y in range(levelData['height']):
-        for x in range(levelData['width']):
-            prettyChar = CHAR_MAP[levelData.get((x, y), ' ')]
+    for y in range(levelData[HEIGHT]):
+        for x in range(levelData[WIDTH]):
+            if levelData.get((x, y), EMPTY) == CRATE:
+                unsolvedCrates += 1
+            elif levelData.get((x, y), EMPTY) == CRATE_ON_GOAL:
+                solvedCrates += 1
+            prettyChar = CHAR_MAP[levelData.get((x, y), EMPTY)]
             print(prettyChar, end='')
         print()
+    totalCrates = unsolvedCrates + solvedCrates
+    print(solvedCrates, '/', totalCrates, 'solved.')
 
+
+def getPlayerMoves(maxLevelNum):
+    # Get the input from the player:
+    moves = input('Enter move(s)> ').upper()
+
+    if moves == 'QUIT':
+        print('Thanks for playing!')
+        sys.exit()
+
+    if moves.isdecimal():
+        if not (1 <= int(moves) < maxLevelNum):
+            print('Level numbers are between 1 and', maxLevelNum)
+            return []  # Player entered no valid move.
+        return [str(int(moves) - 1)]  # Return the new level number.
+
+    # Validate the input; make sure it only has W, A, S, D, or U:
+    movesAreValid = True
+    for move in moves:
+        if move not in ('W', 'A', 'S', 'D', 'U'):
+            movesAreValid = False
+            print(move, 'is not a valid move.')
+            break
+    if not movesAreValid:
+        return []  # Player entered no valid move.
+
+    return moves
 
 # If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
