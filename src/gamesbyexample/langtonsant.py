@@ -4,7 +4,7 @@ More info: https://en.wikipedia.org/wiki/Langton%27s_ant
 This and other games are available at https://nostarch.com/XX
 Tags: large, simulation, bext, artistic"""
 __version__ = 0
-import random, copy, sys, time
+import copy, random, sys, time
 
 try:
     import bext
@@ -16,24 +16,36 @@ except ImportError:
 
 # Set up the constants:
 WIDTH, HEIGHT = bext.size()
-HEIGHT -= 1  # Adjustment for the quit message at the bottom.
 # We can't print to the last column on Windows without it adding a
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
+HEIGHT -= 1  # Adjustment for the quit message at the bottom.
 
-NUMBER_OF_ANTS = 10
+NUMBER_OF_ANTS = 10  # (!) Try changing this to 1 or 50.
+PAUSE_AMOUNT = 0.1  # (!) Try changing this to 1.0 or 0.0.
+
+# (!) Try changing these to make the ants look different:
+ANT_UP = '^'
+ANT_DOWN = 'v'
+ANT_LEFT = '<'
+ANT_RIGHT = '>'
+
+# (!) Try changing these colors to one of 'black', 'red', 'green',
+# 'yellow', 'blue', 'purple', 'cyan', or 'white'. (These are the only
+# colors that the bext module supports.)
+ANT_COLOR = 'red'
+BLACK_TILE = 'black'
+WHITE_TILE = 'white'
+
 NORTH = 'north'
 SOUTH = 'south'
 EAST = 'east'
 WEST = 'west'
-BLACK = 'black'
-WHITE = 'white'
-PAUSE_AMOUNT = 0.1
 
 
 def main():
-    bext.fg('red')
-    bext.bg(WHITE)  # Set the background to white to start.
+    bext.fg(ANT_COLOR)  # The ants' color is the foreground color.
+    bext.bg(WHITE_TILE)  # Set the background to white to start.
     bext.clear()
 
     # Create a new board data structure:
@@ -49,14 +61,19 @@ def main():
         }
         ants.append(ant)
 
-    changedTiles = set()
+    # Keep track of which tiles have changed and need to be redrawn on
+    # the screen:
+    changedTiles = []
 
     while True:  # Main program loop.
         displayBoard(board, ants, changedTiles)
-        changedTiles = set()
+        changedTiles = []
+
+        # nextBoard is what the board will look like on the next step in
+        # the simulation. Start with a copy of the current step's board:
+        nextBoard = copy.copy(board)
 
         # Run a single simulation step for each ant:
-        nextBoard = copy.copy(board)
         for ant in ants:
             if board.get((ant['x'], ant['y']), False) == True:
                 nextBoard[(ant['x'], ant['y'])] = False
@@ -80,9 +97,9 @@ def main():
                     ant['direction'] = EAST
                 elif ant['direction'] == EAST:
                     ant['direction'] = NORTH
-            changedTiles.add((ant['x'], ant['y']))
+            changedTiles.append((ant['x'], ant['y']))
 
-            # Move the ant forward:
+            # Move the ant forward in whatever direction it's facing:
             if ant['direction'] == NORTH:
                 ant['y'] -= 1
             if ant['direction'] == SOUTH:
@@ -97,38 +114,43 @@ def main():
             ant['x'] = ant['x'] % WIDTH
             ant['y'] = ant['y'] % HEIGHT
 
-            changedTiles.add((ant['x'], ant['y']))
+            changedTiles.append((ant['x'], ant['y']))
 
         board = nextBoard
 
 
 def displayBoard(board, ants, changedTiles):
+    """Displays the board and ants on the screen. The changedTiles
+    argument is a list of (x, y) tuples for tiles on the screen that
+    have changed and need to be redrawn."""
+
     # Draw the board data structure:
     for x, y in changedTiles:
         bext.goto(x, y)
         if board.get((x, y), False):
-            bext.bg(BLACK)
+            bext.bg(BLACK_TILE)
         else:
-            bext.bg(WHITE)
+            bext.bg(WHITE_TILE)
 
         antIsHere = False
         for ant in ants:
             if (x, y) == (ant['x'], ant['y']):
                 antIsHere = True
                 if ant['direction'] == NORTH:
-                    print('^', end='')
+                    print(ANT_UP, end='')
                 elif ant['direction'] == SOUTH:
-                    print('v', end='')
+                    print(ANT_DOWN, end='')
                 elif ant['direction'] == EAST:
-                    print('>', end='')
+                    print(ANT_LEFT, end='')
                 elif ant['direction'] == WEST:
-                    print('<', end='')
+                    print(ANT_RIGHT, end='')
                 break
         if not antIsHere:
             print(' ', end='')
 
+    # Display the quit message at the bottom of the screen:
     bext.goto(0, HEIGHT)
-    bext.bg(WHITE)
+    bext.bg(WHITE_TILE)
     print('Press Ctrl-C to quit.', end='')
 
     sys.stdout.flush()  # (Required for bext-using programs.)

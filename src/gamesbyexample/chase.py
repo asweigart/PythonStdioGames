@@ -6,18 +6,19 @@ __version__ = 0
 import os, random, sys
 
 # Set up the constants:
-WIDTH = 40           # (!) Try changing this number.
-HEIGHT = 20          # (!) Try changing this number.
-NUM_ROBOTS = 10      # (!) Try changing this number.
-NUM_TELEPORTS = 2    # (!) Try changing this number.
-NUM_DEAD_ROBOTS = 2  # (!) Try changing this number.
-NUM_WALLS = 100      # (!) Try changing this number.
+WIDTH = 40           # (!) Try changing this to 70 or 10.
+HEIGHT = 20          # (!) Try changing this to 10.
+NUM_ROBOTS = 30      # (!) Try changing this to 1 or 30.
+NUM_TELEPORTS = 2    # (!) Try changing this to 0 or 9999.
+NUM_DEAD_ROBOTS = 2  # (!) Try changing this to 0 or 20.
+NUM_WALLS = 100      # (!) Try changing this to 0 or 1000.
+EMPTY_SPACE = ' '    # (!) Try changing this to '.'.
+PLAYER = '@'         # (!) Try changing this to 'R'.
+ROBOT = 'R'          # (!) Try changing this to '@'.
+DEAD_ROBOT = 'X'     # (!) Try changing this to 'R'.
 
+# (!) Try changing this to '#' or 'O' or ' ':
 WALL = chr(9617)  # Character 9617 is '░'
-EMPTY_SPACE = ' '
-PLAYER = '@'
-ROBOT = 'R'
-DEAD_ROBOT = 'X'
 
 
 def main():
@@ -36,10 +37,10 @@ through corners!
 
     # Set up a new game:
     board = getNewBoard(WIDTH, HEIGHT, NUM_WALLS, NUM_DEAD_ROBOTS)
-    robots = getRobots(board, NUM_ROBOTS)
+    robots = addRobots(board, NUM_ROBOTS)
     playerPosition = getRandomEmptySpace(board, robots)
     while True:  # Main game loop.
-        drawBoard(board, robots, playerPosition)
+        displayBoard(board, robots, playerPosition)
 
         if len(robots) == 0:  # Check if the player has won.
             print('All the robots have crashed into each other and you')
@@ -52,13 +53,13 @@ through corners!
 
         for x, y in robots:  # Check if the player has lost.
             if (x, y) == playerPosition:
-                drawBoard(board, robots, playerPosition)
+                displayBoard(board, robots, playerPosition)
                 print('You have been caught by a robot!')
                 sys.exit()
 
 
 def clearScreen():
-    # Clear the previously drawn text:
+    """Clears all the text on the screen."""
     if sys.platform == 'win32':
         # Clear the Windows terminal with the cls command:
         os.system('cls')
@@ -68,15 +69,20 @@ def clearScreen():
 
 
 def getNewBoard(width, height, numWalls, numDeadRobots):
-    board = {'width': width, 'height': height,
-             'teleports': NUM_TELEPORTS}
+    """Returns a dictionary that represents the board. The keys are
+    (x, y) tuples of integer indexes for board positions, the values are
+    WALL, EMPTY_SPACE, or DEAD_ROBOT. The dictionary also has keys
+    'wdith' and 'height' for the board size, and the key 'teleports' for
+    the number of teleports the player has left. The living robots are
+    stored separately from the board dictionary."""
+    board = {'width': width, 'height': height, 'teleports': NUM_TELEPORTS}
 
     # Create an empty board:
     for x in range(width):
         for y in range(height):
             board[(x, y)] = EMPTY_SPACE
 
-    # Add border walls.
+    # Add walls on the edges of the board:
     for x in range(width):
         board[(x, 0)] = WALL  # Make top wall.
         board[(x, height - 1)] = WALL  # Make bottom wall.
@@ -97,6 +103,7 @@ def getNewBoard(width, height, numWalls, numDeadRobots):
 
 
 def getRandomEmptySpace(board, robots):
+    """Return a (x, y) integer tuple of an empty space on the board."""
     while True:
         randomX = random.randint(1, board['width'] - 2)
         randomY = random.randint(1, board['height'] - 2)
@@ -106,11 +113,14 @@ def getRandomEmptySpace(board, robots):
 
 
 def isEmpty(x, y, board, robots):
+    """Return True if the (x, y) is empty on the board and there's also
+    no robot there."""
     return board[(x, y)] == EMPTY_SPACE and (x, y) not in robots
 
 
-def getRobots(board, numRobots):
-    # Add robots randomly:
+def addRobots(board, numRobots):
+    """Add numRobots number of robots to empty spaces on the board and
+    return a list of these (x, y) spaces where robots are now located."""
     robots = []
     for i in range(numRobots):
         x, y = getRandomEmptySpace(board, robots)
@@ -118,7 +128,8 @@ def getRobots(board, numRobots):
     return robots
 
 
-def drawBoard(board, robots, playerPosition):
+def displayBoard(board, robots, playerPosition):
+    """Display the board, robots, and player on the screen."""
     clearScreen()
     # Loop over every space on the board:
     for y in range(board['height']):
@@ -138,6 +149,8 @@ def drawBoard(board, robots, playerPosition):
 
 
 def moveRobots(board, robotPositions, playerPosition):
+    """Return a list of (x, y) tuples of new robot positions after they
+    have tried to move towards the player."""
     playerx, playery = playerPosition
     nextRobotPositions = []
 
@@ -192,6 +205,8 @@ def moveRobots(board, robotPositions, playerPosition):
 
 
 def getPlayerMove(board, robots, playerPosition):
+    """Returns the (x, y) integer tuple of the place the player moves
+    next, given their current location and the walls of the board."""
     playerX, playerY = playerPosition
 
     # Find which directions aren't blocked by a wall:

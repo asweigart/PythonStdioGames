@@ -6,6 +6,9 @@ More info at: https://en.wikipedia.org/wiki/Kaprekar_number
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, math, scrolling"""
 __version__ = 0
+
+import sys
+
 print("""Kaprekar Numbers, by Al Sweigart al@inventwithpython.com
 
 Kaprekar Numbers are numbers whose square can be split into
@@ -55,4 +58,4 @@ try:
             print(str(number) + '^2 =', square, '->', firstPart, '+', secondPart, '=', str(number))
             continue
 except KeyboardInterrupt:
-    pass
+    sys.exit()  # When Ctrl-C is pressed, end the program.
