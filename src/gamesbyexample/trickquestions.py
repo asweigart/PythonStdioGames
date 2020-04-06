@@ -5,6 +5,11 @@ Tags: large, humor"""
 
 import random, sys
 
+# QUESTIONS is a list of dictionaries, each dictionary represents a
+# trick question and its answer. The dictionary has the keys 'question'
+# (which holds the text of the question), 'answer' (which holds the text
+# of the answer), and 'accept' (which holds a list of strings that, if
+# the player's answer contains any of, they've answered correctly).
 QUESTIONS = [
  {'question': "How many times can you take 2 apples from a pile of 10 apples?",
   'answer': "Once. Then you have a pile of 8 apples.",

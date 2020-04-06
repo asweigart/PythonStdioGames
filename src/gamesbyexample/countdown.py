@@ -2,23 +2,18 @@
 Show a countdown timer animation using a seven-segment display.
 Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
-Requires our sevseg.py program.
+Requires sevseg.py to be in the same folder.
 This and other games are available at https://nostarch.com/XX
-Tags: short"""
+Tags: short, artistic"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
 
-import time, sys
+import sys, time
 import sevseg  # Imports our sevseg.py program.
 
-if len(sys.argv) > 1:
-    secondsLeft = int(sys.argv[1])
-else:
-    secondsLeft = 300  # Change this to whatever value you like.
-
-if secondsLeft > 359999:
-    # secondsLeft can't be 100 hours or more:
-    secondsLeft = 359999
+# (!) Change this to any number of seconds under 360000:
+secondsLeft = 3
+assert secondsLeft < 360000  # secondsLeft can't be 100 hours or more:
 
 try:
     while True:  # Main game loop.

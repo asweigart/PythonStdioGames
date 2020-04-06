@@ -7,7 +7,6 @@ Inspired by the Zombie Dice game from Steve Jackson games.
 This and other games are available at https://nostarch.com/XX
 Tags: game, multiplayer"""
 
-# TODO - add more comments
 import random
 
 # Set up the constants:

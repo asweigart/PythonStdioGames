@@ -6,9 +6,6 @@ Barca was invented by Andrew Caldwell http://playbarca.com
 More info at https://en.wikipedia.org/wiki/Barca_(board_game)
 """
 
-# TODO - add docstrings, comments
-# TODO - display the board again with possible moves.
-
 import sys
 
 # Set up the constants:
@@ -248,7 +245,8 @@ def movePiece(moveFrom, moveTo, board):
 
 
 def getPieceMovements(player, board):
-    """Return """
+    """Return a list of (x, y) tuples representing spaces that hold
+    pieces that the player can move according to Barca rules. """
 
     # Figure out which pieces can move (afraid ones must move first).
     afraidPiecePositions = []  # List of (x, y) tuples of pieces.
@@ -318,16 +316,22 @@ def getPieceMovements(player, board):
 
 
 def xyToA1(x, y):
+    """Convert (x, y) coordinates (like 0,0 or 1,4) to user-friendly
+    coordinates (like A1 or B5)."""
     return chr(x + 65) + str(y + 1)
 
 
 def A1ToXy(space):
+    """Convert user-friendly coordinates (like A1 or B5) to (x, y)
+    coordinates (like 0,0 or 1,4)."""
     column = space[0]
     row = space[1:]
     return (ord(column) - 65, int(row) - 1)
 
 
 def isWinner(player, board):
+    """Return True if the player occupies three of the four watering
+    holes on this board."""
     squareClaims = 0
     roundClaims = 0
     for space in WATERING_HOLES:

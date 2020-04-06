@@ -10,6 +10,8 @@ Tags: extra-large, game, two-player, board game"""
 __version__ = 0
 import sys
 
+# TODO - add docstrings
+
 # Set up the constants:
 X_PLAYER = 'x'
 O_PLAYER = 'o'
@@ -159,7 +161,7 @@ def doPlayerMove(player, board):
 
         if selectedPawn in validMoves:
             break  # The user entered a valid move, so break.
-        print('Enter the space label of one of your pawns.')  # TODO fix this message
+        print('That is not a valid move.')
 
     # Figure out which moves the selected pawn can make:
     x = getNumberForNthLetter(selectedPawn[0])
