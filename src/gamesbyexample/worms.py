@@ -2,7 +2,7 @@
 A screensaver of multicolor worms moving around.
 NOTE: Do not resize the terminal window while this program is running.
 This and other games are available at https://nostarch.com/XX
-Tags: large, artistic, simulation, bext"""
+Tags: large, artistic, bext, object-oriented, simulation"""
 __version__ = 0
 import random, shutil, sys, time
 try:
@@ -23,7 +23,7 @@ WIDTH, HEIGHT = shutil.get_terminal_size()
 WIDTH -= 1
 
 # Characters in the terminal are twice as tall as they are wide, so to
-# make ours worms look square we pretend two characters horizontally
+# make our worms look square we pretend two characters horizontally
 # is one. This gives us half of the effective width of the terminal:
 WIDTH //= 2
 
