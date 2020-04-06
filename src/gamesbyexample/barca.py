@@ -6,7 +6,7 @@ Barca was invented by Andrew Caldwell http://playbarca.com
 More info at https://en.wikipedia.org/wiki/Barca_(board_game)
 """
 
-# TODO - add docstrings, comments, replace data structures with simple helper functions
+# TODO - add docstrings, comments
 # TODO - display the board again with possible moves.
 
 import sys
@@ -24,12 +24,15 @@ SQUARE_ELEPHANT = '[El]'
 ROUND_MOUSE = '(Mo)'
 ROUND_LION = '(Li)'
 ROUND_ELEPHANT = '(El)'
+
 LAND = ' __ '
 WATER = ' ~~ '
 
-# PLAYER_PIECE[x] is a tuple of the x player's pieces:
-PLAYER_PIECE = {SQUARE_PLAYER: (SQUARE_MOUSE, SQUARE_LION, SQUARE_ELEPHANT),
-                ROUND_PLAYER: (ROUND_MOUSE, ROUND_LION, ROUND_ELEPHANT)}
+# PLAYER_PIECES[x] is a tuple of the x player's pieces:
+PLAYER_PIECES = {
+    SQUARE_PLAYER: (SQUARE_MOUSE, SQUARE_LION, SQUARE_ELEPHANT),
+    ROUND_PLAYER: (ROUND_MOUSE, ROUND_LION, ROUND_ELEPHANT),
+}
 # FEARED_PIECE[x] is the piece that x is afraid of:
 FEARED_PIECE = {SQUARE_MOUSE: ROUND_LION,
                 SQUARE_LION: ROUND_ELEPHANT,
@@ -39,13 +42,13 @@ FEARED_PIECE = {SQUARE_MOUSE: ROUND_LION,
                 ROUND_ELEPHANT: SQUARE_MOUSE}
 
 # Changes to x and y for moving in different directions:
-UPLEFT   = (-1, -1)
-UP       = (0, -1)
-UPRIGHT  = (1, -1)
-LEFT     = (-1, 0)
-RIGHT    = (1, 0)
-DOWNLEFT = (-1, 1)
-DOWN     = (0, 1)
+UPLEFT    = (-1, -1)
+UP        = (0, -1)
+UPRIGHT   = (1, -1)
+LEFT      = (-1, 0)
+RIGHT     = (1, 0)
+DOWNLEFT  = (-1, 1)
+DOWN      = (0, 1)
 DOWNRIGHT = (1, 1)
 CARDINAL_DIRECTIONS = (UP, LEFT, RIGHT, DOWN)
 DIAGONAL_DIRECTIONS = (UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT)
@@ -104,6 +107,9 @@ Barca was invented by Andrew Caldwell http://playbarca.com
 
 
 def getNewBoard():
+    """Return a dictionary that represent the board. The keys are (x, y)
+    integer tuples for positions and the values are one of the animal
+    piece constants e.g. SQUARE_ELEPHANT or ROUND_LION"""
     # First, set the board to be completely empty:
     board = {}  # Keys are (x, y) int tuples, values are player pieces.
     for x in range(BOARD_WIDTH):
@@ -122,16 +128,21 @@ def getNewBoard():
 
 
 def displayBoard(board):
+    """Display the board on the screen."""
+    # A list of arguments to pass to format() to fill in the board
+    # template string's {}.
     spaces = []
-
     for y in range(BOARD_HEIGHT):
         for x in range(BOARD_WIDTH):
-                if board[(x, y)] == EMPTY_SPACE and (x, y) not in WATERING_HOLES:
-                    spaces.append(LAND)
-                elif board[(x, y)] == EMPTY_SPACE and (x, y) in WATERING_HOLES:
+            if board[(x, y)] == EMPTY_SPACE:
+                # This space is an empty land or waterhole.
+                if (x, y) in WATERING_HOLES:
                     spaces.append(WATER)
                 else:
-                    spaces.append(getAnimalStr(board, x, y))
+                    spaces.append(LAND)
+            else:
+                # This space has an animal piece on it.
+                spaces.append(getAnimalStr(board, x, y))
 
     print("""
  +--A---B---C---D---E---F---G---H---I---J-+
@@ -159,8 +170,10 @@ def displayBoard(board):
 
 
 def getAnimalStr(board, x, y):
+    """Returns the 4-character string of the animal for the piece at
+    (x, y) on the board. This string will end with a ! if the piece
+    is afraid of another animal on the board."""
     piece = board[(x, y)]
-    assert piece in (SQUARE_MOUSE, SQUARE_LION, SQUARE_ELEPHANT, ROUND_MOUSE, ROUND_LION, ROUND_ELEPHANT)
 
     for offsetX, offsetY in FEARED_ANIMAL_DIRECTIONS[piece]:
         # Check the directions of the animal this piece is afraid of:
@@ -181,10 +194,14 @@ def getAnimalStr(board, x, y):
 
 
 def isOnBoard(x, y):
+    """Returns True if (x, y) is a position on the board, otherwise
+    returns False."""
     return (0 <= x < BOARD_WIDTH) and (0 <= y < BOARD_HEIGHT)
 
 
 def doPlayerMove(player, board):
+    """Ask the player for their move, and if it is valid, carry it out
+    on the board."""
     validMoves = getPieceMovements(player, board)
     assert len(validMoves) > 0
 
@@ -192,21 +209,24 @@ def doPlayerMove(player, board):
     for x, y in validMoves.keys():
         validMovesInA1.append(xyToA1(x, y))
     print(player + ', select piece to move (or QUIT):', ', '.join(validMovesInA1))
-    while True:  # Keep asking the player until they select a valid piece.
+    while True:
+        # Keep asking the player until they select a valid piece:
         response = input('> ').upper()
         if response == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
         if response in validMovesInA1:
-            selectedPiece = A1ToXy(response)
+            moveFrom = A1ToXy(response)
             break  # Player has selected a valid piece.
         print('Please select one of the given pieces.')
 
     moveToInA1 = []
-    for x, y in validMoves[selectedPiece]:
+    for x, y in validMoves[moveFrom]:
         moveToInA1.append(xyToA1(x, y))
-    print('Select where to move this piece:', ', '.join(moveToInA1))
-    while True:  # Keep asking the player until they select a valid space to move the piece to.
+    moveFromStr = getAnimalStr(board, moveFrom[0], moveFrom[1])
+    print('Select where to move this {}: {}'.format(moveFromStr, ', '.join(moveToInA1)))
+    while True:
+        # Keep asking the player until they select a valid move:
         response = input('> ').upper()
         if response == 'QUIT':
             print('Thanks for playing!')
@@ -216,23 +236,26 @@ def doPlayerMove(player, board):
             break  # Player has selected a valid space to move to.
         print('Please select one of the given spaces.')
 
-    movePiece(selectedPiece, moveTo, board)
+    # Carry out the player's move:
+    movePiece(moveFrom, moveTo, board)
 
 
-def movePiece(pieceXY, moveTo, board):
-    # TODO - note that board is a dictionary so changes made here existed outside the function.
-    # Carry out the move:
-    board[moveTo] = board[pieceXY]  # Place a piece at "move to".
-    board[pieceXY] = EMPTY_SPACE  # Remove the piece from its original location.
+def movePiece(moveFrom, moveTo, board):
+    """Move the piece at moveFrom on the board to moveTo. These are
+    (x, y) integer tuples."""
+    board[moveTo] = board[moveFrom]  # Place a piece at "move to".
+    board[moveFrom] = EMPTY_SPACE  # Blank the original location.
 
 
 def getPieceMovements(player, board):
+    """Return """
+
     # Figure out which pieces can move (afraid ones must move first).
     afraidPiecePositions = []  # List of (x, y) tuples of pieces.
     unafraidPiecePositions = []  # List of (x, y) tuples of pieces.
     for y in range(BOARD_HEIGHT):
         for x in range(BOARD_WIDTH):
-            if board[(x, y)] in PLAYER_PIECE[player]:
+            if board[(x, y)] in PLAYER_PIECES[player]:
                 # Check if the animal is afraid or not:
                 if getAnimalStr(board, x, y).endswith('!'):
                     afraidPiecePositions.append((x, y))
@@ -244,11 +267,15 @@ def getPieceMovements(player, board):
         unafraidPiecePositions = []
 
     # Go through all of the pieces and get their valid moves:
-    validMoves = {}  # Keys are (x, y) tuples, values are list of (x, y) tuples of where they can move.
+
+    # The keys are (x, y) tuples, values are list of (x, y) tuples of
+    # where they can move:
+    validMoves = {}
     for piecePosition in afraidPiecePositions + unafraidPiecePositions:
         x, y = piecePosition
         piece = board[(x, y)]
-        validMoves[(x, y)] = []  # This list will contain this piece's valid move locations.
+        # This list will contain this piece's valid move locations:
+        validMoves[(x, y)] = []
         # Check the cardinal directions to see where this mouse can move:
         for offsetX, offsetY in ANIMAL_DIRECTIONS[piece]:
             checkX, checkY = x, y  # Start at the piece's location.
@@ -257,25 +284,34 @@ def getPieceMovements(player, board):
                 checkX += offsetX
                 checkY += offsetY
                 if not isOnBoard(checkX, checkY) or board[(checkX, checkY)] != EMPTY_SPACE:
-                    break  # This space is off-board or blocked by another animal, so stop checking.
+                    # This space is off-board or blocked by another
+                    # animal, so stop checking.
+                    break
                 elif board[(checkX, checkY)] == EMPTY_SPACE:
                     validMoves[(x, y)].append((checkX, checkY))
 
-    # Remove the possible moves that would end up putting the piece into a feared position.
+    # Remove the possible moves that would end up putting the piece into
+    # a feared position:
     for piecePosition, possibleMoves in validMoves.items():
         x, y = piecePosition
         piece = board[(x, y)]
-        fearedPositions = []  # List of (x, y) tuples where this piece doesn't want to move.
+
+        # List of (x, y) tuples where this piece doesn't want to move:
+        fearedPositions = []
         for moveToX, moveToY in possibleMoves:
-            # Simulate what would happen if we move the piece to moveToX, moveToY:
+            # Simulate what would happen if we move the piece to
+            # moveToX, moveToY:
             movePiece(piecePosition, (moveToX, moveToY), board)
             if getAnimalStr(board, moveToX, moveToY).endswith('!'):
-                # Moving here would make the piece afraid, so don't let it move here.
+                # Moving here would make the piece afraid, so don't let
+                # it move here:
                 fearedPositions.append((moveToX, moveToY))
-            movePiece((moveToX, moveToY), piecePosition, board)  # Move the piece back to the original space.
+            # Move the piece back to the original space:
+            movePiece((moveToX, moveToY), piecePosition, board)
         if len(possibleMoves) != len(fearedPositions):
-            # Some of the moves will make this piece afraid, so remove those from the possible moves.
-            # (If all of the moves were feared, then the piece isn't restricted at all.)
+            # Some of the moves will make this piece afraid, so remove
+            # those from the possible moves. (If all of the moves were
+            # feared, then the piece isn't restricted at all.)
             for fearedX, fearedY in fearedPositions:
                 validMoves[piecePosition].remove((fearedX, fearedY))
     return validMoves

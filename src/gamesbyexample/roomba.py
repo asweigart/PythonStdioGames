@@ -32,12 +32,14 @@ CHARGING  = 'CHARGING '  # Note the space at the end.
 CLEANING  = 'CLEANING '  # Note the space at the end.
 RETURNING = 'RETURNING'
 
-DIRT_ADD_FREQUENCY = 5  # Ranges from 0 to 100. (!) TODO
-DIRT_ADD_AMOUNT = 4  # (!) TODO
-NUM_STARTING_DIRT = 5  # (!) TODO
-MAX_BATTERY = 250  # (!) TODO
-RECHARGE_RATE = 10  # (!) TODO
-PAUSE = 0.1  # (!) TODO
+# The dirt adding frequency ranges from 0 to 100:
+DIRT_ADD_FREQUENCY = 5  # (!) Try changing this to 1, 20, or 100.
+DIRT_ADD_AMOUNT = 4     # (!) Try changing this to 1 or 100.
+NUM_STARTING_DIRT = 5   # (!) Try changing this to 200.
+MAX_BATTERY = 250       # (!) Try changing this to 20, or 9999.
+RECHARGE_RATE = 10      # (!) Try changing this to 0, 1, or 9999.
+PAUSE = 0.1             # (!) Try changing this to 0.0 or 1.0.
+
 
 def main():
     baseX = random.randint(0, WIDTH - 1)
