@@ -14,11 +14,34 @@ WALL = '#'
 EMPTY = ' '
 START = 'S'
 EXIT = 'E'
+BLOCK = chr(9617)  # Character 9617 is '░'
 
 NORTH = 'north'
 SOUTH = 'south'
 EAST = 'east'
 WEST = 'west'
+
+
+def displayMaze(maze, travelerX=None, travelerY=None):
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            if maze[(x, y)] == WALL:
+                print(BLOCK, end='')
+            elif travelerX == x and travelerY == y:
+                print('@', end='')
+            else:
+                print(maze[(x, y)], end='')
+        print()  # Print a newline after printing the row.
+
+
+def saveMaze(maze, filename):
+    mazeFile = open(filename, 'w')
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
+            mazeFile.write(maze[(x, y)])
+        mazeFile.write('\n')
+    mazeFile.close()
+
 
 print('''Maze Maker (Recursive Backtracker algorithm)
 By Al Sweigart al@inventwithpython.com
@@ -47,6 +70,10 @@ while True:
 
 random.seed(SEED)
 
+response = input('Watch maze generation step by step? (y/n): ')
+watchGeneration = response.upper().startswith('Y')
+
+
 # Create the filled-in maze to start:
 maze = {}
 for x in range(WIDTH):
@@ -61,6 +88,12 @@ hasVisited = [(1, 1)]
 while len(pathFromStart) > 0:
     x, y = pathFromStart[-1]
     maze[(x, y)] = EMPTY
+
+    # Display the maze so far:
+    if watchGeneration:
+        displayMaze(maze, x, y)
+        input()
+        print('\n' * 60)  # Clear the screen by printing newlines.
 
     unvisitedNeighbors = []
     # Check the north neighbor:
@@ -102,15 +135,8 @@ maze[(1, 1)] = START
 maze[(WIDTH - 2, HEIGHT - 2)] = EXIT
 
 # Display the maze and save it to a text file.
+displayMaze(maze)
 filename = 'maze{}x{}s{}.txt'.format(WIDTH, HEIGHT, SEED)
-mazeFile = open(filename, 'w')
-
-for y in range(HEIGHT):
-    for x in range(WIDTH):
-        print(maze[(x, y)], end='')
-        mazeFile.write(maze[(x, y)])
-    print()  # Print a newline after printing the row.
-    mazeFile.write('\n')
-mazeFile.close()
+saveMaze(maze, filename)
 
 print('Saved to {}.'.format(filename))

@@ -39,7 +39,6 @@ QUESTION_FACE = ['+-----------+',
 FACE_WIDTH = 13
 FACE_HEIGHT = 7
 
-
 print("""Lucky Stars, by Al Sweigart al@inventwithpython.com
 
 A "press your luck" game where you roll dice with Stars, Skulls, and
@@ -67,8 +66,8 @@ while True:  # Loop until the user enters a number.
         break
     print('Please enter a number larger than 1.')
 
-playerNames = []
-playerScores = {}
+playerNames = []  # List of strings of player names.
+playerScores = {}  # Keys are player names, values are integer scores.
 for i in range(numPlayers):
     while True:  # Keep looping until a name is entered.
         print('What is player #' + str(i + 1) + '\'s name?')
@@ -80,7 +79,7 @@ for i in range(numPlayers):
         print('Please enter a name.')
 print()
 
-turn = 0
+turn = 0  # The player at playerNames[0] will go first.
 # (!) Uncomment to let a player named 'Al' start with three points:
 #playerScores['Al'] = 3
 endGameWith = None
@@ -90,13 +89,16 @@ while True:  # Main game loop.
     for i, name in enumerate(playerNames):
         print(name + '=' + str(playerScores[name]), end='')
         if i != len(playerNames) - 1:
-            print(', ', end='')  # Print a comma except for the last player.
+            # All but the last player have commas separating their names.
+            print(', ', end='')
     print()
 
+    # Start the number of collected stars and skulls at 0.
     stars = 0
     skulls = 0
+    # A cup has 6 gold, 4 silver, and 3 bronze dice:
     cup = ([GOLD] * 6) + ([SILVER] * 4) + ([BRONZE] * 3)
-    hand = []
+    hand = []  # Your hand starts with no dice.
     print('It is ' + playerNames[turn] + '\'s turn.')
     while True:  # Each iteration of this loop is rolling the dice.
         print()
@@ -104,11 +106,12 @@ while True:  # Main game loop.
         # Check that there's enough dice left in the cup:
         if (3 - len(hand)) > len(cup):
             # End this turn because there are not enough dice:
-            print('There aren\'t enough dice left in the cup to continue ' + playerNames[turn] + '\'s turn.')
+            print('There aren\'t enough dice left in the cup to ' + \
+                'continue ' + playerNames[turn] + '\'s turn.')
             break
 
-        # Pull 3 dice and random from the cup:
-        random.shuffle(cup)
+        # Pull dice from the cup until you have 3 in your hand:
+        random.shuffle(cup)  # Shuffle the dice in the cup.
         while len(hand) < 3:
             hand.append(cup.pop())
 
@@ -117,6 +120,7 @@ while True:  # Main game loop.
         for dice in hand:
             roll = random.randint(1, 6)
             if dice == GOLD:
+                # Roll a gold die (3 stars, 2 questions, 1 skull):
                 if 1 <= roll <= 3:
                     rollResults.append(STAR_FACE)
                     stars += 1
@@ -126,6 +130,7 @@ while True:  # Main game loop.
                     rollResults.append(SKULL_FACE)
                     skulls += 1
             if dice == SILVER:
+                # Roll a silver die (2 stars, 2 questions, 2 skulls):
                 if 1 <= roll <= 2:
                     rollResults.append(STAR_FACE)
                     stars += 1
@@ -135,6 +140,7 @@ while True:  # Main game loop.
                     rollResults.append(SKULL_FACE)
                     skulls += 1
             if dice == BRONZE:
+                # Roll a bronze die (1 star, 2 questions, 3 skulls):
                 if roll == 1:
                     rollResults.append(STAR_FACE)
                     stars += 1
@@ -149,6 +155,7 @@ while True:  # Main game loop.
             for diceNum in range(3):
                 print(rollResults[diceNum][lineNum] + ' ', end='')
             print()  # Print a newline.
+
         # Display the type of dice each one is (gold, silver, bronze):
         for diceType in hand:
             print(diceType.center(FACE_WIDTH) + ' ', end='')
@@ -174,8 +181,10 @@ while True:  # Main game loop.
             playerScores[playerNames[turn]] += stars
 
             # Check if they've reached 13 or more points:
-            if endGameWith == None and playerScores[playerNames[turn]] >= 13:
-                # Play one more round until it's this player's turn again:
+            if (endGameWith == None and
+                playerScores[playerNames[turn]] >= 13):
+                # Since this player reached 13 points, play one more
+                # round for all other players:
                 print('\n\n' + ('!' * 60))
                 print(playerNames[turn] + ' has reached 13 points!!!')
                 print('Everyone else will get one more turn!')
@@ -204,17 +213,20 @@ print('SCORES: ', end='')
 for i, name in enumerate(playerNames):
     print(name + '=' + str(playerScores[name]), end='')
     if i != len(playerNames) - 1:
-        print(', ', end='')  # Print a comma except for the last player.
+        # All but the last player have commas separating their names.
+        print(', ', end='')
 print()
 
-# Find out who is the winner:
+# Find out who the winners are:
 highestScore = 0
 winners = []
 for name, score in playerScores.items():
     if score > highestScore:
+        # This player has the highest score:
         highestScore = score
-        winners = [name]
+        winners = [name]  # Overwrite any previous winners.
     elif score == highestScore:
+        # This player is tied with the highest score.
         winners.append(name)
 
 if len(winners) == 1:

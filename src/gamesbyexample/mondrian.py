@@ -27,7 +27,10 @@ BLUE = 'blue'
 
 # Setup the screen:
 width, height = bext.size()
-width -= 1  # TODO Windows bug
+# We can't print to the last column on Windows without it adding a
+# newline automatically, so reduce the width by one:
+width -= 1
+
 height -= 3
 
 while True:  # Main application loop.

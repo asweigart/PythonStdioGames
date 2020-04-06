@@ -25,9 +25,9 @@ ALL_DIRECTIONS = [
 ]
 
 # (!) Try increasing the number of squiggles, or the size of the screen:
-NUMBER_OF_SQUIGGLES = 15
+NUMBER_OF_SQUIGGLES = 150
 WIDTH = 79
-HEIGHT = 24
+HEIGHT = 22
 
 screen = {}
 for i in range(NUMBER_OF_SQUIGGLES):
@@ -145,7 +145,6 @@ for i in range(NUMBER_OF_SQUIGGLES):
         # Put this line character in the screen data structure:
         screen[(x, y)] = squiggle
 
-
 # Print the screen data structure on the screen (if it's thinner than
 # 100 characters):
 if WIDTH <= 100:
@@ -155,7 +154,6 @@ if WIDTH <= 100:
         print()
 else:
     print('Squiggles image is too wide to display on the screen.')
-
 
 # Save the squiggle to a text file named squiggles.txt:
 with open('squiggles.txt', 'w', encoding='utf-8') as file:

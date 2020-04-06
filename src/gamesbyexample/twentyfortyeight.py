@@ -13,8 +13,13 @@ BLANK = ''  # A value that represents a blank space on the board.
 
 
 def main():
-    print('2048, by Al Sweigart al@inventwithpython.com')
-    # TODO needs instructions
+    print('''2048, by Al Sweigart al@inventwithpython.com
+
+Slide all the tiles on the board in one of four directions. Tiles with
+like numbers will combine into larger-numbered tiles. A new 2 tile is
+added to the board on each move. You win if you can create a 2048 tile.
+You lose if the board fills up the tiles before then.''')
+    input('Press Enter to begin...')
 
     gameBoard = getNewBoard()
 
@@ -169,7 +174,8 @@ def makeMove(board, move):
                             [(3, 2), (2, 2), (1, 2), (0, 2)],
                             [(3, 3), (2, 3), (1, 3), (0, 3)]]
 
-    boardAfterMove = {}  # The board data structure after making the move.
+    # The board data structure after making the move:
+    boardAfterMove = {}
     for columnSpaces in allColumnsSpaces:  # Loop over all 4 columns.
         # Get the tiles of this column (The first tile is the "bottom"
         # of the column):

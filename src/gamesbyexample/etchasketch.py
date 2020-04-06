@@ -12,6 +12,7 @@ AWDDDDDDSAASSDDWDDSDDWWAAWDDWWAASAAAAWDDWAAWDDDDSDDWDDSDDWDDDDSAASDDS
 AAAAWAASSDDSAASSDDWDDSDDWWAAWDDDDDDSAASSDDWDDSDDWWAAWDDWWAASAAAAWDDWA
 AWDDDDSDDWWAAWDDWWAASAAWAASSDDSAAAAWAASAAAAWDDWAAWDDDDSDDWWWAASAAAAWD
 DWAAWDDDDSDDWDDDDSAASSDDWDDSDDWWAAWDD
+
 This and other games are available at https://nostarch.com/XX
 Tags: large, artistic"""
 __version__ = 0
@@ -89,7 +90,8 @@ while True:  # Main program loop.
     # Draw the lines based on the data in screen:
     print(getScreenString(screen, cursorx, cursory))
 
-    print('WASD keys to move, H for help, C to clear, F to save, or QUIT.')
+    print('WASD keys to move, H for help, C to clear, ' + \
+        'F to save, or QUIT.')
     response = input('> ').upper()
 
     if response == 'QUIT':
