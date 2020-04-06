@@ -9,20 +9,24 @@ __version__ = 0
 import random, time
 
 # Set up the constants:
-NUM_SWAPS = 16
-DELAY     = 0.8
+NUM_SWAPS = 16   # (!) Try changing this to 30 or 100.
+DELAY     = 0.8  # (!) Try changing this 2.0 or 0.0.
 
+# The card suit characters:
 HEARTS   = chr(9829)  # Character 9829 is '♥'
 DIAMONDS = chr(9830)  # Character 9830 is '♦'
 SPADES   = chr(9824)  # Character 9824 is '♠'
 CLUBS    = chr(9827)  # Character 9827 is '♣'
 
+# The indexes of a 3-card list:
 LEFT   = 0
 MIDDLE = 1
 RIGHT  = 2
 
-def printCards(cards):
-    # Display all the cards in the cards list:
+
+def displayCards(cards):
+    """Display the cards in "cards", which is a list of (rank, suit)
+    tuples."""
     rows = ['', '', '', '', '']  # Stores the text to display.
 
     for i, card in enumerate(cards):
@@ -39,13 +43,13 @@ def printCards(cards):
 
 
 def getRandomCard():
-    # Returns a random card that is NOT the Queen of Hearts.
-    while True:
+    """Returns a random card that is NOT the Queen of Hearts."""
+    while True:  # Keep making cards until you get a non-Queen of hearts.
         rank = random.choice(list('23456789JQKA') + ['10'])
         suit = random.choice([HEARTS, DIAMONDS, SPADES, CLUBS])
 
+        # Return the card as long as it's not the Queen of Hearts:
         if rank != 'Q' and suit != HEARTS:
-            # Return the card as long as it's not the Queen of Hearts:
             return (rank, suit)
 
 
@@ -59,7 +63,7 @@ print()
 cards = [('Q', HEARTS), getRandomCard(), getRandomCard()]
 random.shuffle(cards)  # Put the queen of hearts in a random place.
 print('Here are the cards:')
-printCards(cards)
+displayCards(cards)
 input('Press Enter when you are ready to begin...')
 
 # Print the swaps:
@@ -88,7 +92,7 @@ for i in range(NUM_SWAPS):
     time.sleep(DELAY)
 
 # Print several new lines to hide the swaps.
-print('\n' * 25)
+print('\n' * 60)
 
 # Ask the user to find the red lady:
 while True:  # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
@@ -105,7 +109,7 @@ while True:  # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
             guessIndex = 2
         break
 
-# Uncomment this code to make the player always lose:
+# (!) Uncomment this code to make the player always lose:
 #if cards[guessIndex] == ('Q', HEARTS):
 #    # Player has won, so let's move the queen.
 #    possibleNewIndexes = [0, 1, 2]
@@ -114,7 +118,7 @@ while True:  # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
 #    # Place the queen at the new index:
 #    cards[guessIndex], cards[newIndex] = cards[newIndex], cards[guessIndex]
 
-printCards(cards)  # Show all the cards.
+displayCards(cards)  # Show all the cards.
 
 # Check if the player won:
 if cards[guessIndex] == ('Q', HEARTS):

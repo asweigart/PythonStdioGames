@@ -3,57 +3,68 @@ The classic 9x9 number placement puzzle.
 More info at https://en.wikipedia.org/wiki/Sudoku
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, puzzle game"""
-
+__version__ = 0
 import copy, random, sys
 
 EMPTY_SPACE = '.'
-GRID_LENGTH = 9  # also the number of spaces in rows, columns and boxes.
+GRID_LENGTH = 9
 BOX_LENGTH = 3
 FULL_GRID_SIZE = GRID_LENGTH * GRID_LENGTH
 
-# TODO - add "show solution" option
 
 class SudokuGrid:
-    def __init__(self, originalNumbers):
-        self.originalNumbers = originalNumbers
-        self.grid = {}  # keys are tuples (0, 8), values are strings '2'
-        self.resetGrid()
-        self.moves = []
+    def __init__(self, originalSetup):
+        # originalSetup is a string of 81 characters for the puzzle
+        # setup, with numbers and periods (for the blank spaces).
+        # See https://inventwithpython.com/sudokupuzzles.txt
+        self.originalSetup = originalSetup
+
+        # The state of the sudoku grid is represented by a dictionary
+        # with (x, y) keys and values of the number (as a string) at
+        # that space.
+        self.grid = {}
+        self.resetGrid()  # Set the grid state to it's original setup.
+        self.moves = []  # Tracks each move for the undo feature.
 
     def resetGrid(self):
+        """Reset the state of the grid, tracked by self.grid, to the
+        state in self.originalSetup."""
         for x in range(1, GRID_LENGTH + 1):
             for y in range(1, GRID_LENGTH + 1):
                 self.grid[(x, y)] = EMPTY_SPACE
 
-        assert len(self.originalNumbers) == FULL_GRID_SIZE
+        assert len(self.originalSetup) == FULL_GRID_SIZE
         i = 0  # i goes from 0 to 80
         y = 0  # y goes from 0 to 8
         while i < FULL_GRID_SIZE:
             for x in range(GRID_LENGTH):
-                self.grid[(x, y)] = self.originalNumbers[i]
+                self.grid[(x, y)] = self.originalSetup[i]
                 i += 1
             y += 1
 
     def makeMove(self, column, row, number):
-        # keys in self.grid are 0-based
+        """Place the number at the column (a letter from A to I) and row
+        (an integer from 1 to 9) on the grid."""
         x = 'ABCDEFGHI'.find(column)  # convert this to an integer
         y = int(row) - 1
 
         # Check if the move is being made on a "given" number:
-        if self.originalNumbers[y * GRID_LENGTH + x] != EMPTY_SPACE:
+        if self.originalSetup[y * GRID_LENGTH + x] != EMPTY_SPACE:
             return False
 
-        self.grid[(x, y)] = number
+        self.grid[(x, y)] = number  # Place this number on the grid.
 
-        # NOTE: For dictionaries, make a copy with copy.copy():
+        # We need to store a separate copy of the dictionary object:
         self.moves.append(copy.copy(self.grid))
         return True
 
     def undo(self):
+        """Set the current grid state to the previous state in the
+        self.moves list."""
         if self.moves == []:
-            return  # no-op if self.moves is already empty
+            return  # No states in self.moves, so do nothing.
 
-        self.moves.pop()
+        self.moves.pop()  # Remove the current state.
 
         if self.moves == []:
             self.resetGrid()
@@ -62,6 +73,7 @@ class SudokuGrid:
             self.grid = copy.copy(self.moves[-1])
 
     def display(self):
+        """Display the current state of the grid on the screen."""
         print('   A B C   D E F   G H I')  # Display column labels.
         for y in range(GRID_LENGTH):
             for x in range(GRID_LENGTH):
@@ -80,11 +92,11 @@ class SudokuGrid:
                 print('   ------+-------+------')
 
     def _isCompleteSetOfNumbers(self, numbers):
-        if EMPTY_SPACE in numbers:
-            return False
-        return len(set(numbers)) == GRID_LENGTH
+        """Return True if numbers contains the digits 1 through 9."""
+        return sorted(numbers) == list('123456789')
 
     def isSolved(self):
+        """Returns True if the current grid is in a solved state."""
         # Check each row:
         for row in range(GRID_LENGTH):
             rowNumbers = []
@@ -168,6 +180,7 @@ while True:  # Main game loop.
         action = input('> ').upper().strip()
 
         if len(action) > 0 and action[0] in ('R', 'N', 'U', 'O', 'Q'):
+            # Player entered a valid action.
             break
 
         if len(action.split()) == 2:
@@ -206,7 +219,7 @@ while True:  # Main game loop.
 
     if action.startswith('O'):
         # View the original numbers:
-        originalGrid = SudokuGrid(grid.originalNumbers)
+        originalGrid = SudokuGrid(grid.originalSetup)
         print('The original grid looked like this:')
         originalGrid.display()
         input('Press Enter to continue...')

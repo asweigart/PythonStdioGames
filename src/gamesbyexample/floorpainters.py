@@ -15,10 +15,11 @@ except ImportError:
     sys.exit()
 
 # Set up the constants:
-PAUSE_LENGTH = 0.02 # (!) Try changing this to 0.0 or 1.0.
+PAUSE_LENGTH = 0.05 # (!) Try changing this to 0.0 or 1.0.
 
 # (!) Try uncommenting the other possible THE_PAINTERS settings.
-THE_PAINTERS = ['red', 'blue']
+THE_PAINTERS = ['red', 'blue', 'green']
+#THE_PAINTERS = ['red', 'blue']
 #THE_PAINTERS = ['red', 'blue', 'blue', 'blue']
 #THE_PAINTERS = ['random']
 #THE_PAINTERS = ['random'] * 4
@@ -105,14 +106,18 @@ class Painter:
             possibleMoves.remove(SOUTH)
 
         # Remove any moves that go to a space already painted:
-        if NORTH in possibleMoves and self.floor[(self.x, self.y - 1)] == self.color:
-            possibleMoves.remove(NORTH)
-        if SOUTH in possibleMoves and self.floor[(self.x, self.y + 1)] == self.color:
-            possibleMoves.remove(SOUTH)
-        if WEST in possibleMoves and self.floor[(self.x - 1, self.y)] == self.color:
-            possibleMoves.remove(WEST)
-        if EAST in possibleMoves and self.floor[(self.x + 1, self.y)] == self.color:
-            possibleMoves.remove(EAST)
+        if (NORTH in possibleMoves and
+            self.floor[(self.x, self.y - 1)] == self.color):
+                possibleMoves.remove(NORTH)
+        if (SOUTH in possibleMoves
+            and self.floor[(self.x, self.y + 1)] == self.color):
+                possibleMoves.remove(SOUTH)
+        if (WEST in possibleMoves
+            and self.floor[(self.x - 1, self.y)] == self.color):
+                possibleMoves.remove(WEST)
+        if (EAST in possibleMoves
+            and self.floor[(self.x + 1, self.y)] == self.color):
+                possibleMoves.remove(EAST)
 
         # But if every space is already painted, move anywhere that
         # isn't off of the floor:

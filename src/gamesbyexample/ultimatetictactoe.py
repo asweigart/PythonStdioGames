@@ -1,8 +1,10 @@
 """Ultimate Tic-Tac-Toe, by Al Sweigart al@inventwithpython.com
+Instead of a board with 9 spaces, this game has 9 boards with 81 spaces,
+the winner of each board placing their X or O on the global board!
+More info at: https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, board game, two-player"""
 __version__ = 0
-# TODO - Comments need updating.
 
 import sys
 
@@ -18,12 +20,22 @@ CANVAS_HEIGHT = 9
 SUBCANVAS_WIDTH = 5
 SUBCANVAS_HEIGHT = 3
 
-def main():
-    # todo intro stuff
 
-    turn = X_PLAYER
+def main():
+    print('''Ultimate Tic-Tac-Toe, by Al Sweigart al@inventwithpython.com
+Instead of tic-tac-toe with 9 spaces, this game has a "global" board
+made up of 9 "local" tic-tac-toe boards. Moving on a local board causes
+the next player to move on that relative board. Winning on a local board
+lets that player put their mark on the global board. The winner must get
+three in a row on the global board.
+''')
+
+    turn = X_PLAYER  # X will go first.
     gameBoard = getNewBoard()
-    focusX, focusY = None, None  # The player moves on the center local board first.
+
+    # focusX and focusY determine which local board the player moves on.
+    # If they are both None, the player can choose a local board.
+    focusX, focusY = None, None
     while True:  # Main game loop.
         displayBoard(gameBoard)
         focusX, focusY = getPlayerMove(turn, gameBoard, focusX, focusY)
@@ -48,11 +60,19 @@ def main():
         elif turn == O_PLAYER:
             turn = X_PLAYER
 
+
 def getNewBoard():
-    board = {}  # Keys are (x, y) int tuples, values are: Dictionaries with keys of (x, y) tuples, values of X/O/Empty tiles
+    """Returns a dictionary that represents the global tic-tac-toe board.
+    Keys are (x, y) int tuples that span from 0 to 2, the values are
+    dictonaries that represent local tic-tac-toe boards. These
+    dictionaries have (x, y) int tuples as well, and their values are
+    either X_PLAYER, O_PLAYER, or EMPTY_SPACE."""
+    board = {}
+    # Loop over each local board:
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
             board[(x, y)] = {}
+            # Loop over each space on the local board:
             for localX in range(BOARD_WIDTH):
                 for localY in range(BOARD_HEIGHT):
                     board[(x, y)][(localX, localY)] = EMPTY_SPACE
@@ -60,7 +80,10 @@ def getNewBoard():
 
 
 def displayBoard(board):
-    canvas = {}  # Keys are (x, y) tuples, values are the character to print there.
+    """Displays the global tic-tac-toe board on the screen."""
+    # The canvas is a dictionary that has keys of (x, y) tuples, and
+    # the values are the character to print at that place on the screen.
+    canvas = {}
     # First, put blank spaces on the entire canvas:
     for x in range(CANVAS_WIDTH):
         for y in range(CANVAS_HEIGHT):
@@ -71,14 +94,14 @@ def displayBoard(board):
         for y in range(BOARD_HEIGHT):
             winner = getWinner(board[(x, y)])
             if winner == X_PLAYER:
-                # Draw a large X on the canvas:
+                # Draw a large X for each local board X won:
                 canvas[(x * 5 + 1, y * 3 + 0)] = '\\'
                 canvas[(x * 5 + 3, y * 3 + 0)] = '/'
                 canvas[(x * 5 + 2, y * 3 + 1)] = 'X'
                 canvas[(x * 5 + 1, y * 3 + 2)] = '/'
                 canvas[(x * 5 + 3, y * 3 + 2)] = '\\'
             elif winner == O_PLAYER:
-                # Draw a large O on the canvas:
+                # Draw a large O for each local board O won:
                 canvas[(x * 5 + 2, y * 3 + 0)] = '_'
                 canvas[(x * 5 + 1, y * 3 + 1)] = '/'
                 canvas[(x * 5 + 3, y * 3 + 1)] = '\\'
@@ -86,7 +109,7 @@ def displayBoard(board):
                 canvas[(x * 5 + 2, y * 3 + 2)] = '_'
                 canvas[(x * 5 + 3, y * 3 + 2)] = '/'
             elif winner == TIED:
-                # Draw a solid # block on the canvas:
+                # Draw a large ### block for tied local boards:
                 for scx in range(SUBCANVAS_WIDTH):
                     for scy in range(SUBCANVAS_HEIGHT):
                         canvas[(x * 5 + scx, y * 3 + scy)] = '#'
@@ -116,40 +139,40 @@ def displayBoard(board):
 
 
 def getWinner(board):
-    for i in range(9): # sanity check
-        assert board[(i % 3, i // 3)] in (X_PLAYER, O_PLAYER, EMPTY_SPACE, TIED)
+    """Return X_PLAYER, O_PLAYER, or TIED depending on who won. Return
+    None if there is no winner and the board isn't full yet."""
 
-    topLeft  = board[(0, 0)]
-    topMid   = board[(1, 0)]
-    topRight = board[(2, 0)]
-    midLeft  = board[(0, 1)]
-    midMid   = board[(1, 1)]
-    midRight = board[(2, 1)]
-    botLeft  = board[(0, 2)]
-    botMid   = board[(1, 2)]
-    botRight = board[(2, 2)]
+    # Create short-named variables for the spaces on this board.
+    topL, topM, topR = board[(0, 0)], board[(1, 0)], board[(2, 0)]
+    midL, midM, midR = board[(0, 1)], board[(1, 1)], board[(2, 1)]
+    botL, botM, botR = board[(0, 2)], board[(1, 2)], board[(2, 2)]
 
     for player in (X_PLAYER, O_PLAYER):
-        if ((topLeft == topMid == topRight == player) or     # Top row
-            (midLeft == midMid == midRight == player) or     # Middle row
-            (botLeft == botMid == botRight == player) or     # Bottom row
-            (topLeft == midLeft == botLeft == player) or     # Left column
-            (topMid == midMid == botMid == player) or        # Midle column
-            (topRight == midRight == botRight == player) or  # Right column
-            (topLeft == midMid == botRight == player) or     # \ diagonal
-            (topRight == midMid == botLeft == player)):       # / diagonal
+        if ((topL == topM == topR == player) or  # Top row
+            (midL == midM == midR == player) or  # Middle row
+            (botL == botM == botR == player) or  # Bottom row
+            (topL == midL == botL == player) or  # Left column
+            (topM == midM == botM == player) or  # Middle column
+            (topR == midR == botR == player) or  # Right column
+            (topL == midM == botR == player) or  # \ diagonal
+            (topR == midM == botL == player)):   # / diagonal
             return player
 
     # Check for a tie:
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
             if board[(x, y)] == EMPTY_SPACE:
-                # Return None because there is no winner yet:
-                return None
+                return None  # Return None since there is no winner yet.
     return TIED
 
 
 def getPlayerMove(player, board, focusX, focusY):
+    """Asks the player which space on which local board to move on.
+    The focusX and focusY values determine which local board the player
+    can move on, but if they are both None the player can freely choose
+    a local board. Returns the (x, y) of the local board the next player
+    plays on.
+    """
     # Check if the player can freely select any local board:
     if focusX == None and focusY == None:
         # Let the player pick which board they want to move on:
@@ -165,7 +188,7 @@ def getPlayerMove(player, board, focusX, focusY):
     # Select the space on the focused local board:
     localXDesc = ['left', 'middle', 'right'][focusX]
     localYDesc = ['top', 'middle', 'bottom'][focusY]
-    print(player + ' moves on the ' + localYDesc + ', ' + localXDesc + ' board.')
+    print(player, 'moves on the', localYDesc, localXDesc, 'board.')
     validSpacesToSelect = []
     for xyTuple, tile in board[(focusX, focusY)].items():
         if tile == EMPTY_SPACE:
@@ -180,20 +203,20 @@ def getPlayerMove(player, board, focusX, focusY):
     if getWinner(board[(x, y)]) == None:
         return (x, y)
     else:
-        # Otherwise if there's a winner or it's tied, the next player can move on any local board:
+        # If the local board has a winner or is tied, the next player
+        # can move on any local board:
         return (None, None)
 
 
 def enter1Through9(validMoves):
-    #breakpoint()
+    """Presents a "minimap" of a tic-tac-toe board's spaces, labeled
+    with numbers 1 through 9. Returns the numeric space they chose.
+    Valid moves is a list of (x, y) tuples representing the spaces
+    the player can pick, e.g. [(0, 0), (0, 2)] means the player can
+    only pick the top two corner spaces."""
     for i, move in enumerate(validMoves):
-        # (x, y) (0-2, 0-2) => 1-9
-        # 0, 0 => 1
-        # 1, 0 => 2
-        # 2, 0 => 3
-        # 0, 1 => 4
-        validMoves[i] = str((move[1] * 3 + move[0]) + 1)  # TODO - explain this later
-    #breakpoint()
+        # Convert the (x, y) tuple values to an integer 1 through 9:
+        validMoves[i] = str((move[1] * 3 + move[0]) + 1)
     print('      1 2 3')
     print('      4 5 6')
     print('      7 8 9')
@@ -205,7 +228,8 @@ def enter1Through9(validMoves):
             sys.exit()
 
         if response in validMoves:
-            return int(response) - 1  # Return a int that is 0-8, not a string that is 1-9
+            # Return a int that is 0-8, not a string that is 1-9.
+            return int(response) - 1
         print('You cannot select that space.')
 
 
