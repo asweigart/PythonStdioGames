@@ -5,9 +5,9 @@ This and other games are available at https://nostarch.com/XX
 Tags: tiny, cryptography, pyperclip"""
 __version__ = 0
 try:
-    import pyperclip
+    import pyperclip  # pyperclip copies text to the clipboard.
 except ImportError:
-    pass  # Don't do anything if pyperclip fails to import.
+    pass  # If pyperclip is not installed, do nothing. It's no big deal.
 
 # Set up the constants:
 UPPER_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'

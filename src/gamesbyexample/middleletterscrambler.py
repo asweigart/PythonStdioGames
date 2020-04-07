@@ -9,7 +9,7 @@ import random
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
 except ImportError:
-    pass  # It's not a big deal if pyperclip is not installed.
+    pass  # If pyperclip is not installed, do nothing. It's no big deal.
 
 
 def main():
