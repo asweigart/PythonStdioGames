@@ -62,13 +62,8 @@ def main():
         bext.goto(newDirtX, newDirtY)
         print(DIRT_CHARS[dirtPiles[(newDirtX, newDirtY)]], end='')
 
-    moveTo = []  # TODO list of (x, y)
+    moveTo = []  # A list of (x, y) tuples to move to in turn.
     while True:  # Main simulation loop.
-        # There's a bug where sometimes the roomba ends up with a
-        # battery level under 0.0. We'll ignore this bug. Uncomment
-        # this assert statement to show when it happens:
-        #assert roombaBattery >= 0, 'Negative bat:' + str(roombaBattery)
-
         roombaStatus = CLEANING
 
         # Add dirt to the room:
@@ -76,11 +71,14 @@ def main():
             for i in range(DIRT_ADD_AMOUNT):
                 newDirtX = random.randint(0, WIDTH - 1)
                 newDirtY = random.randint(0, HEIGHT - 1)
-                # Dirt piles max out at 3, so only add dirt if it's less than 3.
+                # Dirt piles max out at 3, so only add dirt if the dirt
+                # level is less than 3:
                 if dirtPiles[(newDirtX, newDirtY)] < 3:
-                    dirtPiles[(newDirtX, newDirtY)] += 1  # Add dirt to this (x, y) space.
+                    # Add dirt to this (x, y) space:
+                    dirtPiles[(newDirtX, newDirtY)] += 1
                     bext.goto(newDirtX, newDirtY)
-                    print(DIRT_CHARS[dirtPiles[(newDirtX, newDirtY)]], end='')
+                    dirtPileLevel = dirtPiles[(newDirtX, newDirtY)]
+                    print(DIRT_CHARS[dirtPileLevel], end='')
 
         # The roomba has reached its destination, so find the
         # closest dirt pile:
@@ -91,47 +89,59 @@ def main():
                 for dirtY in range(HEIGHT):
                     if dirtPiles[(dirtX, dirtY)] == 0:
                         continue  # Skip clean spots.
-                    distance = getDistance(roombaX, roombaY, dirtX, dirtY)
-                    if closestDirtDistance == None or distance < closestDirtDistance:
-                        closestDirtDistance = distance
-                        closestDirts = [(dirtX, dirtY)]
+                    distance = getDistance(roombaX, roombaY,
+                                           dirtX, dirtY)
+                    if (closestDirtDistance == None or
+                        distance < closestDirtDistance):
+                            closestDirtDistance = distance
+                            closestDirts = [(dirtX, dirtY)]
                     elif distance == closestDirtDistance:
                         closestDirts.append((dirtX, dirtY))
             if closestDirtDistance != None:
                 closestDirtX, closestDirtY = random.choice(closestDirts)
-                moveTo = line(roombaX, roombaY, closestDirtX, closestDirtY)[1:] # TODO don't include index 0 because that is the current roomba xy
+
+                moveTo = line(roombaX, roombaY,
+                              closestDirtX, closestDirtY)
+                # Remove the first (x, y) returned from line() because
+                # that is the roomba's current position.
+                moveTo = moveTo[1:]
 
         # Determine if the roomba should head back to base to recharge:
         distanceToDirt = len(moveTo)
         if len(moveTo) > 0:
-            distanceFromDirtToBase = len(line(moveTo[-1][0], moveTo[-1][0], baseX, baseY)[1:])# TODO don't include index 0 be
+            lineToBase = line(moveTo[-1][0], moveTo[-1][0], baseX, baseY)
+            # Subtract 1 because the first (x, y) returned from line()
+            # is the roomba's current position.
+            distanceFromDirtToBase = len(lineToBase) - 1
         else:
             # There is no dirt to go to, so use 0:
             distanceFromDirtToBase = 0
 
         if distanceToDirt + distanceFromDirtToBase > roombaBattery:
             # Make the roomba go towards the base station:
-            moveTo = line(roombaX, roombaY, baseX, baseY)[1:] # TODO skip [0]
+            moveTo = line(roombaX, roombaY, baseX, baseY)
+            # Remove the first (x, y) returned from line() because
+            # that is the roomba's current position.
+            moveTo = moveTo[1:]
             roombaStatus = RETURNING
 
         # If the roomba is charging at the base station, make it stay
         # there until it is fully charged:
-        if roombaX == baseX and roombaY == baseY and roombaBattery < MAX_BATTERY:
-            # Make the roomba stay where it is at the base station:
-            moveTo = []
+        if ((roombaX, roombaY) == (baseX, baseY) and
+            roombaBattery < MAX_BATTERY):
+                # Make the roomba stay where it is at the base station:
+                moveTo = []
 
         if len(moveTo) > 0:
             # Move the roomba towards its destination:
-            #assert moveTo[0][0] != roombaX and moveTo[0][1] != roombaY  # roomba should always be moving.
-
-            # The roomba is moving, so reduce its battery:
-            roombaBattery -= 1
-            # Erase the roomba from the screen and draw the dirt that's there:
+            roombaBattery -= 1  # Reduce the roomba's battery.
+            # Erase the roomba from the screen and draw the dirt that
+            # is at that space:
             bext.goto(roombaX, roombaY)
             print(DIRT_CHARS[dirtPiles[(roombaX, roombaY)]], end='')
 
-            roombaX = moveTo[0][0]
-            roombaY = moveTo[0][1]
+            # Set new roomba position:
+            roombaX, roombaY = moveTo[0]
             del moveTo[0]
 
         # Make the roomba suck up the dirt at its current location:
@@ -156,9 +166,10 @@ def main():
         bext.goto(0, HEIGHT)
         print('Press Ctrl-C to quit. ', end='')
         print(roombaStatus, end='')
-        print(' Battery:', str(round(roombaBattery / MAX_BATTERY * 100, 1)) + '%    ', end='')
+        batteryPercentage = round(roombaBattery / MAX_BATTERY * 100, 1)
+        print(' Battery:', str(batteryPercentage) + '%    ', end='')
 
-        sys.stdout.flush()  # TODO
+        sys.stdout.flush()  # (Required for bext-using programs.)
         time.sleep(PAUSE)
 
 

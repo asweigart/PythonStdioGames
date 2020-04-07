@@ -10,8 +10,6 @@ Tags: extra-large, game, two-player, board game"""
 __version__ = 0
 import sys
 
-# TODO - add docstrings
-
 # Set up the constants:
 X_PLAYER = 'x'
 O_PLAYER = 'o'
@@ -37,9 +35,20 @@ def main():
     while True:  # Main game loop.
         displayBoard(board)
 
+        # Check if the player is blocked and can't make any moves:
+        validMoves = getValidMoves(turn, board)
+        if len(validMoves) == 0:
+            print(turn.upper(), 'is blocked and cannot move!')
+            if turn == X_PLAYER:
+                print('O has won!')
+            elif turn == O_PLAYER:
+                print('X has won!')
+            print('Thanks for playing!')
+            sys.exit()
+
         # Carry out the player's move:
         doPlayerMove(turn, board)
-        if checkIfPlayerWon(turn, board):
+        if checkIfPlayerReachedEnd(turn, board):
             displayBoard(board)
             print(turn.upper(), 'has won!')
             print('Thanks for playing!')
@@ -52,6 +61,8 @@ def main():
 
 
 def askForBoardSize():
+    """Returns a (width, height) tuple of the board dimensions the
+    player has requested."""
     for dimension in [WIDTH, HEIGHT]:
         while True:  # Keep looping until the user enters a valid size.
             print('Enter the board', dimension, ' (3 to 26) to play on:')
@@ -75,6 +86,10 @@ def askForBoardSize():
 
 
 def getNewBoard(width, height):
+    """Return a new dictionary that represents the board. The keys are
+    (x, y) tuples and the values are X_PLAYER, O_PLAYER, or EMPTY_SPACE.
+    There is also 'width' and 'height' keys with values of the board's
+    dimensions."""
     board = {WIDTH: width, HEIGHT: height}
 
     # Set up the X player's pieces at the top:
@@ -94,14 +109,19 @@ def getNewBoard(width, height):
 
 
 def getNthLetter(nth):
+    """Returns the "nth" letter, where nth is an integer. The 0th letter
+    is 'A', the 1st letter is 'B', the 2nd letter is 'C', and so on."""
     return chr(nth + 65)
 
 
 def getNumberForNthLetter(letter):
+    """Returns the integer form of a letter. The integer of 'A' is 0,
+    the integer of 'B' is 1, the integer of 'C' is 2, and so on."""
     return ord(letter) - 65
 
 
 def displayBoard(board):
+    """Display the board on the screen."""
     # Print the letter labels across the top:
     print('   ', end='')  # Print the indentation for the letter labels.
     for x in range(board[WIDTH]):
@@ -137,17 +157,8 @@ def displayBoard(board):
 
 
 def doPlayerMove(player, board):
+    """Ask the player for a move and carry it out on the board."""
     validMoves = getValidMoves(player, board)
-
-    # Check if the player is blocked and can't make any moves:
-    if len(validMoves) == 0:
-        print(player.upper(), 'is blocked and cannot move!')
-        if player == X_PLAYER:
-            print('O has won!')
-        elif player == O_PLAYER:
-            print('X has won!')
-        print('Thanks for playing!')
-        sys.exit()
 
     print('It is player ' + player.upper() + '\'s turn.')
     print('Select which pawn you want to move:', ' '.join(validMoves))
@@ -185,7 +196,7 @@ def doPlayerMove(player, board):
         if 'R' in possibleMoves:
             print('(R)ight Capture', end='')
         print()
-        while True:  # Keep asking the player until they enter a valid move.
+        while True:  # Ask until the player until enters a valid move.
             move = input('> ').upper()
             if move in possibleMoves:
                 break
@@ -213,7 +224,6 @@ def doPlayerMove(player, board):
             board[(x + 1, y - 1)] = O_PLAYER
 
 
-
 def getValidMoves(player, board):
     """Return a list of board space labels that have a player piece
     that can make a move."""
@@ -221,25 +231,31 @@ def getValidMoves(player, board):
     for x in range(board[WIDTH]):
         for y in range(board[HEIGHT]):
             if board[(x, y)] == player:
-                if pieceCanAdvance(player, x, y, board) or pieceCanCaptureLeft(player, x, y, board) or pieceCanCaptureRight(player, x, y, board):
-                    validMoves.append(getNthLetter(x) + str(y + 1))
+                if (pieceCanAdvance(player, x, y, board) or
+                    pieceCanCaptureLeft(player, x, y, board) or
+                    pieceCanCaptureRight(player, x, y, board)):
+                        validMoves.append(getNthLetter(x) + str(y + 1))
     return validMoves
 
 
 def pieceCanAdvance(player, x, y, board):
-    # Can this piece advance forward?
-    if player == X_PLAYER: # X's "forward" is the space below.
+    """Return True if the player's piece at (x, y) on the board can
+    move forward. Otherwise return False."""
+
+    if player == X_PLAYER:  # X's "forward" is the space below.
         if (x, y + 1) in board and board[(x, y + 1)] == EMPTY_SPACE:
-            return True
+            return True  # Piece can move forward.
     elif player == O_PLAYER:  # O's "forward" is the space above.
         if (x, y - 1) in board and board[(x, y - 1)] == EMPTY_SPACE:
-            return True
-    return False
+            return True  # Piece can move forward.
+    return False  # Piece cannot move forward.
 
 
 def pieceCanCaptureLeft(player, x, y, board):
+    """Return True if the player's piece at (x, y) on the board can
+    capture the piece forward and left. Otherwise return False."""
     # Can this piece capture an opponent's piece?
-    if player == X_PLAYER: # X's "forward" is the space below.
+    if player == X_PLAYER:  # X's "forward" is the space below.
         # Check diagonally forward and left:
         if (x - 1, y + 1) in board and board[(x - 1, y + 1)] == O_PLAYER:
             return True
@@ -251,8 +267,10 @@ def pieceCanCaptureLeft(player, x, y, board):
 
 
 def pieceCanCaptureRight(player, x, y, board):
+    """Return True if the player's piece at (x, y) on the board can
+    capture the piece forward and right. Otherwise return False."""
     # Can this piece capture an opponent's piece?
-    if player == X_PLAYER: # X's "forward" is the space below.
+    if player == X_PLAYER:  # X's "forward" is the space below.
         # Check diagonally forward and right:
         if (x + 1, y + 1) in board and board[(x + 1, y + 1)] == O_PLAYER:
             return True
@@ -263,7 +281,9 @@ def pieceCanCaptureRight(player, x, y, board):
     return False  # This piece cannot capture.
 
 
-def checkIfPlayerWon(player, board):
+def checkIfPlayerReachedEnd(player, board):
+    """Return True if the player has reached the opposite end of the
+    board and won. Otherwise return False."""
     if player == X_PLAYER:
         # Check if X has any pieces on the bottom row:
         for x in range(board['width']):

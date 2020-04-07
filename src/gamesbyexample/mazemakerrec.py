@@ -7,8 +7,6 @@ Tags: short, maze"""
 __version__ = 0
 import random
 
-# TODO: Change this so it optionally animates the construction of this maze.
-
 # Set up the constants:
 WALL = '#'
 EMPTY = ' '

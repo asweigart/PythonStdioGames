@@ -10,7 +10,7 @@ WALL = '#'
 EMPTY = ' '
 START = 'S'
 EXIT = 'E'
-BLOCK = chr(9608)  # Character 9608 is '█'
+BLOCK = chr(9617)  # Character 9617 is '░'
 NORTH = 'NORTH'
 SOUTH = 'SOUTH'
 EAST = 'EAST'
@@ -56,7 +56,7 @@ _____
 .....
 .....
 .....
-_____'''.strip()) # Paste to 6, 4
+_____'''.strip()) # Paste to 6, 4.
 
 CLOSED['B'] = wallStrToWallDict(r'''
 .\.
@@ -65,7 +65,7 @@ CLOSED['B'] = wallStrToWallDict(r'''
 ...
 ...
 ../
-./.'''.strip()) # Paste to 4, 3
+./.'''.strip()) # Paste to 4, 3.
 
 CLOSED['C'] = wallStrToWallDict(r'''
 ___________
@@ -77,7 +77,7 @@ ___________
 ...........
 ...........
 ...........
-___________'''.strip()) # Paste to 3, 1
+___________'''.strip()) # Paste to 3, 1.
 
 CLOSED['D'] = wallStrToWallDict(r'''
 ./.
@@ -86,7 +86,7 @@ CLOSED['D'] = wallStrToWallDict(r'''
 ...
 ...
 \..
-.\.'''.strip()) # Paste to 10, 3
+.\.'''.strip()) # Paste to 10, 3.
 
 CLOSED['E'] = wallStrToWallDict(r'''
 ..\..
@@ -101,7 +101,7 @@ CLOSED['E'] = wallStrToWallDict(r'''
 ....|
 ....|
 .../.
-../..'''.strip()) # Paste to 0, 0
+../..'''.strip()) # Paste to 0, 0.
 
 CLOSED['F'] = wallStrToWallDict(r'''
 ../..
@@ -116,8 +116,7 @@ _/...
 |....
 |....
 .\...
-..\..
-'''.strip()) # Paste to 12, 0 TODO note the extra new line
+..\..'''.strip()) # Paste to 12, 0.
 
 def displayWallDict(wallDict):
     print(BLOCK * (wallDict['width'] + 2))
@@ -291,7 +290,6 @@ while True: # Main game loop.
             print('You cannot move in that direction.')
 
     if (playerx, playery) == (exitx, exity):
-        # TODO - display the maze one last time.
         print('You have reached the exit! Good job!')
         print('Thanks for playing!')
         sys.exit()
