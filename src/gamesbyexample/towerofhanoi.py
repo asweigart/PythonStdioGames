@@ -30,7 +30,7 @@ More info at https://en.wikipedia.org/wiki/Tower_of_Hanoi
         displayTowers(towers)
 
         # Ask the user for a move:
-        fromTower, toTower = getPlayerMove(towers)
+        fromTower, toTower = askForPlayerMove(towers)
 
         # Move the top disk from fromTower to toTower:
         disk = towers[fromTower].pop()
@@ -43,7 +43,7 @@ More info at https://en.wikipedia.org/wiki/Tower_of_Hanoi
             sys.exit()
 
 
-def getPlayerMove(towers):
+def askForPlayerMove(towers):
     """Asks the player for a move. Returns (fromTower, toTower)."""
 
     while True:  # Keep asking player until they enter a valid move.

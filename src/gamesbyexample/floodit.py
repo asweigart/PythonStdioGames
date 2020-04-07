@@ -45,7 +45,7 @@ same color.''')
         displayBoard(gameBoard)
 
         print('Moves left:', movesLeft)
-        playerMove = getPlayerMove()
+        playerMove = askForPlayerMove()
         changeTile(playerMove, gameBoard, 0, 0)
         movesLeft -= 1
 
@@ -103,7 +103,7 @@ def displayBoard(board):
     print(UPRIGHT + (LEFTRIGHT * WIDTH) + UPLEFT)
 
 
-def getPlayerMove():
+def askForPlayerMove():
     """Let the player select a color to paint the upper left tile."""
     while True:
         bext.fg('white')

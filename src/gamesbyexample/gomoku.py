@@ -31,7 +31,7 @@ vertically, or diagonally wins.''')
     gameBoard = getNewBoard()
     while True:
         displayBoard(gameBoard)
-        playerMoveX, playerMoveY = getPlayerMove(turn, gameBoard)
+        playerMoveX, playerMoveY = askForPlayerMove(turn, gameBoard)
 
         if (playerMoveX, playerMoveY) != (None, None):
             # Add this new tile to the board:
@@ -94,7 +94,7 @@ def displayBoard(board):
     displayLetterLabels()  # Display the letter labels at the bottom.
 
 
-def getPlayerMove(player, board):
+def askForPlayerMove(player, board):
     """Asks the player for a move and returns a (x, y) tuple of integer
     indexes for the place they want to put their tile. Also returns
     (None, None) if they want to pass on their turn."""

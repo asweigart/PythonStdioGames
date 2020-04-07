@@ -38,7 +38,7 @@ three in a row on the global board.
     focusX, focusY = None, None
     while True:  # Main game loop.
         displayBoard(gameBoard)
-        focusX, focusY = getPlayerMove(turn, gameBoard, focusX, focusY)
+        focusX, focusY = askForPlayerMove(turn, gameBoard, focusX, focusY)
 
         # Check for a global winner:
         globalBoard = makeBoardFromLocalBoards(gameBoard)
@@ -166,7 +166,7 @@ def getWinner(board):
     return TIED
 
 
-def getPlayerMove(player, board, focusX, focusY):
+def askForPlayerMove(player, board, focusX, focusY):
     """Asks the player which space on which local board to move on.
     The focusX and focusY values determine which local board the player
     can move on, but if they are both None the player can freely choose

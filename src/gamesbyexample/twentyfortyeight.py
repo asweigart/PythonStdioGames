@@ -26,7 +26,7 @@ You lose if the board fills up the tiles before then.''')
     while True:  # Main game loop.
         drawBoard(gameBoard)
         print('Score:', getScore(gameBoard))
-        playerMove = getPlayerMove()
+        playerMove = askForPlayerMove()
         gameBoard = makeMove(gameBoard, playerMove)
         addTwoToBoard(gameBoard)
 
@@ -202,7 +202,7 @@ def makeMove(board, move):
     return boardAfterMove
 
 
-def getPlayerMove():
+def askForPlayerMove():
     """Asks the player for the direction of their next move (or quit).
 
     Ensures they enter a valid move: either 'W', 'A', 'S' or 'D'."""

@@ -26,8 +26,9 @@ Directions are (l)eft, (r)ight, (u)p, and (d)own.
 
     gameBoard = getBoard(getRandomPuzzle())
     while True:
+        print('\n' * 60)  # "Clear" the screen by printing many newlines.
         displayBoard(gameBoard)
-        playerMove = getPlayerMove(gameBoard)
+        playerMove = askForPlayerMove(gameBoard)
         makeMove(gameBoard, playerMove)
         if hasWon(gameBoard):
             displayBoard(gameBoard)
@@ -193,7 +194,7 @@ def hasWon(board):
     return False
 
 
-def getPlayerMove(board):
+def askForPlayerMove(board):
     """Let the player enter the car and direction they want to move."""
     validMoves = getValidMoves(board)
     while True:

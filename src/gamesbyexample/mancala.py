@@ -50,9 +50,10 @@ More info at https://en.wikipedia.org/wiki/Mancala
     playerTurn = '1'  # Player 1 goes first.
 
     while True:  # Run a player's turn.
+        print('\n' * 60)  # "Clear" the screen by printing many newlines.
         # Display board and get the player's move:
         displayBoard(gameBoard)
-        playerMove = getPlayerMove(playerTurn, gameBoard)
+        playerMove = askForPlayerMove(playerTurn, gameBoard)
 
         # Carry out the player's move:
         playerTurn = makeMove(gameBoard, playerTurn, playerMove)
@@ -108,7 +109,7 @@ E      | {} | {} | {} | {} | {} | {} |      E
 """.format(*seedAmounts))
 
 
-def getPlayerMove(playerTurn, board):
+def askForPlayerMove(playerTurn, board):
     """Asks the player which pit on their side of the board they
     select to sow seeds from. Returns the uppercase letter label of the
     selected pit as a string."""

@@ -48,7 +48,7 @@ through corners!
             sys.exit()
 
         # Move the player and robots:
-        playerPosition = getPlayerMove(board, robots, playerPosition)
+        playerPosition = askForPlayerMove(board, robots, playerPosition)
         robots = moveRobots(board, robots, playerPosition)
 
         for x, y in robots:  # Check if the player has lost.
@@ -204,7 +204,7 @@ def moveRobots(board, robotPositions, playerPosition):
     return nextRobotPositions
 
 
-def getPlayerMove(board, robots, playerPosition):
+def askForPlayerMove(board, robots, playerPosition):
     """Returns the (x, y) integer tuple of the place the player moves
     next, given their current location and the walls of the board."""
     playerX, playerY = playerPosition
@@ -235,7 +235,7 @@ def getPlayerMove(board, robots, playerPosition):
             # Teleport the player to a random empty space:
             board['teleports'] -= 1
             return getRandomEmptySpace(board, robots)
-        elif move in allMoves:
+        elif move != '' and move in allMoves:
             # Return the new player position based on their move:
             return {'Q': (playerX - 1, playerY - 1),
                     'W': (playerX + 0, playerY - 1),

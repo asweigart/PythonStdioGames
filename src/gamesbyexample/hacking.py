@@ -29,7 +29,7 @@ def main():
     print('Find the password in the computer\'s memory:')
     print(gameBoard)
     for triesRemaining in range(4, 0, -1):
-        playerMove = getPlayerMove(gameWords, triesRemaining)
+        playerMove = askForPlayerMove(gameWords, triesRemaining)
         if playerMove == secretPassword:
             print('A C C E S S   G R A N T E D')
             return
@@ -77,7 +77,7 @@ def getBoard(words):
     return '\n'.join(board)
 
 
-def getPlayerMove(words, tries):
+def askForPlayerMove(words, tries):
     """Let the player enter a password guess."""
     while True:
         print('Enter password: ({} tries remaining)'.format(tries))

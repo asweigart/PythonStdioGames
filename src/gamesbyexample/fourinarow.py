@@ -44,7 +44,7 @@ to make four in a row horizontally, vertically, or diagonally.
     while True:  # Run a player's turn.
         # Display the board and get player's move:
         displayBoard(gameBoard)
-        playerMove = getPlayerMove(playerTurn, gameBoard)
+        playerMove = askForPlayerMove(playerTurn, gameBoard)
         gameBoard[playerMove] = playerTurn
 
         # Check for a win or tie:
@@ -91,7 +91,7 @@ def displayBoard(board):
     print(BOARD_TEMPLATE.format(*tileChars))
 
 
-def getPlayerMove(playerTile, board):
+def askForPlayerMove(playerTile, board):
     """Let a player select a column on the board to drop a tile into.
 
     Returns a tuple of the (column, row) that the tile falls into."""

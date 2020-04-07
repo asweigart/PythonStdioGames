@@ -100,7 +100,7 @@ def makeMove(board, chests, x, y):
             board[(x, y)] = 'X'
             return 'Sonar did not detect anything. All treasure chests out of range.'
 
-def getPlayerMove(previousMoves):
+def askForPlayerMove(previousMoves):
     """Returns an (x, y) tuple of the player's move."""
     print('Where do you want to drop the next sonar device?')
     print('(0-59 0-14 or enter QUIT)')
@@ -191,7 +191,7 @@ while True:
         # Show sonar device and chest statuses.
         print('You have {} sonar device(s) left. {} treasure chest(s) remaining.'.format(sonarDevices, len(theChests)))
 
-        x, y = getPlayerMove(previousMoves)
+        x, y = askForPlayerMove(previousMoves)
         # We must track all moves so that sonar devices can be updated:
         previousMoves.append([x, y])
 

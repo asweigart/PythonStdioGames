@@ -184,7 +184,7 @@ def isOnCorner(x, y):
     return (x == 0 and y == 0) or (x == 7 and y == 0) or (x == 0 and y == 7) or (x == 7 and y == 7)
 
 
-def getPlayerMove(board, playerTile):
+def askForPlayerMove(board, playerTile):
     """Let the player type in their move. Returns the move as [x, y]
     (or returns the string 'QUIT')"""
     while True:
@@ -255,7 +255,7 @@ def main():
 
         if isPlayersTurn:  # Player's turn:
             displayBoard(getBoardWithValidMoves(mainBoard, playerTile))
-            move = getPlayerMove(mainBoard, playerTile)
+            move = askForPlayerMove(mainBoard, playerTile)
             if move == 'QUIT':
                 print('Thanks for playing!')
                 sys.exit()  # Terminate the program.

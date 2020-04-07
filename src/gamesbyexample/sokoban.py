@@ -52,7 +52,7 @@ QUIT to quit the game.
 
     while True:  # Main game loop.
         displayLevel(currentLevelNum, len(allLevels), currentLevel)
-        move = getPlayerMove(len(allLevels))
+        move = askForPlayerMove(len(allLevels))
 
         # Change to a different level:
         if move.isdecimal():
@@ -206,7 +206,7 @@ def displayLevel(levelNum, maxLevelNum, levelData):
     print(solvedCrates, '/', totalCrates, 'solved.')
 
 
-def getPlayerMove(maxLevelNum):
+def askForPlayerMove(maxLevelNum):
     # Get the input from the player:
     while True:
         move = input('Enter move> ').upper()

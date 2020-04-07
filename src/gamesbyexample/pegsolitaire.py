@@ -23,7 +23,7 @@ def main():
 
     while True:
         displayBoard(theBoard)
-        space, jumpDirection = getPlayerMove(theBoard)
+        space, jumpDirection = askForPlayerMove(theBoard)
         makeMove(theBoard, space, jumpDirection)
         if checkIfPlayerHasWon(theBoard):
             displayBoard(theBoard)
@@ -116,7 +116,7 @@ def getMoveablePegs(board):
     return moveablePegs
 
 
-def getPlayerMove(board):
+def askForPlayerMove(board):
     """Let the player enter their move."""
     while True:
         # Ask the player to select a peg to move:

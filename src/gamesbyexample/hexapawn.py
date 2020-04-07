@@ -31,7 +31,7 @@ def main():
     in front of them.
     """)
 
-    width, height = getBoardSize()
+    width, height = askForBoardSize()
     board = getNewBoard(width, height)
     turn = O_PLAYER
     while True:  # Main game loop.
@@ -51,10 +51,10 @@ def main():
             turn = X_PLAYER
 
 
-def getBoardSize():
+def askForBoardSize():
     for dimension in [WIDTH, HEIGHT]:
         while True:  # Keep looping until the user enters a valid size.
-            print('Enter the board', dimension, 'to play on:')
+            print('Enter the board', dimension, ' (3 to 26) to play on:')
             response = input('> ')
 
             if response.isdecimal() and (3 <= int(response) <= 26):

@@ -22,7 +22,7 @@ def main():
 
     while True:
         displayBoard(gameBoard)
-        playerMove = getPlayerMove(gameBoard)
+        playerMove = askForPlayerMove(gameBoard)
         makeMove(gameBoard, playerMove)
 
         if gameBoard == getNewBoard():
@@ -71,7 +71,7 @@ def findBlankSpace(board):
                 return (x, y)
 
 
-def getPlayerMove(board):
+def askForPlayerMove(board):
     """Let the player select a tile to slide."""
     blankx, blanky = findBlankSpace(board)
 
@@ -81,7 +81,7 @@ def getPlayerMove(board):
     d = 'D' if blankx != 0 else ' '
 
     while True:
-        print('                           ({})'.format(w))
+        print('                          ({})'.format(w))
         print('Enter move (or QUIT): ({}) ({}) ({})'.format(a, s, d))
 
         response = input('> ').upper()

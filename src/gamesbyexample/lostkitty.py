@@ -48,7 +48,7 @@ def main():
         displayMap(playerx, playery, visitedIntersections)
         displayClue(playerx, playery, catx, caty)
         print('Blocks travelled:', steps)
-        playerx, playery = getPlayerMove(playerx, playery)
+        playerx, playery = askForPlayerMove(playerx, playery)
         steps += 1
 
         # Detect if the player has found the cat:
@@ -162,7 +162,7 @@ def displayMap(playerx, playery, visitedIntersections):
             print()  # Just print a newline.
 
 
-def getPlayerMove(playerx, playery):
+def askForPlayerMove(playerx, playery):
     """Let the player enter which direction they want to move, or if
     they want to quit. Make sure the player can't move off the edge of
     the map."""

@@ -25,7 +25,7 @@ def main():
         moves = random.sample('xxxooo', 3)  # Randomly pick 3 Xs and Os.
         while moves != []:
             # Get the player's move and carry it out:
-            srcMove, dstMove = getPlayerMove(gameBoard, turn, moves)
+            srcMove, dstMove = askForPlayerMove(gameBoard, turn, moves)
             if (srcMove, dstMove) != (None, None):
                 moves.remove(gameBoard[srcMove].lower())
                 gameBoard = makeMove(gameBoard, srcMove, dstMove)
@@ -182,7 +182,7 @@ def getPossibleDstMoves(board, srcSpace):
     return (possibleDstMoves, possibleDstCaptures)
 
 
-def getPlayerMove(board, player, moves):
+def askForPlayerMove(board, player, moves):
     """Ask the player to select a move."""
 
     # Present the player with valid moves and ask them to choose one:

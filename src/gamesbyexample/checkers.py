@@ -22,7 +22,7 @@ def main():
         displayBoard(gameBoard)
 
         # Get the player's move and carry it out:
-        srcMove, dstMove = getPlayerMove(gameBoard, turn)
+        srcMove, dstMove = askForPlayerMove(gameBoard, turn)
         if (srcMove, dstMove) == (None, None):
             break  # If no moves can be made, end this player's turn.
         gameBoard = makeMove(gameBoard, srcMove, dstMove)
@@ -177,7 +177,7 @@ def getPossibleDstMoves(board, srcSpace):
     return (possibleDstMoves, possibleDstCaptures)
 
 
-def getPlayerMove(board, player):
+def askForPlayerMove(board, player):
     """Ask the player to select a move."""
     assert player in ('X', 'O')
 
