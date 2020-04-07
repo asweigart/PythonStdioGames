@@ -1,5 +1,5 @@
 """Hole, by Al Sweigart al@inventwithpython.com
-A tunnel animation.
+An animation of a hole that goes forever into the earth.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, scrolling, artistic"""
 
@@ -36,7 +36,7 @@ while True:
     else:
         pass  # Do nothing; no change in left side width.
 
-    # (!) EXPERIMENT: Try commenting out all of the following code:
+    # (!) Try commenting out all of the following code:
     # Adjust the gap width:
     r = random.randint(1, 4)
     if r == 1 and gapWidth > 1:
