@@ -7,7 +7,7 @@ This and other games are available at https://nostarch.com/XX
 Tags: tiny, math, scrolling"""
 
 import math, sys
-
+# TODO add save file option
 def main():
     print('Prime Numbers, by Al Sweigart al@inventwithpython.com')
     print('Prime numbers are numbers that are only evenly divisible by')
@@ -17,7 +17,7 @@ def main():
     print()
     while True:
         print('Enter a number to start searching for primes from:')
-        print('(Try 0 or 1000000000000.)')
+        print('(Try 0 or 1000000000000 (12 zeros) or some other starting number.)')
         response = input('> ')
         if response.isdecimal():
             num = int(response)
@@ -42,7 +42,7 @@ def isPrime(number):
 
     # Try to evenly divide number by all numbers from 2 up to number's
     # square root.
-    for i in range(2, int(math.sqrt(number))):
+    for i in range(2, int(math.sqrt(number)) + 1):
         if number % i == 0:
             return False
     return True

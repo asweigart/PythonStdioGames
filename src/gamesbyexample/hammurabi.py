@@ -18,13 +18,13 @@ print("""Game mechanics:
 - 20 bushels feeds 1 person.
 - 2 bushels are used to plant 1 acre, 1 person can plant 10 acres.
 - Next years' harvest is (acres plantd * random number 1 to 5)
-- Each year has a 15%% chance of plague that kills half the population.
-- If more 45%% of the people starve in a single year, you instantly lose.
+- Each year has a 15% chance of plague that kills half the population.
+- If more 45% of the people starve in a single year, you instantly lose.
 
-Best ending:     <=3%% population died and >10 acres per person.
-Mediocre ending: >3% to 10%% population died or >9 to 10 acres per person.
-Bad ending:      >10% to 33%% population died or >7 to 9 acres per person.
-Worst ending:    >33%% population died or <7 acres per person.""")
+Best ending:     <=3% population died and >10 acres per person.
+Mediocre ending: >3% to 10% population died or >9 to 10 acres per person.
+Bad ending:      >10% to 33% population died or >7 to 9 acres per person.
+Worst ending:    >33% population died or <7 acres per person.""")
 print()
 
 year = 1

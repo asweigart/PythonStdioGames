@@ -18,7 +18,7 @@ while True:  # Main program loop.
     while True:  # Keep asking until the user enters valid input.
         print()
         print('Enter the Nth Fibonacci number you wish to')
-        print('calculate (such as 5 or 50), or QUIT to quit:')
+        print('calculate (such as 5, 50, 1000, 9999), or QUIT to quit:')
         response = input('> ').upper()
 
         if response == 'QUIT':

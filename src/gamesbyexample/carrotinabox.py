@@ -2,7 +2,7 @@
 A silly bluffing game between two human players. Based on the game
 from the show, 8 Out of 10 Cats.
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, two-player"""
+Tags: large, beginner, game, two-player"""
 __version__ = 0
 import random
 
@@ -130,7 +130,7 @@ if swappedBoxes and carrotInRedBox:
    _________      ___VV____
   |         |    |   VV    |
   |         |    |   VV    |
-  +_________+    +___||____+
+  |_________|    |___||____|
  /         /|   /    ||   /|
 +---------+ |  +---------+ |
 |         | |  |         | |
@@ -144,7 +144,7 @@ elif swappedBoxes and not carrotInRedBox:
    ___VV____      _________
   |   VV    |    |         |
   |   VV    |    |         |
-  +___||____+    +_________+
+  |___||____|    |_________|
  /    ||   /|   /         /|
 +---------+ |  +---------+ |
 |         | |  |         | |
@@ -158,7 +158,7 @@ elif not swappedBoxes and carrotInRedBox:
    ___VV____      _________
   |   VV    |    |         |
   |   VV    |    |         |
-  +___||____+    +_________+
+  |___||____|    |_________|
  /    ||   /|   /         /|
 +---------+ |  +---------+ |
 |         | |  |         | |
@@ -172,7 +172,7 @@ elif not swappedBoxes and not carrotInRedBox:
    _________      ___VV____
   |         |    |   VV    |
   |         |    |   VV    |
-  +_________+    +___||____+
+  |_________|    |___||____|
  /         /|   /    ||   /|
 +---------+ |  +---------+ |
 |         | |  |         | |

@@ -2,7 +2,7 @@
 Scrambles the middle letters of words, but not the first and last
 letters.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, word"""
+Tags: tiny, beginner, word"""
 __version__ = 0
 import random
 

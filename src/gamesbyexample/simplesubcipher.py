@@ -1,6 +1,7 @@
 """Simple Substitution Cipher, by Al Sweigart al@inventwithpython.com
 A simple substitution cipher has a one-to-one translation for each
 symbol in the plaintext and each symbol in the ciphertext.
+More info at: https://en.wikipedia.org/wiki/Substitution_cipher
 This and other games are available at https://nostarch.com/XX
 Tags: short, cryptography, math"""
 __version__ = 0

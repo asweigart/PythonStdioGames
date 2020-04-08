@@ -2,7 +2,7 @@
 An example program using the text-to-speech features of the pyttsx3
 module.
 Tags: tiny, beginner"""
-
+__version__ = 0
 import sys
 
 try:

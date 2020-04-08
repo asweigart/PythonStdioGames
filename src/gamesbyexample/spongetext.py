@@ -1,7 +1,7 @@
 """sPoNgEtExT, by Al Sweigart al@inventwithpython.com
 Translates English messages into sPOnGEtExT.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, word"""
+Tags: tiny, beginner, word"""
 __version__ = 0
 import random
 

@@ -8,7 +8,7 @@ Draws diamonds of various sizes.
 /  \ //\\ \    / \\\///  \    /   \\\///
 \  / \\//  \  /   \\//    \  /     \\//
  \/   \/    \/     \/      \/       \/
- Tags: short, artistic"""
+ Tags: short, beginner, artistic"""
 __version__ = 0
 
 def main():

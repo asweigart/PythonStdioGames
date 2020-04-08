@@ -76,18 +76,22 @@ else:
 print()
 
 # Run through 1000 simulations and get the matching birthday probability.
-input('Press Enter to run 100,000 more monte carlo simulations.')
+input('Press Enter for me to generate {} random birthdays 100,000 times.'.format(number))
 
 print('Running simulations of', number, 'people...')
 simMatch = 0
-for i in range(1, 100001):
+for i in range(100000):
     if i % 10000 == 0:
         print(str(i // 1000) + '% done...')
     birthdays = getBirthdays(number)
     if getMatch(birthdays) != None:
         simMatch = simMatch + 1
+print('100% done.')
 
 # Display simulation results:
 probability = round(simMatch / 100000 * 100, 2)
 print('Out of 100,000 simulations of', number, 'people, there was a')
-print('matching birthday', simMatch, 'times, or', probability, '%')
+print('matching birthday in that group', simMatch, 'times. This means')
+print('that', number, 'people have a', probability, '% chance of having')
+print('a matching birthday in their group.')
+print('That\'s higher than I would expect!')

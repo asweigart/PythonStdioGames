@@ -1,4 +1,4 @@
-"""Sine Sign, by Al Sweigart al@inventwithpython.com
+"""Sine Message, by Al Sweigart al@inventwithpython.com
 Create a sine-wavy message.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, artistic"""
@@ -11,7 +11,7 @@ WIDTH, HEIGHT = shutil.get_terminal_size()
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-print('Sine Sign, by Al Sweigart al@inventwithpython.com')
+print('Sine Message, by Al Sweigart al@inventwithpython.com')
 print('(Press Ctrl-C to quit.)')
 print()
 print('What message do you want to display? (Max', WIDTH // 2, 'chars.)')

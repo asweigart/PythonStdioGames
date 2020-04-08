@@ -1,7 +1,7 @@
 """Leetspeak, by Al Sweigart al@inventwithpython.com
 Translates English messages into l33t5p34]<.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, word, pyperclip"""
+Tags: tiny, beginner, word, pyperclip"""
 __version__ = 0
 import random
 
@@ -38,6 +38,7 @@ def englishToLeetspeak(message):
     'v': ['\\/']}
     leet = []
     for char in message:  # Check each character:
+        # There is a 70% chance we change the character to leetspeak.
         if char.lower() in charMapping and random.randint(1, 100) <= 70:
             leet.append(random.choice(charMapping[char.lower()]))
         else:

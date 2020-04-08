@@ -1,6 +1,7 @@
 """Affine Cipher, by Al Sweigart al@inventwithpython.com
 The affine cipher is a simple substitution cipher that uses addition and
 multiplication to encrypt and decrypt symbols.
+More info at: https://en.wikipedia.org/wiki/Affine_cipher
 This and other games are available at https://nostarch.com/XX
 Tags: large, cryptography, math, pyperclip"""
 __version__ = 0

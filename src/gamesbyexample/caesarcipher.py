@@ -1,6 +1,7 @@
 """Caesar Cipher, by Al Sweigart al@inventwithpython.com
 The Caesar cipher is a shift cipher that uses addition to encrypt and
 decrypt letters.
+More info at: https://en.wikipedia.org/wiki/Caesar_cipher
 Tags: short, beginner, cryptography, math, pyperclip"""
 __version__ = 0
 try:
