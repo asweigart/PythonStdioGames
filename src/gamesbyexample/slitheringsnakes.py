@@ -1,5 +1,5 @@
-"""Worm animation, by Al Sweigart al@inventwithpython.com
-A screensaver of multicolor worms moving around.
+"""Slithering Snakes animation, by Al Sweigart al@inventwithpython.com
+A screensaver of multicolor snakes moving around.
 NOTE: Do not resize the terminal window while this program is running.
 This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, bext, object-oriented, simulation"""
@@ -23,13 +23,13 @@ WIDTH, HEIGHT = shutil.get_terminal_size()
 WIDTH -= 1
 
 # Characters in the terminal are twice as tall as they are wide, so to
-# make our worms look square we pretend two characters horizontally
+# make our snakes look square we pretend two characters horizontally
 # is one. This gives us half of the effective width of the terminal:
 WIDTH //= 2
 
-NUMBER_OF_WORMS = 12  # (!) Try changing this value.
-MIN_WORM_LENGTH = 6   # (!) Try changing this value.
-MAX_WORM_LENGTH = 16  # (!) Try changing this value.
+NUMBER_OF_SNAKES = 12  # (!) Try changing this value.
+MIN_SNAKE_LENGTH = 6   # (!) Try changing this value.
+MAX_SNAKE_LENGTH = 16  # (!) Try changing this value.
 ALL_COLORS = bext.ALL_COLORS
 NORTH = 'north'
 SOUTH = 'south'
@@ -39,10 +39,10 @@ BLOCK = chr(9608)  # Character 9608 is '█'
 
 
 def main():
-    # Generate worm data structures:
-    worms = []
-    for i in range(NUMBER_OF_WORMS):
-        worms.append(Worm())
+    # Generate snake data structures:
+    snakes = []
+    for i in range(NUMBER_OF_SNAKES):
+        snakes.append(Worm())
 
     bext.clear()
     while True:  # Main simulation loop.
@@ -51,11 +51,11 @@ def main():
         bext.goto(0, 0)
         print('Ctrl-C to quit.', end='')
 
-        for worm in worms:
-            worm.display()
+        for snake in snakes:
+            snake.display()
 
-        for worm in worms:
-            worm.moveRandom()
+        for snake in snakes:
+            snake.moveRandom()
 
         sys.stdout.flush()
         time.sleep(PAUSE_LENGTH)
@@ -64,7 +64,7 @@ def main():
 
 class Worm:
     def __init__(self):
-        self.length = random.randint(MIN_WORM_LENGTH, MAX_WORM_LENGTH)
+        self.length = random.randint(MIN_SNAKE_LENGTH, MAX_SNAKE_LENGTH)
 
         coloration = random.choice(['solid', 'stripe', 'random'])
         if coloration == 'solid':

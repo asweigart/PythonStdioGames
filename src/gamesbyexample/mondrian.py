@@ -2,7 +2,7 @@
 Randomly generates art in the style of Piet Mondrian.
 More info at: https://en.wikipedia.org/wiki/Piet_Mondrian
 This and other games are available at https://nostarch.com/XX
-Tags: large, artistic"""
+Tags: large, artistic""" # TODO instructions for screenshotting and link to the online page with my other mondrian program.
 __version__ = 0
 import sys, random
 

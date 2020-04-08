@@ -1,7 +1,7 @@
 """Progress Bar Simulation, by Al Sweigart al@inventwithpython.com
 A sample progress bar animation that can be used in other programs.
 This and other games are available at https://nostarch.com/XX
-Tags: short, module"""
+Tags: tiny, module"""
 __version__ = 0
 import random, time
 
@@ -22,8 +22,7 @@ def main():
         # printed string to the screen:
         print(barStr, end='', flush=True)
 
-        # Pause for a little bit:
-        time.sleep(0.2)
+        time.sleep(0.2)  # Pause for a little bit:
 
         # Print backspaces to erase the previously printed progress bar:
         print('\b' * len(barStr), end='', flush=True)

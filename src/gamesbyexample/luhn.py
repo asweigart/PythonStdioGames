@@ -7,8 +7,6 @@ Tags: short, math, algorithm"""
 __version__ = 0
 import time, sys
 
-PAUSE_AMOUNT = 0.5  # Pause for 0.5 seconds at each step.
-
 print('Luhn Algorithm, by Al Sweigart al@inventwithpython.com')
 
 # Display information about the Luhn algorithm if the user wants it:
@@ -58,20 +56,17 @@ while True:  # Main program loop.
     print('1) Get the non-checksum digits (every digit but the last):')
     nonChecksumDigits = list(originalNumber)[:-1]
     print('   ', ' '.join(nonChecksumDigits))
-    time.sleep(PAUSE_AMOUNT)
 
     print('2) From right to left, double every other digit:')
     for i in range(len(nonChecksumDigits) - 1, -1, -2):
         nonChecksumDigits[i] = str(int(nonChecksumDigits[i]) * 2)
     print('   ', ' '.join(nonChecksumDigits))
-    time.sleep(PAUSE_AMOUNT)
 
     print('3) If a number is greater than 9, subtract 9:')
     for i, number in enumerate(nonChecksumDigits):
         if int(number) > 9:
             nonChecksumDigits[i] = str(int(number) - 9)
     print('   ', ' '.join(nonChecksumDigits))
-    time.sleep(PAUSE_AMOUNT)
 
     print('4) Add up all the numbers:')
     print('    ', end='')
@@ -80,23 +75,19 @@ while True:  # Main program loop.
         nonChecksumDigits[i] = int(number)  # Convert str to int.
     digitSum = sum(nonChecksumDigits)
     print('=', digitSum)
-    time.sleep(PAUSE_AMOUNT)
 
     print('5) Multiply by 9:')
     digitSum9x = digitSum * 9
     print('    {} * 9 = {}'.format(digitSum, digitSum9x))
-    time.sleep(PAUSE_AMOUNT)
 
     print('6) The checksum digit is the last digit:')
     checksumDigit = str(digitSum9x)[-1]
     print('    {}[{}]'.format(str(digitSum9x)[:-1], checksumDigit))
-    time.sleep(PAUSE_AMOUNT)
 
     print('7) Append the checksum digit for the complete, valid number:')
     numberWithValidChecksum = originalNumber[:-1] + str(checksumDigit)
     print('    ' + numberWithValidChecksum)
     print()  # Print a newline.
-    time.sleep(PAUSE_AMOUNT)
 
     # Tell the user if they entered a valid number or not:
     if numberWithValidChecksum == originalNumber:

@@ -17,6 +17,9 @@ SCALEY *= 2
 TRANSLATEX = (WIDTH - 4) // 2
 TRANSLATEY = (HEIGHT - 4) // 2
 
+# (!) Try changing this to '#' or '*' or some other character:
+LINE_CHAR = '*'#chr(9608)  # Character 9608 is '█'
+
 # Several of the data structures are lists/tuples with x, y, z at indexes 0, 1, and 2 respectively:
 X = 0
 Y = 1
@@ -164,7 +167,7 @@ try:
             for x in range(WIDTH):
                 if (x, y) in cubePoints:
                     # Draw full block:
-                    print(chr(9608), end='', flush=False)
+                    print(LINE_CHAR, end='', flush=False)
                 else:
                     # Draw empty space:
                     print(' ', end='', flush=False)

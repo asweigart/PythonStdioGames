@@ -16,23 +16,28 @@ Kaprekar Numbers are numbers whose square can be split into
 
 45^2 = 2025 -> 20 + 25 = 45""")
 
-print('What number do you wish to start searching from? (min. 4)')
-while True:  # Keep looping until the user enters a number > 3.
+print('What number do you wish to start searching from?')
+while True:  # Keep looping until the user enters a number.
     response = input('> ')
-    if response.isdecimal() and int(response) > 3:
+    if response.isdecimal():
+        if int(response) < 4:
+            # The minimum is 4, because 3 * 3 is 9, and 9 does not have
+            # at least two digits. However, 4 * 4 is 16, which does:
+            response = 4
         break
     print('Please enter a number 4 or greater.')
 
+# Subtract one because the first thing the main program loop does is
+# increment the number:
 number = int(response) - 1
-print('Ctrl-C will stop the program.')
+print('The program will run until you press Ctrl-C.')
 input('Press Enter to begin...')
-print('Calculating Kraprekar numbers...')
 
 foundKraprekarNumbers = []
 
 try:
     while True:  # Main program loop.
-        number += 1
+        number += 1  # Go to the next number.
         square = str(number * number)
 
         # Split the square into two parts:
