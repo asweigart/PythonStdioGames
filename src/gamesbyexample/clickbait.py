@@ -21,13 +21,13 @@ WHEN = ['Soon', 'This Year', 'Later Today', 'RIGHT NOW', 'Next Week']
 
 
 def main():
-    print('Clickbait Title Generator')
+    print('Clickbait Headline Generator')
     print('By Al Sweigart al@inventwithpython.com')
     print()
 
     while True:
         print('Our website needs to trick people into looking at ads!')
-        print('Enter the number of headlines to generate:')
+        print('Enter the number of clickbait headlines to generate:')
         response = input('> ')
         if not response.isdecimal():
             print('Please enter a number.')

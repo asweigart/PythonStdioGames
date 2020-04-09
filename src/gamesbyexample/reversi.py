@@ -6,7 +6,7 @@ Tags: extra-large, game, two-player, board game"""
 __version__ = 0
 # A version of this game is featured in the book, "Invent Your Own
 # Computer Games with Python" https://nostarch.com/inventwithpython
-
+# TODO - announce the computer's move. Maybe make this two player to make it shorter? Or optional PvP?
 import random, sys
 
 COLS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']

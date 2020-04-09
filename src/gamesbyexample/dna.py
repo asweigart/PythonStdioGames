@@ -29,6 +29,7 @@ ROWS = [
 
 
 def main():
+    print('DNA Animation, by Al Sweigart al@inventwithpython.com')
     print('Press Ctrl-C to quit...')
     time.sleep(2)
     rowIndex = 0

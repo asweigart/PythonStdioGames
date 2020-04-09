@@ -1,7 +1,7 @@
 """Factorization, by Al Sweigart al@inventwithpython.com
 Finds all the factors of a number.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, math"""
+Tags: tiny, beginner, math"""
 __version__ = 0
 import math, sys
 

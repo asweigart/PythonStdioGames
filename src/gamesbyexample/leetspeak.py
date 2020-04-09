@@ -22,6 +22,8 @@ Enter your leet message:''')
     print(leetspeak)
 
     try:
+        # Trying to use pyperclip will raise a NameError exception if
+        # it wasn't imported:
         pyperclip.copy(leetspeak)
         print('(Copied leetspeak to clipboard.)')
     except NameError:
@@ -36,14 +38,16 @@ def englishToLeetspeak(message):
     'f': ['ph'], 'h': [']-[', '|-|'], 'i': ['1', '!', '|'], 'k': [']<'],
     'o': ['0'], 's': ['$', '5'], 't': ['7', '+'], 'u': ['|_|'],
     'v': ['\\/']}
-    leet = []
+    leetspeak = ''
     for char in message:  # Check each character:
         # There is a 70% chance we change the character to leetspeak.
         if char.lower() in charMapping and random.randint(1, 100) <= 70:
-            leet.append(random.choice(charMapping[char.lower()]))
+            possibleLeetReplacements = charMapping[char.lower()]
+            leetReplacement = random.choice(possibleLeetReplacements)
+            leetspeak = leetspeak + leetReplacement
         else:
-            leet.append(char)  # Don't translate this character.
-    return ''.join(leet)
+            leetspeak = leetspeak + char  # Don't translate this character.
+    return leetspeak
 
 
 # If this program was run (instead of imported), run the game:

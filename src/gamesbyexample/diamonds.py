@@ -1,4 +1,4 @@
-r"""Diamond Drawings, by Al Sweigart al@inventwithpython.com
+r"""Diamonds, by Al Sweigart al@inventwithpython.com
 Draws diamonds of various sizes.
                            /\       /\
                           /  \     //\\
@@ -12,7 +12,7 @@ Draws diamonds of various sizes.
 __version__ = 0
 
 def main():
-    print('Diamond Drawings, by Al Sweigart al@inventwithpython.com')
+    print('Diamonds, by Al Sweigart al@inventwithpython.com')
     print()
 
     # Display diamonds of sizes 1 through 6:

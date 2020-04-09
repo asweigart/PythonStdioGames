@@ -35,18 +35,18 @@ for i in range(numberOfFlips):
         # Record the streak stats:
         streakKey = (currentStreakLength, currentStreakSide)
         streakStats.setdefault(streakKey, 0)
-        streakStats[streakKey] += 1
+        streakStats[streakKey] = streakStats[streakKey] + 1
 
         # Reset the streak length for this new streak:
         currentStreakLength = 1
         currentStreakSide = flip
     else:
-        currentStreakLength += 1
+        currentStreakLength = currentStreakLength + 1
 
 # Record the streak stats for the final flip:
 streakKey = (currentStreakLength, currentStreakSide)
 streakStats.setdefault(streakKey, 0)
-streakStats[streakKey] += 1
+streakStats[streakKey] = streakStats[streakKey] + 1
 
 print()
 print('Simulation finished.')
