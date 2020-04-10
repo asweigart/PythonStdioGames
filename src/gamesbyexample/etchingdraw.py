@@ -1,6 +1,6 @@
-"""Etch A Sketch, by Al Sweigart al@inventwithpython.com
+"""Etching Draw, by Al Sweigart al@inventwithpython.com
 An art program that draws a continuous line around the screen using the
-WASD keys.
+WASD keys. Inspired by Etch A Sketch toys.
 
 For example, you can draw Hilbert Curve fractal with:
 SDWDDSASDSAAWASSDSASSDWDSDWWAWDDDSASSDWDSDWWAWDWWASAAWDWAWDDSDW

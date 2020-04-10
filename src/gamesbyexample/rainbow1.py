@@ -1,7 +1,7 @@
 """Rainbow 1, by Al Sweigart al@inventwithpython.com
 Shows a simple rainbow animation. Press Ctrl-C to stop.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, beginner, scrolling, artistic, bext"""
+Tags: tiny, artistic, bext, beginner, scrolling"""
 __version__ = 0
 import time, sys
 

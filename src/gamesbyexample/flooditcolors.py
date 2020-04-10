@@ -1,5 +1,6 @@
-"""Flood It, by Al Sweigart al@inventwithpython.com
+"""Floodplane, by Al Sweigart al@inventwithpython.com
 A colorful game where you try to fill the board with a single color.
+Inspired by the "Flood It!" game.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, bext"""
 __version__ = 0

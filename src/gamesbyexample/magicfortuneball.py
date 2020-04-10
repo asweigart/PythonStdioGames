@@ -1,5 +1,5 @@
-"""Magic Eight Ball, by Al Sweigart al@inventwithpython.com
-Ask a yes/no question about your future.
+"""Magic Fortune Ball, by Al Sweigart al@inventwithpython.com
+Ask a yes/no question about your future. Inspired by the Magic 8 Ball.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, humor"""
 __version__ = 0
@@ -20,7 +20,7 @@ def slowSpacePrint(text, interval):
 
 
 # Prompt for a question:
-slowSpacePrint('MAGIC EIGHT BALL, BY AL SWEiGART', 0.1)
+slowSpacePrint('MAGIC FORTUNE BALL, BY AL SWEiGART', 0.1)
 time.sleep(0.5)
 slowSpacePrint('ASK ME YOUR YES/NO QUESTION.', 0.1)
 input('> ')

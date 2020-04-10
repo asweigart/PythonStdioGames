@@ -58,7 +58,9 @@ def main():
     bext.fg('black')
     bext.clear()
     while True:  # Main simulation loop.
-        # Draw quit message.
+        # Draw quit message:
+        # (!) Try adding code so that the "Ctrl-C to quit." message
+        # disappears after 30 seconds.
         bext.bg('white')
         bext.goto(0, 0)
         print('Ctrl-C to quit.', end='')
