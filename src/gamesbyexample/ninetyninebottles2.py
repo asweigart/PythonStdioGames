@@ -2,7 +2,7 @@
 Print the full lyrics to one of the most longest songs ever!
 Press Ctrl-C to stop.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, beginner, scrolling"""
+Tags: short, scrolling, word"""
 __version__ = 0
 import random, sys, time
 
