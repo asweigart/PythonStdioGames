@@ -10,6 +10,8 @@ Tags: large, artistic, simulation, bext"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
 
+# TODO - There's a weird bug on the Windows that adds unwanted scrolling.
+
 import random, sys, time
 
 try:

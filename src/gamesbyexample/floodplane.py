@@ -25,52 +25,66 @@ DOWNLEFT  = chr(9488)  # Character 9488 is '┐'
 UPRIGHT   = chr(9492)  # Character 9492 is '└'
 UPLEFT    = chr(9496)  # Character 9496 is '┘'
 
-# This constant maps letters to colors.
-CMAP = {'R': 'red', 'G': 'green', 'B': 'blue',
-        'Y': 'yellow', 'C': 'cyan', 'P': 'purple'}
-COLORS = list(CMAP.keys())
+# All the color/letter tiles used on the board:
+TILE_TYPES = (0, 1, 2, 3, 4, 5)
+COLORS_MAP = {0: 'red', 1: 'green', 2:'blue',
+              3:'yellow', 4:'cyan', 5:'purple'}
+COLOR_MODE = 'color mode'
+LETTERS_MAP = {0: 's', 1: 'o', 2:'x', 3:'m', 4:'a', 5:'i'}
+LETTER_MODE = 'letter mode'
 
 
 def main():
     bext.bg('black')
     bext.fg('white')
     bext.clear()
-    print('''Flood It, by Al Sweigart al@inventwithpython.com
+    print('''Floodplane, by Al Sweigart al@inventwithpython.com
 
-Set the color of the upper left square, which fills in all the
-adjacent squares of that color. Try to make the entire board the
-same color.''')
+Set the color/letter of the upper left square, which fills in all the
+adjacent squares of that color/letter. Try to make the entire board the
+same color/letter.''')
+
+    print('Do you want to play in colorblind mode? Y/N')
+    response = input('> ')
+    if response.upper().startswith('Y'):
+        displayMode = LETTER_MODE
+    else:
+        displayMode = COLOR_MODE
+
     gameBoard = getNewBoard()
     movesLeft = 20
 
     while True:  # Main game loop.
-        displayBoard(gameBoard)
+        displayBoard(gameBoard, displayMode)
 
         print('Moves left:', movesLeft)
-        playerMove = askForPlayerMove()
+        playerMove = askForPlayerMove(displayMode)
         changeTile(playerMove, gameBoard, 0, 0)
         movesLeft -= 1
 
         if hasWon(gameBoard):
-            displayBoard(gameBoard)
+            displayBoard(gameBoard, displayMode)
             print('You have won!')
             break
         elif movesLeft == 0:
-            displayBoard(gameBoard)
+            displayBoard(gameBoard, displayMode)
             print('You have run out of moves!')
             break
 
 
 def getNewBoard():
     """Return a dictionary of a new Flood It board."""
+
+    # Keys are (x, y) tuples, values are the tile at that position.
     board = {}
 
     # Create random colors for the board.
     for x in range(WIDTH):
         for y in range(HEIGHT):
-            board[(x, y)] = random.choice(COLORS)
+            board[(x, y)] = random.choice(TILE_TYPES)
 
-    # Make several tiles the same color as their neighbor.
+    # Make several tiles the same as their neighbor. This creates groups
+    # of the same color/letter.
     for i in range(WIDTH * HEIGHT):
         x = random.randint(0, WIDTH - 2)
         y = random.randint(0, HEIGHT - 1)
@@ -78,65 +92,94 @@ def getNewBoard():
     return board
 
 
-def displayBoard(board):
+def displayBoard(board, displayMode):
     """Display the board on the screen."""
     bext.fg('white')
     print(DOWNRIGHT + (LEFTRIGHT * WIDTH) + DOWNLEFT)
 
-    # Print first row with '>'.
     bext.fg('white')
-    print('>', end='')
-    for x in range(WIDTH):
-        bext.fg(CMAP[board[(x, 0)]])
-        print(BLOCK, end='')
-    bext.fg('white')
-    print(UPDOWN)
 
-    # Print each row after the first.
-    for y in range(1, HEIGHT):
+    # Display each row:
+    for y in range(HEIGHT):
         bext.fg('white')
-        print(UPDOWN, end='')
+        if y == 0:  # The first row begins with '>'.
+            print('>', end='')
+        else:  # Later rows begin with a vertical line.
+            print(UPDOWN, end='')
+
+        # Display each tile in this row:
         for x in range(WIDTH):
-            bext.fg(CMAP[board[(x, y)]])
-            print(BLOCK, end='')
+            if displayMode == COLOR_MODE:
+                bext.fg(COLORS_MAP[board[(x, y)]])
+                print(BLOCK, end='')
+            elif displayMode == LETTER_MODE:
+                print(LETTERS_MAP[board[(x, y)]], end='')
         bext.fg('white')
         print(UPDOWN)
     bext.fg('white')
     print(UPRIGHT + (LEFTRIGHT * WIDTH) + UPLEFT)
 
 
-def askForPlayerMove():
+def askForPlayerMove(displayMode):
     """Let the player select a color to paint the upper left tile."""
     while True:
         bext.fg('white')
         print('Choose one of ', end='')
-        bext.fg('red')
-        print('R ', end='')
-        bext.fg('green')
-        print('G ', end='')
-        bext.fg('blue')
-        print('B ', end='')
-        bext.fg('yellow')
-        print('Y ', end='')
-        bext.fg('cyan')
-        print('C ', end='')
-        bext.fg('purple')
-        print('P ', end='')
+
+        if displayMode == COLOR_MODE:
+            bext.fg('red')
+            print('R ', end='')
+            bext.fg('green')
+            print('G ', end='')
+            bext.fg('blue')
+            print('B ', end='')
+            bext.fg('yellow')
+            print('Y ', end='')
+            bext.fg('cyan')
+            print('C ', end='')
+            bext.fg('purple')
+            print('P ', end='')
+        elif displayMode == LETTER_MODE:
+            print('s o x m a i ', end='')
         bext.fg('white')
         print(' or QUIT:')
-        move = input('> ').upper()
-        if move == 'QUIT':
+        move = input('> ').lower()
+        if move == 'quit':
             sys.exit()
-        if move in COLORS:
-            return move
+        if displayMode == COLOR_MODE:
+            if move == 'r':
+                return 0
+            elif move == 'g':
+                return 1
+            elif move == 'b':
+                return 2
+            elif move == 'y':
+                return 3
+            elif move == 'c':
+                return 4
+            elif move == 'p':
+                return 5
+        if displayMode == LETTER_MODE:
+            if move == 's':
+                return 0
+            elif move == 'o':
+                return 1
+            elif move == 'x':
+                return 2
+            elif move == 'm':
+                return 3
+            elif move == 'a':
+                return 4
+            elif move == 'i':
+                return 5
 
 
 def changeTile(move, board, x, y, charToChange=None):
-    """Change the color of a tile."""
+    """Change the color/letter of a tile."""
     if x == 0 and y == 0:
         charToChange = board[(x, y)]
         if move == charToChange:
-            return  # Already is the same color.
+            return  # Already is the same tile.
 
     board[(x, y)] = move
 
@@ -151,7 +194,7 @@ def changeTile(move, board, x, y, charToChange=None):
 
 
 def hasWon(board):
-    """Return True if the entire board is one color."""
+    """Return True if the entire board is one color/letter."""
     tile = board[(0, 0)]
 
     for x in range(WIDTH):
