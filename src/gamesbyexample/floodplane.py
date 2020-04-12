@@ -17,6 +17,15 @@ except ImportError:
 # Set up the constants:
 WIDTH = 16
 HEIGHT = 14
+
+# Constants for the different shapes used in colorblind mode:
+HEART     = chr(9829)  # Character 9829 is '♥'.
+DIAMOND   = chr(9830)  # Character 9830 is '♦'.
+SPADE     = chr(9824)  # Character 9824 is '♠'.
+CLUB      = chr(9827)  # Character 9827 is '♣'.
+BALL      = chr(9679)  # Character 9679 is '●'.
+TRIANGLE  = chr(9650)  # Character 9650 is '▲'.
+
 BLOCK     = chr(9608)  # Character 9608 is '█'
 LEFTRIGHT = chr(9472)  # Character 9472 is '─'
 UPDOWN    = chr(9474)  # Character 9474 is '│'
@@ -30,8 +39,9 @@ TILE_TYPES = (0, 1, 2, 3, 4, 5)
 COLORS_MAP = {0: 'red', 1: 'green', 2:'blue',
               3:'yellow', 4:'cyan', 5:'purple'}
 COLOR_MODE = 'color mode'
-LETTERS_MAP = {0: 's', 1: 'o', 2:'x', 3:'m', 4:'a', 5:'i'}
-LETTER_MODE = 'letter mode'
+SHAPES_MAP = {0: HEART, 1: TRIANGLE, 2: DIAMOND,
+              3: BALL, 4: CLUB, 5: SPADE}
+SHAPE_MODE = 'shape mode'
 
 
 def main():
@@ -40,14 +50,14 @@ def main():
     bext.clear()
     print('''Floodplane, by Al Sweigart al@inventwithpython.com
 
-Set the color/letter of the upper left square, which fills in all the
-adjacent squares of that color/letter. Try to make the entire board the
-same color/letter.''')
+Set the upper left color/shape, which fills in all the
+adjacent squares of that color/shape. Try to make the
+entire board the same color/shape.''')
 
     print('Do you want to play in colorblind mode? Y/N')
     response = input('> ')
     if response.upper().startswith('Y'):
-        displayMode = LETTER_MODE
+        displayMode = SHAPE_MODE
     else:
         displayMode = COLOR_MODE
 
@@ -109,11 +119,11 @@ def displayBoard(board, displayMode):
 
         # Display each tile in this row:
         for x in range(WIDTH):
+            bext.fg(COLORS_MAP[board[(x, y)]])
             if displayMode == COLOR_MODE:
-                bext.fg(COLORS_MAP[board[(x, y)]])
                 print(BLOCK, end='')
-            elif displayMode == LETTER_MODE:
-                print(LETTERS_MAP[board[(x, y)]], end='')
+            elif displayMode == SHAPE_MODE:
+                print(SHAPES_MAP[board[(x, y)]], end='')
         bext.fg('white')
         print(UPDOWN)
     bext.fg('white')
@@ -139,10 +149,21 @@ def askForPlayerMove(displayMode):
             print('C ', end='')
             bext.fg('purple')
             print('P ', end='')
-        elif displayMode == LETTER_MODE:
-            print('s o x m a i ', end='')
+        elif displayMode == SHAPE_MODE:
+            bext.fg('red')
+            print('(H)eart, ', end='')
+            bext.fg('green')
+            print('(T)riangle, ', end='')
+            bext.fg('blue')
+            print('(D)iamond, ', end='')
+            bext.fg('yellow')
+            print('(B)all, ', end='')
+            bext.fg('cyan')
+            print('(C)lub, ', end='')
+            bext.fg('purple')
+            print('(S)pade, ', end='')
         bext.fg('white')
-        print(' or QUIT:')
+        print('or QUIT:')
         move = input('> ').lower()
         if move == 'quit':
             sys.exit()
@@ -159,18 +180,18 @@ def askForPlayerMove(displayMode):
                 return 4
             elif move == 'p':
                 return 5
-        if displayMode == LETTER_MODE:
-            if move == 's':
+        if displayMode == SHAPE_MODE:
+            if move == 'h':
                 return 0
-            elif move == 'o':
+            elif move == 't':
                 return 1
-            elif move == 'x':
+            elif move == 'd':
                 return 2
-            elif move == 'm':
+            elif move == 'b':
                 return 3
-            elif move == 'a':
+            elif move == 'c':
                 return 4
-            elif move == 'i':
+            elif move == 's':
                 return 5
 
 
