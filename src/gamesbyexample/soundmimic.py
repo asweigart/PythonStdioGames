@@ -7,6 +7,12 @@ Tags: tiny, beginner, game"""
 __version__ = 0
 import random, sys, time
 
+# Download the sound files from these URLs (or use your own):
+# http://inventwithpython.com/sound0.wav
+# http://inventwithpython.com/sound1.wav
+# http://inventwithpython.com/sound2.wav
+# http://inventwithpython.com/sound3.wav
+
 try:
     import playsound
 except ImportError:
