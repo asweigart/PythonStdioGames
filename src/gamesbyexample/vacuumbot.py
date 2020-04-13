@@ -1,5 +1,5 @@
-"""Roomba Simulator, by Al Sweigart al@inventwithpython.com
-Watch a roomba move around and collect dirt.
+"""Vacuum Bot Simulator, by Al Sweigart al@inventwithpython.com
+Watch a vbot move around and collect dirt.
 Tags: large, artistic, simulation"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -21,7 +21,7 @@ WIDTH, HEIGHT = shutil.get_terminal_size()
 WIDTH -= 1
 HEIGHT -= 1  # Make room for the battery indicator text at the bottom.
 
-ROOMBA = 'O'
+VBOT = 'O'
 BASE = 'U'
 EMPTY = ' '
 DIRT1 = chr(9617)  # Character 9617 is '░'
@@ -44,9 +44,9 @@ PAUSE = 0.1             # (!) Try changing this to 0.0 or 1.0.
 def main():
     baseX = random.randint(0, WIDTH - 1)
     baseY = random.randint(0, HEIGHT - 1)
-    roombaX = baseX
-    roombaY = baseY
-    roombaBattery = MAX_BATTERY
+    vbotX = baseX
+    vbotY = baseY
+    vbotBattery = MAX_BATTERY
 
     dirtPiles = {}  # Keys are (x, y) tuples, value is dirt level.
     for x in range(WIDTH):
@@ -64,7 +64,7 @@ def main():
 
     moveTo = []  # A list of (x, y) tuples to move to in turn.
     while True:  # Main simulation loop.
-        roombaStatus = CLEANING
+        vbotStatus = CLEANING
 
         # Add dirt to the room:
         if random.randint(0, 100) <= DIRT_ADD_FREQUENCY:
@@ -80,7 +80,7 @@ def main():
                     dirtPileLevel = dirtPiles[(newDirtX, newDirtY)]
                     print(DIRT_CHARS[dirtPileLevel], end='')
 
-        # The roomba has reached its destination, so find the
+        # The vbot has reached its destination, so find the
         # closest dirt pile:
         if len(moveTo) == 0:
             closestDirtDistance = None
@@ -89,7 +89,7 @@ def main():
                 for dirtY in range(HEIGHT):
                     if dirtPiles[(dirtX, dirtY)] == 0:
                         continue  # Skip clean spots.
-                    distance = getDistance(roombaX, roombaY,
+                    distance = getDistance(vbotX, vbotY,
                                            dirtX, dirtY)
                     if (closestDirtDistance == None or
                         distance < closestDirtDistance):
@@ -100,63 +100,63 @@ def main():
             if closestDirtDistance != None:
                 closestDirtX, closestDirtY = random.choice(closestDirts)
 
-                moveTo = line(roombaX, roombaY,
+                moveTo = line(vbotX, vbotY,
                               closestDirtX, closestDirtY)
                 # Remove the first (x, y) returned from line() because
-                # that is the roomba's current position.
+                # that is the vbot's current position.
                 moveTo = moveTo[1:]
 
-        # Determine if the roomba should head back to base to recharge:
+        # Determine if the vbot should head back to base to recharge:
         distanceToDirt = len(moveTo)
         if len(moveTo) > 0:
             lineToBase = line(moveTo[-1][0], moveTo[-1][0], baseX, baseY)
             # Subtract 1 because the first (x, y) returned from line()
-            # is the roomba's current position.
+            # is the vbot's current position.
             distanceFromDirtToBase = len(lineToBase) - 1
         else:
             # There is no dirt to go to, so use 0:
             distanceFromDirtToBase = 0
 
-        if distanceToDirt + distanceFromDirtToBase > roombaBattery:
-            # Make the roomba go towards the base station:
-            moveTo = line(roombaX, roombaY, baseX, baseY)
+        if distanceToDirt + distanceFromDirtToBase > vbotBattery:
+            # Make the vbot go towards the base station:
+            moveTo = line(vbotX, vbotY, baseX, baseY)
             # Remove the first (x, y) returned from line() because
-            # that is the roomba's current position.
+            # that is the vbot's current position.
             moveTo = moveTo[1:]
-            roombaStatus = RETURNING
+            vbotStatus = RETURNING
 
-        # If the roomba is charging at the base station, make it stay
+        # If the vbot is charging at the base station, make it stay
         # there until it is fully charged:
-        if ((roombaX, roombaY) == (baseX, baseY) and
-            roombaBattery < MAX_BATTERY):
-                # Make the roomba stay where it is at the base station:
+        if ((vbotX, vbotY) == (baseX, baseY) and
+            vbotBattery < MAX_BATTERY):
+                # Make the vbot stay where it is at the base station:
                 moveTo = []
 
         if len(moveTo) > 0:
-            # Move the roomba towards its destination:
-            roombaBattery -= 1  # Reduce the roomba's battery.
-            # Erase the roomba from the screen and draw the dirt that
+            # Move the vbot towards its destination:
+            vbotBattery -= 1  # Reduce the vbot's battery.
+            # Erase the vbot from the screen and draw the dirt that
             # is at that space:
-            bext.goto(roombaX, roombaY)
-            print(DIRT_CHARS[dirtPiles[(roombaX, roombaY)]], end='')
+            bext.goto(vbotX, vbotY)
+            print(DIRT_CHARS[dirtPiles[(vbotX, vbotY)]], end='')
 
-            # Set new roomba position:
-            roombaX, roombaY = moveTo[0]
+            # Set new vbot position:
+            vbotX, vbotY = moveTo[0]
             del moveTo[0]
 
-        # Make the roomba suck up the dirt at its current location:
-        dirtPiles[(roombaX, roombaY)] = 0
+        # Make the vbot suck up the dirt at its current location:
+        dirtPiles[(vbotX, vbotY)] = 0
 
-        # Recharge the roomba if it's at the base station:
-        if roombaX == baseX and roombaY == baseY:
-            roombaStatus = CHARGING
-            roombaBattery += RECHARGE_RATE
-            if roombaBattery > MAX_BATTERY:
-                roombaBattery = MAX_BATTERY
+        # Recharge the vbot if it's at the base station:
+        if vbotX == baseX and vbotY == baseY:
+            vbotStatus = CHARGING
+            vbotBattery += RECHARGE_RATE
+            if vbotBattery > MAX_BATTERY:
+                vbotBattery = MAX_BATTERY
 
-        # Display the roomba:
-        bext.goto(roombaX, roombaY)
-        print(ROOMBA, end='')
+        # Display the vbot:
+        bext.goto(vbotX, vbotY)
+        print(VBOT, end='')
 
         # Display the base station:
         bext.goto(baseX, baseY)
@@ -165,8 +165,8 @@ def main():
         # Display the batter indicator on the bottom row:
         bext.goto(0, HEIGHT)
         print('Press Ctrl-C to quit. ', end='')
-        print(roombaStatus, end='')
-        batteryPercentage = round(roombaBattery / MAX_BATTERY * 100, 1)
+        print(vbotStatus, end='')
+        batteryPercentage = round(vbotBattery / MAX_BATTERY * 100, 1)
         print(' Battery:', str(batteryPercentage) + '%    ', end='')
 
         sys.stdout.flush()  # (Required for bext-using programs.)

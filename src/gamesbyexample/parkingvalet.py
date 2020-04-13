@@ -1,11 +1,11 @@
-"""Rush Hour, by Al Sweigart al@inventwithpython.com
+"""Parking Valet, by Al Sweigart al@inventwithpython.com
 A sliding tile puzzle game to move cars out of the way.
-Original game by Nob Yoshihagara.
+Inspired by Nob Yoshihagara's Rush Hour.
+parkingvaletpuzzle.txt generated from puzzles by Michael Fogleman.
 More info at https://www.michaelfogleman.com/rush/
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, puzzle game, board game"""
 __version__ = 0
-# rushhour_puzzle.txt generated from puzzles by Michael Fogleman.
 
 import math, random, sys
 
@@ -15,8 +15,8 @@ WALL = chr(9608)  # Character 9608 is '█'
 
 
 def main():
-    print("""Rush Hour, by Al Sweigart al@inventwithpython.com
-Original game by Nob Yoshihagara.
+    print("""Parking Valet, by Al Sweigart al@inventwithpython.com
+Original Rush Hour game by Nob Yoshihagara.
 Puzzles by Michael Fogleman.
 
 Get the "a" car to the right edge of the board.
@@ -39,14 +39,14 @@ Directions are (l)eft, (r)ight, (u)p, and (d)own.
 def getRandomPuzzle():
     """Return a string representing a randomly selected puzzle."""
     numberOfPuzzles = 0
-    puzzleFile = open('rushhourpuzzles.txt')
+    puzzleFile = open('parkingvaletpuzzles.txt')
     while puzzleFile.readline():
         numberOfPuzzles += 1
     puzzleFile.close()
 
     randomPuzzleNum = random.randint(1, numberOfPuzzles)
     counter = 1
-    puzzleFile = open('rushhourpuzzles.txt')
+    puzzleFile = open('parkingvaletpuzzles.txt')
     while True:
         if counter == randomPuzzleNum:
             return puzzleFile.readline()

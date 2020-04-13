@@ -1,6 +1,7 @@
-"""Simon, by Al Sweigart al@inventwithpython.com
+"""Sound Mimic, by Al Sweigart al@inventwithpython.com
 A pattern-matching game with sounds. Try to memorize an increasingly
 longer and longer pattern of letters.
+Inspired by the Simon game.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game"""
 __version__ = 0
@@ -20,7 +21,7 @@ except ImportError:
 BEEPS = {'A': 'sound0.wav', 'S': 'sound1.wav',
          'D': 'sound2.wav', 'F': 'sound3.wav'}
 
-print('''Simon, by Al Sweigart al@inventwithpython.com
+print('''Sound Mimic, by Al Sweigart al@inventwithpython.com
 Try to memorize a pattern of A S D F letters (each with its own beep)
 as it gets longer and longer.''')
 

@@ -1,4 +1,5 @@
-"""99 Bottles of Milk on the Wall, by Al Sweigart al@inventwithpython.com
+"""niNety nniinE BoOttels of Mlik On teh waLl
+By Al Sweigart al@inventwithpython.com
 Print the full lyrics to one of the most longest songs ever!
 Press Ctrl-C to stop.
 This and other games are available at https://nostarch.com/XX
