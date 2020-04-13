@@ -24,7 +24,7 @@ for key in range(len(LETTERS)):  # Loop through every possible key.
     for symbol in message:
         if symbol in LETTERS:
             # Get the encrypted (or decrypted) number for this symbol.
-            num = LETTERS.find(symbol) # Get the number of the symbol.
+            num = LETTERS.find(symbol)  # Get the number of the symbol.
             num = num - key  # Decrypt the number.
 
             # Handle the wrap-around if num is less than 0:

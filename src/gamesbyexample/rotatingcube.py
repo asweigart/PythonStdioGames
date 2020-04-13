@@ -18,7 +18,7 @@ TRANSLATEX = (WIDTH - 4) // 2
 TRANSLATEY = (HEIGHT - 4) // 2
 
 # (!) Try changing this to '#' or '*' or some other character:
-LINE_CHAR = '*'#chr(9608)  # Character 9608 is '█'
+LINE_CHAR = chr(9608)  # Character 9608 is '█'
 
 # Several of the data structures are lists/tuples with x, y, z at indexes 0, 1, and 2 respectively:
 X = 0

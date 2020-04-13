@@ -53,7 +53,7 @@ translated = ''
 for symbol in message:
     if symbol in LETTERS:
         # Get the encrypted (or decrypted) number for this symbol.
-        num = LETTERS.find(symbol) # Get the number of the symbol.
+        num = LETTERS.find(symbol)  # Get the number of the symbol.
         if mode == 'encrypt':
             num = num + key
         elif mode == 'decrypt':

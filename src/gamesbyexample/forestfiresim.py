@@ -22,9 +22,9 @@ HEIGHT = 21
 TREE = 'A'
 FIRE = 'W'
 EMPTY = ' '
-INITIAL_TREE_DENSITY = 20 # Percentage of forest that starts with trees.
-GROW_CHANCE = 1.0         # % chance a blank spot turns into a tree.
-LIGHTNING_CHANCE = 0.1    # % chance a tree is hit by lightning & burns.
+INITIAL_TREE_DENSITY = 20  # Percentage of forest that starts with trees.
+GROW_CHANCE = 1.0          # % chance a blank spot turns into a tree.
+LIGHTNING_CHANCE = 0.1     # % chance a tree is hit by lightning & burns.
 
 PAUSE_LENGTH = 0.05
 

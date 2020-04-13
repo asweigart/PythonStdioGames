@@ -56,7 +56,7 @@ QUIT to quit the game.
 
         # Change to a different level:
         if move.isdecimal():
-            currentLevelNum = int(move) # Set new level number.
+            currentLevelNum = int(move)  # Set new level number.
             # Refresh the level data and undo stack:
             currentLevel = copy.copy(allLevels[currentLevelNum])
             undoStack = [copy.copy(currentLevel)]

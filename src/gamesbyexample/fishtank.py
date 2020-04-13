@@ -45,7 +45,7 @@ FISH_TYPES = [
    'left':  ['<=^-._.-._', '<=^.-._.-.',
              '<=^_.-._.-', '<=^._.-._.']},
   ]  # (!) Try adding your own fish to FISH_TYPES.
-LONGEST_FISH_LENGTH = 10 # Longest single string in FISH_TYPES.
+LONGEST_FISH_LENGTH = 10  # Longest single string in FISH_TYPES.
 
 # The x position where a fish runs into the edge of the screen:
 RIGHT_EDGE = WIDTH - 1 - LONGEST_FISH_LENGTH

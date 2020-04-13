@@ -35,7 +35,7 @@ assert len(SUSPECTS) == len(ITEMS) == len(PLACES)
 knownSuspectsAndItems = []
 # visitedPlaces: Keys=places, values=strings of the suspect & item there.
 visitedPlaces = {}
-currentLocation = 'TAXI' # Start the game at the taxi.
+currentLocation = 'TAXI'  # Start the game at the taxi.
 accusedSuspects = []  # Accused suspects won't offer clues.
 liars = random.sample(SUSPECTS, random.randint(3, 4))
 accusationsLeft = 3  # You can accuse up to 3 people.
@@ -52,58 +52,58 @@ random.shuffle(PLACES)
 clues = {}
 for i, interviewee in enumerate(SUSPECTS):
     if interviewee in liars:
-        continue # Skip the liars for now.
+        continue  # Skip the liars for now.
 
     # This "clue dictionary" has keys=items & suspects,
     # value=the clue given.
     clues[interviewee] = {}
-    clues[interviewee]['debug_liar'] = False # Useful for debugging.
-    for item in ITEMS: # Select clue about each item.
-        if random.randint(0, 1) == 0: # Tells where the item is:
+    clues[interviewee]['debug_liar'] = False  # Useful for debugging.
+    for item in ITEMS:  # Select clue about each item.
+        if random.randint(0, 1) == 0:  # Tells where the item is:
             clues[interviewee][item] = PLACES[ITEMS.index(item)]
-        else: # Tells who has the item:
+        else:  # Tells who has the item:
             clues[interviewee][item] = SUSPECTS[ITEMS.index(item)]
-    for suspect in SUSPECTS: # Select clue about each suspect.
-        if random.randint(0, 1) == 0: # Tells where the suspect is:
+    for suspect in SUSPECTS:  # Select clue about each suspect.
+        if random.randint(0, 1) == 0:  # Tells where the suspect is:
             clues[interviewee][suspect] = PLACES[SUSPECTS.index(suspect)]
-        else: # Tells what item the suspect has:
+        else:  # Tells what item the suspect has:
             clues[interviewee][suspect] = ITEMS[SUSPECTS.index(suspect)]
 
 # Create data structures for clues the liars give about each item
 # and suspect:
 for i, interviewee in enumerate(SUSPECTS):
     if interviewee not in liars:
-        continue # We've already handled the truth-tellers.
+        continue  # We've already handled the truth-tellers.
 
     # This "clue dictionary" has keys=items & suspects,
     # value=the clue given:
     clues[interviewee] = {}
-    clues[interviewee]['debug_liar'] = True # Useful for debugging.
+    clues[interviewee]['debug_liar'] = True  # Useful for debugging.
 
     # This interviewee is a liar and gives wrong clues:
     for item in ITEMS:
         if random.randint(0, 1) == 0:
-            while True: # Select a random (wrong) place clue.
+            while True:  # Select a random (wrong) place clue.
                 # Lies about where the item is.
                 clues[interviewee][item] = random.choice(PLACES)
                 if clues[interviewee][item] != PLACES[ITEMS.index(item)]:
                     # Break out of the loop when wrong clue is selected.
                     break
         else:
-            while True: # Select a random (wrong) suspect clue.
+            while True:  # Select a random (wrong) suspect clue.
                 clues[interviewee][item] = random.choice(SUSPECTS)
                 if clues[interviewee][item] != SUSPECTS[ITEMS.index(item)]:
                     # Break out of the loop when wrong clue is selected.
                     break
     for suspect in SUSPECTS:
         if random.randint(0, 1) == 0:
-            while True: # Select a random (wrong) place clue.
+            while True:  # Select a random (wrong) place clue.
                 clues[interviewee][suspect] = random.choice(PLACES)
                 if clues[interviewee][suspect] != PLACES[ITEMS.index(item)]:
                     # Break out of the loop when wrong clue is selected.
                     break
         else:
-            while True: # Select a random (wrong) item clue.
+            while True:  # Select a random (wrong) item clue.
                 clues[interviewee][suspect] = random.choice(ITEMS)
                 if clues[interviewee][suspect] != ITEMS[SUSPECTS.index(suspect)]:
                     # Break out of the loop when wrong clue is selected.
@@ -165,7 +165,6 @@ Suspects either always tell lies, or always tell the truth. Will you
 find ZOPHIE THE CAT in time and accuse the guilty party?
 """)
 input('Press Enter to begin...')
-
 
 
 startTime = time.time()
@@ -275,7 +274,7 @@ while True:  # Main game loop.
         currentLocation = 'TAXI'
         continue  # Go back to the start of the main game loop.
 
-    else: # Player asks about a suspect or item.
+    else:  # Player asks about a suspect or item.
         thingBeingAskedAbout = knownSuspectsAndItems[int(response) - 1]
         if thingBeingAskedAbout in (thePersonHere, theItemHere):
             print('  They give you this clue: "No comment."')

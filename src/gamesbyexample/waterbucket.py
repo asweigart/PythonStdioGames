@@ -29,6 +29,7 @@ class Bucket:
         # Put the poured out water into the other bucket:
         intoBucket.water = intoBucket.water + amountToPour
 
+
 print('Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com')
 
 GOAL = 4  # The exact amount of water to have in a bucket to win.
@@ -149,4 +150,3 @@ while True:  # Main game loop.
 
     elif move == 'C':
         pass  # If the player selected Cancel, do nothing.
-

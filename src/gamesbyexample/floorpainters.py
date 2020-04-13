@@ -6,6 +6,7 @@ This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, simulation, bext"""
 __version__ = 0
 import random, shutil, sys, time
+
 try:
     import bext
 except ImportError:
@@ -15,7 +16,7 @@ except ImportError:
     sys.exit()
 
 # Set up the constants:
-PAUSE_LENGTH = 0.05 # (!) Try changing this to 0.0 or 1.0.
+PAUSE_LENGTH = 0.05  # (!) Try changing this to 0.0 or 1.0.
 
 # (!) Try uncommenting the other possible THE_PAINTERS settings.
 THE_PAINTERS = ['red', 'blue', 'green']
@@ -92,7 +93,6 @@ class Painter:
         self.x = random.randint(0, WIDTH - 1)
         self.y = random.randint(0, HEIGHT - 1)
         self.floor = floor
-
 
     def move(self):
         """Move the painter, while painting the floor behind them."""

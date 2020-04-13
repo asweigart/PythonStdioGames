@@ -21,7 +21,7 @@ SCALEY = (HEIGHT - 4) // 4
 # Text cells are twice as tall as they are wide, so adjust SCALEY:
 SCALEY = SCALEY * 2
 
-TRANSLATEX = (WIDTH - 4) // 2 # Put the swarm in the screen's center.
+TRANSLATEX = (WIDTH - 4) // 2  # Put the swarm in the screen's center.
 TRANSLATEY = (HEIGHT - 4) // 2
 FIREFLY_DARK = '.'  # Draw a period for normal fireflies.
 FIREFLY_LIGHT = chr(9604)  # Draw a block for lit up fireflies.

@@ -16,9 +16,9 @@ EMPTY = ' '  # The character to use for an empty space on the board.
 
 def main():
     print('Checkers, by Al Sweigart al@inventwithpython.com')
-    gameBoard = getNewBoard() # Create a new checker board.
-    turn = 'O' # O goes first.
-    while True: # Main game loop.
+    gameBoard = getNewBoard()  # Create a new checker board.
+    turn = 'O'  # O goes first.
+    while True:  # Main game loop.
         displayBoard(gameBoard)
 
         # Get the player's move and carry it out:

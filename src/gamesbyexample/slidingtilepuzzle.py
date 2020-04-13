@@ -97,13 +97,13 @@ def makeMove(board, move):
     bx, by = findBlankSpace(board)
 
     if move == 'W':
-        board[bx][by], board[bx][by+1] = board[bx][by+1], board[bx][by]
+        board[bx][by], board[bx][by + 1] = board[bx][by + 1], board[bx][by]
     elif move == 'A':
-        board[bx][by], board[bx+1][by] = board[bx+1][by], board[bx][by]
+        board[bx][by], board[bx + 1][by] = board[bx + 1][by], board[bx][by]
     elif move == 'S':
-        board[bx][by], board[bx][by-1] = board[bx][by-1], board[bx][by]
+        board[bx][by], board[bx][by - 1] = board[bx][by - 1], board[bx][by]
     elif move == 'D':
-        board[bx][by], board[bx-1][by] = board[bx-1][by], board[bx][by]
+        board[bx][by], board[bx - 1][by] = board[bx - 1][by], board[bx][by]
 
 
 def makeRandomMove(board):

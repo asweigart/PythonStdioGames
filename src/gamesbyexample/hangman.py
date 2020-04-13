@@ -79,7 +79,7 @@ By Al Sweigart al@inventwithpython.com
     correctLetters = []
     secretWord = random.choice(WORDS)
 
-    while True: # Main game loop.
+    while True:  # Main game loop.
         drawHangman(missedLetters, correctLetters, secretWord)
 
         # Let the player enter their letter guess:
@@ -128,7 +128,7 @@ def drawHangman(missedLetters, correctLetters, secretWord):
     # Replace blanks with correctly guessed letters:
     for i in range(len(secretWord)):
         if secretWord[i] in correctLetters:
-            blanks = blanks[:i] + secretWord[i] + blanks[i+1:]
+            blanks = blanks[:i] + secretWord[i] + blanks[i + 1 :]
 
     # Show the secret word with spaces in between each letter:
     for letter in blanks:
@@ -140,7 +140,7 @@ def drawHangman(missedLetters, correctLetters, secretWord):
 def getPlayerGuess(alreadyGuessed):
     """Returns the letter the player entered. This function makes sure the
     player entered a single letter they haven't guessed before."""
-    while True: # Keep asking until the player enters a valid letter.
+    while True:  # Keep asking until the player enters a valid letter.
         print('Guess a letter.')
         guess = input('> ')
         guess = guess.upper()
@@ -159,4 +159,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit() # When Ctrl-C is pressed, end the program.
+        sys.exit()  # When Ctrl-C is pressed, end the program.

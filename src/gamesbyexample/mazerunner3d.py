@@ -244,7 +244,7 @@ assert exitx != None and exity != None, 'No exit point in file.'
 playerDirection = NORTH
 
 
-while True: # Main game loop.
+while True:  # Main game loop.
     displayWallDict(makeWallDict(maze, playerx, playery, playerDirection, exitx, exity))
 
     while True: # Get user move.

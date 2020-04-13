@@ -13,6 +13,7 @@ except ImportError:
 # Every possible symbol that can be encrypted/decrypted:
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+
 def main():
     print('''Vigenere Cipher, by Al Sweigart al@inventwithpython.com
 The Viegenere cipher is a polyalphabetic substitution cipher that was
@@ -71,14 +72,14 @@ def decryptMessage(key, message):
 
 def translateMessage(key, message, mode):
     """Encrypt or decrypt the message using the key."""
-    translated = [] # Stores the encrypted/decrypted message string.
+    translated = []  # Stores the encrypted/decrypted message string.
 
     keyIndex = 0
     key = key.upper()
 
-    for symbol in message: # Loop through each character in message.
+    for symbol in message:  # Loop through each character in message.
         num = LETTERS.find(symbol.upper())
-        if num != -1: # -1 means symbol.upper() was not found in LETTERS.
+        if num != -1:  # -1 means symbol.upper() was not found in LETTERS.
             if mode == 'encrypt':
                 # Add if encrypting:
                 num += LETTERS.find(key[keyIndex])
@@ -86,7 +87,7 @@ def translateMessage(key, message, mode):
                 # Subtract if decrypting:
                 num -= LETTERS.find(key[keyIndex])
 
-            num %= len(LETTERS) # Handle the potential wrap-around.
+            num %= len(LETTERS)  # Handle the potential wrap-around.
 
             # Add the encrypted/decrypted symbol to translated.
             if symbol.isupper():
@@ -94,7 +95,7 @@ def translateMessage(key, message, mode):
             elif symbol.islower():
                 translated.append(LETTERS[num].lower())
 
-            keyIndex += 1 # move to the next letter in the key
+            keyIndex += 1  # move to the next letter in the key
             if keyIndex == len(key):
                 keyIndex = 0
         else:

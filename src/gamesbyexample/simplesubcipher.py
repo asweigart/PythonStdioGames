@@ -6,6 +6,7 @@ This and other games are available at https://nostarch.com/XX
 Tags: short, cryptography, math"""
 __version__ = 0
 import random
+
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
 except ImportError:

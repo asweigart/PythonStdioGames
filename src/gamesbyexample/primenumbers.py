@@ -7,7 +7,7 @@ This and other games are available at https://nostarch.com/XX
 Tags: tiny, math, scrolling"""
 
 import math, sys
-# TODO add save file option
+
 def main():
     print('Prime Numbers, by Al Sweigart al@inventwithpython.com')
     print('Prime numbers are numbers that are only evenly divisible by')

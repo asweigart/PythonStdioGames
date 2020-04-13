@@ -93,8 +93,8 @@ input('Press Enter to start...')
 
 switchWins = 0
 switchLosses = 0
-notSwitchWins = 0
-notSwitchLosses = 0
+stayWins = 0
+stayLosses = 0
 while True:  # Main program loop.
     # The computer picks which door has the car:
     doorThatHasCar = random.randint(1, 3)
@@ -116,19 +116,19 @@ while True:  # Main program loop.
     # Figure out which goat door to show the player:
     while True:
         # Select a door that is a goat and not picked by the player:
-        goatDoorOpened = random.randint(1, 3)
-        if goatDoorOpened != doorPick and goatDoorOpened != doorThatHasCar:
+        showGoatDoor = random.randint(1, 3)
+        if showGoatDoor != doorPick and showGoatDoor != doorThatHasCar:
             break
 
     # Show this goat door to the player:
-    if goatDoorOpened == 1:
+    if showGoatDoor == 1:
         print(FIRST_GOAT)
-    elif goatDoorOpened == 2:
+    elif showGoatDoor == 2:
         print(SECOND_GOAT)
-    elif goatDoorOpened == 3:
+    elif showGoatDoor == 3:
         print(THIRD_GOAT)
 
-    print('Door {} contains a goat!'.format(goatDoorOpened))
+    print('Door {} contains a goat!'.format(showGoatDoor))
 
     # Ask the player if they want to switch:
     while True:  # Keep asking until the player enters Y or N.
@@ -139,17 +139,17 @@ while True:  # Main program loop.
 
     # Switch the player's door if they wanted to switch:
     if switch == 'Y':
-        if doorPick == 1 and goatDoorOpened == 2:
+        if doorPick == 1 and showGoatDoor == 2:
             doorPick = 3
-        elif doorPick == 1 and goatDoorOpened == 3:
+        elif doorPick == 1 and showGoatDoor == 3:
             doorPick = 2
-        elif doorPick == 2 and goatDoorOpened == 1:
+        elif doorPick == 2 and showGoatDoor == 1:
             doorPick = 3
-        elif doorPick == 2 and goatDoorOpened == 3:
+        elif doorPick == 2 and showGoatDoor == 3:
             doorPick = 1
-        elif doorPick == 3 and goatDoorOpened == 1:
+        elif doorPick == 3 and showGoatDoor == 1:
             doorPick = 2
-        elif doorPick == 3 and goatDoorOpened == 2:
+        elif doorPick == 3 and showGoatDoor == 2:
             doorPick = 1
 
     # Open all the doors:
@@ -168,25 +168,33 @@ while True:  # Main program loop.
         if switch == 'Y':
             switchWins += 1
         elif switch == 'N':
-            notSwitchWins += 1
+            stayWins += 1
     else:
         print('Sorry, you lost.')
         if switch == 'Y':
             switchLosses += 1
         elif switch == 'N':
-            notSwitchLosses += 1
+            stayLosses += 1
 
     # Calculate success rate of switching and not switching:
-    if (switchWins + switchLosses) != 0: # Prevent zero-divide error.
-        switchSuccess = round(switchWins / (switchWins + switchLosses) * 100, 1)
+    totalSwitches = switchWins + switchLosses
+    if totalSwitches != 0:  # Prevent zero-divide error.
+        switchSuccess = round(switchWins / totalSwitches * 100, 1)
     else:
         switchSuccess = 0.0
-    if (notSwitchWins + notSwitchLosses) != 0: # Prevent zero-divide.
-        notSwitchSuccess = round(notSwitchWins / (notSwitchWins + notSwitchLosses) * 100, 1)
+
+    totalStays = stayWins + stayLosses
+    if (stayWins + stayLosses) != 0:  # Prevent zero-divide.
+        staySuccess = round(stayWins / totalStays * 100, 1)
     else:
-        notSwitchSuccess = 0.0
-    print('''
-Switching:     {} wins, {} losses, success rate {}%
-Not switching: {} wins, {} losses, success rate {}%
-'''.format(switchWins, switchLosses, switchSuccess, notSwitchWins, notSwitchLosses, notSwitchSuccess))
-    input('Press Enter repeat the experiment again.')
+        staySuccess = 0.0
+
+    print()
+    print('Switching:     ', end='')
+    print('{} wins, {} losses, '.format(switchWins, switchLosses))
+    print('success rate {}%'.format(switchSuccess))
+    print('Not switching: ', end='')
+    print('{} wins, {} losses, '.format(stayWins, stayLosses))
+    print('success rate {}%'.format(staySuccess))
+    print()
+    input('Press Enter repeat the experiment...')

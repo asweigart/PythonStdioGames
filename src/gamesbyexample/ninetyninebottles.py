@@ -39,4 +39,3 @@ try:
     print('No more bottles of milk on the wall!')
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.
-s

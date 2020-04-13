@@ -32,9 +32,9 @@ bottles = 99  # This is the starting number of bottles.
 
 # This list holds the string used for the lyrics:
 lines = [' bottles of milk on the wall,',
-' bottles of milk,',
-'Take one down, pass it around,',
-' bottles of milk on the wall!']
+         ' bottles of milk,',
+         'Take one down, pass it around,',
+         ' bottles of milk on the wall!']
 
 try:
     while bottles > 0:  # Keep looping and display the lyrics.

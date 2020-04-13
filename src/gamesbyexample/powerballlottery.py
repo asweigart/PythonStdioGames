@@ -110,12 +110,12 @@ for i in range(numPlays):
 
     # NOTE: Sets are not ordered, so it doesn't matter what order the
     # integers in set(numbers) and set(winningNumbers) are.
-    if set(numbers) == set(winningNumbers) and \
-    powerball == winningPowerball:
-        print()
-        print('You have won the Powerball Lottery! Congratulations, you')
-        print('would be a billionaire if this was real!')
-        break
+    if (set(numbers) == set(winningNumbers) and
+        powerball == winningPowerball):
+            print()
+            print('You have won the Powerball Lottery! Congratulations, you')
+            print('would be a billionaire if this was real!')
+            break
     else:
         print(' You lost.')
 

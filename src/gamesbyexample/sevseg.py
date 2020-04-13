@@ -14,6 +14,7 @@ F     B     __       __   __        __   __  __   __   __
 E     C
 |__D__|"""
 
+
 def getSevSegStr(number, numberOfDigits=0):
     """Return a seven-segment display string of number. The digits
     argument is the minimum number of digits in the returned string,
@@ -82,6 +83,7 @@ def getSevSegStr(number, numberOfDigits=0):
             rows[2] += ' '
 
     return '\n'.join(rows)
+
 
 # If this program isn't being imported, display the numbers 00 to 99.
 if __name__ == '__main__':
