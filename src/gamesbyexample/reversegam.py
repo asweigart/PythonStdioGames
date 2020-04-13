@@ -1,4 +1,4 @@
-"""Reversi, by Al Sweigart al@inventwithpython.com
+"""Reversegam, by Al Sweigart al@inventwithpython.com
 A tile flipping game, also called reversi.
 More info https://en.wikipedia.org/wiki/Reversi
 This and other games are available at https://nostarch.com/XX
@@ -235,7 +235,7 @@ def getComputerMove(board, computerTile):
 
 
 def main():
-    print('REVERSI, by Al Sweigart al@inventwithpython.com')
+    print('REVERSEGAM, by Al Sweigart al@inventwithpython.com')
     print()
     print('Place your tiles around your opponent\'s tiles to turn')
     print('them into your tiles. Try to end the game with the most')
