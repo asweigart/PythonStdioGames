@@ -15,7 +15,8 @@ def main():
     currentPlayer, nextPlayer = X, O  # X goes first, O goes next.
 
     while True:  # Main game loop.
-        print(gameBoard.getBoardStr())  # Display the board on the screen.
+        # Display the board on the screen:
+        print(gameBoard.getBoardStr())
 
         # Keep asking the player until they enter a number 1-9:
         move = None
@@ -25,7 +26,7 @@ def main():
         gameBoard.updateBoard(move, currentPlayer)  # Make the move.
 
         # Check if the game is over:
-        if gameBoard.isWinner(currentPlayer):  # First check for victory.
+        if gameBoard.isWinner(currentPlayer):  # Check for a winner.
             print(gameBoard.getBoardStr())
             print(currentPlayer + ' has won the game!')
             break
@@ -33,14 +34,21 @@ def main():
             print(gameBoard.getBoardStr())
             print('The game is a tie!')
             break
-        currentPlayer, nextPlayer = nextPlayer, currentPlayer # Swap turns.
+        # Switch turns to the next player:
+        currentPlayer, nextPlayer = nextPlayer, currentPlayer
     print('Thanks for playing!')
 
 
 class TTTBoard:
     def __init__(self, usePrettyBoard=False, useLogging=False):
         """Create a new, blank tic tac toe board."""
-        self._spaces = {}  # The board is represented as a Python dictionary.
+        # Map of space numbers: 1|2|3
+        #                       -+-+-
+        #                       4|5|6
+        #                       -+-+-
+        #                       7|8|9
+        # Keys are 1 through 9, the values are X, O, or BLANK:
+        self._spaces = {}
         for space in ALL_SPACES:
             self._spaces[space] = BLANK  # All spaces start as blank.
 
@@ -51,7 +59,10 @@ class TTTBoard:
       -+-+-
       {}|{}|{}  4 5 6
       -+-+-
-      {}|{}|{}  7 8 9'''.format(self._spaces['1'], self._spaces['2'], self._spaces['3'], self._spaces['4'], self._spaces['5'], self._spaces['6'], self._spaces['7'], self._spaces['8'], self._spaces['9'])
+      {}|{}|{}  7 8 9'''.format(self._spaces['1'], self._spaces['2'],
+        self._spaces['3'], self._spaces['4'], self._spaces['5'],
+        self._spaces['6'], self._spaces['7'], self._spaces['8'],
+        self._spaces['9'])
 
     def isValidSpace(self, space):
         """Returns True if the space on the board is a valid space number
@@ -60,8 +71,9 @@ class TTTBoard:
 
     def isWinner(self, player):
         """Return True if player is a winner on this TTTBoard."""
-        s, p = self._spaces, player  # Shorter names as "syntactic sugar".
-        # Check for 3 marks across the 3 rows, 3 columns, and 2 diagonals.
+        # Shorter variable names used here for readablility:
+        s, p = self._spaces, player
+        # Check for 3 marks across 3 rows, 3 columns, and 2 diagonals.
         return ((s['1'] == s['2'] == s['3'] == p) or  # Across the top
                 (s['4'] == s['5'] == s['6'] == p) or  # Across the middle
                 (s['7'] == s['8'] == s['9'] == p) or  # Across the bottom
@@ -94,7 +106,10 @@ class MiniTTTBoard(TTTBoard):
         boardStr = '''
           {}{}{} 123
           {}{}{} 456
-          {}{}{} 789'''.format(self._spaces['1'], self._spaces['2'], self._spaces['3'], self._spaces['4'], self._spaces['5'], self._spaces['6'], self._spaces['7'], self._spaces['8'], self._spaces['9'])
+          {}{}{} 789'''.format(self._spaces['1'], self._spaces['2'],
+            self._spaces['3'], self._spaces['4'], self._spaces['5'],
+            self._spaces['6'], self._spaces['7'], self._spaces['8'],
+            self._spaces['9'])
 
         # Change '.' back to blank spaces.
         for space in ALL_SPACES:
@@ -106,7 +121,8 @@ class MiniTTTBoard(TTTBoard):
 class HintTTTBoard(TTTBoard):
     def getBoardStr(self):
         """Return a text-representation of the board with hints."""
-        boardStr = super().getBoardStr()  # Call getBoardStr() in TTTBoard.
+        # Call getBoardStr() in the parent class, TTTBoard.
+        boardStr = super().getBoardStr()
 
         xCanWin = False
         oCanWin = False
@@ -187,11 +203,11 @@ class LoggingTTTBoard(TTTBoard):
         self.logFilename = logFilename
 
     def updateBoard(self, space, player):
-        """Sets the space on the board to player, but also records each move
-        to the log file."""
+        """Sets the space on the board to player, but also records each
+        move to the log file."""
         super().updateBoard(space, player)
         with open(self.logFilename, 'a') as logFile:
-            logFile.write('{} moved on space {}:\n'.format(player, space))
+            logFile.write(player + ' moved on space ' + space + '\n')
             logFile.write(super().getBoardStr() + '\n')
 
 

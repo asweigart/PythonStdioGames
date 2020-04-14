@@ -31,12 +31,12 @@ while True:  # Main program loop.
     # Each iteration of this loop is a step of the simulation.
 
     print('\n' * 50)  # Separate each step with newlines.
-    currentCells = copy.deepcopy(nextCells)
+    cells = copy.deepcopy(nextCells)
 
-    # Print currentCells on the screen:
+    # Print cells on the screen:
     for y in range(HEIGHT):
         for x in range(WIDTH):
-            print(currentCells[(x, y)], end='')  # Print the # or space.
+            print(cells[(x, y)], end='')  # Print the # or space.
         print()  # Print a newline at the end of the row.
     print('Press Ctrl-C to quit.')
 
@@ -51,28 +51,29 @@ while True:  # Main program loop.
 
             # Count the number of living neighbors:
             numNeighbors = 0
-            if currentCells[(leftCoord, aboveCoord)] == ALIVE:
+            if cells[(leftCoord, aboveCoord)] == ALIVE:
                 numNeighbors += 1  # Top-left neighbor is alive.
-            if currentCells[(x, aboveCoord)] == ALIVE:
+            if cells[(x, aboveCoord)] == ALIVE:
                 numNeighbors += 1  # Top neighbor is alive.
-            if currentCells[(rightCoord, aboveCoord)] == ALIVE:
+            if cells[(rightCoord, aboveCoord)] == ALIVE:
                 numNeighbors += 1  # Top-right neighbor is alive.
-            if currentCells[(leftCoord, y)] == ALIVE:
+            if cells[(leftCoord, y)] == ALIVE:
                 numNeighbors += 1  # Left neighbor is alive.
-            if currentCells[(rightCoord, y)] == ALIVE:
+            if cells[(rightCoord, y)] == ALIVE:
                 numNeighbors += 1  # Right neighbor is alive.
-            if currentCells[(leftCoord, belowCoord)] == ALIVE:
+            if cells[(leftCoord, belowCoord)] == ALIVE:
                 numNeighbors += 1  # Bottom-left neighbor is alive.
-            if currentCells[(x, belowCoord)] == ALIVE:
+            if cells[(x, belowCoord)] == ALIVE:
                 numNeighbors += 1  # Bottom neighbor is alive.
-            if currentCells[(rightCoord, belowCoord)] == ALIVE:
+            if cells[(rightCoord, belowCoord)] == ALIVE:
                 numNeighbors += 1  # Bottom-right neighbor is alive.
 
             # Set cell based on Conway's Game of Life rules:
-            if currentCells[(x, y)] == ALIVE and (numNeighbors == 2 or numNeighbors == 3):
+            if cells[(x, y)] == ALIVE and (numNeighbors == 2 or
+                numNeighbors == 3):
                 # Living cells with 2 or 3 neighbors stay alive:
                 nextCells[(x, y)] = ALIVE
-            elif currentCells[(x, y)] == DEAD and numNeighbors == 3:
+            elif cells[(x, y)] == DEAD and numNeighbors == 3:
                 # Dead cells with 3 neighbors become alive:
                 nextCells[(x, y)] = ALIVE
             else:
@@ -82,4 +83,6 @@ while True:  # Main program loop.
     try:
         time.sleep(1)  # Add a 1 second pause to reduce flickering.
     except KeyboardInterrupt:
+        print('Conway\'s Game of Life')
+        print('By Al Sweigart al@inventwithpython.com')
         sys.exit()  # When Ctrl-C is pressed, end the program.

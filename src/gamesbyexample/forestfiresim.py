@@ -17,21 +17,23 @@ except ImportError:
 
 # Set up the constants:
 WIDTH = 79
-HEIGHT = 21
+HEIGHT = 22
 
 TREE = 'A'
 FIRE = 'W'
 EMPTY = ' '
+
+# (!) Try changing these settings to anything between 0.0 and 100.0:
 INITIAL_TREE_DENSITY = 20  # Percentage of forest that starts with trees.
 GROW_CHANCE = 1.0          # % chance a blank spot turns into a tree.
-LIGHTNING_CHANCE = 0.1     # % chance a tree is hit by lightning & burns.
+FIRE_CHANCE = 0.1     # % chance a tree is hit by lightning & burns.
 
+# (!) Try setting the pause length to 1.0 or 0.0:
 PAUSE_LENGTH = 0.05
 
 
 def main():
     forest = createNewForest()
-
     bext.clear()
 
     while True:  # Main program loop.
@@ -48,23 +50,23 @@ def main():
                     # previous iteration, just do nothing here:
                     continue
 
-                if (forest[(x, y)] == EMPTY) and (random.randint(1, 10000) / 100 <= GROW_CHANCE):
-                    # Grow a tree in this empty space:
+                if ((forest[(x, y)] == EMPTY) and
+                    (random.randint(1, 10000) / 100 <= GROW_CHANCE)):
+                    # Grow a tree in this empty space.
                     nextForest[(x, y)] = TREE
-                elif (forest[(x, y)] == TREE) and (random.randint(1, 10000) / 100 <= LIGHTNING_CHANCE):
-                    # Lightning sets this tree on fire:
+                elif ((forest[(x, y)] == TREE) and
+                    (random.randint(1, 10000) / 100 <= FIRE_CHANCE)):
+                    # Lightning sets this tree on fire.
                     nextForest[(x, y)] = FIRE
                 elif forest[(x, y)] == FIRE:
-                    # Fire spreads to neighboring trees:
+                    # This tree is currently burning.
+                    # Loop through all the neighboring spaces:
                     for ix in range(-1, 2):
                         for iy in range(-1, 2):
+                            # Fire spreads to neighboring trees:
                             if (x + ix, y + iy) in forest:
                                 if forest[(x + ix, y + iy)] == TREE:
                                     nextForest[(x + ix, y + iy)] = FIRE
-                                else:
-                                    nextForest[(x + ix, y + iy)] = forest[
-                                        (x + ix, y + iy)
-                                    ]
                     # The tree has burned down now, so erase it:
                     nextForest[(x, y)] = EMPTY
                 else:
@@ -103,7 +105,8 @@ def displayForest(forest):
                 print(forest[(x, y)], end='')
         print()
     bext.fg('reset')  # Use the default font color.
-    print('Grow chance: {}%  Lightning chance: {}%'.format(GROW_CHANCE, LIGHTNING_CHANCE))
+    print('Grow chance: {}%  '.format(GROW_CHANCE), end='')
+    print('Lightning chance: {}%  '.format(FIRE_CHANCE), end='')
     print('Press Ctrl-C to quit.')
 
 

@@ -13,7 +13,8 @@ def main():
     currentPlayer, nextPlayer = X, O  # X goes first, O goes next.
 
     while True:  # Main game loop.
-        print(getBoardStr(gameBoard))  # Display the board on the screen.
+        # Display the board on the screen:
+        print(getBoardStr(gameBoard))
 
         # Keep asking the player until they enter a number 1-9:
         move = None
@@ -23,21 +24,28 @@ def main():
         updateBoard(gameBoard, move, currentPlayer)  # Make the move.
 
         # Check if the game is over:
-        if isWinner(gameBoard, currentPlayer):  # First check for victory.
+        if isWinner(gameBoard, currentPlayer):  # Check for a winner.
             print(getBoardStr(gameBoard))
             print(currentPlayer + ' has won the game!')
             break
-        elif isBoardFull(gameBoard):  # Next check for a tie.
+        elif isBoardFull(gameBoard):  # Check for a tie.
             print(getBoardStr(gameBoard))
             print('The game is a tie!')
             break
-        currentPlayer, nextPlayer = nextPlayer, currentPlayer # Swap turns.
+        # Switch turns to the next player:
+        currentPlayer, nextPlayer = nextPlayer, currentPlayer
     print('Thanks for playing!')
 
 
 def getBlankBoard():
     """Create a new, blank tic tac toe board."""
-    board = {}  # The board is represented as a Python dictionary.
+    # Map of space numbers: 1|2|3
+    #                       -+-+-
+    #                       4|5|6
+    #                       -+-+-
+    #                       7|8|9
+    # Keys are 1 through 9, the values are X, O, or BLANK:
+    board = {}
     for space in ALL_SPACES:
         board[space] = BLANK  # All spaces start as blank.
     return board
@@ -50,7 +58,9 @@ def getBoardStr(board):
       -+-+-
       {}|{}|{}  4 5 6
       -+-+-
-      {}|{}|{}  7 8 9'''.format(board['1'], board['2'], board['3'], board['4'], board['5'], board['6'], board['7'], board['8'], board['9'])
+      {}|{}|{}  7 8 9'''.format(board['1'], board['2'], board['3'],
+                                board['4'], board['5'], board['6'],
+                                board['7'], board['8'], board['9'])
 
 def isValidSpace(board, space):
     """Returns True if the space on the board is a valid space number
@@ -60,8 +70,9 @@ def isValidSpace(board, space):
 
 def isWinner(board, player):
     """Return True if player is a winner on this TTTBoard."""
-    b, p = board, player  # Shorter names as "syntactic sugar".
-    # Check for 3 marks across the 3 rows, 3 columns, and 2 diagonals.
+    # Shorter variable names used here for readablility:
+    b, p = board, player
+    # Check for 3 marks across 3 rows, 3 columns, and 2 diagonals.
     return ((b['1'] == b['2'] == b['3'] == p) or  # Across the top
             (b['4'] == b['5'] == b['6'] == p) or  # Across the middle
             (b['7'] == b['8'] == b['9'] == p) or  # Across the bottom

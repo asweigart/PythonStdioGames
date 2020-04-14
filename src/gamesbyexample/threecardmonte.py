@@ -95,7 +95,7 @@ for i in range(NUM_SWAPS):
 print('\n' * 60)
 
 # Ask the user to find the red lady:
-while True:  # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
+while True:  # Keep asking until LEFT, MIDDLE, or RIGHT is entered.
     print('Which card has the Queen of Hearts? (LEFT MIDDLE RIGHT)')
     guess = input('> ').upper()
 
@@ -114,9 +114,9 @@ while True:  # Keep asking until the player enters LEFT, MIDDLE, or RIGHT.
 #    # Player has won, so let's move the queen.
 #    possibleNewIndexes = [0, 1, 2]
 #    possibleNewIndexes.remove(guessIndex)  # Remove the queen's index.
-#    newIndex = random.choice(possibleNewIndexes)  # Choose a new index.
+#    newInd = random.choice(possibleNewIndexes)  # Choose a new index.
 #    # Place the queen at the new index:
-#    cards[guessIndex], cards[newIndex] = cards[newIndex], cards[guessIndex]
+#    cards[guessIndex], cards[newInd] = cards[newInd], cards[guessIndex]
 
 displayCards(cards)  # Show all the cards.
 

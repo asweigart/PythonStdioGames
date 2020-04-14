@@ -62,10 +62,9 @@ def main():
         bext.goto(newDirtX, newDirtY)
         print(DIRT_CHARS[dirtPiles[(newDirtX, newDirtY)]], end='')
 
+    vbotStatus = CLEANING  # The vbot starts in cleaning mode.
     moveTo = []  # A list of (x, y) tuples to move to in turn.
     while True:  # Main simulation loop.
-        vbotStatus = CLEANING
-
         # Add dirt to the room:
         if random.randint(0, 100) <= DIRT_ADD_FREQUENCY:
             for i in range(DIRT_ADD_AMOUNT):
@@ -151,8 +150,9 @@ def main():
         if vbotX == baseX and vbotY == baseY:
             vbotStatus = CHARGING
             vbotBattery += RECHARGE_RATE
-            if vbotBattery > MAX_BATTERY:
+            if vbotBattery >= MAX_BATTERY:
                 vbotBattery = MAX_BATTERY
+                vbotStatus = CLEANING
 
         # Display the vbot:
         bext.goto(vbotX, vbotY)

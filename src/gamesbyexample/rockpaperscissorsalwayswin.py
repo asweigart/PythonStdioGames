@@ -1,4 +1,5 @@
-"""Rock-Paper-Scissors (Always Win), by Al Sweigart al@inventwithpython.com
+"""Rock-Paper-Scissors (Always Win)
+By Al Sweigart al@inventwithpython.com
 A hand game of luck, except you cannot lose.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, game, humor"""

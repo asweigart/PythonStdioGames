@@ -1,5 +1,5 @@
 """Hangman, by Al Sweigart al@inventwithpython.com
-A word-guessing game.
+Guess the letters to a secret word before the hangman is drawn.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, word, puzzle game"""
 __version__ = 0
@@ -70,9 +70,7 @@ WORDS = 'ANT BABOON BADGER BAT BEAR BEAVER CAMEL CAT CLAM COBRA COUGAR COYOTE CR
 
 
 def main():
-    print('''HANGMAN
-By Al Sweigart al@inventwithpython.com
-''')
+    print('Hangman, by Al Sweigart al@inventwithpython.com')
 
     # Setup variables for a new game:
     missedLetters = []
@@ -96,7 +94,8 @@ By Al Sweigart al@inventwithpython.com
                     foundAllLetters = False
                     break
             if foundAllLetters:
-                print('Yes! The secret word is "' + secretWord + '"! You have won!')
+                print('Yes! The secret word is:', secretWord)
+                print('You have won!')
                 break
         else:
             # The player has guessed incorrectly:
@@ -138,8 +137,8 @@ def drawHangman(missedLetters, correctLetters, secretWord):
 
 
 def getPlayerGuess(alreadyGuessed):
-    """Returns the letter the player entered. This function makes sure the
-    player entered a single letter they haven't guessed before."""
+    """Returns the letter the player entered. This function makes sure
+    the player entered a single letter they haven't guessed before."""
     while True:  # Keep asking until the player enters a valid letter.
         print('Guess a letter.')
         guess = input('> ')

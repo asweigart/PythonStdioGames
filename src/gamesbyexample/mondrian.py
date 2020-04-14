@@ -70,9 +70,11 @@ while True:  # Main application loop.
                 continue
 
             # Find out if we're on a vertical or horizontal segment:
-            if board[(startx - 1, starty)] == board[(startx + 1, starty)] == WHITE:
+            if (board[(startx - 1, starty)] == WHITE and
+                board[(startx + 1, starty)] == WHITE):
                 orientation = 'vertical'
-            elif board[(startx, starty - 1)] == board[(startx, starty + 1)] == WHITE:
+            elif (board[(startx, starty - 1)] == WHITE and
+                board[(startx, starty + 1)] == WHITE):
                 orientation = 'horizontal'
             else:
                 # The start point is on an intersection,
@@ -89,7 +91,8 @@ while True:  # Main application loop.
                     y = starty
                     while 0 < y < height - 1:
                         y += changey
-                        if board[(startx - 1, y)] == board[(startx + 1, y)] == BLACK:
+                        if (board[(startx - 1, y)] == BLACK and
+                            board[(startx + 1, y)] == BLACK):
                             # We've found a four-way intersection.
                             break
                         elif ((board[(startx - 1, y)] == WHITE and
@@ -110,7 +113,8 @@ while True:  # Main application loop.
                     x = startx
                     while 0 < x < width - 1:
                         x += changex
-                        if board[(x, starty - 1)] == board[(x, starty + 1)] == BLACK:
+                        if (board[(x, starty - 1)] == BLACK and
+                            board[(x, starty + 1)] == BLACK):
                             # We've found a four-way intersection.
                             break
                         elif ((board[(x, starty - 1)] == WHITE and

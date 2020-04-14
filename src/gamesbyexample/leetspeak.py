@@ -8,7 +8,7 @@ import random
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
 except ImportError:
-    pass  # If pyperclip cannot be found, do nothing. It's not a big deal.
+    pass  # If pyperclip is not installed, do nothing. It's no big deal.
 
 
 def main():
@@ -46,7 +46,8 @@ def englishToLeetspeak(message):
             leetReplacement = random.choice(possibleLeetReplacements)
             leetspeak = leetspeak + leetReplacement
         else:
-            leetspeak = leetspeak + char  # Don't translate this character.
+            # Don't translate this character:
+            leetspeak = leetspeak + char
     return leetspeak
 
 

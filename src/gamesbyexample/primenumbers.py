@@ -17,7 +17,7 @@ def main():
     print()
     while True:
         print('Enter a number to start searching for primes from:')
-        print('(Try 0 or 1000000000000 (12 zeros) or some other starting number.)')
+        print('(Try 0 or 1000000000000 (12 zeros) or another number.)')
         response = input('> ')
         if response.isdecimal():
             num = int(response)

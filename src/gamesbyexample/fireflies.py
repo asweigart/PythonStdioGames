@@ -6,8 +6,8 @@ __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
 
 # This program draws points that rotate on the surface of a sphere. The
-# sphere is invisible and projected onto the user's 2D screen, so the points
-# kind of look like fireflies swirling around in a circle.
+# sphere is invisible and projected onto the user's 2D screen, so the
+# points kind of look like fireflies swirling around in a circle.
 
 import math, time, sys, os, random
 
@@ -35,7 +35,7 @@ Z = 2
 
 def main():
     # Each firefly is represented by dictionary with keys
-    # 'originalPosition', 'rotationAmount', 'rotationVelocity',
+    # 'originalPosition', 'rotationAmount', 'rotVelocity',
     # 'changeTime', 'isLit'.
     fireflies = []
     for i in range(NUMBER_OF_FIREFLIES):
@@ -56,10 +56,10 @@ def main():
         firefly['originalPosition'] = (x, y, z)
 
         # Firefly positions start with no rotation:
-        firefly['rotationAmounts'] = [0, 0, 0]
+        firefly['rotAmounts'] = [0, 0, 0]
 
         # Randomly choose rotation velocity for each axis:
-        firefly['rotationVelocity'] = [
+        firefly['rotVelocity'] = [
             random.randint(-100, 100) / 1000.0,
             random.randint(-100, 100) / 1000.0,
             random.randint(-100, 100) / 1000.0,
@@ -83,9 +83,9 @@ def main():
         # Update the fireflies:
         for firefly in fireflies:
             # Change the rotation amount by the rotation velocity:
-            firefly['rotationAmounts'][X] += firefly['rotationVelocity'][X]
-            firefly['rotationAmounts'][Y] += firefly['rotationVelocity'][Y]
-            firefly['rotationAmounts'][Z] += firefly['rotationVelocity'][Z]
+            firefly['rotAmounts'][X] += firefly['rotVelocity'][X]
+            firefly['rotAmounts'][Y] += firefly['rotVelocity'][Y]
+            firefly['rotAmounts'][Z] += firefly['rotVelocity'][Z]
 
             # To avoid rounding errors from accumulating, we recalculate
             # the rotation amounts based on the original position each
@@ -98,9 +98,9 @@ def main():
                 firefly['originalPosition'][X],
                 firefly['originalPosition'][Y],
                 firefly['originalPosition'][Z],
-                firefly['rotationAmounts'][X],
-                firefly['rotationAmounts'][Y],
-                firefly['rotationAmounts'][Z],
+                firefly['rotAmounts'][X],
+                firefly['rotAmounts'][Y],
+                firefly['rotAmounts'][Z],
             )
             rotatedAndTransformedPoint = transformPoint(rotatedPoint)
             screenPoints.append(rotatedAndTransformedPoint)

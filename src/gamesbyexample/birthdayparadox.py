@@ -76,7 +76,8 @@ else:
 print()
 
 # Run through 1000 simulations and get the matching birthday probability.
-input('Press Enter for me to generate {} random birthdays 100,000 times.'.format(number))
+print('Generating {} random birthdays 100,000 times.'.format(number))
+input('Press Enter to begin...')
 
 print('Running simulations of', number, 'people...')
 simMatch = 0

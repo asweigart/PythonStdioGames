@@ -43,7 +43,8 @@ while True:  # Main game loop.
     if CUPS[int(pickedCup) - 1] == 'diamond':
         print('You found the cup with the diamond!')
     else:
-        print('Nope! You picked a cup that had {} in it.'.format(CUPS[int(pickedCup) - 1]))
+        item = CUPS[int(pickedCup) - 1]
+        print('Nope! You picked a cup that had {} in it.'.format(item))
 
 
     print('Would you like to play again? Y/N')

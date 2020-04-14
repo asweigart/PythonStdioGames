@@ -5,7 +5,7 @@ Tags: large, game, puzzle game"""
 __version__ = 0
 import random, sys
 
-BLANK = '  '
+BLANK = '  '  # Note: This string is two spaces, not one.
 
 
 def main():
@@ -17,6 +17,7 @@ def main():
            5  6  7  8
            9 10 11 12
           13 14 15   ''')
+    input('Press Enter to begin...')
 
     gameBoard = getNewPuzzle()
 
@@ -82,7 +83,7 @@ def askForPlayerMove(board):
 
     while True:
         print('                          ({})'.format(w))
-        print('Enter move (or QUIT): ({}) ({}) ({})'.format(a, s, d))
+        print('Enter WASD (or QUIT): ({}) ({}) ({})'.format(a, s, d))
 
         response = input('> ').upper()
         if response == 'QUIT':
@@ -97,13 +98,13 @@ def makeMove(board, move):
     bx, by = findBlankSpace(board)
 
     if move == 'W':
-        board[bx][by], board[bx][by + 1] = board[bx][by + 1], board[bx][by]
+        board[bx][by], board[bx][by+1] = board[bx][by+1], board[bx][by]
     elif move == 'A':
-        board[bx][by], board[bx + 1][by] = board[bx + 1][by], board[bx][by]
+        board[bx][by], board[bx+1][by] = board[bx+1][by], board[bx][by]
     elif move == 'S':
-        board[bx][by], board[bx][by - 1] = board[bx][by - 1], board[bx][by]
+        board[bx][by], board[bx][by-1] = board[bx][by-1], board[bx][by]
     elif move == 'D':
-        board[bx][by], board[bx - 1][by] = board[bx - 1][by], board[bx][by]
+        board[bx][by], board[bx-1][by] = board[bx-1][by], board[bx][by]
 
 
 def makeRandomMove(board):

@@ -20,7 +20,15 @@ TRANSLATEY = (HEIGHT - 4) // 2
 # (!) Try changing this to '#' or '*' or some other character:
 LINE_CHAR = chr(9608)  # Character 9608 is '█'
 
-# Several of the data structures are lists/tuples with x, y, z at indexes 0, 1, and 2 respectively:
+# (!) Try setting two of these values to zero to rotate the cube only
+# along a single axis:
+X_ROTATE_SPEED = 0.03
+Y_ROTATE_SPEED = 0.08
+Z_ROTATE_SPEED = 0.13
+
+# This program stores XYZ coordinates in lists, with the X coordinate
+# at index 0, Y at 1, and Z at 2. These constants make our code more
+# readable when accessing the coordinates in these lists.
 X = 0
 Y = 1
 Z = 2
@@ -126,50 +134,70 @@ def rotatePoint(x, y, z, ax, ay, az):
     return (rotatedX, rotatedY, rotatedZ)
 
 
-def transformPoint(point):
-    """Converts the 3D xyz point to a 2D xy point. Resizes this 2D point
-    by a scale of scalex and scaley, then moves the point by translatex
-    and translatey."""
+def adjustPoint(point):
+    """Adjusts the 3D XYZ point to a 2D XY point fit for displaying on
+    the screen. This resizes this 2D point by a scale of SCALEX and
+    SCALEY, then moves the point by TRANSLATEX and TRANSLATEY."""
     return (int(point[X] * SCALEX + TRANSLATEX),
             int(point[Y] * SCALEY + TRANSLATEY))
 
 
-origPoints = [[-1, -1, -1],
-              [ 1, -1, -1],
-              [-1, -1,  1],
-              [ 1, -1,  1],
-              [-1,  1, -1],
-              [ 1,  1, -1],
-              [-1,  1,  1],
-              [ 1,  1,  1]]
-rotatedPoints = [None] * len(origPoints)
-rx = ry = rz = 0.0  # Rotation amounts for each axis.
+"""CUBE_CORNERS stores the XYZ coordinates of the corners of a cube.
+The indexes for each corner in CUBE_CORNERS are marked in this diagram:
+      0---1
+     /|  /|
+    2---3 |
+    | 4-|-5
+    |/  |/
+    6---7"""
+CUBE_CORNERS = [[-1, -1, -1], # Point 0
+                [ 1, -1, -1], # Point 1
+                [-1, -1,  1], # Point 2
+                [ 1, -1,  1], # Point 3
+                [-1,  1, -1], # Point 4
+                [ 1,  1, -1], # Point 5
+                [-1,  1,  1], # Point 6
+                [ 1,  1,  1]] # Point 7
+# rotatedCorners stores the XYZ coordinates from CUBE_CORNERS after
+# they've been rotated by rx, ry, and rz amounts:
+rotatedCorners = [None, None, None, None, None, None, None, None]
+# Rotation amounts for each axis:
+xRotation = 0.0
+yRotation = 0.0
+zRotation = 0.0
 
 try:
     while True:  # Main program loop.
-        # Rotate the cube:
-        rx += 0.03
-        ry += 0.08
-        rz += 0.13
-        for i in range(len(origPoints)):
-            rotatedPoints[i] = rotatePoint(*origPoints[i], rx, ry, rz)
+        # Rotate the cube along different axises by different amounts:
+        xRotation += X_ROTATE_SPEED
+        yRotation += Y_ROTATE_SPEED
+        zRotation += Z_ROTATE_SPEED
+        for i in range(len(CUBE_CORNERS)):
+            x = CUBE_CORNERS[i][X]
+            y = CUBE_CORNERS[i][Y]
+            z = CUBE_CORNERS[i][Z]
+            rotatedCorners[i] = rotatePoint(x, y, z, xRotation,
+                yRotation, zRotation)
 
         # Get the points of the cube lines:
         cubePoints = []
-        for start, end in ((0, 1), (1, 3), (3, 2), (2, 0), (0, 4), (1, 5), (2, 6), (3, 7), (4, 5), (5, 7), (7, 6), (6, 4)):
-            transformedPoint1 = transformPoint(rotatedPoints[start])
-            transformedPoint2 = transformPoint(rotatedPoints[end])
-            cubePoints.extend(line(transformedPoint1[X], transformedPoint1[Y], transformedPoint2[X], transformedPoint2[Y]))
+        for fromCornerIndex, toCornerIndex in ((0, 1), (1, 3), (3, 2), (2, 0), (0, 4), (1, 5), (2, 6), (3, 7), (4, 5), (5, 7), (7, 6), (6, 4)):
+            fromX, fromY = adjustPoint(rotatedCorners[fromCornerIndex])
+            toX, toY = adjustPoint(rotatedCorners[toCornerIndex])
+            pointsOnLine = line(fromX, fromY, toX, toY)
+            cubePoints.extend(pointsOnLine)
+
         # Get rid of duplicate points:
         cubePoints = tuple(frozenset(cubePoints))
-        # Draw the cube:
+
+        # Display the cube on the screen:
         for y in range(HEIGHT):
             for x in range(WIDTH):
                 if (x, y) in cubePoints:
-                    # Draw full block:
+                    # Display full block:
                     print(LINE_CHAR, end='', flush=False)
                 else:
-                    # Draw empty space:
+                    # Display empty space:
                     print(' ', end='', flush=False)
             print(flush=False)
         print('Press Ctrl-C to quit.', end='', flush=True)

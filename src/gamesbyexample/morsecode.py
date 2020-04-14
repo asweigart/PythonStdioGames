@@ -7,7 +7,7 @@ __version__ = 0
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
 except:
-    pass  # If pyperclip cannot be found, do nothing. It's not a big deal.
+    pass  # If pyperclip is not installed, do nothing. It's no big deal.
 
 ENGLISH_TO_MORSE = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..',
     'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..',
@@ -47,7 +47,7 @@ def main():
         except:
             pass
     elif response == 'M':
-        print('Enter Morse code (with spaces in between each code letter):')
+        print('Enter Morse code (use spaces after each code letter):')
         morse = input('> ')
         print('English:')
         english = morseToEnglish(morse)
@@ -57,7 +57,7 @@ def main():
             pyperclip.copy(english)
             print('(English text copied to clipboard.)')
         except:
-            pass  # If pyperclip cannot be found, it's not a big deal.
+            pass  # If pyperclip is not installed, do nothing.
 
 
 def englishToMorse(message):

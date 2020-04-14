@@ -18,7 +18,7 @@ This simulation gives you the thrill of playing without wasting money.
 # Let the player enter the first five numbers, 1 to 69:
 while True:
     print('Enter 5 different numbers from 1 to 69, with spaces between')
-    print('each number.')
+    print('each number. (For example: 5 17 23 42 50 51)')
     response = input('> ')
 
     # Check that the player entered 5 things:
@@ -113,11 +113,11 @@ for i in range(numPlays):
     if (set(numbers) == set(winningNumbers) and
         powerball == winningPowerball):
             print()
-            print('You have won the Powerball Lottery! Congratulations, you')
-            print('would be a billionaire if this was real!')
+            print('You have won the Powerball Lottery! Congratulations,')
+            print('you would be a billionaire if this was real!')
             break
     else:
-        print(' You lost.')
+        print(' You lost.')  # The leading space is required here.
 
 print('You have wasted', price)
 print('Thanks for playing!')
