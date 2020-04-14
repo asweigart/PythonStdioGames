@@ -1,11 +1,10 @@
 """Bagels, by Al Sweigart al@inventwithpython.com
 A deductive logic game where you must guess a number based on clues.
 This and other games are available at https://nostarch.com/XX
+A version of this game is featured in the book, "Invent Your Own
+Computer Games with Python" https://nostarch.com/inventwithpython
 Tags: short, game, puzzle game"""
 __version__ = 0
-
-# A version of this game is featured in the book, "Invent Your Own
-# Computer Games with Python" https://nostarch.com/inventwithpython
 
 import random
 
@@ -14,7 +13,7 @@ MAX_GUESSES = 10
 
 
 def main():
-    print('''BAGELS, a deductive logic game.
+    print('''Bagels, a deductive logic game.
 By Al Sweigart al@inventwithpython.com
 
 I am thinking of a {}-digit number. Try to guess what it is.

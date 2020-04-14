@@ -1,6 +1,5 @@
 """Digital Rain, by Al Sweigart al@inventwithpython.com
-A screensaver in the style of The Matrix movie's "digital rain"
-visuals.
+A screensaver in the style of The Matrix movie's "digital rain" visuals.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, artistic, beginner, scrolling"""
 __version__ = 0
@@ -10,9 +9,9 @@ import random, shutil, sys, time
 MIN_BEAD_LENGTH = 6  # (!) Try changing this to 1 or 50.
 MAX_BEAD_LENGTH = 14  # (!) Try changing this to 100.
 PAUSE = 0.1  # (!) Try changing this to 0.0 or 2.0.
-# Density can range from 0.0 to 100.0.
-DENSITY = 2.0  # (!) Try changing this to 10.0 or 30.0.
 
+# Density can range from 0.0 to 100.0:
+DENSITY = 2.0  # (!) Try changing this to 10.0 or 30.0.
 
 # Get the size of the terminal window:
 WIDTH = shutil.get_terminal_size()[0]
@@ -20,7 +19,7 @@ WIDTH = shutil.get_terminal_size()[0]
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-print('Matrix Screensaver, by Al Sweigart al@inventwithpython.com')
+print('Digital Rain Screensaver, by Al Sweigart al@inventwithpython.com')
 print('Press Ctrl-C to quit.')
 time.sleep(3)
 

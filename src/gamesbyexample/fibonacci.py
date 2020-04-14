@@ -67,7 +67,7 @@ while True:  # Main program loop.
         # Check if we've found the Nth number the user wants:
         if nth == fibNumbersCalculated:
             print()
-            # Get the ordinal indicator ('st', 'nd', 'rd', or 'th')
+            # Get number's ordinal indicator ('st', 'nd', 'rd', or 'th')
             lastDigit = str(fibNumbersCalculated)[-1]
             if len(str(fibNumbersCalculated)) >= 2:
                 secondToLastDigit = str(fibNumbersCalculated)[-2]

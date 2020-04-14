@@ -1,6 +1,6 @@
 """Caesar Cipher, by Al Sweigart al@inventwithpython.com
-The Caesar cipher is a shift cipher that uses addition to encrypt and
-decrypt letters.
+The Caesar cipher is a shift cipher that uses addition and subtraction
+to encrypt and decrypt letters.
 More info at: https://en.wikipedia.org/wiki/Caesar_cipher
 Tags: short, beginner, cryptography, math, pyperclip"""
 __version__ = 0
@@ -9,9 +9,7 @@ try:
 except ImportError:
     pass  # If pyperclip is not installed, do nothing. It's no big deal.
 
-print('''Caesar Cipher, by Al Sweigart al@inventwithpython.com
-The Caesar cipher is a shift cipher that uses addition to encrypt and
-decrypt letters.''')
+print('Caesar Cipher, by Al Sweigart al@inventwithpython.com')
 
 # Let the user specify if they are encrypting or decrypting:
 while True:  # Keep asking until the user enters e or d.

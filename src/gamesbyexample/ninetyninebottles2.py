@@ -1,7 +1,7 @@
 """niNety nniinE BoOttels of Mlik On teh waLl
 By Al Sweigart al@inventwithpython.com
-Print the full lyrics to one of the most longest songs ever!
-Press Ctrl-C to stop.
+Print the full lyrics to one of the most longest songs ever! The song
+gets sillier and with each verse. Press Ctrl-C to stop.
 This and other games are available at https://nostarch.com/XX
 Tags: short, scrolling, word"""
 __version__ = 0

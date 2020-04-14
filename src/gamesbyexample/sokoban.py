@@ -1,4 +1,4 @@
-"""Sokoban Clone, by Al Sweigart al@inventwithpython.com
+"""Sokoban Crate Pushing Game, by Al Sweigart al@inventwithpython.com
 The classic crate-pushing game originally by Hiroyuki Imabayashi
 More info at: https://en.wikipedia.org/wiki/Sokoban
 This and other games are available at https://nostarch.com/XX

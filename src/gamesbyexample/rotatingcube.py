@@ -53,13 +53,13 @@ def line(x1, y1, x2, y2):
     if isSteep:
         # This algorithm only handles non-steep lines, so let's change
         # the slope to non-steep and change it back later.
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
+        x1, y1 = y1, x1  # Swap x1 and y1
+        x2, y2 = y2, x2  # Swap x2 and y2
     isReversed = x1 > x2  # True if the line goes right-to-left.
 
     if isReversed:  # Get the points on the line going right-to-left.
-        x1, x2 = x2, x1
-        y1, y2 = y2, y1
+        x1, x2 = x2, x1  # Swap x1 and x2
+        y1, y2 = y2, y1  # Swap y1 and y2
 
         deltax = x2 - x1
         deltay = abs(y2 - y1)

@@ -1,5 +1,6 @@
 """Sevseg, by Al Sweigart al@inventwithpython.com
-A seven-segment display module.
+A seven-segment number display module, used by the Countdown and Digital
+Clock programs.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
 This and other games are available at https://nostarch.com/XX
 Tags: short, module"""

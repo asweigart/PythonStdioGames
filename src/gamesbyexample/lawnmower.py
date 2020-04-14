@@ -1,4 +1,4 @@
-"""Lawn mower, by Al Sweigart al@inventwithpython.com
+"""Lawn Mower, by Al Sweigart al@inventwithpython.com
 Watch grass get cut and grow again. Press Ctrl-C to stop.
 Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 https://bitbucket.org/jvillard/tondeuse/src/default/

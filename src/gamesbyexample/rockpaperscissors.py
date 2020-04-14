@@ -1,5 +1,5 @@
-"""Rock-Paper-Scissors, by Al Sweigart al@inventwithpython.com
-A hand game of luck.
+"""Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
+The classic hand game of luck.
 This and other games are available at https://nostarch.com/XX
 Tags: short, game"""
 __version__ = 0

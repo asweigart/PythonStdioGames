@@ -1,5 +1,5 @@
 """ROT13 Cipher, by Al Sweigart al@inventwithpython.com
-The simplest cipher for encrypting and decrypting text.
+The simplest shift cipher for encrypting and decrypting text.
 More info at https://en.wikipedia.org/wiki/ROT13
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, cryptography, pyperclip"""
@@ -17,7 +17,7 @@ print('ROT13 CIPHER, by Al Sweigart al@inventwithpython.com')
 print()
 
 while True:  # Main program loop.
-    print('Enter a message to encrypt or decrypt (or QUIT to quit):')
+    print('Enter a message to encrypt/decrypt (or QUIT):')
     message = input('> ')
 
     if message.upper() == 'QUIT':

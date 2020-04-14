@@ -1,7 +1,7 @@
 """Ninety Nine Bottles of Milk on the Wall
 By Al Sweigart al@inventwithpython.com
-Print the full lyrics to one of the most longest songs ever!
-Press Ctrl-C to stop.
+Print the full lyrics to one of the most longest songs ever! Press
+Ctrl-C to stop.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, scrolling"""
 __version__ = 0

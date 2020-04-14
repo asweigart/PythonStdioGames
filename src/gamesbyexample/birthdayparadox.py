@@ -1,5 +1,5 @@
 """Birthday Paradox Simulation, by Al Sweigart al@inventwithpython.com
-Explore the mathematics of the "Birthday Paradox".
+Explore the surprising probabilities of the "Birthday Paradox".
 More info at https://en.wikipedia.org/wiki/Birthday_problem
 This and other games are available at https://nostarch.com/XX
 Tags: short, math, simulation"""
@@ -32,10 +32,10 @@ def getMatch(birthdays):
 
 
 # Display the intro:
-print('''Birthday Paradox
+print('''Birthday Paradox, by Al Sweigart al@inventwithpython.com
 
 The birthday paradox shows us that in a group of N people, the odds
-that two of them have matching birthdays is surprisingly small.
+that two of them have matching birthdays is surprisingly large.
 This program does a monte carlo simulation to explore this concept.
 
 (It's not actually a paradox, it's just a surprising result.)

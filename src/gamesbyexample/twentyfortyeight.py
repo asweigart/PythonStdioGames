@@ -1,4 +1,4 @@
-"""2048 Game, by Al Sweigart al@inventwithpython.com
+"""Twenty Forty Eight, by Al Sweigart al@inventwithpython.com
 A sliding tile game to combine exponentially-increasing numbers.
 Inspired by Gabriele Cirulli's 2048, which is a clone of Veewo Studios'
 1024, which in turn is a clone of the Threes! game.
@@ -13,7 +13,7 @@ BLANK = ''  # A value that represents a blank space on the board.
 
 
 def main():
-    print('''2048, by Al Sweigart al@inventwithpython.com
+    print('''Twenty Forty Eight, by Al Sweigart al@inventwithpython.com
 
 Slide all the tiles on the board in one of four directions. Tiles with
 like numbers will combine into larger-numbered tiles. A new 2 tile is

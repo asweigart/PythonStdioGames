@@ -1,5 +1,5 @@
 """Numeral System Counters, by Al Sweigart al@inventwithpython.com
-Shows the equivalent numbers in decimal, hexadecimal, and binary.
+Shows equivalent numbers in decimal, hexadecimal, and binary.
 This and other games are available at https://nostarch.com/XX
 Tags: short, math"""
 

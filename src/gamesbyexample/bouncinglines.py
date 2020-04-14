@@ -21,8 +21,11 @@ WIDTH, HEIGHT = bext.size()
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-NUMBER_OF_POINTS = 4
-COLORS = ('red', 'green', 'yellow', 'blue', 'purple', 'cyan', 'white')
+NUMBER_OF_POINTS = 4  # (!) Try changing this to 3 or 5.
+PAUSE_AMOUNT = 0.1  # (!) Try changing this to 1.0.
+# (!) Try changing this list to fewer colors:
+COLORS = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+
 UP_RIGHT = 'ur'
 UP_LEFT = 'ul'
 DOWN_RIGHT = 'dr'
@@ -38,7 +41,6 @@ DIR = 'direction'
 
 
 def main():
-
     bext.clear()
 
     # Generate some points.
@@ -70,7 +72,7 @@ def main():
 
                 oldpointPositions.append((x, y))
         sys.stdout.flush()  # (Required for bext-using programs.)
-        time.sleep(0.1)
+        time.sleep(PAUSE_AMOUNT)
 
         for point in points:
             # Move our points:
@@ -143,13 +145,13 @@ def line(x1, y1, x2, y2):
     if isSteep:
         # This algorithm only handles non-steep lines, so let's change
         # the slope to non-steep and change it back later.
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
+        x1, y1 = y1, x1  # Swap x1 and y1
+        x2, y2 = y2, x2  # Swap x2 and y2
     isReversed = x1 > x2  # True if the line goes right-to-left.
 
     if isReversed:  # Get the points on the line going right-to-left.
-        x1, x2 = x2, x1
-        y1, y2 = y2, y1
+        x1, x2 = x2, x1  # Swap x1 and x2
+        y1, y2 = y2, y1  # Swap y1 and y2
 
         deltax = x2 - x1
         deltay = abs(y2 - y1)
@@ -196,4 +198,5 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
+        print('Bouncing Lines, by Al Sweigart al@inventwithpython.com')
         sys.exit()  # When Ctrl-C is pressed, end the program.

@@ -57,7 +57,7 @@ for line in elements:
     ELEMENTS[line[0]] = element  # Map the atomic number to element.
     ELEMENTS[line[1]] = element  # Map the symbol to element.
 
-print('PERIODIC TABLE OF ELEMENTS')
+print('Periodic Table of Elements')
 print('By Al Sweigart al@inventwithpython.com')
 print()
 

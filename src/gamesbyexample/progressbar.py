@@ -8,7 +8,7 @@ import random, time
 
 def main():
     # Simulate a download:
-    print('Progress Bar Simulation:')
+    print('Progress Bar Simulation, by Al Sweigart')
     bytesDownloaded = 0
     downloadSize = 4098
     while bytesDownloaded < downloadSize:

@@ -1,5 +1,6 @@
 """Floodplane, by Al Sweigart al@inventwithpython.com
-A colorful game where you try to fill the board with a single color.
+A colorful game where you try to fill the board with a single color. Has
+a mode for colorblind players.
 Inspired by the "Flood It!" game.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, bext"""

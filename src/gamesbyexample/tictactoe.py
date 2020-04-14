@@ -1,4 +1,4 @@
-"""Tic Tac Toe, by Al Sweigart al@inventwithpython.com
+"""Tic-Tac-Toe, by Al Sweigart al@inventwithpython.com
 The classic board game.
 This and other games are available at https://nostarch.com/XX
 Tags: short, game, two-player, board game"""
@@ -8,7 +8,7 @@ X, O, BLANK = 'X', 'O', ' '  # Constants for string values.
 
 
 def main():
-    print('Welcome to Tic Tac Toe!')
+    print('Welcome to Tic-Tac-Toe!')
     gameBoard = getBlankBoard()  # Create a TTT board dictionary.
     currentPlayer, nextPlayer = X, O  # X goes first, O goes next.
 

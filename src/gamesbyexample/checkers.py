@@ -1,6 +1,6 @@
 """Checkers, by Al Sweigart al@inventwithpython.com
-The classic checkers board game.
-In this version, capturing is not mandatory.
+The classic checkers board game. Capturing is not mandatory in this
+version.
 This and other games are available at https://nostarch.com/XX
 Tags: extra-large, board game, game, two-player"""
 __version__ = 0

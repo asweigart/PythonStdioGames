@@ -2,7 +2,7 @@
 The classic 9x9 number placement puzzle.
 More info at https://en.wikipedia.org/wiki/Sudoku
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, puzzle game"""
+Tags: large, game, puzzle game, object-oriented"""
 __version__ = 0
 import copy, random, sys
 

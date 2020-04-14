@@ -21,8 +21,11 @@ WIDTH, HEIGHT = bext.size()
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-NUMBER_OF_DOTS = 35
-COLORS = ('red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white')
+NUMBER_OF_DOTS = 35  # (!) Try changing this to 1 or 100.
+PAUSE_AMOUNT = 0.1  # (!) Try changing this to 1.0.
+# (!) Try changing this list to fewer colors:
+COLORS = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+
 UP_RIGHT   = 'ur'
 UP_LEFT    = 'ul'
 DOWN_RIGHT = 'dr'
@@ -59,7 +62,7 @@ def main():
 
             oldDotPositions.append((dot[X], dot[Y]))
         sys.stdout.flush()  # (Required for bext-using programs.)
-        time.sleep(0.1)
+        time.sleep(PAUSE_AMOUNT)
 
         for dot in dots:
             # Move our dots:
@@ -118,4 +121,5 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
+        print('Bouncing Dots, by Al Sweigart al@inventwithpython.com')
         sys.exit()  # When Ctrl-C is pressed, end the program.

@@ -6,12 +6,10 @@ https://en.wikipedia.org/wiki/Caesar_cipher#Breaking_the_cipher
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, cryptography, math"""
 __version__ = 0
-print('''Caesar Cipher Hacker, by Al Sweigart al@inventwithpython.com
-This programs hacks messages encrypted with the Caesar cipher by doing
-a brute force attack against every possible key.''')
+print('Caesar Cipher Hacker, by Al Sweigart al@inventwithpython.com')
 
 # Let the user specify the message to hack:
-print('Enter the message to hack.')
+print('Enter the encrypted Caesar cipher message to hack.')
 message = input('> ')
 
 # Every possible symbol that can be encrypted/decrypted:

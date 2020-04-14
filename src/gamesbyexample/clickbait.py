@@ -1,5 +1,5 @@
 """Clickbait Headline Generator, by Al Sweigart al@inventwithpython.com
-A clickbait headline generator for your soulless content farm.
+A clickbait headline generator for your soulless content farm website.
 This and other games are available at https://nostarch.com/XX
 Tags: large, humor, word"""
 __version__ = 0

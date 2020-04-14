@@ -1,4 +1,4 @@
-"""15-Sliding Puzzle, by Al Sweigart al@inventwithpython.com
+"""Sliding Tile Puzzle, by Al Sweigart al@inventwithpython.com
 Slide the numbered tiles into the correct order.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, puzzle game"""
@@ -9,7 +9,7 @@ BLANK = '  '  # Note: This string is two spaces, not one.
 
 
 def main():
-    print('''Sliding Puzzle, by Al Sweigart al@inventwithpython.com
+    print('''Sliding Tile Puzzle, by Al Sweigart al@inventwithpython.com
 
     Use the WASD keys to move the tiles
     back into their original order:

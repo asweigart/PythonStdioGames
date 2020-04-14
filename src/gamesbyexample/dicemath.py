@@ -16,6 +16,12 @@ QUIZ_DURATION = 30  # (!) Try changing this to 10 or 60.
 MIN_DICE = 2  # (!) Try changing this to 1 or 5.
 MAX_DICE = 5  # (!) Try changing this to 14.
 
+# (!) Try changing these to different numbers:
+REWARD = 4  # (!) Points awarded for correct answers.
+PENALTY = 1  # (!) Points removed for incorrect answers.
+# (!) Try setting PENALTY to a negative number to give points for
+# wrong answers!
+
 # The program hangs if all of the dice can't fit on the screen:
 assert MAX_DICE <= 14
 
@@ -78,9 +84,9 @@ ALL_DICE = [D1, D2a, D2b, D3a, D3b, D4, D5, D6a, D6b]
 print('''Dice Math, by Al Sweigart al@inventwithpython.com
 
 Add up the sums of all the dice displayed on the screen. You have
-{} seconds to answer as many as possible. You get 3 points for each
-correct answer and lose 1 point for each incorrect answer.
-'''.format(QUIZ_DURATION))
+{} seconds to answer as many as possible. You get {} points for each
+correct answer and lose {} point for each incorrect answer.
+'''.format(QUIZ_DURATION, REWARD, PENALTY))
 input('Press Enter to begin...')
 
 # Keep track of how many dice rolls were added correctly and incorrectly:
@@ -164,6 +170,7 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
         incorrectAnswers += 1
 
 # Display the final score:
+score = (correctAnswers * REWARD) - (incorrectAnswers * PENALTY)
 print('Correct:  ', correctAnswers)
 print('Incorrect:', incorrectAnswers)
-print('Score:    ', (correctAnswers * 3) - incorrectAnswers)
+print('Score:    ', score)

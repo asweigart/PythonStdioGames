@@ -62,9 +62,10 @@ def main():
         bext.goto(newDirtX, newDirtY)
         print(DIRT_CHARS[dirtPiles[(newDirtX, newDirtY)]], end='')
 
-    vbotStatus = CLEANING  # The vbot starts in cleaning mode.
     moveTo = []  # A list of (x, y) tuples to move to in turn.
     while True:  # Main simulation loop.
+        vbotStatus = CLEANING
+
         # Add dirt to the room:
         if random.randint(0, 100) <= DIRT_ADD_FREQUENCY:
             for i in range(DIRT_ADD_AMOUNT):
@@ -150,9 +151,8 @@ def main():
         if vbotX == baseX and vbotY == baseY:
             vbotStatus = CHARGING
             vbotBattery += RECHARGE_RATE
-            if vbotBattery >= MAX_BATTERY:
+            if vbotBattery > MAX_BATTERY:
                 vbotBattery = MAX_BATTERY
-                vbotStatus = CLEANING
 
         # Display the vbot:
         bext.goto(vbotX, vbotY)
@@ -198,14 +198,13 @@ def line(x1, y1, x2, y2):
     if isSteep:
         # This algorithm only handles non-steep lines, so let's change
         # the slope to non-steep and change it back later.
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
+        x1, y1 = y1, x1  # Swap x1 and y1
+        x2, y2 = y2, x2  # Swap x2 and y2
     isReversed = x1 > x2  # True if the line goes right-to-left.
 
     if isReversed:  # Get the points on the line going right-to-left.
-        x1, x2 = x2, x1
-        y1, y2 = y2, y1
-
+        x1, x2 = x2, x1  # Swap x1 and x2
+        y1, y2 = y2, y1  # Swap y1 and y2
         deltax = x2 - x1
         deltay = abs(y2 - y1)
         extray = int(deltax / 2)
@@ -251,4 +250,6 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
+        print('Vacuum Bot Simulator')
+        print('by Al Sweigart al@inventwithpython.com')
         sys.exit()  # When Ctrl-C is pressed, end the program.

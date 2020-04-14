@@ -12,7 +12,7 @@ import sys, time
 import sevseg  # Imports our sevseg.py program.
 
 # (!) Change this to any number of seconds under 360000:
-secondsLeft = 3
+secondsLeft = 30
 assert secondsLeft < 360000  # secondsLeft can't be 100 hours or more:
 
 try:
@@ -63,4 +63,5 @@ try:
         secondsLeft -= 1
 
 except KeyboardInterrupt:
+    print('Countdown, by Al Sweigart al@inventwithpython.com')
     sys.exit()  # When Ctrl-C is pressed, end the program.)

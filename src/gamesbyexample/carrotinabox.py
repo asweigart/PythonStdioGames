@@ -6,8 +6,7 @@ Tags: large, beginner, game, two-player"""
 __version__ = 0
 import random
 
-print('''Carrot in a Box
-By Al Sweigart al@inventwithpython.com
+print('''Carrot in a Box, by Al Sweigart al@inventwithpython.com
 
 This is a bluffing game for two human players. Each player has a box.
 One box has a carrot in it. To win, you must have the box with the

@@ -1,6 +1,6 @@
-"""Rock-Paper-Scissors (Always Win)
+"""Rock,Paper, Scissors (Always Win version)
 By Al Sweigart al@inventwithpython.com
-A hand game of luck, except you cannot lose.
+The classic hand game of luck, except you always win.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, game, humor"""
 __version__ = 0

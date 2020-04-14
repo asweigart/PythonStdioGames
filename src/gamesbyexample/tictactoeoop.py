@@ -1,4 +1,4 @@
-"""Tic Tac Toe (OOP), by Al Sweigart al@inventwithpython.com
+"""Tic-Tac-Toe (OOP), by Al Sweigart al@inventwithpython.com
 The classic board game. (Object-oriented programming version.)
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, two-player, board game, object-oriented"""
@@ -10,7 +10,7 @@ X, O, BLANK = 'X', 'O', ' '  # Constants for string values.
 
 
 def main():
-    print('Welcome to Tic Tac Toe!')
+    print('Welcome to Tic-Tac-Toe!')
     gameBoard = HintTTTBoard()  # Create a TTT board object.
     currentPlayer, nextPlayer = X, O  # X goes first, O goes next.
 

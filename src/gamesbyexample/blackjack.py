@@ -1,5 +1,5 @@
 """Blackjack, by Al Sweigart al@inventwithpython.com
-A card game also known as 21.
+The classic card game also known as 21.
 More info at: https://en.wikipedia.org/wiki/Blackjack
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, card game"""
@@ -15,20 +15,19 @@ BACKSIDE = 'backside'
 
 
 def main():
-    print('''BLACKJACK
-    By Al Sweigart al@inventwithpython.com
+    print('''Blackjack, by Al Sweigart al@inventwithpython.com
 
     Rules:
-    Try to get as close to 21 without going over.
-    Kings, Queens, and Jacks are worth 10 points.
-    Aces are worth 1 or 11 points.
-    Cards 2 through 10 are worth their face value.
-    (H)it to take another card.
-    (S)tand to stop taking cards.
-    On your first play, you can (D)ouble down to increase your bet
-    but must hit exactly one more time before standing.
-    In case of a tie, the pot carries over to the next round.
-    The dealer stops hitting themselves at 17.''')
+      Try to get as close to 21 without going over.
+      Kings, Queens, and Jacks are worth 10 points.
+      Aces are worth 1 or 11 points.
+      Cards 2 through 10 are worth their face value.
+      (H)it to take another card.
+      (S)tand to stop taking cards.
+      On your first play, you can (D)ouble down to increase your bet
+      but must hit exactly one more time before standing.
+      In case of a tie, the pot carries over to the next round.
+      The dealer stops hitting themselves at 17.''')
 
     money = 5000
     pot = 0
@@ -191,7 +190,7 @@ def getDeck():
 def getBet(maxBet):
     """Ask the user how much they want to bet for this round."""
     while True:  # Keep asking until they enter a valid amount.
-        print('How much do you bet? (1-{}, or "quit")'.format(maxBet))
+        print('How much do you bet? (1-{}, or QUIT)'.format(maxBet))
         bet = input('> ').upper().strip()
         if bet == 'QUIT':
             print('Thanks for playing!')
