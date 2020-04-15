@@ -3,7 +3,7 @@ Watch grass get cut and grow again. Press Ctrl-C to stop.
 Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 https://bitbucket.org/jvillard/tondeuse/src/default/
 This and other games are available at https://nostarch.com/XX
-Tags: large, artistic"""
+Tags: large, artistic, terminal"""
 __version__ = 0
 import time, random, sys
 

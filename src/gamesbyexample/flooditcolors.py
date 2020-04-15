@@ -2,7 +2,7 @@
 A colorful game where you try to fill the board with a single color.
 Inspired by the "Flood It!" game.
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, bext"""
+Tags: large, game, bext, terminal"""
 __version__ = 0
 import random, sys
 

@@ -3,7 +3,7 @@ A screensaver of several different floor painters painting over each
 other's work.
 NOTE: Do not resize the terminal window while this program is running.
 This and other games are available at https://nostarch.com/XX
-Tags: large, artistic, simulation, bext"""
+Tags: large, artistic, simulation, bext, terminal"""
 __version__ = 0
 import random, shutil, sys, time
 

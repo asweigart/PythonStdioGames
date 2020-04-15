@@ -58,16 +58,6 @@ through corners!
                 sys.exit()
 
 
-def clearScreen():
-    """Clears all the text on the screen."""
-    if sys.platform == 'win32':
-        # Clear the Windows terminal with the cls command:
-        os.system('cls')
-    else:
-        # Clear macOS/Linux terminals with the clear command:
-        os.system('clear')
-
-
 def getNewBoard(width, height, numWalls, numDeadRobots):
     """Returns a dictionary that represents the board. The keys are
     (x, y) tuples of integer indexes for board positions, the values are
@@ -130,7 +120,6 @@ def addRobots(board, numRobots):
 
 def displayBoard(board, robots, playerPosition):
     """Display the board, robots, and player on the screen."""
-    clearScreen()
     # Loop over every space on the board:
     for y in range(board['height']):
         for x in range(board['width']):

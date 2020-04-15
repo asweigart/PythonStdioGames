@@ -2,7 +2,7 @@
 A simulation of wildfires spreading in a forest. Press Ctrl-C to stop.
 Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
 This and other games are available at https://nostarch.com/XX
-Tags: short, simulation, bext"""
+Tags: short, simulation, bext, terminal"""
 __version__ = 0
 import random, time, sys
 

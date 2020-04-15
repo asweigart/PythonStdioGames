@@ -2,7 +2,7 @@
 A cellular automata animation. Press Ctrl-C to stop.
 More info: https://en.wikipedia.org/wiki/Langton%27s_ant
 This and other games are available at https://nostarch.com/XX
-Tags: large, simulation, bext, artistic"""
+Tags: large, simulation, bext, artistic, terminal"""
 __version__ = 0
 import copy, random, sys, time
 

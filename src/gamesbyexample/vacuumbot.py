@@ -1,6 +1,6 @@
 """Vacuum Bot Simulator, by Al Sweigart al@inventwithpython.com
 Watch a vbot move around and collect dirt.
-Tags: large, artistic, simulation"""
+Tags: large, artistic, simulation, terminal"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
 

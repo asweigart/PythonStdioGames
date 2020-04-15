@@ -3,7 +3,7 @@ Generate splatter-art with the "random walk" algorithm.
 Press Ctrl-C to stop.
 More info at: https://en.wikipedia.org/wiki/Random_walk
 This and other games are available at https://nostarch.com/XX
-Tags: short, artistic, bext"""
+Tags: short, artistic, bext, terminal"""
 __version__ = 0
 import random, time, sys
 

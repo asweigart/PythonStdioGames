@@ -3,7 +3,7 @@ A bouncing line animation. Press Ctrl-C to stop.
 
 NOTE: Do not resize the terminal window while this program is running.
 This and other games are available at https://nostarch.com/XX
-Tags: large, artistic, bext"""
+Tags: large, artistic, bext, terminal"""
 __version__ = 0
 import sys, random, time
 
