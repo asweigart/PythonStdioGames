@@ -47,8 +47,8 @@ def main():
     while True:  # Main program loop.
         for laneNum, ducklingObj in enumerate(ducklingLanes):
             # See if we should create a duckling in this lane:
-            if (ducklingObj == None and
-                (random.randint(1, 10000) / 100) <= DENSITY):
+            if (ducklingObj == None
+                and (random.randint(1, 10000) / 100) <= DENSITY):
                 # Place a duckling in this lane:
                 ducklingObj = Duckling()
                 ducklingLanes[laneNum] = ducklingObj

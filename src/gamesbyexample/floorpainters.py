@@ -108,8 +108,8 @@ class Painter:
             possibleMoves.remove(SOUTH)
 
         # Remove any moves that go to a space already painted:
-        if (NORTH in possibleMoves and
-            self.floor[(self.x, self.y - 1)] == self.color):
+        if (NORTH in possibleMoves
+            and self.floor[(self.x, self.y - 1)] == self.color):
                 possibleMoves.remove(NORTH)
         if (SOUTH in possibleMoves
             and self.floor[(self.x, self.y + 1)] == self.color):

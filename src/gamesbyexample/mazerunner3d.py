@@ -226,8 +226,8 @@ while True:
     if filename.upper() == 'LIST':
         print('Maze files found in', os.getcwd())
         for fileInCurrentFolder in os.listdir():
-            if (fileInCurrentFolder.startswith('maze') and
-            fileInCurrentFolder.endswith('.txt')):
+            if (fileInCurrentFolder.startswith('maze')
+            and fileInCurrentFolder.endswith('.txt')):
                 print('  ', fileInCurrentFolder)
         continue
 
@@ -280,8 +280,8 @@ while True:  # Main game loop.
             print('Thanks for playing!')
             sys.exit()
 
-        if (move not in ['F', 'L', 'R', 'W', 'A', 'D'] and
-            not move.startswith('T')):
+        if (move not in ['F', 'L', 'R', 'W', 'A', 'D']
+            and not move.startswith('T')):
             print('Please enter one of F, L, or R (or W, A, D).')
             continue
 

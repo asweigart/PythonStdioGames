@@ -59,19 +59,19 @@ def getBoard(words):
 
         if i in linesWithWords:
             insertionIndex = random.randint(0, 9)
-            leftLine = (leftLine[:insertionIndex] + words[nextWord] +
-                leftLine[insertionIndex + 7:])
+            leftLine = (leftLine[:insertionIndex] + words[nextWord]
+                + leftLine[insertionIndex + 7:])
             nextWord += 1
         if i + 16 in linesWithWords:
             insertionIndex = random.randint(0, 9)
-            rightLine = (rightLine[:insertionIndex] + words[nextWord] +
-                rightLine[insertionIndex + 7:])
+            rightLine = (rightLine[:insertionIndex] + words[nextWord]
+                + rightLine[insertionIndex + 7:])
             nextWord += 1
 
-        board.append('0x' + hex(memoryAddress)[2:].zfill(4) +
-                     '  ' + leftLine + '    ' +
-                     '0x' + hex(memoryAddress + (16*16))[2:].zfill(4) +
-                     '  ' + rightLine)
+        board.append('0x' + hex(memoryAddress)[2:].zfill(4)
+                     + '  ' + leftLine + '    '
+                     + '0x' + hex(memoryAddress + (16*16))[2:].zfill(4)
+                     + '  ' + rightLine)
 
         memoryAddress += 16
 

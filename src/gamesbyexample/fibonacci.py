@@ -90,7 +90,7 @@ while True:  # Main program loop.
                 ordInd = 'th'
 
             print()
-            print('The ', fibNumbersCalculated, ordInd, \
+            print('The ', fibNumbersCalculated, ordInd,
                   ' Fibonacci number is ', nextNumber, sep='')
             break
 

@@ -69,8 +69,8 @@ while True:  # Main program loop.
                 numNeighbors += 1  # Bottom-right neighbor is alive.
 
             # Set cell based on Conway's Game of Life rules:
-            if cells[(x, y)] == ALIVE and (numNeighbors == 2 or
-                numNeighbors == 3):
+            if cells[(x, y)] == ALIVE and (numNeighbors == 2
+                or numNeighbors == 3):
                 # Living cells with 2 or 3 neighbors stay alive:
                 nextCells[(x, y)] = ALIVE
             elif cells[(x, y)] == DEAD and numNeighbors == 3:

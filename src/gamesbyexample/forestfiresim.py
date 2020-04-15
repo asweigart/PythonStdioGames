@@ -49,12 +49,12 @@ def main():
                     # previous iteration, just do nothing here:
                     continue
 
-                if ((forest[(x, y)] == EMPTY) and
-                    (random.randint(1, 10000) / 100 <= GROW_CHANCE)):
+                if ((forest[(x, y)] == EMPTY)
+                    and (random.randint(1, 10000) / 100 <= GROW_CHANCE)):
                     # Grow a tree in this empty space.
                     nextForest[(x, y)] = TREE
-                elif ((forest[(x, y)] == TREE) and
-                    (random.randint(1, 10000) / 100 <= FIRE_CHANCE)):
+                elif ((forest[(x, y)] == TREE)
+                    and (random.randint(1, 10000) / 100 <= FIRE_CHANCE)):
                     # Lightning sets this tree on fire.
                     nextForest[(x, y)] = FIRE
                 elif forest[(x, y)] == FIRE:

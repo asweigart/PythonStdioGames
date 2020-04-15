@@ -245,8 +245,8 @@ def getComputerMove(board):
 
 def isOnCorner(x, y):
     """Returns True if the position is in one of the four corners."""
-    return ((x == 0 and y == 0) or (x == 7 and y == 0) or
-        (x == 0 and y == 7) or (x == 7 and y == 7))
+    return ((x == 0 and y == 0) or (x == 7 and y == 0)
+        or (x == 0 and y == 7) or (x == 7 and y == 7))
 
 
 if __name__ == '__main__':

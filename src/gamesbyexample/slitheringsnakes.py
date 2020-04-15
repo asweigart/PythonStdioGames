@@ -131,12 +131,12 @@ class Snake:
             return headx == 0 or (headx - 1, heady) in self.body
 
     def moveRandom(self):
-        if (self.isBlocked(NORTH) and self.isBlocked(SOUTH) and
-            self.isBlocked(EAST) and self.isBlocked(WEST)):
+        if (self.isBlocked(NORTH) and self.isBlocked(SOUTH)
+            and self.isBlocked(EAST) and self.isBlocked(WEST)):
                 self.body.reverse()
 
-        if (self.isBlocked(NORTH) and self.isBlocked(SOUTH) and
-            self.isBlocked(EAST) and self.isBlocked(WEST)):
+        if (self.isBlocked(NORTH) and self.isBlocked(SOUTH)
+            and self.isBlocked(EAST) and self.isBlocked(WEST)):
                 return False
 
         hasMoved = False

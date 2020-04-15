@@ -93,8 +93,8 @@ def displayBoard(board):
             if i == 0 and y != 0:
                 # Draw a horizontal dividing line:
                 for x in range(board['width']):
-                    if (board[(x, y)] != EMPTY_SPACE and
-                        board[(x, y)] == board[(x, y - 1)]):
+                    if (board[(x, y)] != EMPTY_SPACE
+                        and board[(x, y)] == board[(x, y - 1)]):
                             # Draw car in dividing line:
                             print(board[(x, y)] * 3 + ' ', end='')
                     else:
@@ -106,9 +106,9 @@ def displayBoard(board):
                 # Draw the board space:
                 print(board[(x, y)] * 3, end='')
 
-                if (x != board['width'] - 1 and
-                    board[(x, y)] != EMPTY_SPACE and
-                    board[(x, y)] == board[(x + 1, y)]):
+                if (x != board['width'] - 1
+                    and board[(x, y)] != EMPTY_SPACE
+                    and board[(x, y)] == board[(x + 1, y)]):
                         # Draw car in vertical dividing line:
                         print(board[(x, y)], end='')
                 else:
@@ -131,31 +131,31 @@ def getValidMoves(board):
             yNotOnBottomEdge = y != board['height'] - 1
 
             # Check if the car at x, y can move down.
-            if (yNotOnTopEdge and
-                board[(x, y)] == board[(x, y - 1)] and
-                y + 1 < board['height'] and
-                board[(x, y + 1)] == EMPTY_SPACE):
+            if (yNotOnTopEdge
+                and board[(x, y)] == board[(x, y - 1)]
+                and y + 1 < board['height']
+                and board[(x, y + 1)] == EMPTY_SPACE):
                     validMoves.append(board[(x, y)] + 'D')
 
             # Check if the car at x, y can move up.
-            if (yNotOnBottomEdge and
-                board[(x, y)] == board[(x, y + 1)] and
-                y - 1 >= 0 and
-                board[(x, y - 1)] == EMPTY_SPACE):
+            if (yNotOnBottomEdge
+                and board[(x, y)] == board[(x, y + 1)]
+                and y - 1 >= 0
+                and board[(x, y - 1)] == EMPTY_SPACE):
                     validMoves.append(board[(x, y)] + 'U')
 
             # Check if the car at x, y can move right.
-            if (xNotOnLeftEdge and
-                board[(x, y)] == board[(x - 1, y)] and
-                x + 1 < board['width'] and
-                board[(x + 1, y)] == EMPTY_SPACE):
+            if (xNotOnLeftEdge
+                and board[(x, y)] == board[(x - 1, y)]
+                and x + 1 < board['width']
+                and board[(x + 1, y)] == EMPTY_SPACE):
                     validMoves.append(board[(x, y)] + 'R')
 
             # Check if the car at x, y can move left.
-            if (xNotOnRightEdge and
-                board[(x, y)] == board[(x + 1, y)] and
-                x - 1 >= 0 and
-                board[(x - 1, y)] == EMPTY_SPACE):
+            if (xNotOnRightEdge
+                and board[(x, y)] == board[(x + 1, y)]
+                and x - 1 >= 0
+                and board[(x - 1, y)] == EMPTY_SPACE):
                     validMoves.append(board[(x, y)] + 'L')
 
     return validMoves

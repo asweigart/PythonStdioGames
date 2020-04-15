@@ -130,10 +130,10 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
                                          (topRightX, topRightY),
                                          (bottomLeftX, bottomLeftY),
                                          (bottomRightX, bottomRightY)):
-                    if (prevDie[0] <= cornerx and
-                        cornerx < (prevDie[0] + DICE_WIDTH) and
-                        prevDie[1] <= cornery and
-                        cornery < (prevDie[1] + DICE_HEIGHT)):
+                    if (prevDie[0] <= cornerx
+                        and cornerx < (prevDie[0] + DICE_WIDTH)
+                        and prevDie[1] <= cornery
+                        and cornery < (prevDie[1] + DICE_HEIGHT)):
                             overlaps = True
             if not overlaps:
                 # It doesn't overlap, so we can put it here:

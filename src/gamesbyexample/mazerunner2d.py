@@ -119,8 +119,8 @@ while True:  # Main game loop.
                 break
             if maze[(playerx, playery - 1)] == WALL:
                 break  # Break if we've hit a wall.
-            if (maze[(playerx - 1, playery)] == EMPTY or
-                maze[(playerx + 1, playery)] == EMPTY):
+            if (maze[(playerx - 1, playery)] == EMPTY
+                or maze[(playerx + 1, playery)] == EMPTY):
                 break  # Break if we've reached a branch point.
     elif move == 'S':
         while True:
@@ -129,8 +129,8 @@ while True:  # Main game loop.
                 break
             if maze[(playerx, playery + 1)] == WALL:
                 break  # Break if we've hit a wall.
-            if (maze[(playerx - 1, playery)] == EMPTY or
-                maze[(playerx + 1, playery)] == EMPTY):
+            if (maze[(playerx - 1, playery)] == EMPTY
+                or maze[(playerx + 1, playery)] == EMPTY):
                 break  # Break if we've reached a branch point.
     elif move == 'A':
         while True:
@@ -139,8 +139,8 @@ while True:  # Main game loop.
                 break
             if maze[(playerx - 1, playery)] == WALL:
                 break  # Break if we've hit a wall.
-            if (maze[(playerx, playery - 1)] == EMPTY or
-                maze[(playerx, playery + 1)] == EMPTY):
+            if (maze[(playerx, playery - 1)] == EMPTY
+                or maze[(playerx, playery + 1)] == EMPTY):
                 break  # Break if we've reached a branch point.
     elif move == 'D':
         while True:
@@ -149,8 +149,8 @@ while True:  # Main game loop.
                 break
             if maze[(playerx + 1, playery)] == WALL:
                 break  # Break if we've hit a wall.
-            if (maze[(playerx, playery - 1)] == EMPTY or
-                maze[(playerx, playery + 1)] == EMPTY):
+            if (maze[(playerx, playery - 1)] == EMPTY
+                or maze[(playerx, playery + 1)] == EMPTY):
                 break  # Break if we've reached a branch point.
 
     if (playerx, playery) == (exitx, exity):

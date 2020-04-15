@@ -107,8 +107,8 @@ def runHourglassSimulation(allSand):
                 left = (sand[X] - 1, sand[Y])
                 noWallToTheLeft = left not in HOURGLASS
                 notOnLeftEdge = sand[X] > 0
-                canFallLeft = (noSandBelowLeft and noWallBelowLeft and
-                    noWallToTheLeft and notOnLeftEdge)
+                canFallLeft = (noSandBelowLeft and noWallBelowLeft
+                    and noWallToTheLeft and notOnLeftEdge)
 
                 # Check if the sand can fall to the right:
                 belowRight = (sand[X] + 1, sand[Y] + 1)
@@ -117,8 +117,8 @@ def runHourglassSimulation(allSand):
                 right = (sand[X] + 1, sand[Y])
                 noWallToTheRight = right not in HOURGLASS
                 notOnRightEdge = sand[X] < SCREEN_WIDTH - 1
-                canFallRight = (noSandBelowRight and noWallBelowRight and
-                    noWallToTheRight and notOnRightEdge)
+                canFallRight = (noSandBelowRight and noWallBelowRight
+                    and noWallToTheRight and notOnRightEdge)
 
                 # Set the falling direction:
                 fallingDirection = None
@@ -144,9 +144,9 @@ def runHourglassSimulation(allSand):
                     noSandBelowTwoRight = belowTwoRight not in allSand
                     noWallBelowTwoRight = belowTwoRight not in HOURGLASS
                     notOnSecondToRightEdge = sand[X] < SCREEN_WIDTH - 2
-                    canFallTwoRight = (canFallRight and
-                        noSandBelowTwoRight and noWallBelowTwoRight and
-                        notOnSecondToRightEdge)
+                    canFallTwoRight = (canFallRight
+                        and noSandBelowTwoRight and noWallBelowTwoRight
+                        and notOnSecondToRightEdge)
 
                     if canFallTwoLeft and canFallTwoRight:
                         fallingDirection = random.choice((-2, 2))

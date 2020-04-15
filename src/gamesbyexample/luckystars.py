@@ -105,8 +105,8 @@ while True:  # Main game loop.
         # Check that there's enough dice left in the cup:
         if (3 - len(hand)) > len(cup):
             # End this turn because there are not enough dice:
-            print('There aren\'t enough dice left in the cup to ' + \
-                'continue ' + playerNames[turn] + '\'s turn.')
+            print('There aren\'t enough dice left in the cup to '
+                + 'continue ' + playerNames[turn] + '\'s turn.')
             break
 
         # Pull dice from the cup until you have 3 in your hand:
@@ -180,8 +180,8 @@ while True:  # Main game loop.
             playerScores[playerNames[turn]] += stars
 
             # Check if they've reached 13 or more points:
-            if (endGameWith == None and
-                playerScores[playerNames[turn]] >= 13):
+            if (endGameWith == None
+                and playerScores[playerNames[turn]] >= 13):
                 # Since this player reached 13 points, play one more
                 # round for all other players:
                 print('\n\n' + ('!' * 60))

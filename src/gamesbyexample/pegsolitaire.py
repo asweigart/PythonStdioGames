@@ -106,10 +106,10 @@ def getMoveablePegs(board):
             continue  # There's no peg here, so it's not a valid move.
 
         # Determine if the peg at this space can move:
-        if (canMoveInDirection(board, space, NORTH) or
-            canMoveInDirection(board, space, SOUTH) or
-            canMoveInDirection(board, space, WEST) or
-            canMoveInDirection(board, space, EAST)):
+        if (canMoveInDirection(board, space, NORTH)
+            or canMoveInDirection(board, space, SOUTH)
+            or canMoveInDirection(board, space, WEST)
+            or canMoveInDirection(board, space, EAST)):
                 moveablePegs.append(space)
                 continue
 
