@@ -5,7 +5,6 @@ More info at https://en.wikipedia.org/wiki/Seven-segment_display
 This and other games are available at https://nostarch.com/XX
 Tags: short, module"""
 __version__ = 0
-
 """A labeled seven-segment display, with each segment labeled A to G:
  __A__
 |     |    Each digit in a seven-segment display:

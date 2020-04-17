@@ -6,8 +6,6 @@ Requires sevseg.py to be in the same folder.
 This and other games are available at https://nostarch.com/XX
 Tags: short, artistic"""
 __version__ = 0
-# This program MUST be run in a Terminal/Command Prompt window.
-
 import sys, time
 import sevseg  # Imports our sevseg.py program.
 

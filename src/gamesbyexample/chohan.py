@@ -2,7 +2,6 @@
 The traditional Japanese dice game of even-odd.
 Tags: short, beginner, game"""
 __version__ = 0
-
 import random, sys
 
 JAPANESE_NUMBERS = {1: 'ICHI', 2: 'NI', 3: 'SAN',

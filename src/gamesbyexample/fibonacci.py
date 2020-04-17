@@ -5,7 +5,6 @@ Tags: short, math, algorithm"""
 __version__ = 0
 import sys
 
-
 print('''Fibonacci Sequence, by Al Sweigart al@inventwithpython.com
 
 The Fibonacci Sequence begins with 0 and 1, and the next number is the

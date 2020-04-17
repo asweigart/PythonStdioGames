@@ -2,7 +2,6 @@
 A flash card addition game where you sum the total on random dice rolls.
 Tags: large, artistic, game, math"""
 __version__ = 0
-
 import random, time
 
 # Set up the constants:

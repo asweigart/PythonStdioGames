@@ -3,7 +3,6 @@ A time-based quiz game to see how fast you can alphabetize letters.
 This and other games are available at https://nostarch.com/XX
 Tags: short, game"""
 __version__ = 0
-
 import random, time
 
 # Set up the constants:

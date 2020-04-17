@@ -6,7 +6,6 @@ More info at https://www.michaelfogleman.com/rush/
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, puzzle game, board game"""
 __version__ = 0
-
 import math, random, sys
 
 # Set up the constants:

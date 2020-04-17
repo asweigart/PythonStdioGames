@@ -6,7 +6,6 @@ More info at: https://en.wikipedia.org/wiki/Kaprekar_number
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, math, scrolling"""
 __version__ = 0
-
 import sys
 
 print("""Kaprekar Numbers, by Al Sweigart al@inventwithpython.com

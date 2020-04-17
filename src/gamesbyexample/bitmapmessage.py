@@ -4,6 +4,7 @@ This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, artistic"""
 
 # (!) Try changing this multiline string to any image you like:
+__version__ = 0
 bitmap = """
                **   *  *** **  *
            * **********      **      ****   ***     ******    ***

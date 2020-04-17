@@ -10,7 +10,6 @@ Draws diamonds of various sizes.
  \/   \/    \/     \/      \/       \/
  Tags: short, beginner, artistic"""
 __version__ = 0
-
 def main():
     print('Diamonds, by Al Sweigart al@inventwithpython.com')
     print()

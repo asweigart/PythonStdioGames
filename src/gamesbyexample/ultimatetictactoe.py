@@ -5,7 +5,6 @@ More info at: https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, board game, two-player"""
 __version__ = 0
-
 import sys
 
 # Set up the constants:

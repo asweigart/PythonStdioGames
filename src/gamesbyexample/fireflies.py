@@ -1,15 +1,14 @@
 """Fireflies, by Al Sweigart al@inventwithpython.com
 A beautiful animation of fireflies. Press Ctrl-C to stop.
+This program MUST be run in a Terminal/Command Prompt window.
 This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, terminal"""
 __version__ = 0
-# This program MUST be run in a Terminal/Command Prompt window.
+import math, time, sys, os, random
 
 # This program draws points that rotate on the surface of a sphere. The
 # sphere is invisible and projected onto the user's 2D screen, so the
 # points kind of look like fireflies swirling around in a circle.
-
-import math, time, sys, os, random
 
 # Set up the constants:
 PAUSE_AMOUNT = 0.15

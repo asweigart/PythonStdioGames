@@ -13,8 +13,10 @@ print('I am thinking of a number between 1 and 100.')
 for i in range(10):  # Give the player 10 guesses.
     print('You have {} guesses left. Take a guess.'.format(10 - i))
     while True:
-        guess = int(input('> '))  # Enter the guess.
+        guess = input('> ')  # Enter the guess.
+
         if guess.isdecimal():
+            guess = int(guess)  # Convert string guess to an integer.
             break  # Break out of this while loop.
         print('Please enter a number.')
 

@@ -3,7 +3,6 @@ A parentheses/bracket/braces matching algorithm.
 This and other games are available at https://nostarch.com/XX
 Tags: short, algorithm"""
 __version__ = 0
-
 def main():
     print('''Matching Parentheses Algorithm
     By Al Sweigart al@inventwithpython.com
