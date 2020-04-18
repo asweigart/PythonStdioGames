@@ -6,28 +6,25 @@ __version__ = 0
 import random, time
 
 # Set up the constants:
-# (!) Try changing these constants.
+# (!) Try changing these constants:
 QUESTION_SIZE = 5  # Each question shows 5 letters to alphabetize.
 QUIZ_DURATION = 30  # The quiz lasts 30 seconds.
-assert QUESTION_SIZE <= 26
-assert QUIZ_DURATION > 0
 
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-REVERSE_ALPHABET = ''.join(sorted(ALPHABET, reverse=True))
+REVERSE_ALPHABET = 'ZYXWVUTSRQPONMLKJIHGFEDCBA'
 
 
 def main():
     # Fancy animation for the title:
-    slowPrint(ALPHABET, 0.02)
+    slowPrint(ALPHABET, 0.02)  # (!) Try changing 0.02 to 0.0 or 1.0.
     slowPrint('    Alphabetize Quiz', 0.02)
     slowPrint(REVERSE_ALPHABET, 0.02)
     time.sleep(0.5)
 
-    print('''
-By Al Sweigart al@inventwithpython.com
+    print('''By Al Sweigart al@inventwithpython.com
 
-To play, enter the alphabetical order of the letters shown as fast
-as possible. Try to get as many as possible in {} seconds!
+Enter the alphabetical order of the letters shown as fast
+as possible. Try to alphabetize as many as possible in {} seconds!
 
 Example:
     P M O T Q  <-- The letters.
@@ -68,7 +65,7 @@ def slowPrint(text, pauseAmount):
     for character in text:
         # Set flush=True here so the text is immediately printed:
         print(character, flush=True, end='')  # end='' means no newline.
-        time.sleep(pauseAmount)  # Pause in between each letter.
+        time.sleep(pauseAmount)  # Pause in between each character.
     print()  # Print a newline.
 
 
