@@ -23,8 +23,6 @@ WIDTH -= 1
 
 NUMBER_OF_POINTS = 4  # (!) Try changing this to 3 or 5.
 PAUSE_AMOUNT = 0.1  # (!) Try changing this to 1.0.
-# (!) Try changing this list to fewer colors:
-COLORS = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
 
 UP_RIGHT = 'ur'
 UP_LEFT = 'ul'
@@ -51,31 +49,15 @@ def main():
                        DIR: random.choice(DIRECTIONS)})
 
     while True:  # Main program loop.
-        oldpointPositions = []
-
+        # There's a 1 in 50 chance of changing the color every iteration.
         if random.randint(1, 50) == 1:
             bext.fg('random')
 
-        for i, point in enumerate(points):
-            # Draw our lines:
-            if i == len(points) - 1:
-                # The last point connects to the first point.
-                pointA = point
-                pointB = points[0]
-            else:
-                pointA = point
-                pointB = points[i + 1]
-
-            for x, y in line(pointA[X], pointA[Y], pointB[X], pointB[Y]):
-                bext.goto(x, y)
-                print(LINE_CHAR, end='')
-
-                oldpointPositions.append((x, y))
-        sys.stdout.flush()  # (Required for bext-using programs.)
-        time.sleep(PAUSE_AMOUNT)
+        # Erase the lines drawn previously at these points.
+        drawLinesBetweenPoints(points, ' ')
 
         for point in points:
-            # Move our points:
+            # Move the points in the direction of point[DIR]:
             if point[DIR] == UP_RIGHT:
                 point[X] += 1
                 point[Y] -= 1
@@ -89,7 +71,7 @@ def main():
                 point[X] -= 1
                 point[Y] += 1
 
-            # See if our points bounce off the corners:
+            # See if the point bounces off the corners:
             if point[X] == 0 and point[Y] == 0:
                 point[DIR] = DOWN_RIGHT
             elif point[X] == 0 and point[Y] == HEIGHT - 1:
@@ -99,31 +81,51 @@ def main():
             elif point[X] == WIDTH - 1 and point[Y] == HEIGHT - 1:
                 point[DIR] = UP_LEFT
 
-            # See if our points bounce off the walls:
+            # See if the dot bounces off the left edge:
             elif point[X] == 0 and point[DIR] == UP_LEFT:
                 point[DIR] = UP_RIGHT
             elif point[X] == 0 and point[DIR] == DOWN_LEFT:
                 point[DIR] = DOWN_RIGHT
 
+            # See if the dot bounces off the right edge:
             elif point[X] == WIDTH - 1 and point[DIR] == UP_RIGHT:
                 point[DIR] = UP_LEFT
             elif point[X] == WIDTH - 1 and point[DIR] == DOWN_RIGHT:
                 point[DIR] = DOWN_LEFT
 
+            # See if the dot bounces off the top edge:
             elif point[Y] == 0 and point[DIR] == UP_LEFT:
                 point[DIR] = DOWN_LEFT
             elif point[Y] == 0 and point[DIR] == UP_RIGHT:
                 point[DIR] = DOWN_RIGHT
 
+            # See if the dot bounces off the bottom edge:
             elif point[Y] == HEIGHT - 1 and point[DIR] == DOWN_LEFT:
                 point[DIR] = UP_LEFT
             elif point[Y] == HEIGHT - 1 and point[DIR] == DOWN_RIGHT:
                 point[DIR] = UP_RIGHT
 
-        for position in oldpointPositions:
-            # Erase all of the points.
-            bext.goto(position[0], position[1])
-            print(' ', end='')
+        # Draw the points in their new position:
+        drawLinesBetweenPoints(points, LINE_CHAR)
+
+        sys.stdout.flush()  # (Required for bext-using programs.)
+        time.sleep(PAUSE_AMOUNT)
+
+
+def drawLinesBetweenPoints(points, character):
+    for i, point in enumerate(points):
+        pointA = point
+        if i == len(points) - 1:
+            # The last point draws a line to the first point:
+            pointB = points[0]
+        else:
+            # Draw the line to the next point:
+            pointB = points[i + 1]
+
+        # Loop over every x, y point from pointA to pointB:
+        for x, y in line(pointA[X], pointA[Y], pointB[X], pointB[Y]):
+            bext.goto(x, y)
+            print(character, end='')
 
 
 def line(x1, y1, x2, y2):
@@ -198,5 +200,6 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
+        print()
         print('Bouncing Lines, by Al Sweigart al@inventwithpython.com')
         sys.exit()  # When Ctrl-C is pressed, end the program.

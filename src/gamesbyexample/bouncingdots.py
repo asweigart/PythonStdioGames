@@ -52,20 +52,12 @@ def main():
                       DIR: random.choice(DIRECTIONS)})
 
     while True:  # Main program loop.
-        oldDotPositions = []
-
-        for dot in dots:
-            # Draw our dots:
+        for dot in dots:  # Handle each dot in the dots list.
+            # Erase the dot's current location:
             bext.goto(dot[X], dot[Y])
-            bext.fg(dot[COLOR])
-            print(DOT_CHAR, end='')
+            print(' ', end='')
 
-            oldDotPositions.append((dot[X], dot[Y]))
-        sys.stdout.flush()  # (Required for bext-using programs.)
-        time.sleep(PAUSE_AMOUNT)
-
-        for dot in dots:
-            # Move our dots:
+            # Move the dot:
             if dot[DIR] == UP_RIGHT:
                 dot[X] += 1
                 dot[Y] -= 1
@@ -79,7 +71,12 @@ def main():
                 dot[X] -= 1
                 dot[Y] += 1
 
-            # See if our dots bounce off the corners:
+            # Draw the dots at their new location:
+            bext.goto(dot[X], dot[Y])
+            bext.fg(dot[COLOR])
+            print(DOT_CHAR, end='')
+
+            # See if the dot bounces off the corners:
             if dot[X] == 0 and dot[Y] == 0:
                 dot[DIR] = DOWN_RIGHT
             elif dot[X] == 0 and dot[Y] == HEIGHT - 1:
@@ -89,31 +86,32 @@ def main():
             elif dot[X] == WIDTH - 1 and dot[Y] == HEIGHT - 1:
                 dot[DIR] = UP_LEFT
 
-            # See if our dots bounce off the walls:
+            # See if the dot bounces off the left edge:
             elif dot[X] == 0 and dot[DIR] == UP_LEFT:
                 dot[DIR] = UP_RIGHT
             elif dot[X] == 0 and dot[DIR] == DOWN_LEFT:
                 dot[DIR] = DOWN_RIGHT
 
+            # See if the dot bounces off the right edge:
             elif dot[X] == WIDTH - 1 and dot[DIR] == UP_RIGHT:
                 dot[DIR] = UP_LEFT
             elif dot[X] == WIDTH - 1 and dot[DIR] == DOWN_RIGHT:
                 dot[DIR] = DOWN_LEFT
 
+            # See if the dot bounces off the top edge:
             elif dot[Y] == 0 and dot[DIR] == UP_LEFT:
                 dot[DIR] = DOWN_LEFT
             elif dot[Y] == 0 and dot[DIR] == UP_RIGHT:
                 dot[DIR] = DOWN_RIGHT
 
+            # See if the dot bounces off the bottom edge:
             elif dot[Y] == HEIGHT - 1 and dot[DIR] == DOWN_LEFT:
                 dot[DIR] = UP_LEFT
             elif dot[Y] == HEIGHT - 1 and dot[DIR] == DOWN_RIGHT:
                 dot[DIR] = UP_RIGHT
 
-        for position in oldDotPositions:
-            # Erase all of the dots.
-            bext.goto(position[0], position[1])
-            print(' ', end='')
+        sys.stdout.flush()  # (Required for bext-using programs.)
+        time.sleep(PAUSE_AMOUNT)
 
 
 # If this program was run (instead of imported), run the game:
@@ -121,5 +119,6 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
+        print()
         print('Bouncing Dots, by Al Sweigart al@inventwithpython.com')
         sys.exit()  # When Ctrl-C is pressed, end the program.
