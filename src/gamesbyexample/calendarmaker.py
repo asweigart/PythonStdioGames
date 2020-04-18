@@ -10,10 +10,7 @@ DAYS = ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
         'Friday', 'Saturday')
 MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December')
-ONE_DAY = datetime.timedelta(days=1)
-
-DAY_BOX_SIZE = 10
-assert DAY_BOX_SIZE >= len('Wednesday')  # This day has the most letters.
+ONE_DAY = datetime.timedelta(days=1)  # A time duration of one day.
 
 print('Calendar Maker, by Al Sweigart al@inventwithpython.com')
 
@@ -21,12 +18,12 @@ while True:  # Loop to get a year from the user.
     print('Enter the year for the calendar:')
     response = input('> ')
 
-    if not response.isdecimal():
-        print('Please enter a numeric year, like 2019.')
-        continue
+    if response.isdecimal():
+        year = int(response)
+        break
 
-    year = int(response)
-    break
+    print('Please enter a numeric year, like 2019.')
+    continue
 
 while True:  # Loop to get a month from the user.
     print('Enter the month for the calendar, 1-12:')
@@ -37,69 +34,72 @@ while True:  # Loop to get a month from the user.
         continue
 
     month = int(response)
-
-    if 1 <= int(response) <= 12:
+    if 1 <= month <= 12:
         break
+
+    print('Please enter a number from 1 to 12.')
 
 
 def getCalendarFor(year, month):
     # Add the month and year label to the calendar:
     calText = ''  # calText will contain the string of our calendar page.
-    fullCalendarWidth = DAY_BOX_SIZE * 7
-    fullCalendarWidth += 8  # There are 8 vertical lines between boxes.
-    calLabel = MONTHS[month - 1] + ' ' + str(year)
-    calText += calLabel.center(fullCalendarWidth) + '\n'
+
+    # Put the month and year at the top of the calendar:
+    calText += (' ' * 34) + MONTHS[month - 1] + ' ' + str(year) + '\n'
 
     # Add the days of the week labels to the calendar:
-    calText += ' '
-    for day in DAYS:
-        calText += day.center(DAY_BOX_SIZE)
-        if day != DAYS[-1]:
-            calText += ' '
-    calText += '\n'
+    calText += '...Sunday.....Monday....Tuesday...Wednesday...Thursday....Friday....Saturday..\n'
 
-    # Create the horizontal lines:
-    horizontalLine = (('+' + ('-' * DAY_BOX_SIZE)) * 7) + '+\n'
+    # The horizontal lines string that separate weeks:
+    weekSeparator = ('+----------' * 7) + '+\n'
 
-    # Create the vertical line:
-    verticalLine = (('|' + (' ' * DAY_BOX_SIZE)) * 7) + '|\n'
+    # The lines that have ten spaces in between the | day separators:
+    blankRow = ('|          ' * 7) + '|\n'
 
-    # Figure out on what day the month starts:
+    # Figure out on what day the month starts (the datetime module
+    # handles all the complicated calendar stuff for us here):
     calDate = datetime.date(year, month, 1)
 
-    while True:  # Loop for each week in the month.
-        if calDate.month != month:
-            break  # We are done with this month.
+    while True:  # Loop over each week in the month.
+        calText += weekSeparator
 
-        calText += horizontalLine
-        labeledLine = verticalLine
+        # The row with day numbers starts off blank, and then we'll add
+        # day numbers in it:
+        dayNumberRow = blankRow
 
-        while True:  # Fill in the day labels for this week:
-            if calDate.month != month:
-                break  # We are done with this month.
+        while True:  # Fill in the day number labels for this week:
+            # weekDayNumber goes from 0 to 6. We have the "+ 1" since
+            # weekday() has Mon (not Sun) as 0:
+            weekDayNumber = (calDate.weekday() + 1) % 7
 
-            # Adjust since weekday() has Mon as 0:
-            calDay = (calDate.weekday() + 1) % 7
-            calLabelIndex = calDay * (DAY_BOX_SIZE + 1) + 1
-            labeledLine = (
-                labeledLine[:calLabelIndex]
+            # Find out where in dayNumberRow we add the day number:
+            dayNumberIndex = (weekDayNumber * 11) + 1
+
+            # Add the day number:
+            rowPartBeforeDayNumber = dayNumberRow[:dayNumberIndex]
+            rowPartAfterDayNumber = dayNumberRow[dayNumberIndex + 2 :]
+            dayNumberRow = (
+                rowPartBeforeDayNumber
                 + str(calDate.day).rjust(2)
-                + labeledLine[calLabelIndex + 2 :]
+                + rowPartAfterDayNumber
             )
 
-            calDate += ONE_DAY
+            calDate += ONE_DAY  # Move on to the next day in the month.
 
             # If we've reached Sunday, break and start a new week:
             if calDate.weekday() == 6:
                 break
 
-        calText += labeledLine  # Add this line to the calendar text.
+        # Add the day number row and 5 blank rows to the calendar text.
+        calText += dayNumberRow
+        for i in range(5):
+            calText += blankRow
 
-        for i in range(DAY_BOX_SIZE // 2):
-            calText += verticalLine
+        if calDate.month != month:
+            break  # We are done with this month and this calendar.
 
     # Add the horizontal line at the very bottom of the calendar.
-    calText += horizontalLine
+    calText += weekSeparator
     return calText
 
 
