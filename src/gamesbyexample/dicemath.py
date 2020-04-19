@@ -7,13 +7,13 @@ import random, time
 # Set up the constants:
 DICE_WIDTH = 9
 DICE_HEIGHT = 5
-SCREEN_WIDTH = 79
-SCREEN_HEIGHT = 24 - 3  # -3 for room to enter the sum at the bottom.
+CANVAS_WIDTH = 79
+CANVAS_HEIGHT = 24 - 3  # -3 for room to enter the sum at the bottom.
 
 # The duration is in seconds:
 QUIZ_DURATION = 30  # (!) Try changing this to 10 or 60.
 MIN_DICE = 2  # (!) Try changing this to 1 or 5.
-MAX_DICE = 5  # (!) Try changing this to 14.
+MAX_DICE = 6  # (!) Try changing this to 14.
 
 # (!) Try changing these to different numbers:
 REWARD = 4  # (!) Points awarded for correct answers.
@@ -98,7 +98,9 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
     diceFaces = []
     for i in range(random.randint(MIN_DICE, MAX_DICE)):
         die = random.choice(ALL_DICE)
+        # die[0] contains the list of strings of the die face:
         diceFaces.append(die[0])
+        # die[1] contains the integer number of pips on the face:
         sumAnswer += die[1]
 
     # Contains (x, y) tuples of the top-left corner of each die.
@@ -108,35 +110,45 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
     for i in range(len(diceFaces)):
         while True:
             # Find a random place on the canvas to put the die:
-            x = random.randint(0, SCREEN_WIDTH - 1 - DICE_WIDTH)
-            y = random.randint(0, SCREEN_HEIGHT - 1 - DICE_HEIGHT)
+            left = random.randint(0, CANVAS_WIDTH  - 1 - DICE_WIDTH)
+            top  = random.randint(0, CANVAS_HEIGHT - 1 - DICE_HEIGHT)
+
+            # Get the x, y for all four corners:
+            #      left
+            #      v
+            #top > +-------+ ^
+            #      | O     | |
+            #      |   O   | dice height
+            #      |     O | |
+            #      +-------+ v
+            #      <------->
+            #      dice width
+            topLeftX = left
+            topLeftY = top
+            topRightX = left + DICE_WIDTH
+            topRightY = top
+            bottomLeftX = left
+            bottomLeftY = top + DICE_HEIGHT
+            bottomRightX = left + DICE_WIDTH
+            bottomRightY = top + DICE_HEIGHT
 
             # Check if this die overlaps with previous dice.
             overlaps = False
-            for prevDie in topLeftDiceCorners:
-                topLeftX = x
-                topLeftY = y
-                topRightX = x + DICE_WIDTH
-                topRightY = y
-                bottomLeftX = x
-                bottomLeftY = y + DICE_HEIGHT
-                bottomRightX = x + DICE_WIDTH
-                bottomRightY = y + DICE_HEIGHT
-
+            for prevDieLeft, prevDieTop in topLeftDiceCorners:
+                prevDieRight = prevDieLeft + DICE_WIDTH
+                prevDieBottom = prevDieTop + DICE_HEIGHT
                 # Check each corner of this die to see if it is inside
                 # of the area the previous die:
-                for cornerx, cornery in ((topLeftX, topLeftY),
+                for cornerX, cornerY in ((topLeftX, topLeftY),
                                          (topRightX, topRightY),
                                          (bottomLeftX, bottomLeftY),
                                          (bottomRightX, bottomRightY)):
-                    if (prevDie[0] <= cornerx
-                        and cornerx < (prevDie[0] + DICE_WIDTH)
-                        and prevDie[1] <= cornery
-                        and cornery < (prevDie[1] + DICE_HEIGHT)):
+                    if (prevDieLeft <= cornerX < prevDieRight
+                        and prevDieTop <= cornerY < prevDieBottom):
                             overlaps = True
             if not overlaps:
                 # It doesn't overlap, so we can put it here:
-                topLeftDiceCorners.append((x, y))
+                topLeftDiceCorners.append((left, top))
                 break
 
     # Draw the dice on the canvas:
@@ -145,20 +157,22 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
     # position on the canvas:
     canvas = {}
     # Loop over each die:
-    for i, dieCorner in enumerate(topLeftDiceCorners):
+    for i, (dieLeft, dieTop) in enumerate(topLeftDiceCorners):
         # Loop over each character in the die's face:
         dieFace = diceFaces[i]
-        for ix in range(DICE_WIDTH):
-            for iy in range(DICE_HEIGHT):
+        for dx in range(DICE_WIDTH):
+            for dy in range(DICE_HEIGHT):
                 # Copy this character to the correct place on the canvas:
-                canvasX = dieCorner[0] + ix
-                canvasY = dieCorner[1] + iy
-                canvas[(canvasX, canvasY)] = dieFace[iy][ix]
+                canvasX = dieLeft + dx
+                canvasY = dieTop + dy
+                # Note that in dieFace, a list of strings, the x and y
+                # are swapped:
+                canvas[(canvasX, canvasY)] = dieFace[dy][dx]
 
     # Display the canvas on the screen:
-    for y in range(SCREEN_HEIGHT):
-        for x in range(SCREEN_WIDTH):
-            print(canvas.get((x, y), ' '), end='')
+    for cy in range(CANVAS_HEIGHT):
+        for cx in range(CANVAS_WIDTH):
+            print(canvas.get((cx, cy), ' '), end='')
         print()  # Print a newline.
 
     # Let the player enter their answer:
