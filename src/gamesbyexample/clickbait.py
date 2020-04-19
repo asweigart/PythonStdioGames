@@ -1,10 +1,11 @@
 """Clickbait Headline Generator, by Al Sweigart al@inventwithpython.com
 A clickbait headline generator for your soulless content farm website.
 This and other games are available at https://nostarch.com/XX
-Tags: large, humor, word"""
+Tags: large, beginner, humor, word"""
 __version__ = 0
 import random
 
+# Set up the constants:
 OBJECT_PRONOUNS = ['Her', 'Him', 'Them']
 POSSESIVE_PRONOUNS = ['Her', 'His', 'Their']
 PERSONAL_PRONOUNS = ['She', 'He', 'They']
@@ -13,8 +14,6 @@ STATES = ['California', 'Texas', 'Florida', 'New York', 'Pennsylvania',
 NOUNS = ['Cat', 'Dog', 'Athlete', 'Clown', 'Shovel', 'Paleo Diet',
          'Chicken', 'Mom', 'Dad', 'Doctor', 'Video Game', 'Robot',
          'Plastic Straw','Serial Killer', 'Telephone Psychic']
-DISEASES = ['The Flu', 'Autism', 'Cancer', 'Heart Disease', 'Alcoholism',
-            'Lyme Disease', 'Cryptocurrency', 'Everything']
 PLACES = ['House', 'Attic', 'Bank Deposit Box', 'School', 'Basement',
           'Workplace', 'Donut Shop', 'Apocalypse Bunker']
 WHEN = ['Soon', 'This Year', 'Later Today', 'RIGHT NOW', 'Next Week']
@@ -25,25 +24,25 @@ def main():
     print('By Al Sweigart al@inventwithpython.com')
     print()
 
+    print('Our website needs to trick people into looking at ads!')
     while True:
-        print('Our website needs to trick people into looking at ads!')
         print('Enter the number of clickbait headlines to generate:')
         response = input('> ')
         if not response.isdecimal():
             print('Please enter a number.')
         else:
             numberOfHeadlines = int(response)
-            break
+            break  # Exit the loop once a valid number is entered.
 
     for i in range(numberOfHeadlines):
         clickbaitType = random.randint(1, 8)
 
         if clickbaitType == 1:
-            headline = generateAreMillenialsAreKillingHeadline()
+            headline = generateAreMillenialsKillingHeadline()
         elif clickbaitType == 2:
             headline = generateWhatYouDontKnowHeadline()
         elif clickbaitType == 3:
-            headline = generateDoctorsHateHerHeadline()
+            headline = generateBigCompaniesHateHerHeadline()
         elif clickbaitType == 4:
             headline = generateYouWontBelieveHeadline()
         elif clickbaitType == 5:
@@ -53,44 +52,44 @@ def main():
         elif clickbaitType == 7:
             headline = generateReasonsWhyHeadline()
         elif clickbaitType == 8:
-            headline = generateJobAutomated()
+            headline = generateJobAutomatedHeadline()
 
         print(headline)
     print()
 
-    website = random.choice(['wobsite', 'blag', 'Facebuck', 'Googles',
+    website = random.choice(['wobsite', 'blag', 'Facebuuk', 'Googles',
                              'Facesbook', 'Tweedie', 'Pastagram'])
     when = random.choice(WHEN).lower()
     print('Post these to our', website, when, 'or you\'re fired!')
 
 
 # Each of these functions returns a different type of clickbait headline:
-def generateAreMillenialsAreKillingHeadline():
+def generateAreMillenialsKillingHeadline():
     noun = random.choice(NOUNS)
     return 'Are Millenials Killing the {} Industry?'.format(noun)
 
 
 def generateWhatYouDontKnowHeadline():
-    noun1 = random.choice(NOUNS)
-    noun2 = random.choice(NOUNS) + 's'
+    noun = random.choice(NOUNS)
+    pluralNoun = random.choice(NOUNS) + 's'
     when = random.choice(WHEN)
-    return 'Without This {}, {} Could Kill You {}'.format(noun1, noun2, when)
+    return 'Without This {}, {} Could Kill You {}'.format(noun, pluralNoun, when)
 
 
-def generateDoctorsHateHerHeadline():
+def generateBigCompaniesHateHerHeadline():
     pronoun = random.choice(OBJECT_PRONOUNS)
     state = random.choice(STATES)
-    noun = random.choice(NOUNS)
-    disease = random.choice(DISEASES)
-    return 'Doctors Hate {}! See How This {} {} Cured {}'.format(pronoun, state, noun, disease)
+    noun1 = random.choice(NOUNS)
+    noun2 = random.choice(NOUNS)
+    return 'Big Companies Hate {}! See How This {} {} Invented a Cheaper {}'.format(pronoun, state, noun1, noun2)
 
 
 def generateYouWontBelieveHeadline():
     state = random.choice(STATES)
-    noun1 = random.choice(NOUNS)
+    noun = random.choice(NOUNS)
     pronoun = random.choice(POSSESIVE_PRONOUNS)
     place = random.choice(PLACES)
-    return 'You Won\'t Believe What This {} {} Found in {} {}'.format(state, noun1, pronoun, place)
+    return 'You Won\'t Believe What This {} {} Found in {} {}'.format(state, noun, pronoun, place)
 
 
 def generateDontWantYouToKnowHeadline():
@@ -108,13 +107,13 @@ def generateGiftIdeaHeadline():
 
 def generateReasonsWhyHeadline():
     number1 = random.randint(3, 19)
+    pluralNoun = random.choice(NOUNS) + 's'
     # number2 should be no larger than number1:
     number2 = random.randint(1, number1)
-    pluralNoun = random.choice(NOUNS) + 's'
     return '{} Reasons Why {} Are More Interesting Than You Think (Number {} Will Surprise You!)'.format(number1, pluralNoun, number2)
 
 
-def generateJobAutomated():
+def generateJobAutomatedHeadline():
     state = random.choice(STATES)
     noun = random.choice(NOUNS)
 

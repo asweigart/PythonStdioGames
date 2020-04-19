@@ -30,8 +30,8 @@ while True:  # Main game loop.
         else:
             # This is a valid bet.
             pot = int(pot)  # Convert pot to an integer.
-            purse = purse - pot  # Detect the pot from player's purse.
-            break
+            purse = purse - pot  # Subtract the pot from player's purse.
+            break  # Exit the loop once a valid bet is placed.
 
     # Roll the dice.
     dice1 = random.randint(1, 6)
