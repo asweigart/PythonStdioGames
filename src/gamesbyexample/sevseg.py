@@ -15,13 +15,12 @@ E     C
 |__D__|"""
 
 
-def getSevSegStr(number, numberOfDigits=0):
-    """Return a seven-segment display string of number. The digits
-    argument is the minimum number of digits in the returned string,
-    padded with zeros if needed."""
+def getSevSegStr(number, minWidth=0):
+    """Return a seven-segment display string of number. The returned
+    string will be padded with zeros if it is smaller than minWidth."""
 
-    # Convert to string in case it's an int or float:
-    number = str(number).zfill(numberOfDigits)
+    # Convert number to string in case it's an int or float:
+    number = str(number).zfill(minWidth)
 
     rows = ['', '', '']
     for i, numeral in enumerate(number):

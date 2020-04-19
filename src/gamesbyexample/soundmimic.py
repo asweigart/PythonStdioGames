@@ -35,7 +35,7 @@ input('Press Enter to begin...')
 
 pattern = ''
 while True:
-    print('\n' * 60)  # Clear the screen by printing many newlines.
+    print('\n' * 60)  # Clear the screen by printing several newlines.
 
     # Add a random letter to the pattern:
     pattern = pattern + random.choice('ASDF')
@@ -47,7 +47,7 @@ while True:
         playsound.playsound(BEEPS[letter])
 
     time.sleep(1)  # Add a slight pause at the end.
-    print('\n' * 60)  # Clear the screen by printing many newlines.
+    print('\n' * 60)  # Clear the screen by printing several newlines.
 
     # Let the player enter the pattern:
     print('Enter the pattern:')

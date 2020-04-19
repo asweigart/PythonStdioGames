@@ -4,13 +4,12 @@ display. Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
 Requires sevseg.py to be in the same folder.
 This and other games are available at https://nostarch.com/XX
-Tags: short, artistic"""
+Tags: tiny, artistic"""
 __version__ = 0
 import sys, time
 import sevseg  # Imports our sevseg.py program.
 
-
-def main():
+try:
     while True:  # Main program loop.
         # Clear the screen by printing several newlines:
         print('\n' * 60)
@@ -24,19 +23,14 @@ def main():
         minutes = str(currentTime.tm_min)
         seconds = str(currentTime.tm_sec)
 
-        # Pad these strings with zeros, if needed:
-        hours = hours.zfill(2)
-        minutes = minutes.zfill(2)
-        seconds = seconds.zfill(2)
-
         # Get the digit strings from the sevseg module:
-        hDigits = sevseg.getSevSegStr(hours)
+        hDigits = sevseg.getSevSegStr(hours, 2)
         hTopRow, hMiddleRow, hBottomRow = hDigits.splitlines()
 
-        mDigits = sevseg.getSevSegStr(minutes)
+        mDigits = sevseg.getSevSegStr(minutes, 2)
         mTopRow, mMiddleRow, mBottomRow = mDigits.splitlines()
 
-        sDigits = sevseg.getSevSegStr(seconds)
+        sDigits = sevseg.getSevSegStr(seconds, 2)
         sTopRow, sMiddleRow, sBottomRow = sDigits.splitlines()
 
         # Display the digits:
@@ -51,12 +45,6 @@ def main():
             time.sleep(0.01)
             if time.localtime().tm_sec != currentTime.tm_sec:
                 break
-
-
-# If this program was run (instead of imported), run the game:
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        print('Digital Clock, by Al Sweigart al@inventwithpython.com')
-        sys.exit()  # When Ctrl-C is pressed, end the program.
+except KeyboardInterrupt:
+    print('Digital Clock, by Al Sweigart al@inventwithpython.com')
+    sys.exit()  # When Ctrl-C is pressed, end the program.
