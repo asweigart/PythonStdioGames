@@ -117,8 +117,8 @@ print(playerNames)
 
 input('Press Enter to reveal the winner...')
 
-if ((swappedBoxes and carrotInRedBox) or
-    (not swappedBoxes and not carrotInRedBox)):
+if ((swappedBoxes and carrotInRedBox)
+    or (not swappedBoxes and not carrotInRedBox)):
         print('''
    _________      ___VV____
   |         |    |   VV    |
@@ -129,8 +129,8 @@ if ((swappedBoxes and carrotInRedBox) or
 |   {}  | |  |   {}  | |
 |   BOX   | /  |   BOX   | /
 +---------+/   +---------+/'''.format(firstBox, secondBox))
-elif ((swappedBoxes and not carrotInRedBox) or
-    (not swappedBoxes and carrotInRedBox)):
+elif ((swappedBoxes and not carrotInRedBox)
+    or (not swappedBoxes and carrotInRedBox)):
         print('''
    ___VV____      _________
   |   VV    |    |         |

@@ -1,4 +1,4 @@
-"""Chase, by Al Sweigart al@inventwithpython.com
+"""Hungry Robots, by Al Sweigart al@inventwithpython.com
 Escape the hungry robots by making them crash into each other.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game"""
@@ -22,7 +22,7 @@ WALL = chr(9617)  # Character 9617 is '░'
 
 
 def main():
-    print('''Chase, by Al Sweigart al@inventwithpython.com
+    print('''Hungry Robots, by Al Sweigart al@inventwithpython.com
 
 You are trapped in a maze with hungry robots! You don't know why robots
 need to eat, but you don't want to find out. The robots are badly
