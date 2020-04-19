@@ -13,12 +13,13 @@ while True:
     response = input('> ')
     if response.isdecimal():
         numberOfFlips = int(response)
-        break
+        break  # Exit the loop once they enter a valid number.
 
-streakStats = {}  # Keys are streak lengths, values are frequency.
+# The streakStats dictionary keeps count of how many times a certain
+# streak of heads or tails has occurred. The keys are tuples of
+# (streakLength, side) and the values are integer counts.
+streakStats = {}
 for i in range(numberOfFlips):
-    isFirstFlip = i == 0
-
     # Simulate one coin flip:
     if random.randint(0, 1) == 0:
         flip = 'heads'
@@ -26,6 +27,7 @@ for i in range(numberOfFlips):
         flip = 'tails'
     print(flip[0], end='')  # Print out "h" or "t".
 
+    isFirstFlip = i == 0
     if isFirstFlip:
         currentStreakLength = 0
         currentStreakSide = flip
@@ -34,7 +36,9 @@ for i in range(numberOfFlips):
     if flip != currentStreakSide:
         # Record the streak stats:
         streakKey = (currentStreakLength, currentStreakSide)
-        streakStats.setdefault(streakKey, 0)
+        if streakKey not in streakStats:
+            # Set this new key to 0:
+            streakStats[streakKey] = 0
         streakStats[streakKey] = streakStats[streakKey] + 1
 
         # Reset the streak length for this new streak:
@@ -45,15 +49,17 @@ for i in range(numberOfFlips):
 
 # Record the streak stats for the final flip:
 streakKey = (currentStreakLength, currentStreakSide)
-streakStats.setdefault(streakKey, 0)
+if streakKey not in streakStats:
+    # Set this new key to 0:
+    streakStats[streakKey] = 0
 streakStats[streakKey] = streakStats[streakKey] + 1
 
 print()
 print('Simulation finished.')
-streakLengths = list(streakStats.keys())
-streakLengths.sort()
+streakLengthsAndSides = list(streakStats.keys())
+streakLengthsAndSides.sort()
 
 # Display the results:
-for streakLength in streakLengths:
-    label = str(streakLength[0]) + ' ' + streakLength[1] + ' in a row'
-    print(label.rjust(21) + ' - ' + str(streakStats[streakLength]))
+for length, side in streakLengthsAndSides:
+    label = str(length) + ' ' + side + ' in a row'
+    print(label.rjust(21) + ' - ' + str(streakStats[(length, side)]))
