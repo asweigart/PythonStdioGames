@@ -19,21 +19,21 @@ their eyes during this.) The first player then says "There is a carrot
 in my box" or "There is not a carrot in my box". The second player then
 gets to decide if they want to swap boxes or not.
 ''')
-input('Press Enter to begin.')
+input('Press Enter to begin...')
 
-p1Name = input('Human player 1, enter your name:')
-p2Name = input('Human player 2, enter your name:')
+p1Name = input('Human player 1, enter your name: ')
+p2Name = input('Human player 2, enter your name: ')
+playerNames = p1Name[:11].center(11) + '    ' + p2Name[:11].center(11)
 
 print('''HERE ARE TWO BOXES:
   __________     __________
  /         /|   /         /|
 +---------+ |  +---------+ |
-|         | |  |         | |
 |   RED   | |  |   GOLD  | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+''')
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/''')
 
-print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
+print(playerNames)
 print()
 print(p1Name + ', you have a RED box in front of you.')
 print(p2Name + ', you have a GOLD box in front of you.')
@@ -41,7 +41,7 @@ input('Press Enter to continue...')
 
 print(p1Name + ', you will get to look into your box.')
 print(p2Name.upper() + ', close your eyes and don\'t look!!!')
-input('When ' + p2Name + '\'s eyes are closed, press Enter...')
+input('When ' + p2Name + ' has closed their eyes, press Enter...')
 
 print(p1Name + ' here is the inside of your box:')
 
@@ -55,33 +55,31 @@ if carrotInRedBox:
    ___VV____
   |   VV    |
   |   VV    |
-  +___||____+    __________
+  |___||____|    __________
  /    ||   /|   /         /|
 +---------+ |  +---------+ |
-|         | |  |         | |
 |   RED   | |  |   GOLD  | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/
  (carrot!)''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
+    print(playerNames)
 else:
     print('''
    _________
   |         |
   |         |
-  +_________+    __________
+  |_________|    __________
  /         /|   /         /|
 +---------+ |  +---------+ |
-|         | |  |         | |
 |   RED   | |  |   GOLD  | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/
 (no carrot!)''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
+    print(playerNames)
 
 input('Press Enter to continue...')
 
-print('\n' * 100)
+print('\n' * 100)  # Clear the screen by printing several newlines.
 print(p1Name + ', tell ' + p2Name + ' to open their eyes.')
 input('Press Enter to continue...')
 
@@ -95,90 +93,64 @@ print(p2Name + ', do you want to swap boxes with ' + p1Name + '? YES/NO')
 while True:
     response = input('> ').upper()
     if not (response.startswith('Y') or response.startswith('N')):
-        print(p2Name + ', please enter "YES" or "NO"')
+        print(p2Name + ', please enter "YES" or "NO".')
     else:
         break
 
 swappedBoxes = response.startswith('Y')
 
 if swappedBoxes:
-    print('''HERE ARE THE TWO BOXES:
-  __________     __________
- /         /|   /         /|
-+---------+ |  +---------+ |
-|         | |  |         | |
-|   GOLD  | |  |   RED   | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
+    firstBox  = 'GOLD'
+    secondBox = 'RED '  # Note the space after the "D".
 else:
-    print('''HERE ARE THE TWO BOXES:
+    firstBox  = 'RED '  # Note the space after the "D".
+    secondBox = 'GOLD'
+
+print('''HERE ARE THE TWO BOXES:
   __________     __________
  /         /|   /         /|
 +---------+ |  +---------+ |
-|         | |  |         | |
-|   RED   | |  |   GOLD  | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+print(playerNames)
 
 input('Press Enter to reveal the winner...')
 
-if swappedBoxes and carrotInRedBox:
-    print('''
+if ((swappedBoxes and carrotInRedBox) or
+    (not swappedBoxes and not carrotInRedBox)):
+        print('''
    _________      ___VV____
   |         |    |   VV    |
   |         |    |   VV    |
   |_________|    |___||____|
  /         /|   /    ||   /|
 +---------+ |  +---------+ |
-|         | |  |         | |
-|   GOLD  | |  |   RED   | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+elif ((swappedBoxes and not carrotInRedBox) or
+    (not swappedBoxes and carrotInRedBox)):
+        print('''
+   ___VV____      _________
+  |   VV    |    |         |
+  |   VV    |    |         |
+  |___||____|    |_________|
+ /    ||   /|   /         /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+
+print(playerNames)
+
+if swappedBoxes and carrotInRedBox:
     print(p2Name + ' is the winner!')
-elif swappedBoxes and not carrotInRedBox:
-    print('''
-   ___VV____      _________
-  |   VV    |    |         |
-  |   VV    |    |         |
-  |___||____|    |_________|
- /    ||   /|   /         /|
-+---------+ |  +---------+ |
-|         | |  |         | |
-|   GOLD  | |  |   RED   | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
-    print(p1Name + ' is the winner!')
 elif not swappedBoxes and carrotInRedBox:
-    print('''
-   ___VV____      _________
-  |   VV    |    |         |
-  |   VV    |    |         |
-  |___||____|    |_________|
- /    ||   /|   /         /|
-+---------+ |  +---------+ |
-|         | |  |         | |
-|   RED   | |  |   GOLD  | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
+    print(p1Name + ' is the winner!')
+elif swappedBoxes and not carrotInRedBox:
     print(p1Name + ' is the winner!')
 elif not swappedBoxes and not carrotInRedBox:
-    print('''
-   _________      ___VV____
-  |         |    |   VV    |
-  |         |    |   VV    |
-  |_________|    |___||____|
- /         /|   /    ||   /|
-+---------+ |  +---------+ |
-|         | |  |         | |
-|   RED   | |  |   GOLD  | |
-|   BOX   |/   |   BOX   |/
-+---------+    +---------+''')
-    print(p1Name[:11].center(11) + '    ' + p2Name[:11].center(11))
     print(p2Name + ' is the winner!')
 
 print('Thanks for playing!')
