@@ -16,7 +16,7 @@ This program plays fizz buzz for the first one million numbers.
 input('Press Enter to begin...')
 
 number = 1
-while number < 1000000:  # Main program loop.
+while number <= 1000000:  # Main program loop.
     if number % 3 == 0 and number % 5 == 0:
         # The number is evenly divisible by 3 and 5, so print "FizzBuzz":
         print('FizzBuzz', end=' ')  # Don't print a newline at the end.
@@ -32,4 +32,4 @@ while number < 1000000:  # Main program loop.
 
     number += 1  # Move on to the next number.
 
-print()  # Print a newline character at the end.
+print()  # Print a newline at the end.

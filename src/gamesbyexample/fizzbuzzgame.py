@@ -35,20 +35,20 @@ while True:  # Main game loop.
 
     # For the first 16 responses, give them the answer:
     if number <= 16:
-        hint = '(Enter {})'.format(correctResponse)
+        hint = '(Enter ' + correctResponse + ') '
     elif number == 17:
-        hint = '(You are on your own now!)'
+        hint = '(You are on your own now!) '
     else:
         hint = ''
 
     # Get the player's response:
-    response = input('Next response: {} '.format(hint))
+    response = input('Next response: {} ' + hint)
     # Convert to lowercase, remove spaces:
     response = response.lower().replace(' ', '')
 
     # See if the player has lost:
     if response != correctResponse:
-        print('NOOOOO! Correct response: {}'.format(correctResponse))
+        print('NOOOOO! Correct response: ' + correctResponse)
         print('Thanks for playing!')
         sys.exit()
     elif time.time() > doomClock:
@@ -59,7 +59,6 @@ while True:  # Main game loop.
     # If the player was right, add 2 seconds to the doom clock.
     doomClock += 2
     secondsRemaining = round(doomClock - time.time(), 1)
-    print('DOOM CLOCK: {} seconds remaining'.format(secondsRemaining))
+    print('DOOM CLOCK: ' + str(secondsRemaining) + ' seconds remaining')
     print()
-
     number += 1  # Proceed to the next number to enter.
