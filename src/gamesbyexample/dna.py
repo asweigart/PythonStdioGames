@@ -6,8 +6,11 @@ Tags: short, artistic, scrolling, science"""
 __version__ = 0
 import random, sys, time
 
+PAUSE = 0.15  # (!) Try changing this to 0.5 or 0.0.
+
 # These are the individual rows of the DNA animation:
 ROWS = [
+    #123456789 <- Use this to measure the number of spaces:
     '         ##',  # Index 0 has no {}.
     '        #{}-{}#',
     '       #{}---{}#',
@@ -26,9 +29,9 @@ ROWS = [
     '      #{}-----{}#',
     '       #{}---{}#',
     '        #{}-{}#']
+    #123456789 <- Use this to measure the number of spaces:
 
-
-def main():
+try:
     print('DNA Animation, by Al Sweigart al@inventwithpython.com')
     print('Press Ctrl-C to quit...')
     time.sleep(2)
@@ -36,7 +39,7 @@ def main():
 
     while True:  # Main program loop.
         # Increment rowIndex to draw next row:
-        rowIndex += 1
+        rowIndex = rowIndex + 1
         if rowIndex == len(ROWS):
             rowIndex = 0
 
@@ -59,12 +62,6 @@ def main():
 
         # Print the row.
         print(ROWS[rowIndex].format(leftNucleotide, rightNucleotide))
-        time.sleep(0.15)  # Add a slight pause.
-
-
-# If this program was run (instead of imported), run the game:
-if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        sys.exit()  # When Ctrl-C is pressed, end the program.
+        time.sleep(PAUSE)  # Add a slight pause.
+except KeyboardInterrupt:
+    sys.exit()  # When Ctrl-C is pressed, end the program.

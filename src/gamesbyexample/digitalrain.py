@@ -9,6 +9,7 @@ import random, shutil, sys, time
 MIN_BEAD_LENGTH = 6  # (!) Try changing this to 1 or 50.
 MAX_BEAD_LENGTH = 14  # (!) Try changing this to 100.
 PAUSE = 0.1  # (!) Try changing this to 0.0 or 2.0.
+BEAD_CHARS = ['0', '1']  # (!) Try changing this other characters.
 
 # Density can range from 0.0 to 100.0:
 DENSITY = 2.0  # (!) Try changing this to 10.0 or 30.0.
@@ -21,7 +22,7 @@ WIDTH -= 1
 
 print('Digital Rain Screensaver, by Al Sweigart al@inventwithpython.com')
 print('Press Ctrl-C to quit.')
-time.sleep(3)
+time.sleep(2)
 
 try:
     # When the counter is 0, no bead of "digital rain" is shown.
@@ -33,16 +34,17 @@ try:
         for i in range(WIDTH):
             if columns[i] == 0:
                 if (random.randint(1, 10000) / 100) <= DENSITY:
-                    # Restart the bead on this column.
+                    # Restart a bead on this column.
                     columns[i] = random.randint(MIN_BEAD_LENGTH,
                                                 MAX_BEAD_LENGTH)
 
-            if columns[i] != 0:
-                print(random.randint(0, 1), end='')
+            # Display an empty space or a 1/0 character.
+            if columns[i] > 0:
+                print(random.choice(BEAD_CHARS), end='')
                 columns[i] -= 1
             else:
                 print(' ', end='')
-        print()
+        print()  # Print a newline at the end of the row of columns.
         sys.stdout.flush()  # Make sure text appears on the screen.
         time.sleep(PAUSE)
 except KeyboardInterrupt:

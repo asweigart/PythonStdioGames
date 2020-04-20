@@ -1,7 +1,7 @@
 """Duckling Screensaver, by Al Sweigart al@inventwithpython.com
 A screensaver of many many ducklings.
 
->" )   ='')    (``=   ("=  >")    ("=
+>" )   =^^)    (``=   ("=  >")    ("=
 (  >)  (  ^)  (v  )  (^ )  ( >)  (v )
  ^ ^    ^ ^    ^ ^    ^^    ^^    ^^
 
@@ -11,14 +11,16 @@ __version__ = 0
 import random, shutil, sys, time
 
 # Set up the constants:
-PAUSE = 0.2
-DENSITY = 10.0  # (!) Density can range from 0.0 to 100.0.
+PAUSE = 0.2  # (!) Try changing this to 1.0 or 0.0.
+DENSITY = 10.0  # (!) Try changing this to anything from 0.0 to 100.0.
+
 DUCKLING_WIDTH = 5
 LEFT = 'left'
 RIGHT = 'right'
 BEADY = 'beady'
 WIDE = 'wide'
 HAPPY = 'happy'
+ALOOF = 'aloof'
 CHUBBY = 'chubby'
 VERY_CHUBBY = 'very chubby'
 OPEN = 'open'
@@ -40,7 +42,7 @@ WIDTH -= 1
 def main():
     print('Duckling Screensaver, by Al Sweigart al@inventwithpython.com')
     print('Press Ctrl-C to quit...')
-    time.sleep(3)
+    time.sleep(2)
 
     ducklingLanes = [None] * (WIDTH // DUCKLING_WIDTH)
 
@@ -49,13 +51,13 @@ def main():
             # See if we should create a duckling in this lane:
             if (ducklingObj == None
                 and (random.randint(1, 10000) / 100) <= DENSITY):
-                # Place a duckling in this lane:
-                ducklingObj = Duckling()
-                ducklingLanes[laneNum] = ducklingObj
+                    # Place a duckling in this lane:
+                    ducklingObj = Duckling()
+                    ducklingLanes[laneNum] = ducklingObj
 
             if ducklingObj != None:
                 # Draw a duckling if there is one in this lane:
-                ducklingObj.displayNext()
+                print(ducklingObj.getNextBodyPart(), end='')
                 # Delete the duckling if we've finished drawing it:
                 if ducklingObj.partToDisplayNext == None:
                     ducklingLanes[laneNum] = None
@@ -80,115 +82,125 @@ class Duckling:
             # Chubby ducklings can only have beady eyes.
             self.eyes = BEADY
         else:
-            self.eyes = random.choice([BEADY, WIDE, HAPPY])
+            self.eyes = random.choice([BEADY, WIDE, HAPPY, ALOOF])
 
         self.partToDisplayNext = HEAD
 
-    def displayHead(self):
-        """Prints the duckling's head."""
+    def getHeadStr(self):
+        """Returns the string of the duckling's head."""
+        headStr = ''
         if self.direction == LEFT:
-            # Print the mouth:
+            # Get the mouth:
             if self.mouth == OPEN:
-                print('>', end='')
+                headStr += '>'
             elif self.mouth == CLOSED:
-                print('=', end='')
+                headStr += '='
 
-            # Print the eyes:
+            # Get the eyes:
             if self.eyes == BEADY and self.body == CHUBBY:
-                print('"', end='')
+                headStr += '"'
             elif self.eyes == BEADY and self.body == VERY_CHUBBY:
-                print('" ', end='')
+                headStr += '" '
             elif self.eyes == WIDE:
-                print("''", end='')
+                headStr += "''"
             elif self.eyes == HAPPY:
-                print('``', end='')
+                headStr += '^^'
+            elif self.eyes == ALOOF:
+                headStr += '``'
 
-            print(') ', end='')  # Print the back of the head.
+            headStr += ') '  # Get the back of the head.
 
         if self.direction == RIGHT:
-            print(' (', end='')  # Print the back of the head.
+            headStr += ' ('  # Get the back of the head.
 
-            # Print the eyes:
+            # Get the eyes:
             if self.eyes == BEADY and self.body == CHUBBY:
-                print('"', end='')
+                headStr += '"'
             elif self.eyes == BEADY and self.body == VERY_CHUBBY:
-                print(' "', end='')
+                headStr += ' "'
             elif self.eyes == WIDE:
-                print("''", end='')
+                headStr += "''"
             elif self.eyes == HAPPY:
-                print('``', end='')
+                headStr += '^^'
+            elif self.eyes == ALOOF:
+                headStr += '``'
 
-            # Print the mouth:
+            # Get the mouth:
             if self.mouth == OPEN:
-                print('<', end='')
+                headStr += '<'
             elif self.mouth == CLOSED:
-                print('=', end='')
+                headStr += '='
 
         if self.body == CHUBBY:
-            # Print an extra space so chubby ducklings are the same
+            # Get an extra space so chubby ducklings are the same
             # width as very chubby ducklings.
-            print(' ', end='')
+            headStr += ' '
 
-    def displayBody(self):
-        """Prints the duckling's body."""
-        print('(', end='')  # Print the left side of the body.
+        return headStr
+
+    def getBodyStr(self):
+        """Returns the string of the duckling's body."""
+        bodyStr = '('  # Get the left side of the body.
         if self.direction == LEFT:
-            # Print the interior body space:
+            # Get the interior body space:
             if self.body == CHUBBY:
-                print(' ', end='')
+                bodyStr += ' '
             elif self.body == VERY_CHUBBY:
-                print('  ', end='')
+                bodyStr += '  '
 
-            # Print the wing:
+            # Get the wing:
             if self.wing == OUT:
-                print('>', end='')
+                bodyStr += '>'
             elif self.wing == UP:
-                print('^', end='')
+                bodyStr += '^'
             elif self.wing == DOWN:
-                print('v', end='')
+                bodyStr += 'v'
 
         if self.direction == RIGHT:
-            # Print the wing:
+            # Get the wing:
             if self.wing == OUT:
-                print('<', end='')
+                bodyStr += '<'
             elif self.wing == UP:
-                print('^', end='')
+                bodyStr += '^'
             elif self.wing == DOWN:
-                print('v', end='')
+                bodyStr += 'v'
 
-            # Print the interior body space:
+            # Get the interior body space:
             if self.body == CHUBBY:
-                print(' ', end='')
+                bodyStr += ' '
             elif self.body == VERY_CHUBBY:
-                print('  ', end='')
+                bodyStr += '  '
 
-        print(')', end='')  # Print the right side of the body.
+        bodyStr += ')'  # Get the right side of the body.
 
         if self.body == CHUBBY:
-            # Print an extra space so chubby ducklings are the same
+            # Get an extra space so chubby ducklings are the same
             # width as very chubby ducklings.
-            print(' ', end='')
+            bodyStr += ' '
 
-    def displayFeet(self):
-        """Prints the duckling's feet."""
+        return bodyStr
+
+    def getFeetStr(self):
+        """Returns the string of the duckling's feet."""
         if self.body == CHUBBY:
-            print(' ^^  ', end='')
+            return ' ^^  '
         elif self.body == VERY_CHUBBY:
-            print(' ^ ^ ', end='')
+            return ' ^ ^ '
 
-    def displayNext(self):
+    def getNextBodyPart(self):
         """Calls the appropriate display method for the next body
         part that needs to be displayed. Sets partToDisplayNext to
         None when finished."""
         if self.partToDisplayNext == HEAD:
-            self.displayHead()
             self.partToDisplayNext = BODY
+            return self.getHeadStr()
         elif self.partToDisplayNext == BODY:
-            self.displayBody()
             self.partToDisplayNext = FEET
+            return self.getBodyStr()
         elif self.partToDisplayNext == FEET:
-            self.displayFeet()
             self.partToDisplayNext = None
+            return self.getFeetStr()
+
 
 
 # If this program was run (instead of imported), run the game:
