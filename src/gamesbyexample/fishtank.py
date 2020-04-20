@@ -5,7 +5,7 @@ program for DOS. https://robobunny.com/projects/asciiquarium/html/
 This and other games are available at https://nostarch.com/XX
 Tags: extra-large, artistic, bext, terminal"""
 __version__ = 0
-import random, time, sys
+import random, sys, time
 
 try:
     import bext
@@ -21,13 +21,14 @@ WIDTH, HEIGHT = bext.size()
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-NUM_KELP = 2  # (!) Try changing this number.
-NUM_FISH = 10  # (!) Try changing this number.
-NUM_BUBBLERS = 1  # (!) Try changing this number.
-FRAMES_PER_SECOND = 4  # (!) Try changing this number.
+NUM_KELP = 2  # (!) Try changing this to 10.
+NUM_FISH = 10  # (!) Try changing this to 2 or 100.
+NUM_BUBBLERS = 1  # (!) Try changing this to 0 or 10.
+FRAMES_PER_SECOND = 4  # (!) Try changing this number to 1 or 60.
 # (!) Try changing the constants to create a fish tank with only kelp,
 # or only bubblers.
 
+# NOTE: Every string in a fish dictionary should be the same length.
 FISH_TYPES = [
   {'right': ['><>'],          'left': ['<><']},
   {'right': ['>||>'],         'left': ['<||<']},
@@ -36,9 +37,9 @@ FISH_TYPES = [
   {'right': ['>))o', '>)).'], 'left': ['o[[<', '.[[<']},
   {'right': ['>-==>'],        'left': ['<==-<']},
   {'right': [r'>\\>'],        'left': ['<//<']},
-  {'right': ['><)))*>'],      'left': ['<*[[[><']},
-  {'right': ['}-[[[*>'],      'left': ['<*)))-{']},
-  {'right': [']-<)))b>'],     'left': ['<d[[[>-[']},
+  {'right': ['><)))*>'],      'left': ['<*(((><']},
+  {'right': ['}-[[[*>'],      'left': ['<*]]]-{']},
+  {'right': [']-<)))b>'],     'left': ['<d(((>-[']},
   {'right': ['><XXX*>'],      'left': ['<*XXX><']},
   {'right': ['_.-._.-^=>', '.-._.-.^=>',
              '-._.-._^=>', '._.-._.^=>'],
@@ -47,18 +48,17 @@ FISH_TYPES = [
   ]  # (!) Try adding your own fish to FISH_TYPES.
 LONGEST_FISH_LENGTH = 10  # Longest single string in FISH_TYPES.
 
-# The x position where a fish runs into the edge of the screen:
+# The x and y positions where a fish runs into the edge of the screen:
+LEFT_EDGE = 0
 RIGHT_EDGE = WIDTH - 1 - LONGEST_FISH_LENGTH
+TOP_EDGE = 0
+BOTTOM_EDGE = HEIGHT - 2
 
 
 def main():
-    """Run the fish tank animation."""
-
-    # Setup the screen.
+    global FISHES, BUBBLERS, BUBBLES, KELPS, STEP
     bext.bg('black')
     bext.clear()
-
-    global FISHES, BUBBLERS, BUBBLES, KELPS
 
     # Generate the global variables:
     FISHES = []
@@ -69,24 +69,26 @@ def main():
     BUBBLERS = []
     for i in range(NUM_BUBBLERS):
         # Each bubbler starts at a random position.
-        BUBBLERS.append(random.randint(0, WIDTH - 1))
+        BUBBLERS.append(random.randint(LEFT_EDGE, RIGHT_EDGE))
     BUBBLES = []
 
     KELPS = []
     for i in range(NUM_KELP):
-        kelp = {'x': random.randint(0, WIDTH - 2), 'segments': []}
-        # Generate each segment of the kelp.
+        kelpx = random.randint(LEFT_EDGE, RIGHT_EDGE)
+        kelp = {'x': kelpx, 'segments': []}
+        # Generate each segment of the kelp:
         for i in range(random.randint(6, HEIGHT - 1)):
             kelp['segments'].append(random.choice(['(', ')']))
         KELPS.append(kelp)
 
     # Run the simulation:
-    step = 1
+    STEP = 1
     while True:
-        drawAquarium(step)
+        simulateAquarium()
+        drawAquarium()
         time.sleep(1 / FRAMES_PER_SECOND)
         clearAquarium()
-        step += 1
+        STEP += 1
 
 
 def getRandomColor():
@@ -114,94 +116,90 @@ def generateFish():
         colors[-1] = headTailColor  # Set tail color.
 
     # Set up the rest of fish data structure:
-    fish = {'right':      fishType['right'],
-            'left':       fishType['left'],
-            'colors':     colors,
-            'hspeed':     random.randint(1, 6),
-            'vspeed':     random.randint(5, 15),
-            'hchange':    random.randint(10, 60),
-            'vchange':    random.randint(2, 20),
-            'goingRight': random.choice((True, False)),
-            'goingDown':  random.choice((True, False))}
+    fish = {'right':            fishType['right'],
+            'left':             fishType['left'],
+            'colors':           colors,
+            'hSpeed':           random.randint(1, 6),
+            'vSpeed':           random.randint(5, 15),
+            'timeToHDirChange': random.randint(10, 60),
+            'timeToVDirChange': random.randint(2, 20),
+            'goingRight':       random.choice([True, False]),
+            'goingDown':        random.choice([True, False])}
 
-    # 'location' is always the leftmost side of the fish body:
-    xStartingLocation = random.randint(4, WIDTH - LONGEST_FISH_LENGTH)
-    yStartingLocation = random.randint(0, HEIGHT - 2)
-    fish['location'] = {'x': xStartingLocation, 'y': yStartingLocation}
+    # 'x' is always the leftmost side of the fish body:
+    fish['x'] = random.randint(0, WIDTH - 1 - LONGEST_FISH_LENGTH)
+    fish['y'] = random.randint(0, HEIGHT - 2)
     return fish
 
 
-def drawAquarium(step):
-    """Draw the aquarium on the screen."""
-    global FISHES, BUBBLERS, BUBBLES, KELP
+def simulateAquarium():
+    """Simulate the movements in the aquarium for one step."""
+    global FISHES, BUBBLERS, BUBBLES, KELP, STEP
 
     # Simulate the fish for one step:
     for fish in FISHES:
         # Move the fish horizontally:
-        if step % fish['hspeed'] == 0:
+        if STEP % fish['hSpeed'] == 0:
             if fish['goingRight']:
-                if fish['location']['x'] != RIGHT_EDGE:
-                    fish['location']['x'] += 1  # Move the fish left.
+                if fish['x'] != RIGHT_EDGE:
+                    fish['x'] += 1  # Move the fish right.
                 else:
-                    # Turn the fish around:
-                    fish['goingRight'] = not fish['goingRight']
+                    fish['goingRight'] = False  # Turn the fish around.
                     fish['colors'].reverse()  # Turn the colors around.
-            elif not fish['goingRight']:
-                if fish['location']['x'] != 0:
-                    fish['location']['x'] -= 1  # Move the fish right.
+            else:
+                if fish['x'] != LEFT_EDGE:
+                    fish['x'] -= 1  # Move the fish left.
                 else:
-                    # Turn the fish around:
-                    fish['goingRight'] = not fish['goingRight']
+                    fish['goingRight'] = True  # Turn the fish around.
                     fish['colors'].reverse()  # Turn the colors around.
 
         # Fish can randomly change their horizontal direction:
-        fish['hchange'] -= 1
-        if fish['hchange'] == 0:
-            fish['hchange'] = random.randint(10, 60)
+        fish['timeToHDirChange'] -= 1
+        if fish['timeToHDirChange'] == 0:
+            fish['timeToHDirChange'] = random.randint(10, 60)
             # Turn the fish around:
             fish['goingRight'] = not fish['goingRight']
 
         # Move the fish vertically:
-        if step % fish['vspeed'] == 0:
+        if STEP % fish['vSpeed'] == 0:
             if fish['goingDown']:
-                if fish['location']['y'] != HEIGHT - 2:
-                    fish['location']['y'] += 1  # Move the fish down.
+                if fish['y'] != BOTTOM_EDGE:
+                    fish['y'] += 1  # Move the fish down.
                 else:
-                    # Turn the fish around:
-                    fish['goingDown'] = not fish['goingDown']
-            elif not fish['goingDown']:
-                if fish['location']['y'] != 0:
-                    fish['location']['y'] -= 1  # Move the fish up.
+                    fish['goingDown'] = False  # Turn the fish around.
+            else:
+                if fish['y'] != TOP_EDGE:
+                    fish['y'] -= 1  # Move the fish up.
                 else:
-                    # Turn the fish around:
-                    fish['goingDown'] = not fish['goingDown']
+                    fish['goingDown'] = True  # Turn the fish around.
 
         # Fish can randomly change their vertical direction:
-        fish['vchange'] -= 1
-        if fish['vchange'] == 0:
-            fish['vchange'] = random.randint(2, 20)
+        fish['timeToVDirChange'] -= 1
+        if fish['timeToVDirChange'] == 0:
+            fish['timeToVDirChange'] = random.randint(2, 20)
             # Turn the fish around:
             fish['goingDown'] = not fish['goingDown']
 
     # Generate bubbles from bubblers:
     for bubbler in BUBBLERS:
+        # There is a 1 in 5 chance of making a bubble:
         if random.randint(0, 5) == 0:
             BUBBLES.append({'x': bubbler, 'y': HEIGHT - 2})
 
-    # Simulate the bubbles for one step:
+    # Move the bubbles:
     for bubble in BUBBLES:
-        r = random.randint(1, 5)
-        if (r == 1) and (bubble['x'] != 0):
+        r = random.randint(1, 6)
+        if (r == 1) and (bubble['x'] != LEFT_EDGE):
             bubble['x'] -= 1  # Bubble goes left.
-        elif (r == 2) and (bubble['x'] != WIDTH - 1):
+        elif (r == 2) and (bubble['x'] != RIGHT_EDGE):
             bubble['x'] += 1  # Bubble goes right.
 
         bubble['y'] -= 1  # The bubble always goes up.
 
-    # Iterate over BUBBLES in reverse because I'm modifying BUBBLES
+    # Iterate over BUBBLES in reverse because I'm deleting from BUBBLES
     # while iterating over it.
     for i in range(len(BUBBLES) - 1, -1, -1):
-        if BUBBLES[i]['y'] == 0:  # Delete bubbles that reach the top.
+        if BUBBLES[i]['y'] == TOP_EDGE:  # Delete bubbles that reach the top.
             del BUBBLES[i]
 
     # Simulate the kelp waving for one step:
@@ -214,6 +212,16 @@ def drawAquarium(step):
                 elif kelpSegment == ')':
                     kelp['segments'][i] = '('
 
+
+def drawAquarium():
+    """Draw the aquarium on the screen."""
+    global FISHES, BUBBLERS, BUBBLES, KELP, STEP
+
+    # Draw quit message.
+    bext.fg('white')
+    bext.goto(0, 0)
+    print('Fish Tank, by Al Sweigart    Ctrl-C to quit.', end='')
+
     # Draw the bubbles:
     bext.fg('white')
     for bubble in BUBBLES:
@@ -222,13 +230,13 @@ def drawAquarium(step):
 
     # Draw the fish:
     for fish in FISHES:
-        bext.goto(fish['location']['x'], fish['location']['y'])
+        bext.goto(fish['x'], fish['y'])
 
         # Get the correct right- or left-facing fish text.
         if fish['goingRight']:
-            fishText = fish['right'][step % len(fish['right'])]
-        elif not fish['goingRight']:
-            fishText = fish['left'][step % len(fish['left'])]
+            fishText = fish['right'][STEP % len(fish['right'])]
+        else:
+            fishText = fish['left'][STEP % len(fish['left'])]
 
         # Draw each character of the fish text in the right color.
         for i, fishPart in enumerate(fishText):
@@ -239,24 +247,16 @@ def drawAquarium(step):
     bext.fg('green')
     for kelp in KELPS:
         for i, kelpSegment in enumerate(kelp['segments']):
-            if i == 0:
-                # Bottom segment is always (.
-                kelp['segments'][i] = '('
             if kelpSegment == '(':
-                bext.goto(kelp['x'], HEIGHT - 2 - i)
+                bext.goto(kelp['x'], BOTTOM_EDGE - i)
             elif kelpSegment == ')':
-                bext.goto(kelp['x'] + 1, HEIGHT - 2 - i)
+                bext.goto(kelp['x'] + 1, BOTTOM_EDGE - i)
             print(kelpSegment, end='')
-
-    # Draw quit message.
-    bext.fg('white')
-    bext.goto(0, 0)
-    print('Ctrl-C to quit.', end='')
 
     # Draw the sand on the bottom:
     bext.fg('yellow')
     bext.goto(0, HEIGHT - 1)
-    print(chr(9608) * (WIDTH - 1), end='')  # Draws '█' characters.
+    print(chr(9617) * (WIDTH - 1), end='')  # Draws '░' characters.
 
     sys.stdout.flush()  # (Required for bext-using programs.)
 
@@ -272,7 +272,7 @@ def clearAquarium():
 
     # Draw the fish:
     for fish in FISHES:
-        bext.goto(fish['location']['x'], fish['location']['y'])
+        bext.goto(fish['x'], fish['y'])
 
         # Draw each character of the fish text in the right color.
         print(' ' * len(fish['left'][0]), end='')
