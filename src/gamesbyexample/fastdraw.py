@@ -28,10 +28,10 @@ while True:
         # call returns almost instantly.
         print('You drew before "DRAW" appeared! You lose.')
     elif timeElapsed > 0.3:
-        timeElapsed = round(timeElapsed, 2)
+        timeElapsed = round(timeElapsed, 4)
         print('You took', timeElapsed, 'seconds to draw. Too slow!')
     else:
-        timeElapsed = round(timeElapsed, 2)
+        timeElapsed = round(timeElapsed, 4)
         print('You took', timeElapsed, 'seconds to draw.')
         print('You are the fastest draw in the west! You win!')
 

@@ -204,13 +204,11 @@ try:
 
         time.sleep(PAUSE_AMOUNT)  # Pause for a bit.
 
-        # Erase the screen:
+        # Clear the screen:
         if sys.platform == 'win32':
-            # Clear the Windows terminal with the cls command:
-            os.system('cls')
+            os.system('cls')  # Windows uses the cls command.
         else:
-            # Clear macOS/Linux terminals with the clear command:
-            os.system('clear')
+            os.system('clear')  # macOS and Linux use the clear command.
 
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.
