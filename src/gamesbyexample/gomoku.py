@@ -5,7 +5,7 @@ vertically, or diagonally wins.
 More info at: https://en.wikipedia.org/wiki/Gomoku
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, board game, two-player"""
-
+__version__ = 0
 import sys
 
 # Set up the constants:
@@ -15,8 +15,8 @@ EMPTY_SPACE = '.'  # (!) Try changing this to another letter.
 BOARD_WIDTH = 15  # (!) Try changing this to another integer.
 BOARD_HEIGHT = 15  # (!) Try changing this to another integer.
 
-# Let's make sure the board isn't too large to fit on the screen:
-assert BOARD_WIDTH < 100
+# Let's make sure the board isn't too large:
+assert BOARD_WIDTH <= 26
 assert BOARD_HEIGHT < 100
 
 
@@ -24,7 +24,7 @@ def main():
     print('''Gomoku, by Al Sweigart al@inventwithpython.com
 
 Gomoku is a Japanese board game where two players take turns placing
-down tiles. The first player to place five tiles in a row horizontally,
+tiles. The first player to place five tiles in a row horizontally,
 vertically, or diagonally wins.''')
 
     turn = O_PLAYER  # O will go first.
@@ -40,15 +40,13 @@ vertically, or diagonally wins.''')
             # Check for winner after this new tile has been added:
             if isWinner(turn, gameBoard):
                 displayBoard(gameBoard)
-                print(turn.upper(), 'has won!')
-                print('Thanks for playing!')
+                print(turn, 'has won!')
                 sys.exit()
 
             # Check for a tie after this new tile has been added:
             if isBoardFull(gameBoard):
                 displayBoard(gameBoard)
                 print('The board is full and the game is a tie.')
-                print('Thanks for playing!')
                 sys.exit()
 
         # Switch to the other player's turn:
@@ -69,14 +67,6 @@ def getNewBoard():
     return board
 
 
-def displayLetterLabels():
-    """Display a row of letter labels, based on the BOARD_WIDTH."""
-    print('   ', end='')  # Print the indentation.
-    for x in range(BOARD_WIDTH):
-        print(chr(65 + x) + ' ', end='')  # Print the letter.
-    print()  # Print a newline.
-
-
 def displayBoard(board):
     """Display the board data structure on the screen."""
     displayLetterLabels()  # Display the letter labels at the top.
@@ -94,11 +84,19 @@ def displayBoard(board):
     displayLetterLabels()  # Display the letter labels at the bottom.
 
 
+def displayLetterLabels():
+    """Display a row of letter labels, based on the BOARD_WIDTH."""
+    print('   ', end='')  # Print the indentation.
+    for x in range(BOARD_WIDTH):
+        print(chr(65 + x) + ' ', end='')  # Print the letter.
+    print()  # Print a newline.
+
+
 def askForPlayerMove(player, board):
     """Asks the player for a move and returns a (x, y) tuple of integer
     indexes for the place they want to put their tile. Also returns
     (None, None) if they want to pass on their turn."""
-    print('It is ' + player.upper() + '\'s turn.')
+    print('It is ' + player + '\'s turn.')
     while True:  # Keep looping until the player enters a valid move:
         print('Enter a move (such as B3) or PASS or QUIT:')
         response = input('> ').upper()
@@ -115,6 +113,7 @@ def askForPlayerMove(player, board):
         # next one or more characters must be a number.
         if len(response) >= 2 and response[1:].isdecimal():
             # Make sure the letter they entered is on the board:
+            # The letter 'A' has an ASCII value of 65.
             if 'A' <= response[0] < chr(65 + BOARD_WIDTH):
                 # Make sure the number they entered is on the board:
                 if 1 <= int(response[1:]) <= BOARD_HEIGHT:

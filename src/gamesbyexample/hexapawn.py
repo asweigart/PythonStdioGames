@@ -111,13 +111,13 @@ def getNewBoard(width, height):
 def getNthLetter(nth):
     """Returns the "nth" letter, where nth is an integer. The 0th letter
     is 'A', the 1st letter is 'B', the 2nd letter is 'C', and so on."""
-    return chr(nth + 65)
+    return chr(nth + 65)  # The ASCII value of 'A' is 65.
 
 
 def getNumberForNthLetter(letter):
     """Returns the integer form of a letter. The integer of 'A' is 0,
     the integer of 'B' is 1, the integer of 'C' is 2, and so on."""
-    return ord(letter) - 65
+    return ord(letter) - 65  # The ASCII value of 'A' is 65.
 
 
 def displayBoard(board):

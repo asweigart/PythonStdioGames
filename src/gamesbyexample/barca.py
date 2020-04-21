@@ -318,7 +318,7 @@ def getPieceMovements(player, board):
 def xyToA1(x, y):
     """Convert (x, y) coordinates (like 0,0 or 1,4) to user-friendly
     coordinates (like A1 or B5)."""
-    return chr(x + 65) + str(y + 1)
+    return chr(x + 65) + str(y + 1)  # The ASCII value of 'A' is 65.
 
 
 def A1ToXy(space):
@@ -326,6 +326,7 @@ def A1ToXy(space):
     coordinates (like 0,0 or 1,4)."""
     column = space[0]
     row = space[1:]
+      # The ASCII value of 'A' is 65:
     return (ord(column) - 65, int(row) - 1)
 
 
