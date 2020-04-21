@@ -16,8 +16,9 @@ except ImportError:
     sys.exit()
 
 # Set up the constants:
-WIDTH = 16
-HEIGHT = 14
+BOARD_WIDTH = 16  # (!) Try changing this to 4 or 40.
+BOARD_HEIGHT = 14  # (!) Try changing this to 4 or 20.
+MOVES_PER_GAME = 20  # (!) Try changing this to 3 or 300.
 
 # Constants for the different shapes used in colorblind mode:
 HEART     = chr(9829)  # Character 9829 is '♥'.
@@ -34,8 +35,9 @@ DOWNRIGHT = chr(9484)  # Character 9484 is '┌'
 DOWNLEFT  = chr(9488)  # Character 9488 is '┐'
 UPRIGHT   = chr(9492)  # Character 9492 is '└'
 UPLEFT    = chr(9496)  # Character 9496 is '┘'
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 
-# All the color/letter tiles used on the board:
+# All the color/shape tiles used on the board:
 TILE_TYPES = (0, 1, 2, 3, 4, 5)
 COLORS_MAP = {0: 'red', 1: 'green', 2:'blue',
               3:'yellow', 4:'cyan', 5:'purple'}
@@ -63,7 +65,7 @@ entire board the same color/shape.''')
         displayMode = COLOR_MODE
 
     gameBoard = getNewBoard()
-    movesLeft = 20
+    movesLeft = MOVES_PER_GAME
 
     while True:  # Main game loop.
         displayBoard(gameBoard, displayMode)
@@ -90,15 +92,15 @@ def getNewBoard():
     board = {}
 
     # Create random colors for the board.
-    for x in range(WIDTH):
-        for y in range(HEIGHT):
+    for x in range(BOARD_WIDTH):
+        for y in range(BOARD_HEIGHT):
             board[(x, y)] = random.choice(TILE_TYPES)
 
     # Make several tiles the same as their neighbor. This creates groups
-    # of the same color/letter.
-    for i in range(WIDTH * HEIGHT):
-        x = random.randint(0, WIDTH - 2)
-        y = random.randint(0, HEIGHT - 1)
+    # of the same color/shape.
+    for i in range(BOARD_WIDTH * BOARD_HEIGHT):
+        x = random.randint(0, BOARD_WIDTH - 2)
+        y = random.randint(0, BOARD_HEIGHT - 1)
         board[(x + 1, y)] = board[(x, y)]
     return board
 
@@ -106,29 +108,29 @@ def getNewBoard():
 def displayBoard(board, displayMode):
     """Display the board on the screen."""
     bext.fg('white')
-    print(DOWNRIGHT + (LEFTRIGHT * WIDTH) + DOWNLEFT)
-
-    bext.fg('white')
+    # Display the top edge of the board:
+    print(DOWNRIGHT + (LEFTRIGHT * BOARD_WIDTH) + DOWNLEFT)
 
     # Display each row:
-    for y in range(HEIGHT):
+    for y in range(BOARD_HEIGHT):
         bext.fg('white')
         if y == 0:  # The first row begins with '>'.
             print('>', end='')
-        else:  # Later rows begin with a vertical line.
+        else:  # Later rows begin with a white vertical line.
             print(UPDOWN, end='')
 
         # Display each tile in this row:
-        for x in range(WIDTH):
+        for x in range(BOARD_WIDTH):
             bext.fg(COLORS_MAP[board[(x, y)]])
             if displayMode == COLOR_MODE:
                 print(BLOCK, end='')
             elif displayMode == SHAPE_MODE:
                 print(SHAPES_MAP[board[(x, y)]], end='')
+
         bext.fg('white')
-        print(UPDOWN)
-    bext.fg('white')
-    print(UPRIGHT + (LEFTRIGHT * WIDTH) + UPLEFT)
+        print(UPDOWN)  # Rows end with a white vertical line.
+    # Display the bottom edge of the board:
+    print(UPRIGHT + (LEFTRIGHT * BOARD_WIDTH) + UPLEFT)
 
 
 def askForPlayerMove(displayMode):
@@ -139,17 +141,17 @@ def askForPlayerMove(displayMode):
 
         if displayMode == COLOR_MODE:
             bext.fg('red')
-            print('R ', end='')
+            print('(R)ed ', end='')
             bext.fg('green')
-            print('G ', end='')
+            print('(G)reen ', end='')
             bext.fg('blue')
-            print('B ', end='')
+            print('(B)lue ', end='')
             bext.fg('yellow')
-            print('Y ', end='')
+            print('(Y)ellow ', end='')
             bext.fg('cyan')
-            print('C ', end='')
+            print('(C)yan ', end='')
             bext.fg('purple')
-            print('P ', end='')
+            print('(P)urple ', end='')
         elif displayMode == SHAPE_MODE:
             bext.fg('red')
             print('(H)eart, ', end='')
@@ -165,62 +167,50 @@ def askForPlayerMove(displayMode):
             print('(S)pade, ', end='')
         bext.fg('white')
         print('or QUIT:')
-        move = input('> ').lower()
-        if move == 'quit':
+        response = input('> ').upper()
+        if response == 'QUIT':
+            print('Thanks for playing!')
             sys.exit()
         if displayMode == COLOR_MODE:
-            if move == 'r':
-                return 0
-            elif move == 'g':
-                return 1
-            elif move == 'b':
-                return 2
-            elif move == 'y':
-                return 3
-            elif move == 'c':
-                return 4
-            elif move == 'p':
-                return 5
+            # Return a tile type number based on the response:
+            return {'R': 0, 'G': 1, 'B': 2,
+                'Y': 3, 'C': 4, 'P': 5}[response]
         if displayMode == SHAPE_MODE:
-            if move == 'h':
-                return 0
-            elif move == 't':
-                return 1
-            elif move == 'd':
-                return 2
-            elif move == 'b':
-                return 3
-            elif move == 'c':
-                return 4
-            elif move == 's':
-                return 5
+            # Return a tile type number based on the response:
+            return {'H': 0, 'T': 1, 'D':2,
+                'B': 3, 'C': 4, 'S': 5}[response]
 
 
-def changeTile(move, board, x, y, charToChange=None):
-    """Change the color/letter of a tile."""
+def changeTile(tileType, board, x, y, charToChange=None):
+    """Change the color/shape of a tile using the recursive flood fill
+    algorithm."""
     if x == 0 and y == 0:
         charToChange = board[(x, y)]
-        if move == charToChange:
-            return  # Already is the same tile.
+        if tileType == charToChange:
+            return  # Base Case: Already is the same tile.
 
-    board[(x, y)] = move
+    board[(x, y)] = tileType
 
     if x > 0 and board[(x - 1, y)] == charToChange:
-        changeTile(move, board, x - 1, y, charToChange)
+        # Recursive Case: Change the left neighbor's tile:
+        changeTile(tileType, board, x - 1, y, charToChange)
     if y > 0 and board[(x, y - 1)] == charToChange:
-        changeTile(move, board, x, y - 1, charToChange)
-    if x < WIDTH - 1 and board[(x + 1, y)] == charToChange:
-        changeTile(move, board, x + 1, y, charToChange)
-    if y < HEIGHT - 1 and board[(x, y + 1)] == charToChange:
-        changeTile(move, board, x, y + 1, charToChange)
+        # Recursive Case: Change the top neighbor's tile:
+        changeTile(tileType, board, x, y - 1, charToChange)
+    if x < BOARD_WIDTH - 1 and board[(x + 1, y)] == charToChange:
+        # Recursive Case: Change the right neighbor's tile:
+        changeTile(tileType, board, x + 1, y, charToChange)
+    if y < BOARD_HEIGHT - 1 and board[(x, y + 1)] == charToChange:
+        # Recursive Case: Change the bottom neighbor's tile:
+        changeTile(tileType, board, x, y + 1, charToChange)
 
 
 def hasWon(board):
-    """Return True if the entire board is one color/letter."""
+    """Return True if the entire board is one color/shape."""
     tile = board[(0, 0)]
 
-    for x in range(WIDTH):
-        for y in range(HEIGHT):
+    for x in range(BOARD_WIDTH):
+        for y in range(BOARD_HEIGHT):
             if board[(x, y)] != tile:
                 return False
     return True

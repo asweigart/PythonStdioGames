@@ -102,7 +102,7 @@ def displayDisk(width):
 
     if width == 0:
         # Display a pole segment without a disk:
-        print(f'{emptySpace}||{emptySpace}', end='')
+        print(emptySpace + '||' + emptySpace, end='')
     else:
         # Display the disk:
         disk = '@' * width

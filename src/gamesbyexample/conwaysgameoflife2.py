@@ -30,6 +30,7 @@ WIDTH -= 1
 TOP_BLOCK = chr(9600)     # Character 9600 is '▀'
 BOTTOM_BLOCK = chr(9604)  # Character 9604 is '▄'
 FULL_BLOCK = chr(9608)    # Character 9608 is '█'
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 
 def main():
     print('Conway\'s Game of Life')

@@ -24,6 +24,7 @@ WALL_DISPLAY = chr(9617)   # Character 9617 is '░'
 FACE_DISPLAY = '@'
 CRATE_DISPLAY = chr(9632)  # Character 9679 is '■'
 GOAL_DISPLAY = chr(9633)   # Character 9633 is '□'
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 CRATE_ON_GOAL_DISPLAY = '*'
 PLAYER_ON_GOAL_DISPLAY = FACE_DISPLAY
 EMPTY_DISPLAY = ' '

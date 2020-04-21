@@ -41,7 +41,7 @@ def englishToLeetspeak(message):
     leetspeak = ''
     for char in message:  # Check each character:
         # There is a 70% chance we change the character to leetspeak.
-        if char.lower() in charMapping and random.randint(1, 100) <= 70:
+        if char.lower() in charMapping and random.random() <= 0.70:
             possibleLeetReplacements = charMapping[char.lower()]
             leetReplacement = random.choice(possibleLeetReplacements)
             leetspeak = leetspeak + leetReplacement

@@ -12,6 +12,7 @@ DOWNRIGHT = chr(9484)  # Character 9484 is '┌'
 DOWNLEFT  = chr(9488)  # Character 9488 is '┐'
 UPRIGHT   = chr(9492)  # Character 9492 is '└'
 UPLEFT    = chr(9496)  # Character 9496 is '┘'
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 UP_DIRECTION    = 'up'
 DOWN_DIRECTION  = 'down'
 LEFT_DIRECTION  = 'left'

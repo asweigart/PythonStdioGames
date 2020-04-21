@@ -30,6 +30,7 @@ UP_DOWN_LEFT_CHAR    = chr(9508)  # Character 9508 is '┤'
 DOWN_LEFT_RIGHT_CHAR = chr(9516)  # Character 9516 is '┬'
 UP_LEFT_RIGHT_CHAR   = chr(9524)  # Character 9524 is '┴'
 CROSS_CHAR           = chr(9532)  # Character 9532 is '┼'
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 
 # Get the size of the terminal window:
 CANVAS_WIDTH, CANVAS_HEIGHT = shutil.get_terminal_size()

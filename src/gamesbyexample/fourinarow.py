@@ -10,27 +10,14 @@ EMPTY_SPACE = '.'  # A period is easier to count than a space.
 PLAYER_X = 'X'
 PLAYER_O = 'O'
 
-# Note: Update BOARD_TEMPLATE & COLUMN_LABELS if BOARD_WIDTH is changed.
+# Note: Update displayBoard() & COLUMN_LABELS if BOARD_WIDTH is changed.
 BOARD_WIDTH = 7
 BOARD_HEIGHT = 6
 COLUMN_LABELS = ('1', '2', '3', '4', '5', '6', '7')
 assert len(COLUMN_LABELS) == BOARD_WIDTH
 
-# The template string for displaying the board:
-BOARD_TEMPLATE = """
-     1234567
-    +-------+
-    |{}{}{}{}{}{}{}|
-    |{}{}{}{}{}{}{}|
-    |{}{}{}{}{}{}{}|
-    |{}{}{}{}{}{}{}|
-    |{}{}{}{}{}{}{}|
-    |{}{}{}{}{}{}{}|
-    +-------+"""
-
 
 def main():
-    """Runs a single game of Four in a Row."""
     print("""Four in a Row, by Al Sweigart al@inventwithpython.com
 
 Two players take turns dropping tiles into one of seven columns, trying
@@ -50,7 +37,7 @@ to make four in a row horizontally, vertically, or diagonally.
         # Check for a win or tie:
         if isWinner(playerTurn, gameBoard):
             displayBoard(gameBoard)  # Display the board one last time.
-            print('Player {} has won!'.format(playerTurn))
+            print('Player ' + playerTurn + ' as won!')
             sys.exit()
         elif isFull(gameBoard):
             displayBoard(gameBoard)  # Display the board one last time.
@@ -70,8 +57,8 @@ def getNewBoard():
     The keys are (columnIndex, rowIndex) tuples of two integers, and the
     values are one of the 'X', 'O' or '.' (empty space) strings."""
     board = {}
-    for rowIndex in range(BOARD_HEIGHT):
-        for columnIndex in range(BOARD_WIDTH):
+    for columnIndex in range(BOARD_WIDTH):
+        for rowIndex in range(BOARD_HEIGHT):
             board[(columnIndex, rowIndex)] = EMPTY_SPACE
     return board
 
@@ -88,7 +75,16 @@ def displayBoard(board):
             tileChars.append(board[(columnIndex, rowIndex)])
 
     # Display the board:
-    print(BOARD_TEMPLATE.format(*tileChars))
+    print("""
+     1234567
+    +-------+
+    |{}{}{}{}{}{}{}|
+    |{}{}{}{}{}{}{}|
+    |{}{}{}{}{}{}{}|
+    |{}{}{}{}{}{}{}|
+    |{}{}{}{}{}{}{}|
+    |{}{}{}{}{}{}{}|
+    +-------+""".format(*tileChars))
 
 
 def askForPlayerMove(playerTile, board):
@@ -96,7 +92,7 @@ def askForPlayerMove(playerTile, board):
 
     Returns a tuple of the (column, row) that the tile falls into."""
     while True:  # Keep asking player until they enter a valid move.
-        print(f'Player {playerTile}, enter 1 to {BOARD_WIDTH} or QUIT:')
+        print('Player {}, enter a column or QUIT:'.format(playerTile))
         response = input('> ').upper().strip()
 
         if response == 'QUIT':
@@ -104,7 +100,7 @@ def askForPlayerMove(playerTile, board):
             sys.exit()
 
         if response not in COLUMN_LABELS:
-            print(f'Enter a number from 1 to {BOARD_WIDTH}.')
+            print('Enter a number from 1 to {}.'.format(BOARD_WIDTH))
             continue  # Ask player again for their move.
 
         columnIndex = int(response) - 1  # -1 for 0-based column indexes.
@@ -137,7 +133,7 @@ def isWinner(playerTile, board):
     # Go through the entire board, checking for four-in-a-row:
     for columnIndex in range(BOARD_WIDTH - 3):
         for rowIndex in range(BOARD_HEIGHT):
-            # Check for four-in-a-row going across to the right:
+            # Check for horizontal four-in-a-row going right:
             tile1 = board[(columnIndex, rowIndex)]
             tile2 = board[(columnIndex + 1, rowIndex)]
             tile3 = board[(columnIndex + 2, rowIndex)]
@@ -147,7 +143,7 @@ def isWinner(playerTile, board):
 
     for columnIndex in range(BOARD_WIDTH):
         for rowIndex in range(BOARD_HEIGHT - 3):
-            # Check for four-in-a-row going down:
+            # Check for vertical four-in-a-row going down:
             tile1 = board[(columnIndex, rowIndex)]
             tile2 = board[(columnIndex, rowIndex + 1)]
             tile3 = board[(columnIndex, rowIndex + 2)]

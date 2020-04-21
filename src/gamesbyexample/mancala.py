@@ -62,7 +62,7 @@ More info at https://en.wikipedia.org/wiki/Mancala
         winner = checkForWinner(gameBoard)
         if winner == '1' or winner == '2':
             displayBoard(gameBoard)  # Display the board one last time.
-            print(f'Player {winner} has won!')
+            print('Player ' + winner + ' has won!')
             sys.exit()
         elif winner == 'tie':
             displayBoard(gameBoard)  # Display the board one last time.

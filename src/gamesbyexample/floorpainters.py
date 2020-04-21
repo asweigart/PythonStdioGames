@@ -5,7 +5,7 @@ NOTE: Do not resize the terminal window while this program is running.
 This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, simulation, bext, terminal"""
 __version__ = 0
-import random, shutil, sys, time
+import random, sys, time
 
 try:
     import bext
@@ -15,8 +15,11 @@ except ImportError:
     print('https://pypi.org/project/Bext/')
     sys.exit()
 
+SEED = 1  # (!) Change this to produce different paintings.
+random.seed(SEED)
+
 # Set up the constants:
-PAUSE_LENGTH = 0.05  # (!) Try changing this to 0.0 or 1.0.
+PAUSE_LENGTH = 0.1  # (!) Try changing this to 0.0 or 0.5.
 
 # (!) Try uncommenting the other possible THE_PAINTERS settings.
 THE_PAINTERS = ['red', 'blue', 'green']
@@ -27,11 +30,8 @@ THE_PAINTERS = ['red', 'blue', 'green']
 #THE_PAINTERS = ['random'] * 30
 #THE_PAINTERS = ['red'] * 10 + ['blue'] * 10
 
-# The colors we can use are limited to the ones that Bext supports:
-ALL_COLORS = bext.ALL_COLORS
-
 # Get the size of the terminal window:
-WIDTH, HEIGHT = shutil.get_terminal_size()
+WIDTH, HEIGHT = bext.size()
 # We can't print to the last column on Windows without it adding a
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
@@ -50,6 +50,7 @@ BLOCK = chr(9608)  # Character 9608 is '█'
 
 def main():
     theFloor = getNewFloor()
+    paintedAreas = set()
 
     # Generate painters:
     painters = []
@@ -59,14 +60,18 @@ def main():
     bext.fg('black')
     bext.clear()
     while True:  # Main simulation loop.
-        # Draw quit message:
-        # (!) Try adding code so that the "Ctrl-C to quit." message
-        # disappears after 30 seconds.
-        bext.bg('white')
-        bext.goto(0, 0)
-        print('Ctrl-C to quit.', end='')
-
         for painter in painters:
+            # Keep track of the painted floors:
+            paintedAreas.add((painter.x, painter.y))
+            if len(paintedAreas) == WIDTH * HEIGHT:
+                # Move the text cursor to the bottom right so that
+                # new text doesn't overwrite our painting.
+                bext.goto(bext.width() - 1, bext.height() - 1)
+                print()  # Print a newline.
+                print('Seed: {} Width: {} Height: {}'.format(SEED,
+                    (WIDTH + 1) * 2, HEIGHT))
+                sys.exit()  # The floor is completely painted, so quit.
+
             painter.move()
 
         sys.stdout.flush()
@@ -87,7 +92,7 @@ def getNewFloor():
 class Painter:
     def __init__(self, color, floor):
         if color == 'random':
-            color = random.choice(ALL_COLORS)
+            color = random.choice(bext.ALL_COLORS)
 
         self.color = color
         self.x = random.randint(0, WIDTH - 1)
@@ -136,11 +141,6 @@ class Painter:
         move = random.choice(possibleMoves)
         bext.bg(self.color)
 
-        # Paint the floor at the old location:
-        bext.goto(self.x * 2, self.y)
-        print('  ', end='')
-        self.floor[(self.x, self.y)] = self.color
-
         # Move the painter:
         if move == NORTH:
             self.y -= 1
@@ -153,7 +153,7 @@ class Painter:
 
         # Paint the floor at the new location:
         bext.goto(self.x * 2, self.y)
-        print('::', end='')
+        print('  ', end='')
         self.floor[(self.x, self.y)] = self.color
 
 

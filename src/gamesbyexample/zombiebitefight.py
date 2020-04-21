@@ -34,10 +34,11 @@ HEIGHT = 22
 
 PAUSE_LENGTH = 0.0
 
-FACE_UP = chr(9650) # Character 9650 is '▲'.
-FACE_DOWN = chr(9660) # Character 9660 is '▼'.
-FACE_LEFT = chr(9668) # Character 9668 is '◄'.
-FACE_RIGHT = chr(9658) # Character 9658 is '►'.
+FACE_UP = chr(9650)  # Character 9650 is '▲'.
+FACE_DOWN = chr(9660)  # Character 9660 is '▼'.
+FACE_LEFT = chr(9668)  # Character 9668 is '◄'.
+FACE_RIGHT = chr(9658)  # Character 9658 is '►'.
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 
 class Zombie:
     def __init__(self, color):

@@ -4,7 +4,7 @@ Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
 This and other games are available at https://nostarch.com/XX
 Tags: short, simulation, bext, terminal"""
 __version__ = 0
-import random, time, sys
+import random, sys, time
 
 try:
     import bext
@@ -22,13 +22,13 @@ TREE = 'A'
 FIRE = 'W'
 EMPTY = ' '
 
-# (!) Try changing these settings to anything between 0.0 and 100.0:
-INITIAL_TREE_DENSITY = 20  # Percentage of forest that starts with trees.
-GROW_CHANCE = 1.0          # % chance a blank spot turns into a tree.
-FIRE_CHANCE = 0.1     # % chance a tree is hit by lightning & burns.
+# (!) Try changing these settings to anything between 0.0 and 1.0:
+INITIAL_TREE_DENSITY = 0.20  # % of forest that starts with trees.
+GROW_CHANCE = 0.01  # % chance a blank spot turns into a tree.
+FIRE_CHANCE = 0.01  # % chance a tree is hit by lightning & burns.
 
 # (!) Try setting the pause length to 1.0 or 0.0:
-PAUSE_LENGTH = 0.05
+PAUSE_LENGTH = 0.5
 
 
 def main():
@@ -50,11 +50,11 @@ def main():
                     continue
 
                 if ((forest[(x, y)] == EMPTY)
-                    and (random.randint(1, 10000) / 100 <= GROW_CHANCE)):
+                    and (random.random() <= GROW_CHANCE)):
                     # Grow a tree in this empty space.
                     nextForest[(x, y)] = TREE
                 elif ((forest[(x, y)] == TREE)
-                    and (random.randint(1, 10000) / 100 <= FIRE_CHANCE)):
+                    and (random.random() <= FIRE_CHANCE)):
                     # Lightning sets this tree on fire.
                     nextForest[(x, y)] = FIRE
                 elif forest[(x, y)] == FIRE:
@@ -63,9 +63,8 @@ def main():
                     for ix in range(-1, 2):
                         for iy in range(-1, 2):
                             # Fire spreads to neighboring trees:
-                            if (x + ix, y + iy) in forest:
-                                if forest[(x + ix, y + iy)] == TREE:
-                                    nextForest[(x + ix, y + iy)] = FIRE
+                            if forest.get((x + ix, y + iy)) == TREE:
+                                nextForest[(x + ix, y + iy)] = FIRE
                     # The tree has burned down now, so erase it:
                     nextForest[(x, y)] = EMPTY
                 else:
@@ -81,7 +80,7 @@ def createNewForest():
     forest = {'width': WIDTH, 'height': HEIGHT}
     for x in range(WIDTH):
         for y in range(HEIGHT):
-            if (random.randint(1, 10000) / 100) <= INITIAL_TREE_DENSITY:
+            if (random.random() * 100) <= INITIAL_TREE_DENSITY:
                 forest[(x, y)] = TREE  # Start as a tree.
             else:
                 forest[(x, y)] = EMPTY  # Start as an empty space.
@@ -99,13 +98,12 @@ def displayForest(forest):
             elif forest[(x, y)] == FIRE:
                 bext.fg('red')
                 print(FIRE, end='')
-            else:
-                bext.fg('reset')
-                print(forest[(x, y)], end='')
+            elif forest[(x, y)] == EMPTY:
+                print(EMPTY, end='')
         print()
     bext.fg('reset')  # Use the default font color.
-    print('Grow chance: {}%  '.format(GROW_CHANCE), end='')
-    print('Lightning chance: {}%  '.format(FIRE_CHANCE), end='')
+    print('Grow chance: {}%  '.format(GROW_CHANCE * 100), end='')
+    print('Lightning chance: {}%  '.format(FIRE_CHANCE * 100), end='')
     print('Press Ctrl-C to quit.')
 
 

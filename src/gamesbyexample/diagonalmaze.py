@@ -9,6 +9,7 @@ import random
 
 FORWARD_SLASH = chr(9585) # The ╱ character.
 BACK_SLASH    = chr(9586) # The ╲ character.
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 
 for x in range(2000):  # Loop for each slash in the current line.
     # Randomly add a forward or back slash to the line.

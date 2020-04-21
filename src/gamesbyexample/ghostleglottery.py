@@ -11,6 +11,7 @@ VERTICAL_POLE  = chr(9474) # Character 9474 is '│'
 HORIZONTAL_LEG = chr(9472) # Character 9472 is '─'
 START_LEG      = chr(9500) # Character 9500 is '├'
 END_LEG        = chr(9508) # Character 9508 is '┤'
+# (A list of chr() codes is at https://inventwithpython.com/charactermap)
 
 # Random number of rows because if we only have two players, the
 # results would always be the same.

@@ -11,8 +11,8 @@ MAX_BEAD_LENGTH = 14  # (!) Try changing this to 100.
 PAUSE = 0.1  # (!) Try changing this to 0.0 or 2.0.
 BEAD_CHARS = ['0', '1']  # (!) Try changing this other characters.
 
-# Density can range from 0.0 to 100.0:
-DENSITY = 2.0  # (!) Try changing this to 10.0 or 30.0.
+# Density can range from 0.0 to 1.0:
+DENSITY = 0.02  # (!) Try changing this to 0.10 or 0.30.
 
 # Get the size of the terminal window:
 WIDTH = shutil.get_terminal_size()[0]
@@ -33,7 +33,7 @@ try:
         # Set up the counter for each column:
         for i in range(WIDTH):
             if columns[i] == 0:
-                if (random.randint(1, 10000) / 100) <= DENSITY:
+                if random.random() <= DENSITY:
                     # Restart a bead on this column.
                     columns[i] = random.randint(MIN_BEAD_LENGTH,
                                                 MAX_BEAD_LENGTH)
