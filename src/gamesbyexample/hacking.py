@@ -3,18 +3,22 @@ The hacking mini-game from "Fallout 3". Find out which seven-letter
 word is the password by using clues each guess gives you.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, artistic"""
-
 __version__ = 0
+
+# NOTE: This program requires the sevenletterwords.txt file, which
+# you can download from https://inventwithpython.com/sevenletterwords.txt
+
 import random, sys
 
 # Set up the constants:
-# The "filler" characters for the board.
-GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/\\'
+# The garbage filler characters for the board.
+GARBAGE_CHARS = '~!@#$%^&*()_+-={}[]|;:,.<>?/'
 
 # Load the WORDS list from a text file that has 7-letter words.
-with open('sevenletterwords.txt') as dictionaryFile:
-    WORDS = dictionaryFile.readlines()
+with open('sevenletterwords.txt') as wordListFile:
+    WORDS = wordListFile.readlines()
 for i in range(len(WORDS)):
+    # Convert each word to uppercase and remove the trailing newline:
     WORDS[i] = WORDS[i].strip().upper()
 
 
@@ -28,6 +32,7 @@ def main():
 
     print('Find the password in the computer\'s memory:')
     print(gameBoard)
+    # Start at 4 tries remaining, going down:
     for triesRemaining in range(4, 0, -1):
         playerMove = askForPlayerMove(gameWords, triesRemaining)
         if playerMove == secretPassword:
@@ -37,6 +42,59 @@ def main():
             numMatches = numMatchingLetters(secretPassword, playerMove)
             print('Access Denied ({}/7 correct)'.format(numMatches))
     print('Out of tries. Secret password was {}.'.format(secretPassword))
+
+
+def getWords():
+    """Return the words that could possibly be the password.
+
+    To make the game fair, we want to only have at most 2 words that
+    have 0 letters in common with the secret password."""
+    secretPassword = random.choice(WORDS)
+    words = [secretPassword]
+
+    # Find two words more that have zero matching letters.
+    # "< 3" because the secret password is already in words.
+    while len(words) < 3:
+        randomWord = getOneWordExcept(words)
+        if numMatchingLetters(secretPassword, randomWord) == 0:
+            words.append(randomWord)
+
+    # Find two words that have 3 matching letters (but give up at 500
+    # tries if not enough can be found).
+    for i in range(500):
+        if len(words) == 5:
+            break
+
+        randomWord = getOneWordExcept(words)
+        if numMatchingLetters(secretPassword, randomWord) == 3:
+            words.append(randomWord)
+
+    # Find seven words that have at least one matching letter (but give
+    # up at 500 tries if not enough can be found).
+    for i in range(500):
+        if len(words) == 12:
+            break
+
+        randomWord = getOneWordExcept(words)
+        if numMatchingLetters(secretPassword, randomWord) != 0:
+            words.append(randomWord)
+
+    # Add any random words needed to get 12 words total.
+    words.extend(random.sample(WORDS, 12 - len(words)))
+
+    assert len(words) == 12
+    return words
+
+
+def getOneWordExcept(blocklist=None):
+    """Returns a random word from WORDS that isn't in blocklist."""
+    if blocklist == None:
+        blocklist = []
+
+    while True:
+        randomWord = random.choice(WORDS)
+        if randomWord not in blocklist:
+            return randomWord
 
 
 def getBoard(words):
@@ -96,59 +154,6 @@ def numMatchingLetters(word1, word2):
         if word1[i] == word2[i]:
             matches += 1
     return matches
-
-
-def getOneWordExcept(blocklist=None):
-    """Returns a random word from WORDS that isn't in blocklist."""
-    if blocklist == None:
-        blocklist = []
-
-    while True:
-        randomWord = random.choice(WORDS)
-        if randomWord not in blocklist:
-            return randomWord
-
-
-def getWords():
-    """Return the words that could possibly be the password.
-
-    To make the game fair, we want to only have at most 2 words that
-    have 0 letters in common with the secret password."""
-    secretPassword = random.choice(WORDS)
-    words = [secretPassword]
-
-    # Find two words more that have zero matching letters.
-    # "< 3" because the secret password is already in words.
-    while len(words) < 3:
-        randomWord = getOneWordExcept(words)
-        if numMatchingLetters(secretPassword, randomWord) == 0:
-            words.append(randomWord)
-
-    # Find two words that have 3 matching letters (but give up at 500
-    # tries if not enough can be found).
-    for i in range(500):
-        if len(words) == 5:
-            break
-
-        randomWord = getOneWordExcept(words)
-        if numMatchingLetters(secretPassword, randomWord) == 3:
-            words.append(randomWord)
-
-    # Find seven words that have at least one matching letter (but give
-    # up at 500 tries if not enough can be found).
-    for i in range(500):
-        if len(words) == 12:
-            break
-
-        randomWord = getOneWordExcept(words)
-        if numMatchingLetters(secretPassword, randomWord) != 0:
-            words.append(randomWord)
-
-    # Add any random words needed to get 12 words total.
-    words.extend(random.sample(WORDS, 12 - len(words)))
-
-    assert len(words) == 12
-    return words
 
 
 # If this program was run (instead of imported), run the game:
