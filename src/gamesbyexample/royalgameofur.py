@@ -19,25 +19,25 @@ ALL_SPACES = 'hgfetsijklmnopdcbarq'
 X_TRACK = 'HefghijklmnopstG'  # (H stands for Home, G stands for Goal.)
 O_TRACK = 'HabcdijklmnopqrG'
 
-FLOWER_SPACE = ('h', 't', 'l', 'd', 'r')
+FLOWER_SPACES = ('h', 't', 'l', 'd', 'r')
 
 BOARD_TEMPLATE = """
                    {}           {}
                    Home              Goal
                    v v v             ^ ^ ^
-+--h--+--g--+--f--+--e--+           +--t--+--s--+
++-----+-----+-----+-----+           +-----+-----+
 |*****|     |     |     |           |*****|     |
-|* {} *|  {}  |  {}  |  {}  |           |* {} *|  {}  |
-|*****|     |     |     |           |*****|     |
-+-----+-----+-----+-----+-----+-----+-----+-----+
+|* {} *<  {}  <  {}  <  {}  |           |* {} *<  {}  |
+|****h|    g|    f|    e|           |****t|    s|
++v-v-v+-----+-----+-----+-----+-----+-----+^-^-^+
 |     |     |     |*****|     |     |     |     |
-|  {}  |  {}  |  {}  |* {} *|  {}  |  {}  |  {}  |  {}  |
-|  i  |  j  |  k  |**l**|  m  |  n  |  o  |  p  |
-+-----+-----+-----+-----+-----+-----+-----+-----+
+|  {}  >  {}  >  {}  >* {} *>  {}  >  {}  >  {}  >  {}  |
+|    i|    j|    k|****l|    m|    n|    o|    p|
++^-^-^+-----+-----+-----+-----+-----+-----+v-v-v+
 |*****|     |     |     |           |*****|     |
-|* {} *|  {}  |  {}  |  {}  |           |* {} *|  {}  |
-|*****|     |     |     |           |*****|     |
-+--d--+--c--+--b--+--a--+           +--r--+--q--+
+|* {} *<  {}  <  {}  <  {}  |           |* {} *<  {}  |
+|****d|    c|    b|    a|           |****r|    q|
++-----+-----+-----+-----+           +-----+-----+
                    ^ ^ ^             v v v
                    Home              Goal
                    {}           {}
@@ -46,7 +46,7 @@ BOARD_TEMPLATE = """
 
 def main():
     gameBoard = getNewBoard()
-    turn = X_PLAYER
+    turn = O_PLAYER
     while True:  # Main game loop.
         # Set up some variables for this turn:
         if turn == X_PLAYER:
@@ -71,6 +71,8 @@ def main():
         for i in range(4):  # Roll 4 binary dice.
             result = random.randint(0, 1)
             print(result, end='')
+            if i != 3:
+                print('-', end='')
             rollTally += result
         print(' ', end='')
 
@@ -129,8 +131,8 @@ def main():
             gameBoard[nextBoardSpace] = turn
 
         # Check if the player landed on a flower space and can go again:
-        if nextBoardSpace in FLOWER_SPACE:
-            print(turn, 'landed on a flower and gets to go again.')
+        if nextBoardSpace in FLOWER_SPACES:
+            print(turn, 'landed on a flower space and gets to go again.')
             input('Press Enter to continue...')
         else:
             turn = opponent  # Swap turns to the other player.
@@ -152,10 +154,10 @@ def getNewBoard():
 
 def displayBoard(board):
     """TODO"""
-    xHomeTokens = ('X' * board[X_HOME]).ljust(7)
-    xGoalTokens = ('X' * board[X_GOAL]).ljust(7)
-    oHomeTokens = ('O' * board[O_HOME]).ljust(7)
-    oGoalTokens = ('O' * board[O_GOAL]).ljust(7)
+    xHomeTokens = ('X' * board[X_HOME]).ljust(7, '.')
+    xGoalTokens = ('X' * board[X_GOAL]).ljust(7, '.')
+    oHomeTokens = ('O' * board[O_HOME]).ljust(7, '.')
+    oGoalTokens = ('O' * board[O_GOAL]).ljust(7, '.')
 
     # Add the strings that should populate BOARD_TEMPLATE in order,
     # going from left to right, top to bottom.
