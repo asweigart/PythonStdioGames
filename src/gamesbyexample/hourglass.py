@@ -14,10 +14,11 @@ except ImportError:
     sys.exit()
 
 # Set up the constants:
-PAUSE_LENGTH = 0.20  # (!) Try changing this to 0.0 or 1.0.
-WIDE_FALL_CHANCE = 0.50  # (!) Try changing this to 0.0 or 1.0.
+PAUSE_LENGTH = 0.2  # (!) Try changing this to 0.0 or 1.0.
+# (!) Try changing this to any number between 0 and 100:
+WIDE_FALL_CHANCE = 50
 
-SCREEN_WIDTH = 80
+SCREEN_WIDTH = 79
 SCREEN_HEIGHT = 25
 X = 0  # The index of X values in an (x, y) tuple is 0.
 Y = 1  # The index of Y values in an (x, y) tuple is 1.
@@ -63,8 +64,6 @@ def main():
 
     while True:  # Main program loop.
         allSand = list(INITIAL_SAND)
-        # Mix up the order that the grains of sand are simulated:
-        random.shuffle(allSand)
 
         # Draw the initial sand:
         for sand in allSand:
@@ -78,7 +77,6 @@ def runHourglassSimulation(allSand):
     """Keep running the sand falling simulation until the sand stops
     moving."""
     while True:  # Keep looping until sand has run out.
-        # Simulate all sand in the sandspace:
         random.shuffle(allSand)  # Random order of grain simulation.
 
         sandMovedOnThisStep = False
@@ -93,32 +91,35 @@ def runHourglassSimulation(allSand):
             canFallDown = noSandBelow and noWallBelow
 
             if canFallDown:
-                allSand[i] = (sand[X], sand[Y] + 1)
-                sandMovedOnThisStep = True
+                # Draw the sand in its new position down one space:
                 bext.goto(sand[X], sand[Y])
-                print(' ', end='')
+                print(' ', end='')  # Clear the old position.
                 bext.goto(sand[X], sand[Y] + 1)
                 print(SAND, end='')
+
+                # Set the sand in its new position down one space:
+                allSand[i] = (sand[X], sand[Y] + 1)
+                sandMovedOnThisStep = True
             else:
                 # Check if the sand can fall to the left:
                 belowLeft = (sand[X] - 1, sand[Y] + 1)
                 noSandBelowLeft = belowLeft not in allSand
                 noWallBelowLeft = belowLeft not in HOURGLASS
                 left = (sand[X] - 1, sand[Y])
-                noWallToTheLeft = left not in HOURGLASS
+                noWallLeft = left not in HOURGLASS
                 notOnLeftEdge = sand[X] > 0
                 canFallLeft = (noSandBelowLeft and noWallBelowLeft
-                    and noWallToTheLeft and notOnLeftEdge)
+                    and noWallLeft and notOnLeftEdge)
 
                 # Check if the sand can fall to the right:
                 belowRight = (sand[X] + 1, sand[Y] + 1)
                 noSandBelowRight = belowRight not in allSand
                 noWallBelowRight = belowRight not in HOURGLASS
                 right = (sand[X] + 1, sand[Y])
-                noWallToTheRight = right not in HOURGLASS
+                noWallRight = right not in HOURGLASS
                 notOnRightEdge = sand[X] < SCREEN_WIDTH - 1
                 canFallRight = (noSandBelowRight and noWallBelowRight
-                    and noWallToTheRight and notOnRightEdge)
+                    and noWallRight and notOnRightEdge)
 
                 # Set the falling direction:
                 fallingDirection = None
@@ -132,7 +133,7 @@ def runHourglassSimulation(allSand):
 
                 # Check if the sand can "far" fall two spaces to
                 # the left or right instead of just one space:
-                if random.random() <= WIDE_FALL_CHANCE:
+                if random.random() * 100 <= WIDE_FALL_CHANCE:
                     belowTwoLeft = (sand[X] - 2, sand[Y] + 1)
                     noSandBelowTwoLeft = belowTwoLeft not in allSand
                     noWallBelowTwoLeft = belowTwoLeft not in HOURGLASS
@@ -148,24 +149,26 @@ def runHourglassSimulation(allSand):
                         and noSandBelowTwoRight and noWallBelowTwoRight
                         and notOnSecondToRightEdge)
 
-                    if canFallTwoLeft and canFallTwoRight:
-                        fallingDirection = random.choice((-2, 2))
-                    elif canFallTwoLeft and not canFallTwoRight:
+                    if canFallTwoLeft and not canFallTwoRight:
                         fallingDirection = -2
                     elif not canFallTwoLeft and canFallTwoRight:
                         fallingDirection = 2
+                    elif canFallTwoLeft and canFallTwoRight:
+                        fallingDirection = random.choice((-2, 2))
 
                 if fallingDirection == None:
                     # This sand can't fall, so move on.
                     continue
 
-                # Move the grain of sand:
-                allSand[i] = (sand[X] + fallingDirection, sand[Y] + 1)
-                sandMovedOnThisStep = True
+                # Draw the sand in its new position:
                 bext.goto(sand[X], sand[Y])
                 print(' ', end='')  # Erase old sand.
                 bext.goto(sand[X] + fallingDirection, sand[Y] + 1)
                 print(SAND, end='')  # Draw new sand.
+
+                # Move the grain of sand to its new position:
+                allSand[i] = (sand[X] + fallingDirection, sand[Y] + 1)
+                sandMovedOnThisStep = True
 
         sys.stdout.flush()  # (Required for bext-using programs.)
         time.sleep(PAUSE_LENGTH)  # Pause after this
@@ -173,7 +176,7 @@ def runHourglassSimulation(allSand):
         # If no sand has moved on this step, reset the hourglass:
         if not sandMovedOnThisStep:
             time.sleep(2)
-            # Erase the sand:
+            # Erase all of the sand:
             for sand in allSand:
                 bext.goto(sand[X], sand[Y])
                 print(' ', end='')

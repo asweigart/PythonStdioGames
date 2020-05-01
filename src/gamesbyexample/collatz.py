@@ -6,7 +6,7 @@ Tags: short, beginner, math, algorithm"""
 __version__ = 0
 import sys, time
 
-print('''Collatz Sequence, or, the 3n+1 Problem
+print('''Collatz Sequence, or, the 3n + 1 Problem
 By Al Sweigart al@inventwithpython.com
 
 The Collatz sequence is a sequence of numbers produced from a starting

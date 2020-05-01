@@ -3,7 +3,7 @@ Escape the hungry robots by making them crash into each other.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game"""
 __version__ = 0
-import os, random, sys
+import random, sys
 
 # Set up the constants:
 WIDTH = 40           # (!) Try changing this to 70 or 10.
@@ -12,6 +12,7 @@ NUM_ROBOTS = 30      # (!) Try changing this to 1 or 30.
 NUM_TELEPORTS = 2    # (!) Try changing this to 0 or 9999.
 NUM_DEAD_ROBOTS = 2  # (!) Try changing this to 0 or 20.
 NUM_WALLS = 100      # (!) Try changing this to 0 or 1000.
+
 EMPTY_SPACE = ' '    # (!) Try changing this to '.'.
 PLAYER = '@'         # (!) Try changing this to 'R'.
 ROBOT = 'R'          # (!) Try changing this to '@'.
@@ -36,8 +37,8 @@ through corners!
     input('Press Enter to begin...')
 
     # Set up a new game:
-    board = getNewBoard(WIDTH, HEIGHT, NUM_WALLS, NUM_DEAD_ROBOTS)
-    robots = addRobots(board, NUM_ROBOTS)
+    board = getNewBoard()
+    robots = addRobots(board)
     playerPosition = getRandomEmptySpace(board, robots)
     while True:  # Main game loop.
         displayBoard(board, robots, playerPosition)
@@ -58,35 +59,34 @@ through corners!
                 sys.exit()
 
 
-def getNewBoard(width, height, numWalls, numDeadRobots):
+def getNewBoard():
     """Returns a dictionary that represents the board. The keys are
     (x, y) tuples of integer indexes for board positions, the values are
-    WALL, EMPTY_SPACE, or DEAD_ROBOT. The dictionary also has keys
-    'wdith' and 'height' for the board size, and the key 'teleports' for
-    the number of teleports the player has left. The living robots are
-    stored separately from the board dictionary."""
-    board = {'width': width, 'height': height, 'teleports': NUM_TELEPORTS}
+    WALL, EMPTY_SPACE, or DEAD_ROBOT. The dictionary also has the key
+    'teleports' for the number of teleports the player has left.
+    The living robots are stored separately from the board dictionary."""
+    board = {'teleports': NUM_TELEPORTS}
 
     # Create an empty board:
-    for x in range(width):
-        for y in range(height):
+    for x in range(WIDTH):
+        for y in range(HEIGHT):
             board[(x, y)] = EMPTY_SPACE
 
     # Add walls on the edges of the board:
-    for x in range(width):
+    for x in range(WIDTH):
         board[(x, 0)] = WALL  # Make top wall.
-        board[(x, height - 1)] = WALL  # Make bottom wall.
-    for y in range(height):
+        board[(x, HEIGHT - 1)] = WALL  # Make bottom wall.
+    for y in range(HEIGHT):
         board[(0, y)] = WALL  # Make left wall.
-        board[(width - 1, y)] = WALL  # Make right wall.
+        board[(WIDTH - 1, y)] = WALL  # Make right wall.
 
-    # Add random walls:
-    for i in range(numWalls):
+    # Add the random walls:
+    for i in range(NUM_WALLS):
         x, y = getRandomEmptySpace(board, [])
         board[(x, y)] = WALL
 
-    # Add starting dead robots:
-    for i in range(numDeadRobots):
+    # Add the starting dead robots:
+    for i in range(NUM_DEAD_ROBOTS):
         x, y = getRandomEmptySpace(board, [])
         board[(x, y)] = DEAD_ROBOT
     return board
@@ -95,8 +95,8 @@ def getNewBoard(width, height, numWalls, numDeadRobots):
 def getRandomEmptySpace(board, robots):
     """Return a (x, y) integer tuple of an empty space on the board."""
     while True:
-        randomX = random.randint(1, board['width'] - 2)
-        randomY = random.randint(1, board['height'] - 2)
+        randomX = random.randint(1, WIDTH - 2)
+        randomY = random.randint(1, HEIGHT - 2)
         if isEmpty(randomX, randomY, board, robots):
             break
     return (randomX, randomY)
@@ -108,11 +108,11 @@ def isEmpty(x, y, board, robots):
     return board[(x, y)] == EMPTY_SPACE and (x, y) not in robots
 
 
-def addRobots(board, numRobots):
-    """Add numRobots number of robots to empty spaces on the board and
+def addRobots(board):
+    """Add NUM_ROBOTS number of robots to empty spaces on the board and
     return a list of these (x, y) spaces where robots are now located."""
     robots = []
-    for i in range(numRobots):
+    for i in range(NUM_ROBOTS):
         x, y = getRandomEmptySpace(board, robots)
         robots.append((x, y))
     return robots
@@ -121,8 +121,8 @@ def addRobots(board, numRobots):
 def displayBoard(board, robots, playerPosition):
     """Display the board, robots, and player on the screen."""
     # Loop over every space on the board:
-    for y in range(board['height']):
-        for x in range(board['width']):
+    for y in range(HEIGHT):
+        for x in range(WIDTH):
             # Draw the appropriate character:
             if board[(x, y)] == WALL:
                 print(WALL, end='')
@@ -135,6 +135,50 @@ def displayBoard(board, robots, playerPosition):
             else:
                 print(EMPTY_SPACE, end='')
         print()  # Print a newline.
+
+
+def askForPlayerMove(board, robots, playerPosition):
+    """Returns the (x, y) integer tuple of the place the player moves
+    next, given their current location and the walls of the board."""
+    playerX, playerY = playerPosition
+
+    # Find which directions aren't blocked by a wall:
+    q = 'Q' if isEmpty(playerX - 1, playerY - 1, board, robots) else ' '
+    w = 'W' if isEmpty(playerX + 0, playerY - 1, board, robots) else ' '
+    e = 'E' if isEmpty(playerX + 1, playerY - 1, board, robots) else ' '
+    d = 'D' if isEmpty(playerX + 1, playerY + 0, board, robots) else ' '
+    c = 'C' if isEmpty(playerX + 1, playerY + 1, board, robots) else ' '
+    x = 'X' if isEmpty(playerX + 0, playerY + 1, board, robots) else ' '
+    z = 'Z' if isEmpty(playerX - 1, playerY + 1, board, robots) else ' '
+    a = 'A' if isEmpty(playerX - 1, playerY + 0, board, robots) else ' '
+    allMoves = (q + w + e + d + c + x + a + z + 'S')
+
+    while True:
+        # Get player's move:
+        print('(T)eleports remaining: {}'.format(board["teleports"]))
+        print('                    ({}) ({}) ({})'.format(q, w, e))
+        print('                    ({}) (S) ({})'.format(a, d))
+        print('Enter move or QUIT: ({}) ({}) ({})'.format(z, x, c))
+
+        move = input('> ').upper()
+        if move == 'QUIT':
+            print('Thanks for playing!')
+            sys.exit()
+        elif move == 'T' and board['teleports'] > 0:
+            # Teleport the player to a random empty space:
+            board['teleports'] -= 1
+            return getRandomEmptySpace(board, robots)
+        elif move != '' and move in allMoves:
+            # Return the new player position based on their move:
+            return {'Q': (playerX - 1, playerY - 1),
+                    'W': (playerX + 0, playerY - 1),
+                    'E': (playerX + 1, playerY - 1),
+                    'D': (playerX + 1, playerY + 0),
+                    'C': (playerX + 1, playerY + 1),
+                    'X': (playerX + 0, playerY + 1),
+                    'Z': (playerX - 1, playerY + 1),
+                    'A': (playerX - 1, playerY + 0),
+                    'S': (playerX, playerY)}[move]
 
 
 def moveRobots(board, robotPositions, playerPosition):
@@ -191,50 +235,6 @@ def moveRobots(board, robotPositions, playerPosition):
         # Remove robots from robotPositions as they move.
         del robotPositions[0]
     return nextRobotPositions
-
-
-def askForPlayerMove(board, robots, playerPosition):
-    """Returns the (x, y) integer tuple of the place the player moves
-    next, given their current location and the walls of the board."""
-    playerX, playerY = playerPosition
-
-    # Find which directions aren't blocked by a wall:
-    q = 'Q' if isEmpty(playerX - 1, playerY - 1, board, robots) else ' '
-    w = 'W' if isEmpty(playerX + 0, playerY - 1, board, robots) else ' '
-    e = 'E' if isEmpty(playerX + 1, playerY - 1, board, robots) else ' '
-    d = 'D' if isEmpty(playerX + 1, playerY + 0, board, robots) else ' '
-    c = 'C' if isEmpty(playerX + 1, playerY + 1, board, robots) else ' '
-    x = 'X' if isEmpty(playerX + 0, playerY + 1, board, robots) else ' '
-    z = 'Z' if isEmpty(playerX - 1, playerY + 1, board, robots) else ' '
-    a = 'A' if isEmpty(playerX - 1, playerY + 0, board, robots) else ' '
-    allMoves = (q + w + e + d + c + x + a + z + 'S').replace(' ', '')
-
-    while True:
-        # Get player's move:
-        print('(T)eleports remaining: {}'.format(board["teleports"]))
-        print('                    ({}) ({}) ({})'.format(q, w, e))
-        print('                    ({}) (S) ({})'.format(a, d))
-        print('Enter move or QUIT: ({}) ({}) ({})'.format(z, x, c))
-
-        move = input('> ').upper()
-        if move == 'QUIT':
-            print('Thanks for playing!')
-            sys.exit()
-        elif move == 'T' and board['teleports'] > 0:
-            # Teleport the player to a random empty space:
-            board['teleports'] -= 1
-            return getRandomEmptySpace(board, robots)
-        elif move != '' and move in allMoves:
-            # Return the new player position based on their move:
-            return {'Q': (playerX - 1, playerY - 1),
-                    'W': (playerX + 0, playerY - 1),
-                    'E': (playerX + 1, playerY - 1),
-                    'D': (playerX + 1, playerY + 0),
-                    'C': (playerX + 1, playerY + 1),
-                    'X': (playerX + 0, playerY + 1),
-                    'Z': (playerX - 1, playerY + 1),
-                    'A': (playerX - 1, playerY + 0),
-                    'S': (playerX, playerY)}[move]
 
 
 # If this program was run (instead of imported), run the game:

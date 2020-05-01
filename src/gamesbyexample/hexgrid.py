@@ -4,6 +4,7 @@ This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, artistic"""
 __version__ = 0
 # Set up the constants:
+# (!) Try changing these values to other numbers:
 X_REPEAT = 19  # How many times to tessellate horizontally.
 Y_REPEAT = 12  # How many times to tessellate vertically.
 

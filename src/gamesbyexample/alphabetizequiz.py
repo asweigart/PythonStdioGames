@@ -29,7 +29,6 @@ as possible. Try to alphabetize as many as possible in {} seconds!
 Example:
     P M O T Q  <-- The letters.
     > mopqt    <-- Enter the correct alphabetical order.
-
     '''.format(QUIZ_DURATION))
     input('Press Enter to begin...')
 
@@ -39,7 +38,6 @@ Example:
         # Come up with letters for the question:
         quizLetters = random.sample(ALPHABET, QUESTION_SIZE)
         print(' '.join(quizLetters))
-        print()
         response = input('> ').upper()
 
         # Check if the quiz's time is up:
@@ -52,7 +50,7 @@ Example:
             print('    Correct!\n')
             numCorrect += 1  # Increase the score by 1.
         else:
-            print('    Ack. :(\n')
+            print('    Sorry, wrong. :(\n')
 
     # After the loop exits, the quiz is over. Show the final score:
     print('In {} seconds you'.format(QUIZ_DURATION))

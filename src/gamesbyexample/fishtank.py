@@ -188,10 +188,10 @@ def simulateAquarium():
 
     # Move the bubbles:
     for bubble in BUBBLES:
-        r = random.randint(1, 6)
-        if (r == 1) and (bubble['x'] != LEFT_EDGE):
+        diceRoll = random.randint(1, 6)
+        if (diceRoll == 1) and (bubble['x'] != LEFT_EDGE):
             bubble['x'] -= 1  # Bubble goes left.
-        elif (r == 2) and (bubble['x'] != RIGHT_EDGE):
+        elif (diceRoll == 2) and (bubble['x'] != RIGHT_EDGE):
             bubble['x'] += 1  # Bubble goes right.
 
         bubble['y'] -= 1  # The bubble always goes up.
