@@ -1,5 +1,9 @@
 """The Royal Game of Ur, by Al Sweigart al@inventwithpython.com
-
+A 5,000 year old board game from Mesopotamia. Two players knock each
+other back as they race for the goal.
+More info https://en.wikipedia.org/wiki/Royal_Game_of_Ur
+This and other games are available at https://nostarch.com/XX
+Tags: large, game, two-player, board game
 """
 __version__ = 0
 import random, sys

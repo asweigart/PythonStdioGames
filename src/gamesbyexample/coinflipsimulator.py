@@ -50,8 +50,7 @@ for i in range(numberOfFlips):
 # Record the streak stats for the final flip:
 streakKey = (currentStreakLength, currentStreakSide)
 if streakKey not in streakStats:
-    # Set this new key to 0:
-    streakStats[streakKey] = 0
+    streakStats[streakKey] = 0  # New streaks start at 0.
 streakStats[streakKey] = streakStats[streakKey] + 1
 
 print()
