@@ -3,7 +3,7 @@ A pattern-matching game with sounds. Try to memorize an increasingly
 longer and longer pattern of letters.
 Inspired by the Simon game.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, beginner, game"""
+Tags: short, beginner, game"""
 __version__ = 0
 import random, sys, time
 

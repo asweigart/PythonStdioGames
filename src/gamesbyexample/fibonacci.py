@@ -1,7 +1,7 @@
 """Fibonacci Sequence, by Al Sweigart al@inventwithpython.com
 Calculates numbers of the Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13...
 This and other games are available at https://nostarch.com/XX
-Tags: short, math, algorithm"""
+Tags: short, math"""
 __version__ = 0
 import sys
 

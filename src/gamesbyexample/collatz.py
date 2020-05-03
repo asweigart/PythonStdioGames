@@ -2,7 +2,7 @@
 Generates numbers for the Collatz sequence, given a starting number.
 More info at: https://en.wikipedia.org/wiki/Collatz_conjecture
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, beginner, math, algorithm"""
+Tags: tiny, beginner, math"""
 __version__ = 0
 import sys, time
 

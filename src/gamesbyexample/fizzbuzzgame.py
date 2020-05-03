@@ -1,5 +1,6 @@
 """FizzBuzz Game, by Al Sweigart al@inventwithpython.com
 A number game where you also race against the clock.
+This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game, math"""
 __version__ = 0
 import sys, time
@@ -15,8 +16,7 @@ So the pattern is:
 1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16...
 
 A doom clock is counting down. Entering correct responses gives you
-more time. How long can you keep entering the correct pattern?
-''')
+more time. How long can you keep entering the correct pattern?''')
 input('Press Enter to begin...')
 
 number = 1
@@ -43,7 +43,6 @@ while True:  # Main game loop.
 
     # Get the player's response:
     response = input('Next response: {} ' + hint)
-    # Convert to lowercase, remove spaces:
     response = response.lower().replace(' ', '')
 
     # See if the player has lost:

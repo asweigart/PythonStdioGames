@@ -1,7 +1,7 @@
 """Alphabetize Word Quiz, by Al Sweigart al@inventwithpython.com
 A time-based quiz game to see how fast you can alphabetize words.
 This and other games are available at https://nostarch.com/XX
-Tags: short, game"""
+Tags: short, game, word"""
 __version__ = 0
 import random, time
 
