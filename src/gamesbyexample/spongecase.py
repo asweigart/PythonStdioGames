@@ -1,4 +1,4 @@
-"""sPoNgEtExT, by Al Sweigart al@inventwithpython.com
+"""sPoNgEcAsE, by Al Sweigart al@inventwithpython.com
 Translates English messages into sPOnGEtExT.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, word"""
@@ -13,10 +13,10 @@ except ImportError:
 
 def main():
     """Run the Spongetext program."""
-    print('''sPoNgEtExT, bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
+    print('''sPoNgEcAsE, bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
 
 eNtEr YoUr MeSsAgE:''')
-    spongetext = englishToSpongetext(input('> '))
+    spongetext = englishToSpongecase(input('> '))
     print()
     print(spongetext)
 
@@ -27,7 +27,7 @@ eNtEr YoUr MeSsAgE:''')
         pass  # Do nothing if pyperclip wasn't installed.
 
 
-def englishToSpongetext(message):
+def englishToSpongecase(message):
     """Return the spongetext form of the given string."""
     spongetext = ''
     useUpper = False
