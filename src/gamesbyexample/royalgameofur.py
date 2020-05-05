@@ -49,6 +49,8 @@ BOARD_TEMPLATE = """
 
 
 def main():
+    # TODO add intro
+
     gameBoard = getNewBoard()
     turn = O_PLAYER
     while True:  # Main game loop.
@@ -78,7 +80,7 @@ def main():
             if i != 3:
                 print('-', end='')
             rollTally += result
-        print(' ', end='')
+        print('  ', end='')
 
         if rollTally == 0:
             input('You lose a turn. Press Enter to continue...')
@@ -158,6 +160,10 @@ def getNewBoard():
 
 def displayBoard(board):
     """TODO"""
+    # "Clear" the screen by printing many newlines, so the old
+    # board isn't visible anymore.
+    print('\n' * 60)
+
     xHomeTokens = ('X' * board[X_HOME]).ljust(7, '.')
     xGoalTokens = ('X' * board[X_GOAL]).ljust(7, '.')
     oHomeTokens = ('O' * board[O_HOME]).ljust(7, '.')

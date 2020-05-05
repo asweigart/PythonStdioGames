@@ -7,7 +7,6 @@ __version__ = 0
 import time, sys
 
 print('''Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
-
 - Rock beats scissors.
 - Paper beats rocks.
 - Scissors beats paper.

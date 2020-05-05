@@ -27,7 +27,7 @@ def main():
         input('Press Enter to begin...')
         runQuiz()
         print('Would you like to play again? Y/N')
-        response = input().upper()
+        response = input('> ').upper()
         if not response.startswith('Y'):
             print('Thanks for playing!')
             break

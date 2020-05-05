@@ -50,7 +50,9 @@ More info at https://en.wikipedia.org/wiki/Mancala
     playerTurn = '1'  # Player 1 goes first.
 
     while True:  # Run a player's turn.
-        print('\n' * 60)  # "Clear" the screen by printing many newlines.
+        # "Clear" the screen by printing many newlines, so the old
+        # board isn't visible anymore.
+        print('\n' * 60)
         # Display board and get the player's move:
         displayBoard(gameBoard)
         playerMove = askForPlayerMove(playerTurn, gameBoard)
@@ -97,15 +99,16 @@ def displayBoard(board):
         seedAmounts.append(numSeedsInThisPit)
 
     print("""
-+------+--<<<<<-Player 2---+----+----+------+
-|2     |G   |H   |I   |J   |K   |L   |1     |
-S      | {} | {} | {} | {} | {} | {} |      S
-T      |    |    |    |    |    |    |      T
-O  {}  +----+----+----+----+----+----+  {}  O
-R      |A   |B   |C   |D   |E   |F   |      R
-E      | {} | {} | {} | {} | {} | {} |      E
-|      |    |    |    |    |    |    |      |
-+------+----+---Player 1->>>>>--+----+------+
++------+------+--<<<<<-Player 2----+------+------+------+
+2      |G     |H     |I     |J     |K     |L     |      1
+       |  {}  |  {}  |  {}  |  {}  |  {}  |  {}  |
+S      |      |      |      |      |      |      |      S
+T  {}  +------+------+------+------+------+------+  {}  T
+O      |A     |B     |C     |D     |E     |F     |      O
+R      |  {}  |  {}  |  {}  |  {}  |  {}  |  {}  |      R
+E      |      |      |      |      |      |      |      E
++------+------+------+-Player 1->>>>>-----+------+------+
+
 """.format(*seedAmounts))
 
 

@@ -12,7 +12,6 @@ Tags: tiny, beginner, artistic"""
 __version__ = 0
 def main():
     print('Diamonds, by Al Sweigart al@inventwithpython.com')
-    print()
 
     # Display diamonds of sizes 0 through 6:
     for diamondSize in range(0, 6):

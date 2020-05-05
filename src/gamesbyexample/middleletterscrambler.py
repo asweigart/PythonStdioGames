@@ -16,6 +16,8 @@ def main():
     print('''Middle Letter Scrambler
 By Al Sweigart al@inventwithpython.com
 
+Your brain can probably read scrambled words as long as the first and
+last letters are in the right place.
 Your biran can pbablroy raed sambcerld wrdos as lnog as the fsirt and
 last lteters are in the rihgt pcale.
 

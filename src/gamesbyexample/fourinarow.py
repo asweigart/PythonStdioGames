@@ -37,7 +37,7 @@ to make four in a row horizontally, vertically, or diagonally.
         # Check for a win or tie:
         if isWinner(playerTurn, gameBoard):
             displayBoard(gameBoard)  # Display the board one last time.
-            print('Player ' + playerTurn + ' as won!')
+            print('Player ' + playerTurn + ' has won!')
             sys.exit()
         elif isFull(gameBoard):
             displayBoard(gameBoard)  # Display the board one last time.

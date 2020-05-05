@@ -35,7 +35,7 @@ while True:  # Keep asking until the user enters a valid key.
     if not response.isdecimal():
         print('This key is not a number.')
         continue
-    if 1 <= int(response) <= 26:
+    if 0 <= int(response) < len(SYMBOLS):
         key = int(response)
         break
 

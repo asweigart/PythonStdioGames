@@ -42,7 +42,7 @@ while True:  # Main game loop.
         hint = ''
 
     # Get the player's response:
-    response = input('Next response: {} ' + hint)
+    response = input('Next response: ' + hint)
     response = response.lower().replace(' ', '')
 
     # See if the player has lost:

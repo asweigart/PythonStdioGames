@@ -34,8 +34,9 @@ symbol in the plaintext and each symbol in the ciphertext.''')
 
     # Let the user specify the key to use:
     while True:  # Keep asking until the user enters a valid key.
-        print('Please specify the key to use,')
-        print('or RANDOM to have one generated for you:')
+        print('Please specify the key to use.')
+        if myMode == 'encrypt':
+            print('Or enter RANDOM to have one generated for you.')
         response = input('> ').upper()
         if response == 'RANDOM':
             myKey = generateRandomKey()

@@ -13,7 +13,7 @@ except ImportError:
 UPPER_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 LOWER_LETTERS = 'abcdefghijklmnopqrstuvwxyz'
 
-print('ROT13 CIPHER, by Al Sweigart al@inventwithpython.com')
+print('ROT13 Cipher, by Al Sweigart al@inventwithpython.com')
 print()
 
 while True:  # Main program loop.

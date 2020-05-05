@@ -77,22 +77,22 @@ has a new car for a prize. The other two doors have worthless goats:
 Say you pick Door #1.
 Before the door you choose is opened, another door with a goat is opened:
 {}
-You can choose to either open the door you originally picked, or switch
+You can choose to either open the door you originally picked, or swap
 to the other unopened door.
 
-It may seem like it doesn't matter if you switch or not, but your odds
-do improve if you switch doors! This program demonstrates the Monty Hall
+It may seem like it doesn't matter if you swap or not, but your odds
+do improve if you swap doors! This program demonstrates the Monty Hall
 problem by letting you do repeated experiments.
 
-You can read an explanation of why switching is better at
+You can read an explanation of why swapping is better at
 https://en.wikipedia.org/wiki/Monty_Hall_problem
 '''.format(ALL_CLOSED, THIRD_GOAT))
 
 input('Press Enter to start...')
 
 
-switchWins = 0
-switchLosses = 0
+swapWins = 0
+swapLosses = 0
 stayWins = 0
 stayLosses = 0
 while True:  # Main program loop.
@@ -130,15 +130,15 @@ while True:  # Main program loop.
 
     print('Door {} contains a goat!'.format(showGoatDoor))
 
-    # Ask the player if they want to switch:
+    # Ask the player if they want to swap:
     while True:  # Keep asking until the player enters Y or N.
-        print('Do you want to switch doors? Y/N')
-        switch = input('> ').upper()
-        if switch == 'Y' or switch == 'N':
+        print('Do you want to swap doors? Y/N')
+        swap = input('> ').upper()
+        if swap == 'Y' or swap == 'N':
             break
 
-    # Switch the player's door if they wanted to switch:
-    if switch == 'Y':
+    # Swap the player's door if they wanted to swap:
+    if swap == 'Y':
         if doorPick == 1 and showGoatDoor == 2:
             doorPick = 3
         elif doorPick == 1 and showGoatDoor == 3:
@@ -162,26 +162,26 @@ while True:  # Main program loop.
 
     print('Door {} has the car!'.format(doorThatHasCar))
 
-    # Record wins and losses for switching and not switching:
+    # Record wins and losses for swapping and not swapping:
     if doorPick == doorThatHasCar:
         print('You won!')
-        if switch == 'Y':
-            switchWins += 1
-        elif switch == 'N':
+        if swap == 'Y':
+            swapWins += 1
+        elif swap == 'N':
             stayWins += 1
     else:
         print('Sorry, you lost.')
-        if switch == 'Y':
-            switchLosses += 1
-        elif switch == 'N':
+        if swap == 'Y':
+            swapLosses += 1
+        elif swap == 'N':
             stayLosses += 1
 
-    # Calculate success rate of switching and not switching:
-    totalSwitches = switchWins + switchLosses
-    if totalSwitches != 0:  # Prevent zero-divide error.
-        switchSuccess = round(switchWins / totalSwitches * 100, 1)
+    # Calculate success rate of swapping and not swapping:
+    totalSwapes = swapWins + swapLosses
+    if totalSwapes != 0:  # Prevent zero-divide error.
+        swapSuccess = round(swapWins / totalSwapes * 100, 1)
     else:
-        switchSuccess = 0.0
+        swapSuccess = 0.0
 
     totalStays = stayWins + stayLosses
     if (stayWins + stayLosses) != 0:  # Prevent zero-divide.
@@ -190,11 +190,11 @@ while True:  # Main program loop.
         staySuccess = 0.0
 
     print()
-    print('Switching:     ', end='')
-    print('{} wins, {} losses, '.format(switchWins, switchLosses))
-    print('success rate {}%'.format(switchSuccess))
-    print('Not switching: ', end='')
-    print('{} wins, {} losses, '.format(stayWins, stayLosses))
+    print('Swapping:     ', end='')
+    print('{} wins, {} losses, '.format(swapWins, swapLosses), end='')
+    print('success rate {}%'.format(swapSuccess))
+    print('Not swapping: ', end='')
+    print('{} wins, {} losses, '.format(stayWins, stayLosses), end='')
     print('success rate {}%'.format(staySuccess))
     print()
     input('Press Enter repeat the experiment...')

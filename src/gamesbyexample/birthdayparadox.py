@@ -87,7 +87,7 @@ print()
 print('Generate', numBDays, 'random birthdays 100,000 times.')
 input('Press Enter to begin...')
 
-print('Running simulations of', numBDays, 'people...')
+print('Let\'s run another 100,000 simulations.')
 simMatch = 0  # How many simulations had matching birthdays in them.
 for i in range(100000):
     if i % 10000 == 0:
