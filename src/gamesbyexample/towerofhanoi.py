@@ -49,7 +49,6 @@ def askForPlayerMove(towers):
     while True:  # Keep asking player until they enter a valid move.
         print('Enter the letters of "from" and "to" towers, or QUIT.')
         print('(e.g. AB to moves a disk from tower A to tower B.)')
-        print()
         response = input('> ').upper().strip()
 
         if response == 'QUIT':
