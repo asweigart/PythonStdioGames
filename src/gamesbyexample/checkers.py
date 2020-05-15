@@ -249,7 +249,8 @@ def makeMove(board, srcSpace, dstSpace):
         # The checker is making a normal or jump move:
         board[dstSpace] = board[srcSpace]
         board[srcSpace] = EMPTY
-    elif abs(srcRow - dstRow) == 2:
+
+    if abs(srcRow - dstRow) == 2:
         # Erase the checker that was captured in the jump:
         if dstColumn < srcColumn and dstRow < srcRow:
             board[prevCol(srcColumn) + str(srcRow - 1)] = EMPTY
@@ -261,7 +262,7 @@ def makeMove(board, srcSpace, dstSpace):
             board[nextCol(srcColumn) + str(srcRow + 1)] = EMPTY
 
     # See if we need to promote this checker:
-    if dstRow == 1 or dstRow == 8:
+    if board[dstSpace].islower() and (dstRow == 1 or dstRow == 8):
         print(board[dstSpace].upper(), 'has been promoted!')
         board[dstSpace] = board[dstSpace].upper()  # Promote this checker.
 
