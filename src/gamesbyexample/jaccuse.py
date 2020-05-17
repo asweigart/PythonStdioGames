@@ -160,8 +160,11 @@ Inspired by Homestar Runner\'s "Where\'s an Egg?" game
 
 You are the world-famous detective, Mathilde Camus.
 ZOPHIE THE CAT has gone missing, and you must sift through the clues.
-Suspects either always tell lies, or always tell the truth. Will you
-find ZOPHIE THE CAT in time and accuse the guilty party?
+Suspects either always tell lies, or always tell the truth. Ask them
+about other people, places, and items to see if the details they give are
+truthful and consistent with your observations. Then you will know if
+their clue about Zophie is true or not. Will you find ZOPHIE THE CAT
+in time and accuse the guilty party?
 """)
 input('Press Enter to begin...')
 
@@ -195,8 +198,14 @@ while True:  # Main game loop.
             nameLabel = '(' + place[0] + ')' + place[1:]
             spacing = " " * (LONGEST_PLACE_NAME_LENGTH - len(place))
             print('{} {}{}'.format(nameLabel, spacing, placeInfo))
+        print('(Q)UIT GAME')
         while True:  # Keep asking until a valid response is given.
             response = input('> ').upper()
+            if response == '':
+                continue  # Ask again.
+            if response == 'Q':
+                print('Thanks for playing!')
+                sys.exit()
             if response in PLACE_FIRST_LETTERS.keys():
                 break
         currentLocation = PLACE_FIRST_LETTERS[response]

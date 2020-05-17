@@ -49,7 +49,35 @@ BOARD_TEMPLATE = """
 
 
 def main():
-    # TODO add intro
+    print('''The Royal Game of Ur, by Al Sweigart al@inventwithpython.com
+
+This is a 5,000 year old game. Two players must move their tokens
+from their home to their goal. On your turn you flip four coins and can
+move one token a number of spaces equal to the heads you got.
+
+Ur is a racing game; the first player to move all seven of their tokens
+to their goal wins. To do this, tokens must travel from their home to
+their goal:
+
+            X Home      X Goal
+              v           ^
++---+---+---+-v-+       +-^-+---+
+|v<<<<<<<<<<<<< |       | ^<|<< |
+|v  |   |   |   |       |   | ^ |
++v--+---+---+---+---+---+---+-^-+
+|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>^ |
+|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>v |
++^--+---+---+---+---+---+---+-v-+
+|^  |   |   |   |       |   | v |
+|^<<<<<<<<<<<<< |       | v<<<< |
++---+---+---+-^-+       +-v-+---+
+              ^           v
+            O Home      O Goal
+
+If you land on an opponent's token in the middle track, it gets sent back
+home. The **flower** spaces let you take another turn. Tokens in the
+middle flower space are safe and cannot be landed on.''')
+    input('Press Enter to begin...')
 
     gameBoard = getNewBoard()
     turn = O_PLAYER
@@ -70,25 +98,28 @@ def main():
 
         displayBoard(gameBoard)
 
-        input('It is ' + turn + '\'s turn. Press Enter to roll...')
+        input('It is ' + turn + '\'s turn. Press Enter to flip...')
 
-        rollTally = 0
-        print('Roll: ', end='')
-        for i in range(4):  # Roll 4 binary dice.
-            result = random.randint(0, 1)
-            print(result, end='')
+        flipTally = 0
+        print('Flips: ', end='')
+        for i in range(4):  # Flip 4 coins.
+            result =  random.randint(0, 1)
+            if result == 0:
+                print('T', end='')  # Tails.
+            else:
+                print('H', end='')  # Heads.
             if i != 3:
-                print('-', end='')
-            rollTally += result
+                print('-', end='')  # Print separator.
+            flipTally += result
         print('  ', end='')
 
-        if rollTally == 0:
+        if flipTally == 0:
             input('You lose a turn. Press Enter to continue...')
             turn = opponent  # Swap turns to the other player.
             continue
 
         # Ask the player for their move:
-        validMoves = getValidMoves(gameBoard, turn, rollTally)
+        validMoves = getValidMoves(gameBoard, turn, flipTally)
 
         if validMoves == []:
             print('There are no possible moves, so you lose a turn.')
@@ -97,7 +128,7 @@ def main():
             continue
 
         while True:
-            print('Select a token to move', rollTally, 'spaces: ', end='')
+            print('Select a token to move', flipTally, 'spaces: ', end='')
             print(' '.join(validMoves) + ' quit')
             move = input('> ').lower()
 
@@ -113,10 +144,10 @@ def main():
         if move == 'home':
             # Subtract tokens at home if moving from home:
             gameBoard[home] -= 1
-            nextTrackSpaceIndex = rollTally
+            nextTrackSpaceIndex = flipTally
         else:
             gameBoard[move] = EMPTY  # Set the "from" space to empty.
-            nextTrackSpaceIndex = track.index(move) + rollTally
+            nextTrackSpaceIndex = track.index(move) + flipTally
 
         movingOntoGoal = nextTrackSpaceIndex == len(track) - 1
         if movingOntoGoal:
@@ -184,7 +215,7 @@ def displayBoard(board):
     print(BOARD_TEMPLATE.format(*spaces))
 
 
-def getValidMoves(board, player, rollTally):
+def getValidMoves(board, player, flipTally):
     validMoves = []  # Contains all the spaces with tokens that can move.
 
     if player == X_PLAYER:
@@ -197,7 +228,7 @@ def getValidMoves(board, player, rollTally):
         home = O_HOME
 
     # Check if the player can move a token from home:
-    if board[home] > 0 and board[track[rollTally]] == EMPTY:
+    if board[home] > 0 and board[track[flipTally]] == EMPTY:
         validMoves.append('home')
 
     # Check which spaces have a token the player can move:
@@ -205,10 +236,10 @@ def getValidMoves(board, player, rollTally):
         if space == 'H' or space == 'G' or board[space] != player:
             continue
 
-        nextTrackSpaceIndex = trackSpaceIndex + rollTally
+        nextTrackSpaceIndex = trackSpaceIndex + flipTally
 
         if nextTrackSpaceIndex >= len(track):
-            # You must roll an exact number of moves onto the goal,
+            # You must flip an exact number of moves onto the goal,
             # otherwise you can't move on the goal.
             continue
         else:
@@ -226,7 +257,6 @@ def getValidMoves(board, player, rollTally):
             validMoves.append(space)
 
     return validMoves
-
 
 
 if __name__ == '__main__':

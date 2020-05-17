@@ -1,6 +1,6 @@
 """Ultimate Tic-Tac-Toe, by Al Sweigart al@inventwithpython.com
 Instead of a board with 9 spaces, this game has 9 boards with 81 spaces,
-the winner of each board placing their X or O on the global board!
+the winner of each board placing their X or O on the big board!
 More info at: https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, board game, two-player"""
@@ -22,34 +22,34 @@ SUBCANVAS_HEIGHT = 3
 
 def main():
     print('''Ultimate Tic-Tac-Toe, by Al Sweigart al@inventwithpython.com
-Instead of tic-tac-toe with 9 spaces, this game has a "global" board
-made up of 9 "local" tic-tac-toe boards. Moving on a local board causes
-the next player to move on that relative board. Winning on a local board
-lets that player put their mark on the global board. The winner must get
-three in a row on the global board.
+Instead of tic-tac-toe with 9 spaces, this game has a "big" board
+made up of 9 "small" tic-tac-toe boards. Moving on a small board causes
+the next player to move on that relative board. Winning on a small board
+lets that player put their mark on the big board. The winner must get
+three in a row on the big board.
 ''')
 
     turn = X_PLAYER  # X will go first.
     gameBoard = getNewBoard()
 
-    # focusX and focusY determine which local board the player moves on.
-    # If they are both None, the player can choose a local board.
+    # focusX and focusY determine which small board the player moves on.
+    # If they are both None, the player can choose a small board.
     focusX, focusY = None, None
     while True:  # Main game loop.
         displayBoard(gameBoard)
         focusX, focusY = askForPlayerMove(turn, gameBoard, focusX, focusY)
 
-        # Check for a global winner:
-        globalBoard = makeBoardFromLocalBoards(gameBoard)
-        globalWinner = getWinner(globalBoard)
-        if globalWinner == TIED:
+        # Check for a big board winner:
+        bigBoard = makeBoardFromSmallBoards(gameBoard)
+        bigWinner = getWinner(bigBoard)
+        if bigWinner == TIED:
             displayBoard(gameBoard)
             print('The game is a tie!')
             print('Thanks for playing!')
             sys.exit()
-        elif globalWinner != None:
+        elif bigWinner != None:
             displayBoard(gameBoard)
-            print(globalWinner, 'has won!')
+            print(bigWinner, 'has won!')
             print('Thanks for playing!')
             sys.exit()
 
@@ -61,25 +61,25 @@ three in a row on the global board.
 
 
 def getNewBoard():
-    """Returns a dictionary that represents the global tic-tac-toe board.
+    """Returns a dictionary that represents the big tic-tac-toe board.
     Keys are (x, y) int tuples that span from 0 to 2, the values are
-    dictonaries that represent local tic-tac-toe boards. These
+    dictonaries that represent small tic-tac-toe boards. These
     dictionaries have (x, y) int tuples as well, and their values are
     either X_PLAYER, O_PLAYER, or EMPTY_SPACE."""
     board = {}
-    # Loop over each local board:
+    # Loop over each small board:
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
             board[(x, y)] = {}
-            # Loop over each space on the local board:
-            for localX in range(BOARD_WIDTH):
-                for localY in range(BOARD_HEIGHT):
-                    board[(x, y)][(localX, localY)] = EMPTY_SPACE
+            # Loop over each space on the small board:
+            for smallX in range(BOARD_WIDTH):
+                for smallY in range(BOARD_HEIGHT):
+                    board[(x, y)][(smallX, smallY)] = EMPTY_SPACE
     return board
 
 
 def displayBoard(board):
-    """Displays the global tic-tac-toe board on the screen."""
+    """Displays the big tic-tac-toe board on the screen."""
     # The canvas is a dictionary that has keys of (x, y) tuples, and
     # the values are the character to print at that place on the screen.
     canvas = {}
@@ -88,19 +88,19 @@ def displayBoard(board):
         for y in range(CANVAS_HEIGHT):
             canvas[(x, y)] = ' '
 
-    # Second, fill in the global board Xs and Os on the canvas:
+    # Second, fill in the big board Xs and Os on the canvas:
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
             winner = getWinner(board[(x, y)])
             if winner == X_PLAYER:
-                # Draw a large X for each local board X won:
+                # Draw a large X for each small board X won:
                 canvas[(x * 5 + 1, y * 3 + 0)] = '\\'
                 canvas[(x * 5 + 3, y * 3 + 0)] = '/'
                 canvas[(x * 5 + 2, y * 3 + 1)] = 'X'
                 canvas[(x * 5 + 1, y * 3 + 2)] = '/'
                 canvas[(x * 5 + 3, y * 3 + 2)] = '\\'
             elif winner == O_PLAYER:
-                # Draw a large O for each local board O won:
+                # Draw a large O for each small board O won:
                 canvas[(x * 5 + 2, y * 3 + 0)] = '_'
                 canvas[(x * 5 + 1, y * 3 + 1)] = '/'
                 canvas[(x * 5 + 3, y * 3 + 1)] = '\\'
@@ -108,21 +108,21 @@ def displayBoard(board):
                 canvas[(x * 5 + 2, y * 3 + 2)] = '_'
                 canvas[(x * 5 + 3, y * 3 + 2)] = '/'
             elif winner == TIED:
-                # Draw a large ### block for tied local boards:
+                # Draw a large ### block for tied small boards:
                 for scx in range(SUBCANVAS_WIDTH):
                     for scy in range(SUBCANVAS_HEIGHT):
                         canvas[(x * 5 + scx, y * 3 + scy)] = '#'
 
-    # Third, fill in the Xs and Os of the local boards on the canvas:
-    for ix, localTopLeftX in enumerate([0, 5, 10]):
-        for iy, localTopLeftY in enumerate([0, 3, 6]):
+    # Third, fill in the Xs and Os of the small boards on the canvas:
+    for ix, smallTopLeftX in enumerate([0, 5, 10]):
+        for iy, smallTopLeftY in enumerate([0, 3, 6]):
             if getWinner(board[(ix, iy)]) != None:
                 continue
 
             for x in range(3):
                 for y in range(3):
-                    canvasx = localTopLeftX + (x * 2)
-                    canvasy = localTopLeftY + y
+                    canvasx = smallTopLeftX + (x * 2)
+                    canvasy = smallTopLeftY + y
                     canvas[(canvasx, canvasy)] = board[(ix, iy)][(x, y)]
 
     # Print out the tic tac toe board:
@@ -166,28 +166,28 @@ def getWinner(board):
 
 
 def askForPlayerMove(player, board, focusX, focusY):
-    """Asks the player which space on which local board to move on.
-    The focusX and focusY values determine which local board the player
+    """Asks the player which space on which small board to move on.
+    The focusX and focusY values determine which small board the player
     can move on, but if they are both None the player can freely choose
-    a local board. Returns the (x, y) of the local board the next player
+    a small board. Returns the (x, y) of the small board the next player
     plays on.
     """
-    # Check if the player can freely select any local board:
+    # Check if the player can freely select any small board:
     if focusX == None and focusY == None:
         # Let the player pick which board they want to move on:
         print(player + ': Enter the BOARD you want to move on.')
         validBoardsToSelect = []
-        for xyTuple, localBoard in board.items():
-            if getWinner(localBoard) == None:
+        for xyTuple, smallBoard in board.items():
+            if getWinner(smallBoard) == None:
                 validBoardsToSelect.append(xyTuple)
         selectedBoard = enter1Through9(validBoardsToSelect)
         focusX = selectedBoard % 3
         focusY = selectedBoard // 3
 
-    # Select the space on the focused local board:
-    localXDesc = ['left', 'middle', 'right'][focusX]
-    localYDesc = ['top', 'middle', 'bottom'][focusY]
-    print(player, 'moves on the', localYDesc, localXDesc, 'board.')
+    # Select the space on the focused small board:
+    smallXDesc = ['left', 'middle', 'right'][focusX]
+    smallYDesc = ['top', 'middle', 'bottom'][focusY]
+    print(player, 'moves on the', smallYDesc, smallXDesc, 'board.')
     validSpacesToSelect = []
     for xyTuple, tile in board[(focusX, focusY)].items():
         if tile == EMPTY_SPACE:
@@ -198,12 +198,12 @@ def askForPlayerMove(player, board, focusX, focusY):
 
     board[(focusX, focusY)][(x, y)] = player
 
-    # Figure out the local board that the next player must move on:
+    # Figure out the small board that the next player must move on:
     if getWinner(board[(x, y)]) == None:
         return (x, y)
     else:
-        # If the local board has a winner or is tied, the next player
-        # can move on any local board:
+        # If the small board has a winner or is tied, the next player
+        # can move on any small board:
         return (None, None)
 
 
@@ -232,18 +232,18 @@ def enter1Through9(validMoves):
         print('You cannot select that space.')
 
 
-def makeBoardFromLocalBoards(localBoards):
-    globalBoard = {}
+def makeBoardFromSmallBoards(smallBoards):
+    bigBoard = {}
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
-            winner = getWinner(localBoards[(x, y)])
+            winner = getWinner(smallBoards[(x, y)])
             if winner == None:
-                globalBoard[(x, y)] = EMPTY_SPACE
+                bigBoard[(x, y)] = EMPTY_SPACE
             elif winner == TIED:
-                globalBoard[(x, y)] = TIED
+                bigBoard[(x, y)] = TIED
             elif winner in (X_PLAYER, O_PLAYER):
-                globalBoard[(x, y)] = winner
-    return globalBoard
+                bigBoard[(x, y)] = winner
+    return bigBoard
 
 
 # If the program is run (instead of imported), run the game:

@@ -34,11 +34,11 @@ width -= 1
 height -= 3
 
 while True:  # Main application loop.
-    # Pre-populate the board with blank spaces:
-    board = {}
+    # Pre-populate the canvas with blank spaces:
+    canvas = {}
     for x in range(width):
         for y in range(height):
-            board[(x, y)] = WHITE
+            canvas[(x, y)] = WHITE
 
     # Generate vertical lines:
     numberOfSegmentsToDelete = 0
@@ -46,7 +46,7 @@ while True:  # Main application loop.
     while x < width - MIN_X_INCREASE:
         numberOfSegmentsToDelete += 1
         for y in range(height):
-            board[(x, y)] = BLACK
+            canvas[(x, y)] = BLACK
         x += random.randint(MIN_X_INCREASE, MAX_X_INCREASE)
 
     # Generate horizontal lines:
@@ -54,7 +54,7 @@ while True:  # Main application loop.
     while y < height - MIN_Y_INCREASE:
         numberOfSegmentsToDelete += 1
         for x in range(width):
-            board[(x, y)] = BLACK
+            canvas[(x, y)] = BLACK
         y += random.randint(MIN_Y_INCREASE, MAX_Y_INCREASE)
 
     numberOfRectanglesToPaint = numberOfSegmentsToDelete - 3
@@ -66,15 +66,15 @@ while True:  # Main application loop.
             # Get a random start point on an existing segment:
             startx = random.randint(1, width - 2)
             starty = random.randint(1, height - 2)
-            if board[(startx, starty)] == WHITE:
+            if canvas[(startx, starty)] == WHITE:
                 continue
 
             # Find out if we're on a vertical or horizontal segment:
-            if (board[(startx - 1, starty)] == WHITE and
-                board[(startx + 1, starty)] == WHITE):
+            if (canvas[(startx - 1, starty)] == WHITE and
+                canvas[(startx + 1, starty)] == WHITE):
                 orientation = 'vertical'
-            elif (board[(startx, starty - 1)] == WHITE and
-                board[(startx, starty + 1)] == WHITE):
+            elif (canvas[(startx, starty - 1)] == WHITE and
+                canvas[(startx, starty + 1)] == WHITE):
                 orientation = 'horizontal'
             else:
                 # The start point is on an intersection,
@@ -91,14 +91,14 @@ while True:  # Main application loop.
                     y = starty
                     while 0 < y < height - 1:
                         y += changey
-                        if (board[(startx - 1, y)] == BLACK and
-                            board[(startx + 1, y)] == BLACK):
+                        if (canvas[(startx - 1, y)] == BLACK and
+                            canvas[(startx + 1, y)] == BLACK):
                             # We've found a four-way intersection.
                             break
-                        elif ((board[(startx - 1, y)] == WHITE and
-                               board[(startx + 1, y)] == BLACK) or
-                              (board[(startx - 1, y)] == BLACK and
-                               board[(startx + 1, y)] == WHITE)):
+                        elif ((canvas[(startx - 1, y)] == WHITE and
+                               canvas[(startx + 1, y)] == BLACK) or
+                              (canvas[(startx - 1, y)] == BLACK and
+                               canvas[(startx + 1, y)] == WHITE)):
                             # We've found a T-intersection; we can't
                             # delete this segment:
                             canDeleteSegment = False
@@ -113,14 +113,14 @@ while True:  # Main application loop.
                     x = startx
                     while 0 < x < width - 1:
                         x += changex
-                        if (board[(x, starty - 1)] == BLACK and
-                            board[(x, starty + 1)] == BLACK):
+                        if (canvas[(x, starty - 1)] == BLACK and
+                            canvas[(x, starty + 1)] == BLACK):
                             # We've found a four-way intersection.
                             break
-                        elif ((board[(x, starty - 1)] == WHITE and
-                               board[(x, starty + 1)] == BLACK) or
-                              (board[(x, starty - 1)] == BLACK and
-                               board[(x, starty + 1)] == WHITE)):
+                        elif ((canvas[(x, starty - 1)] == WHITE and
+                               canvas[(x, starty + 1)] == BLACK) or
+                              (canvas[(x, starty - 1)] == BLACK and
+                               canvas[(x, starty + 1)] == WHITE)):
                             # We've found a T-intersection; we can't
                             # delete this segment:
                             canDeleteSegment = False
@@ -133,15 +133,15 @@ while True:  # Main application loop.
 
         # If we can delete this segment, set all the points to white:
         for x, y in pointsToDelete:
-            board[(x, y)] = WHITE
+            canvas[(x, y)] = WHITE
 
     # Add the border lines:
     for x in range(width):
-        board[(x, 0)] = BLACK  # Top border.
-        board[(x, height - 1)] = BLACK  # Bottom border.
+        canvas[(x, 0)] = BLACK  # Top border.
+        canvas[(x, height - 1)] = BLACK  # Bottom border.
     for y in range(height):
-        board[(0, y)] = BLACK  # Left border.
-        board[(width - 1, y)] = BLACK  # Right border.
+        canvas[(0, y)] = BLACK  # Left border.
+        canvas[(width - 1, y)] = BLACK  # Right border.
 
     # Paint the rectangles:
     for i in range(numberOfRectanglesToPaint):
@@ -149,7 +149,7 @@ while True:  # Main application loop.
             startx = random.randint(1, width - 2)
             starty = random.randint(1, height - 2)
 
-            if board[(startx, starty)] != WHITE:
+            if canvas[(startx, starty)] != WHITE:
                 continue  # Get a new random start point.
             else:
                 break
@@ -159,20 +159,20 @@ while True:  # Main application loop.
         pointsToPaint = set([(startx, starty)])
         while len(pointsToPaint) > 0:
             x, y = pointsToPaint.pop()
-            board[(x, y)] = colorToPaint
-            if board[(x - 1, y)] == WHITE:
+            canvas[(x, y)] = colorToPaint
+            if canvas[(x - 1, y)] == WHITE:
                 pointsToPaint.add((x - 1, y))
-            if board[(x + 1, y)] == WHITE:
+            if canvas[(x + 1, y)] == WHITE:
                 pointsToPaint.add((x + 1, y))
-            if board[(x, y - 1)] == WHITE:
+            if canvas[(x, y - 1)] == WHITE:
                 pointsToPaint.add((x, y - 1))
-            if board[(x, y + 1)] == WHITE:
+            if canvas[(x, y + 1)] == WHITE:
                 pointsToPaint.add((x, y + 1))
 
-    # Draw the board data structure:
+    # Draw the canvas data structure:
     for y in range(height):
         for x in range(width):
-            bext.bg(board[(x, y)])
+            bext.bg(canvas[(x, y)])
             print(' ', end='')
 
         print()

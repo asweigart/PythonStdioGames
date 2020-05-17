@@ -2,7 +2,7 @@
 The simplest shift cipher for encrypting and decrypting text.
 More info at https://en.wikipedia.org/wiki/ROT13
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, cryptography, pyperclip"""
+Tags: tiny, cryptography"""
 __version__ = 0
 try:
     import pyperclip  # pyperclip copies text to the clipboard.

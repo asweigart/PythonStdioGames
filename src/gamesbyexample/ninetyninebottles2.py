@@ -9,8 +9,8 @@ import random, sys, time
 
 # Set up the constants:
 # (!) Try changing both of these to 0 to print all the lyrics at once.
-SPEED = 0.00  # The pause in between printing letters.
-LINE_PAUSE = 0.0  # The pause at the end of each line.
+SPEED = 0.01  # The pause in between printing letters.
+LINE_PAUSE = 1.5  # The pause at the end of each line.
 
 
 def slowPrint(text, pauseAmount):

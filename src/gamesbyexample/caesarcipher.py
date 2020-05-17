@@ -2,7 +2,7 @@
 The Caesar cipher is a shift cipher that uses addition and subtraction
 to encrypt and decrypt letters.
 More info at: https://en.wikipedia.org/wiki/Caesar_cipher
-Tags: short, beginner, cryptography, math, pyperclip"""
+Tags: short, beginner, cryptography, math"""
 __version__ = 0
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
