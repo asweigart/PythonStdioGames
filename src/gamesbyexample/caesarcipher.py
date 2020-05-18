@@ -15,6 +15,10 @@ except ImportError:
 SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 print('Caesar Cipher, by Al Sweigart al@inventwithpython.com')
+print('The Caesar cipher encrypts letters by shifting them over by a')
+print('key number. For example, a key of 2 means the letter A is')
+print('encrypted into C, the letter B encrypted into D, and so on.')
+print()
 
 # Let the user enter if they are encrypting or decrypting:
 while True:  # Keep asking until the user enters e or d.

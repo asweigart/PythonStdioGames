@@ -72,6 +72,9 @@ def main():
         # The abacus can't show negative numbers:
         if abacusNumber < 0:
             abacusNumber = 0  # Change any negative numbers to 0.
+        # The abacus can't show numbers larger than 9999999999:
+        if abacusNumber > 9999999999:
+            abacusNumber = 9999999999
 
 
 def displayAbacus(number):

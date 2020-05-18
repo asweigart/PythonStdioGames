@@ -22,8 +22,8 @@ EMPTY = ' '
 # How objects should be displayed on the screen:
 WALL_DISPLAY = chr(9617)   # Character 9617 is '░'
 FACE_DISPLAY = '@'
-CRATE_DISPLAY = chr(9632)  # Character 9679 is '■'
-GOAL_DISPLAY = chr(9633)   # Character 9633 is '□'
+CRATE_DISPLAY = chr(9642)  # Character 9679 is '▪'
+GOAL_DISPLAY = chr(9643)   # Character 9633 is '▫'
 # (A list of chr() codes is at https://inventwithpython.com/charactermap)
 CRATE_ON_GOAL_DISPLAY = '*'
 PLAYER_ON_GOAL_DISPLAY = FACE_DISPLAY
@@ -227,7 +227,7 @@ def askForPlayerMove(maxLevelNum):
         if move in ('W', 'A', 'S', 'D', 'U'):
             return move
 
-        print(move, 'is not a valid move.')
+        print(move, 'is not valid. Enter one of W, A, S, D or QUIT.')
 
 
 # If this program was run (instead of imported), run the game:

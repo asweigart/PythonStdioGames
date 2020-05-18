@@ -39,6 +39,7 @@ Example:
         quizLetters = random.sample(ALPHABET, QUESTION_SIZE)
         print(' '.join(quizLetters))
         response = input('> ').upper()
+        response = response.replace(' ', '')  # Remove spaces.
 
         # Check if the quiz's time is up:
         if time.time() - 30 > startTime:

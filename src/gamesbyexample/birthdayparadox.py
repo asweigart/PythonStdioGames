@@ -40,7 +40,8 @@ print('''Birthday Paradox, by Al Sweigart al@inventwithpython.com
 
 The birthday paradox shows us that in a group of N people, the odds
 that two of them have matching birthdays is surprisingly large.
-This program does a monte carlo simulation to explore this concept.
+This program does a monte carlo simulation (that is, repeated random
+simulations) to explore this concept.
 
 (It's not actually a paradox, it's just a surprising result.)
 ''')
@@ -105,4 +106,4 @@ print('Out of 100,000 simulations of', numBDays, 'people, there was a')
 print('matching birthday in that group', simMatch, 'times. This means')
 print('that', numBDays, 'people have a', probability, '% chance of having')
 print('a matching birthday in their group.')
-print('That is higher than I would expect!')
+print('That\'s probably more than you would think!')
