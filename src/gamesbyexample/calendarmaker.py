@@ -17,11 +17,11 @@ while True:  # Loop to get a year from the user.
     print('Enter the year for the calendar:')
     response = input('> ')
 
-    if response.isdecimal():
+    if response.isdecimal() and int(response) > 0:
         year = int(response)
         break
 
-    print('Please enter a numeric year, like 2019.')
+    print('Please enter a numeric year, like 2023.')
     continue
 
 while True:  # Loop to get a month from the user.

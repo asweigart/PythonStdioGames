@@ -18,7 +18,7 @@ This simulation gives you the thrill of playing without wasting money.
 # Let the player enter the first five numbers, 1 to 69:
 while True:
     print('Enter 5 different numbers from 1 to 69, with spaces between')
-    print('each number. (For example: 5 17 23 42 50 51)')
+    print('each number. (For example: 5 17 23 42 50)')
     response = input('> ')
 
     # Check that the player entered 5 things:

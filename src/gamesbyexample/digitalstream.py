@@ -1,15 +1,15 @@
-"""Digital Rain, by Al Sweigart al@inventwithpython.com
-A screensaver in the style of The Matrix movie's "digital rain" visuals.
+"""Digital Stream, by Al Sweigart al@inventwithpython.com
+A screensaver in the style of The Matrix movie's visuals.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, artistic, beginner, scrolling"""
 __version__ = 0
 import random, shutil, sys, time
 
 # Set up the constants:
-MIN_BEAD_LENGTH = 6  # (!) Try changing this to 1 or 50.
-MAX_BEAD_LENGTH = 14  # (!) Try changing this to 100.
+MIN_STREAM_LENGTH = 6  # (!) Try changing this to 1 or 50.
+MAX_STREAM_LENGTH = 14  # (!) Try changing this to 100.
 PAUSE = 0.1  # (!) Try changing this to 0.0 or 2.0.
-BEAD_CHARS = ['0', '1']  # (!) Try changing this other characters.
+STREAM_CHARS = ['0', '1']  # (!) Try changing this other characters.
 
 # Density can range from 0.0 to 1.0:
 DENSITY = 0.02  # (!) Try changing this to 0.10 or 0.30.
@@ -20,12 +20,12 @@ WIDTH = shutil.get_terminal_size()[0]
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-print('Digital Rain Screensaver, by Al Sweigart al@inventwithpython.com')
+print('Digital Stream Screensaver, by Al Sweigart al@inventwithpython.com')
 print('Press Ctrl-C to quit.')
 time.sleep(2)
 
 try:
-    # When the counter is 0, no bead of "digital rain" is shown.
+    # For each column, when the counter is 0, no stream is shown.
     # Otherwise, it acts as a counter for how many times a 1 or 0
     # should be displayed in that column.
     columns = [0] * WIDTH
@@ -34,13 +34,13 @@ try:
         for i in range(WIDTH):
             if columns[i] == 0:
                 if random.random() <= DENSITY:
-                    # Restart a bead on this column.
-                    columns[i] = random.randint(MIN_BEAD_LENGTH,
-                                                MAX_BEAD_LENGTH)
+                    # Restart a stream on this column.
+                    columns[i] = random.randint(MIN_STREAM_LENGTH,
+                                                MAX_STREAM_LENGTH)
 
             # Display an empty space or a 1/0 character.
             if columns[i] > 0:
-                print(random.choice(BEAD_CHARS), end='')
+                print(random.choice(STREAM_CHARS), end='')
                 columns[i] -= 1
             else:
                 print(' ', end='')

@@ -125,9 +125,11 @@ def drawHangman(missedLetters, correctLetters, secretWord):
     print()
 
     # Show the incorrectly guessed letters:
-    print('Missed letters:', end=' ')
+    print('Missed letters: ', end='')
     for letter in missedLetters:
         print(letter, end=' ')
+    if len(missedLetters) == 0:
+        print('No missed letters yet.')
     print()
 
     # Display the blanks for the secret word (one blank per letter):

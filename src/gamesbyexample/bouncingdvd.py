@@ -50,6 +50,9 @@ def main():
                       X: random.randint(1, WIDTH - 4),
                       Y: random.randint(1, HEIGHT - 4),
                       DIR: random.choice(DIRECTIONS)})
+        if logos[-1][X] % 2 == 1:
+            # Make sure X is even so it can hit the corner.
+            logos[-1][X] -= 1
 
     cornerBounces = 0  # Count how many times a logo hits a corner.
     while True:  # Main program loop.
@@ -102,29 +105,34 @@ def main():
                 # Change color when the logo bounces:
                 logo[COLOR] = random.choice(COLORS)
 
-            # Move the logo:
+            # Move the logo. (X moves by 2 because the terminal
+            # characters are twice as tall as they are wide.)
             if logo[DIR] == UP_RIGHT:
-                logo[X] += 1
+                logo[X] += 2
                 logo[Y] -= 1
             elif logo[DIR] == UP_LEFT:
-                logo[X] -= 1
+                logo[X] -= 2
                 logo[Y] -= 1
             elif logo[DIR] == DOWN_RIGHT:
-                logo[X] += 1
+                logo[X] += 2
                 logo[Y] += 1
             elif logo[DIR] == DOWN_LEFT:
-                logo[X] -= 1
+                logo[X] -= 2
                 logo[Y] += 1
 
+        # Display number of corner bounces:
+        bext.goto(5, 0)
+        bext.fg('white')
+        print('Corner bounces:', cornerBounces, end='')
+
+        for logo in logos:
             # Draw the logos at their new location:
             bext.goto(logo[X], logo[Y])
             bext.fg(logo[COLOR])
             print('DVD', end='')
 
+        bext.goto(0, 0)
 
-        bext.goto(5, HEIGHT - 1)
-        bext.fg('white')
-        print('Corner bounces:', cornerBounces, end='')
         sys.stdout.flush()  # (Required for bext-using programs.)
         time.sleep(PAUSE_AMOUNT)
 
