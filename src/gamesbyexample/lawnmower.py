@@ -24,8 +24,8 @@ FACE = chr(9786)  # The '☺' character.
 MOWER_RIGHT = FACE + "`.=."
 MOWER_LEFT = ".=.'" + FACE
 MOWER_LEN = 5
-MOWING_PAUSE = 0.01  # (!) Try changing this to 0.01.
-GROWING_PAUSE = 0.001
+MOWING_PAUSE = 0.1  # (!) Try changing this to 0.01.
+GROWING_PAUSE = 0.01  # (!) Try changing this to 0.001.
 
 assert len(MOWER_RIGHT) == MOWER_LEN
 assert len(MOWER_LEFT) == MOWER_LEN

@@ -1,4 +1,4 @@
-"""Floodplane, by Al Sweigart al@inventwithpython.com
+"""Flooder, by Al Sweigart al@inventwithpython.com
 A colorful game where you try to fill the board with a single color. Has
 a mode for colorblind players.
 Inspired by the "Flood It!" game.
@@ -51,7 +51,7 @@ def main():
     bext.bg('black')
     bext.fg('white')
     bext.clear()
-    print('''Floodplane, by Al Sweigart al@inventwithpython.com
+    print('''Flooder, by Al Sweigart al@inventwithpython.com
 
 Set the upper left color/shape, which fills in all the
 adjacent squares of that color/shape. Try to make the

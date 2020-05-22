@@ -167,7 +167,7 @@ def askForPlayerMove(playerx, playery):
     they want to quit. Make sure the player can't move off the edge of
     the map."""
     while True:
-        print('Enter your move: north south east west or QUIT')
+        print('Enter your move: N S E W or QUIT')
         response = input('> ').lower()
         if response == 'quit':
             print('Thanks for playing!')
