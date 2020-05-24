@@ -1,5 +1,5 @@
-"""Vigenere Cipher, by Al Sweigart al@inventwithpython.com
-The Viegenere cipher is a polyalphabetic substitution cipher that was
+"""Vigenère Cipher, by Al Sweigart al@inventwithpython.com
+The Vigenère cipher is a polyalphabetic substitution cipher that was
 powerful enough to remain unbroken for centuries.
 More info at: https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 This and other games are available at https://nostarch.com/XX
@@ -15,7 +15,7 @@ LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 
 def main():
-    print('''Vigenere Cipher, by Al Sweigart al@inventwithpython.com
+    print('''Vigenère Cipher, by Al Sweigart al@inventwithpython.com
 The Viegenere cipher is a polyalphabetic substitution cipher that was
 powerful enough to remain unbroken for centuries.''')
 
