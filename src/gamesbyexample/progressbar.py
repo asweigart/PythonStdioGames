@@ -5,6 +5,7 @@ Tags: tiny, module"""
 __version__ = 0
 import random, time
 
+BAR = chr(9608) # Character 9608 is '█'
 
 def main():
     # Simulate a download:
@@ -44,7 +45,7 @@ def getProgressBar(progress, total, barWidth=40):
     # Calculate the number of "bars" to display:
     numberOfBars = int((progress / total) * barWidth)
 
-    progressBar += '*' * numberOfBars  # Add the progress bar.
+    progressBar += BAR * numberOfBars  # Add the progress bar.
     progressBar += ' ' * (barWidth - numberOfBars)  # Add empty space.
     progressBar += ']'  # Add the right end of the progress bar.
 

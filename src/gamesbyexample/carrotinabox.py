@@ -33,15 +33,16 @@ print('''HERE ARE TWO BOXES:
 |   BOX   | /  |   BOX   | /
 +---------+/   +---------+/''')
 
+print()
 print(playerNames)
 print()
 print(p1Name + ', you have a RED box in front of you.')
 print(p2Name + ', you have a GOLD box in front of you.')
-input('Press Enter to continue...')
-
+print()
 print(p1Name + ', you will get to look into your box.')
 print(p2Name.upper() + ', close your eyes and don\'t look!!!')
 input('When ' + p2Name + ' has closed their eyes, press Enter...')
+print()
 
 print(p1Name + ' here is the inside of your box:')
 
@@ -83,12 +84,14 @@ print('\n' * 100)  # Clear the screen by printing several newlines.
 print(p1Name + ', tell ' + p2Name + ' to open their eyes.')
 input('Press Enter to continue...')
 
+print()
 print(p1Name + ', say one of the following sentences to ' + p2Name + '.')
 print('  1) There is a carrot in my box.')
 print('  2) There is not a carrot in my box.')
 print()
 input('Then press Enter to continue...')
 
+print()
 print(p2Name + ', do you want to swap boxes with ' + p1Name + '? YES/NO')
 while True:
     response = input('> ').upper()
@@ -116,6 +119,7 @@ print('''HERE ARE THE TWO BOXES:
 print(playerNames)
 
 input('Press Enter to reveal the winner...')
+print()
 
 if ((swappedBoxes and carrotInRedBox)
     or (not swappedBoxes and not carrotInRedBox)):

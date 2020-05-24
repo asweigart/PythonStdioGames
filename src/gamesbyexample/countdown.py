@@ -9,9 +9,8 @@ __version__ = 0
 import sys, time
 import sevseg  # Imports our sevseg.py program.
 
-# (!) Change this to any number of seconds under 360000:
+# (!) Change this to any number of seconds:
 secondsLeft = 30
-assert secondsLeft < 360000  # secondsLeft can't be 100 hours or more:
 
 try:
     while True:  # Main program loop.

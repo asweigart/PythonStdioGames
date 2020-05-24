@@ -30,7 +30,6 @@ while True:  # Main game loop.
         else:
             # This is a valid bet.
             pot = int(pot)  # Convert pot to an integer.
-            purse = purse - pot  # Subtract the pot from player's purse.
             break  # Exit the loop once a valid bet is placed.
 
     # Roll the dice.
@@ -68,11 +67,12 @@ while True:  # Main game loop.
         playerWon = False
 
     if playerWon:
-        print('You won! You take', pot * 2, 'mon.')
-        purse = purse + (pot * 2)
+        print('You won! You take', pot, 'mon.')
+        purse = purse + pot  # Add the pot from player's purse.
         print('The house collects a', pot // 10, 'mon fee.')
         purse = purse - (pot // 10)  # The house fee is 10%.
     else:
+        purse = purse - pot  # Subtract the pot from player's purse.
         print('You lost!')
 
     # Check if the player has run out of money:

@@ -84,13 +84,14 @@ turn = 0  # The player at playerNames[0] will go first.
 endGameWith = None
 while True:  # Main game loop.
     # Display everyone's score:
+    print()
     print('SCORES: ', end='')
     for i, name in enumerate(playerNames):
-        print(name + '=' + str(playerScores[name]), end='')
+        print(name + ' = ' + str(playerScores[name]), end='')
         if i != len(playerNames) - 1:
             # All but the last player have commas separating their names.
             print(', ', end='')
-    print()
+    print('\n')
 
     # Start the number of collected stars and skulls at 0.
     stars = 0
@@ -168,7 +169,7 @@ while True:  # Main game loop.
             input('Press Enter to continue...')
             break
 
-        print('Do you want to roll again? Y/N')
+        print(playerNames[turn] + ', do you want to roll again? Y/N')
         while True:  # Keep asking the player until they enter Y or N:
             response = input('> ').upper()
             if response != '' and response[0] in ('Y', 'N'):
@@ -176,6 +177,7 @@ while True:  # Main game loop.
             print('Please enter Yes or No.')
 
         if response.startswith('N'):
+            print(playerNames[turn], 'got', stars, 'stars!')
             # Add stars to this player's point total:
             playerScores[playerNames[turn]] += stars
 
@@ -189,6 +191,7 @@ while True:  # Main game loop.
                 print('Everyone else will get one more turn!')
                 print(('!' * 60) + '\n\n')
                 endGameWith = playerNames[turn]
+            input('Press Enter to continue...')
             break
 
         # Discard the stars and skulls, but keep the question marks:
@@ -208,13 +211,14 @@ while True:  # Main game loop.
 print('The game has ended...')
 
 # Display everyone's score:
+print()
 print('SCORES: ', end='')
 for i, name in enumerate(playerNames):
-    print(name + '=' + str(playerScores[name]), end='')
+    print(name + ' = ' + str(playerScores[name]), end='')
     if i != len(playerNames) - 1:
         # All but the last player have commas separating their names.
         print(', ', end='')
-print()
+print('\n')
 
 # Find out who the winners are:
 highestScore = 0

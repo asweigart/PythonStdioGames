@@ -47,8 +47,8 @@ boardTemplate = r"""Sum to 38:  {29}    {30}    {31}
 board = {}
 for space in 'ABCDEFGHIJKLMNOPQRS':
     board[space] = 0  # Set the space to blank (that is, 0).
-board['A'] = 3
-board['B'] = 17
+board['A'] = 3  # Start with 3 in space A.
+board['B'] = 17  # Start with 17 in space B.
 
 # The unused numbers box starts with integers 1 to 19, except 3 and 17:
 unusedNums = set()
@@ -97,7 +97,7 @@ while True:  # Main game loop.
     # Indexes 0 to 18 of templateArgs are for the numbers 1 to 19:
     for space in 'ABCDEFGHIJKLMNOPQRS':
         if board[space] == 0:
-            templateArgs.append('  ')
+            templateArgs.append(' .')
         else:
             templateArgs.append(str(board[space]).rjust(2))
 
@@ -110,7 +110,7 @@ while True:  # Main game loop.
         if i in unusedNums:
             templateArgs.append(str(i).rjust(2))
         else:
-            templateArgs.append('  ')
+            templateArgs.append(' .')
 
     # Display the hex board:
     print(boardTemplate.format(*templateArgs))

@@ -180,6 +180,8 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
     if response.isdecimal() and int(response) == sumAnswer:
         correctAnswers += 1
     else:
+        print('Incorrect, the answer is', sumAnswer)
+        time.sleep(2)
         incorrectAnswers += 1
 
 # Display the final score:

@@ -110,8 +110,8 @@ def encryptMessage(message, key):
 
     # Show the encrypted message to the user:
     displayRails(rails)
-    print('The encrypted message is:')
-    print(encryptedText)
+    print('The encrypted message (not including the right-side bar) is:')
+    print(encryptedText + '|')
     copyIfPossible(encryptedText)
 
 

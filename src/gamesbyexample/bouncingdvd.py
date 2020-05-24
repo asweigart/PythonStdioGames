@@ -23,7 +23,7 @@ WIDTH, HEIGHT = bext.size()
 WIDTH -= 1
 
 NUMBER_OF_LOGOS = 1  # (!) Try changing this to 1 or 100.
-PAUSE_AMOUNT = 0.2  # (!) Try changing this to 1.0.
+PAUSE_AMOUNT = 0.2  # (!) Try changing this to 1.0 or 0.0.
 # (!) Try changing this list to fewer colors:
 COLORS = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
 
@@ -84,6 +84,7 @@ def main():
                 logo[DIR] = DOWN_RIGHT
 
             # See if the logo bounces off the right edge:
+            # (WIDTH - 3 because 'DVD' has 3 letters.)
             elif logo[X] == WIDTH - 3 and logo[DIR] == UP_RIGHT:
                 logo[DIR] = UP_LEFT
             elif logo[X] == WIDTH - 3 and logo[DIR] == DOWN_RIGHT:

@@ -163,8 +163,8 @@ ZOPHIE THE CAT has gone missing, and you must sift through the clues.
 Suspects either always tell lies, or always tell the truth. Ask them
 about other people, places, and items to see if the details they give are
 truthful and consistent with your observations. Then you will know if
-their clue about Zophie is true or not. Will you find ZOPHIE THE CAT
-in time and accuse the guilty party?
+their clue about ZOPHIE THE CAT is true or not. Will you find ZOPHIE THE
+CAT in time and accuse the guilty party?
 """)
 input('Press Enter to begin...')
 

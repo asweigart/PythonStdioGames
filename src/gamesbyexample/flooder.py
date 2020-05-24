@@ -171,11 +171,11 @@ def askForPlayerMove(displayMode):
         if response == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
-        if displayMode == COLOR_MODE:
+        if displayMode == COLOR_MODE and response in tuple('RGBYCP'):
             # Return a tile type number based on the response:
             return {'R': 0, 'G': 1, 'B': 2,
                 'Y': 3, 'C': 4, 'P': 5}[response]
-        if displayMode == SHAPE_MODE:
+        if displayMode == SHAPE_MODE and response in tuple('HTDBCS'):
             # Return a tile type number based on the response:
             return {'H': 0, 'T': 1, 'D':2,
                 'B': 3, 'C': 4, 'S': 5}[response]

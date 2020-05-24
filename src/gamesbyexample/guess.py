@@ -4,6 +4,16 @@ This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game"""
 __version__ = 0
 import random
+random.seed(42)
+
+def askForGuess():
+    while True:
+        guess = input('> ')  # Enter the guess.
+
+        if guess.isdecimal():
+            return guess  # Convert string guess to an integer.
+        print('Please enter a number.')
+
 
 print('Guess the Number, by Al Sweigart al@inventwithpython.com')
 print()
@@ -12,14 +22,8 @@ print('I am thinking of a number between 1 and 100.')
 
 for i in range(10):  # Give the player 10 guesses.
     print('You have {} guesses left. Take a guess.'.format(10 - i))
-    while True:
-        guess = input('> ')  # Enter the guess.
 
-        if guess.isdecimal():
-            guess = int(guess)  # Convert string guess to an integer.
-            break  # Break out of this while loop.
-        print('Please enter a number.')
-
+    guess = askForGuess()
     if guess == secretNumber:
         break  # Break out of the for loop if the guess is correct.
 
