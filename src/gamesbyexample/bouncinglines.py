@@ -49,7 +49,7 @@ def main():
                        DIR: random.choice(DIRECTIONS)})
 
     while True:  # Main program loop.
-        # There's a 1 in 50 chance of changing the color every iteration.
+        # There's a 1 in 50 chance of changing the color.
         if random.randint(1, 50) == 1:
             bext.fg('random')
 

@@ -1,7 +1,7 @@
 """Calendar Maker, by Al Sweigart al@inventwithpython.com
 Create monthly calendars, saved to a text file and fit for printing.
 This and other games are available at https://nostarch.com/XX
-Tags: short, artistic"""
+Tags: short"""
 __version__ = 0
 import datetime
 
@@ -40,7 +40,7 @@ while True:  # Loop to get a month from the user.
 
 
 def getCalendarFor(year, month):
-    calText = ''  # calText will contain the string of our calendar page.
+    calText = ''  # calText will contain the string of our calendar.
 
     # Put the month and year at the top of the calendar:
     calText += (' ' * 34) + MONTHS[month - 1] + ' ' + str(year) + '\n'

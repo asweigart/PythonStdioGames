@@ -28,7 +28,7 @@ def getMatch(birthdays):
     if len(birthdays) == len(set(birthdays)):
         return None  # All birthdays are unique, so return None.
 
-    # Compare each birthday in the birthdays list to every other birthday:
+    # Compare each birthday to every other birthday:
     for a, birthdayA in enumerate(birthdays):
         for b, birthdayB in enumerate(birthdays[a + 1 :]):
             if birthdayA == birthdayB:
@@ -84,8 +84,8 @@ else:
     print('there are no matching birthdays.')
 print()
 
-# Run through 1000 simulations and get the matching birthday probability.
-print('Generate', numBDays, 'random birthdays 100,000 times.')
+# Run through 100,000 simulations:
+print('Generating', numBDays, 'random birthdays 100,000 times...')
 input('Press Enter to begin...')
 
 print('Let\'s run another 100,000 simulations.')
@@ -104,6 +104,6 @@ print('100000 simulations run.')
 probability = round(simMatch / 100000 * 100, 2)
 print('Out of 100,000 simulations of', numBDays, 'people, there was a')
 print('matching birthday in that group', simMatch, 'times. This means')
-print('that', numBDays, 'people have a', probability, '% chance of having')
-print('a matching birthday in their group.')
+print('that', numBDays, 'people have a', probability, '% chance of')
+print('having a matching birthday in their group.')
 print('That\'s probably more than you would think!')
