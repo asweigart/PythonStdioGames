@@ -4,7 +4,7 @@ letters.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, word"""
 __version__ = 0
-import random
+import random, sys
 
 try:
     import pyperclip  # pyperclip copies text to the clipboard.
@@ -19,18 +19,24 @@ By Al Sweigart al@inventwithpython.com
 Your brain can probably read scrambled words as long as the first and
 last letters are in the right place.
 Your biran can pbablroy raed sambcerld wrdos as lnog as the fsirt and
-last lteters are in the rihgt pcale.
+last lteters are in the rihgt pcale.''')
 
-Enter your message:''')
-    scrambled = englishToMiddleLetterScramble(input('> '))
-    print()
-    print(scrambled)
+    while True:
+        print()
+        print('Enter your message (or nothing to quit):')
+        message = input('> ')
+        if message == '':
+            print('Thanks for playing!')
+            sys.exit()
+        scrambled = englishToMiddleLetterScramble(message)
+        print()
+        print(scrambled)
 
-    try:
-        pyperclip.copy(scrambled)
-        print('(Copied scrambled text to clipboard.)')
-    except:
-        pass  # Do nothing if pyperclip wasn't installed.
+        try:
+            pyperclip.copy(scrambled)
+            print('(Copied scrambled text to clipboard.)')
+        except:
+            pass  # Do nothing if pyperclip wasn't installed.
 
 
 def englishToMiddleLetterScramble(message):

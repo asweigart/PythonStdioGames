@@ -11,8 +11,8 @@ POSSESIVE_PRONOUNS = ['Her', 'His', 'Their']
 PERSONAL_PRONOUNS = ['She', 'He', 'They']
 STATES = ['California', 'Texas', 'Florida', 'New York', 'Pennsylvania',
           'Illinois', 'Ohio', 'Georgia', 'North Carolina', 'Michigan']
-NOUNS = ['Cat', 'Dog', 'Athlete', 'Clown', 'Shovel', 'Paleo Diet',
-         'Chicken', 'Mom', 'Dad', 'Doctor', 'Video Game', 'Robot',
+NOUNS = ['Athlete', 'Clown', 'Shovel', 'Paleo Diet', 'Doctor', 'Parent',
+         'Cat', 'Dog', 'Chicken', 'Robot', 'Video Game', 'Avocado',
          'Plastic Straw','Serial Killer', 'Telephone Psychic']
 PLACES = ['House', 'Attic', 'Bank Deposit Box', 'School', 'Basement',
           'Workplace', 'Donut Shop', 'Apocalypse Bunker']

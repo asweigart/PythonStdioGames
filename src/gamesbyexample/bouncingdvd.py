@@ -22,7 +22,7 @@ WIDTH, HEIGHT = bext.size()
 # newline automatically, so reduce the width by one:
 WIDTH -= 1
 
-NUMBER_OF_LOGOS = 1  # (!) Try changing this to 1 or 100.
+NUMBER_OF_LOGOS = 5  # (!) Try changing this to 1 or 100.
 PAUSE_AMOUNT = 0.2  # (!) Try changing this to 1.0 or 0.0.
 # (!) Try changing this list to fewer colors:
 COLORS = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
