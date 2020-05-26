@@ -13,12 +13,12 @@ SPEED = 0.01  # The pause in between printing letters.
 LINE_PAUSE = 1.5  # The pause at the end of each line.
 
 
-def slowPrint(text, pauseAmount):
+def slowPrint(text, pauseAmount=0.1):
     """Slowly print out the characters in text one at a time."""
     for character in text:
         # Set flush=True here so the text is immediately printed:
         print(character, flush=True, end='')  # end='' means no newline.
-        time.sleep(pauseAmount)  # Pause in between each letter.
+        time.sleep(pauseAmount)  # Pause in between each character.
     print()  # Print a newline.
 
 

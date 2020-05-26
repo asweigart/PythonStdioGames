@@ -5,8 +5,10 @@ Tags: tiny, beginner, humor"""
 __version__ = 0
 import random, time
 
-# Slowly display text with an additional space:
+
 def slowSpacePrint(text, interval):
+    """Slowly display text with spaces in between each letter and
+    lowercase letter i's."""
     for character in text:
         if character == 'I':
             # I's are displayed in lowercase for style:

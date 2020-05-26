@@ -87,13 +87,13 @@ def main():
         print('Thanks for playing!')
 
 
-def slowPrint(text, pauseAmount):
+def slowPrint(text, pauseAmount=0.1):
     """Slowly print out the characters in text one at a time."""
     for character in text:
         # Set flush=True here so the text is immediately printed:
-        print(character, flush=True, end='') # end='' means no newline.
-        time.sleep(pauseAmount) # Pause in between each letter.
-    print() # Print a newline.
+        print(character, flush=True, end='')  # end='' means no newline.
+        time.sleep(pauseAmount)  # Pause in between each character.
+    print()  # Print a newline.
 
 
 # If this program was run (instead of imported), run the game:

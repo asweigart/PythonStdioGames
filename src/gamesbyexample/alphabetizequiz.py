@@ -59,7 +59,7 @@ Example:
     print('Thanks for playing!')
 
 
-def slowPrint(text, pauseAmount):
+def slowPrint(text, pauseAmount=0.1):
     """Slowly print out the characters in text one at a time."""
     for character in text:
         # Set flush=True here so the text is immediately printed:
