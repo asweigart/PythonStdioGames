@@ -60,7 +60,7 @@ def main():
                 break
 
             # Get the player's move, either H, S, or D:
-            move = getMove(playerHand, money)
+            move = getMove(playerHand, money - bet)
 
             # Handle the player actions:
             if move == 'D':

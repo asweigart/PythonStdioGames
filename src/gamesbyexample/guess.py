@@ -4,14 +4,14 @@ This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game"""
 __version__ = 0
 import random
-random.seed(42)
+
 
 def askForGuess():
     while True:
         guess = input('> ')  # Enter the guess.
 
         if guess.isdecimal():
-            return guess  # Convert string guess to an integer.
+            return int(guess)  # Convert string guess to an integer.
         print('Please enter a number.')
 
 
