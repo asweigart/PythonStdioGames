@@ -6,7 +6,7 @@ __version__ = 0
 import random, time
 
 
-def slowSpacePrint(text, interval):
+def slowSpacePrint(text, interval=0.1):
     """Slowly display text with spaces in between each letter and
     lowercase letter i's."""
     for character in text:
@@ -22,9 +22,9 @@ def slowSpacePrint(text, interval):
 
 
 # Prompt for a question:
-slowSpacePrint('MAGIC FORTUNE BALL, BY AL SWEiGART', 0.1)
+slowSpacePrint('MAGIC FORTUNE BALL, BY AL SWEiGART')
 time.sleep(0.5)
-slowSpacePrint('ASK ME YOUR YES/NO QUESTION.', 0.1)
+slowSpacePrint('ASK ME YOUR YES/NO QUESTION.')
 input('> ')
 
 # Display a brief reply:
@@ -39,7 +39,7 @@ replies = [
     'I SHALL CONSULT MY VISIONS...',
     'YOU MAY WANT TO SIT DOWN FOR THIS...',
 ]
-slowSpacePrint(random.choice(replies), 0.1)
+slowSpacePrint(random.choice(replies))
 
 # Dramatic pause:
 slowSpacePrint('.' * random.randint(4, 12), 0.7)

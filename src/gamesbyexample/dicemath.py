@@ -118,11 +118,11 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
             #      v
             #top > +-------+ ^
             #      | O     | |
-            #      |   O   | dice height
+            #      |   O   | dice height (5)
             #      |     O | |
             #      +-------+ v
             #      <------->
-            #      dice width
+            #      dice width (9)
             topLeftX = left
             topLeftY = top
             topRightX = left + DICE_WIDTH
