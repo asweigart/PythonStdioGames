@@ -86,5 +86,13 @@ def getSevSegStr(number, minWidth=0):
 
 # If this program isn't being imported, display the numbers 00 to 99.
 if __name__ == '__main__':
-    for i in range(100):
-        print(getSevSegStr(i, 2))
+    print('This module is meant to be imported rather than run.')
+    print('For example, this code:')
+    print('    import sevseg')
+    print('    myNumber = sevseg.getSevSegStr(42, 3)')
+    print('    print(myNumber)')
+    print()
+    print('Will print 42, zero-padded to three digits:')
+    print(' __        __ ')
+    print('|  | |__|  __|')
+    print('|__|    | |__ ')

@@ -90,6 +90,9 @@ while len(pathFromStart) > 0:
     # Display the maze so far:
     if watchGeneration:
         displayMaze(maze, x, y)
+        # (!) Uncomment this next line to see how pathFromStart grows
+        # and shrinks while the algorithm runs.
+        #print('pathFromStart =', pathFromStart)
         print('Press Enter to continue...')
         input()
         print('\n' * 60)  # Clear the screen by printing newlines.

@@ -9,7 +9,6 @@ import sys
 PLAYER_1_PITS = ('A', 'B', 'C', 'D', 'E', 'F')
 PLAYER_2_PITS = ('G', 'H', 'I', 'J', 'K', 'L')
 
-# fmt: off
 # A dictionary whose keys are pits and values are opposite pit:
 OPPOSITE_PIT = {'A': 'G', 'B': 'H', 'C': 'I', 'D': 'J', 'E': 'K',
                    'F': 'L', 'G': 'A', 'H': 'B', 'I': 'C', 'J': 'D',
@@ -19,7 +18,6 @@ OPPOSITE_PIT = {'A': 'G', 'B': 'H', 'C': 'I', 'D': 'J', 'E': 'K',
 NEXT_PIT = {'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': '1',
             '1': 'L', 'L': 'K', 'K': 'J', 'J': 'I', 'I': 'H', 'H': 'G',
             'G': '2', '2': 'A'}
-# fmt: on
 
 # Every pit label, in counterclockwise order starting with A:
 PIT_LABELS = 'ABCDEF1LKJIHG2'
@@ -81,10 +79,8 @@ def getNewBoard():
 
     # Create the data structure for the board, with 0 seeds in the
     # stores and the starting number of seeds in the pits:
-    # fmt: off
     return {'1': 0, '2': 0, 'A': s, 'B': s, 'C': s, 'D': s, 'E': s,
             'F': s, 'G': s, 'H': s, 'I': s, 'J': s, 'K': s, 'L': s}
-    # fmt: on
 
 
 def displayBoard(board):
@@ -187,8 +183,10 @@ def checkForWinner(board):
     player's pits are all empty; the other player claims the remaining
     seeds for their store. The winner is whoever has the most seeds."""
 
-    player1Total = sum([board[pit] for pit in PLAYER_1_PITS])
-    player2Total = sum([board[pit] for pit in PLAYER_2_PITS])
+    player1Total = board['A'] + board['B'] + board['C']
+    player1Total += board['D'] + board['E'] + board['F']
+    player2Total = board['G'] + board['H'] + board['I']
+    player2Total += board['J'] + board['K'] + board['L']
 
     if player1Total == 0:
         # Player 2 gets all the remaining seeds on their side:
