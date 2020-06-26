@@ -113,6 +113,7 @@ def main():
 
 
 def drawLinesBetweenPoints(points, character):
+    """Prints a line of characters between the specified points."""
     for i, point in enumerate(points):
         pointA = point
         if i == len(points) - 1:
@@ -121,7 +122,6 @@ def drawLinesBetweenPoints(points, character):
         else:
             # Draw the line to the next point:
             pointB = points[i + 1]
-
         # Loop over every x, y point from pointA to pointB:
         for x, y in line(pointA[X], pointA[Y], pointB[X], pointB[Y]):
             bext.goto(x, y)

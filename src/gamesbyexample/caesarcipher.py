@@ -38,8 +38,8 @@ while True:  # Keep asking until the user enters a valid key.
     print('Please enter the key (0 to {}) to use.'.format(maxKey))
     response = input('> ').upper()
     if not response.isdecimal():
-        print('This key is not a number.')
         continue
+
     if 0 <= int(response) < len(SYMBOLS):
         key = int(response)
         break

@@ -11,8 +11,8 @@ def getBirthdays(numberOfBirthdays):
     """Returns a list of number random date objects for birthdays."""
     birthdays = []
     for i in range(numberOfBirthdays):
-          # The year is unimportant for our simulation, as long as all
-          # birthdays have the same year.
+        # The year is unimportant for our simulation, as long as all
+        # birthdays have the same year.
         startOfYear = datetime.date(2001, 1, 1)
 
         # Get a random day into the year:
@@ -40,7 +40,7 @@ print('''Birthday Paradox, by Al Sweigart al@inventwithpython.com
 
 The birthday paradox shows us that in a group of N people, the odds
 that two of them have matching birthdays is surprisingly large.
-This program does a monte carlo simulation (that is, repeated random
+This program does a Monte Carlo simulation (that is, repeated random
 simulations) to explore this concept.
 
 (It's not actually a paradox, it's just a surprising result.)

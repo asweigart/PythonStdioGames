@@ -18,7 +18,7 @@ ENGLISH_TO_MORSE = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..',
     '4': '....-', '5': '.....', '6': '-....', '7': '--...',
     '8': '---..', '9': '----.', '0': '-----', ' ': '/', }
 
-# Instead of typing it out, use code to generate MORSE_TO_ENGLISH.
+# Instead of typing it out, let's use code to generate MORSE_TO_ENGLISH.
 MORSE_TO_ENGLISH = {}
 for key, value in ENGLISH_TO_MORSE.items():
     MORSE_TO_ENGLISH[value] = key

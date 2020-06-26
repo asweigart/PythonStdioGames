@@ -264,7 +264,7 @@ def makeMove(board, srcSpace, dstSpace):
     # See if we need to promote this checker:
     if board[dstSpace].islower() and (dstRow == 1 or dstRow == 8):
         print(board[dstSpace].upper(), 'has been promoted!')
-        board[dstSpace] = board[dstSpace].upper()  # Promote this checker.
+        board[dstSpace] = board[dstSpace].upper()  # Promote checker.
 
     # See if this checker can do another jump after jumping:
     dstMoves, dstCaptures = getPossibleDstMoves(board, dstSpace)

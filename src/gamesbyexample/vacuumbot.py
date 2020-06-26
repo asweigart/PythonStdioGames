@@ -27,7 +27,7 @@ EMPTY = ' '
 DIRT1 = chr(9617)  # Character 9617 is '░'
 DIRT2 = chr(9618)  # Character 9618 is '▒'
 DIRT3 = chr(9619)  # Character 9619 is '▓'
-# (A list of chr() codes is at https://inventwithpython.com/charactermap)
+# A list of chr() codes is at https://inventwithpython.com/chr
 DIRT_CHARS = (EMPTY, DIRT1, DIRT2, DIRT3)
 CHARGING  = 'CHARGING '  # Note the space at the end.
 CLEANING  = 'CLEANING '  # Note the space at the end.

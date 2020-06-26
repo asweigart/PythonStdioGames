@@ -24,16 +24,12 @@ while True:
 
 step = 0.0  # The "step" determines how far into the sine wave we are.
 # Sine goes from -1.0 to 1.0, so we need to change it by a multiplier:
-multipler = WIDTH - len(message)
+multipler = (WIDTH - len(message)) / 2
 try:
     while True:  # Main program loop.
         sinOfStep = math.sin(step)
-        padding = ' ' * abs(int(sinOfStep * multipler))
-        if sinOfStep >= 0:
-            paddedMessage = padding + message
-        else:
-            paddedMessage = message + padding
-        print(paddedMessage.center(WIDTH))
+        padding = ' ' * int((sinOfStep + 1) * multipler)
+        print(padding + message)
         time.sleep(0.1)
         step += 0.25  # (!) Try changing this.
 except KeyboardInterrupt:

@@ -127,6 +127,7 @@ def askForPlayerMove(board):
         if len(moveablePegs) == 0:
             # No pegs left to move, which means game over.
             print('You have run out of pegs to move! Game over.')
+            print('Your score is', getScore(board), 'out of 31.')
             sys.exit()
 
         # Let the player select which peg they want to move:
@@ -134,6 +135,7 @@ def askForPlayerMove(board):
         space = input('> ').upper()
 
         if space == 'QUIT':
+            print('Your score is', getScore(board), 'out of 31.')
             print('Thanks for playing!')
             sys.exit()
 
@@ -170,13 +172,18 @@ def makeMove(board, space, direction):
     board[secondNextSpace] = PEG  # The moved peg lands here.
 
 
-def checkIfPlayerHasWon(board):
-    """Return True if there is only one peg left on the board."""
+def getScore(board):
+    """Returns the number of captured pegs."""
     pegCount = 0
     for space in ALL_SPACES:
         if board[space] == PEG:
             pegCount += 1
-    return pegCount == 1
+    return 32 - pegCount
+
+
+def checkIfPlayerHasWon(board):
+    """Return True if there is only one peg left on the board."""
+    return getScore(board) == 31
 
 
 # If this program was run (instead of imported), run the game:

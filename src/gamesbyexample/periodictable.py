@@ -6,13 +6,13 @@ __version__ = 0
 # Data from https://en.wikipedia.org/wiki/List_of_chemical_elements
 # Highlight the table, copy it, then paste it into a spreadsheet program
 # like Excel or Google Sheets like in https://invpy.com/elements
-# Then save this file as elements.csv.
-# Or download this csv file from https://invpy.com/elements.csv
+# Then save this file as periodictable.csv.
+# Or download this csv file from https://invpy.com/periodictable.csv
 
 import csv, sys, re
 
-# Read in all the data from elements.csv.
-elementsFile = open('elements.csv', encoding='utf-8')
+# Read in all the data from periodictable.csv.
+elementsFile = open('periodictable.csv', encoding='utf-8')
 elementsCsvReader = csv.reader(elementsFile)
 elements = list(elementsCsvReader)
 elementsFile.close()
@@ -54,8 +54,8 @@ for line in elements:
         # Remove the [roman numeral] text:
         element[key] = re.sub(r'\[(I|V|X)+\]', '', value)
 
-    ELEMENTS[line[0]] = element  # Map the atomic number to element.
-    ELEMENTS[line[1]] = element  # Map the symbol to element.
+    ELEMENTS[line[0]] = element  # Map the atomic number to the element.
+    ELEMENTS[line[1]] = element  # Map the symbol to the element.
 
 print('Periodic Table of Elements')
 print('By Al Sweigart al@inventwithpython.com')

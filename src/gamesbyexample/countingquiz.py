@@ -37,7 +37,7 @@ def runQuiz():
     correct = 0
     startTime = time.time()
     while time.time() < startTime + 60:
-        print('\n' * 60)  # Clear the screen by printing several newlines.
+        print('\n' * 60)  # Clear the screen by printing newlines.
 
         # Generate the problem and the star field to display:
         width = random.randint(1, 10)

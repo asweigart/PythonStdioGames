@@ -23,6 +23,7 @@ while True:  # Main game loop.
         print('Enter your move: (R)ock (P)aper (S)cissors or (Q)uit')
         playerMove = input('> ').upper()
         if playerMove == 'Q':
+            print('Thanks for playing!')
             sys.exit()
 
         if playerMove == 'R' or playerMove == 'P' or playerMove == 'S':

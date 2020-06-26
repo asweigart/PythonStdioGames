@@ -80,7 +80,7 @@ def main():
 def displayAbacus(number):
     numberList = list(str(number).zfill(NUMBER_OF_DIGITS))
 
-    hasBead = []
+    hasBead = []  # Contains a True or False for each bead position.
 
     # Top heaven row has a bead for digits 0, 1, 2, 3, and 4.
     for i in range(NUMBER_OF_DIGITS):

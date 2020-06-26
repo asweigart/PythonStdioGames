@@ -2,6 +2,7 @@
 A sliding tile puzzle game to move cars out of the way.
 Inspired by Nob Yoshihagara's Rush Hour.
 parkingvaletpuzzle.txt generated from puzzles by Michael Fogleman.
+Download it from https://inventwithpython.com/parkingvaletpuzzles.txt
 More info at https://www.michaelfogleman.com/rush/
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, puzzle game, board game"""
@@ -42,7 +43,12 @@ Directions are (L)eft, (R)ight, (U)p, and (D)own.
 
 
 def getRandomPuzzle():
-    """Return a string representing a randomly selected puzzle."""
+    """Return a string representing a randomly selected puzzle. Here are
+    three example puzzles from parkingvaletpuzzles.txt:
+    BB.K..GI.KCCGIAAL.HDD.LMH.JEEMFFJ...
+    ..BB.X...KDDAA.KL.HIEEL.HIJFFFGGJ...
+    .EBBIK.EFGIKAAFGJL..F.JLD..H..DCCH..
+    """
     numberOfPuzzles = 0
     puzzleFile = open('parkingvaletpuzzles.txt')
     while puzzleFile.readline():

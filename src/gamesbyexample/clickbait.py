@@ -63,7 +63,7 @@ def main():
     print('Post these to our', website, when, 'or you\'re fired!')
 
 
-# Each of these functions returns a different type of clickbait headline:
+# Each of these functions returns a different type of headline:
 def generateAreMillenialsKillingHeadline():
     noun = random.choice(NOUNS)
     return 'Are Millenials Killing the {} Industry?'.format(noun)

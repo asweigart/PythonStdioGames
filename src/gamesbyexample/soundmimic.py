@@ -8,10 +8,10 @@ __version__ = 0
 import random, sys, time
 
 # Download the sound files from these URLs (or use your own):
-# http://inventwithpython.com/sound0.wav
-# http://inventwithpython.com/sound1.wav
-# http://inventwithpython.com/sound2.wav
-# http://inventwithpython.com/sound3.wav
+# http://inventwithpython.com/soundA.wav
+# http://inventwithpython.com/soundS.wav
+# http://inventwithpython.com/soundD.wav
+# http://inventwithpython.com/soundF.wav
 
 try:
     import playsound
@@ -23,9 +23,6 @@ except ImportError:
     print('pip3 install playsound')
     sys.exit()
 
-# Set up the constants:
-SOUNDS = {'A': 'sound0.wav', 'S': 'sound1.wav',
-         'D': 'sound2.wav', 'F': 'sound3.wav'}
 
 print('''Sound Mimic, by Al Sweigart al@inventwithpython.com
 Try to memorize a pattern of A S D F letters (each with its own sound)
@@ -44,7 +41,7 @@ while True:
     print('Pattern: ', end='')
     for letter in pattern:
         print(letter, end=' ', flush=True)
-        playsound.playsound(SOUNDS[letter])
+        playsound.playsound('sound' + letter + '.wav')
 
     time.sleep(1)  # Add a slight pause at the end.
     print('\n' * 60)  # Clear the screen by printing several newlines.
@@ -60,7 +57,7 @@ while True:
         print('Correct!')
 
     for letter in pattern:
-        playsound.playsound(SOUNDS[letter])
+        playsound.playsound('sound' + letter + '.wav')
 
     if response != pattern:
         print('You scored', len(pattern) - 1, 'points.')

@@ -25,7 +25,7 @@ def main():
 
         time.sleep(0.2)  # Pause for a little bit:
 
-        # Print backspaces to erase the previously printed progress bar:
+        # Print backspaces to move the text cursor to the line's start:
         print('\b' * len(barStr), end='', flush=True)
 
 

@@ -42,11 +42,9 @@ def englishToSpongecase(message):
         else:
             spongetext += character.lower()
 
-        useUpper = not useUpper  # Flip the case.
-
-        # Randomly flip the case again in 1 in 10 characters.
-        if random.randint(1, 10) == 1:
-            useUpper = not useUpper
+        # Flip the case, 90% of the time.
+        if random.randint(1, 100) <= 90:
+            useUpper = not useUpper  # Flip the case.
     return spongetext
 
 

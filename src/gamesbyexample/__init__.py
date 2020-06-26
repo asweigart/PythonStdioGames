@@ -1,7 +1,7 @@
 # Games By Example
 # By Al Sweigart al@inventwithpython.com
 
-__version__ = '0.1.9'
+__version__ = '2020.06.13'
 
 import sys, pymsgbox
 if sys.version_info[0] == 2:

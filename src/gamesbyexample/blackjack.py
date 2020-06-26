@@ -29,7 +29,7 @@ def main():
       On your first play, you can (D)ouble down to increase your bet
       but must hit exactly one more time before standing.
       In case of a tie, the bet is returned to the player.
-      The dealer stops hitting themselves at 17.''')
+      The dealer stops hitting at 17.''')
 
     money = 5000
     while True:  # Main game loop.
@@ -216,6 +216,8 @@ def displayCards(cards):
 
 
 def getMove(playerHand, money):
+    """Asks the player for thier move, and returns 'H' for hit, 'S' for
+    stand, and 'D' for double down."""
     while True:  # Keep looping until the player enters a correct move.
         # Determine what moves the player can make:
         moves = ['(H)it', '(S)tand']

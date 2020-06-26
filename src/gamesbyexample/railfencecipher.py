@@ -22,10 +22,10 @@ def main():
 
     # Ask the user for the message to encrypt or decrypt:
     while True:
-        print('Enter a message up to 79 characters long:')
-        print('|' + ('-' * 77) + '|')
+        print('Enter a message up to 75 characters long:')
+        print('|' + ('-' * 73) + '|')
         message = input('> ')
-        if len(message) <= 79:
+        if len(message) <= 75:
             break
 
     # Ask the user for the key number.
@@ -46,7 +46,7 @@ def main():
         decryptMessage(message, key)
 
 
-def putMessageOnRails(message, key):
+def getBlankRails(message, key):
     """Lay out the letters in message on key number of rails."""
     rails = []  # A list of lists, where each list is a rail of letters.
     for i in range(len(message)):
@@ -92,7 +92,7 @@ def copyIfPossible(text):
 
 
 def encryptMessage(message, key):
-    rails = putMessageOnRails(message, key)
+    rails = getBlankRails(message, key)
     railCoordinates = getRailCoordinates(message, key)
 
     # Lay out the letters in rails:
@@ -116,7 +116,7 @@ def encryptMessage(message, key):
 
 
 def decryptMessage(message, key):
-    rails = putMessageOnRails(message, key)
+    rails = getBlankRails(message, key)
     railCoordinates = getRailCoordinates(message, key)
 
     # Lay out the letters on the rails:

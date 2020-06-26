@@ -177,9 +177,9 @@ while True:  # Main program loop.
             stayLosses += 1
 
     # Calculate success rate of swapping and not swapping:
-    totalSwapes = swapWins + swapLosses
-    if totalSwapes != 0:  # Prevent zero-divide error.
-        swapSuccess = round(swapWins / totalSwapes * 100, 1)
+    totalSwaps = swapWins + swapLosses
+    if totalSwaps != 0:  # Prevent zero-divide error.
+        swapSuccess = round(swapWins / totalSwaps * 100, 1)
     else:
         swapSuccess = 0.0
 

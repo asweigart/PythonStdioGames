@@ -33,6 +33,7 @@ while True:
 amount = int(response)
 
 for number in range(start, start + amount):  # Main program loop.
+    # Convert to hexadecimal/binary and remove the prefix:
     hexNumber = hex(number)[2:].upper()
     binNumber = bin(number)[2:]
 

@@ -35,7 +35,7 @@ DOWNRIGHT = chr(9484)  # Character 9484 is '┌'
 DOWNLEFT  = chr(9488)  # Character 9488 is '┐'
 UPRIGHT   = chr(9492)  # Character 9492 is '└'
 UPLEFT    = chr(9496)  # Character 9496 is '┘'
-# (A list of chr() codes is at https://inventwithpython.com/charactermap)
+# A list of chr() codes is at https://inventwithpython.com/chr
 
 # All the color/shape tiles used on the board:
 TILE_TYPES = (0, 1, 2, 3, 4, 5)

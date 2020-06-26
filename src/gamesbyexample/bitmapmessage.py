@@ -3,6 +3,8 @@ Displays a text message according to the provided bitmap image.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, artistic"""
 
+import sys
+
 # (!) Try changing this multiline string to any image you like:
 __version__ = 0
 # There are 68 periods along the top and bottom of this string:
@@ -34,6 +36,8 @@ bitmap = """
 print('Bitmap Message, by Al Sweigart al@inventwithpython.com')
 print('Enter the message to display with the bitmap.')
 message = input('> ')
+if message == '':
+    sys.exit()
 
 # Loop over each line in the bitmap:
 for line in bitmap.splitlines():
