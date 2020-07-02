@@ -2,7 +2,7 @@
 A water pouring puzzle.
 More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 This and other games are available at https://nostarch.com/XX
-Tags: large, object-oriented, game, puzzle game, math"""
+Tags: large, game, math, object-oriented, puzzle"""
 __version__ = 0
 import sys
 

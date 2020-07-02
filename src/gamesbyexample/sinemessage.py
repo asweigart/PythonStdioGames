@@ -31,6 +31,6 @@ try:
         padding = ' ' * int((sinOfStep + 1) * multipler)
         print(padding + message)
         time.sleep(0.1)
-        step += 0.25  # (!) Try changing this.
+        step += 0.25  # (!) Try changing this to 0.1 or 0.5.
 except KeyboardInterrupt:
     sys.exit()  # When Ctrl-C is pressed, end the program.

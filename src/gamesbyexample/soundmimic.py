@@ -1,7 +1,7 @@
 """Sound Mimic, by Al Sweigart al@inventwithpython.com
 A pattern-matching game with sounds. Try to memorize an increasingly
-longer and longer pattern of letters.
-Inspired by the Simon game.
+longer and longer pattern of letters. Inspired by the electronic game,
+Simon.
 This and other games are available at https://nostarch.com/XX
 Tags: short, beginner, game"""
 __version__ = 0

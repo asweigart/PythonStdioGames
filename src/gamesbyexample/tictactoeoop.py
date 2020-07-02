@@ -1,7 +1,7 @@
 """Tic-Tac-Toe (OOP), by Al Sweigart al@inventwithpython.com
 The classic board game. (Object-oriented programming version.)
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, two-player, board game, object-oriented"""
+Tags: large, board game, game, object-oriented, two-player"""
 __version__ = 0
 import copy
 
@@ -87,7 +87,7 @@ class TTTBoard:
         """Return True if every space on the board has been taken."""
         for space in ALL_SPACES:
             if self._spaces[space] == BLANK:
-                return False  # If a single space is blank, return False.
+                return False  # If any space is blank, return False.
         return True  # No spaces are blank, so return True.
 
     def updateBoard(self, space, player):

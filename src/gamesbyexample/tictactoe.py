@@ -1,7 +1,7 @@
 """Tic-Tac-Toe, by Al Sweigart al@inventwithpython.com
 The classic board game.
 This and other games are available at https://nostarch.com/XX
-Tags: short, game, two-player, board game"""
+Tags: short, board game, game, two-player"""
 __version__ = 0
 ALL_SPACES = list('123456789')  # The keys for a TTT board dictionary.
 X, O, BLANK = 'X', 'O', ' '  # Constants for string values.
@@ -86,7 +86,7 @@ def isBoardFull(board):
     """Return True if every space on the board has been taken."""
     for space in ALL_SPACES:
         if board[space] == BLANK:
-            return False  # If a single space is blank, return False.
+            return False  # If any space is blank, return False.
     return True  # No spaces are blank, so return True.
 
 

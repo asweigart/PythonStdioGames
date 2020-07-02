@@ -3,7 +3,7 @@ A 5,000 year old board game from Mesopotamia. Two players knock each
 other back as they race for the goal.
 More info https://en.wikipedia.org/wiki/Royal_Game_of_Ur
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, two-player, board game
+Tags: large, board game, game, two-player
 """
 __version__ = 0
 import random, sys
@@ -49,7 +49,7 @@ BOARD_TEMPLATE = """
 
 
 def main():
-    print('''The Royal Game of Ur, by Al Sweigart al@inventwithpython.com
+    print('''The Royal Game of Ur, by Al Sweigart
 
 This is a 5,000 year old game. Two players must move their tokens
 from their home to their goal. On your turn you flip four coins and can
@@ -74,9 +74,9 @@ their goal:
               ^           v
             O Home      O Goal
 
-If you land on an opponent's token in the middle track, it gets sent back
-home. The **flower** spaces let you take another turn. Tokens in the
-middle flower space are safe and cannot be landed on.''')
+If you land on an opponent's token in the middle track, it gets sent
+back home. The **flower** spaces let you take another turn. Tokens in
+the middle flower space are safe and cannot be landed on.''')
     input('Press Enter to begin...')
 
     gameBoard = getNewBoard()
@@ -128,7 +128,7 @@ middle flower space are safe and cannot be landed on.''')
             continue
 
         while True:
-            print('Select a token to move', flipTally, 'spaces: ', end='')
+            print('Select token to move', flipTally, 'spaces: ', end='')
             print(' '.join(validMoves) + ' quit')
             move = input('> ').lower()
 
@@ -169,28 +169,27 @@ middle flower space are safe and cannot be landed on.''')
 
         # Check if the player landed on a flower space and can go again:
         if nextBoardSpace in FLOWER_SPACES:
-            print(turn, 'landed on a flower space and gets to go again.')
+            print(turn, 'landed on a flower space and goes again.')
             input('Press Enter to continue...')
         else:
             turn = opponent  # Swap turns to the other player.
 
 def getNewBoard():
     """
-    Returns a dictionary that represents the state of the board. The keys
-    are strings of the space labels, the values are X_PLAYER, O_PLAYER,
-    or EMPTY. There are also counters for how many tokens are at the
-    home and goal of both players.
+    Returns a dictionary that represents the state of the board. The
+    keys are strings of the space labels, the values are X_PLAYER,
+    O_PLAYER, or EMPTY. There are also counters for how many tokens are
+    at the home and goal of both players.
     """
     board = {X_HOME: 7, X_GOAL: 0, O_HOME: 7, O_GOAL: 0}
     # Set each space as empty to start:
     for spaceLabel in ALL_SPACES:
         board[spaceLabel] = EMPTY
-
     return board
 
 
 def displayBoard(board):
-    """TODO"""
+    """Display the board on the screen."""
     # "Clear" the screen by printing many newlines, so the old
     # board isn't visible anymore.
     print('\n' * 60)
@@ -205,10 +204,8 @@ def displayBoard(board):
     spaces = []
     spaces.append(xHomeTokens)
     spaces.append(xGoalTokens)
-
     for spaceLabel in ALL_SPACES:
         spaces.append(board[spaceLabel])
-
     spaces.append(oHomeTokens)
     spaces.append(oGoalTokens)
 
@@ -216,8 +213,7 @@ def displayBoard(board):
 
 
 def getValidMoves(board, player, flipTally):
-    validMoves = []  # Contains all the spaces with tokens that can move.
-
+    validMoves = []  # Contains the spaces with tokens that can move.
     if player == X_PLAYER:
         opponent = O_PLAYER
         track = X_TRACK
@@ -235,9 +231,7 @@ def getValidMoves(board, player, flipTally):
     for trackSpaceIndex, space in enumerate(track):
         if space == 'H' or space == 'G' or board[space] != player:
             continue
-
         nextTrackSpaceIndex = trackSpaceIndex + flipTally
-
         if nextTrackSpaceIndex >= len(track):
             # You must flip an exact number of moves onto the goal,
             # otherwise you can't move on the goal.
@@ -248,7 +242,6 @@ def getValidMoves(board, player, flipTally):
                 # This token can move off the board:
                 validMoves.append(space)
                 continue
-
         if board[nextBoardSpaceKey] in (EMPTY, opponent):
             # If the next space is the protected middle space, you
             # can only move there if it is empty:

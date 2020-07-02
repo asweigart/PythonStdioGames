@@ -2,7 +2,7 @@
 A simulation of a Japanese abacus calculator tool.
 More info at: https://en.wikipedia.org/wiki/Soroban
 This and other games are available at https://nostarch.com/XX
-Tags: large, simulation, math, artistic"""
+Tags: large, artistic, math, simulation"""
 __version__ = 0
 NUMBER_OF_DIGITS = 10
 

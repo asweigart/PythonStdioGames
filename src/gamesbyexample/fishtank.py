@@ -5,7 +5,7 @@ older ASCII fish tank program for DOS.
 https://robobunny.com/projects/asciiquarium/html/
 https://twitter.com/EmojiAquarium
 This and other games are available at https://nostarch.com/XX
-Tags: extra-large, artistic, bext, terminal"""
+Tags: extra-large, artistic, bext"""
 __version__ = 0
 import random, sys, time
 

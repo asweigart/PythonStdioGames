@@ -2,7 +2,7 @@
 The classic crate-pushing game originally by Hiroyuki Imabayashi
 More info at: https://en.wikipedia.org/wiki/Sokoban
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, puzzle game"""
+Tags: large, game, puzzle"""
 __version__ = 0
 import copy, os, sys
 

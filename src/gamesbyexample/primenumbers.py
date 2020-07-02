@@ -5,7 +5,7 @@ applications.
 More info at: https://en.wikipedia.org/wiki/Prime_number
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, math, scrolling"""
-
+__version__ = 0
 import math, sys
 
 def main():

@@ -66,8 +66,8 @@ def getNewBoard():
 def displayBoard(board):
     """Display the board and its tiles on the screen."""
 
-    '''Prepare a list to pass to the format() string method for the board
-    template. The list holds all of the board's tiles (and empty
+    '''Prepare a list to pass to the format() string method for the
+    board template. The list holds all of the board's tiles (and empty
     spaces) going left to right, top to bottom:'''
     tileChars = []
     for rowIndex in range(BOARD_HEIGHT):
@@ -103,7 +103,7 @@ def askForPlayerMove(playerTile, board):
             print('Enter a number from 1 to {}.'.format(BOARD_WIDTH))
             continue  # Ask player again for their move.
 
-        columnIndex = int(response) - 1  # -1 for 0-based column indexes.
+        columnIndex = int(response) - 1  # -1 for 0-based the index.
 
         # If the column is full, ask for a move again:
         if board[(columnIndex, 0)] != EMPTY_SPACE:

@@ -183,7 +183,7 @@ def isWinner(player, board):
 
 def isBoardFull(board):
     """Returns True if the board is full of tiles, otherwise, returns
-    False if there is at least one empty space somewhere on the board."""
+    False if there is an empty space somewhere on the board."""
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
             if board[(x, y)] == EMPTY_SPACE:

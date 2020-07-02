@@ -4,7 +4,7 @@ Find the Queen of Hearts after cards have been swapped around.
 always lose.)
 More info at https://en.wikipedia.org/wiki/Three-card_Monte
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, card game"""
+Tags: large, card game, game"""
 __version__ = 0
 import random, time
 

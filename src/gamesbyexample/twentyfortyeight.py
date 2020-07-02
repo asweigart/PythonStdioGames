@@ -4,7 +4,7 @@ Inspired by Gabriele Cirulli's 2048, which is a clone of Veewo Studios'
 1024, which in turn is a clone of the Threes! game.
 More info at https://en.wikipedia.org/wiki/2048_(video_game)
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, puzzle game"""
+Tags: large, game, puzzle"""
 __version__ = 0
 import random, sys
 
@@ -61,7 +61,7 @@ def getNewBoard():
 
     # Pick two random spaces for the two starting 2's:
     startingTwosPlaced = 0  # The number of starting spaces picked.
-    while startingTwosPlaced < 2:  # Repeat, in case of duplicate spaces.
+    while startingTwosPlaced < 2:  # Repeat for duplicate spaces.
         randomSpace = (random.randint(0, 3), random.randint(0, 3))
         # Make sure the randomly selected space isn't already taken:
         if newBoard[randomSpace] == BLANK:

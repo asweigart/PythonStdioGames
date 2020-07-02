@@ -2,7 +2,7 @@
 A tile flipping game, also called reversi.
 More info https://en.wikipedia.org/wiki/Reversi
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, two-player, board game"""
+Tags: large, board game, game, two-player"""
 __version__ = 0
 # A version of this game is featured in the book, "Invent Your Own
 # Computer Games with Python" https://nostarch.com/inventwithpython
@@ -26,12 +26,13 @@ def main():
     mainBoard = getNewBoard()  # Start a new board.
     isPlayersTurn = True
     while True:  # Main game loop.
-        xCantMove = getValidMoves(mainBoard, 'X') == []
-        oCantMove = getValidMoves(mainBoard, 'O') == []
-        if xCantMove and oCantMove:
+        humanCantMove = getValidMoves(mainBoard, HUMAN) == []
+        computerCantMove = getValidMoves(mainBoard, COMPUTER) == []
+        if humanCantMove and computerCantMove:
             break  # Neither player can move, so quit.
 
-        if isPlayersTurn:  # Player's turn:
+        if isPlayersTurn and not humanCantMove:
+            # Human player's turn:
             displayBoard(getBoardWithValidMoves(mainBoard, HUMAN))
             move = askForPlayerMove(mainBoard)
             if move == 'QUIT':
@@ -39,7 +40,8 @@ def main():
                 sys.exit()
             else:
                 makeMove(mainBoard, HUMAN, move[0], move[1])
-        elif not isPlayersTurn:  # Computer's turn:
+        elif not isPlayersTurn and not computerCantMove:
+
             displayBoard(mainBoard)
             print()
             input('Press Enter to see the computer\'s move.')

@@ -2,11 +2,10 @@
 The hacking mini-game from "Fallout 3". Find out which seven-letter
 word is the password by using clues each guess gives you.
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, artistic"""
+Tags: large, game, artistic, puzzle game"""
 __version__ = 0
-
-# NOTE: This program requires the sevenletterwords.txt file, which
-# you can download from https://inventwithpython.com/sevenletterwords.txt
+# NOTE: This program requires the sevenletterwords.txt file, you can
+# download it from https://inventwithpython.com/sevenletterwords.txt
 
 import random, sys
 
@@ -26,10 +25,10 @@ def main():
     """Run a single game of Hacking."""
     print('''Hacking Minigame, by Al Sweigart al@inventwithpython.com
 Find the password in the computer's memory. You are given clues after
-each guess. For example, if the secret password is MONITOR but the player
-guessed CONTAIN, they are given the hint that 2 out of 7 letters were
-correct, because both MONITOR and CONTAIN have the letter O and N as
-their 2nd and 3rd letter. You get four guesses.''')
+each guess. For example, if the secret password is MONITOR but the
+player guessed CONTAIN, they are given the hint that 2 out of 7 letters
+were correct, because both MONITOR and CONTAIN have the letter O and N
+as their 2nd and 3rd letter. You get four guesses.''')
     input('Press Enter to begin...')
 
     gameWords = getWords()
@@ -107,7 +106,7 @@ def getOneWordExcept(blocklist=None):
 
 
 def numMatchingLetters(word1, word2):
-    """Returns the number of matching letters between these two words."""
+    """Returns the number of matching letters in these two words."""
     matches = 0
     for i in range(len(word1)):
         if word1[i] == word2[i]:

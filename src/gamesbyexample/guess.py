@@ -36,5 +36,5 @@ for i in range(10):  # Give the player 10 guesses.
 # Reveal the results:
 if guess == secretNumber:
     print('Yay! You guessed my number!')
-if guess != secretNumber:
+else:
     print('Game over. The number I was thinking of was', secretNumber)

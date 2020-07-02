@@ -2,7 +2,7 @@
 The classic 9x9 number placement puzzle.
 More info at https://en.wikipedia.org/wiki/Sudoku
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, puzzle game, object-oriented"""
+Tags: large, game, object-oriented, puzzle"""
 __version__ = 0
 import copy, random, sys
 
@@ -205,7 +205,7 @@ while True:  # Main game loop.
                 print('There is no row', row)
                 continue
             if not (1 <= int(number) <= 9):
-                print('Please select a number from 1 to 9, not ', number)
+                print('Select a number from 1 to 9, not ', number)
                 continue
             break  # Player entered a valid move.
 

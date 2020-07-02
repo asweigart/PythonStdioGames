@@ -2,7 +2,7 @@
 A beautiful animation of fireflies. Press Ctrl-C to stop.
 This program MUST be run in a Terminal/Command Prompt window.
 This and other games are available at https://nostarch.com/XX
-Tags: large, artistic, terminal"""
+Tags: large, artistic, bext"""
 __version__ = 0
 import math, time, sys, os, random
 
@@ -91,7 +91,7 @@ def main():
             firefly['rotAmounts'][Z] += firefly['rotVelocity'][Z]
 
             # To avoid rounding errors from accumulating, we recalculate
-            # the rotated position by rotating from the original position
+            # the rotated position by rotating the original position
             # instead of the firefly's last position.
             # For example, if the firefly rotates 5 degrees, and then 6
             # more degrees, we calculate it's rotation 5 degrees from
@@ -108,7 +108,7 @@ def main():
             rotatedAndTransformedPoint = transformPoint(rotatedPoint)
 
             # Determine if the firelies are light or dark:
-            firefly['timeToLit'] -= 1  # Decrease this on each iteration.
+            firefly['timeToLit'] -= 1  # Decrease this each iteration.
             if firefly['timeToLit'] <= 0:
                 if firefly['isLit']:
                     # Firefly will be dark for a random amount of time:
