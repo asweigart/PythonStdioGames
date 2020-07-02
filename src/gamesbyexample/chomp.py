@@ -4,7 +4,7 @@ Inspired by a Frederik Schuh and David Gale puzzle, published by
 Martin Gardner in Scientific American (January 1973).
 More info at: https://en.wikipedia.org/wiki/Chomp
 This and other games are available at https://nostarch.com/XX
-Tags: short, game, two-player, puzzle game"""
+Tags: short, game, puzzle, two-player"""
 __version__ = 0
 import random, sys
 

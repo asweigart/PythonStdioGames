@@ -3,7 +3,7 @@ Place numbers in a hexagon so each row adds up to 38.
 More info at https://en.wikipedia.org/wiki/Magic_hexagon
 More info at https://www.youtube.com/watch?v=ZkVSRwFWjy0
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, puzzle game, board game"""
+Tags: large, board game, game, puzzle"""
 __version__ = 0
 import sys
 
