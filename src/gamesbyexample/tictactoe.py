@@ -3,7 +3,7 @@ The classic board game.
 This and other games are available at https://nostarch.com/XX
 Tags: short, board game, game, two-player"""
 __version__ = 0
-ALL_SPACES = list('123456789')  # The keys for a TTT board dictionary.
+ALL_SPACES = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 X, O, BLANK = 'X', 'O', ' '  # Constants for string values.
 
 
@@ -38,7 +38,7 @@ def main():
 
 
 def getBlankBoard():
-    """Create a new, blank tic tac toe board."""
+    """Create a new, blank tic-tac-toe board."""
     # Map of space numbers: 1|2|3
     #                       -+-+-
     #                       4|5|6
@@ -73,12 +73,12 @@ def isWinner(board, player):
     # Shorter variable names used here for readablility:
     b, p = board, player
     # Check for 3 marks across 3 rows, 3 columns, and 2 diagonals.
-    return ((b['1'] == b['2'] == b['3'] == p) or  # Across the top
-            (b['4'] == b['5'] == b['6'] == p) or  # Across the middle
-            (b['7'] == b['8'] == b['9'] == p) or  # Across the bottom
-            (b['1'] == b['4'] == b['7'] == p) or  # Down the left
-            (b['2'] == b['5'] == b['8'] == p) or  # Down the middle
-            (b['3'] == b['6'] == b['9'] == p) or  # Down the right
+    return ((b['1'] == b['2'] == b['3'] == p) or  # Across top
+            (b['4'] == b['5'] == b['6'] == p) or  # Across middle
+            (b['7'] == b['8'] == b['9'] == p) or  # Across bottom
+            (b['1'] == b['4'] == b['7'] == p) or  # Down left
+            (b['2'] == b['5'] == b['8'] == p) or  # Down middle
+            (b['3'] == b['6'] == b['9'] == p) or  # Down right
             (b['3'] == b['5'] == b['7'] == p) or  # Diagonal
             (b['1'] == b['5'] == b['9'] == p))    # Diagonal
 

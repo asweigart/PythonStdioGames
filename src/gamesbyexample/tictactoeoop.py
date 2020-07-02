@@ -5,13 +5,14 @@ Tags: large, board game, game, object-oriented, two-player"""
 __version__ = 0
 import copy
 
-ALL_SPACES = list('123456789')  # The keys for a TTT board.
+ALL_SPACES = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 X, O, BLANK = 'X', 'O', ' '  # Constants for string values.
 
 
 def main():
     print('Welcome to Tic-Tac-Toe!')
-    gameBoard = HintTTTBoard()  # Create a TTT board object.
+    # (!) Try replacing TTTBoard() with MiniTTTBoard() or HintTTTBoard()
+    gameBoard = TTTBoard()  # Create a TTT board object.
     currentPlayer, nextPlayer = X, O  # X goes first, O goes next.
 
     while True:  # Main game loop.
@@ -40,14 +41,21 @@ def main():
 
 
 class TTTBoard:
-    def __init__(self, usePrettyBoard=False, useLogging=False):
-        """Create a new, blank tic tac toe board."""
+    def __init__(self):
+        """Create a new, blank tic-tac-toe board."""
         # Map of space numbers: 1|2|3
         #                       -+-+-
         #                       4|5|6
         #                       -+-+-
         #                       7|8|9
-        # Keys are 1 through 9, the values are X, O, or BLANK:
+        # Keys are 1 through 9, the values are X, O, or BLANK. THe
+        # leading underscore in _spaces means it is "private". Private
+        # variables are only modified/read by code within the class
+        # that contains them, rather than code anywhere in the program.
+        # This way, we can know that bugs involving _spaces are likely
+        # caused by buggy code somewhere in the TTTBoard class, rather
+        # than anywhere in program. (This is helpful as our programs
+        # become enormous.)
         self._spaces = {}
         for space in ALL_SPACES:
             self._spaces[space] = BLANK  # All spaces start as blank.
@@ -65,8 +73,8 @@ class TTTBoard:
         self._spaces['9'])
 
     def isValidSpace(self, space):
-        """Returns True if the space on the board is a valid space number
-        and the space is blank."""
+        """Returns True if the space on the board is a valid space
+        number and the space is blank."""
         return space in ALL_SPACES and self._spaces[space] == BLANK
 
     def isWinner(self, player):
@@ -74,12 +82,12 @@ class TTTBoard:
         # Shorter variable names used here for readablility:
         s, p = self._spaces, player
         # Check for 3 marks across 3 rows, 3 columns, and 2 diagonals.
-        return ((s['1'] == s['2'] == s['3'] == p) or  # Across the top
-                (s['4'] == s['5'] == s['6'] == p) or  # Across the middle
-                (s['7'] == s['8'] == s['9'] == p) or  # Across the bottom
-                (s['1'] == s['4'] == s['7'] == p) or  # Down the left
-                (s['2'] == s['5'] == s['8'] == p) or  # Down the middle
-                (s['3'] == s['6'] == s['9'] == p) or  # Down the right
+        return ((s['1'] == s['2'] == s['3'] == p) or  # Across top
+                (s['4'] == s['5'] == s['6'] == p) or  # Across middle
+                (s['7'] == s['8'] == s['9'] == p) or  # Across bottom
+                (s['1'] == s['4'] == s['7'] == p) or  # Down left
+                (s['2'] == s['5'] == s['8'] == p) or  # Down middle
+                (s['3'] == s['6'] == s['9'] == p) or  # Down right
                 (s['3'] == s['5'] == s['7'] == p) or  # Diagonal
                 (s['1'] == s['5'] == s['9'] == p))    # Diagonal
 
@@ -121,7 +129,7 @@ class MiniTTTBoard(TTTBoard):
 class HintTTTBoard(TTTBoard):
     def getBoardStr(self):
         """Return a text-representation of the board with hints."""
-        # Call getBoardStr() in the parent class, TTTBoard.
+        # Call getBoardStr() in the parent/super class, TTTBoard.
         boardStr = super().getBoardStr()
 
         xCanWin = False
@@ -146,75 +154,6 @@ class HintTTTBoard(TTTBoard):
             boardStr += '\nO can win in one more move.'
         self._spaces = originalSpaces
         return boardStr
-
-
-class PrettyTTTBoard(TTTBoard):
-    def getBoardStr(self):
-        canvas = {}
-        # Draw the board lines:
-        for i in range(17):
-            canvas[(5, i)] = '#'
-            canvas[(11, i)] = '#'
-            canvas[(i, 5)] = '#'
-            canvas[(i, 11)] = '#'
-
-        # Draw the Xs and Os or space numbers:
-        i = 0
-        for y in (0, 6, 12):
-            for x in (0, 6, 12):
-                i += 1
-                if self._spaces[str(i)] == X:
-                    # Draw an X:
-                    canvas[(1 + x, 1 + y)] = X
-                    canvas[(3 + x, 1 + y)] = X
-                    canvas[(2 + x, 2 + y)] = X
-                    canvas[(1 + x, 3 + y)] = X
-                    canvas[(3 + x, 3 + y)] = X
-                elif self._spaces[str(i)] == O:
-                    # Draw an O:
-                    canvas[(1 + x, 1 + y)] = O
-                    canvas[(2 + x, 1 + y)] = O
-                    canvas[(3 + x, 1 + y)] = O
-                    canvas[(1 + x, 2 + y)] = O
-                    canvas[(3 + x, 2 + y)] = O
-                    canvas[(1 + x, 3 + y)] = O
-                    canvas[(2 + x, 3 + y)] = O
-                    canvas[(3 + x, 3 + y)] = O
-                else:
-                    # Draw the space number label:
-                    canvas[(2 + x, 2 + y)] = str(i)
-
-        # Print the canvas on the screen:
-        boardStrAsList = []  # Print a blank line as a spacer.
-        for y in range(17):
-            for x in range(17):
-                if (x, y) in canvas:
-                    boardStrAsList.append(canvas[(x, y)])
-                else:
-                    boardStrAsList.append(' ')
-            boardStrAsList.append('\n')
-        return ''.join(boardStrAsList)
-
-
-class LoggingTTTBoard(TTTBoard):
-    def __init__(self, logFilename):
-        """Create a new, blank tic tac toe board."""
-        super().__init__()
-        self.logFilename = logFilename
-
-    def updateBoard(self, space, player):
-        """Sets the space on the board to player, but also records each
-        move to the log file."""
-        super().updateBoard(space, player)
-        with open(self.logFilename, 'a') as logFile:
-            logFile.write(player + ' moved on space ' + space + '\n')
-            logFile.write(super().getBoardStr() + '\n')
-
-
-class LoggingPrettyTTTBoard(LoggingTTTBoard, PrettyTTTBoard):
-    def __init__(self, crossChar, logFilename):
-        self.logFilename = logFilename
-        PrettyTTTBoard.__init__(self, crossChar)
 
 
 if __name__ == '__main__':

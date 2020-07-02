@@ -45,7 +45,7 @@ def displayCards(cards):
 
 def getRandomCard():
     """Returns a random card that is NOT the Queen of Hearts."""
-    while True:  # Keep making cards until you get a non-Queen of hearts.
+    while True:  # Make cards until you get a non-Queen of hearts.
         rank = random.choice(list('23456789JQKA') + ['10'])
         suit = random.choice([HEARTS, DIAMONDS, SPADES, CLUBS])
 
