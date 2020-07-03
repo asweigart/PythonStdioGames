@@ -13,7 +13,7 @@ class Bucket:
         self.water = 0  # Buckets start off with 0 liters of water.
 
     def fill(self):
-        self.water = self.size  # Set the amount of water to the max size.
+        self.water = self.size  # Set the water amount to the max size.
 
     def drain(self):
         self.water = 0  # Set the amount of water to nothing.

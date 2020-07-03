@@ -80,17 +80,17 @@ def checkKey(key):
     return True
 
 
-def encryptMessage(key, message):
+def encryptMessage(message, key):
     """Encrypt the message using the key."""
-    return translateMessage(key, message, 'encrypt')
+    return translateMessage(message, key, 'encrypt')
 
 
-def decryptMessage(key, message):
+def decryptMessage(message, key):
     """Decrypt the message using the key."""
-    return translateMessage(key, message, 'decrypt')
+    return translateMessage(message, key, 'decrypt')
 
 
-def translateMessage(key, message, mode):
+def translateMessage(message, key, mode):
     """Encrypt or decrypt the message using the key."""
     translated = ''
     charsA = LETTERS

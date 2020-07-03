@@ -60,17 +60,17 @@ powerful enough to remain unbroken for centuries.''')
         pass  # Do nothing if pyperclip wasn't installed.
 
 
-def encryptMessage(key, message):
+def encryptMessage(message, key):
     """Encrypt the message using the key."""
-    return translateMessage(key, message, 'encrypt')
+    return translateMessage(message, key, 'encrypt')
 
 
-def decryptMessage(key, message):
+def decryptMessage(message, key):
     """Decrypt the message using the key."""
-    return translateMessage(key, message, 'decrypt')
+    return translateMessage(message, key, 'decrypt')
 
 
-def translateMessage(key, message, mode):
+def translateMessage(message, key, mode):
     """Encrypt or decrypt the message using the key."""
     translated = []  # Stores the encrypted/decrypted message string.
 
@@ -79,7 +79,7 @@ def translateMessage(key, message, mode):
 
     for symbol in message:  # Loop through each character in message.
         num = LETTERS.find(symbol.upper())
-        if num != -1:  # -1 means symbol.upper() was not found in LETTERS.
+        if num != -1:  # -1 means symbol.upper() was not in LETTERS.
             if mode == 'encrypt':
                 # Add if encrypting:
                 num += LETTERS.find(key[keyIndex])

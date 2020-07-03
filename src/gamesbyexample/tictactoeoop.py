@@ -5,7 +5,7 @@ Tags: large, board game, game, object-oriented, two-player"""
 __version__ = 0
 import copy
 
-ALL_SPACES = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+ALLspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 X, O, BLANK = 'X', 'O', ' '  # Constants for string values.
 
 
@@ -48,17 +48,10 @@ class TTTBoard:
         #                       4|5|6
         #                       -+-+-
         #                       7|8|9
-        # Keys are 1 through 9, the values are X, O, or BLANK. THe
-        # leading underscore in _spaces means it is "private". Private
-        # variables are only modified/read by code within the class
-        # that contains them, rather than code anywhere in the program.
-        # This way, we can know that bugs involving _spaces are likely
-        # caused by buggy code somewhere in the TTTBoard class, rather
-        # than anywhere in program. (This is helpful as our programs
-        # become enormous.)
-        self._spaces = {}
-        for space in ALL_SPACES:
-            self._spaces[space] = BLANK  # All spaces start as blank.
+        # Keys are 1 through 9, the values are X, O, or BLANK.
+        self.spaces = {}
+        for space in ALLspaces:
+            self.spaces[space] = BLANK  # All spaces start as blank.
 
     def getBoardStr(self):
         """Return a text-representation of the board."""
@@ -67,20 +60,20 @@ class TTTBoard:
       -+-+-
       {}|{}|{}  4 5 6
       -+-+-
-      {}|{}|{}  7 8 9'''.format(self._spaces['1'], self._spaces['2'],
-        self._spaces['3'], self._spaces['4'], self._spaces['5'],
-        self._spaces['6'], self._spaces['7'], self._spaces['8'],
-        self._spaces['9'])
+      {}|{}|{}  7 8 9'''.format(self.spaces['1'], self.spaces['2'],
+        self.spaces['3'], self.spaces['4'], self.spaces['5'],
+        self.spaces['6'], self.spaces['7'], self.spaces['8'],
+        self.spaces['9'])
 
     def isValidSpace(self, space):
         """Returns True if the space on the board is a valid space
         number and the space is blank."""
-        return space in ALL_SPACES and self._spaces[space] == BLANK
+        return space in ALLspaces and self.spaces[space] == BLANK
 
     def isWinner(self, player):
         """Return True if player is a winner on this TTTBoard."""
         # Shorter variable names used here for readablility:
-        s, p = self._spaces, player
+        s, p = self.spaces, player
         # Check for 3 marks across 3 rows, 3 columns, and 2 diagonals.
         return ((s['1'] == s['2'] == s['3'] == p) or  # Across top
                 (s['4'] == s['5'] == s['6'] == p) or  # Across middle
@@ -93,36 +86,36 @@ class TTTBoard:
 
     def isBoardFull(self):
         """Return True if every space on the board has been taken."""
-        for space in ALL_SPACES:
-            if self._spaces[space] == BLANK:
+        for space in ALLspaces:
+            if self.spaces[space] == BLANK:
                 return False  # If any space is blank, return False.
         return True  # No spaces are blank, so return True.
 
     def updateBoard(self, space, player):
         """Sets the space on the board to player."""
-        self._spaces[space] = player
+        self.spaces[space] = player
 
 
 class MiniTTTBoard(TTTBoard):
     def getBoardStr(self):
         """Return a tiny text-representation of the board."""
         # Change blank spaces to a '.'
-        for space in ALL_SPACES:
-            if self._spaces[space] == BLANK:
-                self._spaces[space] = '.'
+        for space in ALLspaces:
+            if self.spaces[space] == BLANK:
+                self.spaces[space] = '.'
 
         boardStr = '''
           {}{}{} 123
           {}{}{} 456
-          {}{}{} 789'''.format(self._spaces['1'], self._spaces['2'],
-            self._spaces['3'], self._spaces['4'], self._spaces['5'],
-            self._spaces['6'], self._spaces['7'], self._spaces['8'],
-            self._spaces['9'])
+          {}{}{} 789'''.format(self.spaces['1'], self.spaces['2'],
+            self.spaces['3'], self.spaces['4'], self.spaces['5'],
+            self.spaces['6'], self.spaces['7'], self.spaces['8'],
+            self.spaces['9'])
 
         # Change '.' back to blank spaces.
-        for space in ALL_SPACES:
-            if self._spaces[space] == '.':
-                self._spaces[space] = BLANK
+        for space in ALLspaces:
+            if self.spaces[space] == '.':
+                self.spaces[space] = BLANK
         return boardStr
 
 
@@ -134,25 +127,25 @@ class HintTTTBoard(TTTBoard):
 
         xCanWin = False
         oCanWin = False
-        originalSpaces = self._spaces  # Backup _spaces.
-        for space in ALL_SPACES:  # Check each space:
+        originalSpaces = self.spaces  # Backup spaces.
+        for space in ALLspaces:  # Check each space:
             # Simulate X moving on this space:
-            self._spaces = copy.copy(originalSpaces)
-            if self._spaces[space] == BLANK:
-                self._spaces[space] = X
+            self.spaces = copy.copy(originalSpaces)
+            if self.spaces[space] == BLANK:
+                self.spaces[space] = X
             if self.isWinner(X):
                 xCanWin = True
             # Simulate O moving on this space:
-            self._spaces = copy.copy(originalSpaces)
-            if self._spaces[space] == BLANK:
-                self._spaces[space] = O
+            self.spaces = copy.copy(originalSpaces)
+            if self.spaces[space] == BLANK:
+                self.spaces[space] = O
             if self.isWinner(O):
                 oCanWin = True
         if xCanWin:
             boardStr += '\nX can win in one more move.'
         if oCanWin:
             boardStr += '\nO can win in one more move.'
-        self._spaces = originalSpaces
+        self.spaces = originalSpaces
         return boardStr
 
 

@@ -42,7 +42,7 @@ Additional guidelines include:
 * Some of these programs use the `bext` module, which adds curses-like features like color, clearing the screen, and moving the cursor
 * Include a link to a run-through of the program on https://pythontutor.com so that the student can see how the program runs.
 * Longer, more descriptive variable names are better than shorter ones. Avoid using single-letter variable names except for `i` and `j`, or `x` and `y`.
-* Have comments marked as `# EXPERIMENT!` that describe minor changes that they can make (increasing health, changing difficulty, etc.)
+* Have comments marked as `# (!)` that describe minor changes that they can make (increasing health, changing difficulty, etc.)
 * Use jsdifflib to create online diffs. *This is an easy way for students to find their own typos when copying the code. An example is here: https://inventwithpython.com/invent4thed/diff/*
 * Use `assert` statements to catch common typos the student makes when typing in the code, especially for constants that they may modify.
 * Use Python 3. *The only time Python 2 is appropriate to use is when there's a large existing codebase. But this is for new programmers working on greenfield projects.*
