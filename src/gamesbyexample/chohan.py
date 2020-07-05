@@ -51,21 +51,21 @@ while True:  # Main game loop.
         else:
             break
 
-    # Reveal the results:
+    # Reveal the dice results:
     print('The dealer lifts the cup to reveal:')
     print('  ', JAPANESE_NUMBERS[dice1], '-', JAPANESE_NUMBERS[dice2])
     print('    ', dice1, '-', dice2)
 
     # Determine if the player won:
-    if ((dice1 + dice2) % 2 == 0) and (bet == 'CHO'):
-        playerWon = True
-    elif ((dice1 + dice2) % 2 == 1) and (bet == 'HAN'):
-        playerWon = True
-    elif ((dice1 + dice2) % 2 == 0) and (bet == 'HAN'):
-        playerWon = False
-    elif ((dice1 + dice2) % 2 == 1) and (bet == 'CHO'):
-        playerWon = False
+    rollIsEven = (dice1 + dice2) % 2 == 0
+    if rollIsEven:
+        correctBet = 'CHO'
+    else:
+        correctBet = 'HAN'
 
+    playerWon = bet == correctBet
+
+    # Display the bet results:
     if playerWon:
         print('You won! You take', pot, 'mon.')
         purse = purse + pot  # Add the pot from player's purse.

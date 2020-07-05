@@ -117,10 +117,13 @@ def generateJobAutomatedHeadline():
     state = random.choice(STATES)
     noun = random.choice(NOUNS)
 
-    i = random.randint(0, 1)
+    i = random.randint(0, 2)
     pronoun1 = POSSESIVE_PRONOUNS[i]
     pronoun2 = PERSONAL_PRONOUNS[i]
-    return 'This {} {} Didn\'t Think Robots Would Take {} Job. {} Was Wrong.'.format(state, noun, pronoun1, pronoun2)
+    if pronoun1 == 'Their':
+        return 'This {} {} Didn\'t Think Robots Would Take {} Job. {} Were Wrong.'.format(state, noun, pronoun1, pronoun2)
+    else:
+        return 'This {} {} Didn\'t Think Robots Would Take {} Job. {} Was Wrong.'.format(state, noun, pronoun1, pronoun2)
 
 
 # If the program is run (instead of imported), run the game:

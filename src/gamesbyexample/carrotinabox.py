@@ -3,7 +3,7 @@ A silly bluffing game between two human players. Based on the game
 from the show, 8 Out of 10 Cats.
 This and other games are available at https://nostarch.com/XX
 Tags: large, beginner, game, two-player"""
-__version__ = 0
+
 import random
 
 print('''Carrot in a Box, by Al Sweigart al@inventwithpython.com
@@ -100,14 +100,12 @@ while True:
     else:
         break
 
-swappedBoxes = response.startswith('Y')
+firstBox  = 'RED '  # Note the space after the "D".
+secondBox = 'GOLD'
 
-if swappedBoxes:
-    firstBox  = 'GOLD'
-    secondBox = 'RED '  # Note the space after the "D".
-else:
-    firstBox  = 'RED '  # Note the space after the "D".
-    secondBox = 'GOLD'
+if response.startswith('Y'):
+    carrotInFirstBox = not carrotInFirstBox
+    firstBox, secondBox = secondBox, firstBox
 
 print('''HERE ARE THE TWO BOXES:
   __________     __________
@@ -121,21 +119,8 @@ print(playerNames)
 input('Press Enter to reveal the winner...')
 print()
 
-if ((swappedBoxes and carrotInRedBox)
-    or (not swappedBoxes and not carrotInRedBox)):
-        print('''
-   _________      ___VV____
-  |         |    |   VV    |
-  |         |    |   VV    |
-  |_________|    |___||____|
- /         /|   /    ||   /|
-+---------+ |  +---------+ |
-|   {}  | |  |   {}  | |
-|   BOX   | /  |   BOX   | /
-+---------+/   +---------+/'''.format(firstBox, secondBox))
-elif ((swappedBoxes and not carrotInRedBox)
-    or (not swappedBoxes and carrotInRedBox)):
-        print('''
+if carrotInFirstBox:
+    print('''
    ___VV____      _________
   |   VV    |    |         |
   |   VV    |    |         |
@@ -146,15 +131,24 @@ elif ((swappedBoxes and not carrotInRedBox)
 |   BOX   | /  |   BOX   | /
 +---------+/   +---------+/'''.format(firstBox, secondBox))
 
+else:
+    print('''
+   _________      ___VV____
+  |         |    |   VV    |
+  |         |    |   VV    |
+  |_________|    |___||____|
+ /         /|   /    ||   /|
++---------+ |  +---------+ |
+|   {}  | |  |   {}  | |
+|   BOX   | /  |   BOX   | /
++---------+/   +---------+/'''.format(firstBox, secondBox))
+
 print(playerNames)
 
-if swappedBoxes and carrotInRedBox:
-    print(p2Name + ' is the winner!')
-elif not swappedBoxes and carrotInRedBox:
+# This modification made possible through the 'carrotInFirstBox variable
+if carrotInFirstBox:
     print(p1Name + ' is the winner!')
-elif swappedBoxes and not carrotInRedBox:
-    print(p1Name + ' is the winner!')
-elif not swappedBoxes and not carrotInRedBox:
+else:
     print(p2Name + ' is the winner!')
 
 print('Thanks for playing!')

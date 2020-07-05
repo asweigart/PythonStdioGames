@@ -75,8 +75,8 @@ def getSevSegStr(number, minWidth=0):
             rows[2] += ' __|'
 
         # Add a space (for the space in between numerals) if this
-        # isn't the last numeral:
-        if i != len(number) - 1:
+        # isn't the last numeral and the decimal point isn't next:
+        if i != len(number) - 1 and number[i + 1] != '.':
             rows[0] += ' '
             rows[1] += ' '
             rows[2] += ' '
