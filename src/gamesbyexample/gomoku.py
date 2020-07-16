@@ -1,6 +1,6 @@
 """Gomoku, by Al Sweigart al@inventwithpython.com
 Gomoku is a Japanese board game where two players take turns placing
-down tiles. The first player to place five tiles in a row horizontally,
+tiles. The first player to place five tiles in a row horizontally,
 vertically, or diagonally wins.
 More info at: https://en.wikipedia.org/wiki/Gomoku
 This and other games are available at https://nostarch.com/XX
@@ -9,9 +9,9 @@ __version__ = 0
 import sys
 
 # Set up the constants:
-X_PLAYER = 'x'  # (!) Try changing this to another letter.
-O_PLAYER = 'o'  # (!) Try changing this to another letter.
-EMPTY_SPACE = '.'  # (!) Try changing this to another letter.
+X_PLAYER = 'x'  # (!) Try changing this to another character.
+O_PLAYER = 'o'  # (!) Try changing this to another character.
+EMPTY_SPACE = '.'  # (!) Try changing this to another character.
 BOARD_WIDTH = 15  # (!) Try changing this to another integer.
 BOARD_HEIGHT = 15  # (!) Try changing this to another integer.
 

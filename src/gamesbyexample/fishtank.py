@@ -185,7 +185,7 @@ def simulateAquarium():
     # Generate bubbles from bubblers:
     for bubbler in BUBBLERS:
         # There is a 1 in 5 chance of making a bubble:
-        if random.randint(0, 5) == 0:
+        if random.randint(1, 5) == 1:
             BUBBLES.append({'x': bubbler, 'y': HEIGHT - 2})
 
     # Move the bubbles:

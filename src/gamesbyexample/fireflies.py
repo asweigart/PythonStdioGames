@@ -95,7 +95,7 @@ def main():
             # instead of the firefly's last position.
             # For example, if the firefly rotates 5 degrees, and then 6
             # more degrees, we calculate it's rotation 5 degrees from
-            # it's original position, and then 11 degrees from it's
+            # it's original position, and then 11 degrees from its
             # original position.
             rotatedPoint = rotatePoint(
                 firefly['originalPosition'][X],

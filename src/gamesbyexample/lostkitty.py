@@ -1,7 +1,7 @@
 """Lost Kitty, by Al Sweigart al@inventwithpython.com
 Try to find your lost kitten Zophie by moving around the neighborhood
 streets and avenues. You'll get hints at how near or far she is.
-This game that teaches cartesian coordinates, cardinal directions, and
+This game teaches cartesian coordinates, cardinal directions, and
 the Pythagorean Theorem.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game"""
@@ -47,7 +47,7 @@ def main():
 
         displayMap(playerx, playery, visitedIntersections)
         displayClue(playerx, playery, catx, caty)
-        print('Blocks travelled:', steps)
+        print('Blocks traveled:', steps)
         playerx, playery = askForPlayerMove(playerx, playery)
         steps += 1
 
@@ -55,7 +55,7 @@ def main():
         if playerx == catx and playery == caty:
             displayMap(playerx, playery, visitedIntersections)
             print('You have found your lost kitty Zophie! Hooray!')
-            print('You travelled', steps, 'blocks to find her!')
+            print('You traveled', steps, 'blocks to find her!')
             print('Thanks for playing!')
             sys.exit()
 

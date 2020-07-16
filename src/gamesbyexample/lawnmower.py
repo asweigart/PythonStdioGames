@@ -45,7 +45,7 @@ def main():
         print(';' * WIDTH)
     print('Press Ctrl-C to quit.')
 
-    # mowerx and mowery is the left edge of the mower, despite direction.
+    # mowerx and mowery always indicate the left edge of the mower.
     mowerx = -MOWER_LEN
     mowery = 0
     mowerDirection = 'right'

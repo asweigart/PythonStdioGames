@@ -271,7 +271,7 @@ while True:  # Main game loop.
     displayWallDict(makeWallDict(maze, px, py, pDir, exitx, exity))
 
     while True: # Get user move.
-        print('Location ({}, {})  Compass: {}'.format(px, py, pDir))
+        print('Location ({}, {})  Direction: {}'.format(px, py, pDir))
         print('                   (W)')
         print('Enter direction: (A) (D)  or QUIT.')
         move = input('> ').upper()

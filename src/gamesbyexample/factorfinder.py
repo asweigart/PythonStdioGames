@@ -19,7 +19,7 @@ Can you discover some prime numbers?
 ''')
 
 while True:  # Main program loop.
-    print('Enter a number to factor (or "QUIT" to quit):')
+    print('Enter a positive whole number to factor (or QUIT):')
     response = input('> ')
     if response.upper() == 'QUIT':
         sys.exit()

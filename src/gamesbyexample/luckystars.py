@@ -182,6 +182,7 @@ while True:  # Main game loop.
             playerScores[playerNames[turn]] += stars
 
             # Check if they've reached 13 or more points:
+            # (!) Try changing this to 5 or 50 points.
             if (endGameWith == None
                 and playerScores[playerNames[turn]] >= 13):
                 # Since this player reached 13 points, play one more

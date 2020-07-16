@@ -4,7 +4,7 @@ word is the password by using clues each guess gives you.
 This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, game, puzzle"""
 __version__ = 0
-# NOTE: This program requires the sevenletterwords.txt file, you can
+# NOTE: This program requires the sevenletterwords.txt file. You can
 # download it from https://inventwithpython.com/sevenletterwords.txt
 
 import random, sys

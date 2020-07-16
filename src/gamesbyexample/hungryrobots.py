@@ -29,8 +29,8 @@ You are trapped in a maze with hungry robots! You don't know why robots
 need to eat, but you don't want to find out. The robots are badly
 programmed and will move directly towards you, even if blocked by walls.
 You must trick the robots into crashing into each other (or dead robots)
-without being caught. You have a random teleporter, but it only has
-enough battery for {} teleports. Keep in mind, you and robots can slip
+without being caught. You have a personal teleporter device, but it only
+has enough battery for {} trips. Keep in mind, you and robots can slip
 through the corners of two diagonal walls!
 '''.format(NUM_TELEPORTS))
 
