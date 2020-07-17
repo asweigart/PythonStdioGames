@@ -3,8 +3,8 @@ Watch grass get cut and grow again. Press Ctrl-C to stop.
 Inspired by Tondeuse by Jules Villard, https://asciinema.org/a/21743
 https://bitbucket.org/jvillard/tondeuse/src/default/
 This and other games are available at https://nostarch.com/XX
-Tags: large, artistic, terminal"""
-__version__ = 0
+Tags: large, artistic, bext"""
+
 import time, random, sys
 
 try:
@@ -32,8 +32,6 @@ assert len(MOWER_LEFT) == MOWER_LEN
 
 
 def main():
-    """Run the lawn mower animation."""
-
     # Draw the initially uncut grass field:
     bext.clear()
 
@@ -124,6 +122,7 @@ def drawMower(mowerx, mowery, direction):
         if 0 <= mowerx + i < WIDTH:
             bext.goto(mowerx + i, mowery)
             print(mowerText[i], end='')
+    bext.goto(0, 0)  # It looks better to move the cursor away.
 
 
 # If this program was run (instead of imported), run the game:

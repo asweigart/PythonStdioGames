@@ -15,7 +15,7 @@ EMPTY_SPACE = '.'  # (!) Try changing this to another character.
 BOARD_WIDTH = 15  # (!) Try changing this to another integer.
 BOARD_HEIGHT = 15  # (!) Try changing this to another integer.
 
-# Let's make sure the board isn't too large:
+# Let's make sure the board isn't too large for the screen:
 assert BOARD_WIDTH <= 26
 assert BOARD_HEIGHT < 100
 

@@ -28,8 +28,8 @@ assert len(SUSPECTS) == 9
 assert len(ITEMS) == 9
 assert len(PLACES) == 9
 # First letters must be unique:
-assert len(set(PLACE_FIRST_LETTERS.keys())) == len(PLACES)
-assert len(SUSPECTS) == len(ITEMS) == len(PLACES)
+assert len(PLACE_FIRST_LETTERS.keys()) == len(PLACES)
+
 
 knownSuspectsAndItems = []
 # visitedPlaces: Keys=places, values=strings of the suspect & item there.

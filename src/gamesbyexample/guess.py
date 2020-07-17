@@ -12,7 +12,7 @@ def askForGuess():
 
         if guess.isdecimal():
             return int(guess)  # Convert string guess to an integer.
-        print('Please enter a number.')
+        print('Please enter a number between 1 and 100.')
 
 
 print('Guess the Number, by Al Sweigart al@inventwithpython.com')
