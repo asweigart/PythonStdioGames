@@ -29,7 +29,7 @@ while True:
         break
     if response.isdecimal():
         break
-    print('Please enter a number.')
+    print('Please enter a number greater than or equal to 0.')
 amount = int(response)
 
 for number in range(start, start + amount):  # Main program loop.

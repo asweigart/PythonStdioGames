@@ -1,6 +1,6 @@
-"""niNety nniinE BoOttels of Mlik On teh waLl
+"""niNety-nniinE BoOttels of Mlik On teh waLl
 By Al Sweigart al@inventwithpython.com
-Print the full lyrics to one of the most longest songs ever! The song
+Print the full lyrics to one of the longest songs ever! The song
 gets sillier and with each verse. Press Ctrl-C to stop.
 This and other games are available at https://nostarch.com/XX
 Tags: short, scrolling, word"""
@@ -22,7 +22,7 @@ def slowPrint(text, pauseAmount=0.1):
     print()  # Print a newline.
 
 
-print('NiinNety ninE BoOttels, by Al Sweigart al@inventwithpython.com')
+print('niNety-nniinE BoOttels, by Al Sweigart al@inventwithpython.com')
 print()
 print('(Press Ctrl-C to quit.)')
 

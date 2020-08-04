@@ -20,9 +20,6 @@ for number1 in range(0, 13):
 
     for number2 in range(0, 13):
         # Print the product:
-        print(str(number1 * number2).rjust(3), end='')
-
-        # Print a separating space:
-        print(' ', end='')
+        print(str(number1 * number2).rjust(3), end=' ')
 
     print()  # Finish the row by printing a newline.

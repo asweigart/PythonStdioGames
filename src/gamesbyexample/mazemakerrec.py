@@ -1,6 +1,6 @@
 """Maze Maker, by Al Sweigart al@inventwithpython.com
 Make mazes with the recursive backtracker algorithm.
-More info at: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker
+
 An animated demo: https://scratch.mit.edu/projects/17358777/
 This and other games are available at https://nostarch.com/XX
 Tags: large, maze"""
@@ -63,8 +63,8 @@ while True:
     response = input('Enter seed (must be a positive integer): ')
     if response.isdecimal():
         SEED = int(response)
-        if SEED >= 0:
-            break
+        break
+
 
 random.seed(SEED)
 
