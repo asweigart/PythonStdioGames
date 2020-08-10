@@ -211,4 +211,5 @@ try:
             os.system('clear')  # macOS and Linux use the clear command.
 
 except KeyboardInterrupt:
+    print('Rotating Cube, by Al Sweigart al@inventwithpython.com')
     sys.exit()  # When Ctrl-C is pressed, end the program.

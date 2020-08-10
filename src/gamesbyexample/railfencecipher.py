@@ -25,7 +25,7 @@ def main():
         print('Enter a message up to 75 characters long:')
         print('|' + ('-' * 73) + '|')
         message = input('> ')
-        if len(message) <= 75:
+        if 0 < len(message) <= 75:
             break
 
     # Ask the user for the key number.

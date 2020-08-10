@@ -227,7 +227,7 @@ def askForPlayerMove(maxLevelNum):
         if move in ('W', 'A', 'S', 'D', 'U'):
             return move
 
-        print(move, 'is not valid. Enter one of W, A, S, D or QUIT.')
+        print(move, 'is not valid. Enter W, A, S, D, UNDO, or QUIT.')
 
 
 # If this program was run (instead of imported), run the game:

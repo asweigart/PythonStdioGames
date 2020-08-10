@@ -28,7 +28,7 @@ def main():
     while True:
         # Print out any prime numbers:
         if isPrime(num):
-            print(str(num) + ', ', end='')
+            print(str(num) + ', ', end='', flush=True)
         num = num + 1  # Go to the next number.
 
 

@@ -128,7 +128,7 @@ the middle flower space are safe and cannot be landed on.''')
             continue
 
         while True:
-            print('Select token to move', flipTally, 'spaces: ', end='')
+            print('Select move', flipTally, 'spaces: ', end='')
             print(' '.join(validMoves) + ' quit')
             move = input('> ').lower()
 
