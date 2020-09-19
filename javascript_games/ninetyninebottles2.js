@@ -25,6 +25,7 @@ async function slowPrint(text, pauseAmount=0.1) {
     console.log()  // Print a newline.
 }
 
+
 function replaceAt(str, index, replacement) {
     return str.substr(0, index) + replacement + str.substr(index + replacement.length);
 }
