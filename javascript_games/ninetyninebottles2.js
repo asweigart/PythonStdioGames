@@ -47,19 +47,19 @@ async function main() {
              ' bottles of milk on the wall!'];
 
     while (bottles > 0) {  // Keep looping and display the lyrics.
-        slowPrint(bottles.toString() + lines[0], SPEED)
+        await slowPrint(bottles.toString() + lines[0], SPEED)
         await sleep(LINE_PAUSE);
-        slowPrint(bottles.toString() + lines[1], SPEED)
+        await slowPrint(bottles.toString() + lines[1], SPEED)
         await sleep(LINE_PAUSE);
-        slowPrint(lines[2], SPEED)
+        await slowPrint(lines[2], SPEED)
         await sleep(LINE_PAUSE);
         bottles = bottles - 1 ; // Decrease the number of bottles by one.
 
         if (bottles > 0) {  // Print the last line of the current stanza.
-            slowPrint(bottles.toString() + lines[3], SPEED)
+            await slowPrint(bottles.toString() + lines[3], SPEED)
         }
         else {  // Print the last line of the entire song.
-            slowPrint('No more bottles of milk on the wall!', SPEED)
+            await slowPrint('No more bottles of milk on the wall!', SPEED)
         }
 
         await sleep(LINE_PAUSE);

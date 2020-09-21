@@ -125,6 +125,10 @@ class HintTTTBoard(TTTBoard):
         # Call getBoardStr() in the parent/super class, TTTBoard.
         boardStr = super().getBoardStr()
 
+        if self.isWinner(X) or self.isWinner(O):
+            # No need to show a hint if a someone has won.
+            return boardStr
+
         xCanWin = False
         oCanWin = False
         originalSpaces = self.spaces  # Backup spaces.

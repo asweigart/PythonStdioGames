@@ -7,7 +7,7 @@ __version__ = 0
 import copy, random, sys
 
 # This game requires a sudokupuzzle.txt file that contains the puzzles.
-# You can download this from
+# Download it from https://inventwithpython.com/sudokupuzzles.txt
 # Here's a sample of the content in this file:
 # ..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..
 # 2...8.3...6..7..84.3.5..2.9...1.54.8.........4.27.6...3.1..7.4.72..4..6...4.1...3
@@ -201,7 +201,7 @@ while True:  # Main game loop.
             if column not in list('ABCDEFGHI'):
                 print('There is no column', column)
                 continue
-            if not (1 <= int(row) <= 9):
+            if not row.isdecimal() or not (1 <= int(row) <= 9):
                 print('There is no row', row)
                 continue
             if not (1 <= int(number) <= 9):

@@ -63,12 +63,12 @@ while True:  # Main program loop.
             print(randomSnailName, 'has won!')
             sys.exit()
 
-    # (!) EXPERIMENT: Add a cheat here that increases a snail's progress
+    # (!) Add a cheat here that increases a snail's progress
     # if it has your name.
 
-    time.sleep(0.5)  # (!) EXPERIMENT: Try changing this value.
+    time.sleep(0.5)  # (!) Try changing this value.
 
-    # (!) EXPERIMENT: What happens if you comment this line out?
+    # (!) What happens if you comment this line out?
     print('\n' * 40)
 
     # Display the start and finish lines:

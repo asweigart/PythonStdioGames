@@ -47,8 +47,8 @@ def displayFilledDiamond(size):
     # Display the bottom half of the diamond:
     for i in range(size):
         print(' ' * i, end='')  # Left side space.
-        print('\\' * (size - i), end='')  # Left side of diamond.
-        print('/' * (size - i))  # Right side of diamond.
+        print('\\' * (size - i), end='')  # Left half of diamond.
+        print('/' * (size - i))  # Right half of diamond.
 
 
 # If this program was run (instead of imported), run the game:

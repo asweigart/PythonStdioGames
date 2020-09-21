@@ -1,5 +1,5 @@
 """Gullible, by Al Sweigart al@inventwithpython.com
-How to keep an idiot busy for hours. (This is a joke program.)
+How to keep a gullible person busy for hours. (This is a joke program.)
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, humor"""
 __version__ = 0

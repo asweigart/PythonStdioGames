@@ -46,9 +46,9 @@ powerful enough to remain unbroken for centuries.''')
 
     # Perform the encryption/decryption:
     if myMode == 'encrypt':
-        translated = encryptMessage(myKey, myMessage)
+        translated = encryptMessage(myMessage, myKey)
     elif myMode == 'decrypt':
-        translated = decryptMessage(myKey, myMessage)
+        translated = decryptMessage(myMessage, myKey)
 
     print('%sed message:' % (myMode.title()))
     print(translated)
