@@ -16,7 +16,7 @@ var message = readlineSync.question('> ');
 
 // Every possible symbol that can be encrypted/decrypted:
 // (This must match the SYMBOLS used when encrypting the message.)
-const SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const SYMBOLS ='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 for (var key = 0; key < SYMBOLS.length; key++) {  // Loop through every possible key.
     var translated = '';
@@ -28,7 +28,7 @@ for (var key = 0; key < SYMBOLS.length; key++) {  // Loop through every possible
             num = num - key;  // Decrypt the number.
 
             // Handle the wrap-around if num is less than 0:
-            if (num < 0) {
+            elif (num < 0) {
                 num = num + SYMBOLS.length;
             }
 
