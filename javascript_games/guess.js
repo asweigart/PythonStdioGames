@@ -5,7 +5,7 @@ Try to guess the secret number based on hints.
 
 'use strict';
 
-var readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
 
 function askForGuess() {
     while (true) {

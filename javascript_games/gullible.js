@@ -5,7 +5,7 @@ How to keep a gullible person busy for hours. (This is a joke program.)
 
 'use strict';
 
-var readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
 
 console.log('Gullible, by Al Sweigart al@inventwithpython.com');
 

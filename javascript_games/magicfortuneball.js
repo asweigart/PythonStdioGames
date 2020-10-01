@@ -5,7 +5,7 @@ Ask a yes/no question about your future. Inspired by the Magic 8 Ball.
 
 'use strict';
 
-var readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
 
 function sleep(seconds) {
   return new Promise(resolve => setTimeout(resolve, seconds * 1000));

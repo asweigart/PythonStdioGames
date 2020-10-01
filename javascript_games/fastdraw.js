@@ -5,7 +5,7 @@ Test your reflexes to see if you're the fastest draw in the west.
 
 'use strict';
 
-var readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
 
 function sleep(seconds) {
   return new Promise(resolve => setTimeout(resolve, seconds * 1000));
