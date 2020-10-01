@@ -82,7 +82,7 @@ Additional modules I recommend using:
 * `bext` for colorful text and controlling the positioning of the text cursor.
 * `blessings` for a better version of curses.
 * `pyperclip` for copying/pasting text with the clipboard.
-* `playsound` for playing sound files.
+* `playsound` for playing audio files.
 * `pyttsx3` for text to speech.
 * `pytextcavas` for 2D strings you can draw on
 * `pyrect` for rectangle data structure
