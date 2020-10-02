@@ -82,9 +82,9 @@ def main():
             print('    Ack. :(\n')
 
         # After the loop exits, the quiz is over. Show the final score:
-        print('In {} seconds you'.format(QUIZ_DURATION))
-        print('got {} correct!'.format(numCorrect))
-        print('Thanks for playing!')
+    print('In {} seconds you'.format(QUIZ_DURATION))
+    print('got {} correct!'.format(numCorrect))
+    print('Thanks for playing!')
 
 
 def slowPrint(text, pauseAmount=0.1):
