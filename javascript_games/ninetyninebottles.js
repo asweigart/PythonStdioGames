@@ -20,7 +20,7 @@ console.log('(Press Ctrl-C to quit.)');
 async function main() {
     await sleep(2);
 
-    var bottles = 99;  // This is the starting number of bottles.
+    let bottles = 99;  // This is the starting number of bottles.
     while (bottles > 1) {
         console.log(bottles, 'bottles of milk on the wall,');
         await sleep(PAUSE);  // Pause for PAUSE number of seconds.

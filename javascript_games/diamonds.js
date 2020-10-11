@@ -1,6 +1,6 @@
 /*
 Diamonds, by Al Sweigart al@inventwithpython.com
-Draws diamonds of various sizes.
+Draws diamonds of letious sizes.
                            /\       /\
                           /  \     //\\
             /\     /\    /    \   ///\\\
@@ -15,7 +15,7 @@ function main() {
     console.log('Diamonds, by Al Sweigart al@inventwithpython.com');
 
     // Display diamonds of sizes 0 through 6:
-    for (var diamondSize = 0; diamondSize < 6; diamondSize++) {
+    for (let diamondSize = 0; diamondSize < 6; diamondSize++) {
         displayOutlineDiamond(diamondSize);
         console.log();  // Print a newline.
         displayFilledDiamond(diamondSize);
@@ -26,7 +26,7 @@ function main() {
 
 function displayOutlineDiamond(size) {
     // Display the top half of the diamond:
-    for (var i = 0; i < size; i++) {
+    for (let i = 0; i < size; i++) {
         process.stdout.write(' '.repeat(size - i - 1));  // Left side space.
         process.stdout.write('/');  // Left side of diamond.
         process.stdout.write(' '.repeat(i * 2));  // Interior of diamond.
@@ -35,7 +35,7 @@ function displayOutlineDiamond(size) {
     }
 
     // Display the bottom half of the diamond:
-    for (var i = 0; i < size; i++) {
+    for (let i = 0; i < size; i++) {
         process.stdout.write(' '.repeat(i));  // Left side space.
         process.stdout.write('\\');  // Left side of diamond.
         process.stdout.write(' '.repeat((size - i - 1) * 2));  // Interior of diamond.
@@ -46,7 +46,7 @@ function displayOutlineDiamond(size) {
 
 function displayFilledDiamond(size) {
     // Display the top half of the diamond:
-    for (var i = 0; i < size; i++) {
+    for (let i = 0; i < size; i++) {
         process.stdout.write(' '.repeat(size - i - 1));  // Left side space.
         process.stdout.write('/'.repeat(i + 1));  // Left half of diamond.
         process.stdout.write('\\'.repeat(i + 1));  // Right half of diamond.
@@ -54,7 +54,7 @@ function displayFilledDiamond(size) {
     }
 
     // Display the bottom half of the diamond:
-    for (var i = 0; i < size; i++) {
+    for (let i = 0; i < size; i++) {
         process.stdout.write(' '.repeat(i));  // Left side space.
         process.stdout.write('\\'.repeat(size - i));  // Left side of diamond.
         process.stdout.write('/'.repeat(size - i));  // Right side of diamond.

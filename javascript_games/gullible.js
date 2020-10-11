@@ -11,7 +11,7 @@ console.log('Gullible, by Al Sweigart al@inventwithpython.com');
 
 while (true) {  // Main program loop.
     console.log('Do you want to know how to keep a gullible person busy for hours?');
-    var response = readlineSync.question('> ');  // Get the user's response.
+    let response = readlineSync.question('> ');  // Get the user's response.
     if (response.toLowerCase() === 'no' || response.toLowerCase() === 'n') {
         break;  // If "no", break out of this loop.
     }

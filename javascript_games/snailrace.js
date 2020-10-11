@@ -21,7 +21,7 @@ async function main() {
     // Ask how many snails to race:
     while (true) {
         console.log('How many snails will race? Max:', MAX_NUM_SNAILS);
-        response = readlineSync.question('> ');
+        let response = readlineSync.question('> ');
         if (!isNaN(response)) {
             var numSnailsRacing = Number(response);
             if (1 < numSnailsRacing <= MAX_NUM_SNAILS) {
@@ -32,8 +32,8 @@ async function main() {
     }
 
     // Enter the names of each snail:
-    var snailNames = [];  // Array of the string snail names.
-    for (var i = 1; i <= numSnailsRacing; i++) {
+    let snailNames = [];  // Array of the string snail names.
+    for (let i = 1; i <= numSnailsRacing; i++) {
         while (true) {  // Keep asking until the player enters a valid name.
             console.log('Enter snail #' + i.toString() + "'s name:");
             var name = readlineSync.question('> ');
@@ -52,9 +52,9 @@ async function main() {
     console.log('\n'.repeat(40));
     console.log('START' + ' '.repeat(FINISH_LINE - 'START'.length) + 'FINISH');
     console.log('|' + (' '.repeat(FINISH_LINE - '|'.length)) + '|');
-    var snailProgress = {};
-    for (var i = 0; i < snailNames.length; i++) {
-        var snailName = snailNames[i];
+    let snailProgress = {};
+    for (let i = 0; i < snailNames.length; i++) {
+        let snailName = snailNames[i];
         console.log(snailName.substr(0, MAX_NAME_LENGTH));
         console.log('@v');
         snailProgress[snailName] = 0;
@@ -64,9 +64,9 @@ async function main() {
 
     while (true) {  // Main program loop.
         // Pick random snails to move forward:
-        var numSnailsToMove = Math.floor(Math.random() * Math.floor(numSnailsRacing / 2)) + 1;
-        for (var i = 0; i < numSnailsToMove; i++) {
-            var randomSnailName = snailNames[Math.floor(Math.random() * snailNames.length)];
+        let numSnailsToMove = Math.floor(Math.random() * Math.floor(numSnailsRacing / 2)) + 1;
+        for (let i = 0; i < numSnailsToMove; i++) {
+            let randomSnailName = snailNames[Math.floor(Math.random() * snailNames.length)];
             snailProgress[randomSnailName] += 1;
 
             // Check if a snail has reached the finish line:
@@ -89,9 +89,9 @@ async function main() {
         console.log('|' + (' '.repeat(FINISH_LINE - '|'.length)) + '|');
 
         // Display the snails (with name tags):
-        for (var i = 0; i < snailNames.length; i++) {
-            var snailName = snailNames[i];
-            var spaces = snailProgress[snailName];
+        for (let i = 0; i < snailNames.length; i++) {
+            let snailName = snailNames[i];
+            let spaces = snailProgress[snailName];
             console.log(' '.repeat(spaces) + snailName.substr(0, MAX_NAME_LENGTH));
             console.log('.'.repeat(snailProgress[snailName]) + '@v');
         }

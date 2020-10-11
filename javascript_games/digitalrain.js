@@ -31,5 +31,5 @@ async function main() {
     // When the counter is 0, no bead of "digital rain" is shown.
     // Otherwise, it acts as a counter for how many times a 1 or 0
     // should be displayed in that column.
-    var columns =
+    let columns =
 }

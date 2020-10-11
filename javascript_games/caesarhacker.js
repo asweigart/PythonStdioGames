@@ -12,19 +12,19 @@ console.log('Caesar Cipher Hacker, by Al Sweigart al@inventwithpython.com');
 
 // Let the user specify the message to hack:
 console.log('Enter the encrypted Caesar cipher message to hack.');
-var message = readlineSync.question('> ');
+let message = readlineSync.question('> ');
 
 // Every possible symbol that can be encrypted/decrypted:
 // (This must match the SYMBOLS used when encrypting the message.)
 const SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-for (var key = 0; key < SYMBOLS.length; key++) {  // Loop through every possible key.
-    var translated = '';
+for (let key = 0; key < SYMBOLS.length; key++) {  // Loop through every possible key.
+    let translated = '';
 
     // Decrypt each symbol in the message:
     for (const symbol of message) {
         if (SYMBOLS.includes(symbol)) {
-            var num = SYMBOLS.indexOf(symbol);  // Get the number of the symbol.
+            let num = SYMBOLS.indexOf(symbol);  // Get the number of the symbol.
             num = num - key;  // Decrypt the number.
 
             // Handle the wrap-around if num is less than 0:

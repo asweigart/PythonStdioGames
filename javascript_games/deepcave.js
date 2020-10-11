@@ -19,12 +19,12 @@ async function main() {
     console.log('Press Ctrl-C to stop.');
     await sleep(2);
 
-    var leftWidth = 20;
-    var gapWidth = 10;
+    let leftWidth = 20;
+    let gapWidth = 10;
 
     while (true) {
         // Display the tunnel segment:
-        var rightWidth = WIDTH - gapWidth - leftWidth;
+        let rightWidth = WIDTH - gapWidth - leftWidth;
         process.stdout.write('#'.repeat(leftWidth));
         process.stdout.write(' '.repeat(gapWidth));
         process.stdout.write('#'.repeat(rightWidth));
@@ -33,7 +33,7 @@ async function main() {
         await sleep(PAUSE_AMOUNT);
 
         // Adjust the left side width:
-        var diceRoll = Math.floor(Math.random() * 6) + 1;
+        let diceRoll = Math.floor(Math.random() * 6) + 1;
         if (diceRoll === 1 && leftWidth > 1) {
             leftWidth = leftWidth - 1  // Decrease left side width.
         } else if (diceRoll === 2 && leftWidth + gapWidth < WIDTH - 1) {

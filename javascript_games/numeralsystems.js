@@ -21,30 +21,30 @@ while (true) {
         response = '0';  // Start at 0 by default.
         break;
     }
-    if (response.isdecimal()) {
+    if (!isNaN(response)) {
         break;
     }
     console.log('Please enter a number.');
 }
-var start = Number(response);
+let start = Number(response);
 
 while (true) {
     response = readlineSync.question('Enter how many numbers to display (e.g. 1000) > ');
     if (response === '') {
-        var response = '1000';  // Display 1000 numbers by default.
+        response = '1000';  // Display 1000 numbers by default.
         break;
     }
-    if (response.isdecimal()) {
+    if (!isNaN(response)) {
         break;
     }
     console.log('Please enter a number greater than or equal to 0.');
 }
-var amount = Number(response);
+let amount = Number(response);
 
-for (var number = start; number < start + amount; number++) {  // Main program loop.
+for (let number = start; number < start + amount; number++) {  // Main program loop.
     // Convert to hexadecimal/binary and remove the prefix:
-    var hexNumber = number.toString(16).toUpperCase();
-    var binNumber = number.toString(2);
+    let hexNumber = number.toString(16).toUpperCase();
+    let binNumber = number.toString(2);
 
     console.log('DEC:', number, '   HEX:', hexNumber, '   BIN:', binNumber);
 }

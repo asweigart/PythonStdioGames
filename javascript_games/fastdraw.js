@@ -27,9 +27,9 @@ async function main() {
         console.log('It is high noon...');
         await sleep(Math.random() * 3 + 2);
         console.log('DRAW!');
-        var drawTime = Date.now();
+        let drawTime = Date.now();
         readlineSync.question();  // This function call doesn't return until Enter is pressed.
-        var timeElapsed = (Date.now() - drawTime) / 1000;
+        let timeElapsed = (Date.now() - drawTime) / 1000;
 
         if (timeElapsed < 0.01) {
             // If the player pressed Enter before DRAW! appeared, the input()
@@ -45,7 +45,7 @@ async function main() {
         }
 
         console.log('Enter QUIT to stop, or press Enter to play again.');
-        var response = readlineSync.question('> ').toUpperCase();
+        let response = readlineSync.question('> ').toUpperCase();
         if (response === 'QUIT') {
             console.log('Thanks for playing!');
             return;

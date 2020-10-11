@@ -9,7 +9,7 @@ const readlineSync = require('readline-sync');
 
 function askForGuess() {
     while (true) {
-        var guess = readlineSync.question('> ');  // Enter the guess.
+        let guess = readlineSync.question('> ');  // Enter the guess.
 
         if (!isNaN(guess)) {
             return Number(guess);  // Convert string guess to an integer.
@@ -20,10 +20,10 @@ function askForGuess() {
 
 console.log('Guess the Number, by Al Sweigart al@inventwithpython.com');
 console.log();
-var secretNumber = Math.floor(Math.random() * 100) + 1;  // Select a random number.
+let secretNumber = Math.floor(Math.random() * 100) + 1;  // Select a random number.
 console.log('I am thinking of a number between 1 and 100.');
 
-for (var i = 0; i < 10; i++) {  // Give the player 10 guesses.
+for (let i = 0; i < 10; i++) {  // Give the player 10 guesses.
     console.log('You have', ( 10 - i), 'guesses left. Take a guess.');
 
     var guess = askForGuess();

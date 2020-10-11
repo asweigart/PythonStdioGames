@@ -18,7 +18,7 @@ const LINE_PAUSE = 1.5;  // The pause at the end of each line.
 
 
 async function slowPrint(text, pauseAmount=0.1) {
-    for (var i = 0; i < text.length; i++) {
+    for (let i = 0; i < text.length; i++) {
         process.stdout.write(text[i]);
         await sleep(pauseAmount)  // Pause in between each character.
     }
@@ -38,10 +38,10 @@ async function main() {
 
     await sleep(2);
 
-    var bottles = 99;  // This is the starting number of bottles.
+    let bottles = 99;  // This is the starting number of bottles.
 
     // This list holds the string used for the lyrics:
-    var lines = [' bottles of milk on the wall,',
+    let lines = [' bottles of milk on the wall,',
              ' bottles of milk,',
              'Take one down, pass it around,',
              ' bottles of milk on the wall!'];
@@ -65,29 +65,29 @@ async function main() {
         console.log();  // Print a newline.
 
         // Choose a random line to make "sillier":
-        var lineNum = Math.floor(Math.random() * 4);
+        let lineNum = Math.floor(Math.random() * 4);
 
-        var line = lines[lineNum];
-        var effect = Math.floor(Math.random() * 4);
+        let line = lines[lineNum];
+        let effect = Math.floor(Math.random() * 4);
 
         if (effect === 0) {  // Replace a character with a space.
-            var charIndex = Math.floor(Math.random() * line.length);
+            let charIndex = Math.floor(Math.random() * line.length);
             line = replaceAt(line, charIndex, ' ');
         } else if (effect === 1) {  // Change the casing of a character.
-            var charIndex = Math.floor(Math.random() * line.length);
+            let charIndex = Math.floor(Math.random() * line.length);
             if (line[charIndex].toUpperCase() == line[charIndex]) {
                 line = replaceAt(line, charIndex, line[charIndex].toLowerCase());
             } else if (line[charIndex].toLowerCase() == line[charIndex]) {
                 line = replaceAt(line, charIndex, line[charIndex].toUpperCase());
             }
         } else if (effect === 2) {  // Transpose two characters.
-            var charIndex = Math.floor(Math.random() * (line.length - 1));
-            var firstChar = line[charIndex]
-            var secondChar = line[charIndex + 1]
+            let charIndex = Math.floor(Math.random() * (line.length - 1));
+            let firstChar = line[charIndex]
+            let secondChar = line[charIndex + 1]
             line = replaceAt(line, charIndex, secondChar);
             line = replaceAt(line, charIndex + 1, firstChar);
         } else if (effect === 3) {  // Double a character.
-            var charIndex = Math.floor(Math.random() * (line.length - 1));
+            let charIndex = Math.floor(Math.random() * (line.length - 1));
             line = line.substr(0, charIndex) + line[charIndex] + line.substr(charIndex);
         }
 

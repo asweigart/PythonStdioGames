@@ -10,7 +10,7 @@ console.log('Coin Flip Simulator, by Al Sweigart al@inventwithpython.com');
 // Ask the user how many flips to make:
 console.log('How many coin flips to make?');
 while (true) {
-    var response = readlineSync.question('> ');
+    let response = readlineSync.question('> ');
     if (!isNaN(response)) {
         var numberOfFlips = Number(response);
         break  // Exit the loop once they enter a valid number.
@@ -20,8 +20,8 @@ while (true) {
 // The streakStats dictionary keeps count of how many times a certain
 // streak of heads or tails has occurred. The keys are arrays of
 // [streakLength, side] and the values are integer counts.
-var streakStats = {};
-for (var i = 0; i < numberOfFlips; i++) {
+let streakStats = {};
+for (let i = 0; i < numberOfFlips; i++) {
     // Simulate one coin flip:
     if (Math.floor(Math.random() * 2) == 0) {
         var flip = 'heads';
@@ -30,7 +30,7 @@ for (var i = 0; i < numberOfFlips; i++) {
     }
     process.stdout.write(flip[0]);  // Print out "h" or "t".
 
-    var isFirstFlip = (i === 0);
+    let isFirstFlip = (i === 0);
     if (isFirstFlip) {
         var currentStreakLength = 0;
         var currentStreakSide = flip;
@@ -68,9 +68,9 @@ streakLengthsAndSides = Object.keys(streakStats);
 streakLengthsAndSides.sort(); // TODO fix "10 before 2" bug
 
 // Display the results:
-for (var i = 0; i < streakLengthsAndSides.length; i++) {
-    var length = streakLengthsAndSides[i].split(',')[0];
-    var side = streakLengthsAndSides[i].split(',')[1];
-    var label = length + ' ' + side + ' in a row';
+for (let i = 0; i < streakLengthsAndSides.length; i++) {
+    let length = streakLengthsAndSides[i].split(',')[0];
+    let side = streakLengthsAndSides[i].split(',')[1];
+    let label = length + ' ' + side + ' in a row';
     console.log(label.padStart(21, ' ') + ' - ' + streakStats[[length, side]]);
 }

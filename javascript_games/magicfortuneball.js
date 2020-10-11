@@ -12,7 +12,7 @@ function sleep(seconds) {
 }
 
 async function slowSpacePrint(text, interval=0.1) {
-    for (var i = 0; i < text.length; i++) {
+    for (let i = 0; i < text.length; i++) {
         if (text[i] === 'I') {
             // I's are displayed in lowercase for style:
             process.stdout.write('i ');
@@ -34,7 +34,7 @@ async function main() {
     readlineSync.question('> ');
 
     // Display a brief reply:
-    var replies = [
+    let replies = [
         'LET ME THINK ON THIS...',
         'AN INTERESTING QUESTION...',
         'HMMM... ARE YOU SURE YOU WANT TO KNOW..?',
@@ -50,7 +50,7 @@ async function main() {
     // Dramatic pause:
     await slowSpacePrint('I HAVE AN ANSWER...', 0.2);
     await sleep(1);
-    var answers = [
+    let answers = [
         'YES, FOR SURE',
         'MY ANSWER IS NO',
         'ASK ME LATER',
@@ -66,4 +66,4 @@ async function main() {
     await slowSpacePrint(answers[Math.floor(Math.random() * answers.length)], 0.05);
 }
 
-await main();
+main();

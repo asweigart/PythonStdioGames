@@ -29,13 +29,13 @@ async function main() {
         console.log('Message must be 1 to', Math.floor(WIDTH / 2), 'characters long.')
     }
 
-    var step = 0.0;  // The "step" determines how far into the sine wave we are.
+    let step = 0.0;  // The "step" determines how far into the sine wave we are.
     // Sine goes from -1.0 to 1.0, so we need to change it by a multiplier:
-    var multipler = (WIDTH - message.length) / 2;
+    let multipler = (WIDTH - message.length) / 2;
 
     while (true) {  // Main program loop.
-        var sinOfStep = Math.sin(step);
-        var padding = ' '.repeat(Math.floor((sinOfStep + 1) * multipler));
+        let sinOfStep = Math.sin(step);
+        let padding = ' '.repeat(Math.floor((sinOfStep + 1) * multipler));
         console.log(padding + message);
         await sleep(0.1);
         step += 0.25  // (!) Try changing this to 0.1 to 0.5.

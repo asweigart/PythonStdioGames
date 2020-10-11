@@ -9,7 +9,7 @@ Displays a tessellation of the carpet pattern from The Shining.
 const X_REPEAT = 6;  // How many times to tessellate horizontally.
 const Y_REPEAT = 4;  // How many times to tessellate vertically.
 
-for (var y = 0; y < Y_REPEAT; y++) {
+for (let y = 0; y < Y_REPEAT; y++) {
     console.log('_ \\ \\ \\_/ __'.repeat(X_REPEAT));
     console.log(' \\ \\ \\___/ _'.repeat(X_REPEAT));
     console.log('\\ \\ \\_____/ '.repeat(X_REPEAT));

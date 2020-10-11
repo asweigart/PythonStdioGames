@@ -23,7 +23,7 @@ console.log();
 // Let the user enter if they are encrypting or decrypting:
 while (true) {  // Keep asking until the user enters e or d.
     console.log('Do you want to (e)ncrypt or (d)ecrypt?');
-    var response = readlineSync.question('> ').toLowerCase();
+    let response = readlineSync.question('> ').toLowerCase();
     if (response.startsWith('e')) {
         var mode = 'encrypt';
         break;
@@ -38,7 +38,7 @@ while (true) {  // Keep asking until the user enters e or d.
 while (true) {  // Keep asking until the user enters a valid key.
     const maxKey = SYMBOLS.length - 1;
     console.log('Please enter the key (0 to ' + maxKey + ') to use.');
-    var response = readlineSync.question('> ').toUpperCase();
+    let response = readlineSync.question('> ').toUpperCase();
     if (isNaN(response)) {
         continue;
     }
@@ -51,19 +51,19 @@ while (true) {  // Keep asking until the user enters a valid key.
 
 // Let the user enter the message to encrypt/decrypt:
 console.log('Enter the message to ' + mode + '.');
-var message = readlineSync.question('> ');
+let message = readlineSync.question('> ');
 
 // Caesar cipher only works on uppercase letters:
 message = message.toUpperCase();
 
 // Stores the encrypted/decrypted form of the message:
-var translated = '';
+let translated = '';
 
 // Encrypt/decrypt each symbol in the message:
 for (const symbol of message) {
     if (SYMBOLS.includes(symbol)) {
         // Get the encrypted (or decrypted) number for this symbol.
-        var num = SYMBOLS.indexOf(symbol)  // Get the number of the symbol.
+        let num = SYMBOLS.indexOf(symbol)  // Get the number of the symbol.
         if (mode === 'encrypt') {
             num = num + key;
         } else if (mode === 'decrypt') {
