@@ -27,8 +27,7 @@ while (true) {  // Keep asking until the user enters e or d.
     if (response.startsWith('e')) {
         var mode = 'encrypt';
         break;
-    }
-    else if (response.startsWith('d')) {
+    } else if (response.startsWith('d')) {
         var mode = 'decrypt';
         break;
     }
@@ -67,8 +66,7 @@ for (const symbol of message) {
         var num = SYMBOLS.indexOf(symbol)  // Get the number of the symbol.
         if (mode === 'encrypt') {
             num = num + key;
-        }
-        else if (mode === 'decrypt') {
+        } else if (mode === 'decrypt') {
             num = num - key;
         }
 
@@ -76,15 +74,13 @@ for (const symbol of message) {
         // SYMBOLS or less than 0:
         if (num >= SYMBOLS.length) {
             num = num - SYMBOLS.length;
-        }
-        else if (num < 0) {
+        } else if (num < 0) {
             num = num + SYMBOLS.length;
         }
 
         // Add encrypted/decrypted number's symbol to translated:
         translated = translated + SYMBOLS[num];
-    }
-    else {
+    } else {
         // Just add the symbol without encrypting/decrypting:
         translated = translated + symbol;
     }

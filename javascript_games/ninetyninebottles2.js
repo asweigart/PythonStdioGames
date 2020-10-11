@@ -57,8 +57,7 @@ async function main() {
 
         if (bottles > 0) {  // Print the last line of the current stanza.
             await slowPrint(bottles.toString() + lines[3], SPEED)
-        }
-        else {  // Print the last line of the entire song.
+        } else {  // Print the last line of the entire song.
             await slowPrint('No more bottles of milk on the wall!', SPEED)
         }
 
@@ -74,24 +73,20 @@ async function main() {
         if (effect === 0) {  // Replace a character with a space.
             var charIndex = Math.floor(Math.random() * line.length);
             line = replaceAt(line, charIndex, ' ');
-        }
-        else if (effect === 1) {  // Change the casing of a character.
+        } else if (effect === 1) {  // Change the casing of a character.
             var charIndex = Math.floor(Math.random() * line.length);
             if (line[charIndex].toUpperCase() == line[charIndex]) {
                 line = replaceAt(line, charIndex, line[charIndex].toLowerCase());
-            }
-            else if (line[charIndex].toLowerCase() == line[charIndex]) {
+            } else if (line[charIndex].toLowerCase() == line[charIndex]) {
                 line = replaceAt(line, charIndex, line[charIndex].toUpperCase());
             }
-        }
-        else if (effect === 2) {  // Transpose two characters.
+        } else if (effect === 2) {  // Transpose two characters.
             var charIndex = Math.floor(Math.random() * (line.length - 1));
             var firstChar = line[charIndex]
             var secondChar = line[charIndex + 1]
             line = replaceAt(line, charIndex, secondChar);
             line = replaceAt(line, charIndex + 1, firstChar);
-        }
-        else if (effect === 3) {  // Double a character.
+        } else if (effect === 3) {  // Double a character.
             var charIndex = Math.floor(Math.random() * (line.length - 1));
             line = line.substr(0, charIndex) + line[charIndex] + line.substr(charIndex);
         }

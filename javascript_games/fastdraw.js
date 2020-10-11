@@ -35,12 +35,10 @@ async function main() {
             // If the player pressed Enter before DRAW! appeared, the input()
             // call returns almost instantly.
             console.log('You drew before "DRAW" appeared! You lose.');
-        }
-        else if (timeElapsed > 0.3) {
+        } else if (timeElapsed > 0.3) {
             timeElapsed = Math.trunc(timeElapsed * 10000) / 10000;
             console.log('You took', timeElapsed, 'seconds to draw. Too slow!');
-        }
-        else {
+        } else {
             timeElapsed = Math.trunc(timeElapsed * 10000) / 10000;
             console.log('You took', timeElapsed, 'seconds to draw.');
             console.log('You are the fastest draw in the west! You win!');

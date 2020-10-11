@@ -25,8 +25,7 @@ for (var i = 0; i < numberOfFlips; i++) {
     // Simulate one coin flip:
     if (Math.floor(Math.random() * 2) == 0) {
         var flip = 'heads';
-    }
-    else {
+    } else {
         var flip = 'tails';
     }
     process.stdout.write(flip[0]);  // Print out "h" or "t".
@@ -50,8 +49,7 @@ for (var i = 0; i < numberOfFlips; i++) {
         // Reset the streak length for this new streak:
         currentStreakLength = 1;
         currentStreakSide = flip;
-    }
-    else {
+    } else {
         currentStreakLength = currentStreakLength + 1;
     }
 

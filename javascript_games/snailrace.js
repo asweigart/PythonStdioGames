@@ -39,11 +39,9 @@ async function main() {
             var name = readlineSync.question('> ');
             if (name.length === 0) {
                 console.log('Please enter a name.');
-            }
-            else if (snailNames.includes(name)) {
+            } else if (snailNames.includes(name)) {
                 console.log('Choose a name that has not already been used.');
-            }
-            else {
+            } else {
                 break;  // The entered name is acceptable.
             }
         }

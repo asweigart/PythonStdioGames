@@ -16,8 +16,7 @@ async function slowSpacePrint(text, interval=0.1) {
         if (text[i] === 'I') {
             // I's are displayed in lowercase for style:
             process.stdout.write('i ');
-        }
-        else {
+        } else {
             // All other characters are displayed normally:
             process.stdout.write(text[i] + ' ');
         }

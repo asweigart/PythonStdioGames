@@ -36,8 +36,7 @@ async function main() {
         var diceRoll = Math.floor(Math.random() * 6) + 1;
         if (diceRoll === 1 && leftWidth > 1) {
             leftWidth = leftWidth - 1  // Decrease left side width.
-        }
-        else if (diceRoll === 2 && leftWidth + gapWidth < WIDTH - 1) {
+        } else if (diceRoll === 2 && leftWidth + gapWidth < WIDTH - 1) {
             leftWidth = leftWidth + 1  // Increase left side width.
         }
 
@@ -46,8 +45,7 @@ async function main() {
         diceRoll = Math.floor(Math.random() * 6) + 1;
         if (diceRoll === 1 && gapWidth > 1) {
             gapWidth = gapWidth - 1;  // Decrease gap width.
-        }
-        else if (diceRoll === 2 && leftWidth + gapWidth < WIDTH - 1) {
+        } else if (diceRoll === 2 && leftWidth + gapWidth < WIDTH - 1) {
             gapWidth = gapWidth + 1;  // Increase gap width.
         }
     }

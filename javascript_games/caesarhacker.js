@@ -34,8 +34,7 @@ for (var key = 0; key < SYMBOLS.length; key++) {  // Loop through every possible
 
             // Add decrypted number's symbol to translated:
             translated = translated + SYMBOLS[num];
-        }
-        else {
+        } else {
             // Just add the symbol without decrypting:
             translated = translated + symbol;
         }

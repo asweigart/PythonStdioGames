@@ -43,7 +43,6 @@ for (var i = 0; i < 10; i++) {  // Give the player 10 guesses.
 // Reveal the results:
 if (guess == secretNumber) {
     console.log('Yay! You guessed my number!');
-}
-else {
+} else {
     console.log('Game over. The number I was thinking of was', secretNumber);
 }
