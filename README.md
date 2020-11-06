@@ -18,9 +18,11 @@ I Just Found This Web Page, How Do I Play These Games?
 
 First, install [the Python interpreter](https://python.org). This comes with the barebones IDLE editor. There are other editors you can use. On Windows, you can also use the [Visual Studio Code](https://code.visualstudio.com/) editor. [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/#section=windows) is an editor for Windows, Linux, and macOS. You can also use a browser-based editor like [REPL.it](https://repl.it/). These are all free.
 
-Then, click in the `src` and `gamesbyexample` folders in this repo to find the .py files of various Python games. The code for each game its entirely in one .py file, so you can copy the code directly into your editor. I recommend typing it in by hand, rather than using copy-paste. This will give you "muscle memory" of each part of the code. (Though some of these games require you download a data file into the same folder as your .py file.) Then you can run the program. If you get error messages, note the line number in the error message and check for typos you've made.
+Then, click in the `src` and `gamesbyexample` folders in this repo to find the `.py` files of various Python games. For example, this is the code for [snailrace.py](https://github.com/asweigart/PythonStdioGames/blob/master/src/gamesbyexample/snailrace.py). The code for each game its entirely in one `.py` file, so you can copy the code directly into your editor. I recommend typing it in by hand, rather than using copy-paste. This will give you "muscle memory" of each part of the code. (Though some of these games require you download a data file into the same folder as your `.py` file.) Then you can run the program. If you get error messages, note the line number in the error message and check for typos you've made.
 
 After learning basic syntax, many programmers want to move on to the next step and see how these programming concepts are used in "real" programs. Most open source projects are far too large and complicated. These games have been designed to be short, simple, and fun. You can use them as learning examples to see how to make your own programs.
+
+Note that some programs require you to download an extra file from this repo. For example, the `[sudoku.py](https://github.com/asweigart/PythonStdioGames/blob/master/src/gamesbyexample/sudoku.py)` game loads its puzzles from the `[sudokupuzzles.txt](https://github.com/asweigart/PythonStdioGames/blob/master/src/gamesbyexample/sudokupuzzles.txt)` file.
 
 
 About this Collection
