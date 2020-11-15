@@ -113,16 +113,16 @@ while time.time() < startTime + QUIZ_DURATION:  # Main game loop.
             left = random.randint(0, CANVAS_WIDTH  - 1 - DICE_WIDTH)
             top  = random.randint(0, CANVAS_HEIGHT - 1 - DICE_HEIGHT)
 
-            # Get the x, y for all four corners:
+            # Get the x, y coordinates for all four corners:
             #      left
             #      v
             #top > +-------+ ^
             #      | O     | |
-            #      |   O   | dice height (5)
+            #      |   O   | DICE_HEIGHT (5)
             #      |     O | |
             #      +-------+ v
             #      <------->
-            #      dice width (9)
+            #      DICE_WIDTH (9)
             topLeftX = left
             topLeftY = top
             topRightX = left + DICE_WIDTH
