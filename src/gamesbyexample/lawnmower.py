@@ -102,7 +102,7 @@ def main():
 
             # Grow the grass:
             while len(grassToGrow) > 0:
-                x, y = random.sample(grassToGrow, 1)[0]
+                x, y = random.choice(list(grassToGrow))
                 grassToGrow.remove((x, y))
                 bext.goto(x, y)
                 print(';')

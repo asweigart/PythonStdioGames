@@ -56,7 +56,7 @@ def main():
             print()
 
             # Check if the player has bust:
-            if getCardValue(playerHand) > 21:
+            if getHandValue(playerHand) > 21:
                 break
 
             # Get the player's move, either H, S, or D:
@@ -77,7 +77,7 @@ def main():
                 print('You drew a {} of {}.'.format(rank, suit))
                 playerHand.append(newCard)
 
-                if getCardValue(playerHand) > 21:
+                if getHandValue(playerHand) > 21:
                     # The player has busted:
                     continue
 
@@ -86,14 +86,14 @@ def main():
                 break
 
         # Handle the dealer's actions:
-        if getCardValue(playerHand) <= 21:
-            while getCardValue(dealerHand) < 17:
+        if getHandValue(playerHand) <= 21:
+            while getHandValue(dealerHand) < 17:
                 # The dealer hits:
                 print('Dealer hits...')
                 dealerHand.append(deck.pop())
                 displayHands(playerHand, dealerHand, False)
 
-                if getCardValue(dealerHand) > 21:
+                if getHandValue(dealerHand) > 21:
                     break  # The dealer has busted.
                 input('Press Enter to continue...')
                 print('\n\n')
@@ -101,8 +101,8 @@ def main():
         # Show the final hands:
         displayHands(playerHand, dealerHand, True)
 
-        playerValue = getCardValue(playerHand)
-        dealerValue = getCardValue(dealerHand)
+        playerValue = getHandValue(playerHand)
+        dealerValue = getHandValue(dealerHand)
         # Handle whether the player won, lost, or tied:
         if dealerValue > 21:
             print('Dealer busts! You win ${}!'.format(bet))
@@ -154,7 +154,7 @@ def displayHands(playerHand, dealerHand, showDealerHand):
     card if showDealerHand is False."""
     print()
     if showDealerHand:
-        print('DEALER:', getCardValue(dealerHand))
+        print('DEALER:', getHandValue(dealerHand))
         displayCards(dealerHand)
     else:
         print('DEALER: ???')
@@ -162,11 +162,11 @@ def displayHands(playerHand, dealerHand, showDealerHand):
         displayCards([BACKSIDE] + dealerHand[1:])
 
     # Show the player's cards:
-    print('PLAYER:', getCardValue(playerHand))
+    print('PLAYER:', getHandValue(playerHand))
     displayCards(playerHand)
 
 
-def getCardValue(cards):
+def getHandValue(cards):
     """Returns the value of the cards. Face cards are worth 10, aces are
     worth 11 or 1 (this function picks the most suitable ace value)."""
     value = 0
