@@ -11,7 +11,7 @@ def main():
     # Simulate a download:
     print('Progress Bar Simulation, by Al Sweigart')
     bytesDownloaded = 0
-    downloadSize = 4098
+    downloadSize = 4096
     while bytesDownloaded < downloadSize:
         # "Download" a random amount of "bytes":
         bytesDownloaded += random.randint(0, 100)

@@ -2,7 +2,7 @@
 A quiz of several trick questions.
 This and other games are available at https://nostarch.com/XX
 Tags: large, humor"""
-
+__version__ = 0
 import random, sys
 
 # QUESTIONS is a list of dictionaries, each dictionary represents a

@@ -2,7 +2,7 @@
 By Al Sweigart al@inventwithpython.com
 A simulation of one million dice rolls.
 This and other games are available at https://nostarch.com/XX
-Tags: tiny, beginner, simulation"""
+Tags: tiny, beginner, math, simulation"""
 __version__ = 0
 import random, time
 
@@ -20,9 +20,9 @@ for i in range(numberOfDice, (numberOfDice * 6) + 1):
 # Simulate dice rolls:
 print('Simulating 1,000,000 rolls of {} dice...'.format(numberOfDice))
 lastPrintTime = time.time()
-for i in range(1_000_000):
+for i in range(1000000):
     if time.time() > lastPrintTime + 1:
-        print('{}% done...'.format(round(i / 10_000, 1)))
+        print('{}% done...'.format(round(i / 10000, 1)))
         lastPrintTime = time.time()
 
     total = 0
@@ -34,5 +34,5 @@ for i in range(1_000_000):
 print('TOTAL - ROLLS - PERCENTAGE')
 for i in range(numberOfDice, (numberOfDice * 6) + 1):
     roll = results[i]
-    percentage = round(results[i] / 10_000, 1)
+    percentage = round(results[i] / 10000, 1)
     print('  {} - {} rolls - {}%'.format(i, roll, percentage))

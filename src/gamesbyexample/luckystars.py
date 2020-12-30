@@ -6,7 +6,7 @@ three skulls you lose all your stars.
 Inspired by the Zombie Dice game from Steve Jackson Games.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game, multiplayer"""
-
+__version__ = 0
 import random
 
 # Set up the constants:

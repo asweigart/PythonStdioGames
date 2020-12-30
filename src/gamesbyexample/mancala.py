@@ -1,7 +1,7 @@
 """Mancala, by Al Sweigart al@inventwithpython.com
 The ancient seed-sowing game.
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, board game, two-player"""
+Tags: large, board game, game, two-player"""
 __version__ = 0
 import sys
 
@@ -23,15 +23,15 @@ NEXT_PIT = {'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E', 'E': 'F', 'F': '1',
 PIT_LABELS = 'ABCDEF1LKJIHG2'
 
 # How many seeds are in each pit at the start of a new game:
-STARTING_NUMBER_OF_SEEDS = 4
+STARTING_NUMBER_OF_SEEDS = 4  # (!) Try changing this to 1 or 10.
 
 
 def main():
     print('''Mancala, by Al Sweigart al@inventwithpython.com
 
 The ancient two-player, seed-sowing game. Grab the seeds from a pit on
-your side and place one in each following pit, going counterclockwise and
-skipping your opponent's store. If your last seed lands in an empty
+your side and place one in each following pit, going counterclockwise
+and skipping your opponent's store. If your last seed lands in an empty
 pit of yours, move the opposite pit's seeds into that pit. The
 goal is to get the most seeds in your store on the side of the board.
 If the last placed seed is in your store, you get a free turn.

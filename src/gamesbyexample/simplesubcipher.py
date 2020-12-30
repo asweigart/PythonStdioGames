@@ -53,9 +53,9 @@ symbol in the plaintext and each symbol in the ciphertext.''')
 
     # Perform the encryption/decryption:
     if myMode == 'encrypt':
-        translated = encryptMessage(myKey, myMessage)
+        translated = encryptMessage(myMessage, myKey)
     elif myMode == 'decrypt':
-        translated = decryptMessage(myKey, myMessage)
+        translated = decryptMessage(myMessage, myKey)
 
     # Display the results:
     print('The %sed message is:' % (myMode))
@@ -118,9 +118,9 @@ def translateMessage(message, key, mode):
 
 def generateRandomKey():
     """Generate and return a random encryption key."""
-    key = list(LETTERS)
-    random.shuffle(key)
-    return ''.join(key)
+    key = list(LETTERS)  # Get a list from the LETTERS string.
+    random.shuffle(key)  # Randomly shuffle the list.
+    return ''.join(key)  # Get a string from the list.
 
 
 # If this program was run (instead of imported), run the program:

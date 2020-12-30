@@ -32,11 +32,11 @@ def displayCards(cards):
 
     for i, card in enumerate(cards):
         rank, suit = card  # The card is a tuple data structure.
-        rows[0] += '----- '  # Print the top line of the card.
+        rows[0] += ' ___  '  # Print the top line of the card.
         rows[1] += '|{} | '.format(rank.ljust(2))
         rows[2] += '| {} | '.format(suit)
-        rows[3] += '| {}| '.format(rank.rjust(2))
-        rows[4] += '----- '  # Print the bottom line of the card.
+        rows[3] += '|_{}| '.format(rank.rjust(2, '_'))
+
 
     # Print each row on the screen:
     for i in range(5):

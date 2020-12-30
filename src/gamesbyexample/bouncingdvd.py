@@ -59,7 +59,7 @@ def main():
         for logo in logos:  # Handle each logo in the logos list.
             # Erase the logo's current location:
             bext.goto(logo[X], logo[Y])
-            print('   ', end='')
+            print('   ', end='')  # (!) Try commenting this line out.
 
             originalDirection = logo[DIR]
 

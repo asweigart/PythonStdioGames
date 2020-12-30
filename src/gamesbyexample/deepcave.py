@@ -2,8 +2,8 @@
 An animation of a deep cave that goes forever into the earth.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, scrolling, artistic"""
-
 __version__ = 0
+
 import random, sys, time
 
 # Set up the constants:

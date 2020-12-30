@@ -90,9 +90,9 @@ input('Press Enter to begin...')
 
 print('Let\'s run another 100,000 simulations.')
 simMatch = 0  # How many simulations had matching birthdays in them.
-for i in range(100_000):
+for i in range(100000):
     # Report on the progress every 10,000 simulations:
-    if i % 10_000 == 0:
+    if i % 10000 == 0:
         print(i, 'simulations run...')
     birthdays = getBirthdays(numBDays)
     if getMatch(birthdays) != None:
@@ -100,7 +100,7 @@ for i in range(100_000):
 print('100,000 simulations run.')
 
 # Display simulation results:
-probability = round(simMatch / 100_000 * 100, 2)
+probability = round(simMatch / 100000 * 100, 2)
 print('Out of 100,000 simulations of', numBDays, 'people, there was a')
 print('matching birthday in that group', simMatch, 'times. This means')
 print('that', numBDays, 'people have a', probability, '% chance of')

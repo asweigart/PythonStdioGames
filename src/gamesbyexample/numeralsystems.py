@@ -2,8 +2,8 @@
 Shows equivalent numbers in decimal, hexadecimal, and binary.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, math"""
-
 __version__ = 0
+
 print('''Numeral System Counters, by Al Sweigart al@inventwithpython.com
 
 This program shows you equivalent numbers in decimal (base 10),
@@ -19,7 +19,7 @@ while True:
         break
     if response.isdecimal():
         break
-    print('Please enter a number.')
+    print('Please enter a number greater than or equal to 0.')
 start = int(response)
 
 while True:
@@ -29,7 +29,7 @@ while True:
         break
     if response.isdecimal():
         break
-    print('Please enter a number greater than or equal to 0.')
+    print('Please enter a number.')
 amount = int(response)
 
 for number in range(start, start + amount):  # Main program loop.

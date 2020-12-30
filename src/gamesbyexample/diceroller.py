@@ -69,7 +69,7 @@ while True:  # Main program loop:
             rolls.append(rollResult)
 
         # Display the total:
-        print('Total:', sum(rolls) + modAmount, '(Each die: ', end='')
+        print('Total:', sum(rolls) + modAmount, '(Each die:', end='')
 
         # Display the individual rolls:
         for i, roll in enumerate(rolls):

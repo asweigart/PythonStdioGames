@@ -2,7 +2,7 @@
 Test your reflexes to see if you're the fastest draw in the west.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game"""
-
+__version__ = 0
 import random, sys, time
 
 print('Fast Draw, by Al Sweigart al@inventwithpython.com')

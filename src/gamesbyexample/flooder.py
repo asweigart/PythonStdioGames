@@ -3,7 +3,7 @@ A colorful game where you try to fill the board with a single color. Has
 a mode for colorblind players.
 Inspired by the "Flood It!" game.
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, bext"""
+Tags: large, game, terminal"""
 __version__ = 0
 import random, sys
 

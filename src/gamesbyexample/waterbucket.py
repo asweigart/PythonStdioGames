@@ -2,32 +2,9 @@
 A water pouring puzzle.
 More info: https://en.wikipedia.org/wiki/Water_pouring_puzzle
 This and other games are available at https://nostarch.com/XX
-Tags: large, game, math, object-oriented, puzzle"""
+Tags: large, game, math, puzzle"""
 __version__ = 0
 import sys
-
-
-class Bucket:
-    def __init__(self, size):
-        self.size = size  # Size of the bucket in liters.
-        self.water = 0  # Buckets start off with 0 liters of water.
-
-    def fill(self):
-        self.water = self.size  # Set the water amount to the max size.
-
-    def drain(self):
-        self.water = 0  # Set the amount of water to nothing.
-
-    def pour(self, intoBucket):
-        # Figure out the amount to pour:
-        remainingSpace = intoBucket.size - intoBucket.water
-        amountToPour = min(remainingSpace, self.water)
-
-        # Pour out water from this bucket:
-        self.water = self.water - amountToPour
-
-        # Put the poured out water into the other bucket:
-        intoBucket.water = intoBucket.water + amountToPour
 
 
 print('Water Bucket Puzzle, by Al Sweigart al@inventwithpython.com')

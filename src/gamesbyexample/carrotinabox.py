@@ -3,7 +3,7 @@ A silly bluffing game between two human players. Based on the game
 from the show, 8 Out of 10 Cats.
 This and other games are available at https://nostarch.com/XX
 Tags: large, beginner, game, two-player"""
-
+__version__ = 0
 import random
 
 print('''Carrot in a Box, by Al Sweigart al@inventwithpython.com

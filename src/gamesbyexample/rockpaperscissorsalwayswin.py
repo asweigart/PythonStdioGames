@@ -12,10 +12,8 @@ print('''Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
 - Scissors beats paper.
 ''')
 
-# These variables keep track of the number of wins, losses, and ties.
+# These variables keep track of the number of wins.
 wins = 0
-losses = 0
-ties = 0
 
 while True:  # Main game loop.
     while True:  # Keep asking until player enters R, P, S, or Q.

@@ -216,7 +216,7 @@ def displayCards(cards):
 
 
 def getMove(playerHand, money):
-    """Asks the player for thier move, and returns 'H' for hit, 'S' for
+    """Asks the player for their move, and returns 'H' for hit, 'S' for
     stand, and 'D' for double down."""
     while True:  # Keep looping until the player enters a correct move.
         # Determine what moves the player can make:

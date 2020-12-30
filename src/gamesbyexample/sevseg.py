@@ -92,7 +92,7 @@ if __name__ == '__main__':
     print('    myNumber = sevseg.getSevSegStr(42, 3)')
     print('    print(myNumber)')
     print()
-    print('Will print 42, zero-padded to three digits:')
+    print('...will print 42, zero-padded to three digits:')
     print(' __        __ ')
     print('|  | |__|  __|')
     print('|__|    | |__ ')
