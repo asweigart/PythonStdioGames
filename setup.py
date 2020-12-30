@@ -32,7 +32,8 @@ setup(
     test_suite='tests',
     include_package_data=True,
     # As of Dec 2019, it seems that you can't run `pip3 install pygame` on macOS.
-    install_requires=['pymsgbox', 'bext', 'pyperclip', 'playsound', 'windows-curses;platform_system=="Windows"', 'pygame;platform_system=="Windows" or platform_system=="Linux"'],
+    # Took out 'windows-curses;platform_system=="Windows"', maybe I should I put it back in?
+    install_requires=['pymsgbox', 'bext', 'pyperclip', 'playsound', 'pyttsx3', 'pygame;platform_system=="Windows" or platform_system=="Linux"'],
     keywords='games',
     classifiers=[
         'License :: OSI Approved :: MIT License',
@@ -42,6 +43,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8'
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ],
 )
