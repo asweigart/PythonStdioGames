@@ -69,13 +69,16 @@ for filename in allFiles:
 
         # Get the description from the subsequent lines' comments:
         descLines = []
-        for i in range(2, len(lines)):
+        for i in range(1, len(lines)):
             if '"""' not in lines[i]:
                 descLines.append(lines[i])
             else:
                 descLines.append(lines[i].replace('"""', ''))
                 break
         desc = ''.join(descLines)
+
+        # Remove "This and other games are available at https://nostarch.com/XX"
+        desc = desc.replace('This and other games are available at https://nostarch.com/XX\n', '')
 
         hash = zlib.adler32(content.encode('utf-8'))
 
@@ -90,7 +93,7 @@ for filename in allFiles:
             origFilesZip.write(supportFilename)
 origFilesZip.close()
 
-with open('__programdata__.py', 'w') as programDataFile:
+with open('__programdata__.py', 'w', encoding='utf-8') as programDataFile:
     programDataFile.write('PROGRAMS = ' + pprint.pformat(PROGRAMS, indent=4, width=120))
     programDataFile.write('\n\n\n')
     programDataFile.write('SUPPORT_FILES = ' + pprint.pformat(SUPPORT_FILES, indent=4, width=120))
