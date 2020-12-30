@@ -1,7 +1,7 @@
 # Games By Example
 # By Al Sweigart al@inventwithpython.com
 
-__version__ = '2020.12.29'
+__version__ = '2020.12.30'
 
 import sys, pymsgbox
 if sys.version_info[0] == 2:
@@ -23,7 +23,7 @@ from tkinter import ttk
 
 FOLDER_OF_THIS_FILE = os.path.dirname(os.path.abspath(__file__))
 
-os.chdir(FOLDER_OF_THIS_FILE) # Launch all game programs with this folder as the cwd.
+os.chdir(FOLDER_OF_THIS_FILE) # Launch all (non-pygame) game programs with this folder as the cwd.
 
 # Sort the programs in "pygame_games/" without considering the folder name:
 PROGRAMS.sort(key=lambda x: os.path.basename(x['filename']))
@@ -63,10 +63,14 @@ def programSelect(*args):
     descTextarea.delete('1.0', END)
     filename = os.path.join(FOLDER_OF_THIS_FILE, PROGRAMS[i]['filename'])
 
+    # Pygame games need to have their cwd changed to pygame_games/
+    if 'Pygame' in PROGRAMS[i]['desc']:
+        os.chdir(os.path.join(FOLDER_OF_THIS_FILE, 'pygame_games'))
+    else:
+        os.chdir(FOLDER_OF_THIS_FILE)
+
     # Set the text in the text box to the program name and description:
     programNameInListbox = PROGRAMS[i]['name']
-    if 'pygame_games/' in programNameInListbox:
-        programNameInListbox = programNameInListbox[len('pygame_games/'):]
     text = programNameInListbox + '\n\n' + PROGRAMS[i]['desc'] + '\n'
     descTextarea.insert(INSERT, text)
     descTextarea.configure(state='disabled')
