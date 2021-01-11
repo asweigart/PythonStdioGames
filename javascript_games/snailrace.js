@@ -3,6 +3,8 @@ Snail Race, by Al Sweigart al@inventwithpython.com
 Fast-paced snail racing action!
 */
 
+'use strict';
+
 const readlineSync = require('readline-sync');
 
 function sleep(seconds) {

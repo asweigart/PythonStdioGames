@@ -11,6 +11,8 @@ Draws diamonds of letious sizes.
  \/   \/    \/     \/      \/       \/
 */
 
+'use strict';
+
 function main() {
     console.log('Diamonds, by Al Sweigart al@inventwithpython.com');
 

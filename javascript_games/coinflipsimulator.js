@@ -3,6 +3,8 @@ Coin Flip Simulator, by Al Sweigart al@inventwithpython.com
 Simulate a large number of coin flips.
 */
 
+'use strict';
+
 const readlineSync = require('readline-sync');
 
 console.log('Coin Flip Simulator, by Al Sweigart al@inventwithpython.com');
