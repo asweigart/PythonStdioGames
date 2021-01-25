@@ -1,4 +1,4 @@
-"""Cho-Han, by Al Sweigart al@inventwtihpython.com
+"""Cho-Han, by Al Sweigart al@inventwithpython.com
 The traditional Japanese dice game of even-odd.
 Tags: short, beginner, game"""
 __version__ = 0

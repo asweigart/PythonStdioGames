@@ -55,8 +55,8 @@ allFiles = ['alphabetizequiz.py', 'bagels.py', 'birthdayparadox.py', 'bitmapmess
 'rockpaperscissorsalwayswin.py', 'rot13cipher.py', 'rotatingcube.py', 'royalgameofur.py', 'sevseg.py', 'shellgame.py',
 'shiningcarpet.py', 'simplesubcipher.py', 'sinemessage.py', 'slidingtilepuzzle.py', 'slitheringsnakes.py',
 'snailrace.py', 'sokoban.py', 'soroban.py', 'soundmimic.py', 'spongetext.py', 'sudoku.py', 'texttospeechtalker.py',
-'threecardmonte.py', 'tictactoe.py', 'tictactoeoop.py', 'towerofhanoi.py', 'trickquestions.py', 'twentyfortyeight.py',
-'ultimatetictactoe.py', 'vigenerecipher.py', 'waterbucket.py']
+'threecardmonte.py', 'tictactoe.py', 'tictactoeoop.py', 'towerofhanoi.py', 'trickquestions.py', 'turtledemowrapper.py',
+'twentyfortyeight.py', 'ultimatetictactoe.py', 'vigenerecipher.py', 'waterbucket.py']
 allFiles.extend(['pygame_games/' + f for f in os.listdir('pygame_games')])
 
 pyflakesChecklist = []
