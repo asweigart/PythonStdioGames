@@ -22,7 +22,7 @@ Then, click in the `src` and `gamesbyexample` folders in this repo to find the `
 
 After learning basic syntax, many programmers want to move on to the next step and see how these programming concepts are used in "real" programs. Most open source projects are far too large and complicated. These games have been designed to be short, simple, and fun. You can use them as learning examples to see how to make your own programs.
 
-Note that some programs require you to download an extra file from this repo. For example, the `[sudoku.py](https://github.com/asweigart/PythonStdioGames/blob/master/src/gamesbyexample/sudoku.py)` game loads its puzzles from the `[sudokupuzzles.txt](https://github.com/asweigart/PythonStdioGames/blob/master/src/gamesbyexample/sudokupuzzles.txt)` file.
+Note that some programs require you to download an extra file from this repo. For example, the [sudoku.py](https://github.com/asweigart/PythonStdioGames/blob/master/src/gamesbyexample/sudoku.py) game loads its puzzles from the [sudokupuzzles.txt](https://github.com/asweigart/PythonStdioGames/blob/master/src/gamesbyexample/sudokupuzzles.txt) file.
 
 
 About this Collection
