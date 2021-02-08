@@ -24,11 +24,11 @@ while True:
 
 step = 0.0  # The "step" determines how far into the sine wave we are.
 # Sine goes from -1.0 to 1.0, so we need to change it by a multiplier:
-multipler = (WIDTH - len(message)) / 2
+multiplier = (WIDTH - len(message)) / 2
 try:
     while True:  # Main program loop.
         sinOfStep = math.sin(step)
-        padding = ' ' * int((sinOfStep + 1) * multipler)
+        padding = ' ' * int((sinOfStep + 1) * multiplier)
         print(padding + message)
         time.sleep(0.1)
         step += 0.25  # (!) Try changing this to 0.1 or 0.5.
