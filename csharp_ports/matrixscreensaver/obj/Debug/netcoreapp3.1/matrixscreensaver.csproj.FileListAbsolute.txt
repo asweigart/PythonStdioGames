@@ -1,0 +1,13 @@
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\bin\Debug\netcoreapp3.1\matrixscreensaver.exe
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\bin\Debug\netcoreapp3.1\matrixscreensaver.deps.json
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\bin\Debug\netcoreapp3.1\matrixscreensaver.runtimeconfig.json
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\bin\Debug\netcoreapp3.1\matrixscreensaver.runtimeconfig.dev.json
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\bin\Debug\netcoreapp3.1\matrixscreensaver.dll
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\bin\Debug\netcoreapp3.1\matrixscreensaver.pdb
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\obj\Debug\netcoreapp3.1\matrixscreensaver.csprojAssemblyReference.cache
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\obj\Debug\netcoreapp3.1\matrixscreensaver.csproj.CoreCompileInputs.cache
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\obj\Debug\netcoreapp3.1\matrixscreensaver.AssemblyInfoInputs.cache
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\obj\Debug\netcoreapp3.1\matrixscreensaver.AssemblyInfo.cs
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\obj\Debug\netcoreapp3.1\matrixscreensaver.dll
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\obj\Debug\netcoreapp3.1\matrixscreensaver.pdb
+C:\github\PythonStdioGames\csharp_ports\matrixscreensaver\obj\Debug\netcoreapp3.1\matrixscreensaver.genruntimeconfig.cache
