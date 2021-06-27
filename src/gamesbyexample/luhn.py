@@ -5,7 +5,7 @@ More info at: https://youtu.be/Erp8IAUouus
 This and other games are available at https://nostarch.com/XX
 Tags: short, math, algorithm"""
 __version__ = 0
-import time, sys
+import sys
 
 print('Luhn Algorithm, by Al Sweigart al@inventwithpython.com')
 

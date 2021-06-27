@@ -27,6 +27,8 @@ def main():
             # Write out the number of sides for the shape:
             if i == int(sides / 2.0):
                 turtle.write(str(sides))
+    turtle.update() # Finish drawing the screen.
+    turtle.exitonclick() # When user clicks on the window, close it.
 
 
 try:
