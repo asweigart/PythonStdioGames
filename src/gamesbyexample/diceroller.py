@@ -1,6 +1,6 @@
 """Dice Roller, by Al Sweigart al@inventwithpython.com
 Simulates dice rolls using the Dungeons & Dragons dice roll notation.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, simulation"""
 __version__ = 0
 import random, sys

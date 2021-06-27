@@ -4,8 +4,8 @@ Similar to ASCIIQuarium or @EmojiAquarium, but mine is based on an
 older ASCII fish tank program for DOS.
 https://robobunny.com/projects/asciiquarium/html/
 https://twitter.com/EmojiAquarium
-This and other games are available at https://nostarch.com/XX
-Tags: extra-large, artistic, terminal"""
+This code is available at https://nostarch.com/big-book-small-python-programming
+Tags: extra-large, artistic, bext"""
 __version__ = 0
 import random, sys, time
 

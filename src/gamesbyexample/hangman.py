@@ -1,6 +1,6 @@
 """Hangman, by Al Sweigart al@inventwithpython.com
 Guess the letters to a secret word before the hangman is drawn.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, game, word, puzzle"""
 __version__ = 0
 # A version of this game is featured in the book "Invent Your Own

@@ -13,7 +13,7 @@ AAAAWAASSDDSAASSDDWDDSDDWWAAWDDDDDDSAASSDDWDDSDDWWAAWDDWWAASAAAAWDDWA
 AWDDDDSDDWWAAWDDWWAASAAWAASSDDSAAAAWAASAAAAWDDWAAWDDDDSDDWWWAASAAAAWD
 DWAAWDDDDSDDWDDDDSAASSDDWDDSDDWWAAWDD
 
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, artistic"""
 __version__ = 0
 import shutil, sys

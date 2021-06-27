@@ -1,7 +1,7 @@
 """Sudoku Puzzle, by Al Sweigart al@inventwithpython.com
 The classic 9x9 number placement puzzle.
 More info at https://en.wikipedia.org/wiki/Sudoku
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, game, object-oriented, puzzle"""
 __version__ = 0
 import copy, random, sys
@@ -32,7 +32,7 @@ class SudokuGrid:
         # with (x, y) keys and values of the number (as a string) at
         # that space.
         self.grid = {}
-        self.resetGrid()  # Set the grid state to it's original setup.
+        self.resetGrid()  # Set the grid state to its original setup.
         self.moves = []  # Tracks each move for the undo feature.
 
     def resetGrid(self):
@@ -54,7 +54,7 @@ class SudokuGrid:
     def makeMove(self, column, row, number):
         """Place the number at the column (a letter from A to I) and row
         (an integer from 1 to 9) on the grid."""
-        x = 'ABCDEFGHI'.find(column)  # convert this to an integer
+        x = 'ABCDEFGHI'.find(column)  # Convert this to an integer.
         y = int(row) - 1
 
         # Check if the move is being made on a "given" number:

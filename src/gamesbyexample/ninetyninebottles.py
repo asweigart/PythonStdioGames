@@ -2,7 +2,7 @@
 By Al Sweigart al@inventwithpython.com
 Print the full lyrics to one of the longest songs ever! Press
 Ctrl-C to stop.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, beginner, scrolling"""
 __version__ = 0
 import sys, time

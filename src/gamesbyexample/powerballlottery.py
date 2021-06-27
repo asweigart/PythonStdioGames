@@ -1,7 +1,7 @@
 """Powerball Lottery, by Al Sweigart al@inventwithpython.com
 A simulation of the lottery so you can experience the thrill of
 losing the lottery without wasting your money.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, humor, simulation"""
 __version__ = 0
 import random
@@ -9,7 +9,7 @@ import random
 print('''Powerball Lottery, by Al Sweigart al@inventwithpython.com
 
 Each powerball lottery ticket costs $2. The jackpot for this game
-is $1.586 billion! It doesn't matter what the jackpot is though,
+is $1.586 billion! It doesn't matter what the jackpot is, though,
 because the odds are 1 in 292,201,338, so you won't win.
 
 This simulation gives you the thrill of playing without wasting money.

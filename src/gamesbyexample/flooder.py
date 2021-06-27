@@ -2,8 +2,8 @@
 A colorful game where you try to fill the board with a single color. Has
 a mode for colorblind players.
 Inspired by the "Flood It!" game.
-This and other games are available at https://nostarch.com/XX
-Tags: large, game, terminal"""
+This code is available at https://nostarch.com/big-book-small-python-programming
+Tags: large, bext, game"""
 __version__ = 0
 import random, sys
 

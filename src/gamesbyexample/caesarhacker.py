@@ -3,7 +3,7 @@ This programs hacks messages encrypted with the Caesar cipher by doing
 a brute force attack against every possible key.
 More info at:
 https://en.wikipedia.org/wiki/Caesar_cipher#Breaking_the_cipher
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, beginner, cryptography, math"""
 __version__ = 0
 print('Caesar Cipher Hacker, by Al Sweigart al@inventwithpython.com')

@@ -1,6 +1,6 @@
 """Pig Latin, by Al Sweigart al@inventwithpython.com
 Translates English messages into Igpay Atinlay.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, word"""
 __version__ = 0
 try:
@@ -43,7 +43,7 @@ def englishToPigLatin(message):
         # Separate the non-letters at the end of this word:
         suffixNonLetters = ''
         while not word[-1].isalpha():
-            suffixNonLetters += word[-1]
+            suffixNonLetters = word[-1] + suffixNonLetters
             word = word[:-1]
 
         # Remember if the word was in uppercase or titlecase.

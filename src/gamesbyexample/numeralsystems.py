@@ -1,8 +1,9 @@
 """Numeral System Counters, by Al Sweigart al@inventwithpython.com
 Shows equivalent numbers in decimal, hexadecimal, and binary.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, math"""
 __version__ = 0
+
 
 print('''Numeral System Counters, by Al Sweigart al@inventwithpython.com
 

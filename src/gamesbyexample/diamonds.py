@@ -1,5 +1,6 @@
 r"""Diamonds, by Al Sweigart al@inventwithpython.com
 Draws diamonds of various sizes.
+View this code at https://nostarch.com/big-book-small-python-projects
                            /\       /\
                           /  \     //\\
             /\     /\    /    \   ///\\\

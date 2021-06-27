@@ -1,6 +1,6 @@
 """J'ACCUSE!, by Al Sweigart al@inventwithpython.com
 A mystery game of intrigue and a missing cat.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: extra-large, game, humor, puzzle"""
 
 # Play the original Flash game at:

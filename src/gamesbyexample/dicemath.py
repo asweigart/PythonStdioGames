@@ -1,5 +1,6 @@
 """Dice Math, by Al Sweigart al@inventwithpython.com
 A flash card addition game where you sum the total on random dice rolls.
+View this code at https://nostarch.com/big-book-small-python-projects
 Tags: large, artistic, game, math"""
 __version__ = 0
 import random, time

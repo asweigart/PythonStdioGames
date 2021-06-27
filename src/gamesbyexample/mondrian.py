@@ -1,8 +1,8 @@
 """Mondrian Art Generator, by Al Sweigart al@inventwithpython.com
 Randomly generates art in the style of Piet Mondrian.
 More info at: https://en.wikipedia.org/wiki/Piet_Mondrian
-This and other games are available at https://nostarch.com/XX
-Tags: large, artistic, terminal"""
+This code is available at https://nostarch.com/big-book-small-python-programming
+Tags: large, artistic, bext"""
 __version__ = 0
 import sys, random
 

@@ -1,5 +1,6 @@
 """Cho-Han, by Al Sweigart al@inventwithpython.com
 The traditional Japanese dice game of even-odd.
+View this code athttps://nostarch.com/big-book-small-python-projects
 Tags: short, beginner, game"""
 __version__ = 0
 import random, sys
@@ -38,7 +39,7 @@ while True:  # Main game loop.
 
     print('The dealer swirls the cup and you hear the rattle of dice.')
     print('The dealer slams the cup on the floor, still covering the')
-    print('the dice and asks for your bet.')
+    print('dice and asks for your bet.')
     print()
     print('    CHO (even) or HAN (odd)?')
 

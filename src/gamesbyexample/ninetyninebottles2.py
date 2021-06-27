@@ -1,10 +1,10 @@
 """niNety-nniinE BoOttels of Mlik On teh waLl
 By Al Sweigart al@inventwithpython.com
 Print the full lyrics to one of the longest songs ever! The song
-gets sillier and with each verse. Press Ctrl-C to stop.
-This and other games are available at https://nostarch.com/XX
+gets sillier and sillier with each verse. Press Ctrl-C to stop.
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, scrolling, word"""
-__version__ = 0
+
 import random, sys, time
 
 # Set up the constants:

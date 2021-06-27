@@ -1,7 +1,7 @@
 """Million Dice Roll Statistics Simulator
 By Al Sweigart al@inventwithpython.com
 A simulation of one million dice rolls.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, beginner, math, simulation"""
 __version__ = 0
 import random, time

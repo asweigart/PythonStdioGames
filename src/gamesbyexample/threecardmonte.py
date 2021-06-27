@@ -3,7 +3,7 @@ Find the Queen of Hearts after cards have been swapped around.
 (In the real-life version, the scammer palms the Queen of Hearts so you
 always lose.)
 More info at https://en.wikipedia.org/wiki/Three-card_Monte
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, card game, game"""
 __version__ = 0
 import random, time
@@ -62,7 +62,7 @@ print()
 
 # Show the original arrangement:
 cards = [('Q', HEARTS), getRandomCard(), getRandomCard()]
-random.shuffle(cards)  # Put the queen of hearts in a random place.
+random.shuffle(cards)  # Put the Queen of Hearts in a random place.
 print('Here are the cards:')
 displayCards(cards)
 input('Press Enter when you are ready to begin...')

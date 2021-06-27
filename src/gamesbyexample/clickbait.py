@@ -1,6 +1,6 @@
 """Clickbait Headline Generator, by Al Sweigart al@inventwithpython.com
 A clickbait headline generator for your soulless content farm website.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, beginner, humor, word"""
 __version__ = 0
 import random

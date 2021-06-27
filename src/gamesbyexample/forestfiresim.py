@@ -1,8 +1,8 @@
 """Forest Fire Sim, by Al Sweigart al@inventwithpython.com
 A simulation of wildfires spreading in a forest. Press Ctrl-C to stop.
 Inspired by Nicky Case's Emoji Sim http://ncase.me/simulating/model/
-This and other games are available at https://nostarch.com/XX
-Tags: short, simulation, terminal"""
+This code is available at https://nostarch.com/big-book-small-python-programming
+Tags: short, bext, simulation"""
 __version__ = 0
 import random, sys, time
 

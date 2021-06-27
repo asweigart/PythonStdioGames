@@ -1,7 +1,7 @@
 """Carrot in a Box, by Al Sweigart al@inventwithpython.com
 A silly bluffing game between two human players. Based on the game
 from the show, 8 Out of 10 Cats.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, beginner, game, two-player"""
 __version__ = 0
 import random
@@ -47,11 +47,11 @@ print()
 print(p1Name + ' here is the inside of your box:')
 
 if random.randint(1, 2) == 1:
-    carrotInRedBox = True
+    carrotInFirstBox = True
 else:
-    carrotInRedBox = False
+    carrotInFirstBox = False
 
-if carrotInRedBox:
+if carrotInFirstBox:
     print('''
    ___VV____
   |   VV    |
@@ -100,7 +100,7 @@ while True:
     else:
         break
 
-firstBox  = 'RED '  # Note the space after the "D".
+firstBox = 'RED '  # Note the space after the "D".
 secondBox = 'GOLD'
 
 if response.startswith('Y'):

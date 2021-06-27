@@ -1,6 +1,6 @@
 """Leetspeak, by Al Sweigart al@inventwithpython.com
 Translates English messages into l33t5p34]<.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, beginner, word"""
 __version__ = 0
 import random

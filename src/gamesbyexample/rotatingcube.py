@@ -1,6 +1,6 @@
 """Rotating Cube, by Al Sweigart al@inventwithpython.com
 A rotating cube animation. Press Ctrl-C to stop.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, artistic, math"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
@@ -18,7 +18,7 @@ TRANSLATEX = (WIDTH - 4) // 2
 TRANSLATEY = (HEIGHT - 4) // 2
 
 # (!) Try changing this to '#' or '*' or some other character:
-LINE_CHAR = chr(9608)  # Character 9608 is '█'
+LINE_CHAR = chr(9608)  # Character 9608 is a solid block.
 
 # (!) Try setting two of these values to zero to rotate the cube only
 # along a single axis:
@@ -79,7 +79,7 @@ def line(x1, y1, x2, y2):
             if extray <= 0:  # Only change y once extray <= 0.
                 currenty -= ydirection
                 extray += deltax
-    else:  # Get the points on the line going left-to-right.
+    else:  # Get the points on the line going left to right.
         deltax = x2 - x1
         deltay = abs(y2 - y1)
         extray = int(deltax / 2)
@@ -168,7 +168,7 @@ zRotation = 0.0
 
 try:
     while True:  # Main program loop.
-        # Rotate the cube along different axises by different amounts:
+        # Rotate the cube along different axes by different amounts:
         xRotation += X_ROTATE_SPEED
         yRotation += Y_ROTATE_SPEED
         zRotation += Z_ROTATE_SPEED

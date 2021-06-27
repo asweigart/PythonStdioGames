@@ -1,7 +1,7 @@
 """Soroban Japanese Abacus, by Al Sweigart al@inventwithpython.com
 A simulation of a Japanese abacus calculator tool.
 More info at: https://en.wikipedia.org/wiki/Soroban
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, artistic, math, simulation"""
 __version__ = 0
 NUMBER_OF_DIGITS = 10

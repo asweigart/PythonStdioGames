@@ -1,7 +1,7 @@
 """Rock,Paper, Scissors (Always Win version)
 By Al Sweigart al@inventwithpython.com
 The classic hand game of luck, except you always win.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, game, humor"""
 __version__ = 0
 import time, sys

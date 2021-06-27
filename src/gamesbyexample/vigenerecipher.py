@@ -2,7 +2,7 @@
 The Vigenère cipher is a polyalphabetic substitution cipher that was
 powerful enough to remain unbroken for centuries.
 More info at: https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, cryptography, math"""
 __version__ = 0
 try:
@@ -16,7 +16,7 @@ LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def main():
     print('''Vigenère Cipher, by Al Sweigart al@inventwithpython.com
-The Viegenere cipher is a polyalphabetic substitution cipher that was
+The Viegenère cipher is a polyalphabetic substitution cipher that was
 powerful enough to remain unbroken for centuries.''')
 
     # Let the user specify if they are encrypting or decrypting:
@@ -95,7 +95,7 @@ def translateMessage(message, key, mode):
             elif symbol.islower():
                 translated.append(LETTERS[num].lower())
 
-            keyIndex += 1  # move to the next letter in the key
+            keyIndex += 1  # Move to the next letter in the key.
             if keyIndex == len(key):
                 keyIndex = 0
         else:

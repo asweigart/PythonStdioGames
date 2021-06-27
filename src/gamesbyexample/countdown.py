@@ -3,7 +3,7 @@ Show a countdown timer animation using a seven-segment display.
 Press Ctrl-C to stop.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
 Requires sevseg.py to be in the same folder.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, artistic"""
 __version__ = 0
 import sys, time

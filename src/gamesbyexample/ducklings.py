@@ -5,7 +5,7 @@ A screensaver of many many ducklings.
 (  >)  (  ^)  (v  )  (^ )  ( >)  (v )
  ^ ^    ^ ^    ^ ^    ^^    ^^    ^^
 
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, artistic, object-oriented, scrolling"""
 __version__ = 0
 import random, shutil, sys, time

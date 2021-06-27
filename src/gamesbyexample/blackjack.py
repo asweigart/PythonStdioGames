@@ -2,7 +2,7 @@
 The classic card game also known as 21. (This version doesn't have
 splitting or insurance.)
 More info at: https://en.wikipedia.org/wiki/Blackjack
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, game, card game"""
 __version__ = 0
 import random, sys
@@ -185,7 +185,7 @@ def getHandValue(cards):
     # Add the value for the aces:
     value += numberOfAces  # Add 1 per ace.
     for i in range(numberOfAces):
-        # If another 10 can be added with busting, do so:
+        # If another 10 can be added without busting, do so:
         if value + 10 <= 21:
             value += 10
 

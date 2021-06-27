@@ -1,6 +1,6 @@
 """Rock, Paper, Scissors, by Al Sweigart al@inventwithpython.com
 The classic hand game of luck.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, game"""
 __version__ = 0
 import random, time, sys

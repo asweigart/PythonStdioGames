@@ -4,7 +4,7 @@ as possible. You can roll as many times as you want, but if you roll
 three skulls you lose all your stars.
 
 Inspired by the Zombie Dice game from Steve Jackson Games.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, game, multiplayer"""
 __version__ = 0
 import random

@@ -2,7 +2,7 @@
 A seven-segment number display module, used by the Countdown and Digital
 Clock programs.
 More info at https://en.wikipedia.org/wiki/Seven-segment_display
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, module"""
 __version__ = 0
 """A labeled seven-segment display, with each segment labeled A to G:

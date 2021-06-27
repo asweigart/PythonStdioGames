@@ -1,8 +1,9 @@
 """Deep Cave, by Al Sweigart al@inventwithpython.com
 An animation of a deep cave that goes forever into the earth.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, beginner, scrolling, artistic"""
 __version__ = 0
+
 
 import random, sys, time
 

@@ -1,6 +1,6 @@
 """sPoNgEcAsE, by Al Sweigart al@inventwithpython.com
-Translates English messages into sPOnGEtExT.
-This and other games are available at https://nostarch.com/XX
+Translates English messages into sPOnGEcAsE.
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, beginner, word"""
 __version__ = 0
 import random
@@ -12,40 +12,40 @@ except ImportError:
 
 
 def main():
-    """Run the Spongetext program."""
-    print('''sPoNgEcAsE, bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
+    """Run the Spongecase program."""
+    print('''sPoNgEtExT, bY aL sWeIGaRt Al@iNvEnTwItHpYtHoN.cOm
 
 eNtEr YoUr MeSsAgE:''')
-    spongetext = englishToSpongecase(input('> '))
+    spongecase = englishToSpongecase(input('> '))
     print()
-    print(spongetext)
+    print(spongecase)
 
     try:
-        pyperclip.copy(spongetext)
-        print('(cOpIed SpOnGeTexT to ClIpbOaRd.)')
+        pyperclip.copy(spongecase)
+        print('(cOpIed SpOnGeCasE to ClIpbOaRd.)')
     except:
         pass  # Do nothing if pyperclip wasn't installed.
 
 
 def englishToSpongecase(message):
-    """Return the spongetext form of the given string."""
-    spongetext = ''
+    """Return the spongecase form of the given string."""
+    spongecase = ''
     useUpper = False
 
     for character in message:
         if not character.isalpha():
-            spongetext += character
+            spongecase += character
             continue
 
         if useUpper:
-            spongetext += character.upper()
+            spongecase += character.upper()
         else:
-            spongetext += character.lower()
+            spongecase += character.lower()
 
         # Flip the case, 90% of the time.
         if random.randint(1, 100) <= 90:
             useUpper = not useUpper  # Flip the case.
-    return spongetext
+    return spongecase
 
 
 # If this program was run (instead of imported), run the game:

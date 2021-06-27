@@ -1,6 +1,6 @@
 """Trick Questions, by Al Sweigart al@inventwithpython.com
 A quiz of several trick questions.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, humor"""
 __version__ = 0
 import random, sys
@@ -33,7 +33,7 @@ QUESTIONS = [
  {'question': "Imagine you are in a haunted house full of evil ghosts. What do you have to do to stay safe?",
   'answer': "Nothing. You're only imagining it.",
   'accept': ['nothing', 'stop']},
-{'question': "A taxi driver is going the wrong way down a one way street. She passes ten cops but doesn't get a ticket. Why not?",
+{'question': "A taxi driver is going the wrong way down a one-way street. She passes ten cops but doesn't get a ticket. Why not?",
   'answer': "She was walking.",
   'accept': ['walk']},
  {'question': "What does a yellow stone thrown into a blue pond become?",

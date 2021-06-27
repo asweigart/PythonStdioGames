@@ -2,16 +2,16 @@
 A pattern-matching game with sounds. Try to memorize an increasingly
 longer and longer pattern of letters. Inspired by the electronic game,
 Simon.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short, beginner, game"""
 __version__ = 0
 import random, sys, time
 
 # Download the sound files from these URLs (or use your own):
-# http://inventwithpython.com/soundA.wav
-# http://inventwithpython.com/soundS.wav
-# http://inventwithpython.com/soundD.wav
-# http://inventwithpython.com/soundF.wav
+# https://inventwithpython.com/soundA.wav
+# https://inventwithpython.com/soundS.wav
+# https://inventwithpython.com/soundD.wav
+# https://inventwithpython.com/soundF.wav
 
 try:
     import playsound

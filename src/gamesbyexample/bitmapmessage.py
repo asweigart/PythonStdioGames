@@ -1,6 +1,6 @@
 """Bitmap Message, by Al Sweigart al@inventwithpython.com
 Displays a text message according to the provided bitmap image.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, beginner, artistic"""
 __version__ = 0
 import sys
@@ -47,6 +47,6 @@ for line in bitmap.splitlines():
             # Print an empty space since there's a space in the bitmap:
             print(' ', end='')
         else:
-            # Print a character from the messge:
+            # Print a character from the message:
             print(message[i % len(message)], end='')
     print()  # Print a newline.

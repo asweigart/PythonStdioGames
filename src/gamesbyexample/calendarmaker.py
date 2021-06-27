@@ -1,6 +1,6 @@
 """Calendar Maker, by Al Sweigart al@inventwithpython.com
 Create monthly calendars, saved to a text file and fit for printing.
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: short"""
 __version__ = 0
 import datetime

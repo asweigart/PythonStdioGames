@@ -1,6 +1,7 @@
 """Text To Speech Talker, by Al Sweigart al@inventwithpython.com
 An example program using the text-to-speech features of the pyttsx3
 module.
+View this code at https://nostarch.com/big-book-small-python-projects
 Tags: tiny, beginner"""
 __version__ = 0
 import sys

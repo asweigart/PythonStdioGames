@@ -3,9 +3,9 @@ Calculates prime numbers, which are numbers that are only evenly
 divisible by one and themselves. They are used in a variety of practical
 applications.
 More info at: https://en.wikipedia.org/wiki/Prime_number
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: tiny, math, scrolling"""
-__version__ = 0
+
 import math, sys
 
 def main():

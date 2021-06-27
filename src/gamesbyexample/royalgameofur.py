@@ -2,7 +2,7 @@
 A 5,000 year old board game from Mesopotamia. Two players knock each
 other back as they race for the goal.
 More info https://en.wikipedia.org/wiki/Royal_Game_of_Ur
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, board game, game, two-player
 """
 __version__ = 0
@@ -103,7 +103,7 @@ the middle flower space are safe and cannot be landed on.''')
         flipTally = 0
         print('Flips: ', end='')
         for i in range(4):  # Flip 4 coins.
-            result =  random.randint(0, 1)
+            result = random.randint(0, 1)
             if result == 0:
                 print('T', end='')  # Tails.
             else:

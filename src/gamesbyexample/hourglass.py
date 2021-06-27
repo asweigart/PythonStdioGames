@@ -1,7 +1,7 @@
-"""Hour Glass Animation, by Al Sweigart al@inventwithpython.com
-An animation of an hour glass with falling sand. Press Ctrl-C to stop.
-This and other games are available at https://nostarch.com/XX
-Tags: large, artistic, simulation, terminal"""
+"""Hourglass, by Al Sweigart al@inventwithpython.com
+An animation of an hourglass with falling sand. Press Ctrl-C to stop.
+This code is available at https://nostarch.com/big-book-small-python-programming
+Tags: large, artistic, bext, simulation"""
 __version__ = 0
 import random, sys, time
 
@@ -22,8 +22,8 @@ SCREEN_WIDTH = 79
 SCREEN_HEIGHT = 25
 X = 0  # The index of X values in an (x, y) tuple is 0.
 Y = 1  # The index of Y values in an (x, y) tuple is 1.
-SAND = chr(9617)  # Character 9617 is '░'
-WALL = chr(9608)  # Character 9608 is '█'
+SAND = chr(9617)
+WALL = chr(9608)
 
 # Set up the walls of the hour glass:
 HOURGLASS = set()  # Has (x, y) tuples for where hourglass walls are.

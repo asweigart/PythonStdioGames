@@ -1,7 +1,7 @@
 """The Monty Hall Problem, by Al Sweigart al@inventwithpython.com
 A simulation of the Monty Hall game show problem.
 More info at https://en.wikipedia.org/wiki/Monty_Hall_problem
-This and other games are available at https://nostarch.com/XX
+This code is available at https://nostarch.com/big-book-small-python-programming
 Tags: large, game, math, simulation"""
 __version__ = 0
 import random, sys
@@ -77,7 +77,7 @@ has a new car for a prize. The other two doors have worthless goats:
 Say you pick Door #1.
 Before the door you choose is opened, another door with a goat is opened:
 {}
-You can choose to either open the door you originally picked, or swap
+You can choose to either open the door you originally picked or swap
 to the other unopened door.
 
 It may seem like it doesn't matter if you swap or not, but your odds
