@@ -14,7 +14,7 @@ CRASH_DETECTOR = os.path.join(FOLDER_OF_THIS_FILE, '__crashdetector__.py')
 # First, this script runs the crash detector to run the Python script:
 try:
     exitCode = subprocess.call([sys.executable, CRASH_DETECTOR, sys.argv[1], sys.argv[2]])
-except KeyboardInterrupt, EOFError:
+except (KeyboardInterrupt, EOFError):
     exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
 
 

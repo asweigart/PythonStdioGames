@@ -347,3 +347,8 @@ Completed Programs in This Collection
 *Wormy* - (Requires Pygame) Lead the green snake around the screen eating red apples.
 
 *Zigzag* - A simple zig zag animation. Press Ctrl-C to stop.
+
+Support
+-------
+
+If you find this project helpful and would like to support its development, [consider donating to its creator on Patreon](https://www.patreon.com/AlSweigart).
