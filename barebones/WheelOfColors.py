@@ -2,9 +2,9 @@
 # Choose a color then spin the wheel,
 # And await your destiny
 
-print('''Welcome to the wheel of colors, where /n you can gamble to your hearts content.
-Here, if your first guess is correct, your bet is tripled and returned
-If your second guess is correct, your bet is doubled and returned
+print('''Welcome to the wheel of colors, where you can gamble to your hearts content.
+Here, if your first guess is correct, your bet is doubled and returned
+If your second guess is correct, your bet is unchanged and returned
 
 ''')
 
