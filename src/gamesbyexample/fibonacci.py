@@ -25,7 +25,7 @@ while True:  # Main program loop.
 
         if response.isdecimal() and int(response) != 0:
             nth = int(response)
-            break  # Exit the loop when the user enteres a valid number.
+            break  # Exit the loop when the user enters a valid number.
 
         print('Please enter a number greater than 0, or QUIT.')
     print()

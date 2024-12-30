@@ -47,7 +47,7 @@ three in a row on the big board.
             print('The game is a tie!')
             print('Thanks for playing!')
             sys.exit()
-        elif bigWinner != None:
+        elif bigWinner is not None:
             displayBoard(gameBoard)
             print(bigWinner, 'has won!')
             print('Thanks for playing!')
@@ -116,7 +116,7 @@ def displayBoard(board):
     # Third, fill in the Xs and Os of the small boards on the canvas:
     for ix, smallTopLeftX in enumerate([0, 5, 10]):
         for iy, smallTopLeftY in enumerate([0, 3, 6]):
-            if getWinner(board[(ix, iy)]) != None:
+            if getWinner(board[ix, iy]) is not None:
                 continue
 
             for x in range(3):
@@ -173,12 +173,12 @@ def askForPlayerMove(player, board, focusX, focusY):
     plays on.
     """
     # Check if the player can freely select any small board:
-    if focusX == None and focusY == None:
+    if focusX is None and focusY is None:
         # Let the player pick which board they want to move on:
         print(player + ': Enter the BOARD you want to move on.')
         validBoardsToSelect = []
         for xyTuple, smallBoard in board.items():
-            if getWinner(smallBoard) == None:
+            if getWinner(smallBoard) is None:
                 validBoardsToSelect.append(xyTuple)
         selectedBoard = enter1Through9(validBoardsToSelect)
         focusX = selectedBoard % 3
@@ -199,7 +199,7 @@ def askForPlayerMove(player, board, focusX, focusY):
     board[(focusX, focusY)][(x, y)] = player
 
     # Figure out the small board that the next player must move on:
-    if getWinner(board[(x, y)]) == None:
+    if getWinner(board[x, y]) is None:
         return (x, y)
     else:
         # If the small board has a winner or is tied, the next player
@@ -237,7 +237,7 @@ def makeBoardFromSmallBoards(smallBoards):
     for x in range(BOARD_WIDTH):
         for y in range(BOARD_HEIGHT):
             winner = getWinner(smallBoards[(x, y)])
-            if winner == None:
+            if winner is None:
                 bigBoard[(x, y)] = EMPTY_SPACE
             elif winner == TIED:
                 bigBoard[(x, y)] = TIED

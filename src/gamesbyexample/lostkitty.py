@@ -6,7 +6,9 @@ the Pythagorean Theorem.
 This and other games are available at https://nostarch.com/XX
 Tags: large, game"""
 __version__ = 0
-import math, random, sys
+import math
+import random
+import sys
 
 # Set up the constants:
 UPDOWN    = chr(9474)  # Character 9474 is '│'

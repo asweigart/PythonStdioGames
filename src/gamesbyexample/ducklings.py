@@ -200,8 +200,6 @@ class Duckling:
             self.partToDisplayNext = None
             return self.getFeetStr()
 
-
-
 # If this program was run (instead of imported), run the game:
 if __name__ == '__main__':
     try:

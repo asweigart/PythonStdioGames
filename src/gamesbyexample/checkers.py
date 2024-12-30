@@ -4,7 +4,8 @@ and if you are blocked from moving, you lose.
 This and other games are available at https://nostarch.com/XX
 Tags: extra-large, board game, game, two-player"""
 __version__ = 0
-import copy, sys
+import copy
+import sys
 
 # Set up the constants:
 ALL_COLUMNS = 'ABCDEFGH'

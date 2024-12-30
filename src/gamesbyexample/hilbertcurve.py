@@ -7,9 +7,9 @@ __version__ = 0
 import turtle
 
 # Set up the constants:
-SIZE  = 10 # (!) Try changing the line length by a litte.
-ANGLE = 90 # (!) Try changing the turning angle by a litte.
-LEVEL = 5  # (!) Try changing the recursive level by a litte.
+SIZE  = 10 # (!) Try changing the line length by a little.
+ANGLE = 90 # (!) Try changing the turning angle by a little.
+LEVEL = 5  # (!) Try changing the recursive level by a little.
 
 MAGENTA = '#B20059'
 PINK = '#FFE6F2'

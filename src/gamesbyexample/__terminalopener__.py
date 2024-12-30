@@ -3,7 +3,9 @@
 # script terminates. Though first, it runs __crashdetector__.py which
 # runs the game, and can detect if the game crashes.
 
-import subprocess, sys, os
+import os
+import subprocess
+import sys
 
 launcherVersion = sys.argv[1]
 programToLaunch = sys.argv[2]
@@ -15,8 +17,7 @@ CRASH_DETECTOR = os.path.join(FOLDER_OF_THIS_FILE, '__crashdetector__.py')
 try:
     exitCode = subprocess.call([sys.executable, CRASH_DETECTOR, sys.argv[1], sys.argv[2]])
 except (KeyboardInterrupt, EOFError):
-    exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
-
+    exitCode = 0  # Do nothing if Ctrl-C was pressed to exit the game.
 
 
 # Pygame games only leave the terminal window open if there was no crash.

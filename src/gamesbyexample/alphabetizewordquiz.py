@@ -3,7 +3,8 @@ A time-based quiz game to see how fast you can alphabetize words.
 This and other games are available at https://nostarch.com/XX
 Tags: short, game, word"""
 __version__ = 0
-import random, time
+import random
+import time
 
 # Set up the constants:
 # (!) Try changing these constants.

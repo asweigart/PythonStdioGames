@@ -1,4 +1,7 @@
-import sys, os, datetime, re
+import datetime
+import os
+import re
+import sys
 
 launcherVersion = sys.argv[1]
 programToLaunch = sys.argv[2]
@@ -14,10 +17,11 @@ if 'pygame_games/' in programToLaunch:
 try:
     exitCode = os.system(sys.executable + ' ' + programToLaunch)
 except (KeyboardInterrupt, EOFError):
-    exitCode = 0 # Do nothing if Ctrl-C was pressed to exit the game.
+    exitCode = 0  # Do nothing if Ctrl-C was pressed to exit the game.
 
-if exitCode != 0 and sys.platform != 'darwin': # NOTE: We are currently disabling this on macOS because it keeps reporting keyboard interrupts, etc.
-
+if (
+    exitCode != 0 and sys.platform != 'darwin'
+):  # NOTE: We are currently disabling this on macOS because it keeps reporting keyboard interrupts, etc.
     # Get the program's __version__ variable:
     with open(programToLaunch) as fo:
         content = fo.read()
@@ -27,7 +31,8 @@ if exitCode != 0 and sys.platform != 'darwin': # NOTE: We are currently disablin
         else:
             programVersion = mo.group(1)
 
-    sys.stderr.write('''
+    sys.stderr.write(
+        '''
 
 * * * * * CRASH DETECTED! * * * * *
 
@@ -49,5 +54,15 @@ In your issue report, copy/paste the above "Traceback" along with this text:
         Executable: {}
          Timestamp: {}
 
-'''.format(programToLaunch, programVersion, launcherVersion, sys.platform, sys.version, sys.executable, datetime.datetime.now()))
-    sys.exit(1) # Exit code of 1 signals to __terminalopener__.py to leave it open even if we were running a Pygame game.
+'''.format(
+            programToLaunch,
+            programVersion,
+            launcherVersion,
+            sys.platform,
+            sys.version,
+            sys.executable,
+            datetime.datetime.now(),
+        )
+    )
+# Exit code of 1 signals to __terminalopener__.py to leave it open even if we were running a Pygame game.
+sys.exit(1)

@@ -3,7 +3,9 @@ An analog clock animation. Press Ctrl-C to stop.
 This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, bext, terminal"""
 __version__ = 0
-import time, math, sys
+import math
+import sys
+import time
 
 try:
     import bext

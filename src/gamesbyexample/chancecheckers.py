@@ -6,7 +6,9 @@ promoted checkers. In this version, capturing is not mandatory.
 This and other games are available at https://nostarch.com/XX
 Tags: extra-large, board game, game, two-player"""
 __version__ = 0
-import random, copy, sys
+import copy
+import random
+import sys
 
 # Set up the constants:
 ALL_COLUMNS = 'ABCDEFGH'
@@ -107,7 +109,7 @@ def prevCol(column):
 
     Returns '' if column 'A'."""
     return {'': '', 'A': '', 'B': 'A', 'C': 'B', 'D': 'C',
-            'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G', '': ''}[column]
+            'E': 'D', 'F': 'E', 'G': 'F', 'H': 'G'}[column]
 
 
 def nextCol(column):
@@ -115,7 +117,7 @@ def nextCol(column):
 
     Returns '' if column 'H'."""
     return {'': '', 'A': 'B', 'B': 'C', 'C': 'D', 'D': 'E',
-            'E': 'F', 'F': 'G', 'G': 'H', 'H': '', '': ''}[column]
+            'E': 'F', 'F': 'G', 'G': 'H', 'H': ''}[column]
 
 
 def otherCheckers(checker):

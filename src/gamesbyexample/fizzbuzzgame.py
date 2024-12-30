@@ -3,7 +3,8 @@ A number game where you also race against the clock.
 This and other games are available at https://nostarch.com/XX
 Tags: tiny, beginner, game, math"""
 __version__ = 0
-import sys, time
+import sys
+import time
 
 print('''Fizz Buzz Game, by Al Sweigart al@inventwithpython.com
 

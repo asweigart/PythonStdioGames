@@ -4,7 +4,11 @@ This program MUST be run in a Terminal/Command Prompt window.
 This and other games are available at https://nostarch.com/XX
 Tags: large, artistic, bext"""
 __version__ = 0
-import math, time, sys, os, random
+import math
+import os
+import random
+import sys
+import time
 
 # This program draws 3D points that rotate around a center point. This
 # gives the fireflies a "swirling" kind of movement.

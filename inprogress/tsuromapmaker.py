@@ -65,11 +65,11 @@ TILES = ['02360452115121411245036209', '05420145210202012451025408',
          '36020214232022260512031263']
 
 # This code uses checksums to make sure the above TILES were typed correctly.
-for tile in enumerate(TILES):
-    assert len(tile) == 26, 'Tile %r has an incorrect length.' % (tile,)
+for i, tile in enumerate(TILES):
+    assert len(tile) == 26, 'Tile %r has an incorrect length %s.' % (tile, len(tile))
     total = 0
-    for i in range(25):
-        total += int(tile[i])
+    for j in range(26):
+        total += int(tile[j])
     assert total % 10 == 0, 'Tile %r is wrong.' % (tile,)
     TILES[i] = TILES[i][:25] # Cut off the checksum digit.
 

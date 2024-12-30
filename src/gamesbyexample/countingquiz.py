@@ -5,7 +5,10 @@ as fast as possible.
 This and other games are available at https://nostarch.com/XX
 Tags: short, math"""
 
-import math, random, time
+import math
+import random
+import time
+
 
 def main():
     print('''Counting Quiz, by Al Sweigart al@inventwithpython.com

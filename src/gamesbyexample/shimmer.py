@@ -1,4 +1,8 @@
-import bext, random, time, sys
+import random
+import sys
+import time
+
+import bext
 
 WIDTH, HEIGHT = 80, 25
 

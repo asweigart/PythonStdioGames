@@ -4,7 +4,11 @@ Tags: large, artistic, simulation, terminal"""
 __version__ = 0
 # This program MUST be run in a Terminal/Command Prompt window.
 
-import math, random, shutil, sys, time
+import math
+import random
+import shutil
+import sys
+import time
 
 try:
     import bext

@@ -5,7 +5,9 @@ and https://en.wikipedia.org/wiki/Josephus_problem
 This and other games are available at https://nostarch.com/XX
 Tags: short, game, multiplayer"""
 __version__ = 0
-import random, time, sys
+import random
+import sys
+import time
 
 SCREEN_WIDTH = 60
 RHYME = ['EENY', 'MEENY', 'MINY', 'MOE', 'CATCH A', 'TIGER', 'BY THE',
